@@ -1,6 +1,5 @@
 ﻿# Cloudflare Pages — Zero2Hero Academy homepage
+# Note: /stats is served by Cloudflare pretty-URLs from stats.html (do not rewrite — causes 308 loop)
 /academy /academy/index.html 200
 /academy/ /academy/index.html 200
 /portal /portal.html 200
-/stats /stats.html 200
-/stats/ /stats.html 200

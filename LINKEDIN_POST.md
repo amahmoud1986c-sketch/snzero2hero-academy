@@ -18,7 +18,7 @@
 
 ### الروابط
 🌐 الموقع الرسمي: https://snzero2hero.com  
-📊 إحصائيات الزيارات (بلدان بدون تسجيل): https://snzero2hero.com/stats.html  
+📊 إحصائيات الزيارات (بلدان بدون تسجيل): https://snzero2hero.com/stats  
 📘 بوابة الأكاديمية: https://snzero2hero.pages.dev/  
 💻 GitHub (Public — مفتوح للجميع): https://github.com/amahmoud1986c-sketch/snzero2hero-academy  
 🔗 LinkedIn: https://www.linkedin.com/in/ahmed-abdelmaksoud-44917a89/

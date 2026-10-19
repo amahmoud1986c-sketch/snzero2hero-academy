@@ -69,7 +69,7 @@ export async function onRequestGet(context) {
       topCountries,
       last7Days: last7,
       updatedAt: new Date().toISOString(),
-      publicPage: "https://snzero2hero.com/stats.html",
+      publicPage: "https://snzero2hero.com/stats",
       github: "https://github.com/amahmoud1986c-sketch/snzero2hero-academy",
     });
   } catch (e) {

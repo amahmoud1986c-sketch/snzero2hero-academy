@@ -76,7 +76,7 @@
       "<div>Built &amp; authored this academy · " +
       '<a href="' + LI + '" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a> · ' +
       '<a href="https://snzero2hero.com" target="_blank" rel="noopener">snzero2hero.com</a> · ' +
-      '<a href="https://snzero2hero.com/stats.html" target="_blank" rel="noopener">Stats · الإحصائيات</a></div>' +
+      '<a href="https://snzero2hero.com/stats" target="_blank" rel="noopener">Stats · الإحصائيات</a></div>' +
       '<div class="z2h-disc">Visitors: <span class="z2h-visit-count">…</span> · Country-only analytics (no signup, no personal data). Independent educational resource. Not affiliated with ServiceNow, Inc.</div>' +
       "</div></div>";
     return foot;
