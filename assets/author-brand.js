@@ -55,6 +55,17 @@
     return bar;
   }
 
+  var STATS_APIS = [
+    "https://snzero2hero.com/api/stats",
+    "https://snzero2hero.pages.dev/api/stats",
+    "/api/stats"
+  ];
+  var VISIT_APIS = [
+    "https://snzero2hero.com/api/visit",
+    "https://snzero2hero.pages.dev/api/visit",
+    "/api/visit"
+  ];
+
   function buildFooter() {
     var foot = el("footer", { className: "z2h-site-footer", role: "contentinfo" });
     foot.innerHTML =
@@ -64,10 +75,50 @@
       "<div><strong>" + NAME_EN + "</strong> · " + NAME_AR + "</div>" +
       "<div>Built &amp; authored this academy · " +
       '<a href="' + LI + '" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a> · ' +
-      '<a href="https://snzero2hero.com" target="_blank" rel="noopener">snzero2hero.com</a></div>' +
-      '<div class="z2h-disc">Independent educational resource. Not affiliated with ServiceNow, Inc.</div>' +
+      '<a href="https://snzero2hero.com" target="_blank" rel="noopener">snzero2hero.com</a> · ' +
+      '<a href="https://snzero2hero.com/stats.html" target="_blank" rel="noopener">Stats · الإحصائيات</a></div>' +
+      '<div class="z2h-disc">Visitors: <span class="z2h-visit-count">…</span> · Country-only analytics (no signup, no personal data). Independent educational resource. Not affiliated with ServiceNow, Inc.</div>' +
       "</div></div>";
     return foot;
+  }
+
+  function recordVisitOnce() {
+    try {
+      if (sessionStorage.getItem("z2h_visit_sent") === "1") return;
+      sessionStorage.setItem("z2h_visit_sent", "1");
+    } catch (e) {}
+    VISIT_APIS.forEach(function (url) {
+      try {
+        fetch(url, { method: "POST", mode: "cors", keepalive: true }).catch(function () {});
+      } catch (e) {}
+    });
+  }
+
+  function loadVisitCount() {
+    var nodes = document.querySelectorAll(".z2h-visit-count");
+    if (!nodes.length) return;
+    function apply(n) {
+      nodes.forEach(function (el) {
+        el.textContent = Number(n || 0).toLocaleString();
+      });
+    }
+    (function tryNext(i) {
+      if (i >= STATS_APIS.length) {
+        apply(0);
+        return;
+      }
+      fetch(STATS_APIS[i], { cache: "no-store", mode: "cors" })
+        .then(function (r) {
+          return r.ok ? r.json() : Promise.reject();
+        })
+        .then(function (d) {
+          if (d && d.ok) apply(d.totalVisits);
+          else tryNext(i + 1);
+        })
+        .catch(function () {
+          tryNext(i + 1);
+        });
+    })(0);
   }
 
   function inject() {
@@ -89,6 +140,9 @@
     if (!document.querySelector(".z2h-site-footer")) {
       document.body.appendChild(buildFooter());
     }
+
+    recordVisitOnce();
+    loadVisitCount();
   }
 
   if (document.readyState === "loading") {

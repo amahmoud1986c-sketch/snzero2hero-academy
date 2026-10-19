@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>إحصائيات الزيارات · Zero²Hero Academy Stats</title>
+  <meta name="description" content="Public anonymous visitor stats for Zero²Hero Academy — totals and countries only. No registration, no personal data." />
+  <link rel="stylesheet" href="assets/docs.css" />
+  <style>
+    :root { --z2h:#062a4a; --z2h-mid:#0f4c81; --z2h-accent:#0ea5a4; }
+    .stats-hero {
+      background: linear-gradient(135deg, #041c30, #0f4c81 60%, #0ea5a4);
+      color:#fff; border-radius:16px; padding:1.25rem 1.4rem; margin-bottom:1.25rem;
+    }
+    .stats-hero h1 { margin:0 0 .35rem; font-size:clamp(1.4rem,3vw,2rem); }
+    .stats-hero p { margin:0; opacity:.92; font-size:.95rem; }
+    .kpi-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+      gap:.85rem; margin:1rem 0 1.5rem;
+    }
+    .kpi {
+      background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:1rem 1.1rem;
+    }
+    .kpi .n { font-size:1.85rem; font-weight:900; color:var(--z2h-mid); line-height:1.1; }
+    .kpi .l { font-size:.82rem; color:#64748b; margin-top:.25rem; }
+    table.stats {
+      width:100%; border-collapse:collapse; background:#fff;
+      border:1px solid #e2e8f0; border-radius:14px; overflow:hidden;
+    }
+    table.stats th, table.stats td {
+      padding:.65rem .85rem; border-bottom:1px solid #eef2f7; text-align:right;
+    }
+    table.stats th { background:#f8fafc; color:var(--z2h); font-size:.85rem; }
+    .bar {
+      height:8px; background:#e2e8f0; border-radius:999px; overflow:hidden; min-width:80px;
+    }
+    .bar > span { display:block; height:100%; background:linear-gradient(90deg,var(--z2h-mid),var(--z2h-accent)); }
+    .privacy {
+      background:#ecfeff; border:1px solid #a5f3fc; border-radius:12px;
+      padding:.9rem 1rem; color:#155e75; font-size:.9rem; margin:1rem 0;
+    }
+    .muted { color:#64748b; font-size:.85rem; }
+    .ltr { direction:ltr; text-align:left; }
+    .err { color:#b91c1c; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Zero²Hero Academy · Stats</div>
+    <nav>
+      <a href="index.html">Academy</a>
+      <a href="stats.html">Stats</a>
+      <a href="https://github.com/amahmoud1986c-sketch/snzero2hero-academy" target="_blank" rel="noopener">GitHub</a>
+      <span class="badge">Privacy-first</span>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <section class="stats-hero">
+      <h1>إحصائيات الزيارات · Public Visitor Stats</h1>
+      <p>عدد الزوار التقريبي + توزيع البلدان — بدون تسجيل دخول وبدون بيانات شخصية.</p>
+      <p class="ltr" style="margin-top:.45rem;opacity:.85;font-size:.85rem">Anonymous aggregates only · Country code from Cloudflare edge</p>
+    </section>
+
+    <div class="privacy">
+      <strong>الخصوصية:</strong> نحفظ فقط عدّاد إجمالي + رمز الدولة (مثل SA / EG).
+      لا نحفظ الاسم، الإيميل، رقم الهاتف، ولا عنوان IP، ولا نطلب تسجيل.
+      <br /><span class="ltr">We store only visit totals + ISO country codes. No names, emails, IPs, or cookies for tracking identity.</span>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi"><div class="n" id="kpi-total">…</div><div class="l">إجمالي الزيارات · Total visits</div></div>
+      <div class="kpi"><div class="n" id="kpi-countries">…</div><div class="l">عدد البلدان · Countries</div></div>
+      <div class="kpi"><div class="n" id="kpi-today">…</div><div class="l">اليوم · Today</div></div>
+    </div>
+
+    <h2 style="color:var(--z2h);font-size:1.2rem;margin:0 0 .6rem">أعلى البلدان · Top countries</h2>
+    <table class="stats" id="country-table">
+      <thead><tr><th>#</th><th>البلد · Country</th><th>الرمز</th><th>الزيارات</th><th></th></tr></thead>
+      <tbody><tr><td colspan="5" class="muted">جاري التحميل…</td></tr></tbody>
+    </table>
+
+    <h2 style="color:var(--z2h);font-size:1.2rem;margin:1.5rem 0 .6rem">آخر 7 أيام · Last 7 days</h2>
+    <table class="stats" id="day-table">
+      <thead><tr><th>اليوم</th><th>الزيارات</th></tr></thead>
+      <tbody><tr><td colspan="2" class="muted">جاري التحميل…</td></tr></tbody>
+    </table>
+
+    <p class="muted ltr" id="updated" style="margin-top:1rem"></p>
+    <p class="muted">
+      API JSON:
+      <a class="ltr" href="/api/stats" target="_blank" rel="noopener">/api/stats</a>
+      · للمشاركة على LinkedIn استخدم هذه الصفحة:
+      <code class="ltr">https://snzero2hero.com/stats.html</code>
+    </p>
+  </main>
+
+  <script src="assets/author-brand.js" defer></script>
+  <script>
+    const NAMES = {
+      SA:"Saudi Arabia · السعودية", EG:"Egypt · مصر", AE:"UAE · الإمارات",
+      KW:"Kuwait · الكويت", QA:"Qatar · قطر", BH:"Bahrain · البحرين",
+      OM:"Oman · عُمان", JO:"Jordan · الأردن", MA:"Morocco · المغرب",
+      US:"United States", GB:"United Kingdom", DE:"Germany", IN:"India",
+      PK:"Pakistan", TR:"Turkey", FR:"France", CA:"Canada", AU:"Australia",
+      XX:"Unknown / Local"
+    };
+
+    async function loadStats() {
+      const endpoints = ["/api/stats", "https://snzero2hero.com/api/stats", "https://snzero2hero.pages.dev/api/stats"];
+      let data = null, err = null;
+      for (const url of endpoints) {
+        try {
+          const r = await fetch(url, { cache: "no-store" });
+          if (!r.ok) throw new Error(url + " " + r.status);
+          data = await r.json();
+          if (data && data.ok) break;
+        } catch (e) { err = e; }
+      }
+      if (!data || !data.ok) {
+        document.querySelector("#country-table tbody").innerHTML =
+          '<tr><td colspan="5" class="err">Stats API not ready yet — visit the live site once, then refresh. ' +
+          (err ? String(err.message || err) : "") + "</td></tr>";
+        return;
+      }
+
+      document.getElementById("kpi-total").textContent = (data.totalVisits || 0).toLocaleString();
+      document.getElementById("kpi-countries").textContent = (data.uniqueCountries || 0).toLocaleString();
+      const today = new Date().toISOString().slice(0, 10);
+      const todayRow = (data.last7Days || []).find(d => d.day === today);
+      document.getElementById("kpi-today").textContent = (todayRow ? todayRow.visits : 0).toLocaleString();
+
+      const max = Math.max(1, ...((data.topCountries || []).map(c => c.visits)));
+      const tb = document.querySelector("#country-table tbody");
+      if (!(data.topCountries || []).length) {
+        tb.innerHTML = '<tr><td colspan="5" class="muted">No visits recorded yet — open any academy page once.</td></tr>';
+      } else {
+        tb.innerHTML = data.topCountries.map((c, i) => {
+          const pct = Math.round((c.visits / max) * 100);
+          const name = NAMES[c.code] || c.code;
+          return `<tr>
+            <td>${i + 1}</td>
+            <td>${name}</td>
+            <td class="ltr">${c.code}</td>
+            <td>${c.visits.toLocaleString()}</td>
+            <td><div class="bar"><span style="width:${pct}%"></span></div></td>
+          </tr>`;
+        }).join("");
+      }
+
+      const db = document.querySelector("#day-table tbody");
+      if (!(data.last7Days || []).length) {
+        db.innerHTML = '<tr><td colspan="2" class="muted">No daily data yet.</td></tr>';
+      } else {
+        db.innerHTML = data.last7Days.map(d =>
+          `<tr><td class="ltr">${d.day}</td><td>${d.visits.toLocaleString()}</td></tr>`
+        ).join("");
+      }
+
+      document.getElementById("updated").textContent =
+        "Updated: " + (data.updatedAt || "") + " · Privacy: " + (data.privacy || "");
+    }
+    loadStats();
+  </script>
+</body>
+</html>

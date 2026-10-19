@@ -1,4 +1,9 @@
-# Cloudflare Pages project config (optional helper)
+# Cloudflare Pages — Zero²Hero Academy
 name = "snzero2hero"
 compatibility_date = "2026-10-19"
 pages_build_output_dir = "."
+
+# Anonymous visit counters (country code only — no PII)
+[[kv_namespaces]]
+binding = "VISITS"
+id = "2ef2eed02c8e4da4b27d439ea6487e6d"
