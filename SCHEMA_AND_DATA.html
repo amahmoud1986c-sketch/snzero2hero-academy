@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Schema & Sample Data | HR Leave Australia</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="01_DEVELOPMENT.html">01 Development</a>
+      <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">16 Studio Create</a>
+      <a href="SCRIPTS_INVENTORY.html">Scripts</a>
+      <span class="badge">Schema</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Schema & Sample Data</h1>
+      <p>Canonical tables & columns for Studio creates · sample data · obsolete names</p>
+      <div class="meta-grid">
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.7rem">e5f5bc9493a303507520703efaba104d</code></div>
+        
+      </div>
+    </section>
+    <div class="url-box"><strong>Open lists</strong>
+      <a href="https://dev398980.service-now.com/x_786686_hr_leave_employee_v2_list.do">Employees</a>
+      <a href="https://dev398980.service-now.com/x_786686_hr_leave_req_v2_list.do">Leave Requests</a>
+      <a href="https://dev398980.service-now.com/x_786686_hr_leave_bal_v2_list.do">Balances</a>
+      <a href="https://dev398980.service-now.com/x_786686_hr_leave_audit_v2_list.do">Audit</a>
+    </div>
+    <article class="content">
+<pre style="white-space:pre-wrap;font-family:var(--mono);font-size:.85rem"># HR Leave — Canonical Schema &amp; Sample Data
+
+&gt; **Source of truth:** `servicenow-ai-workspace/HR Leave Studio app/src/Studio/tables (Studio record)`  
+&gt; **Scope:** `x_786686_hr_leave` · **App sys_id:** `e5f5bc9493a303507520703efaba104d`  
+&gt; **Scripts:** `src/` (BR / SI / CS / Catalog / Portal) use these column names only.
+
+## Tables &amp; columns
+
+### 1) `x_786686_hr_leave_employee_v2` — HR Employee
+
+| Column | Type | Notes |
+|--------|------|-------|
+| `u_user` | Reference → `sys_user` | Platform user |
+| `u_employee_id` | String(40) | External id |
+| `u_department` | String(100) | |
+| `u_manager` | Reference → `sys_user` | BR1 copies to leave `u_approver_user` |
+| `u_join_date` | Date | |
+| `u_grade` | String(20) | |
+
+### 2) `x_786686_hr_leave_req_v2` — Leave Request
+
+| Column | Type | Notes |
+|--------|------|-------|
+| `u_number` | String(40) | Display number |
+| `u_requested_for_user` | Reference → `sys_user` | Subject of leave |
+| `u_employee_ref` | Reference → `employee_v2` | HR profile |
+| `u_leave_type` | Choice | `annual` / `sick` / `unpaid` |
+| `u_start_date` | Date | |
+| `u_end_date` | Date | |
+| `u_days_count` | Integer | Business days (BR1 / CS2) |
+| `u_state` | Choice | `draft` / `submitted` / `approved` / `rejected` / `cancelled` |
+| `u_approver_user` | Reference → `sys_user` | Flow approval |
+| `u_reason` | String(1000) | |
+
+### 3) `x_786686_hr_leave_bal_v2` — Leave Balance
+
+| Column | Type | Notes |
+|--------|------|-------|
+| `u_employee_ref` | Reference → `employee_v2` | |
+| `u_year` | Integer | e.g. 2026 |
+| `u_leave_type` | Choice | same as request |
+| `u_entitled` | Integer | default property = 20 |
+| `u_used` | Integer | BR3 on approve |
+| `u_remaining` | Integer | entitled − used |
+
+### 4) `x_786686_hr_leave_audit_v2` — Leave Audit
+
+| Column | Type | Notes |
+|--------|------|-------|
+| `u_leave_ref` | Reference → `req_v2` | |
+| `u_old_state` | String(40) | |
+| `u_new_state` | String(40) | |
+| `u_event_type` | String(60) | e.g. `state_change` |
+| `u_actor` | Reference → `sys_user` | |
+
+## Obsolete names (do not use)
+
+| Obsolete | Correct |
+|----------|---------|
+| `x_786686_hr_leave_request` | `x_786686_hr_leave_req_v2` |
+| `employee`, `manager`, `leave_type`, `start_date`, `end_date`, `duration_days`, `reason`, `state` (Task-style) | `u_employee_ref`, `u_approver_user`, `u_leave_type`, `u_start_date`, `u_end_date`, `u_days_count`, `u_reason`, `u_state` |
+| `LeaveRequestUtil` | `HRLXProLeaveUtilsV2` / `HRLXProSecurityUtilsV2` |
+| Studio `reference:` | Studio `referenceTable:` (Studio) |
+
+## Scripts that match this schema (verified)
+
+| Path | Uses |
+|------|------|
+| `src/server/business_rules/BR1..BR4.js` | `u_*` on `req_v2` |
+| `src/server/script_includes/HRLXPro*.js` | employee / bal / audit / req |
+| `src/client/client_scripts/CS1..CS2.js` | `u_start_date`, `u_end_date`, `u_days_count` |
+| `src/catalog/RP_submit_leave.js` | maps producer → `u_*` |
+| `src/portal/widgets/hrlx_*` | `u_requested_for_user`, balance fields |
+| `src/Studio/* (Studio record)` (Studio project) | deployable |
+
+## Sample data (lab seed)
+
+Create while Application = **HR Leave**. Replace user sys_ids with real users on your instance.
+
+### A) Users (admin UI)
+
+| User | Role |
+|------|------|
+| employee1 | `x_786686_hr_leave.employee` |
+| manager1 | `x_786686_hr_leave.manager` |
+| hradmin | `x_786686_hr_leave.hr_admin` |
+
+### B) Employee row
+
+| Field | Sample |
+|-------|--------|
+| User | employee1 |
+| Employee ID | `E-1001` |
+| Department | `People Ops` |
+| Manager | manager1 |
+| Join Date | `2024-01-15` |
+| Grade | `G5` |
+
+### C) Balance row (year = current)
+
+| Field | Sample |
+|-------|--------|
+| Employee | (row from B) |
+| Year | `2026` |
+| Leave Type | Annual |
+| Entitled | `20` |
+| Used | `0` |
+| Remaining | `20` |
+
+### D) Leave request (happy path)
+
+| Field | Sample |
+|-------|--------|
+| Requested For | employee1 |
+| Employee | (row from B) |
+| Leave Type | Annual |
+| Start / End | Mon–Fri same week |
+| Days | auto (BR1/CS2) |
+| State | `submitted` |
+| Approver | manager1 (or auto from BR1) |
+| Reason | `Family travel` |
+
+Then: manager Approves → state `approved` → audit row + balance used/remaining update.
+
+### Background Script sketch (optional)
+
+```javascript
+// Run as admin in scoped app HR Leave — adjust user sys_ids first
+(function () {
+  var empUser = 'PASTE_EMPLOYEE_SYS_ID';
+  var mgrUser = 'PASTE_MANAGER_SYS_ID';
+
+  var emp = new GlideRecord('x_786686_hr_leave_employee_v2');
+  emp.initialize();
+  emp.u_user = empUser;
+  emp.u_employee_id = 'E-1001';
+  emp.u_department = 'People Ops';
+  emp.u_manager = mgrUser;
+  emp.u_join_date = '2024-01-15';
+  emp.u_grade = 'G5';
+  var empId = emp.insert();
+
+  var bal = new GlideRecord('x_786686_hr_leave_bal_v2');
+  bal.initialize();
+  bal.u_employee_ref = empId;
+  bal.u_year = 2026;
+  bal.u_leave_type = 'annual';
+  bal.u_entitled = 20;
+  bal.u_used = 0;
+  bal.u_remaining = 20;
+  bal.insert();
+
+  gs.info('Seeded employee=' + empId);
+})();
+```
+
+## Related docs
+
+- [01_DEVELOPMENT.md](01_DEVELOPMENT.md) Part 2 — full column tables  
+- [html/16_SDK_FULL_DEV_ADMIN_FROM_SCRATCH.html](html/16_SDK_FULL_DEV_ADMIN_FROM_SCRATCH.html) — build/install  
+- [SCRIPTS_INVENTORY.md](SCRIPTS_INVENTORY.md) — every script file  
+</pre>
+    </article>
+  </main>
+  <script src="assets/docs.js"></script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

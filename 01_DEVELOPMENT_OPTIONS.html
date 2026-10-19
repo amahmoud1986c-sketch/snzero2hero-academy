@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>01 — Development Options — كل الحقول والبدائل (HR Leave) | HR Leave Australia</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="scripts/index.html">Scripts</a>
+      <a href="modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>01 — Development Options — كل الحقول والبدائل (HR Leave)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">e5f5bc9493a303507520703efaba104d</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/$studio.do">Studio</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/sys_script_client_list.do">Client Scripts</a>
+<a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a>
+</div>
+    <article class="content">
+
+<div class="glance" id="viz01b">
+  <h3>Visual map — Ch.01b · Dev options</h3>
+  <div class="grid3">
+    <div class="box"><strong>See in 10 seconds</strong><p>Field/option decisions for ch.01</p></div>
+    <div class="box"><strong>You build</strong><p>Decision register</p></div>
+    <div class="box"><strong>Track</strong><p>Development</p></div>
+  </div>
+  <div class="flow"><div class="n"><b>EXT</b>No Task</div><span class="arrow">→</span><div class="n"><b>WHEN</b>before</div><span class="arrow">→</span><div class="n"><b>CHOICE</b>state/type</div><span class="arrow">→</span><div class="n"><b>CS</b>preview only</div></div>
+  <div class="chips"><a class="chip url" href="{BASE}/$studio.do">↗ $studio.do</a><a class="chip url" href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">↗ sys_db_object_list.do</a><a class="chip url" href="{BASE}/x_786686_hr_leave_req_v2_list.do">↗ x_786686_hr_leave_req_v2_list.do</a><a class="chip url" href="{BASE}/sys_script_list.do?sysparm_query=nameSTARTSWITHHRLX">↗ sys_script_list.do</a><a class="chip url" href="{BASE}/now/flow-designer">↗ flow-designer</a></div>
+  <div class="chips"><span class="chip do">✓ Defend each option</span><span class="chip dont">✗ Extend Task just in case</span></div>
+  <p class="note-sm">Full visual path (all chapters): <a href="VISUAL_FROM_SCRATCH_00_16.html">VISUAL_FROM_SCRATCH_00_16.html</a></p>
+</div>
+<div class="box"><strong>You build</strong><p>Decision register</p></div>
+    <div class="box"><strong>Track</strong><p>Development</p></div>
+  </div>
+  <div class="flow"><div class="n"><b>EXT</b>No Task</div><span class="arrow">→</span><div class="n"><b>WHEN</b>before</div><span class="arrow">→</span><div class="n"><b>CHOICE</b>state/type</div><span class="arrow">→</span><div class="n"><b>CS</b>preview only</div></div>
+  <div class="chips"><a class="chip url" href="{BASE}/$studio.do">↗ $studio.do</a><a class="chip url" href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">↗ sys_db_object_list.do</a><a class="chip url" href="{BASE}/x_786686_hr_leave_req_v2_list.do">↗ x_786686_hr_leave_req_v2_list.do</a><a class="chip url" href="{BASE}/sys_script_list.do?sysparm_query=nameSTARTSWITHHRLX">↗ sys_script_list.do</a><a class="chip url" href="{BASE}/now/flow-designer">↗ flow-designer</a></div>
+  <div class="chips"><span class="chip do">✓ Defend each option</span><span class="chip dont">✗ Extend Task just in case</span></div>
+  <p class="note-sm">Full visual path (all chapters): <a href="VISUAL_FROM_SCRATCH_00_16.html">VISUAL_FROM_SCRATCH_00_16.html</a></p>
+</div>
+<h1 id="01-development-options-hr-leave">01 — Development Options — كل الحقول والبدائل (HR Leave)</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً (ملخص سريع):</strong> <a href="MASTER_ALL_IN_ONE_SUMMARY.html">MASTER_ALL_IN_ONE_SUMMARY.md</a> · HTML: <a href="html/MASTER_ALL_IN_ONE_SUMMARY.html">html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل الواحد:</strong> <a href="MASTER_ALL_IN_ONE.html">MASTER_ALL_IN_ONE.md</a> · HTML: <a href="html/MASTER_ALL_IN_ONE.html">html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات (New/Open):</strong> <a href="MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">MASTER_PRACTICE_GUIDE_ALL_TOPICS.md</a> · <a href="html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Platform: ServiceNow <strong>Australia</strong> · Scope <code>x_786686_hr_leave</code> · sys_id <code>e5f5bc9493a303507520703efaba104d</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (current family, Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>App:</strong> Custom · Scope x_786686_hr_leave · sys_id e5f5bc9493a303507520703efaba104d<br />
+<strong>URLs:</strong> <a href="root/SERVICENOW_DIRECT_URLS_CATALOG.html">../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a></p>
+<p>Companion to 01_DEVELOPMENT.md — use when fields, menus, or features differ on your instance.<br />
+Pattern hub: 00_TUTORIAL_OPTIONS_REFERENCE.md</p>
+</blockquote>
+<p><strong>App type:</strong> Custom · <strong>Scope:</strong> x_786686_hr_leave · <strong>sys_id:</strong> e5f5bc9493a303507520703efaba104d · <strong>Date created:</strong> 2026-09-09 20:20:55</p>
+<hr />
+<h2 id="1-scope-application-options">1) Scope / Application — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/$studio.do">Studio</a></nav>
+<h3 id="option-a-studio-recommended">Option A — Studio (recommended)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<p>Navigate: /now/studio → <strong>Create Application</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Yes</td>
+<td>HR Leave</td>
+<td>Display name</td>
+</tr>
+<tr>
+<td>App type</td>
+<td>Yes</td>
+<td>Custom</td>
+<td>Scoped custom application</td>
+</tr>
+<tr>
+<td>Scope name</td>
+<td>Yes</td>
+<td>x_786686_hr_leave</td>
+<td>Auto-generated prefix; <strong>cannot change</strong></td>
+</tr>
+<tr>
+<td>Date created</td>
+<td>—</td>
+<td>2026-09-09 20:20:55</td>
+<td>From your instance</td>
+</tr>
+<tr>
+<td>sys_id</td>
+<td>—</td>
+<td>e5f5bc9493a303507520703efaba104d</td>
+<td>sys_app record</td>
+</tr>
+<tr>
+<td>Version</td>
+<td>No</td>
+<td>1.0.0</td>
+<td>Semantic versioning</td>
+</tr>
+<tr>
+<td>Short description</td>
+<td>No</td>
+<td>Leave management scoped app</td>
+<td></td>
+</tr>
+<tr>
+<td>Logo</td>
+<td>No</td>
+<td>optional</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="option-b-from-sys_app-list-admin">Option B — From sys_app list (admin)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<p>Navigate: sys_app.list → New (admin only; prefer Studio)</p>
+<h3 id="option-c-personal-developer-instance-template">Option C — Personal Developer Instance template</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<p>Some PDIs ship HR samples — still create <strong>your</strong> scope to practice Update Sets.</p>
+<h3 id="after-create-application-record-fields">After create — Application record fields</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<p>Navigate: All &gt; System Applications &gt; Applications → <strong>HR Leave</strong> — <a href="{BASE}/sys_app_list.do">Open direct</a></p>
+<table>
+<thead>
+<tr>
+<th>Field / related</th>
+<th>Recommended</th>
+<th>Options you forget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trackable</strong></td>
+<td>true</td>
+<td>Required for scoped Update Sets</td>
+</tr>
+<tr>
+<td><strong>Can read in public</strong></td>
+<td>false</td>
+<td>Internal HR app</td>
+</tr>
+<tr>
+<td><strong>Application Access</strong></td>
+<td>Restrict to roles</td>
+<td>employee, manager, hr_admin</td>
+</tr>
+<tr>
+<td><strong>Runtime Access</strong></td>
+<td>Same as design</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Menu</strong></td>
+<td>Auto from modules</td>
+<td>Classic UI app menu</td>
+</tr>
+<tr>
+<td><strong>Source control</strong></td>
+<td>Optional Git</td>
+<td>Studio → Source Control</td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-errors">Common errors</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tables created in Global</td>
+<td>Switch app picker → HR Leave → recreate</td>
+</tr>
+<tr>
+<td>Cannot delete scope</td>
+<td>Expected — scope is permanent</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-tables-options">2) Tables — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<h3 id="option-a-studio-table">Option A — Studio → Table</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>Example req_v2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Label</td>
+<td>Yes</td>
+<td>Leave Request</td>
+</tr>
+<tr>
+<td>Plural</td>
+<td>No</td>
+<td>Leave Requests</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Yes</td>
+<td>x_786686_hr_leave_req_v2</td>
+</tr>
+<tr>
+<td>Extends</td>
+<td>No</td>
+<td>blank or task (if you want task features)</td>
+</tr>
+<tr>
+<td>Create module</td>
+<td>Yes</td>
+<td>true — adds app menu link</td>
+</tr>
+<tr>
+<td>Auto-number</td>
+<td>Optional</td>
+<td>Prefix LRX</td>
+</tr>
+</tbody>
+</table>
+<h3 id="option-b-extend-task-alternative-design">Option B — Extend task (alternative design)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<table>
+<thead>
+<tr>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SLA, assignment OOTB</td>
+<td>Heavier; mixes with ITSM patterns</td>
+</tr>
+<tr>
+<td>Familiar to ITSM devs</td>
+<td>More ACL overlap</td>
+</tr>
+</tbody>
+</table>
+<p>Our app: <strong>standalone tables</strong> (no extend) — simpler for learning.</p>
+<h3 id="option-c-import-from-xml-sdk">Option C — Import from XML / Studio</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<p>Files: SCHEMA_AND_DATA.html, STUDIO_CREATE_ALL_OBJECTS_01_16.html, 11 Studio practice</p>
+<h3 id="field-dictionary-all-options-to-know">Field (Dictionary) — all options to know</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<p>Navigate: field → <strong>Configure Dictionary</strong></p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mandatory</td>
+<td>Always required</td>
+</tr>
+<tr>
+<td>Read only</td>
+<td>Calculated (u_days_count)</td>
+</tr>
+<tr>
+<td>Default value</td>
+<td>draft for state</td>
+</tr>
+<tr>
+<td>Reference qual</td>
+<td>Active users only</td>
+</tr>
+<tr>
+<td>Choice</td>
+<td>u_leave_type, u_state</td>
+</tr>
+<tr>
+<td>Max length</td>
+<td>Strings</td>
+</tr>
+<tr>
+<td>Display</td>
+<td>Reference display field</td>
+</tr>
+</tbody>
+</table>
+<h3 id="instance-note">Instance note</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<ul>
+<li><strong>Dictionary Entries</strong> vs <strong>Table Columns</strong> — same data, two UIs.</li>
+<li><strong>Scope</strong> on dictionary must match table scope.</li>
+</ul>
+<hr />
+<h2 id="3-script-includes-options">3) Script Includes — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a><a href="{BASE}/$studio.do">Studio</a></nav>
+<h3 id="option-a-studio-script-include">Option A — Studio → Script Include</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a><a href="{BASE}/$studio.do">Studio</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>HRLXProLeaveUtilsV2</td>
+</tr>
+<tr>
+<td>API Name</td>
+<td>same</td>
+</tr>
+<tr>
+<td>Client callable</td>
+<td>false (server) / true (GlideAjax)</td>
+</tr>
+<tr>
+<td>Accessible from</td>
+<td>All application scopes / This scope only</td>
+</tr>
+<tr>
+<td>Active</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<p>Files: src/server/script_includes/*.js</p>
+<h3 id="option-b-global-script-include-avoid">Option B — Global Script Include (avoid)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a><a href="{BASE}/$studio.do">Studio</a></nav>
+<p>Only for shared platform utilities — keep HR logic in scope.</p>
+<h3 id="client-callable-variant">Client callable variant</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Client callable</td>
+<td>true</td>
+</tr>
+<tr>
+<td>Use with</td>
+<td>GlideAjax from Client Script</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-business-rules-options">4) Business Rules — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a><a href="scripts/index.html">Scripts portal</a></nav>
+<p>Navigate: Studio → Business Rule OR sys_script.list</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>BR1 example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Yes</td>
+<td>HRLX Calculate Days and Approver</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>Yes</td>
+<td>x_786686_hr_leave_req_v2</td>
+</tr>
+<tr>
+<td>Active</td>
+<td>Yes</td>
+<td>true</td>
+</tr>
+<tr>
+<td>Advanced</td>
+<td>Often true</td>
+<td>when using current/previous</td>
+</tr>
+<tr>
+<td><strong>When</strong></td>
+<td>Yes</td>
+<td>before / after / async</td>
+</tr>
+<tr>
+<td><strong>Insert</strong></td>
+<td></td>
+<td>true/false per BR</td>
+</tr>
+<tr>
+<td><strong>Update</strong></td>
+<td></td>
+<td>true</td>
+</tr>
+<tr>
+<td><strong>Delete</strong></td>
+<td></td>
+<td>usually false</td>
+</tr>
+<tr>
+<td><strong>Filter conditions</strong></td>
+<td>Recommended</td>
+<td>u_state changes, etc.</td>
+</tr>
+<tr>
+<td><strong>Order</strong></td>
+<td></td>
+<td>lower runs first (100, 200…)</td>
+</tr>
+<tr>
+<td><strong>Run as</strong></td>
+<td>Optional</td>
+<td>system user for elevated ops</td>
+</tr>
+</tbody>
+</table>
+<h3 id="when-to-use-which">When to use which</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<table>
+<thead>
+<tr>
+<th>When</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>before</td>
+<td>Calculate fields, validate, block save</td>
+</tr>
+<tr>
+<td>after</td>
+<td>Events, audit, related records</td>
+</tr>
+<tr>
+<td>async</td>
+<td>Long work — avoid blocking save</td>
+</tr>
+</tbody>
+</table>
+<h3 id="option-b-flow-instead-of-br">Option B — Flow instead of BR</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<p>Use Flow for approvals; BR for short table logic.</p>
+<h3 id="option-c-data-policy">Option C — Data Policy</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_ui_policy_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">UI Policies</a><a href="{BASE}/sys_ui_policy_action_list.do">UI Policy Actions</a><a href="{BASE}/sys_data_policy2_list.do?sysparm_query=model_tableSTARTSWITHx_786686_hr_leave">Data Policies</a></nav>
+<p>Mandatory/read-only without script — all channels.</p>
+<p>Files: src/server/business_rules/BR*.js</p>
+<hr />
+<h2 id="5-client-scripts-options">5) Client Scripts — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_client_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">Client Scripts</a><a href="scripts/index.html">Scripts portal</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>CS1 example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>HRLX Validate Dates</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>onChange / onSubmit / onLoad</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>x_786686_hr_leave_req_v2</td>
+</tr>
+<tr>
+<td>Field</td>
+<td>u_start_date (onChange)</td>
+</tr>
+<tr>
+<td>UI Type</td>
+<td>10 desktop / mobile / both</td>
+</tr>
+<tr>
+<td>Active</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<h3 id="type-guide">Type guide</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onChange</td>
+<td>Instant validation</td>
+</tr>
+<tr>
+<td>onSubmit</td>
+<td>Last check before save</td>
+</tr>
+<tr>
+<td>onLoad</td>
+<td>Default values, hide fields</td>
+</tr>
+</tbody>
+</table>
+<h3 id="option-b-ui-policy-no-code">Option B — UI Policy (no code)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_ui_policy_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">UI Policies</a><a href="{BASE}/sys_ui_policy_action_list.do">UI Policy Actions</a><a href="{BASE}/sys_data_policy2_list.do?sysparm_query=model_tableSTARTSWITHx_786686_hr_leave">Data Policies</a></nav>
+<p>See §7 — prefer for show/hide/mandatory.</p>
+<h3 id="option-c-declarative-uxf">Option C — Declarative (UXF)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<p>Newer forms — check if workspace uses UI Policy equivalents.</p>
+<hr />
+<h2 id="6-ui-policies-options">6) UI Policies — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_ui_policy_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">UI Policies</a><a href="{BASE}/sys_ui_policy_action_list.do">UI Policy Actions</a><a href="{BASE}/sys_data_policy2_list.do?sysparm_query=model_tableSTARTSWITHx_786686_hr_leave">Data Policies</a></nav>
+<p>Navigate: sys_ui_policy.list</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Table</td>
+<td>x_786686_hr_leave_req_v2</td>
+</tr>
+<tr>
+<td>Conditions</td>
+<td>u_leave_type is sick</td>
+</tr>
+<tr>
+<td><strong>Reverse if false</strong></td>
+<td>true (usually)</td>
+</tr>
+<tr>
+<td>Run scripts</td>
+<td>false (prefer actions)</td>
+</tr>
+<tr>
+<td>On load</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ui-policy-actions">UI Policy Actions</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_ui_policy_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">UI Policies</a><a href="{BASE}/sys_ui_policy_action_list.do">UI Policy Actions</a><a href="{BASE}/sys_data_policy2_list.do?sysparm_query=model_tableSTARTSWITHx_786686_hr_leave">Data Policies</a></nav>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visible</td>
+<td>show/hide field</td>
+</tr>
+<tr>
+<td>Mandatory</td>
+<td>require field</td>
+</tr>
+<tr>
+<td>Read only</td>
+<td>lock field</td>
+</tr>
+</tbody>
+</table>
+<p>File: src/client/ui_policies/UIP1_sick_requires_reason.md</p>
+<hr />
+<h2 id="7-flow-options">7) Flow — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<blockquote>
+<p>Full steps: src/flow/approval_flow.md</p>
+</blockquote>
+<h3 id="option-a-flow-designer-recommended">Option A — Flow Designer (recommended)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trigger</td>
+<td><strong>Record Updated</strong> (not Created only)</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>x_786686_hr_leave_req_v2</td>
+</tr>
+<tr>
+<td>Condition</td>
+<td>u_state is submitted</td>
+</tr>
+<tr>
+<td>Action</td>
+<td>Ask For Approval</td>
+</tr>
+<tr>
+<td><strong>Rules</strong></td>
+<td><strong>Anyone approves</strong> (mandatory)</td>
+</tr>
+<tr>
+<td>End</td>
+<td>Publish (not Save only)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="option-b-legacy-workflow-avoid-for-new">Option B — Legacy Workflow (avoid for new)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<p>Still on old instances — migrate to Flow.</p>
+<h3 id="option-c-approval-policy-cab">Option C — Approval Policy / CAB</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_ui_policy_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">UI Policies</a><a href="{BASE}/sys_ui_policy_action_list.do">UI Policy Actions</a><a href="{BASE}/sys_data_policy2_list.do?sysparm_query=model_tableSTARTSWITHx_786686_hr_leave">Data Policies</a><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<p>ITSM pattern — overkill for single manager leave.</p>
+<h3 id="common-errors_1">Common errors</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rules missing on action 1</td>
+<td>Rules → Anyone approves</td>
+</tr>
+<tr>
+<td>Flow never starts</td>
+<td>Trigger = Updated + state submitted</td>
+</tr>
+<tr>
+<td>Double approval</td>
+<td>Trigger condition too broad</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-integration-options">8) Integration — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<blockquote>
+<p>Full: 12_INTEGRATION_FULL_GUIDE.md<br />
+Inbound all fields: src/server/rest/SCRIPTED_REST_INBOUND_SETUP.md<br />
+Outbound all fields: src/server/rest/OUTBOUND_REST_MESSAGE_SETUP.md</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Tool</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>REST API Explorer + <strong>Table API</strong></td>
+<td>sys_ids known</td>
+</tr>
+<tr>
+<td>B</td>
+<td>REST API Explorer + <strong>Scripted REST</strong></td>
+<td>employee_id from HRIS</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Import Set</td>
+<td>Bulk employees/balances</td>
+</tr>
+<tr>
+<td>D</td>
+<td>IntegrationHub</td>
+<td>Orchestration + spokes</td>
+</tr>
+<tr>
+<td>E</td>
+<td>MID</td>
+<td>On-prem ERP</td>
+</tr>
+<tr>
+<td><strong>Outbound</strong></td>
+<td>REST Message → POST <strong>Push Decision</strong> → <strong>Send</strong></td>
+<td>ERP push (not Explorer)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Never skip:</strong> Explorer <strong>Send</strong> (inbound) before Postman; REST Message <strong>Send</strong> (outbound) before Flow.</p>
+<hr />
+<h2 id="9-application-menu-modules-options">9) Application Menu / Modules — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<h3 id="option-a-studio-module">Option A — Studio → Module</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Title</td>
+<td>Leave Requests</td>
+</tr>
+<tr>
+<td>Link type</td>
+<td>List of Records</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>x_786686_hr_leave_req_v2</td>
+</tr>
+<tr>
+<td>Order</td>
+<td>100, 200…</td>
+</tr>
+<tr>
+<td>Roles</td>
+<td>hr_admin, manager</td>
+</tr>
+<tr>
+<td>Condition</td>
+<td>optional filter query</td>
+</tr>
+</tbody>
+</table>
+<h3 id="option-b-sys_app_module-list">Option B — sys_app_module list</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<p>Classic admin — same fields.</p>
+<h3 id="option-c-workspace-only-no-classic-module">Option C — Workspace only (no classic module)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<p>Modern agents — UI Builder workspace + excluded classic menu.</p>
+<hr />
+<h2 id="10-notifications-events-options">10) Notifications &amp; Events — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Event registry</td>
+<td>sysevent.list</td>
+</tr>
+<tr>
+<td>Notification</td>
+<td>sysevent_email_action.list</td>
+</tr>
+<tr>
+<td>Email script</td>
+<td>Template + $mail_script</td>
+</tr>
+<tr>
+<td>Flow notification</td>
+<td>Flow Designer action</td>
+</tr>
+</tbody>
+</table>
+<p>Files: 06_NOTIFICATIONS_EVENTS_JOBS.md, src/server/events/events.md</p>
+<hr />
+<h2 id="cross-cutting-deployment-options">Cross-cutting — deployment options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Update Set</td>
+<td>Instance → instance (classic)</td>
+</tr>
+<tr>
+<td>XML export</td>
+<td>Single artifact</td>
+</tr>
+<tr>
+<td>Source Control / Git</td>
+<td>Team dev</td>
+</tr>
+<tr>
+<td>CI/CD pipeline</td>
+<td>Enterprise</td>
+</tr>
+</tbody>
+</table>
+<p>Admin detail: 02_ADMINISTRATION.md §8</p>
+<hr />
+<h2 id="hr-leave-master-dev-checklist">HR Leave — master dev checklist</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<ul>
+<li>[ ] App scope x_786686_hr_leave active in picker</li>
+<li>[ ] 4 tables + choices from schema/*.csv</li>
+<li>[ ] 3 Script Includes active</li>
+<li>[ ] BR1/2/3 order and filters correct</li>
+<li>[ ] Client scripts + UI policies on form</li>
+<li>[ ] Flow published with <strong>Anyone approves</strong></li>
+<li>[ ] Integration: Explorer 201 on Table or Scripted REST</li>
+<li>[ ] Modules visible to correct roles</li>
+<li>[ ] Update Set complete</li>
+</ul>
+
+</article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="assets/docs.js"></script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

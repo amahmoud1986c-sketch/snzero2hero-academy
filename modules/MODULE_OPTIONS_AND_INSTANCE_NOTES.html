@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Module Options &amp; Instance Notes — خيارات الموديولات (قد لا تظهر عندك) | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Module Options &amp; Instance Notes — خيارات الموديولات (قد لا تظهر عندك)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="module-options-instance-notes">Module Options &amp; Instance Notes — خيارات الموديولات (قد لا تظهر عندك)</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً:</strong> <a href="../MASTER_ALL_IN_ONE_SUMMARY.html">../MASTER_ALL_IN_ONE_SUMMARY.md</a> · <a href="../html/MASTER_ALL_IN_ONE_SUMMARY.html">../html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل:</strong> <a href="../MASTER_ALL_IN_ONE.html">../MASTER_ALL_IN_ONE.md</a> · <a href="../html/MASTER_ALL_IN_ONE.html">../html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات:</strong> <a href="../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Australia · Scope <code>x_786686_hr_leave</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>URLs:</strong> <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">../../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a><br />
+<strong>HR Leave:</strong> Scope x_786686_hr_leave</p>
+<p>Companion to every file in modules/. Read when a plugin, menu, workspace URL, or field <strong>does not exist</strong> on your PDI/production instance.<br />
+Hub: 00_TUTORIAL_OPTIONS_REFERENCE.md<br />
+<strong>Full implementation scenarios (S1/S2/S3), plugins, roles, customizations:</strong> MODULE_IMPLEMENTATION_PLAYBOOK.md + <strong>§14</strong> in each *.md module file.</p>
+</blockquote>
+<hr />
+<h2 id="arabic-summary">ملخص ووصف بالعربية (Arabic Summary)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>البند</th>
+<th>الشرح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ما هو هذا الملف؟</strong></td>
+<td>ماذا تفعل إذا البلجن أو القائمة أو Workspace <strong>غير موجود</strong> على PDI</td>
+</tr>
+<tr>
+<td><strong>لماذا مهم؟</strong></td>
+<td>يمنع التوقف عند اختلاف الترخيص أو إصدار المثيل</td>
+</tr>
+<tr>
+<td><strong>من يستخدمه؟</strong></td>
+<td>متدرب على PDI، مطوّر بدون ترخيص كامل</td>
+</tr>
+<tr>
+<td><strong>ماذا يغطي؟</strong></td>
+<td>بدائل Option A/B/C لكل موديول — مسارات بديلة</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ملخص في سطر:</strong> دليل الفجوات — إن لم يظهر شيء في مثيلك، اقرأ قسم الموديول هنا.</p>
+<p><strong>وصف مختصر:</strong> يشرح بدائل لكل ميزة ناقصة (مثلاً SOW بدل Agent Workspace، قائمة كلاسيك بدل workspace). مرجع مع 00_TUTORIAL_OPTIONS_REFERENCE.md.</p>
+<p>العربي إضافي:<br />
+- <strong>§14</strong> في كل موديول = ملخص تنفيذي (سيناريوهات، خيارات، بلجنز، أدوار).<br />
+- <strong>MODULE_IMPLEMENTATION_PLAYBOOK.md</strong> = التفاصيل الكاملة لكل الموديولات في ملف واحد.</p>
+<hr />
+<h2 id="module-file-index">Module file index</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>File</th>
+<th>§14 focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CMDB</td>
+<td>CMDB.md</td>
+<td>S1 manual / S2 Discovery / IRE</td>
+</tr>
+<tr>
+<td>ITSM</td>
+<td>ITSM.md</td>
+<td>S1 incident / S2 ITIL / S3 enterprise</td>
+</tr>
+<tr>
+<td>ITOM</td>
+<td>ITOM.md</td>
+<td>MID, events, mapping</td>
+</tr>
+<tr>
+<td>ITAM</td>
+<td>ITAM.md</td>
+<td>HAM, procurement, SAM</td>
+</tr>
+<tr>
+<td>HRSD</td>
+<td>HRSD.md</td>
+<td>HR Criteria, EC, lifecycle</td>
+</tr>
+<tr>
+<td>CSM</td>
+<td>CSM.md</td>
+<td>Entitlements, B2B</td>
+</tr>
+<tr>
+<td>FSM</td>
+<td>FSM.md</td>
+<td>WO, mobile, parts</td>
+</tr>
+<tr>
+<td>SPM</td>
+<td>SPM.md</td>
+<td>Demand, PPM, agile</td>
+</tr>
+<tr>
+<td>GRC</td>
+<td>GRC.md</td>
+<td>Profiles, risk, audit</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="universal-activation-option-a-b-c-d">Universal activation — Option A / B / C / D</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Steps</th>
+<th>When it fails</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A — Plugins</strong></td>
+<td>System Definition &gt; Plugins → search → Activate</td>
+<td>Plugin not listed → use Store</td>
+</tr>
+<tr>
+<td><strong>B — Store app</strong></td>
+<td>All Available Applications → Install/Request</td>
+<td>License / approval wait</td>
+</tr>
+<tr>
+<td><strong>C — Guided Setup</strong></td>
+<td>All &gt; Guided Setup → module name · <a href="{BASE}/now/guided-setup">Open direct</a></td>
+<td>Module not installed yet</td>
+</tr>
+<tr>
+<td><strong>D — Solution/Best Practice</strong></td>
+<td>Store bundle (ITSM BP, CSM BP…)</td>
+<td>Adds demo data — optional</td>
+</tr>
+</tbody>
+</table>
+<p>إذا لم تجد البلجن — جرّب Store ثم Guided Setup.</p>
+<hr />
+<h2 id="universal-workspace-portal-variance">Universal — workspace &amp; portal variance</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URL /now/&hellip; 404</td>
+<td>UI Builder → find workspace route</td>
+</tr>
+<tr>
+<td>Old <strong>Classic UI</strong> only</td>
+<td>Module not migrated to Workspace — use *.list</td>
+</tr>
+<tr>
+<td><strong>Employee Center</strong> vs /hr</td>
+<td>HRSD version — prefer /esc</td>
+</tr>
+<tr>
+<td><strong>Service Portal</strong> /sp vs /esc</td>
+<td>EC Pro vs SP catalog</td>
+</tr>
+</tbody>
+</table>
+<p>Verify:<br />
+All &gt; Now Experience Framework &gt; UI Builder — <a href="{BASE}/now/ui-builder">Open direct</a></p>
+<hr />
+<h2 id="cmdb-options-missing-features">CMDB — options &amp; missing features</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>If missing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Discovery</td>
+<td>License — use manual CI + Import Set</td>
+</tr>
+<tr>
+<td>Service Mapping</td>
+<td>Separate license</td>
+</tr>
+<tr>
+<td>CI Class Manager</td>
+<td>CMDB plugin / admin role</td>
+</tr>
+<tr>
+<td>IRE rules</td>
+<td>Still use manual dedupe + Import coalesce</td>
+</tr>
+<tr>
+<td>CMDB Workspace</td>
+<td>Use cmdb_ci.list + classic</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Activation options:</strong> Plugin com.snc.discovery OR Store <strong>CMDB</strong> apps.</p>
+<p>Deep: CMDB.md §3, §11</p>
+<hr />
+<h2 id="itom-options">ITOM — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Alternative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MID Server</td>
+<td>Skip on pure-cloud lab; use manual CIs</td>
+</tr>
+<tr>
+<td>Event Management</td>
+<td>Demo connector only</td>
+</tr>
+<tr>
+<td>Cloud Discovery</td>
+<td>AWS/Azure plugins separate</td>
+</tr>
+<tr>
+<td>Pattern Designer</td>
+<td>Advanced — use OOTB patterns first</td>
+</tr>
+</tbody>
+</table>
+<p>Deep: ITOM.md §3, §8 labs</p>
+<hr />
+<h2 id="itam-options">ITAM — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Alternative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SAM licensed</td>
+<td>HAM + Procurement only</td>
+</tr>
+<tr>
+<td>Asset Workspace</td>
+<td>alm_hardware.list classic</td>
+</tr>
+<tr>
+<td>Procurement</td>
+<td>Manual asset create (Lab 1 in ITAM.md)</td>
+</tr>
+<tr>
+<td>Contract Management</td>
+<td>Spreadsheet + Import for entitlements</td>
+</tr>
+</tbody>
+</table>
+<p>Deep: ITAM.md §3, §8</p>
+<hr />
+<h2 id="itsm-options">ITSM — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Options</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Incident</td>
+<td>Default on most instances</td>
+</tr>
+<tr>
+<td>Change</td>
+<td>Plugin com.snc.change_management</td>
+</tr>
+<tr>
+<td>Problem</td>
+<td>Plugin com.snc.problem</td>
+</tr>
+<tr>
+<td>Major Incident</td>
+<td>Separate plugin / BP</td>
+</tr>
+<tr>
+<td>Virtual Agent</td>
+<td>Store — optional</td>
+</tr>
+<tr>
+<td>SOW</td>
+<td>/now/sow/home — verify in UI Builder</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Process</th>
+<th>Option A</th>
+<th>Option B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Approval</td>
+<td>Flow Designer</td>
+<td>Legacy Workflow</td>
+</tr>
+<tr>
+<td>Assignment</td>
+<td>Assignment Rule</td>
+<td>BR script (avoid)</td>
+</tr>
+<tr>
+<td>Priority</td>
+<td>Data Lookup matrix</td>
+<td>Manual</td>
+</tr>
+</tbody>
+</table>
+<p>Deep: ITSM.md</p>
+<hr />
+<h2 id="hrsd-options">HRSD — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>If missing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR Case</td>
+<td>Core HR plugin</td>
+</tr>
+<tr>
+<td>HR Criteria</td>
+<td><strong>Must configure</strong> — exam focus</td>
+</tr>
+<tr>
+<td>Lifecycle Events</td>
+<td>Separate plugin</td>
+</tr>
+<tr>
+<td>Employee Center</td>
+<td>/esc — may need EC Pro</td>
+</tr>
+<tr>
+<td>Workday spoke</td>
+<td>IntegrationHub license</td>
+</tr>
+</tbody>
+</table>
+<p>Deep: HRSD.md</p>
+<hr />
+<h2 id="csm-options">CSM — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Entitlements</td>
+<td>B2B accounts — not on simple ITSM</td>
+</tr>
+<tr>
+<td>AWA</td>
+<td>Advanced Work Assignment — optional</td>
+</tr>
+<tr>
+<td>CSM Workspace</td>
+<td>/now/cwf/agent</td>
+</tr>
+</tbody>
+</table>
+<p>Deep: CSM.md</p>
+<hr />
+<h2 id="fsm-options">FSM — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dispatcher workspace</td>
+<td>Requires FSM license</td>
+</tr>
+<tr>
+<td>Mobile</td>
+<td>Field Service app</td>
+</tr>
+<tr>
+<td>Parts/inventory</td>
+<td>Overlap with ITAM stockroom</td>
+</tr>
+</tbody>
+</table>
+<p>Deep: FSM.md</p>
+<hr />
+<h2 id="spm-options">SPM — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PPM vs SPM naming</td>
+<td>Same family — check your subscription</td>
+</tr>
+<tr>
+<td>Agile</td>
+<td>Separate plugin</td>
+</tr>
+<tr>
+<td>Resource Management</td>
+<td>RM plugin</td>
+</tr>
+<tr>
+<td>Idea Portal</td>
+<td>SP page or /sp</td>
+</tr>
+</tbody>
+</table>
+<p>Deep: SPM.md</p>
+<hr />
+<h2 id="grc-irm-options">GRC / IRM — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IRM vs GRC branding</td>
+<td>Version-dependent</td>
+</tr>
+<tr>
+<td>Profiles</td>
+<td>Core scoping concept</td>
+</tr>
+<tr>
+<td>Continuous monitoring</td>
+<td>Indicators + data sources</td>
+</tr>
+</tbody>
+</table>
+<p>Deep: GRC.md</p>
+<hr />
+<h2 id="per-module-lab-alternatives-no-license">Per-module lab alternatives (no license)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Minimal lab without full license</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CMDB</td>
+<td>Manual CI + relationships + Import CSV</td>
+</tr>
+<tr>
+<td>ITOM</td>
+<td>Read Discovery menus; MID install optional</td>
+</tr>
+<tr>
+<td>ITAM</td>
+<td>Manual alm_hardware + stockroom</td>
+</tr>
+<tr>
+<td>ITSM</td>
+<td>Incident + catalog on any PDI</td>
+</tr>
+<tr>
+<td>HRSD</td>
+<td>Scoped HR Leave app (this repo) as HRSD-adjacent</td>
+</tr>
+<tr>
+<td>Integration</td>
+<td>Table API via REST API Explorer</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="cis-interview-what-to-say-when-feature-missing">CIS / interview — what to say when feature missing</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>&ldquo;I would verify plugin activation, subscription, and use the alternative path (Import Set, classic list, or Table API) for the demo environment.&rdquo; — اذكر: التحقق من الترخيص + مسار بديل + Guided Setup.</p>
+<hr />
+<h2 id="module-file-index-updated">Module file index (updated)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>File</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CMDB</td>
+<td>CMDB.md</td>
+<td>66 KB</td>
+</tr>
+<tr>
+<td>ITSM</td>
+<td>ITSM.md</td>
+<td>80 KB</td>
+</tr>
+<tr>
+<td>ITOM</td>
+<td>ITOM.md</td>
+<td>65 KB</td>
+</tr>
+<tr>
+<td>ITAM</td>
+<td>ITAM.md</td>
+<td>85 KB</td>
+</tr>
+<tr>
+<td>HRSD</td>
+<td>HRSD.md</td>
+<td>43 KB</td>
+</tr>
+<tr>
+<td>CSM</td>
+<td>CSM.md</td>
+<td>38 KB</td>
+</tr>
+<tr>
+<td>FSM</td>
+<td>FSM.md</td>
+<td>32 KB</td>
+</tr>
+<tr>
+<td>SPM</td>
+<td>SPM.md</td>
+<td>53 KB</td>
+</tr>
+<tr>
+<td>GRC</td>
+<td>GRC.md</td>
+<td>73 KB</td>
+</tr>
+<tr>
+<td><strong>SecOps</strong> (new)</td>
+<td>SECOPS.md</td>
+<td>35 KB</td>
+</tr>
+<tr>
+<td><strong>DevOps</strong> (new)</td>
+<td>DEVOPS.md</td>
+<td>76 KB</td>
+</tr>
+<tr>
+<td><strong>App Engine</strong> (new)</td>
+<td>APP_ENGINE.md</td>
+<td>30 KB</td>
+</tr>
+<tr>
+<td>Study order</td>
+<td>STUDY_ROADMAP.md</td>
+<td>varies</td>
+</tr>
+<tr>
+<td>End-user playbooks</td>
+<td>MODULE_END_USER_PLAYBOOKS.md</td>
+<td>varies</td>
+</tr>
+<tr>
+<td>30-day from scratch</td>
+<td>MODULE_FROM_SCRATCH_30DAY.md</td>
+<td>varies</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="secops-options">SecOps — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>If missing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SIR (Security Incident Response)</td>
+<td>Requires SecOps Foundation license</td>
+</tr>
+<tr>
+<td>VR (Vulnerability Response)</td>
+<td>Separate license; can prototype with manual records</td>
+</tr>
+<tr>
+<td>TI (Threat Intel)</td>
+<td>Free OTX feed works without premium plugins</td>
+</tr>
+<tr>
+<td>CTD</td>
+<td>SCAP scanner integration required</td>
+</tr>
+<tr>
+<td>MITRE ATT&amp;CK</td>
+<td>Built-in starting from utah; otherwise import manually</td>
+</tr>
+<tr>
+<td>Workspace /now/sir/agent</td>
+<td>Pre-zurich = Classic SIR module navigation</td>
+</tr>
+</tbody>
+</table>
+<p>Deep: SECOPS.md</p>
+<hr />
+<h2 id="devops-options">DevOps — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>If missing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DevOps Change Velocity (DCV)</td>
+<td>Separate license; fallback = manual change</td>
+</tr>
+<tr>
+<td>GitHub / Jenkins / Azure DevOps connectors</td>
+<td>IH or custom Outbound REST</td>
+</tr>
+<tr>
+<td>Pipeline visibility</td>
+<td>Limited without DCV; use Change records</td>
+</tr>
+<tr>
+<td>DORA metrics</td>
+<td>Requires DCV + telemetry; can build manually</td>
+</tr>
+<tr>
+<td>Now Pipelines</td>
+<td>Newer feature; use Git Studio integration</td>
+</tr>
+</tbody>
+</table>
+<p>Deep: DEVOPS.md</p>
+<hr />
+<h2 id="app-engine-options">App Engine — options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>If missing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>App Engine Studio (AES)</td>
+<td>Most instances; check com.glide.app_engine_studio</td>
+</tr>
+<tr>
+<td>Now Assist for Creators</td>
+<td>Now Assist license required</td>
+</tr>
+<tr>
+<td>Application Repository</td>
+<td>Available on enterprise; otherwise share via Update Set</td>
+</tr>
+<tr>
+<td>Mobile Studio</td>
+<td>Bundled; verify plugin activation</td>
+</tr>
+<tr>
+<td>Process Automation Designer</td>
+<td>Newer plugin name; older = Flow Designer + playbook</td>
+</tr>
+</tbody>
+</table>
+<p>Deep: APP_ENGINE.md</p>
+<hr />
+<h2 id="a-cross-module-dependency-map">§A — Cross-module dependency map</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Need this</th>
+<th>Requires this</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FSM Dispatch</td>
+<td>ITSM (Tasks) + CSM (Accounts) + CMDB (Assets)</td>
+</tr>
+<tr>
+<td>HRSD Lifecycle</td>
+<td>HR Profile + Service Catalog + Notifications</td>
+</tr>
+<tr>
+<td>SecOps SIR</td>
+<td>CMDB (CI) + ITSM (Change) + Service Mapping</td>
+</tr>
+<tr>
+<td>VR</td>
+<td>CMDB (CI) + Scanner integration</td>
+</tr>
+<tr>
+<td>DevOps Change Velocity</td>
+<td>Change Mgmt + CI/CD pipeline tool</td>
+</tr>
+<tr>
+<td>App Engine app published</td>
+<td>UI Builder + Workflow Studio + Mobile Studio</td>
+</tr>
+<tr>
+<td>GRC indicators</td>
+<td>CMDB + ITSM + HR Profile</td>
+</tr>
+<tr>
+<td>SPM Projects</td>
+<td>Resource Plans + Cost Plans + Approvals</td>
+</tr>
+<tr>
+<td>Service Portal /sp</td>
+<td>Service Catalog + Knowledge + Self-Service</td>
+</tr>
+<tr>
+<td>Workspace UX</td>
+<td>UI Builder + UX Theme + Roles</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="b-plugin-activation-cheat-sheet-consolidated">§B — Plugin activation cheat-sheet (consolidated)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">ITSM: com.snc.change_management, com.snc.problem, com.snc.iva
+CMDB: com.snc.discovery, com.snc.cmdb_workspace, com.snc.csdm
+ITOM: com.glide.discovery, com.snc.event_management, com.snc.service_mapping
+ITAM: com.snc.alm.asset, com.snc.alm.sam_basic, com.snc.alm.procurement
+HRSD: com.sn_hr_core, com.sn_hr_ef_core, com.sn_hr_lifecycle_events
+CSM: com.sn_customerservice, com.sn_cs_workspace, com.snc.advanced_work_assignment
+FSM: com.snc.work_management, com.snc.field_service.mobile, com.snc.dispatch_workspace
+SPM: com.snc.sdlc.scrum.pp, com.snc.demand_management, com.snc.resource_management
+GRC: com.sn_grc, com.sn_grc_policy_compliance, com.sn_grc_risk, com.sn_grc_audit, com.sn_vdr_risk_asmt, com.sn_bcm
+SecOps: com.snc.threat, com.snc.security_incident, com.snc.vulnerability, com.snc.threat.intel
+DevOps: com.snc.devops_config, com.snc.devops_change, com.snc.devops_pipeline
+AppEng: com.glide.app_engine_studio, com.glide.process_automation, com.glide.mobile_studio, com.glide.ui_builder
+AI: com.glide.now_assist, com.glide.ai_agent_studio
+</code></pre>
+<hr />
+<h2 id="c-per-module-workspace-url-cheat-sheet">§C — Per-module Workspace URL cheat-sheet</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ITSM Service Operations</td>
+<td>/now/sow/home</td>
+</tr>
+<tr>
+<td>CMDB</td>
+<td>/now/cmdb/home (varies)</td>
+</tr>
+<tr>
+<td>CSM</td>
+<td>/now/cwf/agent</td>
+</tr>
+<tr>
+<td>HRSD</td>
+<td>/now/hrx/home or /esc</td>
+</tr>
+<tr>
+<td>FSM</td>
+<td>/now/fsm/dispatcher</td>
+</tr>
+<tr>
+<td>SPM</td>
+<td>/now/rm (Resource Management)</td>
+</tr>
+<tr>
+<td>GRC</td>
+<td>/now/grc/home</td>
+</tr>
+<tr>
+<td>SecOps SIR</td>
+<td>/now/sir/agent</td>
+</tr>
+<tr>
+<td>DevOps</td>
+<td>/now/devops/home</td>
+</tr>
+<tr>
+<td>App Engine Studio</td>
+<td>/now/app-engine-studio</td>
+</tr>
+</tbody>
+</table>
+<p>If a URL 404s, open UI Builder → Routes → search.</p>
+<hr />
+<h2 id="d-license-subscription-verification-script">§D — License &amp; subscription verification (script)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// Run in Background Scripts to enumerate active plugins per scope
+(function {
+ var plugins = new GlideRecord('sys_plugin');
+ plugins.addQuery('active', true);
+ plugins.orderBy('name');
+ plugins.query();
+ var list = [];
+ while (plugins.next()) {
+ list.push(plugins.getValue('source') + '\t' + plugins.getValue('name'));
+ }
+ gs.info('[Plugins] active=' + list.length);
+ list.forEach(function (l) { gs.info(l); });
+})();
+</code></pre>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

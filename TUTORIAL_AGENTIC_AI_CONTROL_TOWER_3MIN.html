@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ServiceNow Agentic AI + AI Control Tower — 3-Minute Instance Tutorial | HR Leave</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+  <style>
+    .min-chip {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 1.6rem; height: 1.6rem; border-radius: 999px;
+      background: var(--brand-2); color: #042f2e; font-weight: 800; font-size: .85rem;
+      margin-inline-end: .4rem;
+    }
+    .shot {
+      border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
+      margin: 1rem 0 1.25rem; background: #0b1220; box-shadow: 0 10px 28px rgba(15,23,42,.08);
+    }
+    .shot-frame {
+      min-height: 210px; padding: 1.1rem 1.2rem; color: #e2e8f0;
+      background:
+        linear-gradient(135deg, rgba(14,165,164,.22), transparent 45%),
+        linear-gradient(225deg, rgba(15,76,129,.35), transparent 50%),
+        #0b1220;
+      font-family: var(--mono); font-size: .84rem; line-height: 1.55;
+    }
+    .shot-frame .ui-bar {
+      display: flex; gap: .4rem; align-items: center; margin-bottom: .85rem;
+      padding-bottom: .55rem; border-bottom: 1px solid rgba(148,163,184,.25);
+    }
+    .shot-frame .dot { width: .55rem; height: .55rem; border-radius: 50%; background: #64748b; }
+    .shot-frame .dot.g { background: #34d399; }
+    .shot-frame .dot.a { background: #fbbf24; }
+    .shot-frame .dot.r { background: #f87171; }
+    .shot-frame .title { color: #7dd3fc; font-weight: 700; }
+    .shot-frame .panel {
+      display: grid; grid-template-columns: 160px 1fr; gap: .75rem; margin-top: .5rem;
+    }
+    @media (max-width: 720px) { .shot-frame .panel { grid-template-columns: 1fr; } }
+    .shot-frame .nav {
+      background: rgba(15,23,42,.65); border: 1px solid rgba(148,163,184,.2);
+      border-radius: 10px; padding: .55rem .65rem;
+    }
+    .shot-frame .nav div { padding: .28rem .35rem; border-radius: 6px; color: #cbd5e1; }
+    .shot-frame .nav div.on { background: rgba(14,165,164,.25); color: #99f6e4; }
+    .shot-frame .main {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(148,163,184,.18);
+      border-radius: 10px; padding: .65rem .75rem;
+    }
+    .shot-frame .kpi {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: .4rem; margin-top: .55rem;
+    }
+    .shot-frame .kpi span {
+      background: rgba(14,165,164,.12); border: 1px solid rgba(14,165,164,.25);
+      border-radius: 8px; padding: .45rem; text-align: center; color: #a5f3fc; font-size: .75rem;
+    }
+    .shot-cap {
+      background: #fff; color: var(--ink); padding: .7rem .9rem; font-size: .9rem;
+      border-top: 1px solid var(--line);
+    }
+    .shot-cap strong { color: var(--brand); }
+    .timer {
+      display: flex; flex-wrap: wrap; gap: .45rem; margin: .85rem 0;
+    }
+    .timer a {
+      text-decoration: none; border: 1px solid var(--line); background: #fff;
+      border-radius: 999px; padding: .28rem .7rem; font-size: .84rem;
+    }
+    .fn-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: .65rem; margin: 1rem 0;
+    }
+    .fn {
+      border: 1px solid var(--line); border-radius: 12px; padding: .75rem .85rem; background: #fff;
+    }
+    .fn h4 { margin: 0 0 .35rem; color: var(--brand); font-size: .95rem; }
+    .fn p { margin: 0; color: var(--muted); font-size: .88rem; }
+    .step-num { font-weight: 700; color: var(--brand-2); }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Agentic AI Tutorial</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="14_AI_SERVICENOW_AGENTS.html">14 AI Deep</a>
+      <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create</a>
+      <span class="badge">~3 minutes</span>
+      <span class="badge">Agentic AI · Control Tower</span>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <section class="hero">
+      <h1>ServiceNow Agentic AI + AI Control Tower</h1>
+      <p>3-minute instance walkthrough: open the screens, know what each area does, and apply the same path on your lab. Inspired by <em>Put AI to Work</em> session themes (Autonomous IT / Otto, Control Tower, AI Agent Studio).</p>
+      <div class="meta-grid">
+        <div><strong>Time</strong>~3 minutes guided click-path</div>
+        <div><strong>Focus</strong>Agentic AI · Control Tower · Agent Studio</div>
+        <div><strong>URL token</strong><code style="color:#fff">{BASE}</code></div>
+        <div><strong>Deep guide</strong><a href="14_AI_SERVICENOW_AGENTS.html" style="color:#fff">Chapter 14</a></div>
+      </div>
+    </section>
+
+    <div class="url-box"><strong>Replace {BASE} then open</strong>
+      <a href="{BASE}/now/ai-control-tower">AI Control Tower</a>
+      <a href="{BASE}/now/ai-agent-studio">AI Agent Studio</a>
+      <a href="{BASE}/now/assist">Now Assist / Otto surface</a>
+      <a href="{BASE}/$pa_dashboard.do">Platform Analytics</a>
+      <a href="{BASE}/nav_to.do?uri=%2Fai_agent_list.do">AI Agents list</a>
+      <a href="{BASE}/nav_to.do?uri=%2Fsys_hub_flow_list.do">Flows</a>
+    </div>
+
+    <article class="content">
+      <div class="ok">
+        <p><strong>How to use this page:</strong> Keep it beside your instance. Each “screenshot” block shows what the UI area looks like conceptually. Click the matching direct URL, then follow the 3-minute timer. Plug-ins / Now Assist AI Agents must be licensed and installed — if a URL 404s, search the filter navigator for the product name.</p>
+      </div>
+
+      <h2 id="map">0. Map in 20 seconds</h2>
+      <table>
+        <tr><th>Theme (event)</th><th>Product area</th><th>One-line job</th></tr>
+        <tr>
+          <td>Autonomous IT + Otto</td>
+          <td>AI assistant for work</td>
+          <td>Ask / act across ITSM·ITOM·SPM workflows</td>
+        </tr>
+        <tr>
+          <td>AI Control Tower + Workflow Data Fabric</td>
+          <td>Governance + data for agents</td>
+          <td>Inventory, risk, control, feed agents with trusted data</td>
+        </tr>
+        <tr>
+          <td>Build Agent + AI Agent Studio</td>
+          <td>Create &amp; manage agents</td>
+          <td>Build agentic workflows and tools your digital workforce runs</td>
+        </tr>
+      </table>
+
+      <div class="timer">
+        <a href="#m1"><span class="min-chip">1</span> Control Tower</a>
+        <a href="#m2"><span class="min-chip">2</span> Agent Studio</a>
+        <a href="#m3"><span class="min-chip">3</span> Otto / Assist + Data Fabric</a>
+        <a href="#functions">Functions cheat-sheet</a>
+        <a href="#checklist">Apply checklist</a>
+      </div>
+
+      <!-- ========== MINUTE 1 ========== -->
+      <h2 id="m1"><span class="min-chip">1</span> Minute 1 — AI Control Tower</h2>
+      <p><strong>Summary:</strong> Control Tower is the command center for enterprise AI — see agents/models, govern risk, monitor runtime, and measure value. You cannot control what you cannot see.</p>
+
+      <div class="shot">
+        <div class="shot-frame" role="img" aria-label="Conceptual screenshot of AI Control Tower workspace">
+          <div class="ui-bar">
+            <span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+            <span class="title">Workspaces › AI Control Tower</span>
+          </div>
+          <div class="panel">
+            <div class="nav">
+              <div class="on">Overview</div>
+              <div>AI Inventory</div>
+              <div>Governance</div>
+              <div>Risk &amp; Assessments</div>
+              <div>Runtime / Security</div>
+              <div>Value dashboard</div>
+            </div>
+            <div class="main">
+              <div>AI Inventory · Agents · Models · MCP / identities</div>
+              <div class="kpi">
+                <span>Agents<br /><b>24</b></span>
+                <span>At risk<br /><b>3</b></span>
+                <span>Governed<br /><b>18</b></span>
+              </div>
+              <div style="margin-top:.55rem;color:#94a3b8">Vendor-agnostic inventory · CMDB-linked · policy &amp; compliance</div>
+            </div>
+          </div>
+        </div>
+        <div class="shot-cap">
+          <strong>Screenshot cue:</strong> Control Tower overview with inventory KPIs and left nav (Inventory / Governance / Runtime). Capture this after opening the workspace on your instance.
+        </div>
+      </div>
+
+      <h3>Open on instance</h3>
+      <ol>
+        <li><span class="step-num">Filter navigator</span> → type <code>AI Control Tower</code> → open workspace<br />
+          Direct: <a href="{BASE}/now/ai-control-tower">{BASE}/now/ai-control-tower</a>
+          (alternate: Workspaces menu → AI Control Tower)</li>
+        <li>Open <strong>AI Inventory</strong> — list agents, models, providers.</li>
+        <li>Open one record — note lifecycle stage, owner, risk.</li>
+        <li>Glance <strong>Governance / Assessments</strong> — policies and review status.</li>
+      </ol>
+
+      <h3>Functions (Control Tower)</h3>
+      <div class="fn-grid">
+        <div class="fn"><h4>Discover / Inventory</h4><p>Find first- and third-party AI agents, models, MCP servers — reduce blind spots.</p></div>
+        <div class="fn"><h4>Govern risk</h4><p>Assessments, policies, compliance alignment before agents go wide.</p></div>
+        <div class="fn"><h4>Identity &amp; access</h4><p>Track non-human / AI identities and what they can reach.</p></div>
+        <div class="fn"><h4>Monitor runtime</h4><p>Security telemetry, prompt-injection signals, action logs.</p></div>
+        <div class="fn"><h4>Measure value</h4><p>Executive view of adoption and outcome metrics.</p></div>
+        <div class="fn"><h4>CMDB / CSDM link</h4><p>Tie AI assets to services and configuration context.</p></div>
+      </div>
+
+      <!-- ========== MINUTE 2 ========== -->
+      <h2 id="m2"><span class="min-chip">2</span> Minute 2 — AI Agent Studio (Build Agent)</h2>
+      <p><strong>Summary:</strong> AI Agent Studio is where you create, manage, and test <em>AI Agents</em> and <em>Agentic Workflows</em> — your digital workforce builders. Requires Now Assist AI Agents capability installed.</p>
+
+      <div class="shot">
+        <div class="shot-frame" role="img" aria-label="Conceptual screenshot of AI Agent Studio Create and Manage">
+          <div class="ui-bar">
+            <span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+            <span class="title">AI Agent Studio › Create and manage</span>
+          </div>
+          <div class="panel">
+            <div class="nav">
+              <div>Home</div>
+              <div class="on">Create and manage</div>
+              <div>Test / Evaluate</div>
+              <div>AI Agents Dashboard</div>
+            </div>
+            <div class="main">
+              <div>[ Tabs: Agentic Workflows | AI Agents ]</div>
+              <div style="margin-top:.45rem">+ New agentic workflow &nbsp;|&nbsp; + New AI agent</div>
+              <div style="margin-top:.55rem;color:#99f6e4">Incident Reporting Workflow · HR Leave Assistant · ITSM Triage Agent</div>
+              <div style="margin-top:.45rem;color:#94a3b8">Guided Setup · Tools · Data Access (AI User identity)</div>
+            </div>
+          </div>
+        </div>
+        <div class="shot-cap">
+          <strong>Screenshot cue:</strong> Create and manage list with Agentic Workflows / AI Agents tabs. Capture after clicking Create and manage.
+        </div>
+      </div>
+
+      <h3>Open on instance</h3>
+      <ol>
+        <li>Filter navigator → <code>AI Agent Studio</code><br />
+          Direct try: <a href="{BASE}/now/ai-agent-studio">{BASE}/now/ai-agent-studio</a></li>
+        <li>Click <strong>Create and manage</strong>.</li>
+        <li>Open tab <strong>AI Agents</strong> — note existing agents (or empty on fresh lab).</li>
+        <li>Open tab <strong>Agentic Workflows</strong> — open one sample if present.</li>
+        <li>In Guided Setup, find <strong>Define Data Access</strong>:
+          <ul>
+            <li><em>Act as invoking user</em> — runs with caller’s roles</li>
+            <li><em>AI User</em> — dedicated identity (least privilege for agents)</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h3>Functions (Agent Studio)</h3>
+      <div class="fn-grid">
+        <div class="fn"><h4>Create AI Agent</h4><p>Define goal, instructions, tools the agent may call.</p></div>
+        <div class="fn"><h4>Agentic Workflow</h4><p>Orchestrate multi-step agent work toward a business outcome.</p></div>
+        <div class="fn"><h4>Tools / skills</h4><p>Wire Flow actions, Script Includes, catalog, records — e.g. HR Leave utils.</p></div>
+        <div class="fn"><h4>Data Access / AI User</h4><p>Choose execution identity — critical for secure agent runs.</p></div>
+        <div class="fn"><h4>Test &amp; evaluate</h4><p>Single tests and pattern evaluations before production.</p></div>
+        <div class="fn"><h4>Dashboard</h4><p>Usage and performance of agents over time.</p></div>
+      </div>
+
+      <div class="warn">
+        <p><strong>HR Leave tip:</strong> Build agents that call existing scoped APIs / Script Includes from chapters 01–12 — do not bypass ACLs. Deep build steps remain in <a href="14_AI_SERVICENOW_AGENTS.html">14_AI_SERVICENOW_AGENTS.html</a>.</p>
+      </div>
+
+      <!-- ========== MINUTE 3 ========== -->
+      <h2 id="m3"><span class="min-chip">3</span> Minute 3 — Otto / Now Assist + Workflow Data Fabric</h2>
+      <div class="ok">
+        <p><strong>Focus of this minute:</strong> Use the AI assistant on the instance (Otto / Now Assist), run safe prompts, see which skill/agent ran, then open Data Fabric / Integration paths that feed agents with trusted data. This matches the event themes <em>Autonomous IT + Otto</em> and <em>Workflow Data Fabric</em>.</p>
+      </div>
+
+      <p><strong>Summary:</strong> <strong>Otto</strong> (AI assistant for work) unifies assistant experiences so users ask and work gets done across workflows. <strong>Workflow Data Fabric</strong> connects enterprise / external data so agents and assist skills act on accurate, governed context — not guesses.</p>
+
+      <table>
+        <tr><th>Piece</th><th>What it is</th><th>Who uses it</th></tr>
+        <tr><td><strong>Otto / Now Assist</strong></td><td>Side panel / AI Experience — ask in natural language; platform executes via skills, agents, flows</td><td>Everyone (employee, agent, fulfiller)</td></tr>
+        <tr><td><strong>Workflow Data Fabric</strong></td><td>Data layer that brings CMDB + external systems into AI/workflow context</td><td>Architect, Integration, AI builder</td></tr>
+        <tr><td><strong>Link to Control Tower</strong></td><td>Assist/agents you invoke should appear in AI Inventory for governance</td><td>Platform Owner / CoE</td></tr>
+      </table>
+
+      <div class="shot">
+        <div class="shot-frame" role="img" aria-label="Conceptual screenshot of Otto assist panel">
+          <div class="ui-bar">
+            <span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+            <span class="title">Header › Otto / Now Assist panel</span>
+          </div>
+          <div class="panel">
+            <div class="nav">
+              <div class="on">Chat / Ask</div>
+              <div>Skills</div>
+              <div>History</div>
+              <div>Settings</div>
+            </div>
+            <div class="main">
+              <div>You: “Summarize open P1 incidents for Network”</div>
+              <div style="margin-top:.4rem;color:#99f6e4">Otto: Summary table → suggests assignment → offers “Create task / Run agent”</div>
+              <div style="margin-top:.55rem;color:#94a3b8">Skill used: ITSM Summarize · Agent: optional handoff · Audit: logged</div>
+            </div>
+          </div>
+        </div>
+        <div class="shot-cap">
+          <strong>Screenshot 5 — Assist:</strong> Capture the open Otto/Now Assist panel with your prompt and the answer. Note any “skill / flow / agent” label shown.
+        </div>
+      </div>
+
+      <div class="shot">
+        <div class="shot-frame" role="img" aria-label="Conceptual screenshot of Workflow Data Fabric context">
+          <div class="ui-bar">
+            <span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+            <span class="title">Workflow Data Fabric · trusted sources for agents</span>
+          </div>
+          <div class="panel">
+            <div class="nav">
+              <div class="on">Sources</div>
+              <div>Remote / External</div>
+              <div>CMDB / CSDM</div>
+              <div>Access policy</div>
+            </div>
+            <div class="main">
+              <div>Sources: CMDB CI · HR profile · External HRIS (example) · Knowledge</div>
+              <div class="kpi">
+                <span>Connected<br /><b>12</b></span>
+                <span>For agents<br /><b>7</b></span>
+                <span>Restricted<br /><b>2</b></span>
+              </div>
+              <div style="margin-top:.55rem;color:#94a3b8">Agents read context here → Control Tower governs who/what can act</div>
+            </div>
+          </div>
+        </div>
+        <div class="shot-cap">
+          <strong>Screenshot 6 — Data Fabric:</strong> Capture Integration Hub / Remote Tables / Data Fabric (whatever your release exposes) showing connected sources. If missing, capture navigator search results for those terms.
+        </div>
+      </div>
+
+      <h3>3A — Open Otto / Now Assist on the instance (≈90 sec)</h3>
+      <ol>
+        <li><span class="step-num">Open assist</span>
+          <ul>
+            <li>Direct: <a href="{BASE}/now/assist">{BASE}/now/assist</a></li>
+            <li>Or click the <strong>Otto / Now Assist / sparkle</strong> icon in the instance header (name varies by release).</li>
+            <li>Filter navigator fallback: type <code>Now Assist</code> or <code>AI Experience</code>.</li>
+          </ul>
+        </li>
+        <li><span class="step-num">Confirm panel loads</span> — Chat / Ask visible. If blocked, check license + Now Assist plugins.</li>
+        <li><span class="step-num">Run one safe lab prompt</span> (pick one):
+          <table>
+            <tr><th>Prompt</th><th>What you verify</th></tr>
+            <tr><td><em>List my open incidents</em></td><td>Returns INC numbers only from accessible data</td></tr>
+            <tr><td><em>Summarize this incident</em> (open an INC first)</td><td>Uses record context</td></tr>
+            <tr><td><em>What is my leave balance?</em> (if HR Leave skills exist)</td><td>Scoped HR Leave skill / VA topic</td></tr>
+            <tr><td><em>How do I request annual leave?</em></td><td>Knowledge / catalog guidance — no write if not intended</td></tr>
+          </table>
+        </li>
+        <li><span class="step-num">Note the trail</span> — skill name, agent, or flow mentioned in the answer UI (you will match this in Control Tower inventory later).</li>
+        <li><span class="step-num">Optional action</span> — if Otto offers “create / update / assign”, cancel on lab unless you intend to test write paths.</li>
+      </ol>
+
+      <h3>3B — Open Workflow Data Fabric / data paths (≈60 sec)</h3>
+      <ol>
+        <li>Filter navigator search (try in order):
+          <ul>
+            <li><code>Data Fabric</code></li>
+            <li><code>Integration Hub</code></li>
+            <li><code>Remote Tables</code></li>
+            <li><code>Flow Data</code> / Connections</li>
+          </ul>
+        </li>
+        <li>Useful direct URLs to try:
+          <ul>
+            <li><a href="{BASE}/now/assist">{BASE}/now/assist</a> — assist surface</li>
+            <li><a href="{BASE}/nav_to.do?uri=%2F$restapi.do">{BASE}/$restapi.do</a> — REST API Explorer (integration check)</li>
+            <li><a href="{BASE}/nav_to.do?uri=%2Fsys_alias_list.do">{BASE}/sys_alias_list.do</a> — Connection aliases</li>
+            <li><a href="{BASE}/nav_to.do?uri=%2Fsys_rest_message_list.do">{BASE}/sys_rest_message_list.do</a> — REST Messages</li>
+            <li><a href="{BASE}/nav_to.do?uri=%2Fsys_db_object_list.do%3Fsysparm_query%3DnameLIKEremote">{BASE}/sys_db_object_list.do?sysparm_query=nameLIKEremote</a> — remote-related tables</li>
+          </ul>
+        </li>
+        <li><span class="step-num">Discuss with team:</span> Which sources should agents read for HR Leave / ITSM? CMDB only? External HRIS? Block PII fields.</li>
+      </ol>
+
+      <h3>3C — Close the loop with Control Tower (≈30 sec)</h3>
+      <ol>
+        <li>Re-open <a href="{BASE}/now/ai-control-tower">{BASE}/now/ai-control-tower</a></li>
+        <li>Search AI Inventory for the skill/agent name you saw in Assist.</li>
+        <li>Confirm: owner, risk stage, whether it is governed.</li>
+      </ol>
+
+      <h3>Functions — Otto / Assist (detailed)</h3>
+      <div class="fn-grid">
+        <div class="fn"><h4>Conversational ask</h4><p>Natural language Q&amp;A and “do this work” requests.</p></div>
+        <div class="fn"><h4>Context awareness</h4><p>Uses open record / user / role to ground answers.</p></div>
+        <div class="fn"><h4>Skill routing</h4><p>Picks Now Assist skill, agent, or flow for the intent.</p></div>
+        <div class="fn"><h4>Execute / finish work</h4><p>Creates or updates work through platform workflows — not shadow IT.</p></div>
+        <div class="fn"><h4>Cross-product assist</h4><p>ITSM · ITOM · SPM (Autonomous IT) in one assistant surface.</p></div>
+        <div class="fn"><h4>History &amp; audit</h4><p>Conversation and actions remain reviewable for support/governance.</p></div>
+        <div class="fn"><h4>Voice / multimodal*</h4><p>Where licensed — voice agents &amp; richer AI Experience.</p></div>
+        <div class="fn"><h4>Employee + agent UX</h4><p>Same assistant pattern for self-service and fulfiller work.</p></div>
+      </div>
+
+      <h3>Functions — Workflow Data Fabric (detailed)</h3>
+      <div class="fn-grid">
+        <div class="fn"><h4>Connect sources</h4><p>CMDB, platform tables, external systems via Integration Hub / remote data.</p></div>
+        <div class="fn"><h4>Contextualize</h4><p>Shape data so agents get usable, timely context.</p></div>
+        <div class="fn"><h4>Feed agentic AI</h4><p>Supplies tools/skills with facts instead of hallucinations.</p></div>
+        <div class="fn"><h4>Access policy</h4><p>Limit which identities/agents can read which sources.</p></div>
+        <div class="fn"><h4>Trust + CMDB</h4><p>Align AI context with CSDM / CI relationships.</p></div>
+        <div class="fn"><h4>Ops readiness</h4><p>Support Autonomous IT demos with real ops data paths.</p></div>
+      </div>
+
+      <h3>Minute-3 apply checklist</h3>
+      <table>
+        <tr><th>✓</th><th>Action</th><th>URL / where</th></tr>
+        <tr><td>☐</td><td>Open Assist / Otto panel</td><td><a href="{BASE}/now/assist">{BASE}/now/assist</a></td></tr>
+        <tr><td>☐</td><td>Run one safe prompt</td><td>Chat box</td></tr>
+        <tr><td>☐</td><td>Write down skill/agent/flow name used</td><td>Answer UI</td></tr>
+        <tr><td>☐</td><td>Search navigator for Data Fabric / IH / Remote Tables</td><td>Filter navigator</td></tr>
+        <tr><td>☐</td><td>Open connections or REST aliases (if present)</td><td><a href="{BASE}/sys_alias_list.do">{BASE}/sys_alias_list.do</a></td></tr>
+        <tr><td>☐</td><td>Match skill/agent in Control Tower inventory</td><td><a href="{BASE}/now/ai-control-tower">{BASE}/now/ai-control-tower</a></td></tr>
+        <tr><td>☐</td><td>Capture screenshots 5 + 6</td><td>See screenshot pack</td></tr>
+      </table>
+
+      <div class="warn">
+        <p><strong>Lab safety:</strong> Prefer read-only prompts first. Do not approve mass updates from Assist on shared labs. For HR Leave production skills (balance, cancel, submit), follow the full build in <a href="14_AI_SERVICENOW_AGENTS.html">Chapter 14</a>.</p>
+      </div>
+
+      <!-- ========== FUNCTIONS SHEET ========== -->
+      <h2 id="functions">Functions cheat-sheet (all three areas)</h2>
+      <table>
+        <tr><th>Area</th><th>Primary users</th><th>Core functions</th><th>Typical open path</th></tr>
+        <tr>
+          <td><strong>AI Control Tower</strong></td>
+          <td>AI CoE, Risk, Platform Owner</td>
+          <td>Inventory, govern, monitor, measure</td>
+          <td>Workspaces → AI Control Tower</td>
+        </tr>
+        <tr>
+          <td><strong>AI Agent Studio</strong></td>
+          <td>Developer / Citizen builder</td>
+          <td>Create agents, agentic workflows, tools, test</td>
+          <td>Navigator → AI Agent Studio → Create and manage</td>
+        </tr>
+        <tr>
+          <td><strong>Otto / Assist</strong></td>
+          <td>All employees / agents</td>
+          <td>Ask, act, finish work via workflows</td>
+          <td>Header assist / <code>/now/assist</code></td>
+        </tr>
+        <tr>
+          <td><strong>Workflow Data Fabric</strong></td>
+          <td>Architect / Integration</td>
+          <td>Connect &amp; contextualize data for AI</td>
+          <td>Navigator search Data Fabric / IH</td>
+        </tr>
+      </table>
+
+      <h2 id="screenshots">Screenshot pack (what to capture on your instance)</h2>
+      <table>
+        <tr><th>#</th><th>Capture</th><th>File name suggestion</th><th>Shows</th></tr>
+        <tr><td>1</td><td>Control Tower overview</td><td><code>shot-01-control-tower.png</code></td><td>Inventory KPIs + nav</td></tr>
+        <tr><td>2</td><td>AI Inventory list</td><td><code>shot-02-ai-inventory.png</code></td><td>Agents/models rows</td></tr>
+        <tr><td>3</td><td>Agent Studio home</td><td><code>shot-03-agent-studio.png</code></td><td>Create and manage entry</td></tr>
+        <tr><td>4</td><td>Agentic Workflow Guided Setup</td><td><code>shot-04-guided-setup.png</code></td><td>Data Access / AI User</td></tr>
+        <tr><td>5</td><td>Otto / Assist answer</td><td><code>shot-05-otto-assist.png</code></td><td>Prompt + response</td></tr>
+        <tr><td>6</td><td>Data Fabric / integration context</td><td><code>shot-06-data-fabric.png</code></td><td>External data feed (if present)</td></tr>
+      </table>
+      <div class="talk" style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:.75rem 1rem;color:#0c4a6e">
+        <p><strong>Tip:</strong> Save screenshots under <code>HR_Leave_App/html/assets/shots-agentic-ai/</code> later and replace the conceptual frames above with <code>&lt;img src="assets/shots-agentic-ai/shot-01-....png"&gt;</code> when you have real instance captures.</p>
+      </div>
+
+      <h2 id="checklist">3-minute apply checklist</h2>
+      <table>
+        <tr><th>✓</th><th>Step</th><th>Direct URL</th></tr>
+        <tr><td>☐</td><td>Open AI Control Tower — note inventory count</td><td><a href="{BASE}/now/ai-control-tower">{BASE}/now/ai-control-tower</a></td></tr>
+        <tr><td>☐</td><td>Open AI Agent Studio → Create and manage</td><td><a href="{BASE}/now/ai-agent-studio">{BASE}/now/ai-agent-studio</a></td></tr>
+        <tr><td>☐</td><td>Open one agent or workflow — find Data Access</td><td>inside Studio</td></tr>
+        <tr><td>☐</td><td>Open Assist / Otto — run one safe prompt</td><td><a href="{BASE}/now/assist">{BASE}/now/assist</a></td></tr>
+        <tr><td>☐</td><td>Confirm plugins licensed (Now Assist AI Agents)</td><td>Plugin list / store</td></tr>
+        <tr><td>☐</td><td>For deep HR Leave AI build, continue Chapter 14</td><td><a href="14_AI_SERVICENOW_AGENTS.html">14_AI_SERVICENOW_AGENTS.html</a></td></tr>
+      </table>
+
+      <div class="ok">
+        <p><strong>Bottom line:</strong> Control Tower = see &amp; govern AI. Agent Studio = build agents &amp; agentic workflows. Otto/Assist = users ask and work finishes. Data Fabric = trusted data into those agents. Three minutes to open all three; Chapter 14 to implement HR Leave skills end-to-end.</p>
+      </div>
+
+      <div class="chapter-nav" style="display:flex;justify-content:space-between;gap:1rem;margin:2rem 0 1rem;padding:1rem;background:#f8fafc;border-radius:8px">
+        <a href="14_AI_SERVICENOW_AGENTS.html">← Deep: 14 AI Agents</a>
+        <a href="index.html">Portal</a>
+        <a href="13_2HOUR_MASTER_SUMMARY.html">13 Summary →</a>
+      </div>
+    </article>
+  </main>
+  <script src="assets/docs.js"></script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

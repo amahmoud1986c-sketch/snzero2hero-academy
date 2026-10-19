@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ATF Tests — تفاصيل الاختبارات | HR Leave Australia</title>
+  <link rel="stylesheet" href="../../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../../index.html">Portal</a>
+      <a href="../../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../../scripts/index.html">Scripts</a>
+      <a href="../../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>ATF Tests — تفاصيل الاختبارات</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="atf-tests">ATF Tests — تفاصيل الاختبارات</h1>
+<h2 id="test-1">Test 1 — حساب الأيام</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<p>Steps:<br />
+1. Create a Record.<br />
+ Table: x_786686_hr_leave_req_v2<br />
+ Set: u_start_date = 2026-06-01, u_end_date = 2026-06-05<br />
+2. Run Server Side Script (assertion):</p>
+<pre><code class="language-javascript">// Mon..Fri = 5 business days
+(function(outputs, steps, stepResult, assertEqual) {
+ var gr = new GlideRecord('x_786686_hr_leave_req_v2');
+ gr.get(steps('step1').record_id);
+ assertEqual({ name: 'days', expected: '5', actual: gr.getValue('u_days_count') });
+})(outputs, steps, stepResult, assertEqual);
+</code></pre>
+<h2 id="test-2">Test 2 — الإرسال يطلق الحدث</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<p>Steps:<br />
+1. Create record with u_state = submitted.<br />
+2. Server Side Script: query sysevent for x_786686_hr_leave.leave_v2.submitted.</p>
+<h2 id="test-3">Test 3 — الموافقة تدقّق وتحدّث الرصيد</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<p>Steps:<br />
+1. Create approved-path record.<br />
+2. Update u_state = approved.<br />
+3. Record Query على x_786686_hr_leave_audit_v2 → يوجد سجل بـ u_new_state = approved.</p>
+<h2 id="test-4-acl">Test 4 — ACL</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<p>Steps:<br />
+1. Impersonate موظف A، أنشئ طلبًا.<br />
+2. Impersonate موظف B.<br />
+3. Record Query → لا يرى طلب A.</p>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../../assets/docs.js"></script>
+
+<script src="../../assets/author-brand.js" defer></script>
+</body>
+</html>

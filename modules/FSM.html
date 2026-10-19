@@ -1,0 +1,2839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FSM — Field Service Management (Zero → Pro) | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>FSM — Field Service Management (Zero → Pro)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/wm_order_list.do">Work Order</a>
+<a href="{BASE}/wm_task_list.do">Tasks</a>
+</div>
+    <article class="content">
+<h1 id="fsm-field-service-management-zero-pro">FSM — Field Service Management (Zero → Pro)</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً:</strong> <a href="../MASTER_ALL_IN_ONE_SUMMARY.html">../MASTER_ALL_IN_ONE_SUMMARY.md</a> · <a href="../html/MASTER_ALL_IN_ONE_SUMMARY.html">../html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل:</strong> <a href="../MASTER_ALL_IN_ONE.html">../MASTER_ALL_IN_ONE.md</a> · <a href="../html/MASTER_ALL_IN_ONE.html">../html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات:</strong> <a href="../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Australia · Scope <code>x_786686_hr_leave</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<h2 id="australia-instance">Australia Instance — نسخة أستراليا</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Region / Datacenter</strong></td>
+<td>ServiceNow <strong>Australia</strong></td>
+</tr>
+<tr>
+<td><strong>Release train</strong></td>
+<td>Zurich (Sep 2026 EA) · next EA: <strong>Brazil</strong></td>
+</tr>
+<tr>
+<td><strong>URL base</strong></td>
+<td><code>{BASE}</code></td>
+</tr>
+<tr>
+<td><strong>Scope note</strong></td>
+<td>HR Leave app: <code>x_786686_hr_leave</code></td>
+</tr>
+<tr>
+<td><strong>Guided Setup</strong></td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="direct-navigation-urls">Direct Navigation URLs — روابط التنقل المباشرة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page / Tool</th>
+<th>Navigation Path</th>
+<th>Direct URL</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Work Orders</strong></td>
+<td>All &gt; Field Service &gt; Work Orders</td>
+<td><a href="{BASE}/wm_order_list.do">{BASE}/wm_order_list.do</a></td>
+<td>Work order queue</td>
+</tr>
+<tr>
+<td><strong>Work Order Tasks</strong></td>
+<td>All &gt; Field Service &gt; Work Order Tasks</td>
+<td><a href="{BASE}/wm_task_list.do">{BASE}/wm_task_list.do</a></td>
+<td>Task execution</td>
+</tr>
+<tr>
+<td><strong>Dispatcher Workspace</strong></td>
+<td>Now Experience &gt; FSM Dispatcher</td>
+<td><a href="{BASE}/now/fsm-dispatch/home">{BASE}/now/fsm-dispatch/home</a></td>
+<td>Scheduling &amp; dispatch</td>
+</tr>
+<tr>
+<td><strong>Agent Workspace</strong></td>
+<td>Now Experience &gt; FSM Agent</td>
+<td><a href="{BASE}/now/fsm-agent/home">{BASE}/now/fsm-agent/home</a></td>
+<td>Field agent view</td>
+</tr>
+<tr>
+<td><strong>Dispatch Groups</strong></td>
+<td>All &gt; Field Service &gt; Dispatch Groups</td>
+<td><a href="{BASE}/dispatch_group_list.do">{BASE}/dispatch_group_list.do</a></td>
+<td>Team routing</td>
+</tr>
+<tr>
+<td><strong>Qualifications</strong></td>
+<td>All &gt; Field Service &gt; Qualifications</td>
+<td><a href="{BASE}/wm_qualification_list.do">{BASE}/wm_qualification_list.do</a></td>
+<td>Technician skills</td>
+</tr>
+<tr>
+<td><strong>Parts / Inventory</strong></td>
+<td>All &gt; Inventory &gt; Stockrooms</td>
+<td><a href="{BASE}/alm_stockroom_list.do">{BASE}/alm_stockroom_list.do</a></td>
+<td>Parts management</td>
+</tr>
+<tr>
+<td><strong>Locations</strong></td>
+<td>All &gt; System &gt; Locations</td>
+<td><a href="{BASE}/cmn_location_list.do">{BASE}/cmn_location_list.do</a></td>
+<td>Service locations</td>
+</tr>
+<tr>
+<td><strong>Flow Designer</strong></td>
+<td>All &gt; Process Automation &gt; Flow Designer</td>
+<td><a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a></td>
+<td>WO automation</td>
+</tr>
+<tr>
+<td><strong>Guided Setup FSM</strong></td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+<td>Initial configuration</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>URLs:</strong> <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">../../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a><br />
+<strong>HR Leave:</strong> Scope x_786686_hr_leave</p>
+<p>CIS-FSM Professional Implementer Guide<br />
+الأسلوب: عربية + إنجليزية تكمّلان بعضهما — بدون ترجمة حرفية لأسماء الشاشات.</p>
+</blockquote>
+<hr />
+<h2 id="arabic-summary">ملخص ووصف بالعربية (Arabic Summary)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>البند</th>
+<th>الشرح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ما هو FSM؟</strong></td>
+<td>الخدمة الميدانية — أوامر عمل، فنيون، جدولة، جوال، قطع غيار</td>
+</tr>
+<tr>
+<td><strong>لماذا مهم؟</strong></td>
+<td>إصلاحات في موقع العميل لا تتم من مكتب الخدمة</td>
+</tr>
+<tr>
+<td><strong>من يستخدمه؟</strong></td>
+<td>موزّع (Dispatcher)، فني ميداني، مدير قطع</td>
+</tr>
+<tr>
+<td><strong>ماذا يغطي الملف؟</strong></td>
+<td>Work Order، Dispatcher workspace، Mobile · §16 مختبر E2E</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ملخص في سطر:</strong> من القضية/الطلب إلى أمر عمل → جدولة → إنجاز على الجوال مع قطع.</p>
+<p><strong>وصف مختصر:</strong> يغطي المناطق، الجدولة، تطبيق الجوال، استهلاك المخزون، وربط CSM. مناسب CIS-FSM.</p>
+<hr />
+<h2 id="1-overview-business-value">1) Overview &amp; Business Value</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>FSM manages work performed in the field by technicians. — يدير العمل الميداني: جدولة الفنيين، الأجزاء، المواقع، والمهام في الموقع.</p>
+<p>Core value:<br />
+- Work Order management.<br />
+- Scheduling &amp; dispatch (manual + automated).<br />
+- Inventory &amp; parts management.<br />
+- Mobile app for technicians.<br />
+- Integration with CSM (case → work order) and ITSM.</p>
+<hr />
+<h2 id="2-architecture-data-model">2) Architecture &amp; Data Model</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>Key tables:</p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>الغرض</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>wm_order</td>
+<td>أمر العمل (Work Order)</td>
+</tr>
+<tr>
+<td>wm_task</td>
+<td>مهمة العمل (Work Order Task)</td>
+</tr>
+<tr>
+<td>wm_qualification</td>
+<td>المؤهلات/المهارات</td>
+</tr>
+<tr>
+<td>dispatch_group</td>
+<td>مجموعة الإرسال (Dispatch)</td>
+</tr>
+<tr>
+<td>sm_schedule / appointments</td>
+<td>الجدولة والمواعيد</td>
+</tr>
+<tr>
+<td>pc_product_cat_item parts</td>
+<td>الأجزاء</td>
+</tr>
+<tr>
+<td>inv_* (Inventory)</td>
+<td>المخزون</td>
+</tr>
+<tr>
+<td>cmn_location</td>
+<td>المواقع</td>
+</tr>
+</tbody>
+</table>
+<p>Model:</p>
+<pre><code class="language-text">Work Order (wm_order)
+ └─ Work Order Task (wm_task)
+ ├─ assigned technician (with qualifications)
+ ├─ scheduled appointment (time window)
+ ├─ parts required (inventory)
+ └─ location (cmn_location)
+</code></pre>
+<hr />
+<h2 id="3-plugins-activation">3) Plugins &amp; Activation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>App / Plugin</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Field Service Management</td>
+<td>com.snc.work_management (from Store)</td>
+</tr>
+<tr>
+<td>FSM Dispatcher Workspace</td>
+<td>included</td>
+</tr>
+<tr>
+<td>Mobile (Now Mobile / Agent)</td>
+<td>platform</td>
+</tr>
+<tr>
+<td>Dynamic Scheduling</td>
+<td>from Store</td>
+</tr>
+<tr>
+<td>Appointment Booking</td>
+<td>from Store</td>
+</tr>
+<tr>
+<td>FSM Contractor Management</td>
+<td>from Store</td>
+</tr>
+</tbody>
+</table>
+<p>How to activate:</p>
+<ol>
+<li>Navigate: All &gt; System Applications &gt; All Available Applications &gt; All. — <a href="{BASE}/v_plugin_list.do">Open direct</a></li>
+<li>Search &ldquo;Field Service Management&rdquo;.</li>
+<li>Install.</li>
+<li>Guided Setup:<br />
+ Navigate: All &gt; Guided Setup &gt; Field Service Management. — <a href="{BASE}/now/guided-setup">Open direct</a></li>
+</ol>
+<hr />
+<h2 id="4-guided-setup-all-options">4) Guided Setup &amp; All Options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>Sections:<br />
+- Foundation — locations, territories, skills.<br />
+- Technicians &amp; Qualifications — الفنيون ومهاراتهم.<br />
+- Dispatch Groups — مجموعات الإرسال.<br />
+- Scheduling — manual board / auto / dynamic.<br />
+- Inventory &amp; Parts — المخزون والأجزاء.<br />
+- Work Order types &amp; states.<br />
+- Mobile configuration.<br />
+- Customer/Asset (CSM/CMDB integration).</p>
+<p>Important options:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dispatch Workspace</td>
+<td>/now FSM Dispatcher</td>
+</tr>
+<tr>
+<td>Territories</td>
+<td>All &gt; Field Service &gt; Administration &gt; Territories · <a href="{BASE}/sys_user_skill_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Skills/Qualifications</td>
+<td>All &gt; Field Service &gt; Administration · <a href="{BASE}/sys_user_skill_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Auto Dispatch / Dynamic Scheduling</td>
+<td>property + plugin</td>
+</tr>
+<tr>
+<td>Inventory locations</td>
+<td>All &gt; Inventory · <a href="{BASE}/alm_asset_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Appointment Booking</td>
+<td>config</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-end-to-end-process-cycle">5) End-to-End Process Cycle</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>Work Order lifecycle:</p>
+<pre><code class="language-text">Draft → Requested → Qualified → Assigned/Scheduled → Work in Progress → Closed Complete
+</code></pre>
+<p>Full flow:</p>
+<pre><code class="language-text">Trigger (CSM case / request / asset failure)
+ → Work Order created
+ → Qualification (skills + parts + location)
+ → Schedule + Dispatch to technician
+ → Technician (mobile): travel → on-site → complete task → consume parts
+ → Close work order → customer signature/feedback
+</code></pre>
+<p>Dispatch إما يدوي (لوحة الإرسال) أو تلقائي (Auto/Dynamic Scheduling).</p>
+<hr />
+<h2 id="6-development">6) Development</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3Dc84db0e8839f0b509f02b0d6feaad3c9">Application Files</a><a href="../scripts/index.html">Scripts portal</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<h3 id="business-rule-require-qualification-before-assignment">Business Rule — require qualification before assignment</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a><a href="../scripts/index.html">Scripts portal</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<pre><code class="language-javascript">(function executeRule(current, previous) {
+ if (current.assigned_to.changes() &amp;&amp; !current.assigned_to.nil()) {
+ // ensure technician has required skill (simplified)
+ if (current.skills.nil()) {
+ gs.addErrorMessage('Define required skills before assigning a technician.');
+ current.setAbortAction(true);
+ }
+ }
+})(current, previous);
+</code></pre>
+<p>Development topics:<br />
+- Auto-assignment / Dynamic Scheduling configuration.<br />
+- Work order tasks &amp; dependencies.<br />
+- Mobile app layouts (Agent/Now Mobile).<br />
+- Parts requirements + inventory transfers.<br />
+- Geolocation &amp; maps.<br />
+- Flow Designer for WO approvals.</p>
+<hr />
+<h2 id="7-administration">7) Administration</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Roles</td>
+<td>sn_field_service.* (dispatcher, agent, admin)</td>
+</tr>
+<tr>
+<td>Territories</td>
+<td>All &gt; Field Service &gt; Administration · <a href="{BASE}/sys_user_skill_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Dispatch Groups</td>
+<td>All &gt; Field Service · <a href="{BASE}/wm_order_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Inventory</td>
+<td>All &gt; Inventory · <a href="{BASE}/alm_asset_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Schedules/Shifts</td>
+<td>All &gt; Field Service &gt; Schedules · <a href="{BASE}/cmn_schedule_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<p>Key roles:<br />
+- field_service_dispatcher — المرسِل.<br />
+- field_service_agent / technician — الفني الميداني.<br />
+- field_service_admin — المدير.</p>
+<hr />
+<h2 id="8-hands-on-labs">8) Hands-on Labs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>Lab 1 — Foundation:<br />
+1. Create a Location and a Territory.<br />
+2. Create a technician user + qualifications.</p>
+<p>Lab 2 — Work Order:<br />
+1. Navigate: All &gt; Field Service &gt; Work Orders &gt; Create New. — <a href="{BASE}/wm_order_list.do">Open direct</a><br />
+2. Add a task, set required skills + location.</p>
+<p>Lab 3 — Dispatch:<br />
+1. Open the Dispatcher Workspace.<br />
+2. Schedule the task to the technician on the board.</p>
+<p>Lab 4 — Parts:<br />
+1. Add a part requirement to the task.<br />
+2. Transfer/consume from inventory.</p>
+<p>Lab 5 — CSM → FSM:<br />
+1. From a CSM case, create a Work Order.<br />
+2. Complete it and verify the case updates.</p>
+<hr />
+<h2 id="9-best-practices-common-mistakes">9) Best Practices &amp; Common Mistakes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>Best practices:<br />
+- Model skills/qualifications properly for accurate matching.<br />
+- Use Dynamic Scheduling for large field teams.<br />
+- Keep inventory locations accurate for parts.<br />
+- Use the mobile app for real-time field updates.</p>
+<p>Common mistakes:<br />
+- إسناد فني بلا المهارة المطلوبة.<br />
+- إهمال المخزون فتفشل المهام لعدم توفّر الأجزاء.<br />
+- خلط Work Order مع Work Order Task في التقارير.</p>
+<hr />
+<h2 id="10-cis-fsm-exam-focus">10) CIS-FSM Exam Focus</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>High-yield:<br />
+- Work Order vs Work Order Task.<br />
+- Qualification matching (skills + territory + parts).<br />
+- Dispatch: manual board vs Auto/Dynamic Scheduling.<br />
+- Inventory &amp; parts consumption.<br />
+- Technician mobile workflow (travel/onsite/complete).<br />
+- CSM ↔ FSM integration (case to work order).<br />
+- Territories &amp; schedules/shifts.</p>
+<p>Exam tip: — ركّز على كيف يُختار الفني (المهارة + المنطقة + الوقت + الأجزاء).</p>
+<hr />
+<h2 id="11-portals-workspaces-role-hierarchy-feature-catalog">11) Portals, Workspaces, Role Hierarchy &amp; Feature Catalog</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<blockquote>
+<p>ملاحظة عن الروابط:<br />
+URLs الـ Workspaces قد تختلف حسب الإصدار والـ App Config.</p>
+</blockquote>
+<h3 id="111-portals-mobile-customers-technicians">11.1 Portals &amp; Mobile (customers + technicians)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>URL / App</th>
+<th>لمن</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer Service Portal</td>
+<td>/csm</td>
+<td>العملاء (طلب خدمة ميدانية)</td>
+</tr>
+<tr>
+<td>FSM customer self-service</td>
+<td>/csm?id=&hellip;</td>
+<td>العملاء</td>
+</tr>
+<tr>
+<td>Now Mobile (technician)</td>
+<td>Now Mobile app</td>
+<td>الفنيون</td>
+</tr>
+<tr>
+<td>Field Service Mobile (Agent app)</td>
+<td>Mobile Agent app</td>
+<td>الفنيون</td>
+</tr>
+</tbody>
+</table>
+<h3 id="112-workspaces-dispatchmanagers">11.2 Workspaces (dispatch/managers)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Workspace</th>
+<th>URL</th>
+<th>لمن</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dispatcher Workspace</td>
+<td>/now/fsm/dispatcher</td>
+<td>المرسِلون (Dispatch board + map)</td>
+</tr>
+<tr>
+<td>FSM Agent/Manager Workspace</td>
+<td>/now/cwf/agent</td>
+<td>الوكلاء/المديرون</td>
+</tr>
+<tr>
+<td>Scheduling / Central Dispatch</td>
+<td>configurable</td>
+<td>المرسِلون</td>
+</tr>
+<tr>
+<td>Admin (classic)</td>
+<td>/nav_to.do</td>
+<td>admins</td>
+</tr>
+</tbody>
+</table>
+<p>لوحة الإرسال (Dispatch board) فيها خريطة وجدول زمني لتعيين المهام للفنيين.</p>
+<h3 id="113-role-hierarchy">11.3 Role Hierarchy</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<pre><code class="language-text">admin
+└─ field_service_admin
+ ├─ field_service_dispatcher (الإرسال والجدولة)
+ ├─ field_service_agent (الفني الميداني)
+ ├─ field_service_manager
+ └─ inventory roles (inventory_user / inventory_admin)
+</code></pre>
+<p>wm_initiator (من يفتح أمر عمل)</p>
+<h3 id="114-full-business-cycle">11.4 Full Business Cycle</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<pre><code class="language-text">Trigger (CSM case / request / preventive maintenance / asset failure)
+ → Work Order (wm_order) + Work Order Task (wm_task)
+ → Qualification: required skills + parts + location/territory
+ → Schedule &amp; Dispatch (manual board OR Auto/Dynamic Scheduling)
+ → Technician (mobile): assigned → traveling → on-site
+ ↳ consume parts (inventory transfer)
+ ↳ capture notes / photos / signature
+ → Complete task → Close Work Order
+ → Customer confirmation / feedback → invoice/report
+</code></pre>
+<h3 id="115-feature-catalog">11.5 Feature Catalog</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>Process features:<br />
+- Work Order &amp; Work Order Task management.<br />
+- Qualification matching (skills, territory, parts).<br />
+- Manual Dispatch board, Auto Dispatch, Dynamic Scheduling.<br />
+- Appointment Booking.<br />
+- Inventory &amp; Parts Management (stockrooms, transfers).<br />
+- Preventive/Planned Maintenance.<br />
+- Contractor Management.<br />
+- Geolocation, maps, route planning.<br />
+- Time recording &amp; costing.</p>
+<p>Platform features used:<br />
+- Dispatcher Workspace + map.<br />
+- Mobile apps (Now Mobile / Mobile Agent) offline-capable.<br />
+- Flow Designer (WO approvals/automation).<br />
+- CSM integration (case → work order).<br />
+- CMDB/Asset integration (asset-based service).<br />
+- Performance Analytics (first-time fix rate, utilization).<br />
+- Now Assist for FSM.</p>
+<hr />
+<h2 id="12-end-to-end-implementation-post-activation">12) End-to-End Implementation (Post-Activation)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<blockquote>
+<p>اقرأ هذا بعد تثبيت FSM وتشغيل Guided Setup.</p>
+</blockquote>
+<h3 id="121-application-menus-map">12.1 Application Menus map</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<pre><code class="language-text">All &gt; Field Service
+ ├─ Work Orders (Create New / Open / My / Unassigned / All)
+ ├─ Work Order Tasks
+ ├─ Dispatch (Dispatcher Workspace / Map)
+ ├─ Schedules / Appointments
+ ├─ Administration
+ │ ├─ Territories / Regions
+ │ ├─ Skills / Qualifications
+ │ ├─ Dispatch Groups
+ │ └─ Auto/Dynamic Scheduling config
+ └─ Reports / Performance
+All &gt; Inventory
+ ├─ Stockrooms / Transfer Orders / Parts
+ └─ Inventory adjustments
+</code></pre>
+<h3 id="122-core-tables-to-know">12.2 Core tables to know</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>List</th>
+<th>Table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>wm_order.list</td>
+<td>work orders</td>
+</tr>
+<tr>
+<td>wm_task.list</td>
+<td>work order tasks</td>
+</tr>
+<tr>
+<td>dispatch_group.list</td>
+<td>dispatch groups</td>
+</tr>
+<tr>
+<td>cmn_location.list</td>
+<td>locations</td>
+</tr>
+<tr>
+<td>sm_schedule.list</td>
+<td>schedules</td>
+</tr>
+<tr>
+<td>inventory inv_*</td>
+<td>stockrooms/parts</td>
+</tr>
+</tbody>
+</table>
+<h3 id="123-end-to-end-build-order">12.3 End-to-end build order</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<ol>
+<li>Foundation:<br />
+ - Locations, Territories/Regions.<br />
+ - Skills/Qualifications catalog.</li>
+<li>Resources:<br />
+ - Technician users + qualifications + working hours/shifts.</li>
+<li>Dispatch:<br />
+ - Dispatch Groups mapped to territories.</li>
+<li>Scheduling strategy:<br />
+ - Manual board / Auto Dispatch / Dynamic Scheduling / Appointment Booking.</li>
+<li>Inventory:<br />
+ - Stockrooms, parts catalog, transfer orders.</li>
+<li>Work Order config:<br />
+ - Work Order types, states, task templates, SLAs.</li>
+<li>Mobile:<br />
+ - Configure Mobile Agent layouts (forms, actions, offline).</li>
+<li>Flows:<br />
+ - WO approvals, auto-assignment automation.</li>
+<li>Integrations:<br />
+ - CSM (case → WO), CMDB/Asset (asset service), maps/geocoding.</li>
+<li>Workspace:<br />
+ - Dispatcher Workspace /now/fsm/dispatcher.</li>
+<li>Reporting + Test + Deploy.</li>
+</ol>
+<h3 id="124-all-configuration-pages">12.4 All configuration pages</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Config</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FSM properties</td>
+<td>All &gt; Field Service &gt; Administration &gt; Properties · <a href="{BASE}/sys_user_skill_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Territories</td>
+<td>All &gt; Field Service &gt; Administration &gt; Territories · <a href="{BASE}/sys_user_skill_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Skills</td>
+<td>All &gt; Field Service &gt; Administration &gt; Skills · <a href="{BASE}/sys_user_skill_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Dynamic Scheduling</td>
+<td>property + plugin config</td>
+</tr>
+<tr>
+<td>Inventory setup</td>
+<td>All &gt; Inventory &gt; Administration · <a href="{BASE}/alm_asset_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Mobile config</td>
+<td>All &gt; Now Mobile App Builder / Studio · <a href="{BASE}/now/mobile-app-builder">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<p>Study path note: — للدراسة من الصفر اتبع: STUDY_ROADMAP.md</p>
+<hr />
+<h2 id="13-options-instance-notes">13) Options &amp; Instance Notes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Instance gaps</td>
+<td>MODULE_OPTIONS_AND_INSTANCE_NOTES.md → <strong>FSM</strong></td>
+</tr>
+<tr>
+<td><strong>Full implementation</strong></td>
+<td>MODULE_IMPLEMENTATION_PLAYBOOK.md → <strong>FSM</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="14-implementation-scenarios-options-best-practices-customizations">14) Implementation Scenarios, Options, Best Practices &amp; Customizations</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<blockquote>
+<p>Playbook: MODULE_IMPLEMENTATION_PLAYBOOK.md → <strong>FSM</strong></p>
+</blockquote>
+<h3 id="141-scenarios">14.1 Scenarios</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Scenario</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1</strong></td>
+<td>Work Orders</td>
+<td>Dispatch + mobile</td>
+</tr>
+<tr>
+<td><strong>S2</strong></td>
+<td>+ Parts/inventory</td>
+<td>Stockrooms + transfers</td>
+</tr>
+<tr>
+<td><strong>S3</strong></td>
+<td>CSM-integrated</td>
+<td>Case creates WO</td>
+</tr>
+</tbody>
+</table>
+<h3 id="142-options-matrix">14.2 Options matrix</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scheduling</td>
+<td>Dynamic scheduling</td>
+<td>Manual dispatch</td>
+</tr>
+<tr>
+<td>Mobile</td>
+<td>FSM mobile app</td>
+<td>Browser only</td>
+</tr>
+<tr>
+<td>Parts</td>
+<td>inv_* + ITAM overlap</td>
+<td>Parts only in FSM</td>
+</tr>
+<tr>
+<td>Maps</td>
+<td>Geocoding enabled</td>
+<td>Address text only</td>
+</tr>
+</tbody>
+</table>
+<h3 id="143-plugins">14.3 Plugins</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>com.snc.field_service_management, scheduling — Store + Guided Setup <strong>FSM</strong></p>
+<h3 id="144-roles">14.4 Roles</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>sn_fsm_dispatcher, technician, inventory_admin, territory managers.</p>
+<h3 id="145-common-developments">14.5 Common developments</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>Work order task templates, agent maps, parts consumption BRs, asset-linked WOs, SLA for on-site arrival, integration to CSM cases.</p>
+<h3 id="146-best-practices">14.6 Best practices</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>Define territories/skills early; pilot one region; offline mobile test before rollout.</p>
+<h3 id="147-go-live">14.7 Go-live</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<ul>
+<li>[ ] Dispatcher workspace UAT</li>
+<li>[ ] Mobile sync tested</li>
+<li>[ ] Parts reorder thresholds set</li>
+</ul>
+<hr />
+<h2 id="15-zero-to-hero-end-to-end-implementation-scratch-go-live">15) Zero-to-Hero End-to-End Implementation (Scratch → Go-Live)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<blockquote>
+<p>Framework: MODULE_ZERO_TO_HERO_CONSULTING.md</p>
+</blockquote>
+<p>من <strong>Territories/Skills</strong> حتى <strong>Dispatcher + Mobile + Work Orders</strong>.</p>
+<h3 id="151-business-goals">15.1 Business goals</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>العربي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First-time fix</td>
+<td>إصلاح من أول زيارة</td>
+</tr>
+<tr>
+<td>Schedule optimization</td>
+<td>جدولة الفنيين</td>
+</tr>
+<tr>
+<td>Parts availability</td>
+<td>قطع الغيار في الوقت</td>
+</tr>
+<tr>
+<td>CSM link</td>
+<td>Case → WO</td>
+</tr>
+</tbody>
+</table>
+<h3 id="152-phase-0-discover">15.2 Phase 0 — Discover</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>Territories, skills, parts stockrooms, mobile offline needs.</p>
+<h3 id="153-phase-1-activate">15.3 Phase 1 — Activate</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>FSM plugin, scheduling, mobile app — Guided Setup FSM.</p>
+<h3 id="154-phase-2-foundation-week-24">15.4 Phase 2 — Foundation (Week 2–4)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>Technicians, dispatchers, territories, skills, work order types.</p>
+<h3 id="155-phase-3-dispatch-week-46">15.5 Phase 3 — Dispatch (Week 4–6)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>Dispatcher workspace, scheduling rules, maps.</p>
+<h3 id="156-phase-4-mobile-parts-week-68">15.6 Phase 4 — Mobile &amp; parts (Week 6–8)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>Mobile sync test, inventory, consumption on WO.</p>
+<h3 id="157-phase-5-uat-go-live">15.7 Phase 5 — UAT &amp; go-live</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>End-to-end WO: create→assign→complete→parts deducted.</p>
+<h3 id="158-phase-7-operate">15.8 Phase 7 — Operate</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>Utilization, travel time, parts stockouts.</p>
+<h3 id="159-master-checklist">15.9 Master checklist</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<ul>
+<li>[ ] Mobile tested · [ ] Dispatcher trained · [ ] Parts linked · [ ] Go-live</li>
+</ul>
+<hr />
+<h2 id="16-full-e2e-practice-pages-requirements-options-ar-en">16) Full E2E Practice · Pages · Requirements · Options (AR + EN)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<blockquote>
+<p>Field technicians · Dispatcher workspace · Mobile offline sync.</p>
+</blockquote>
+<hr />
+<h3 id="161-business-goals">16.1 Business goals</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Goal (EN)</th>
+<th>الهدف (AR)</th>
+<th>KPI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First-time fix</td>
+<td>إصلاح من أول زيارة</td>
+<td>FTFR</td>
+</tr>
+<tr>
+<td>Optimized dispatch</td>
+<td>توزيع أمثل</td>
+<td>Travel time</td>
+</tr>
+<tr>
+<td>Parts on van/stockroom</td>
+<td>قطع غيار</td>
+<td>Stockout rate</td>
+</tr>
+<tr>
+<td>Customer appointment</td>
+<td>موعد العميل</td>
+<td>On-time arrival</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why buy FSM:</strong> English: Desk agents cannot fix HVAC at customer site — need WO, schedule, mobile, parts. — FSM يربط <strong>قضية/طلب → أمر عمل → فني → قطع → إغلاق</strong> مع خريطة وجوال.</p>
+<hr />
+<h3 id="162-requirements">16.2 Requirements</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>EN</th>
+<th>AR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FS-R01</td>
+<td>Work Order types + tasks</td>
+<td>أنواع WO</td>
+</tr>
+<tr>
+<td>FS-R02</td>
+<td>Dispatcher workspace</td>
+<td>موزّع</td>
+</tr>
+<tr>
+<td>FS-R03</td>
+<td>Scheduling / territories</td>
+<td>جدولة ومناطق</td>
+</tr>
+<tr>
+<td>FS-R04</td>
+<td>Mobile Agent app sync</td>
+<td>جوال</td>
+</tr>
+<tr>
+<td>FS-R05</td>
+<td>Parts/inventory consumption</td>
+<td>قطع</td>
+</tr>
+<tr>
+<td>FS-R06</td>
+<td>(Optional) CSM case origin</td>
+<td>من CSM</td>
+</tr>
+<tr>
+<td>FS-R07</td>
+<td>Customer notifications</td>
+<td>إشعار عميل</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="163-consultation-cycle">16.3 Consultation cycle</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>EN</th>
+<th>AR</th>
+<th>Deliverable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Field workforce size, regions</td>
+<td>الفنيين</td>
+<td>Territory map</td>
+</tr>
+<tr>
+<td>1</td>
+<td>As-is dispatch (phone/maps)</td>
+<td>الوضع الحالي</td>
+<td>Gap</td>
+</tr>
+<tr>
+<td>2</td>
+<td>WO lifecycle</td>
+<td>دورة WO</td>
+<td>Process</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Parts model</td>
+<td>قطع</td>
+<td>Stockroom/van</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Mobile pilot users</td>
+<td>جوال</td>
+<td>Device list</td>
+</tr>
+<tr>
+<td>5</td>
+<td>UAT E2E WO</td>
+<td>UAT</td>
+<td>Sign-off</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="164-options-a-b-c">16.4 Options (A / B / C)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>| Area | A | B | C |<br />
+|&mdash;|&mdash;|&mdash;|<br />
+| Intake | CSM Case → WO | Catalog WO | Manual |<br />
+| Schedule | Dynamic scheduling | Manual dispatch | External |<br />
+| Mobile | FSM Mobile Agent | Browser | Paper |<br />
+| Parts | Inventory Management | Simple task parts | No inventory |<br />
+| Maps | Built-in maps | External GPS | None |</p>
+<hr />
+<h3 id="165-all-pages-navigate">16.5 All pages (Navigate)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Field Service Administration</td>
+<td>All &gt; Field Service &gt; Administration · <a href="{BASE}/sys_user_skill_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Work Orders</td>
+<td>All &gt; Field Service &gt; Work Orders · <a href="{BASE}/wm_order_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Work Order Tasks</td>
+<td>All &gt; Field Service &gt; Tasks · <a href="{BASE}/wm_order_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Dispatch Queue</td>
+<td>Dispatcher Workspace /now/fsm/dispatcher</td>
+</tr>
+<tr>
+<td>Territories</td>
+<td>All &gt; Field Service &gt; Territories · <a href="{BASE}/wm_order_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Scheduling</td>
+<td>All &gt; Field Service &gt; Scheduling · <a href="{BASE}/cmn_schedule_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Agents (field)</td>
+<td>All &gt; Field Service &gt; Agents · <a href="{BASE}/sys_user_list.do?sysparm_query=roles%3Dwm_agent">Open direct</a></td>
+</tr>
+<tr>
+<td>Parts / Stock</td>
+<td>All &gt; Inventory &gt; Stockrooms · <a href="{BASE}/alm_stockroom_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Mobile layouts</td>
+<td>All &gt; Mobile &gt; Layout · <a href="{BASE}/sys_sg_screen_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Agent map view</td>
+<td>Dispatcher map tab</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="166-full-pdi-lab-15-steps">16.6 Full PDI lab (15 steps)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>EN</th>
+<th>AR</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Activate FSM + Guided Setup</td>
+<td>تفعيل</td>
+<td>Apps on</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Create territory + assign agents</td>
+<td>منطقة</td>
+<td>Territory map</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Create WO type Break/Fix</td>
+<td>نوع</td>
+<td>Type saved</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Create WO from case or manual</td>
+<td>WO</td>
+<td>Record open</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Open Dispatcher workspace</td>
+<td>موزّع</td>
+<td>Queue visible</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Assign WO to agent (drag schedule)</td>
+<td>إسناد</td>
+<td>Agent scheduled</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Agent mobile — accept/start/complete</td>
+<td>جوال</td>
+<td>States updated</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Add part to WO — consume from stock</td>
+<td>قطعة</td>
+<td>Qty reduced</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Capture customer signature (if enabled)</td>
+<td>توقيع</td>
+<td>Attached</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Close WO — verify case closed (if linked)</td>
+<td>إغلاق</td>
+<td>End state</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Report: utilization by agent</td>
+<td>تقرير</td>
+<td>Dashboard</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Failed sync test (offline queue)</td>
+<td>offline</td>
+<td>Sync on reconnect</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Options A/B/C</td>
+<td>خيارات</td>
+<td>Doc</td>
+</tr>
+<tr>
+<td>14</td>
+<td>UAT FS-R01–07</td>
+<td>UAT</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Update Set FSM Lab 16</td>
+<td>Export</td>
+<td>Done</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="167-sign-off">16.7 Sign-off</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<ul>
+<li>[ ] Mobile devices enrolled · [ ] Dispatcher trained on map · [ ] Parts master aligned · [ ] CSM handoff tested (if applicable)</li>
+</ul>
+<hr />
+<h2 id="17-power-user-playbook-fsm">§17 — Power User Playbook (FSM)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<h3 id="171-personas">17.1 Personas</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Primary actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer</td>
+<td>Book appointment via portal, track ETA, leave rating</td>
+</tr>
+<tr>
+<td>Dispatcher</td>
+<td>Optimize daily plan, reassign, handle emergencies via Dispatch Workspace</td>
+</tr>
+<tr>
+<td>Field Technician</td>
+<td>Mobile WO execution, parts, signature, photos</td>
+</tr>
+<tr>
+<td>Service Manager</td>
+<td>Capacity planning, performance reviews, customer escalations</td>
+</tr>
+<tr>
+<td>Inventory Manager</td>
+<td>Truck stock, warehouse, replenishment</td>
+</tr>
+<tr>
+<td>Subcontractor</td>
+<td>Limited portal access for assigned WOs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="172-day-in-life-dispatcher">17.2 Day-in-Life — Dispatcher</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<ol>
+<li>Open Dispatch Workspace /now/fsm/dispatcher.</li>
+<li>Map view shows technicians + WOs as pins.</li>
+<li>Drag a WO from queue to technician → system validates skill+territory+capacity.</li>
+<li>Auto-optimize route via &ldquo;Optimize Day&rdquo; action.</li>
+<li>Emergency: pull a tech off current job, escalate flag.</li>
+</ol>
+<h3 id="173-day-in-life-field-technician-mobile">17.3 Day-in-Life — Field Technician (Mobile)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<ol>
+<li>Open ServiceNow Now Mobile → My Work Orders.</li>
+<li>See ETA, customer info, parts required.</li>
+<li>&ldquo;Start travel&rdquo; → geofence detects arrival → &ldquo;Start work&rdquo;.</li>
+<li>Perform task; consume parts from truck stock.</li>
+<li>Take photos; capture customer signature.</li>
+<li>Complete → invoice/follow-up triggered.</li>
+</ol>
+<h3 id="174-top-20-fsm-scripts-full-code">17.4 Top 20 FSM Scripts (full code)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p><strong>1. Auto-assign WO by skill + territory + availability</strong></p>
+<pre><code class="language-javascript">var FSMSmartDispatch = Class.create();
+FSMSmartDispatch.prototype = {
+ initialize: function {},
+</code></pre>
+<p>assign: function (woSysId) {<br />
+ var wo = new GlideRecord(&lsquo;wm_order&rsquo;);<br />
+ if (!wo.get(woSysId)) return null;<br />
+ var requiredSkill = wo.getValue(&lsquo;skills&rsquo;);<br />
+ var territory = wo.getValue(&lsquo;territory&rsquo;);<br />
+ var due = wo.getValue(&lsquo;requested_due_by&rsquo;);</p>
+<p>// candidates with skill + territory<br />
+ var cand = new GlideRecord(&lsquo;sys_user&rsquo;);<br />
+ cand.addQuery(&lsquo;active&rsquo;, true);<br />
+ cand.addQuery(&lsquo;skills&rsquo;, &lsquo;CONTAINS&rsquo;, requiredSkill);<br />
+ cand.addQuery(&lsquo;u_territories&rsquo;, &lsquo;CONTAINS&rsquo;, territory);<br />
+ cand.query();</p>
+<p>var best = null;<br />
+ var bestScore = -Infinity;<br />
+ while (cand.next()) {<br />
+ var score = this._score(cand, wo);<br />
+ if (score &gt; bestScore) {<br />
+ bestScore = score;<br />
+ best = cand.getUniqueValue();<br />
+ }<br />
+ }<br />
+ if (best) {<br />
+ wo.setValue(&lsquo;assigned_to&rsquo;, best);<br />
+ wo.update();<br />
+ }<br />
+ return best;<br />
+ },</p>
+<p>_score: function (tech, wo) {<br />
+ // Lower load + nearby + matching language<br />
+ var loadAgg = new GlideAggregate(&lsquo;wm_order&rsquo;);<br />
+ loadAgg.addQuery(&lsquo;assigned_to&rsquo;, tech.getUniqueValue());<br />
+ loadAgg.addQuery(&lsquo;state&rsquo;, &lsquo;IN&rsquo;, &lsquo;pending,in_progress&rsquo;);<br />
+ loadAgg.addAggregate(&lsquo;COUNT&rsquo;);<br />
+ loadAgg.query();<br />
+ var load = loadAgg.next() ? parseInt(loadAgg.getAggregate(&lsquo;COUNT&rsquo;), 10) : 0;<br />
+ return -load * 10; // negative = lower is better<br />
+ },</p>
+<p>type: &lsquo;FSMSmartDispatch&rsquo;<br />
+};</p>
+<p><strong>2. Route optimization (simple greedy)</strong></p>
+<pre><code class="language-javascript">function optimizeDay(techSysId, date) {
+ var gr = new GlideRecord('wm_order');
+ gr.addQuery('assigned_to', techSysId);
+ gr.addQuery('scheduled_start', date);
+ gr.orderBy('priority');
+ gr.query();
+</code></pre>
+<p>var wos = [];<br />
+ while (gr.next()) {<br />
+ wos.push({<br />
+ sysId: gr.getUniqueValue(),<br />
+ lat: parseFloat(gr.getValue(&lsquo;latitude&rsquo;)),<br />
+ lng: parseFloat(gr.getValue(&lsquo;longitude&rsquo;)),<br />
+ duration: parseInt(gr.getValue(&lsquo;estimated_duration&rsquo;), 10),<br />
+ priority: parseInt(gr.getValue(&lsquo;priority&rsquo;), 10)<br />
+ });<br />
+ }</p>
+<p>// Nearest-neighbor heuristic from start point<br />
+ var start = { lat: parseFloat(gs.getProperty(&lsquo;x_fsm.depot_lat&rsquo;)),<br />
+ lng: parseFloat(gs.getProperty(&lsquo;x_fsm.depot_lng&rsquo;)) };<br />
+ var ordered = [];<br />
+ var cur = start;<br />
+ while (wos.length &gt; 0) {<br />
+ wos.sort(function (a, b) {<br />
+ return _dist(cur, a) - _dist(cur, b);<br />
+ });<br />
+ var next = wos.shift();<br />
+ ordered.push(next);<br />
+ cur = next;<br />
+ }</p>
+<p>// Persist order<br />
+ ordered.forEach(function (w, idx) {<br />
+ var u = new GlideRecord(&lsquo;wm_order&rsquo;);<br />
+ if (u.get(w.sysId)) {<br />
+ u.setValue(&lsquo;dispatch_order&rsquo;, idx + 1);<br />
+ u.update();<br />
+ }<br />
+ });</p>
+<p>function _dist(a, b) {<br />
+ var dx = a.lat - b.lat, dy = a.lng - b.lng;<br />
+ return Math.sqrt(dx * dx + dy * dy);<br />
+ }<br />
+}</p>
+<p><strong>3. Parts reservation from truck stock</strong></p>
+<pre><code class="language-javascript">function reserveParts(woSysId, partRequests) {
+ var wo = new GlideRecord('wm_order');
+ if (!wo.get(woSysId)) return { success: false, error: 'wo_not_found' };
+ var techId = wo.getValue('assigned_to');
+ var truck = _getTruckFor(techId);
+ var reserved = [];
+</code></pre>
+<p>for (var i = 0; i &lt; partRequests.length; i++) {<br />
+ var p = partRequests[i];<br />
+ var stock = new GlideRecord(&lsquo;alm_consumable&rsquo;);<br />
+ stock.addQuery(&lsquo;stockroom&rsquo;, truck);<br />
+ stock.addQuery(&lsquo;model&rsquo;, p.model);<br />
+ stock.setLimit(1);<br />
+ stock.query();<br />
+ if (!stock.next()) {<br />
+ return { success: false, error: &lsquo;no_stock&rsquo;, model: p.model };<br />
+ }<br />
+ var avail = parseInt(stock.getValue(&lsquo;quantity&rsquo;), 10) -<br />
+ parseInt(stock.getValue(&lsquo;reserved&rsquo;), 10);<br />
+ if (avail &lt; p.qty) {<br />
+ return { success: false, error: &lsquo;insufficient&rsquo;, model: p.model,<br />
+ available: avail, requested: p.qty };<br />
+ }<br />
+ stock.setValue(&lsquo;reserved&rsquo;,<br />
+ parseInt(stock.getValue(&lsquo;reserved&rsquo;), 10) + p.qty);<br />
+ stock.update();<br />
+ reserved.push({ stock: stock.getUniqueValue(), qty: p.qty });<br />
+ }</p>
+<p>return { success: true, reserved: reserved };<br />
+}</p>
+<p><strong>4. ETA notification SMS to customer</strong></p>
+<pre><code class="language-javascript">// Triggered when tech starts travel
+(function (current, previous) {
+ if (current.state.changes() &amp;&amp; current.getValue('state') === 'en_route') {
+ var customer = new GlideRecord('customer_contact');
+ if (!customer.get(current.getValue('contact'))) return;
+ var phone = customer.getValue('mobile_phone');
+ if (!phone) return;
+</code></pre>
+<p>var eta = parseInt(current.getValue(&lsquo;eta_minutes&rsquo;), 10) || 30;<br />
+ var msg = &lsquo;Your technician &rsquo; + current.getDisplayValue(&lsquo;assigned_to&rsquo;) +<br />
+ &rsquo; is on the way. ETA ~&rsquo; + eta + &rsquo; minutes. Track: &rsquo; +<br />
+ gs.getProperty(&lsquo;glide.servlet.uri&rsquo;) +<br />
+ &lsquo;sp?id=track&amp;wo=&rsquo; + current.getValue(&lsquo;number&rsquo;);</p>
+<p>new HRLXProSMSUtils().sendSMS(phone, msg); // reuse from doc 06<br />
+ }<br />
+})(current, previous);</p>
+<p><strong>5. Geofence arrival detection</strong></p>
+<pre><code class="language-javascript">// Scripted REST endpoint /api/x_fsm/geofence
+(function process(request, response) {
+ var data = request.body.data;
+ var techId = data.tech_id;
+ var lat = parseFloat(data.lat);
+ var lng = parseFloat(data.lng);
+</code></pre>
+<p>// Find active WO for this tech<br />
+ var wo = new GlideRecord(&lsquo;wm_order&rsquo;);<br />
+ wo.addQuery(&lsquo;assigned_to&rsquo;, techId);<br />
+ wo.addQuery(&lsquo;state&rsquo;, &lsquo;en_route&rsquo;);<br />
+ wo.setLimit(1);<br />
+ wo.query();<br />
+ if (!wo.next()) {<br />
+ response.setStatus(404); return { ok: false };<br />
+ }</p>
+<p>var siteLat = parseFloat(wo.getValue(&lsquo;latitude&rsquo;));<br />
+ var siteLng = parseFloat(wo.getValue(&lsquo;longitude&rsquo;));<br />
+ var distM = _haversine(lat, lng, siteLat, siteLng);</p>
+<p>if (distM &lt; 100) {<br />
+ wo.setValue(&lsquo;state&rsquo;, &lsquo;on_site&rsquo;);<br />
+ wo.setValue(&lsquo;arrived_at&rsquo;, new GlideDateTime());<br />
+ wo.update();<br />
+ gs.eventQueue(&lsquo;x_fsm.wo.arrived&rsquo;, wo, techId);<br />
+ }<br />
+ return { ok: true, distance_m: distM };</p>
+<p>function _haversine(lat1, lon1, lat2, lon2) {<br />
+ var R = 6371000;<br />
+ var dLat = (lat2 - lat1) * Math.PI / 180;<br />
+ var dLon = (lon2 - lon1) * Math.PI / 180;<br />
+ var a = Math.sin(dLat/2) * Math.sin(dLat/2) +<br />
+ Math.cos(lat1 * Math.PI/180) * Math.cos(lat2 * Math.PI/180) *<br />
+ Math.sin(dLon/2) * Math.sin(dLon/2);<br />
+ return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));<br />
+ }<br />
+})(request, response);</p>
+<p><strong>6. Photo upload to WO</strong> — use sys_attachment API with category tags.</p>
+<p><strong>7. Multi-resource scheduling (2 techs)</strong> — set wo.assigned_to_secondary field; map view shows both pins.</p>
+<p><strong>8. Recurring WO generator (preventive maintenance)</strong></p>
+<pre><code class="language-javascript">// Scheduled Job — daily 03:00
+(function {
+ var pm = new GlideRecord('wm_pm_contract');
+ pm.addActiveQuery();
+ pm.query();
+ while (pm.next()) {
+ var nextDue = _nextDue(pm);
+ if (nextDue &amp;&amp; _shouldCreate(nextDue)) {
+ var wo = new GlideRecord('wm_order');
+ wo.initialize();
+ wo.setValue('pm_contract', pm.getUniqueValue());
+ wo.setValue('asset', pm.getValue('asset'));
+ wo.setValue('short_description', 'PM: ' + pm.getValue('name'));
+ wo.setValue('scheduled_start', nextDue);
+ wo.setValue('type', 'preventive');
+ wo.insert();
+ }
+ }
+})();
+</code></pre>
+<p><strong>9. Asset health → predictive maintenance</strong> — IoT signal → triggers WO when threshold breached.</p>
+<p><strong>10. Tech timesheet auto-populate</strong> — sum wo.travel_time + work_time per day.</p>
+<p><strong>11-20. Quick recipes</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11</td>
+<td>Truck stock replenishment trigger when below par</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Customer signature capture (canvas → attachment)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Travel time calculator via Google Maps Distance Matrix</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Emergency reassignment workflow with new ETA SMS</td>
+</tr>
+<tr>
+<td>15</td>
+<td>SLA breach predictor via ML model</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Skill gap report (skills needed vs available)</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Bulk-reschedule due to weather (severe weather API)</td>
+</tr>
+<tr>
+<td>18</td>
+<td>WO → Invoice integration (NetSuite/QuickBooks)</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Technician scorecard (FTF rate, CSAT, on-time %)</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Schedule density heatmap (cooler = available)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="175-mobile-app-configuration">17.5 Mobile App configuration</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Setup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Offline mode</td>
+<td>enable sync queue, max 7-day cache</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td><canvas> widget + base64 → attachment</td>
+</tr>
+<tr>
+<td>Photo</td>
+<td>camera plugin, compress + upload</td>
+</tr>
+<tr>
+<td>Barcode</td>
+<td>QR code scan for asset lookup</td>
+</tr>
+<tr>
+<td>Push notifications</td>
+<td>FCM/APNS via Now Mobile</td>
+</tr>
+<tr>
+<td>GPS</td>
+<td>foreground + background tracking opt-in</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="18-from-scratch-implementation-day-0-day-30">§18 — From-Scratch Implementation (Day 0 → Day 30)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Days</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Foundation</td>
+<td>0–6</td>
+<td>Territory, skills, resources</td>
+</tr>
+<tr>
+<td>Operations</td>
+<td>7–14</td>
+<td>WOs, Dispatch Workspace, mobile</td>
+</tr>
+<tr>
+<td>Customer + Inventory</td>
+<td>15–20</td>
+<td>Portal, parts, scheduling automations</td>
+</tr>
+<tr>
+<td>Analytics + AI</td>
+<td>21–25</td>
+<td>Dashboards, Now Assist</td>
+</tr>
+<tr>
+<td>Pilot + Rollout</td>
+<td>26–30</td>
+<td>UAT, training, go-live</td>
+</tr>
+</tbody>
+</table>
+<h3 id="181-day-by-day">18.1 Day-by-day</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p><strong>Day 0</strong> — Service area map, territory plan, skill matrix, technician headcount, current tool sunset plan, mobile devices inventory</p>
+<p><strong>Day 1</strong> — Activate plugins</p>
+<pre><code class="language-text">- com.snc.work_management
+- com.snc.dispatch_workspace
+- com.snc.field_service.mobile
+</code></pre>
+<p><strong>Day 2-3</strong> — Territories + Skills + Resources<br />
+- Territories defined geographically (zip codes / polygons)<br />
+- Skill taxonomy (HVAC, Electrical, Plumbing, IT, etc.)<br />
+- Technicians + Sub-contractors</p>
+<p><strong>Day 4</strong> — Asset model linking — WO must reference an asset (alm_asset or cmdb_ci).</p>
+<p><strong>Day 5</strong> — Inventory locations<br />
+- Warehouses (master stock)<br />
+- Trucks (per-tech mobile stock)<br />
+- Bin → Item → Quantity hierarchy</p>
+<p><strong>Day 6-7</strong> — WO types + states<br />
+- Types: Installation, Repair, Preventive Maintenance, Emergency, Inspection<br />
+- States: Pending → Scheduled → Dispatched → En route → On site → Complete → Closed</p>
+<p><strong>Day 8-9</strong> — Dispatch Workspace + Map<br />
+- Configure layers (technicians, WOs, traffic)<br />
+- Skill filters<br />
+- Drag-drop assignment</p>
+<p><strong>Day 10</strong> — Customer Portal booking widget<br />
+- Select service type<br />
+- Pick available slot<br />
+- Confirm appointment</p>
+<p><strong>Day 11</strong> — Mobile app branding + offline config<br />
+- Logo, theme<br />
+- Sync schedule (every 5 min when online)<br />
+- Conflict resolution rules</p>
+<p><strong>Day 12</strong> — Scheduling automation rules<br />
+- Auto-assign by skill+territory<br />
+- Auto-optimize daily route at 06:00</p>
+<p><strong>Day 13</strong> — Skill-based routing engine — links to AWA from CSM module.</p>
+<p><strong>Day 14</strong> — Parts ordering integration (NetSuite or SAP)</p>
+<p><strong>Day 15</strong> — GPS + geofencing<br />
+- Tech app sends location every 60s when WO active<br />
+- Geofence triggers state transition</p>
+<p><strong>Day 16-17</strong> — Preventive Maintenance schedules<br />
+- PM contracts per asset<br />
+- Frequency (calendar or usage-based)<br />
+- Auto-WO generation (script #8 above)</p>
+<p><strong>Day 18</strong> — SLA on WO<br />
+- Response SLA: time-to-dispatch<br />
+- Resolution SLA: time-to-complete</p>
+<p><strong>Day 19</strong> — Subcontractor management<br />
+- Limited portal access<br />
+- Mark WOs as outsourced<br />
+- Cost tracking</p>
+<p><strong>Day 20</strong> — Customer notifications (SMS, email, push)<br />
+- Appointment booked confirmation<br />
+- 1-day reminder<br />
+- Tech en route ETA<br />
+- Completion + survey</p>
+<p><strong>Day 21-22</strong> — Dashboards<br />
+- Utilization (% billable hours)<br />
+- First-Time-Fix-Rate<br />
+- CSAT<br />
+- Avg travel time<br />
+- Parts cost per WO</p>
+<p><strong>Day 23</strong> — Salesforce / SAP / NetSuite integration</p>
+<p><strong>Day 24</strong> — Now Assist for FSM<br />
+- Suggest similar WOs<br />
+- Recommend parts<br />
+- Predict job duration</p>
+<p><strong>Day 25</strong> — ATF — 10 scenarios</p>
+<p><strong>Day 26</strong> — Mobile pilot with 10 techs</p>
+<p><strong>Day 27</strong> — Training<br />
+- Dispatcher (1 day)<br />
+- Field technicians (½ day in field)<br />
+- Customer support (booking portal)</p>
+<p><strong>Day 28</strong> — UAT — full territory cycle</p>
+<p><strong>Day 29</strong> — Pilot go-live in 1 territory</p>
+<p><strong>Day 30</strong> — Full rollout + Hypercare</p>
+<h3 id="182-kpis-month-1">18.2 KPIs Month 1</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First-Time-Fix-Rate</td>
+<td>≥ 80%</td>
+</tr>
+<tr>
+<td>Avg travel time per WO</td>
+<td>≤ 25 min</td>
+</tr>
+<tr>
+<td>Utilization (productive hours)</td>
+<td>≥ 70%</td>
+</tr>
+<tr>
+<td>Customer CSAT</td>
+<td>≥ 4.5 / 5</td>
+</tr>
+<tr>
+<td>On-time arrival %</td>
+<td>≥ 90%</td>
+</tr>
+<tr>
+<td>Mobile app crash rate</td>
+<td>&lt; 0.5%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="19-cis-fsm-exam-z-to-hero-feature-labs">§19 — CIS-FSM Exam &amp; Z-to-Hero Feature Labs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<h3 id="191-exam-bank">19.1 Exam bank</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p><strong>Primary</strong>: C:\SVCProject\EXAM_BANK_FSM_360.md (~120 Q, 95 KB).</p>
+<h3 id="192-z-to-hero-feature-labs-12-labs">19.2 Z-to-Hero Feature Labs (12 labs)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Lab</th>
+<th>Feature</th>
+<th>Bank topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>Territory definition (ZIP-based)</td>
+<td>Territories</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>Skill taxonomy + Technician skill matrix</td>
+<td>Skills</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>Stockroom (warehouse + truck) + bin location</td>
+<td>Inventory</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>Work Order types (Install, Repair, PM, Emergency)</td>
+<td>WO types</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>Smart Dispatch script (skill+territory+capacity)</td>
+<td>Dispatching</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>Dispatcher Workspace /now/fsm/dispatcher map</td>
+<td>Dispatcher</td>
+</tr>
+<tr>
+<td>L7</td>
+<td>Mobile WO execution on Now Mobile (start/complete)</td>
+<td>Mobile</td>
+</tr>
+<tr>
+<td>L8</td>
+<td>Geofence arrival detection</td>
+<td>Geo</td>
+</tr>
+<tr>
+<td>L9</td>
+<td>Parts reservation from truck stock</td>
+<td>Parts</td>
+</tr>
+<tr>
+<td>L10</td>
+<td>Customer signature capture + photo attach</td>
+<td>Mobile features</td>
+</tr>
+<tr>
+<td>L11</td>
+<td>Twilio SMS ETA notification</td>
+<td>Customer comms</td>
+</tr>
+<tr>
+<td>L12</td>
+<td>Preventive Maintenance recurring WO generator</td>
+<td>PM</td>
+</tr>
+</tbody>
+</table>
+<h3 id="193-top-15-fsm-must-know-concepts">19.3 Top 15 FSM must-know concepts</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<ol>
+<li>Work Order wm_order table + state model</li>
+<li>Territory ↔ Group ↔ Technician mapping</li>
+<li>Skill ↔ Technician + WO required skills</li>
+<li>Dispatcher Workspace map view (drag-drop)</li>
+<li>Mobile Now app offline capability</li>
+<li>Stockroom hierarchy: warehouse → truck → bin</li>
+<li>Parts: model vs consumable vs spare</li>
+<li>PM (Preventive Maintenance) Contracts → auto-WO</li>
+<li>Customer booking via portal slot picker</li>
+<li>Skill-based + territory-based + capacity-based routing</li>
+<li>ETA calculation (Maps API)</li>
+<li>Travel time vs work time vs idle</li>
+<li>First-Time-Fix-Rate (FFR) metric</li>
+<li>Subcontractor management</li>
+<li>Asset → WO link (alm_asset or cmdb_ci)</li>
+</ol>
+<h3 id="194-5-sample-cis-fsm-questions">19.4 5 sample CIS-FSM questions</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<blockquote>
+<p><strong>Q1.</strong> Which table stores Work Orders?<br />
+A. task<br />
+B. wm_order<br />
+C. sn_customerservice_case<br />
+D. incident</p>
+<p><strong>Answer</strong>: B (extends task)</p>
+<p><strong>Q2.</strong> Dispatcher Workspace allows reassignment by:<br />
+A. Edit field<br />
+B. Drag-drop pin on map + auto-validation of skill/territory<br />
+C. Background script<br />
+D. Email</p>
+<p><strong>Answer</strong>: B</p>
+<p><strong>Q3.</strong> When does geofence trigger state change to &ldquo;On Site&rdquo;?<br />
+A. When tech taps &ldquo;Arrive&rdquo; manually<br />
+B. When GPS coordinates of mobile device &lt; threshold from WO location<br />
+C. When dispatcher confirms<br />
+D. When customer scans QR</p>
+<p><strong>Answer</strong>: B</p>
+<p><strong>Q4.</strong> Preventive Maintenance generates WOs via:<br />
+A. Manual creation<br />
+B. Scheduled Job that scans PM contracts daily and creates WOs by frequency<br />
+C. Email trigger<br />
+D. Customer request</p>
+<p><strong>Answer</strong>: B</p>
+<p><strong>Q5.</strong> Truck stock is modeled as:<br />
+A. alm_consumable with stockroom = truck stockroom<br />
+B. Custom table<br />
+C. cmdb_ci_truck<br />
+D. wm_inventory</p>
+<p><strong>Answer</strong>: A</p>
+</blockquote>
+<p>Use EXAM_BANK_FSM_360.md for remaining 115+ questions.</p>
+<h3 id="195-what-hero-looks-like-for-fsm">19.5 What &ldquo;Hero&rdquo; looks like for FSM</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p>Implements full field operation: territories + skills, smart dispatch, mobile + offline + signature, parts + PM, geofence + ETA SMS, customer portal booking, sub-contractor mgmt. Passes CIS-FSM with ≥85%.</p>
+<hr />
+<h2 id="hands-on-labs">Hands-on Labs — مختبرات عملية</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<blockquote>
+<p>Step-by-step labs for PDI / Australia instance. Replace <code>{BASE}</code> with your instance URL.<br />
+مختبرات خطوة بخطوة — استبدل <code>{BASE}</code> برابط نسختك.</p>
+</blockquote>
+<ol>
+<li>
+<p><strong>Lab 1</strong> — <strong>Create Work Order / إنشاء أمر عمل</strong> — Open <a href="{BASE}/wm_order.do?sys_id=-1">{BASE}/wm_order.do?sys_id=-1</a>; set location, priority, short description; submit.</p>
+</li>
+<li>
+<p><strong>Lab 2</strong> — <strong>Add tasks &amp; parts / مهام وقطع</strong> — Add Work Order Tasks; attach required parts from stockroom.</p>
+</li>
+<li>
+<p><strong>Lab 3</strong> — <strong>Dispatcher scheduling / جدولة الموزّع</strong> — Open <a href="{BASE}/now/fsm-dispatch/home">{BASE}/now/fsm-dispatch/home</a>; drag WO to technician calendar.</p>
+</li>
+<li>
+<p><strong>Lab 4</strong> — <strong>Qualification match / مطابقة المؤهلات</strong> — Create qualification; assign to agent; verify only qualified techs appear.</p>
+</li>
+<li>
+<p><strong>Lab 5</strong> — <strong>Mobile execution / تنفيذ جوال</strong> — Complete task on Now Mobile / Agent app; capture signature and parts consumed.</p>
+</li>
+<li>
+<p><strong>Lab 6</strong> — <strong>Inventory consumption / استهلاك مخزون</strong> — Verify stockroom quantity decreases after part used.</p>
+</li>
+<li>
+<p><strong>Lab 7</strong> — <strong>CSM integration / تكامل CSM</strong> — Create WO from Case; close Case when WO completes.</p>
+</li>
+</ol>
+<hr />
+<h2 id="best-practices">Best Practices — أفضل الممارسات</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Best practice (EN)</th>
+<th>أفضل ممارسة (AR)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scheduling</td>
+<td>Use Dispatch Groups + qualifications — not manual email</td>
+<td>Dispatch Groups + مؤهلات — لا بريد يدوي</td>
+</tr>
+<tr>
+<td>Parts</td>
+<td>Pre-stage parts in stockroom before dispatch</td>
+<td>جهّز القطع في المستودع قبل الإرسال</td>
+</tr>
+<tr>
+<td>Mobile</td>
+<td>Train techs on offline-capable flows</td>
+<td>درّب الفنيين على العمل دون اتصال</td>
+</tr>
+<tr>
+<td>SLA</td>
+<td>Separate travel vs work SLA if needed</td>
+<td>SLA سفر vs عمل منفصل إن لزم</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="deployment-checklist">Deployment Checklist — قائمة النشر</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task (EN)</th>
+<th>المهمة (AR)</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Install FSM from Store</td>
+<td>تثبيت FSM</td>
+<td>Plugin active</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Locations &amp; territories</td>
+<td>المواقع والمناطق</td>
+<td>Geo coverage</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Dispatch groups &amp; qualifications</td>
+<td>مجموعات الإرسال</td>
+<td>Routing works</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Stockrooms &amp; parts catalog</td>
+<td>مستودعات وقطع</td>
+<td>Parts available</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Dispatcher workspace config</td>
+<td>إعداد الموزّع</td>
+<td>Schedule visible</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Mobile app profiles</td>
+<td>ملفات الجوال</td>
+<td>Tech completes WO</td>
+</tr>
+<tr>
+<td>7</td>
+<td>CSM/ITSM integration</td>
+<td>تكامل CSM/ITSM</td>
+<td>WO from case/incident</td>
+</tr>
+<tr>
+<td>8</td>
+<td>UAT field pilot</td>
+<td>UAT ميداني</td>
+<td>Sign-off</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="direct-urls-quick-reference">Direct URLs Quick Reference</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigation</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Work Orders</td>
+<td>All &gt; Field Service &gt; Work Orders</td>
+<td><a href="{BASE}/wm_order_list.do">{BASE}/wm_order_list.do</a></td>
+</tr>
+<tr>
+<td>Work Order Tasks</td>
+<td>All &gt; Field Service &gt; Tasks</td>
+<td><a href="{BASE}/wm_task_list.do">{BASE}/wm_task_list.do</a></td>
+</tr>
+<tr>
+<td>Dispatcher Workspace</td>
+<td>Now &gt; FSM Dispatch</td>
+<td><a href="{BASE}/now/fsm-dispatch/home">{BASE}/now/fsm-dispatch/home</a></td>
+</tr>
+<tr>
+<td>Agent Workspace</td>
+<td>Now &gt; FSM Agent</td>
+<td><a href="{BASE}/now/fsm-agent/home">{BASE}/now/fsm-agent/home</a></td>
+</tr>
+<tr>
+<td>Dispatch Groups</td>
+<td>All &gt; Field Service</td>
+<td><a href="{BASE}/dispatch_group_list.do">{BASE}/dispatch_group_list.do</a></td>
+</tr>
+<tr>
+<td>Qualifications</td>
+<td>All &gt; Field Service</td>
+<td><a href="{BASE}/wm_qualification_list.do">{BASE}/wm_qualification_list.do</a></td>
+</tr>
+<tr>
+<td>Stockrooms</td>
+<td>All &gt; Inventory</td>
+<td><a href="{BASE}/alm_stockroom_list.do">{BASE}/alm_stockroom_list.do</a></td>
+</tr>
+<tr>
+<td>Locations</td>
+<td>All &gt; System &gt; Locations</td>
+<td><a href="{BASE}/cmn_location_list.do">{BASE}/cmn_location_list.do</a></td>
+</tr>
+<tr>
+<td>Guided Setup</td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="20-deep-implementation-labs-scripts-deploy-runbook">§20 — Deep Implementation Labs, Scripts &amp; Deploy Runbook</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<blockquote>
+<p><strong>Appendix:</strong> Professional create → configure → deploy sequence for FSM on Australia instances.<br />
+<strong>Token:</strong> Replace <code>{BASE}</code> with <code>https://YOUR_INSTANCE.service-now.com</code>.<br />
+<strong>Related:</strong> <a href="implementation/FSM_IMPLEMENTATION_FROM_SCRATCH_TO_PRO.html">implementation/FSM_IMPLEMENTATION_FROM_SCRATCH_TO_PRO.md</a></p>
+</blockquote>
+<h3 id="201-three-phase-implementation-model">20.1 Three-Phase Implementation Model</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Days</th>
+<th>Goal</th>
+<th>Exit criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CREATE</strong></td>
+<td>0–3</td>
+<td>Install FSM plugins, dispatch groups, Update Set</td>
+<td>FSM menus + Guided Setup complete</td>
+</tr>
+<tr>
+<td><strong>CONFIGURE</strong></td>
+<td>4–16</td>
+<td>Territories, skills, WO types, inventory, mobile</td>
+<td>WO create→dispatch→complete in sub-prod</td>
+</tr>
+<tr>
+<td><strong>DEPLOY</strong></td>
+<td>17–30</td>
+<td>ATF, mobile pilot, transport, hypercare</td>
+<td>Prod field pilot sign-off</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="202-create-phase-install-foundation">20.2 CREATE Phase — Install &amp; Foundation</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<h4 id="step-c1-verify-instance-activate-fsm">Step C1 — Verify instance &amp; activate FSM</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Confirm build</td>
+<td>All &gt; <strong>System Diagnostics</strong> &gt; <strong>Stats</strong></td>
+<td><a href="{BASE}/stats.do">{BASE}/stats.do</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Open Plugins</td>
+<td>Filter Navigator: <strong>Plugins</strong></td>
+<td><a href="{BASE}/v_plugin_list.do">{BASE}/v_plugin_list.do</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Search FSM</td>
+<td>Filter: <code>nameCONTAINSwork_management</code></td>
+<td><a href="{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINSwork_management">{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINSwork_management</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Activate <strong>Field Service Management</strong></td>
+<td>Open → <strong>Activate/Upgrade</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Activate Dispatch Workspace</td>
+<td>Search <code>dispatch_workspace</code> → Activate</td>
+<td><a href="{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINSdispatch">{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINSdispatch</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Optional: Dynamic Scheduling</td>
+<td>Search <code>dynamic_scheduling</code> → Activate if licensed</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-c2-guided-setup-fsm">Step C2 — Guided Setup FSM</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Guided Setup</td>
+<td>All &gt; <strong>Guided Setup</strong></td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Select <strong>Field Service Management</strong></td>
+<td><strong>Get Started</strong></td>
+<td><a href="{BASE}/now/guided-setup/fsm">{BASE}/now/guided-setup/fsm</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Foundation</td>
+<td>Locations, Territories, Skills → <strong>Mark Complete</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Dispatch</td>
+<td>Enable Dispatcher Workspace</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Mobile</td>
+<td>Confirm Mobile Agent plugin active</td>
+<td><a href="{BASE}/now/mobile-app-builder">{BASE}/now/mobile-app-builder</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-c3-roles-groups-update-set">Step C3 — Roles, groups, Update Set</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Update Set</td>
+<td>All &gt; <strong>Local Update Sets</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/sys_update_set.do?sys_id=-1">{BASE}/sys_update_set.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Name <code>FSM_AU_Implement_2026</code></td>
+<td>State <strong>In progress</strong></td>
+<td><a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Dispatch group</td>
+<td>All &gt; <strong>Field Service</strong> &gt; <strong>Dispatch Groups</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/dispatch_group.do?sys_id=-1">{BASE}/dispatch_group.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Name <code>FSM Sydney Dispatch</code></td>
+<td>Add dispatchers</td>
+<td><a href="{BASE}/dispatch_group_list.do">{BASE}/dispatch_group_list.do</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Test users</td>
+<td>Create <code>fsm.dispatcher1</code>, <code>fsm.tech1</code></td>
+<td><a href="{BASE}/sys_user_list.do">{BASE}/sys_user_list.do</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Assign roles</td>
+<td><code>field_service_dispatcher</code>, <code>field_service_agent</code></td>
+<td><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameCONTAINSfield_service">{BASE}/sys_user_role_list.do?sysparm_query=nameCONTAINSfield_service</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="203-configure-phase-field-operations-build">20.3 CONFIGURE Phase — Field Operations Build</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<h4 id="step-f1-locations-territories-qualifications">Step F1 — Locations, territories, qualifications</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Location</td>
+<td>All &gt; <strong>System</strong> &gt; <strong>Locations</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/cmn_location.do?sys_id=-1">{BASE}/cmn_location.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Address: Sydney CBD lab site</td>
+<td>Lat/Long if geocoding enabled</td>
+<td><a href="{BASE}/cmn_location_list.do">{BASE}/cmn_location_list.do</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Territory</td>
+<td>All &gt; <strong>Field Service</strong> &gt; <strong>Administration</strong> &gt; <strong>Territories</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/wm_territory.do?sys_id=-1">{BASE}/wm_territory.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Name <code>LAB-Sydney Metro</code>, link location group</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Qualification</td>
+<td>All &gt; <strong>Field Service</strong> &gt; <strong>Qualifications</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/wm_qualification.do?sys_id=-1">{BASE}/wm_qualification.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Name <code>HVAC Level 2</code></td>
+<td>Assign to <code>fsm.tech1</code> on user Skills related list</td>
+<td><a href="{BASE}/sys_user_skill_list.do">{BASE}/sys_user_skill_list.do</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-f2-work-order-types-templates">Step F2 — Work Order types &amp; templates</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>WO list</td>
+<td>All &gt; <strong>Field Service</strong> &gt; <strong>Work Orders</strong></td>
+<td><a href="{BASE}/wm_order_list.do">{BASE}/wm_order_list.do</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Properties</td>
+<td>All &gt; <strong>Field Service</strong> &gt; <strong>Administration</strong> &gt; <strong>Properties</strong></td>
+<td><a href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHwm.">{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHwm.</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Create WO</td>
+<td><strong>New</strong></td>
+<td><a href="{BASE}/wm_order.do?sys_id=-1">{BASE}/wm_order.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Type <strong>Break/Fix</strong>, Priority 3, Location=Sydney CBD</td>
+<td><strong>Submit</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Add Task</td>
+<td>Related List <strong>Work Order Tasks</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/wm_task.do?sys_id=-1">{BASE}/wm_task.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Required skill <code>HVAC Level 2</code>, Estimated duration 90 min</td>
+<td><strong>Submit</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-f3-inventory-parts">Step F3 — Inventory &amp; parts</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Warehouse stockroom</td>
+<td>All &gt; <strong>Inventory</strong> &gt; <strong>Stockrooms</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/alm_stockroom.do?sys_id=-1">{BASE}/alm_stockroom.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Name <code>LAB-Sydney Warehouse</code>, Type=Warehouse</td>
+<td>—</td>
+<td><a href="{BASE}/alm_stockroom_list.do">{BASE}/alm_stockroom_list.do</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Truck stockroom</td>
+<td><strong>New</strong>: Name <code>LAB-Van-Tech1</code>, Assigned to <code>fsm.tech1</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Part model</td>
+<td>All &gt; <strong>Product Catalog</strong> &gt; <strong>Hardware</strong> &gt; <strong>Models</strong></td>
+<td><a href="{BASE}/cmdb_model_list.do">{BASE}/cmdb_model_list.do</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Add consumable qty 10 to truck stock</td>
+<td>Stockroom → Related <strong>Consumables</strong></td>
+<td><a href="{BASE}/alm_consumable_list.do">{BASE}/alm_consumable_list.do</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Link part requirement on WO Task</td>
+<td>Task form → <strong>Parts</strong> related list</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-f4-dispatcher-workspace-scheduling">Step F4 — Dispatcher Workspace &amp; scheduling</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Open Dispatcher</td>
+<td>Now Experience &gt; <strong>FSM Dispatcher</strong></td>
+<td><a href="{BASE}/now/fsm-dispatch/home">{BASE}/now/fsm-dispatch/home</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Map tab</td>
+<td>Confirm technician pin for <code>fsm.tech1</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Schedule board</td>
+<td>Drag unassigned WO task to tech calendar slot</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Validate skill match</td>
+<td>System warns if skill mismatch — confirm override or fix</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Agent workspace</td>
+<td>Now Experience &gt; <strong>FSM Agent</strong></td>
+<td><a href="{BASE}/now/fsm-agent/home">{BASE}/now/fsm-agent/home</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Schedules</td>
+<td>All &gt; <strong>Field Service</strong> &gt; <strong>Schedules</strong></td>
+<td><a href="{BASE}/cmn_schedule_list.do">{BASE}/cmn_schedule_list.do</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-f5-mobile-agent-configuration">Step F5 — Mobile Agent configuration</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Mobile App Builder</td>
+<td>All &gt; <strong>Now Mobile App Builder</strong></td>
+<td><a href="{BASE}/now/mobile-app-builder">{BASE}/now/mobile-app-builder</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>FSM layout</td>
+<td>All &gt; <strong>Mobile</strong> &gt; <strong>Layout</strong> (Service Graph)</td>
+<td><a href="{BASE}/sys_sg_screen_list.do">{BASE}/sys_sg_screen_list.do</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Enable offline sync</td>
+<td>Mobile properties → cache 7 days</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Signature widget</td>
+<td>Enable on Complete action</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Test login</td>
+<td>Now Mobile app → <code>fsm.tech1</code></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="204-deploy-phase-test-transport-go-live">20.4 DEPLOY Phase — Test, Transport, Go-Live</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<h4 id="step-d1-atf-mobile-pilot">Step D1 — ATF &amp; mobile pilot</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>ATF tests</td>
+<td>All &gt; <strong>Automated Test Framework</strong> &gt; <strong>Tests</strong></td>
+<td><a href="{BASE}/sys_atf_test_list.do">{BASE}/sys_atf_test_list.do</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Test: WO create + assign</td>
+<td>Server-side + workspace steps</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Test: Mobile complete (if device farm available)</td>
+<td>Mobile test framework</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Offline test</td>
+<td>Airplane mode → complete task → reconnect → sync</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-d2-update-set-transport">Step D2 — Update Set transport</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Complete <code>FSM_AU_Implement_2026</code></td>
+<td><a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Export / retrieve</td>
+<td><a href="{BASE}/sys_remote_update_set_list.do">{BASE}/sys_remote_update_set_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Preview + Commit</td>
+<td>Resolve <code>wm_*</code> collisions</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Post-deploy smoke</td>
+<td>Create WO <a href="{BASE}/wm_order.do?sys_id=-1">{BASE}/wm_order.do?sys_id=-1</a></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-d3-hypercare-first-72h">Step D3 — Hypercare (first 72h)</h4>
+<table>
+<thead>
+<tr>
+<th>Hour</th>
+<th>Check</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Dispatcher board loads</td>
+<td><a href="{BASE}/now/fsm-dispatch/home">{BASE}/now/fsm-dispatch/home</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Unassigned WO count</td>
+<td><a href="{BASE}/wm_order_list.do?sysparm_query=assigned_toISEMPTY">{BASE}/wm_order_list.do?sysparm_query=assigned_toISEMPTY</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Mobile sync errors</td>
+<td><a href="{BASE}/syslog_list.do?sysparm_query=messageLIKEmobile">{BASE}/syslog_list.do?sysparm_query=messageLIKEmobile</a></td>
+</tr>
+<tr>
+<td>24</td>
+<td>Parts stockouts</td>
+<td><a href="{BASE}/alm_consumable_list.do?sysparm_query=quantity%3C%3D0">{BASE}/alm_consumable_list.do?sysparm_query=quantity%3C%3D0</a></td>
+</tr>
+<tr>
+<td>72</td>
+<td>FTFR dashboard</td>
+<td><a href="{BASE}/pa_dashboards_list.do">{BASE}/pa_dashboards_list.do</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="205-full-component-url-catalog-fsm">20.5 Full Component URL Catalog (FSM)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Filter Navigator path</th>
+<th>Direct URL</th>
+<th>Create URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plugins</td>
+<td>All &gt; System Definition &gt; Plugins</td>
+<td><a href="{BASE}/v_plugin_list.do">{BASE}/v_plugin_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Update Sets</td>
+<td>All &gt; System Update Sets &gt; Local</td>
+<td><a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a></td>
+<td><a href="{BASE}/sys_update_set.do?sys_id=-1">{BASE}/sys_update_set.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Work Orders</td>
+<td>All &gt; Field Service &gt; Work Orders</td>
+<td><a href="{BASE}/wm_order_list.do">{BASE}/wm_order_list.do</a></td>
+<td><a href="{BASE}/wm_order.do?sys_id=-1">{BASE}/wm_order.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Work Order Tasks</td>
+<td>All &gt; Field Service &gt; Work Order Tasks</td>
+<td><a href="{BASE}/wm_task_list.do">{BASE}/wm_task_list.do</a></td>
+<td><a href="{BASE}/wm_task.do?sys_id=-1">{BASE}/wm_task.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Dispatcher Workspace</td>
+<td>Now Experience &gt; FSM Dispatcher</td>
+<td><a href="{BASE}/now/fsm-dispatch/home">{BASE}/now/fsm-dispatch/home</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>FSM Agent Workspace</td>
+<td>Now Experience &gt; FSM Agent</td>
+<td><a href="{BASE}/now/fsm-agent/home">{BASE}/now/fsm-agent/home</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Dispatch Groups</td>
+<td>All &gt; Field Service &gt; Dispatch Groups</td>
+<td><a href="{BASE}/dispatch_group_list.do">{BASE}/dispatch_group_list.do</a></td>
+<td><a href="{BASE}/dispatch_group.do?sys_id=-1">{BASE}/dispatch_group.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Qualifications</td>
+<td>All &gt; Field Service &gt; Qualifications</td>
+<td><a href="{BASE}/wm_qualification_list.do">{BASE}/wm_qualification_list.do</a></td>
+<td><a href="{BASE}/wm_qualification.do?sys_id=-1">{BASE}/wm_qualification.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Territories</td>
+<td>All &gt; Field Service &gt; Administration &gt; Territories</td>
+<td><a href="{BASE}/wm_territory_list.do">{BASE}/wm_territory_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Locations</td>
+<td>All &gt; System &gt; Locations</td>
+<td><a href="{BASE}/cmn_location_list.do">{BASE}/cmn_location_list.do</a></td>
+<td><a href="{BASE}/cmn_location.do?sys_id=-1">{BASE}/cmn_location.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Schedules</td>
+<td>All &gt; Field Service &gt; Schedules</td>
+<td><a href="{BASE}/cmn_schedule_list.do">{BASE}/cmn_schedule_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Stockrooms</td>
+<td>All &gt; Inventory &gt; Stockrooms</td>
+<td><a href="{BASE}/alm_stockroom_list.do">{BASE}/alm_stockroom_list.do</a></td>
+<td><a href="{BASE}/alm_stockroom.do?sys_id=-1">{BASE}/alm_stockroom.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Consumables</td>
+<td>All &gt; Inventory &gt; Consumables</td>
+<td><a href="{BASE}/alm_consumable_list.do">{BASE}/alm_consumable_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Transfer Orders</td>
+<td>All &gt; Inventory &gt; Transfer Orders</td>
+<td><a href="{BASE}/alm_transfer_order_list.do">{BASE}/alm_transfer_order_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Part Requirements</td>
+<td>WO Task related list</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>FSM Properties</td>
+<td>All &gt; Field Service &gt; Administration &gt; Properties</td>
+<td><a href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHwm.">{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHwm.</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Mobile Layouts</td>
+<td>All &gt; Mobile &gt; Layout</td>
+<td><a href="{BASE}/sys_sg_screen_list.do">{BASE}/sys_sg_screen_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Mobile App Builder</td>
+<td>All &gt; Now Mobile App Builder</td>
+<td><a href="{BASE}/now/mobile-app-builder">{BASE}/now/mobile-app-builder</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Flow Designer</td>
+<td>All &gt; Process Automation &gt; Flow Designer</td>
+<td><a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>PM Contracts</td>
+<td>All &gt; Field Service &gt; Preventive Maintenance</td>
+<td><a href="{BASE}/wm_pm_contract_list.do">{BASE}/wm_pm_contract_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>CSM Cases (handoff)</td>
+<td>All &gt; Customer Service &gt; Cases</td>
+<td><a href="{BASE}/sn_customerservice_case_list.do">{BASE}/sn_customerservice_case_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>REST API (WO)</td>
+<td>Table API</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/wm_order"><code>{BASE}/api/now/table/wm_order</code></a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Guided Setup</td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Impersonation</td>
+<td>avatar &gt; Impersonate</td>
+<td><a href="{BASE}/impersonate_user.do">{BASE}/impersonate_user.do</a></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="206-deep-hands-on-labs-8-labs-exact-clicks">20.6 Deep Hands-On Labs (8 labs — exact clicks)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<blockquote>
+<p>Prefix pilot records with <code>LAB-FSM-</code>.</p>
+</blockquote>
+<h4 id="lab-1-fsm-plugin-activation-guided-setup-create">Lab 1 — FSM plugin activation &amp; Guided Setup (CREATE)</h4>
+<p><strong>Goal:</strong> FSM application menus and Dispatcher Workspace available.</p>
+<ol>
+<li>Admin login → <a href="{BASE}/stats.do">{BASE}/stats.do</a> → record instance name.</li>
+<li>Create Update Set <code>FSM_LAB01_CREATE</code> at <a href="{BASE}/sys_update_set.do?sys_id=-1">{BASE}/sys_update_set.do?sys_id=-1</a>.</li>
+<li>Open <a href="{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINSwork_management">{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINSwork_management</a> → Activate <strong>Field Service Management</strong>.</li>
+<li>Open <a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a> → <strong>Field Service Management</strong> → complete Foundation + Dispatch sections.</li>
+<li>Filter Navigator: type <strong>Field Service</strong> → confirm <strong>Work Orders</strong>, <strong>Dispatch Groups</strong>, <strong>Qualifications</strong>.</li>
+<li>Open <a href="{BASE}/now/fsm-dispatch/home">{BASE}/now/fsm-dispatch/home</a> → board renders (may be empty).</li>
+<li><strong>Verify:</strong> No plugin activation errors in <a href="{BASE}/syslog_list.do?sysparm_query=level%3Derror">{BASE}/syslog_list.do?sysparm_query=level%3Derror</a>.</li>
+</ol>
+<h4 id="lab-2-location-territory-qualification-configure">Lab 2 — Location + Territory + Qualification (CONFIGURE)</h4>
+<p><strong>Goal:</strong> Geographic coverage and skill catalog for Sydney pilot.</p>
+<ol>
+<li><a href="{BASE}/cmn_location.do?sys_id=-1">{BASE}/cmn_location.do?sys_id=-1</a>: Name=<code>LAB-FSM-Sydney Site</code>, Street=<code>1 George St</code>, City=Sydney, State=NSW → <strong>Submit</strong>.</li>
+<li><a href="{BASE}/wm_territory.do?sys_id=-1">{BASE}/wm_territory.do?sys_id=-1</a>: Name=<code>LAB-Sydney Metro</code>, include location → <strong>Submit</strong>.</li>
+<li><a href="{BASE}/wm_qualification.do?sys_id=-1">{BASE}/wm_qualification.do?sys_id=-1</a>: Name=<code>LAB-HVAC-L2</code> → <strong>Submit</strong>.</li>
+<li>Open user <code>fsm.tech1</code> <a href="{BASE}/sys_user_list.do">{BASE}/sys_user_list.do</a> → Related <strong>Skills</strong> → add <code>LAB-HVAC-L2</code>.</li>
+<li>Assign territory to tech (user field or territory members related list per version).</li>
+<li><strong>Verify:</strong> <a href="{BASE}/wm_qualification_list.do?sysparm_query=nameSTARTSWITHLAB">{BASE}/wm_qualification_list.do?sysparm_query=nameSTARTSWITHLAB</a> shows 1 row.</li>
+</ol>
+<h4 id="lab-3-work-order-task-with-skill-requirement-configure">Lab 3 — Work Order + Task with skill requirement (CONFIGURE)</h4>
+<p><strong>Goal:</strong> WO in Draft/Requested with task requiring HVAC skill.</p>
+<ol>
+<li><a href="{BASE}/wm_order.do?sys_id=-1">{BASE}/wm_order.do?sys_id=-1</a>: Short description=<code>LAB-FSM-WO-001 AC repair</code>, Location=<code>LAB-FSM-Sydney Site</code>, Priority=3 → <strong>Submit</strong>.</li>
+<li>Related <strong>Work Order Tasks</strong> → <strong>New</strong> <a href="{BASE}/wm_task.do?sys_id=-1">{BASE}/wm_task.do?sys_id=-1</a>.</li>
+<li>Task: Short description=<code>Replace compressor filter</code>, Required qualification=<code>LAB-HVAC-L2</code>, Duration=60 min → <strong>Submit</strong>.</li>
+<li>WO state → <strong>Qualified</strong> (or click <strong>Qualify</strong> UI action if present).</li>
+<li><strong>Verify:</strong> Task shows required skill; WO appears in <a href="{BASE}/wm_order_list.do?sysparm_query=short_descriptionLIKElab-fsm">{BASE}/wm_order_list.do?sysparm_query=short_descriptionLIKElab-fsm</a>.</li>
+</ol>
+<h4 id="lab-4-dispatcher-schedule-assignment-configure">Lab 4 — Dispatcher schedule assignment (CONFIGURE)</h4>
+<p><strong>Goal:</strong> Dispatcher drags task to technician on calendar/map.</p>
+<ol>
+<li>Login as <code>fsm.dispatcher1</code> → <a href="{BASE}/now/fsm-dispatch/home">{BASE}/now/fsm-dispatch/home</a>.</li>
+<li><strong>Unassigned</strong> queue → locate <code>LAB-FSM-WO-001</code>.</li>
+<li><strong>Map</strong> tab → confirm Sydney site pin.</li>
+<li>Drag WO/task to <code>fsm.tech1</code> timeline slot (next available 2-hour window).</li>
+<li>Confirm dialog if skill/territory validation passes.</li>
+<li>Open WO → <strong>Assigned to</strong> = <code>fsm.tech1</code>, <strong>Scheduled start</strong> populated.</li>
+<li><strong>Verify:</strong> WO state moves toward <strong>Scheduled</strong> / <strong>Assigned</strong>.</li>
+</ol>
+<h4 id="lab-5-mobile-execution-travel-onsite-complete-configure">Lab 5 — Mobile execution: travel → onsite → complete (CONFIGURE)</h4>
+<p><strong>Goal:</strong> Technician completes task on mobile with state transitions.</p>
+<ol>
+<li>Login Now Mobile as <code>fsm.tech1</code> (or impersonate + mobile browser).</li>
+<li><strong>My Work Orders</strong> → open <code>LAB-FSM-WO-001</code>.</li>
+<li>Tap <strong>Start Travel</strong> → state <strong>En route</strong>.</li>
+<li>Tap <strong>Start Work</strong> (or geofence auto-arrival if configured) → <strong>Work in Progress</strong>.</li>
+<li>Add work notes + photo attachment.</li>
+<li>Tap <strong>Complete</strong> → WO task <strong>Closed Complete</strong>.</li>
+<li><strong>Verify:</strong> Desktop <a href="{BASE}/wm_task_list.do?sysparm_query=short_descriptionLIKEcompressor">{BASE}/wm_task_list.do?sysparm_query=short_descriptionLIKEcompressor</a> shows closed.</li>
+</ol>
+<h4 id="lab-6-parts-consumption-from-truck-stock-configure">Lab 6 — Parts consumption from truck stock (CONFIGURE)</h4>
+<p><strong>Goal:</strong> Part qty decrements when consumed on task.</p>
+<ol>
+<li>Ensure <code>LAB-Van-Tech1</code> stockroom has consumable qty 5 (Lab 2 prerequisite or create now).</li>
+<li>Open WO task → <strong>Parts</strong> related list → <strong>New</strong> part requirement: Model=filter, Qty=1, Source=<code>LAB-Van-Tech1</code>.</li>
+<li>On mobile or desktop: <strong>Consume</strong> part (UI action <strong>Consume</strong> / <strong>Issue</strong>).</li>
+<li>Open <a href="{BASE}/alm_consumable_list.do">{BASE}/alm_consumable_list.do</a> → filter stockroom=<code>LAB-Van-Tech1</code> → qty reduced by 1.</li>
+<li><strong>Verify:</strong> Transfer/consumption record in inventory history.</li>
+</ol>
+<h4 id="lab-7-csm-case-fsm-work-order-integration-integration">Lab 7 — CSM Case → FSM Work Order integration (INTEGRATION)</h4>
+<p><strong>Goal:</strong> Case spawns WO; closing WO updates case.</p>
+<ol>
+<li>Prerequisite: CSM case exists (see CSM.md §20 Lab 3) or create at <a href="{BASE}/sn_customerservice_case.do?sys_id=-1">{BASE}/sn_customerservice_case.do?sys_id=-1</a>.</li>
+<li>Open case → <strong>Create Work Order</strong> UI action.</li>
+<li>WO opens with Case field populated → Location from case account site → <strong>Submit</strong>.</li>
+<li>Dispatch and complete WO (Labs 4–5 abbreviated).</li>
+<li>Close WO <strong>Closed Complete</strong>.</li>
+<li>Return to case <a href="{BASE}/sn_customerservice_case_list.do">{BASE}/sn_customerservice_case_list.do</a> → work note or state reflects completion.</li>
+<li><strong>Verify:</strong> Case Related List <strong>Work Orders</strong> links to <code>LAB-FSM-WO</code> record.</li>
+</ol>
+<h4 id="lab-8-deploy-update-set-field-pilot-deploy">Lab 8 — Deploy Update Set + field pilot (DEPLOY)</h4>
+<p><strong>Goal:</strong> Transport FSM config; 10-tech pilot in one territory.</p>
+<ol>
+<li>Complete Update Set <code>FSM_AU_Implement_2026</code>.</li>
+<li>Import to target <a href="{BASE}/sys_remote_update_set_list.do">{BASE}/sys_remote_update_set_list.do</a> → Preview → Commit.</li>
+<li>Run ATF <a href="{BASE}/sys_atf_test_list.do">{BASE}/sys_atf_test_list.do</a>.</li>
+<li>Pilot: 10 techs complete 5 WOs each over 3 days — track FTFR.</li>
+<li>Daily standup: review <a href="{BASE}/wm_order_list.do?sysparm_query=active%3Dtrue">{BASE}/wm_order_list.do?sysparm_query=active%3Dtrue</a>.</li>
+<li><strong>Verify:</strong> Hypercare table §20.4 all green; sign-off from field ops manager.</li>
+</ol>
+<hr />
+<h3 id="207-implementation-scripts-rest-urls">20.7 Implementation Scripts &amp; REST URLs</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<h4 id="script-a-smart-dispatch-by-skill-territory">Script A — Smart dispatch by skill + territory</h4>
+<pre><code class="language-javascript">// Background: {BASE}/sys.scripts.do
+var d = new FSMSmartDispatch(); // see §17.4 script #1
+var woId = 'WO_SYS_ID';
+d.assign(woId);
+// Verify: {BASE}/wm_order_list.do?sys_id=WO_SYS_ID
+</code></pre>
+<h4 id="script-b-geofence-rest-endpoint-mobile-post">Script B — Geofence REST endpoint (mobile POST)</h4>
+<pre><code class="language-javascript">// Scripted REST: POST {BASE}/api/x_fsm/geofence
+// Body: { tech_id, lat, lng }
+// On success within 100m → wm_order.state = on_site
+// Test via {BASE}/$restapi.do
+</code></pre>
+<h4 id="script-c-pm-recurring-wo-generator">Script C — PM recurring WO generator</h4>
+<pre><code class="language-javascript">// Scheduled daily 03:00 — see §17.4 script #8
+// Scans wm_pm_contract → inserts wm_order
+// Monitor: {BASE}/wm_order_list.do?sysparm_query=type%3Dpreventive
+</code></pre>
+<h4 id="script-d-eta-sms-on-en_route-requires-twiliosms-provider">Script D — ETA SMS on en_route (requires Twilio/SMS provider)</h4>
+<pre><code class="language-javascript">// Business Rule wm_order state → en_route
+// Sends SMS with track link: {BASE}/sp?id=track&amp;wo=WO_NUMBER
+</code></pre>
+<h4 id="rest-endpoint-quick-reference">REST endpoint quick reference</h4>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Method</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List work orders</td>
+<td>GET</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/wm_order"><code>{BASE}/api/now/table/wm_order</code></a></td>
+</tr>
+<tr>
+<td>Create work order</td>
+<td>POST</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/wm_order"><code>{BASE}/api/now/table/wm_order</code></a></td>
+</tr>
+<tr>
+<td>Update WO state</td>
+<td>PATCH</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/wm_order/{sys_id}"><code>{BASE}/api/now/table/wm_order/{sys_id}</code></a></td>
+</tr>
+<tr>
+<td>List tasks</td>
+<td>GET</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/wm_task"><code>{BASE}/api/now/table/wm_task</code></a></td>
+</tr>
+<tr>
+<td>List stockrooms</td>
+<td>GET</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/alm_stockroom"><code>{BASE}/api/now/table/alm_stockroom</code></a></td>
+</tr>
+<tr>
+<td>Geofence check</td>
+<td>POST</td>
+<td><a class="direct-url" href="{BASE}/api/x_fsm/geofence"><code>{BASE}/api/x_fsm/geofence</code></a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="208-configuration-decision-log-template">20.8 Configuration Decision Log (template)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>OOTB default</th>
+<th>Approved value</th>
+<th>Owner</th>
+<th>Test case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scheduling mode</td>
+<td>Manual dispatch</td>
+<td>Manual + future Dynamic</td>
+<td>Dispatch Mgr</td>
+<td>Lab 4</td>
+</tr>
+<tr>
+<td>Mobile offline cache</td>
+<td>3 days</td>
+<td>7 days</td>
+<td>Mobile Lead</td>
+<td>Lab 5</td>
+</tr>
+<tr>
+<td>Parts source</td>
+<td>Warehouse only</td>
+<td>Warehouse + truck</td>
+<td>Inventory Mgr</td>
+<td>Lab 6</td>
+</tr>
+<tr>
+<td>Geofence radius</td>
+<td>Off</td>
+<td>100m</td>
+<td>Ops Lead</td>
+<td>Script B</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="209-sign-off-checklist-create-configure-deploy">20.9 Sign-off checklist (CREATE → CONFIGURE → DEPLOY)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<ul>
+<li>[ ] <strong>CREATE:</strong> FSM + Dispatch plugins active · Guided Setup done · Dispatch group exists</li>
+<li>[ ] <strong>CONFIGURE:</strong> Territory/skills · WO E2E · Inventory · Mobile offline tested</li>
+<li>[ ] <strong>DEPLOY:</strong> Update Set committed · 10-tech pilot · CSM handoff tested · Hypercare roster</li>
+<li>[ ] <strong>Evidence:</strong> WO sys_ids · Mobile screenshots · Parts reconciliation report</li>
+</ul>
+<blockquote>
+<p><strong>Cross-link:</strong> CSM case origin — <a href="{BASE}/sn_customerservice_case_list.do">{BASE}/sn_customerservice_case_list.do</a> · HR onsite requests — see HRSD.md if employee facilities tie-in.</p>
+</blockquote>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

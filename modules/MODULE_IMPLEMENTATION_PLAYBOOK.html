@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Module Implementation Playbook — سيناريوهات التنفيذ الكاملة | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Module Implementation Playbook — سيناريوهات التنفيذ الكاملة</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="module-implementation-playbook">Module Implementation Playbook — سيناريوهات التنفيذ الكاملة</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً:</strong> <a href="../MASTER_ALL_IN_ONE_SUMMARY.html">../MASTER_ALL_IN_ONE_SUMMARY.md</a> · <a href="../html/MASTER_ALL_IN_ONE_SUMMARY.html">../html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل:</strong> <a href="../MASTER_ALL_IN_ONE.html">../MASTER_ALL_IN_ONE.md</a> · <a href="../html/MASTER_ALL_IN_ONE.html">../html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات:</strong> <a href="../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Australia · Scope <code>x_786686_hr_leave</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>URLs:</strong> <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">../../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a><br />
+<strong>HR Leave:</strong> Scope x_786686_hr_leave</p>
+<p>Master reference for <strong>all</strong> modules in modules/.<br />
+Each module .md file has <strong>§14</strong> with module-specific summary + link here.<br />
+Hub: 00_TUTORIAL_OPTIONS_REFERENCE.md · MODULE_OPTIONS_AND_INSTANCE_NOTES.md</p>
+</blockquote>
+<p>هذا الملف = دليل استشاري: سيناريوهات، خيارات، بلجنز، أدوار، وماذا يُطوَّر عادةً.</p>
+<hr />
+<h2 id="arabic-summary">ملخص ووصف بالعربية (Arabic Summary)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>البند</th>
+<th>الشرح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ما هو هذا الملف؟</strong></td>
+<td>دليل تنفيذ موحّد — سيناريوهات S1/S2/S3 لكل موديول</td>
+</tr>
+<tr>
+<td><strong>لماذا مهم؟</strong></td>
+<td>يكمّل §14 في كل موديول بخيارات A/B وتفاصيل بلجنز وأدوار</td>
+</tr>
+<tr>
+<td><strong>من يستخدمه؟</strong></td>
+<td>مستشار ServiceNow، قائد تنفيذ، مطوّر</td>
+</tr>
+<tr>
+<td><strong>ماذا يغطي؟</strong></td>
+<td>ITSM، CMDB، ITOM، ITAM، HRSD، CSM، FSM، SPM، GRC — أقسام منفصلة</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ملخص في سطر:</strong> Playbook التنفيذ — ماذا تبني في كل سيناريو (صغير / متوسط / مؤسسي).</p>
+<p><strong>وصف مختصر:</strong> جداول Plugins، Roles، تطويرات شائعة، Go-live checklist لكل موديول. اقرأه مع §14 و§15 في الملف المخصص.</p>
+<hr />
+<h2 id="how-to-use">How to use</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Activate plugins (§3 in module file + §14.3 here)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Pick <strong>implementation scenario</strong> (§14.1)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Choose <strong>options</strong> (§14.2) — document A/B/C in workshop</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Configure roles/groups (§14.4)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Build customizations (§14.5) in scoped app</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Go-live checklist (§14.7)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="itsm-it-service-management">ITSM — IT Service Management</h1>
+<h2 id="itsm-scenarios">ITSM — Scenarios</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Scope</th>
+<th>Timeline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1 — Incident + Catalog only</strong></td>
+<td>PDI / small org</td>
+<td>1–2 weeks</td>
+</tr>
+<tr>
+<td><strong>S2 — Full ITIL</strong></td>
+<td>Incident, Problem, Change, SLA, KB</td>
+<td>4–8 weeks</td>
+</tr>
+<tr>
+<td><strong>S3 — Enterprise</strong></td>
+<td>S1+S2 + SOW, Major Incident, PA, integrations</td>
+<td>3–6 months</td>
+</tr>
+</tbody>
+</table>
+<h3 id="s2-step-by-step-most-common">S2 step-by-step (most common)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<pre><code class="language-text">Workshop (process + OOTB vs custom)
+ → Activate Change + Problem plugins
+ → Guided Setup ITSM
+ → Users/Groups/Roles (itil, change_manager, knowledge)
+ → CMDB baseline CIs
+ → Assignment Rules + Priority matrix
+ → SLA Definitions (P1–P4)
+ → Catalog categories + items + flows
+ → Change models + CAB + Flow approvals
+ → Notifications / events
+ → SP + Employee Center + SOW
+ → Reports + UAT + Update Sets
+</code></pre>
+<h2 id="itsm-options-matrix">ITSM — Options matrix</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Option A (recommended)</th>
+<th>Option B</th>
+<th>Option C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Approvals</td>
+<td>Flow Designer</td>
+<td>Workflow (legacy)</td>
+<td>Email only</td>
+</tr>
+<tr>
+<td>Assignment</td>
+<td>Assignment Rules</td>
+<td>Data Lookup</td>
+<td>BR script</td>
+</tr>
+<tr>
+<td>Priority</td>
+<td>Impact × Urgency table</td>
+<td>Manual</td>
+<td>BR hardcode</td>
+</tr>
+<tr>
+<td>Agent UI</td>
+<td>Service Operations Workspace</td>
+<td>Classic lists</td>
+<td>Mixed</td>
+</tr>
+<tr>
+<td>End user</td>
+<td>Employee Center /esc</td>
+<td>Service Portal /sp</td>
+<td>Email-in only</td>
+</tr>
+<tr>
+<td>CMDB link</td>
+<td>CI on incident/change</td>
+<td>Optional</td>
+<td>Full Discovery</td>
+</tr>
+</tbody>
+</table>
+<h2 id="itsm-plugins-activation-order">ITSM — Plugins (activation order)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Plugin / App</th>
+<th>ID / search</th>
+<th>Required?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Incident</td>
+<td>core</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Change Management</td>
+<td>com.snc.change_management</td>
+<td>S2+</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Problem Management</td>
+<td>com.snc.problem</td>
+<td>S2+</td>
+</tr>
+<tr>
+<td>4</td>
+<td>SLA</td>
+<td>core / SLM</td>
+<td>S2+</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Knowledge</td>
+<td>core</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ITSM BP packs</td>
+<td>Store</td>
+<td>Optional demo</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Now Assist ITSM</td>
+<td>Store</td>
+<td>Optional</td>
+</tr>
+</tbody>
+</table>
+<p>Navigate: Plugins → Activate → Guided Setup &gt; ITSM</p>
+<h2 id="itsm-roles-groups-customize">ITSM — Roles &amp; groups (customize)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Assign to</th>
+<th>Customization</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>itil</td>
+<td>Service desk group</td>
+<td>Base agent</td>
+</tr>
+<tr>
+<td>itil_admin</td>
+<td>Team leads</td>
+<td></td>
+</tr>
+<tr>
+<td>sn_change_write</td>
+<td>Change implementers</td>
+<td></td>
+</tr>
+<tr>
+<td>change_manager</td>
+<td>CAB</td>
+<td></td>
+</tr>
+<tr>
+<td>knowledge_admin</td>
+<td>KB owners</td>
+<td></td>
+</tr>
+<tr>
+<td>catalog_admin</td>
+<td>Catalog team</td>
+<td></td>
+</tr>
+<tr>
+<td>Scoped roles</td>
+<td>Your app only</td>
+<td>e.g. x_*_app.user</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Groups:</strong> Create per tier (L1/L2), per technology, per region — assign roles to <strong>groups</strong>.</p>
+<h2 id="itsm-common-developments">ITSM — Common developments</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scoped app</td>
+<td>Custom fields on task tables via extension</td>
+</tr>
+<tr>
+<td>Business Rules</td>
+<td>Auto-priority, notifications (prefer Assignment Rules)</td>
+</tr>
+<tr>
+<td>Flow Designer</td>
+<td>Change CAB, catalog fulfillment</td>
+</tr>
+<tr>
+<td>UI Policies / Client Scripts</td>
+<td>Form behavior</td>
+</tr>
+<tr>
+<td>Scripted REST</td>
+<td>External ticketing integration</td>
+</tr>
+<tr>
+<td>Import Sets</td>
+<td>Bulk users/CIs</td>
+</tr>
+<tr>
+<td>Service Catalog variables</td>
+<td>Hardware/software request</td>
+</tr>
+<tr>
+<td>Dashboards / PA</td>
+<td>KPIs, backlog, SLA breach</td>
+</tr>
+</tbody>
+</table>
+<h2 id="itsm-best-practice-choices">ITSM — Best practice choices</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<ul>
+<li>Use <strong>Change Models</strong> (Normal/Standard/Emergency) not one-size change.</li>
+<li><strong>Standard Change</strong> = pre-approved template, no CAB.</li>
+<li>Never put assignment logic in BR if Assignment Rule can do it.</li>
+<li>Always link <strong>cmdb_ci</strong> on incidents for impact reporting.</li>
+<li>Test SLA <strong>stop</strong> conditions (Resolved state).</li>
+</ul>
+<hr />
+<h1 id="cmdb-configuration-management">CMDB — Configuration Management</h1>
+<h2 id="cmdb-scenarios">CMDB — Scenarios</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1 — Manual CMDB</strong></td>
+<td>No Discovery license</td>
+</tr>
+<tr>
+<td><strong>S2 — Discovery-led</strong></td>
+<td>ITOM licensed</td>
+</tr>
+<tr>
+<td><strong>S3 — CSDM + Multisource</strong></td>
+<td>Enterprise service mapping</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cmdb-options-matrix">CMDB — Options matrix</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Option A</th>
+<th>Option B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Populate</td>
+<td>Discovery (MID)</td>
+<td>Import Set + Transform</td>
+</tr>
+<tr>
+<td>Identity</td>
+<td>IRE rules</td>
+<td>Coalesce on import only</td>
+</tr>
+<tr>
+<td>Services</td>
+<td>Service Mapping</td>
+<td>Manual Application Service</td>
+</tr>
+<tr>
+<td>Health</td>
+<td>CMDB Health Dashboard</td>
+<td>Spreadsheets</td>
+</tr>
+<tr>
+<td>Model</td>
+<td>CSDM 4 domains</td>
+<td>Ad-hoc classes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cmdb-plugins">CMDB — Plugins</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CMDB</td>
+<td>core</td>
+</tr>
+<tr>
+<td>Discovery</td>
+<td>com.snc.discovery</td>
+</tr>
+<tr>
+<td>Service Mapping</td>
+<td>com.snc.service-mapping</td>
+</tr>
+<tr>
+<td>CSDM Foundations</td>
+<td>Store</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cmdb-roles">CMDB — Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>cmdb_admin, discovery_admin, service_mapping_admin, data owners per class.</p>
+<h2 id="cmdb-common-developments">CMDB — Common developments</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>IRE identification/reconciliation rules, Transform Maps, CI Class Manager attributes, relationship rules, CMDB Health remediation flows, IntegrationHub to external CMDB.</p>
+<h2 id="cmdb-best-practices">CMDB — Best practices</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>Define <strong>authoritative source</strong> per CI class; never duplicate CIs; run Health before go-live.</p>
+<hr />
+<h1 id="itom-it-operations-management">ITOM — IT Operations Management</h1>
+<h2 id="itom-scenarios">ITOM — Scenarios</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1 — MID + Discovery</strong></td>
+<td>On-prem infra</td>
+</tr>
+<tr>
+<td><strong>S2 — + Event Management</strong></td>
+<td>Monitoring integration</td>
+</tr>
+<tr>
+<td><strong>S3 — + Service Mapping + Cloud</strong></td>
+<td>Full ITOM</td>
+</tr>
+</tbody>
+</table>
+<h2 id="itom-options-matrix">ITOM — Options matrix</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Option A</th>
+<th>Option B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Discovery</td>
+<td>Scheduled IP ranges</td>
+<td>Event-driven</td>
+</tr>
+<tr>
+<td>Credentials</td>
+<td>Per OS type</td>
+<td>Credentialless (limited)</td>
+</tr>
+<tr>
+<td>Events</td>
+<td>Connectors (Splunk)</td>
+<td>Email-to-event</td>
+</tr>
+<tr>
+<td>Cloud</td>
+<td>AWS/Azure plugins</td>
+<td>Manual cloud CIs</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cmdb-plugins_1">CMDB — Plugins</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>com.snc.discovery, com.snc.service-mapping, com.snc.sa.server (events), cloud plugins.</p>
+<h2 id="itom-roles">ITOM — Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>discovery_admin, evt_mgmt_admin, service_mapping_admin, cmdb_admin.</p>
+<h2 id="itom-common-developments">ITOM — Common developments</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>Pattern Designer patterns, event correlation rules, alert→incident BR/Flow, MID clusters per zone.</p>
+<hr />
+<h1 id="itam-it-asset-management">ITAM — IT Asset Management</h1>
+<h2 id="itam-scenarios">ITAM — Scenarios</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1 — HAM only</strong></td>
+<td>Laptops/desktops lifecycle</td>
+</tr>
+<tr>
+<td><strong>S2 — HAM + Procurement</strong></td>
+<td>Catalog → PO → asset</td>
+</tr>
+<tr>
+<td><strong>S3 — + SAM</strong></td>
+<td>License compliance</td>
+</tr>
+</tbody>
+</table>
+<h2 id="itam-options-matrix">ITAM — Options matrix</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Option A</th>
+<th>Option B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Request</td>
+<td>Service Catalog</td>
+<td>Direct PO</td>
+</tr>
+<tr>
+<td>CI link</td>
+<td>Serial match</td>
+<td>Manual</td>
+</tr>
+<tr>
+<td>SAM data</td>
+<td>SCCM connector</td>
+<td>Spreadsheet import</td>
+</tr>
+</tbody>
+</table>
+<h2 id="itam-plugins-order">ITAM — Plugins (order)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>com.snc.asset_management → com.snc.hardware_asset_management → com.snc.procurement → SAM (Store).</p>
+<h2 id="itam-roles">ITAM — Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>ham_admin, sam_admin, procurement_admin, stockroom_admin, asset.</p>
+<h2 id="itam-common-developments">ITAM — Common developments</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>Catalog→procurement flows, stockroom transfers, retire workflows, ERP integration REST, barcode.</p>
+<hr />
+<h1 id="hrsd-hr-service-delivery">HRSD — HR Service Delivery</h1>
+<h2 id="hrsd-scenarios">HRSD — Scenarios</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1 — HR Cases + EC</strong></td>
+<td>Employee services</td>
+</tr>
+<tr>
+<td><strong>S2 — + Lifecycle Events</strong></td>
+<td>Onboarding/offboarding</td>
+</tr>
+<tr>
+<td><strong>S3 — + Workday spoke</strong></td>
+<td>HRIS integration</td>
+</tr>
+</tbody>
+</table>
+<h2 id="hrsd-options-matrix">HRSD — Options matrix</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Option A</th>
+<th>Option B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Security</td>
+<td><strong>HR Criteria</strong> (mandatory)</td>
+<td>ACL only (weak)</td>
+</tr>
+<tr>
+<td>Portal</td>
+<td>Employee Center</td>
+<td>Legacy /hr</td>
+</tr>
+<tr>
+<td>Cases</td>
+<td>COE-based</td>
+<td>Single case table</td>
+</tr>
+</tbody>
+</table>
+<h2 id="hrsd-plugins">HRSD — Plugins</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>com.sn_hr_core, com.sn_hr_case_management, Lifecycle Events, COE plugins, EC Pro.</p>
+<h2 id="hrsd-roles">HRSD — Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>sn_hr_core.basic, case_writer, manager, admin, COE-specific roles.</p>
+<h2 id="hrsd-common-developments">HRSD — Common developments</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>HR Profiles, HR Criteria first, Lifecycle Activity Sets, scoped apps (e.g. Leave), IntegrationHub HR spokes.</p>
+<p><strong>Link:</strong> ../09_MODULES_AND_INTEGRATION.md for HR Leave app.</p>
+<hr />
+<h1 id="csm-customer-service-management">CSM — Customer Service Management</h1>
+<h2 id="csm-scenarios">CSM — Scenarios</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1 — B2C cases</strong></td>
+<td>Consumer support</td>
+</tr>
+<tr>
+<td><strong>S2 — B2B + Accounts</strong></td>
+<td>Entitlements</td>
+</tr>
+<tr>
+<td><strong>S3 — + FSM</strong></td>
+<td>Field service</td>
+</tr>
+</tbody>
+</table>
+<h2 id="csm-options">CSM — Options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>Entitlements vs roles, AWA routing, CSM Workspace, Service Portal /csm.</p>
+<h2 id="csm-plugins">CSM — Plugins</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>CSM core, Advanced Fulfillment, Entitlement Management (licensed).</p>
+<h2 id="csm-roles">CSM — Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>sn_customerservice.agent, manager, entitlement admins.</p>
+<h2 id="csm-common-developments">CSM — Common developments</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>Account/contact model, entitlement scripts, case types, portal branding, SLA per contract.</p>
+<hr />
+<h1 id="fsm-field-service-management">FSM — Field Service Management</h1>
+<h2 id="fsm-scenarios">FSM — Scenarios</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1 — Work Orders</strong></td>
+<td>Dispatch technicians</td>
+</tr>
+<tr>
+<td><strong>S2 — + Parts</strong></td>
+<td>Stockrooms</td>
+</tr>
+<tr>
+<td><strong>S3 — CSM integration</strong></td>
+<td>Case → WO</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fsm-options">FSM — Options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>Dispatcher Workspace vs classic, mobile offline, territories/skills scheduling.</p>
+<h2 id="fsm-plugins">FSM — Plugins</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>com.snc.field_service_management, scheduling plugins.</p>
+<h2 id="fsm-roles">FSM — Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>sn_fsm_dispatcher, technician, inventory_admin.</p>
+<h2 id="fsm-common-developments">FSM — Common developments</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>Work order tasks, agent maps, parts consumption, asset-linked service.</p>
+<hr />
+<h1 id="spm-strategic-portfolio-management">SPM — Strategic Portfolio Management</h1>
+<h2 id="spm-scenarios">SPM — Scenarios</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1 — Demand only</strong></td>
+<td>Intake ideas</td>
+</tr>
+<tr>
+<td><strong>S2 — PPM</strong></td>
+<td>Projects + resources</td>
+</tr>
+<tr>
+<td><strong>S3 — Agile + SAFe</strong></td>
+<td>PI planning</td>
+</tr>
+</tbody>
+</table>
+<h2 id="spm-options">SPM — Options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>Demand vs Project, Resource Management plugin, Agile boards, financial planning.</p>
+<h2 id="spm-plugins">SPM — Plugins</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>SPM/PPM apps from Store, Agile Development, Resource Management.</p>
+<h2 id="spm-roles">SPM — Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>Portfolio manager, project manager, resource manager, team member.</p>
+<h2 id="spm-common-developments">SPM — Common developments</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>Demand workflow, project templates, resource plans, timecards, integration to Jira.</p>
+<hr />
+<h1 id="grc-irm-governance-risk-compliance">GRC / IRM — Governance, Risk, Compliance</h1>
+<h2 id="grc-scenarios">GRC — Scenarios</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1 — Policy &amp; Compliance</strong></td>
+<td>Controls library</td>
+</tr>
+<tr>
+<td><strong>S2 — Risk</strong></td>
+<td>Risk register</td>
+</tr>
+<tr>
+<td><strong>S3 — Audit engagements</strong></td>
+<td>Full GRC</td>
+</tr>
+</tbody>
+</table>
+<h2 id="grc-options">GRC — Options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>Profiles for scoping, Authority Documents, Continuous Control Monitoring indicators.</p>
+<h2 id="grc-plugins">GRC — Plugins</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>GRC/IRM suite from Store, Risk Management, Audit Management.</p>
+<h2 id="grc-roles">GRC — Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>GRC admin, risk manager, compliance officer, auditor.</p>
+<h2 id="grc-common-developments">GRC — Common developments</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>Profile per business unit, control tests, attestation campaigns, risk remediation tasks.</p>
+<hr />
+<h2 id="cross-module-integration-matrix">Cross-module integration matrix</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>From → To</th>
+<th>Pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ITSM → CMDB</td>
+<td>CI on incident/change</td>
+</tr>
+<tr>
+<td>ITOM → CMDB</td>
+<td>Discovery populates CIs</td>
+</tr>
+<tr>
+<td>ITAM → CMDB</td>
+<td>Asset-CI link</td>
+</tr>
+<tr>
+<td>HRSD → ITSM</td>
+<td>Separate — use HR Case not incident</td>
+</tr>
+<tr>
+<td>CSM → FSM</td>
+<td>Case creates WO</td>
+</tr>
+<tr>
+<td>Catalog → ITAM</td>
+<td>Request → PO → asset</td>
+</tr>
+<tr>
+<td>Any → External</td>
+<td>REST / IntegrationHub / Import</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="universal-go-live-checklist">Universal go-live checklist</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<ul>
+<li>[ ] Plugins active, Guided Setup complete</li>
+<li>[ ] Roles on groups, Impersonate tested</li>
+<li>[ ] Scenario documented (S1/S2/S3)</li>
+<li>[ ] Options A/B/C recorded in workshop notes</li>
+<li>[ ] Customizations in scoped app / Update Set</li>
+<li>[ ] Integrations tested (Explorer inbound / REST Message outbound)</li>
+<li>[ ] Training + hypercare plan</li>
+</ul>
+<hr />
+<h1 id="secops-security-operations-new">SecOps — Security Operations (NEW)</h1>
+<h2 id="secops-scenarios">SecOps — Scenarios</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1 — SIR baseline</strong></td>
+<td>SOC starting point, SIEM → ServiceNow</td>
+</tr>
+<tr>
+<td><strong>S2 — + VR</strong></td>
+<td>Vulnerability management lifecycle</td>
+</tr>
+<tr>
+<td><strong>S3 — Enterprise SecOps</strong></td>
+<td>SIR + VR + TI + CTD + automation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="secops-options">SecOps — Options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Option A</th>
+<th>Option B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SIEM ingestion</td>
+<td>Webhook → Scripted REST</td>
+<td>Splunk Spoke (IH)</td>
+</tr>
+<tr>
+<td>EDR</td>
+<td>CrowdStrike connector</td>
+<td>Carbon Black / Defender</td>
+</tr>
+<tr>
+<td>Scanner</td>
+<td>Qualys IH Spoke</td>
+<td>Tenable / Rapid7</td>
+</tr>
+<tr>
+<td>Threat feeds</td>
+<td>OTX (free)</td>
+<td>Recorded Future (premium)</td>
+</tr>
+<tr>
+<td>Workspace</td>
+<td>/now/sir/agent (Zurich)</td>
+<td>Classic SIR navigation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="secops-plugins">SecOps — Plugins</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>com.snc.threat, com.snc.security_incident, com.snc.vulnerability, com.snc.threat.intel, com.snc.sn_vul_config_test</p>
+<h2 id="secops-roles">SecOps — Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>sn_si.analyst, sn_si.manager, sn_vul.analyst, sn_ti.read</p>
+<h2 id="secops-common-developments">SecOps — Common developments</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>MITRE ATT&amp;CK tagging, IoC enrichment scripts, playbooks (PAD), automated containment (host isolate, user disable, IP block), prioritization scoring formulas, bulk-VI to bulk-Change.</p>
+<p>Deep: SECOPS.md</p>
+<hr />
+<h1 id="devops-devops-change-velocity-new">DevOps — DevOps Change Velocity (NEW)</h1>
+<h2 id="devops-scenarios">DevOps — Scenarios</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1 — Tool-only</strong></td>
+<td>Visibility from Git/Jenkins to SN</td>
+</tr>
+<tr>
+<td><strong>S2 — Change Velocity</strong></td>
+<td>Automated CR creation from pipelines</td>
+</tr>
+<tr>
+<td><strong>S3 — Full Now Pipelines</strong></td>
+<td>End-to-end DevOps lifecycle in SN</td>
+</tr>
+</tbody>
+</table>
+<h2 id="devops-options">DevOps — Options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Option A</th>
+<th>Option B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source control</td>
+<td>GitHub / GitLab Spoke</td>
+<td>Git Studio (built-in)</td>
+</tr>
+<tr>
+<td>CI</td>
+<td>Jenkins</td>
+<td>Azure DevOps / Bitbucket</td>
+</tr>
+<tr>
+<td>Change automation</td>
+<td>DevOps Change Velocity</td>
+<td>Manual change with API</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>Now Pipelines</td>
+<td>External (Jenkins / Argo)</td>
+</tr>
+<tr>
+<td>Telemetry</td>
+<td>DORA metrics</td>
+<td>Manual KPIs</td>
+</tr>
+</tbody>
+</table>
+<h2 id="devops-plugins">DevOps — Plugins</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>com.snc.devops_config, com.snc.devops_change, com.snc.devops_pipeline</p>
+<h2 id="devops-roles">DevOps — Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>sn_devops.admin, sn_devops.user, change manager</p>
+<h2 id="devops-common-developments">DevOps — Common developments</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>Pipeline connectors, automated CR creation, deployment risk scoring, DORA metrics dashboards, rollback automations.</p>
+<p>Deep: DEVOPS.md</p>
+<hr />
+<h1 id="app-engine-low-code-new">App Engine — Low-code (NEW)</h1>
+<h2 id="app-engine-scenarios">App Engine — Scenarios</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1 — Personal apps</strong></td>
+<td>Individual productivity</td>
+</tr>
+<tr>
+<td><strong>S2 — Department apps</strong></td>
+<td>10–50 user apps</td>
+</tr>
+<tr>
+<td><strong>S3 — Enterprise low-code</strong></td>
+<td>CoE + citizen + pro devs</td>
+</tr>
+</tbody>
+</table>
+<h2 id="app-engine-options">App Engine — Options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Option A</th>
+<th>Option B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Builder</td>
+<td>App Engine Studio (AES)</td>
+<td>Direct studio.do</td>
+</tr>
+<tr>
+<td>Workflow</td>
+<td>Workflow Studio</td>
+<td>Legacy Flow Designer</td>
+</tr>
+<tr>
+<td>UI for end users</td>
+<td>Mobile + Portal</td>
+<td>Workspace</td>
+</tr>
+<tr>
+<td>AI assist</td>
+<td>Now Assist for Creators</td>
+<td>Manual</td>
+</tr>
+<tr>
+<td>Sharing</td>
+<td>Application Repository</td>
+<td>Update Set distribution</td>
+</tr>
+</tbody>
+</table>
+<h2 id="app-engine-plugins">App Engine — Plugins</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>com.glide.app_engine_studio, com.glide.process_automation, com.glide.mobile_studio, com.glide.ui_builder, com.glide.now_assist_creator</p>
+<h2 id="app-engine-roles">App Engine — Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>app_engine_creator, app_engine_user, flow_designer, CoE admins</p>
+<h2 id="app-engine-common-developments">App Engine — Common developments</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>Custom tables (small), Workflow Studio flows, mobile applets, Service Portal Configurator pages, decision tables, custom actions, Macroponents.</p>
+<p>Deep: APP_ENGINE.md</p>
+<hr />
+<h1 id="ai-now-assist-cross-module">AI / Now Assist — Cross-module</h1>
+<h2 id="ai-scenarios">AI — Scenarios</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1 — Now Assist on existing modules</strong></td>
+<td>Out-of-box AI on ITSM/HRSD/CSM</td>
+</tr>
+<tr>
+<td><strong>S2 — Custom Skills</strong></td>
+<td>Domain-specific generation</td>
+</tr>
+<tr>
+<td><strong>S3 — AI Agents + BYO LLM</strong></td>
+<td>Autonomous agents, RAG, LLM choice</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ai-plugins">AI — Plugins</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>com.glide.now_assist, com.glide.ai_agent_studio, com.glide.ai_search</p>
+<h2 id="ai-roles">AI — Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>now_assist_admin, ai_agent_builder, llm_connector_admin</p>
+<p>Deep: ../14_AI_SERVICENOW_AGENTS.md</p>
+<hr />
+<h2 id="cross-module-integration-matrix-expanded">Cross-module integration matrix (expanded)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>From → To</th>
+<th>Pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ITSM → CMDB</td>
+<td>CI on incident/change</td>
+</tr>
+<tr>
+<td>ITOM → CMDB</td>
+<td>Discovery populates CIs</td>
+</tr>
+<tr>
+<td>ITAM → CMDB</td>
+<td>Asset-CI link</td>
+</tr>
+<tr>
+<td>HRSD → ITSM</td>
+<td>Separate — use HR Case not incident</td>
+</tr>
+<tr>
+<td>CSM → FSM</td>
+<td>Case creates WO</td>
+</tr>
+<tr>
+<td>Catalog → ITAM</td>
+<td>Request → PO → asset</td>
+</tr>
+<tr>
+<td>SecOps SIR → CMDB</td>
+<td>Affected CIs (sn_si_m2m_ci_incident)</td>
+</tr>
+<tr>
+<td>SecOps SIR → ITSM</td>
+<td>Auto-create Change for patches</td>
+</tr>
+<tr>
+<td>SecOps VR → ITSM</td>
+<td>Vulnerability → Change</td>
+</tr>
+<tr>
+<td>DevOps → ITSM</td>
+<td>Pipeline → CR auto-created</td>
+</tr>
+<tr>
+<td>GRC → ITSM</td>
+<td>Issue → Task remediation</td>
+</tr>
+<tr>
+<td>GRC → CMDB</td>
+<td>Profile maps to CIs</td>
+</tr>
+<tr>
+<td>AI Agent → Any</td>
+<td>Tools call any table API</td>
+</tr>
+<tr>
+<td>App Engine app → SP/Workspace</td>
+<td>Embedded experiences</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="universal-go-live-checklist-expanded">Universal go-live checklist (expanded)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<ul>
+<li>[ ] Plugins active, Guided Setup complete</li>
+<li>[ ] Roles on groups, Impersonate tested</li>
+<li>[ ] Scenario documented (S1/S2/S3)</li>
+<li>[ ] Options A/B/C recorded in workshop notes</li>
+<li>[ ] Customizations in scoped app / Update Set</li>
+<li>[ ] Integrations tested (inbound + outbound)</li>
+<li>[ ] AI features tested (Now Assist where applicable)</li>
+<li>[ ] Mobile app tested (where applicable)</li>
+<li>[ ] ATF coverage &gt; 50% on critical flows</li>
+<li>[ ] Security review (ISC scan, ACL audit)</li>
+<li>[ ] Performance load test on largest table</li>
+<li>[ ] Backup + DR plan validated</li>
+<li>[ ] Training material AR + EN</li>
+<li>[ ] UAT sign-off (15+ scenarios)</li>
+<li>[ ] Hypercare plan (72h war-room + 30-day daily review)</li>
+<li>[ ] Post-go-live retrospective scheduled (Day 30)</li>
+</ul>
+<hr />
+<h2 id="implementation-methodology-8-phase-consulting-model">Implementation methodology — 8-Phase Consulting Model</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Days (typical)</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Discover</td>
+<td>5–10</td>
+<td>Stakeholder map, current state, scope statement</td>
+</tr>
+<tr>
+<td>2. Define</td>
+<td>5–10</td>
+<td>Process flows, scenarios picked, options doc</td>
+</tr>
+<tr>
+<td>3. Design</td>
+<td>10–20</td>
+<td>Data model, security model, UX wireframes, integrations</td>
+</tr>
+<tr>
+<td>4. Develop</td>
+<td>20–40</td>
+<td>Configuration, scripts, ATF, integration build</td>
+</tr>
+<tr>
+<td>5. Test</td>
+<td>10–15</td>
+<td>SIT, UAT, performance, security</td>
+</tr>
+<tr>
+<td>6. Train</td>
+<td>5–10</td>
+<td>Role-based training, KB, videos</td>
+</tr>
+<tr>
+<td>7. Deploy</td>
+<td>3–7</td>
+<td>Update Set propagation, cutover plan, go-live</td>
+</tr>
+<tr>
+<td>8. Stabilize</td>
+<td>30–60</td>
+<td>Hypercare, defect fixes, optimization</td>
+</tr>
+</tbody>
+</table>
+<p>Each phase has gate criteria with named approvers.</p>
+<hr />
+<h2 id="raid-log-template-risks-assumptions-issues-dependencies">RAID log template (Risks, Assumptions, Issues, Dependencies)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Owner</th>
+<th>Mitigation</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Risk</td>
+<td>Discovery may discover 2× expected CIs</td>
+<td>Architect</td>
+<td>Pre-flight sample run</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>Assumption</td>
+<td>Workday API will be ready by Day 10</td>
+<td>PM</td>
+<td>Confirm with HRIS team</td>
+<td>Confirmed</td>
+</tr>
+<tr>
+<td>Issue</td>
+<td>Test SLA not pausing on resolve</td>
+<td>BA</td>
+<td>Update workflow conditions</td>
+<td>In-progress</td>
+</tr>
+<tr>
+<td>Dependency</td>
+<td>LDAP service account from IT Sec</td>
+<td>Architect</td>
+<td>Ticket raised</td>
+<td>Pending</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="communication-plan-t-30-t30">Communication plan (T-30 → T+30)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Audience</th>
+<th>T-30</th>
+<th>T-7</th>
+<th>T-1</th>
+<th>Day 1</th>
+<th>Day 7</th>
+<th>Day 30</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Executives</td>
+<td>Kickoff brief</td>
+<td>Status</td>
+<td>Final readiness</td>
+<td>Launch confirm</td>
+<td>KPI check</td>
+<td>Outcomes report</td>
+</tr>
+<tr>
+<td>End users</td>
+<td>Awareness email</td>
+<td>Training invite</td>
+<td>Reminder</td>
+<td>Login link + how-to</td>
+<td>Office hours</td>
+<td>Survey</td>
+</tr>
+<tr>
+<td>IT Ops</td>
+<td>Tech briefing</td>
+<td>Cutover dry-run</td>
+<td>War-room invite</td>
+<td>Standby</td>
+<td>Daily check</td>
+<td>Steady-state</td>
+</tr>
+<tr>
+<td>Support team</td>
+<td>Training</td>
+<td>Runbook review</td>
+<td>On-call sched</td>
+<td>Active support</td>
+<td>Issue triage</td>
+<td>Knowledge handoff</td>
+</tr>
+</tbody>
+</table>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Practical SecOps + VRO From Scratch | HR Leave Docs</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+  <style>.field-table th { white-space: nowrap; }</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">SecOps · VRO Lab</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="modules/SECOPS.html">SECOPS deep ref</a>
+      <a href="SDK_CURSOR_FULL_DOCUMENTATION.html">SDK docs</a>
+      <a href="PRACTICAL_FLOW_DESIGNER_FROM_SCRATCH.html">Flow Designer</a>
+      <a href="SDK_WINDOWS_FULL_CYCLE_CAN_CANNOT.html">SDK Windows</a>
+      <a href="VISUAL_FROM_SCRATCH_00_16.html">Visual 00–16</a>
+      <span class="badge">PDI · {BASE}</span>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <section class="hero">
+      <h1>Practical SecOps + Vulnerability Response (VRO) — From Scratch</h1>
+      <p>Visual boards first: SIR + VR + TI + CTD, the full scanner-to-close cycle, table map, instance URLs, PDI labs, Flow Designer hooks, and SDK boundaries.</p>
+      <div class="meta-grid">
+        <div><strong>Audience</strong>SOC analyst · VR implementer</div>
+        <div><strong>Instance</strong>PDI with SecOps plugins</div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code></div>
+        <div><strong>Deep dive</strong><a href="modules/SECOPS.html" style="color:#fff">modules/SECOPS.html</a></div>
+      </div>
+    </section>
+
+    <div class="url-box"><strong>Lab quick open (apply {BASE} once at top)</strong>
+      <a href="{BASE}/now/guided-setup">Guided Setup</a>
+      <a href="{BASE}/now/vulnerability/overview">VR Workspace</a>
+      <a href="{BASE}/now/sir/workspace">SIR Workspace</a>
+      <a href="{BASE}/sn_vul_vulnerable_item_list.do">Vulnerable Items</a>
+      <a href="{BASE}/now/flow-designer">Flow Designer</a>
+      <a href="{BASE}/sys_hub_spoke_list.do">IH Spokes</a>
+      <a href="{BASE}/cmdb_ci_server_list.do">CMDB Servers</a>
+    </div>
+
+    <article class="content">
+      <div class="viz-banner">
+        <h2>How to use this tutorial (3 minutes to orient)</h2>
+        <p>Follow each dark <strong>flow</strong> left→right · open matching <strong>screen</strong> mockups · click <strong>url-box</strong> links on your PDI · run <strong>stepboard</strong> labs in order · use green/red <strong>chips</strong> as gates before go-live.</p>
+      </div>
+
+      <nav class="toc" aria-label="On this page">
+        <strong>Jump</strong>
+        <ul>
+          <li><a href="#secops-four">§1 SecOps four apps</a></li>
+          <li><a href="#vr-cycle">§2 VR description cycle</a></li>
+          <li><a href="#tables">§3 Table map</a></li>
+          <li><a href="#urls">§4 Direct URLs</a></li>
+          <li><a href="#pdi-lab">§5 PDI lab script</a></li>
+          <li><a href="#best">§6 Do / Don't</a></li>
+          <li><a href="#flow-vr">§7 Flow Designer + VR</a></li>
+          <li><a href="#sdk">§8 SDK can / cannot</a></li>
+          <li><a href="#refs">§9 Related docs</a></li>
+        </ul>
+      </nav>
+
+      <!-- §1 SECOPS OVERVIEW -->
+      <h2 id="secops-four">§1 — SecOps overview: SIR + VR + TI + CTD</h2>
+
+      <div class="glance">
+        <h3>At a glance — one platform, four missions</h3>
+        <div class="grid3">
+          <div class="box"><strong>SIR</strong><p>Security Incident Response — cases, MITRE, playbooks, containment tasks tied to CIs and IoCs.</p></div>
+          <div class="box"><strong>VR / VRO</strong><p>Vulnerability Response — CVE master, per-asset vulnerable items, assignment, remediation change, verify, close.</p></div>
+          <div class="box"><strong>TI + CTD</strong><p>Threat Intelligence (IoC/STIX) + Configuration Compliance (CIS/SCAP) feeding prioritization and SIR enrichment.</p></div>
+        </div>
+      </div>
+
+      <div class="flow">
+        <div class="n"><b>SCAN</b>Qualys / Tenable</div><span class="arrow">→</span>
+        <div class="n"><b>VR</b>sn_vul_*</div><span class="arrow">→</span>
+        <div class="n"><b>CMDB</b>cmdb_ci</div><span class="arrow">↔</span>
+        <div class="n"><b>SIEM</b>Splunk / QRadar</div><span class="arrow">→</span>
+        <div class="n"><b>SIR</b>sn_si_incident</div><span class="arrow">↔</span>
+        <div class="n"><b>TI</b>sn_ti_indicator</div><span class="arrow">→</span>
+        <div class="n"><b>CTD</b>sn_vul_ctd_*</div>
+      </div>
+
+      <div class="track">
+        <div class="lane dev">
+          <h3>SIR — Security Incident Response</h3>
+          <ul>
+            <li>Plugin: <code>com.snc.security_incident</code></li>
+            <li>Tables: <code>sn_si_incident</code>, tasks, observables</li>
+            <li>Workspace: SIR agent / analyst view</li>
+            <li>Automation: Playbooks (Workflow Studio), not legacy WF for new</li>
+          </ul>
+          <a href="{BASE}/now/sir/workspace">Open SIR workspace →</a>
+        </div>
+        <div class="lane impl">
+          <h3>VR — Vulnerability Response (VRO)</h3>
+          <ul>
+            <li>Plugin: <code>com.snc.vulnerability</code></li>
+            <li>Master + item: <code>sn_vul_vulnerability</code>, <code>sn_vul_vulnerable_item</code></li>
+            <li>Import: IntegrationHub spokes + import sets</li>
+            <li>Outcome: Change / remediation task → closed VI</li>
+          </ul>
+          <a href="{BASE}/now/vulnerability/overview">Open VR workspace →</a>
+        </div>
+        <div class="lane adm">
+          <h3>TI + CTD</h3>
+          <ul>
+            <li>TI: <code>com.snc.threat.intel</code> — indicators, feeds</li>
+            <li>CTD: <code>com.snc.sn_vul_config_test</code> — benchmarks</li>
+            <li>Cross-link: exploit intel → VR priority; CTD fail → VI</li>
+            <li>Roles: separate from ITSM admin — use SecOps groups</li>
+          </ul>
+          <a href="{BASE}/sn_ti_indicator_list.do">Open TI indicators →</a>
+        </div>
+      </div>
+
+      <table>
+        <thead><tr><th>App</th><th>Primary persona</th><th>Typical entry</th><th>Plugin (activate on PDI)</th></tr></thead>
+        <tbody>
+          <tr><td>SIR</td><td>SOC tier 1–3</td><td><a href="{BASE}/now/sir/workspace">{BASE}/now/sir/workspace</a></td><td><code>com.snc.security_incident</code></td></tr>
+          <tr><td>VR / VRO</td><td>Vuln manager · patch owner</td><td><a href="{BASE}/now/vulnerability/overview">{BASE}/now/vulnerability/overview</a></td><td><code>com.snc.vulnerability</code></td></tr>
+          <tr><td>TI</td><td>Threat hunter</td><td><a href="{BASE}/sn_ti_indicator_list.do">{BASE}/sn_ti_indicator_list.do</a></td><td><code>com.snc.threat.intel</code></td></tr>
+          <tr><td>CTD</td><td>Compliance engineer</td><td><a href="{BASE}/sn_vul_ctd_test_list.do">{BASE}/sn_vul_ctd_test_list.do</a></td><td><code>com.snc.sn_vul_config_test</code></td></tr>
+        </tbody>
+      </table>
+
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+          <span class="ttl">SecOps landing — where work queues live</span><span class="path">Workspaces + classic lists</span></div>
+        <div class="body">
+          <div class="side"><div class="on">VR Overview</div><div>Vulnerable Items</div><div>SIR Incidents</div><div>TI Indicators</div><div>CTD Tests</div></div>
+          <div class="main">
+            <div class="row"><span>VR queue</span><span>Open P1/P2 VIs assigned to my group</span></div>
+            <div class="row"><span>SIR queue</span><span>Active incidents · playbook tasks</span></div>
+            <div class="row"><span>Shared</span><span>CMDB CI · Business service · Change</span></div>
+            <div class="row"><span>Metrics</span><span>MTTR · SLA breach · aging CVE</span></div>
+          </div>
+        </div>
+        <div class="cap"><strong>Screen</strong> — analysts live in workspaces; implementers configure lists, rules, and flows behind these tiles.</div>
+      </div>
+
+      <!-- §2 VR CYCLE -->
+      <h2 id="vr-cycle">§2 — Full VRO description cycle (scanner → close)</h2>
+
+      <div class="viz-banner">
+        <h2>VR lifecycle — read this flow before any lab step</h2>
+        <p>External scan finds a flaw → platform normalizes CVE → creates or updates master → creates vulnerable item on CI → assignment rule → owner remediates via change/task → rescan verifies → VI closed.</p>
+      </div>
+
+      <div class="stepboard">
+        <div class="s"><b>SCAN</b><span>Scanner export / API pull</span></div>
+        <div class="s"><b>IMPORT</b><span>Import set + transform</span></div>
+        <div class="s"><b>MASTER</b><span>sn_vul_vulnerability</span></div>
+        <div class="s"><b>ITEM</b><span>sn_vul_vulnerable_item + CI</span></div>
+        <div class="s"><b>ASSIGN</b><span>sn_vul_assignment_rule</span></div>
+        <div class="s"><b>FIX</b><span>Change / remediation task</span></div>
+        <div class="s"><b>CLOSE</b><span>Verified absent on rescan</span></div>
+      </div>
+
+      <div class="flow">
+        <div class="n impl"><b>1</b>Scanner job</div><span class="arrow">→</span>
+        <div class="n impl"><b>2</b>sn_vul_entry</div><span class="arrow">→</span>
+        <div class="n"><b>3</b>Transform</div><span class="arrow">→</span>
+        <div class="n"><b>4</b>Vuln master</div><span class="arrow">→</span>
+        <div class="n"><b>5</b>VI + cmdb_ci</div><span class="arrow">→</span>
+        <div class="n adm"><b>6</b>Assignment</div><span class="arrow">→</span>
+        <div class="n dev"><b>7</b>Flow / BR</div><span class="arrow">→</span>
+        <div class="n"><b>8</b>change_request</div><span class="arrow">→</span>
+        <div class="n"><b>9</b>Closed VI</div>
+      </div>
+
+      <h3>2.1 Scanner → import</h3>
+      <p>Production: IntegrationHub spoke (Qualys, Tenable, Rapid7, CrowdStrike VM, Microsoft Defender) schedules pull or receives push. PDI lab: CSV/XML import set mimics the same transform targets.</p>
+
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+          <span class="ttl">Import Set · VR vendor row</span><span class="path">sys_import_set / transform</span></div>
+        <div class="body">
+          <div class="side"><div class="on">Staging</div><div>Transform map</div><div>Run transform</div><div>Error log</div></div>
+          <div class="main">
+            <div class="row"><span>cve_id</span><span>CVE-2024-1234</span></div>
+            <div class="row"><span>host_fqdn</span><span>app-prod-01.corp.local</span></div>
+            <div class="row"><span>severity</span><span>Critical · CVSS 9.8</span></div>
+            <div class="row"><span>plugin_id</span><span>Vendor-specific ID</span></div>
+            <div class="row"><span>first_found</span><span>2026-10-01</span></div>
+            <div class="row"><span>→ tables</span><span>vulnerability + vulnerable_item</span></div>
+          </div>
+        </div>
+        <div class="cap"><strong>Screen</strong> — one staging row becomes master CVE (deduped) plus one VI per affected CI after IRE/matching.</div>
+      </div>
+
+      <div class="url-box"><strong>Import &amp; integration</strong>
+        <a href="{BASE}/sysimport_set_list.do?sysparm_query=table_nameLIKEsn_vul">Import sets (VR)</a>
+        <a href="{BASE}/sys_transform_map_list.do?sysparm_query=labelLIKEvul">Transform maps</a>
+        <a href="{BASE}/sys_hub_spoke_list.do?sysparm_query=nameLIKEqualys">IH spokes</a>
+        <a href="{BASE}/sys_rest_message_list.do?sysparm_query=nameLIKEvul">Outbound REST</a>
+        <a href="{BASE}/sys_script_include_list.do?sysparm_query=nameLIKEVulnerability">VR script includes</a>
+      </div>
+
+      <h3>2.2 Vulnerability master (CVE catalog)</h3>
+      <p><code>sn_vul_vulnerability</code> holds one record per CVE (or vendor vuln ID): title, CVSS, published dates, exploit flags, solutions references. Many VIs point to one master.</p>
+
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+          <span class="ttl">Vulnerability · CVE master</span><span class="path">sn_vul_vulnerability.do</span></div>
+        <div class="body">
+          <div class="side"><div class="on">Details</div><div>Related VIs</div><div>Third party</div><div>Solution</div></div>
+          <div class="main">
+            <div class="row"><span>Number</span><span>VUL0012345</span></div>
+            <div class="row"><span>CVE</span><span>CVE-2024-1234</span></div>
+            <div class="row"><span>Base score</span><span>9.8</span></div>
+            <div class="row"><span>Exploit</span><span>Known · sn_vul_third_party_entry</span></div>
+            <div class="row"><span>VI count</span><span>47 open / 3 closed</span></div>
+          </div>
+        </div>
+        <div class="cap"><strong>Screen</strong> — prioritization formulas read master fields; do not duplicate CVE text on every VI.</div>
+      </div>
+
+      <h3>2.3 Vulnerable item (asset × vulnerability)</h3>
+      <p><code>sn_vul_vulnerable_item</code> is the work unit: state, priority, risk score, assignment group, link to <code>cmdb_ci</code>, link to master vulnerability, remediation dates.</p>
+
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+          <span class="ttl">Vulnerable Item · work record</span><span class="path">sn_vul_vulnerable_item.do</span></div>
+        <div class="body">
+          <div class="side"><div class="on">Form</div><div>CMDB CI</div><div>Remediation</div><div>History</div></div>
+          <div class="main">
+            <div class="row"><span>State</span><span>Open → In progress → Closed</span></div>
+            <div class="row"><span>Priority</span><span>1 Critical (computed)</span></div>
+            <div class="row"><span>CI</span><span>Linux Server APP-PROD-01</span></div>
+            <div class="row"><span>Assigned to</span><span>Unix Admins (rule)</span></div>
+            <div class="row"><span>Change</span><span>CHG0098765 linked</span></div>
+            <div class="row"><span>SLA</span><span>7 days (P1)</span></div>
+          </div>
+        </div>
+        <div class="cap"><strong>Screen</strong> — owners remediate at VI level; bulk remediation uses vulnerability groups or patch-ID rollups.</div>
+      </div>
+
+      <h3>2.4 Assignment → remediation change → close</h3>
+      <div class="flow">
+        <div class="n"><b>RULE</b>sn_vul_assignment_rule</div><span class="arrow">→</span>
+        <div class="n"><b>OWN</b>Group / user</div><span class="arrow">→</span>
+        <div class="n"><b>TASK</b>sn_vul_remediation_task</div><span class="arrow">→</span>
+        <div class="n"><b>CHG</b>change_request</div><span class="arrow">→</span>
+        <div class="n"><b>SCAN</b>Rescan pass</div><span class="arrow">→</span>
+        <div class="n"><b>VI</b>Closed</div>
+      </div>
+
+      <div class="ok"><p><strong>Close criteria (lab):</strong> VI state Closed when scanner no longer reports finding on that CI <em>or</em> accepted risk with approval (deferral workflow). Never close master while open VIs exist unless retiring CVE record intentionally.</p></div>
+
+      <div class="warn"><p><strong>Common PDI mistake:</strong> Import succeeds but VI has empty <code>cmdb_ci</code> — fix IRE identification or manual CI match before testing assignment rules.</p></div>
+
+      <h3>2.5 Supporting VR objects in the cycle</h3>
+      <ul>
+        <li><code>sn_vul_entry</code> — raw/normalized entries from imports before master/VI upsert.</li>
+        <li><code>sn_vul_software</code> — software products tied to findings (library / package context).</li>
+        <li><code>sn_vul_solution</code> — vendor fix text, KB, patch links referenced from master/VI.</li>
+        <li><code>sn_vul_third_party_entry</code> — NVD/exploit intel overlays (exploit available boosts priority).</li>
+      </ul>
+
+      <h3>2.6 Cross-app touchpoints</h3>
+      <div class="flow">
+        <div class="n"><b>VR</b>Critical VI</div><span class="arrow">→</span>
+        <div class="n"><b>SIR</b>sn_si_incident</div><span class="arrow">←</span>
+        <div class="n"><b>TI</b>IoC match</div><span class="arrow">→</span>
+        <div class="n"><b>CTD</b>Fail test</div><span class="arrow">→</span>
+        <div class="n"><b>VR</b>New VI</div>
+      </div>
+      <p>Example: default credentials VI may auto-create SIR; TI indicator on C2 IP enriches SIR; CTD CIS failure creates configuration-related VI.</p>
+
+      <!-- §3 TABLES -->
+      <h2 id="tables">§3 — Related tables (purpose + CMDB / SIR / TI links)</h2>
+
+      <table class="field-table">
+        <thead><tr><th>Table</th><th>Role in VRO</th><th>Key relationships</th><th>List URL</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>sn_vul_vulnerability</code></td>
+            <td>CVE / vuln master catalog; CVSS, title, global status</td>
+            <td>1:N → <code>sn_vul_vulnerable_item</code>; solutions; third-party intel</td>
+            <td><a href="{BASE}/sn_vul_vulnerability_list.do">{BASE}/sn_vul_vulnerability_list.do</a></td>
+          </tr>
+          <tr>
+            <td><code>sn_vul_vulnerable_item</code></td>
+            <td>Per-asset finding; assignment, SLA, remediation state</td>
+            <td>→ <code>sn_vul_vulnerability</code>, → <code>cmdb_ci</code>, → change/task</td>
+            <td><a href="{BASE}/sn_vul_vulnerable_item_list.do">{BASE}/sn_vul_vulnerable_item_list.do</a></td>
+          </tr>
+          <tr>
+            <td><code>sn_vul_entry</code></td>
+            <td>Intermediate import/normalized rows from scanners</td>
+            <td>Feeds transform → master/VI</td>
+            <td><a href="{BASE}/sn_vul_entry_list.do">{BASE}/sn_vul_entry_list.do</a></td>
+          </tr>
+          <tr>
+            <td><code>sn_vul_software</code></td>
+            <td>Software/component implicated in findings</td>
+            <td>Links entries/VIs to product versions</td>
+            <td><a href="{BASE}/sn_vul_software_list.do">{BASE}/sn_vul_software_list.do</a></td>
+          </tr>
+          <tr>
+            <td><code>sn_vul_third_party_entry</code></td>
+            <td>External intel (exploit status, references)</td>
+            <td>Matched on CVE; drives risk score</td>
+            <td><a href="{BASE}/sn_vul_third_party_entry_list.do">{BASE}/sn_vul_third_party_entry_list.do</a></td>
+          </tr>
+          <tr>
+            <td><code>sn_vul_assignment_rule</code></td>
+            <td>Auto-route VIs by CI class, tag, location, severity</td>
+            <td>Sets group/user on insert/update</td>
+            <td><a href="{BASE}/sn_vul_assignment_rule_list.do">{BASE}/sn_vul_assignment_rule_list.do</a></td>
+          </tr>
+          <tr>
+            <td><code>sn_vul_solution</code></td>
+            <td>Remediation guidance (patch, config, workaround)</td>
+            <td>Referenced from vulnerability/VI</td>
+            <td><a href="{BASE}/sn_vul_solution_list.do">{BASE}/sn_vul_solution_list.do</a></td>
+          </tr>
+          <tr>
+            <td><code>sn_vul_remediation_task</code></td>
+            <td>Work breakdown for fix (may precede change)</td>
+            <td>Parent VI; assigned owner tasks</td>
+            <td><a href="{BASE}/sn_vul_remediation_task_list.do">{BASE}/sn_vul_remediation_task_list.do</a></td>
+          </tr>
+          <tr>
+            <td><code>sn_si_incident</code></td>
+            <td>Security incident when exploit/active threat</td>
+            <td>Related CIs overlap with VI cmdb_ci</td>
+            <td><a href="{BASE}/sn_si_incident_list.do">{BASE}/sn_si_incident_list.do</a></td>
+          </tr>
+          <tr>
+            <td><code>sn_ti_indicator</code></td>
+            <td>IoC (IP, hash, domain) for hunt/enrichment</td>
+            <td>SIR observables; optional VR context</td>
+            <td><a href="{BASE}/sn_ti_indicator_list.do">{BASE}/sn_ti_indicator_list.do</a></td>
+          </tr>
+          <tr>
+            <td><code>cmdb_ci</code> (+ classes)</td>
+            <td>Asset anchor for every VI; criticality drives priority</td>
+            <td>IRE identification from scan host keys</td>
+            <td><a href="{BASE}/cmdb_ci_list.do">{BASE}/cmdb_ci_list.do</a></td>
+          </tr>
+          <tr>
+            <td><code>change_request</code></td>
+            <td>Controlled remediation window</td>
+            <td>Linked from VI / vulnerability group</td>
+            <td><a href="{BASE}/change_request_list.do?sysparm_query=category=security">{BASE}/change_request_list.do</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pre-wrap">
+        <button type="button" class="copy-btn" data-copy="ci-lookup">Copy</button>
+        <pre id="ci-lookup">// PDI: prove VI → CI join (Scripts - Background)
+var vi = new GlideRecord('sn_vul_vulnerable_item');
+vi.addNotNullQuery('cmdb_ci');
+vi.setLimit(5);
+vi.query();
+while (vi.next()) {
+  gs.info(vi.number + ' → ' + vi.cmdb_ci.getDisplayValue() +
+    ' | CVE ' + vi.vulnerability.cve_id);
+}</pre>
+      </div>
+
+      <!-- §4 URLS -->
+      <h2 id="urls">§4 — Direct {BASE} URLs (major pages)</h2>
+
+      <nav class="section-links" aria-label="VR URLs">
+        <strong>Workspace:</strong>
+        <a href="{BASE}/now/vulnerability/overview">VR Overview</a>
+        <a href="{BASE}/now/sir/workspace">SIR Workspace</a>
+        <a href="{BASE}/now/guided-setup">Guided Setup</a>
+      </nav>
+
+      <table>
+        <thead><tr><th>Area</th><th>Navigation (classic)</th><th>Direct URL</th></tr></thead>
+        <tbody>
+          <tr><td>VR Workspace</td><td>All → Vulnerability Response → Overview</td><td><a href="{BASE}/now/vulnerability/overview">{BASE}/now/vulnerability/overview</a></td></tr>
+          <tr><td>SIR Workspace</td><td>Security Incident Response workspace</td><td><a href="{BASE}/now/sir/workspace">{BASE}/now/sir/workspace</a></td></tr>
+          <tr><td>Vulnerabilities (master)</td><td>VR → Vulnerabilities</td><td><a href="{BASE}/sn_vul_vulnerability_list.do">{BASE}/sn_vul_vulnerability_list.do</a></td></tr>
+          <tr><td>Vulnerable Items</td><td>VR → Vulnerable Items</td><td><a href="{BASE}/sn_vul_vulnerable_item_list.do">{BASE}/sn_vul_vulnerable_item_list.do</a></td></tr>
+          <tr><td>Assignment rules</td><td>VR → Administration → Assignment Rules</td><td><a href="{BASE}/sn_vul_assignment_rule_list.do">{BASE}/sn_vul_assignment_rule_list.do</a></td></tr>
+          <tr><td>Remediation tasks</td><td>VR → Remediation Tasks</td><td><a href="{BASE}/sn_vul_remediation_task_list.do">{BASE}/sn_vul_remediation_task_list.do</a></td></tr>
+          <tr><td>Security incidents</td><td>SecOps → Incidents</td><td><a href="{BASE}/sn_si_incident_list.do">{BASE}/sn_si_incident_list.do</a></td></tr>
+          <tr><td>TI indicators</td><td>Threat Intelligence → Indicators</td><td><a href="{BASE}/sn_ti_indicator_list.do">{BASE}/sn_ti_indicator_list.do</a></td></tr>
+          <tr><td>CTD tests</td><td>Configuration Compliance</td><td><a href="{BASE}/sn_vul_ctd_test_list.do">{BASE}/sn_vul_ctd_test_list.do</a></td></tr>
+          <tr><td>CTD results</td><td>Compliance results</td><td><a href="{BASE}/sn_vul_ctd_result_list.do">{BASE}/sn_vul_ctd_result_list.do</a></td></tr>
+          <tr><td>Guided Setup (SecOps)</td><td>Guided Setup application</td><td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td></tr>
+          <tr><td>Flow Designer</td><td>Process Automation → Flow Designer</td><td><a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a></td></tr>
+          <tr><td>Flows (list)</td><td>Process Automation → Flows</td><td><a href="{BASE}/sys_hub_flow_list.do?sysparm_query=nameLIKEvul">{BASE}/sys_hub_flow_list.do</a></td></tr>
+          <tr><td>Playbooks (SIR)</td><td>Workflow Studio</td><td><a href="{BASE}/now/workflow-studio/home">{BASE}/now/workflow-studio/home</a></td></tr>
+          <tr><td>IntegrationHub spokes</td><td>IntegrationHub → Spokes</td><td><a href="{BASE}/sys_hub_spoke_list.do">{BASE}/sys_hub_spoke_list.do</a></td></tr>
+          <tr><td>Connections</td><td>IntegrationHub → Connections</td><td><a href="{BASE}/sys_hub_connection_list.do">{BASE}/sys_hub_connection_list.do</a></td></tr>
+          <tr><td>Plugins (activate VR)</td><td>System Definition → Plugins</td><td><a href="{BASE}/sys_plugins_list.do?sysparm_query=nameLIKEvulnerability">{BASE}/sys_plugins_list.do</a></td></tr>
+          <tr><td>CMDB CIs</td><td>Configuration → Computers / Servers</td><td><a href="{BASE}/cmdb_ci_server_list.do">{BASE}/cmdb_ci_server_list.do</a></td></tr>
+          <tr><td>IRE identifiers</td><td>CMDB → Identification/Reconciliation</td><td><a href="{BASE}/cmdb_identifier_list.do">{BASE}/cmdb_identifier_list.do</a></td></tr>
+          <tr><td>SecOps PA dashboard</td><td>Performance Analytics</td><td><a href="{BASE}/$pa_dashboard.do">{BASE}/$pa_dashboard.do</a></td></tr>
+          <tr><td>Roles (SecOps)</td><td>User Administration → Roles</td><td><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameLIKEvul">{BASE}/sys_user_role_list.do</a></td></tr>
+          <tr><td>Groups (owners)</td><td>User Administration → Groups</td><td><a href="{BASE}/sys_user_group_list.do?sysparm_query=nameLIKEvulnerability">{BASE}/sys_user_group_list.do</a></td></tr>
+        </tbody>
+      </table>
+
+      <div class="modmap">
+        <a href="{BASE}/now/vulnerability/overview"><h4>VR Workspace</h4><p>Analyst queue · aging · assignment</p><span class="go">Open →</span></a>
+        <a href="{BASE}/sn_vul_assignment_rule_list.do"><h4>Assignment rules</h4><p>Implement routing matrix</p><span class="go">Open →</span></a>
+        <a href="{BASE}/now/flow-designer"><h4>Flow Designer</h4><p>Auto-assign · change · notify</p><span class="go">Open →</span></a>
+        <a href="{BASE}/sys_hub_spoke_list.do"><h4>Scanner spokes</h4><p>Vendor integration</p><span class="go">Open →</span></a>
+        <a href="{BASE}/cmdb_ci_server_list.do"><h4>CMDB servers</h4><p>CI targets for VIs</p><span class="go">Open →</span></a>
+        <a href="{BASE}/change_request_list.do"><h4>Changes</h4><p>Remediation execution</p><span class="go">Open →</span></a>
+        <a href="modules/SECOPS.html"><h4>SECOPS.html</h4><p>Full module reference (AR+EN)</p><span class="go">Local doc →</span></a>
+        <a href="SDK_CURSOR_FULL_DOCUMENTATION.html"><h4>SDK docs</h4><p>Scoped dev boundaries</p><span class="go">Local doc →</span></a>
+      </div>
+
+      <!-- §5 PDI LAB -->
+      <h2 id="pdi-lab">§5 — PDI lab steps (SOC analyst + implementer)</h2>
+
+      <div class="viz-banner">
+        <h2>Lab path — ~90 minutes on a fresh PDI</h2>
+        <p>Activate plugins → seed CMDB → import sample finding → verify master/VI → assignment rule → Flow notification → remediation change → close VI.</p>
+      </div>
+
+      <h3>Lab A — Enable SecOps stack</h3>
+      <ol>
+        <li>Open <a href="{BASE}/sys_plugins_list.do?sysparm_query=idINcom.snc.vulnerability,com.snc.security_incident,com.snc.threat.intel,com.snc.sn_vul_config_test">VR + SIR + TI + CTD plugins</a>; activate (PDI may take several minutes).</li>
+        <li>Run <a href="{BASE}/now/guided-setup">Guided Setup</a> SecOps/Vulnerability tiles until green checks (groups, properties, sample data if offered).</li>
+        <li>Create groups: <code>Vulnerability Managers</code>, <code>Unix Admins</code>, <code>Windows Admins</code> via <a href="{BASE}/sys_user_group_list.do">Groups</a>; assign test users.</li>
+        <li>Confirm roles: e.g. <code>sn_vul.vulnerability_read</code>, <code>sn_vul.vulnerability_write</code> (names vary by version — search role list).</li>
+      </ol>
+
+      <h3>Lab B — CMDB anchor (before scan data)</h3>
+      <ol>
+        <li>Create or pick <strong>two servers</strong> in <a href="{BASE}/cmdb_ci_server_list.do">cmdb_ci_server</a>; set <code>name</code>, <code>ip_address</code>, <code>business_criticality</code>.</li>
+        <li>Note FQDN/IP — import transform will match on these keys.</li>
+        <li>Optional: open <a href="{BASE}/cmdb_identifier_list.do">IRE identifiers</a> and trace which fields identify a Linux server.</li>
+      </ol>
+
+      <h3>Lab C — Simulate scanner import</h3>
+      <ol>
+        <li>Locate VR import set table (often vendor-specific staging) via <a href="{BASE}/sys_db_object_list.do?sysparm_query=nameLIKEsn_vul">tables sn_vul%</a> or use OOB sample import if Guided Setup loaded one.</li>
+        <li>Load 2 rows: same CVE, two different hostnames matching your CIs.</li>
+        <li>Run transform; open <a href="{BASE}/sn_vul_vulnerability_list.do">Vulnerabilities</a> — expect <strong>one</strong> master.</li>
+        <li>Open <a href="{BASE}/sn_vul_vulnerable_item_list.do">Vulnerable Items</a> — expect <strong>two</strong> VIs with CI populated.</li>
+      </ol>
+
+      <div class="pre-wrap">
+        <button type="button" class="copy-btn" data-copy="lab-priority">Copy</button>
+        <pre id="lab-priority">// Optional: adjust risk on a VI (Background script)
+var vi = new GlideRecord('sn_vul_vulnerable_item');
+vi.addQuery('state', 'open');
+vi.setLimit(1);
+vi.query();
+if (vi.next()) {
+  vi.setValue('priority', '1');
+  vi.update();
+  gs.info('Updated ' + vi.number);
+}</pre>
+      </div>
+
+      <h3>Lab D — Assignment rule</h3>
+      <ol>
+        <li>Open <a href="{BASE}/sn_vul_assignment_rule_list.do">Assignment rules</a>; New.</li>
+        <li>Condition: CI class = Linux Server OR tag = production.</li>
+        <li>Action: Assignment group = Unix Admins.</li>
+        <li>Re-import or update VI; confirm group changed on form.</li>
+      </ol>
+
+      <h3>Lab E — Analyst workflow (workspace)</h3>
+      <ol>
+        <li>Open <a href="{BASE}/now/vulnerability/overview">VR workspace</a> as vulnerability manager.</li>
+        <li>Filter open P1; open one VI; review linked CVE master and solution.</li>
+        <li>Create <a href="{BASE}/change_request.do?sys_id=-1">Change Request</a> (category security); link from VI related lists.</li>
+        <li>Move VI to In progress; set planned remediation date.</li>
+      </ol>
+
+      <h3>Lab F — Close loop</h3>
+      <ol>
+        <li>Simulate rescan: update VI state to Closed with close code Fixed (or import absent row per OOB logic).</li>
+        <li>Verify master still shows correct open VI count.</li>
+        <li>Document SLA: compare opened vs closed timestamps on VI.</li>
+      </ol>
+
+      <h3>Lab G — Cross-app (optional 30 min)</h3>
+      <ol>
+        <li>Create TI indicator on <a href="{BASE}/sn_ti_indicator_list.do">sn_ti_indicator</a>; relate to SIR test incident.</li>
+        <li>Run one CTD test from <a href="{BASE}/sn_vul_ctd_test_list.do">CTD tests</a>; observe failing CI → VI pattern if configured.</li>
+        <li>Open SIR workspace; confirm shared CI appears on both SIR and VI.</li>
+      </ol>
+
+      <table class="field-table">
+        <thead><tr><th>Lab</th><th>Pass gate</th><th>Evidence screenshot</th></tr></thead>
+        <tbody>
+          <tr><td>A Plugins</td><td>VR lists accessible without ACL error</td><td>Plugin active + workspace load</td></tr>
+          <tr><td>B CMDB</td><td>2 CIs with criticality set</td><td>CI form</td></tr>
+          <tr><td>C Import</td><td>1 master, 2 VIs, CI linked</td><td>VI list + form</td></tr>
+          <tr><td>D Assign</td><td>Correct group auto-set</td><td>Assignment rule + VI</td></tr>
+          <tr><td>E Remediate</td><td>CHG linked, state in progress</td><td>VI + change</td></tr>
+          <tr><td>F Close</td><td>VI closed, counts correct</td><td>Closed VI audit</td></tr>
+        </tbody>
+      </table>
+
+      <!-- §6 BEST PRACTICES -->
+      <h2 id="best">§6 — Best practice chips (VR / SecOps)</h2>
+
+      <div class="chips">
+        <span class="chip do">✓ Activate VR+CMDB before scanner spokes</span>
+        <span class="chip do">✓ IRE match keys = scanner export fields</span>
+        <span class="chip do">✓ One CVE master, many VIs</span>
+        <span class="chip do">✓ Assignment rules before go-live import</span>
+        <span class="chip do">✓ P1/P2 SLA defined per priority band</span>
+        <span class="chip do">✓ Remediate via change for prod CIs</span>
+        <span class="chip do">✓ Use VR workspace for owners, not raw lists</span>
+        <span class="chip do">✓ Flow Designer for notify + auto-assign</span>
+        <span class="chip do">✓ Separate SecOps groups from ITSM admin</span>
+        <span class="chip do">✓ Test import on subset staging first</span>
+        <span class="chip do">✓ Link VI to cmdb_ci always</span>
+        <span class="chip do">✓ Deferral = risk approval workflow</span>
+        <span class="chip dont">✗ Close VI with open exploit on critical CI</span>
+        <span class="chip dont">✗ Duplicate CVE masters per scanner</span>
+        <span class="chip dont">✗ Global scope custom VR tables</span>
+        <span class="chip dont">✗ Manual assign 10k VIs</span>
+        <span class="chip dont">✗ Skip rescan verification</span>
+        <span class="chip dont">✗ Patch without change on prod</span>
+        <span class="chip dont">✗ Mix SIR playbooks into VR flows blindly</span>
+        <span class="chip dont">✗ Table API bulk load without transform</span>
+        <span class="chip dont">✗ Admin-only UAT (use owner persona)</span>
+        <span class="chip dont">✗ Rewrite OOB sn_vul transforms in global</span>
+        <span class="chip dont">✗ Ignore third-party exploit intel feed</span>
+      </div>
+
+      <!-- §7 FLOW DESIGNER -->
+      <h2 id="flow-vr">§7 — Flow Designer automates VR</h2>
+
+      <p>OOB VR ships flows and subflows for common patterns. Custom implementations typically add: <strong>auto-assign</strong> on VI insert, <strong>create change</strong> when priority=1, <strong>notify owner</strong> on assignment or SLA warning.</p>
+
+      <div class="flow">
+        <div class="n dev"><b>TRIG</b>Record created</div><span class="arrow">→</span>
+        <div class="n dev"><b>IF</b>priority ≤ 2</div><span class="arrow">→</span>
+        <div class="n dev"><b>ACT</b>Assign group</div><span class="arrow">→</span>
+        <div class="n dev"><b>ACT</b>Create Change</div><span class="arrow">→</span>
+        <div class="n dev"><b>ACT</b>Send notification</div><span class="arrow">→</span>
+        <div class="n dev"><b>ACT</b>Update VI state</div>
+      </div>
+
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+          <span class="ttl">Flow Designer · VR VI On Create</span><span class="path">sys_hub_flow · table sn_vul_vulnerable_item</span></div>
+        <div class="body">
+          <div class="side"><div class="on">Trigger</div><div>Condition</div><div>Actions</div><div>Subflows</div></div>
+          <div class="main">
+            <div class="row"><span>Trigger</span><span>Created — sn_vul_vulnerable_item</span></div>
+            <div class="row"><span>If</span><span>priority is 1 or 2 AND cmdb_ci not empty</span></div>
+            <div class="row"><span>Action</span><span>Update Record — assignment_group from data pill</span></div>
+            <div class="row"><span>Action</span><span>Create Record — change_request (template)</span></div>
+            <div class="row"><span>Action</span><span>Send Email — group manager + VI link</span></div>
+            <div class="row"><span>Action</span><span>Update Record — VI.state = in_progress</span></div>
+          </div>
+        </div>
+        <div class="cap"><strong>Screen</strong> — build in <a href="{BASE}/now/flow-designer">Flow Designer</a>; activate only after Lab C proves data model.</div>
+      </div>
+
+      <h3>7.1 Implementer click-path (PDI)</h3>
+      <div class="stepboard">
+        <div class="s"><b>NEW FLOW</b><span>Table trigger VI</span></div>
+        <div class="s"><b>CONDITION</b><span>Priority / CI class</span></div>
+        <div class="s"><b>ASSIGN</b><span>Update VI fields</span></div>
+        <div class="s"><b>CHANGE</b><span>Create linked CHG</span></div>
+        <div class="s"><b>NOTIFY</b><span>Email / Slack spoke</span></div>
+        <div class="s"><b>TEST</b><span>Flow execution details</span></div>
+        <div class="s"><b>PUBLISH</b><span>Activate + monitor</span></div>
+      </div>
+
+      <div class="url-box"><strong>Flow troubleshooting</strong>
+        <a href="{BASE}/sys_hub_flow_list.do?sysparm_query=nameLIKEvul">Flows (vul)</a>
+        <a href="{BASE}/sys_flow_context_list.do">Flow contexts</a>
+        <a href="{BASE}/sysevent_list.do?sysparm_query=nameLIKEflow">Flow events</a>
+        <a href="{BASE}/sys_email_list.do">Email log</a>
+      </div>
+
+      <div class="pre-wrap">
+        <button type="button" class="copy-btn" data-copy="flow-outline">Copy</button>
+        <pre id="flow-outline">Flow name: VR - Critical VI - Assign and Change
+Scope: Global (OOB VR) OR your scoped app for extensions only
+Trigger: Record Created — sn_vul_vulnerable_item
+Condition: priority IN 1,2
+Actions:
+  1) Lookup assignment_group (from CI.support_group or assignment rule output)
+  2) Update Record (VI.assignment_group, VI.state = in_progress)
+  3) Create Record change_request (short_description, cmdb_ci, category=security)
+  4) Create Record task_ci (link CI to change if needed)
+  5) Send Notification (template: include VI.number, CVE, CI name, {BASE} link)</pre>
+      </div>
+
+      <div class="ok"><p><strong>Do:</strong> Keep OOB VR flows active; add **new** flows for customer-specific notify/ITSM integration. Use subflows for "create change" so SIR and VR can reuse.</p></div>
+      <div class="warn"><p><strong>Don't:</strong> Clone and edit vendor-owned global flows in production without update set discipline — prefer extension flows triggered on same table with order/conditions that complement OOB.</p></div>
+
+      <!-- §8 SDK -->
+      <h2 id="sdk">§8 — ServiceNow SDK: CAN vs CANNOT for VR/SecOps</h2>
+
+      <p>See full toolchain: <a href="SDK_CURSOR_FULL_DOCUMENTATION.html">SDK_CURSOR_FULL_DOCUMENTATION.html</a> ·
+      <a href="SDK_WINDOWS_FULL_CYCLE_CAN_CANNOT.html">SDK Windows full cycle</a> ·
+      Flow labs: <a href="PRACTICAL_FLOW_DESIGNER_FROM_SCRATCH.html">PRACTICAL_FLOW_DESIGNER_FROM_SCRATCH.html</a> ·
+      events: <a href="06_NOTIFICATIONS_EVENTS_JOBS.html">06_NOTIFICATIONS_EVENTS_JOBS.html</a>.</p>
+
+      <div class="track">
+        <div class="lane dev">
+          <h3>SDK CAN</h3>
+          <ul>
+            <li>Custom **scoped app** wrappers around VR APIs (Script Includes, REST)</li>
+            <li><strong>Fluent Flow</strong> (where supported) for remediation automation in your scope</li>
+            <li><strong>Record()</strong> metadata for **your** tables, properties, roles in scope</li>
+            <li>ATF tests that assert VI state transitions in PDI</li>
+            <li>Integration outbound from scoped app to ticketing/SOAR</li>
+            <li>Custom notifications referencing VI fields via mail scripts in scope</li>
+          </ul>
+        </div>
+        <div class="lane adm">
+          <h3>SDK CAN (config)</h3>
+          <ul>
+            <li>Export/update sets for scoped artifacts only</li>
+            <li>CI/CD pipeline for scoped application code</li>
+            <li>Scripted REST facade: accept scanner JSON → call OOB API</li>
+            <li>Custom dashboards/widgets reading <code>sn_vul_vulnerable_item</code> (read ACLs)</li>
+            <li>Wrapper SI: prioritize() pattern in scoped include calling GlideRecord</li>
+          </ul>
+        </div>
+        <div class="lane impl">
+          <h3>SDK CANNOT</h3>
+          <ul>
+            <li>Redefine or patch **OOB** <code>sn_vul</code> store apps/plugins via SDK</li>
+            <li>Replace **scanner IntegrationHub spoke** UI or closed vendor actions</li>
+            <li>Ship **Playbook Designer / Workflow Studio** graphs from SDK repo</li>
+            <li>Alter CMDB IRE OOB identifiers as scoped Fluent records (use instance config)</li>
+            <li>Clone VR workspace UX components as unsupported overrides</li>
+            <li>Grant cross-scope VR admin without platform governance</li>
+          </ul>
+        </div>
+      </div>
+
+      <table class="field-table">
+        <thead><tr><th>Goal</th><th>Recommended approach</th><th>Avoid</th></tr></thead>
+        <tbody>
+          <tr><td>Auto-assign VI</td><td>OOB assignment rules + optional scoped Flow</td><td>Global BR duplicating OOB VR engine</td></tr>
+          <tr><td>Scanner ingest</td><td>IH spoke + import/transform (OOB)</td><td>Direct JDBC insert into sn_vul_* from SDK job</td></tr>
+          <tr><td>Priority score</td><td>OOB calc + scoped SI extension</td><td>Overwrite master CVSS in global script</td></tr>
+          <tr><td>Remediation</td><td>Change + task templates; Flow create record</td><td>Scoped table replacing change_request</td></tr>
+          <tr><td>SIR correlation</td><td>OOB related lists / playbooks</td><td>SDK-only incident engine</td></tr>
+        </tbody>
+      </table>
+
+      <div class="pre-wrap">
+        <button type="button" class="copy-btn" data-copy="sdk-scope">Copy</button>
+        <pre id="sdk-scope">// Scoped app pattern (conceptual — lives in YOUR scope, not sn_vul)
+// tables.now.ts — custom integration log
+// business-rules.now.ts — on insert x_scope_scan_event → call OOB Import API
+// flows — trigger on x_scope_scan_event, not fork sn_vul_vulnerable_item OOB flows
+// CANNOT: npm package that rewrites com.snc.vulnerability plugin tables</pre>
+      </div>
+
+      <!-- §9 REFS -->
+      <h2 id="refs">§9 — Related documentation</h2>
+
+      <div class="modmap">
+        <a href="modules/SECOPS.html"><h4>modules/SECOPS.html</h4><p>SIR + VR + TI + CTD deep reference, scripts, exam labs</p><span class="go">Open →</span></a>
+        <a href="SDK_CURSOR_FULL_DOCUMENTATION.html"><h4>SDK_CURSOR_FULL_DOCUMENTATION.html</h4><p>Cursor + SDK workflow, limits, project layout</p><span class="go">Open →</span></a>
+        <a href="06_NOTIFICATIONS_EVENTS_JOBS.html"><h4>06 Notifications / Flows</h4><p>Events, notifications, Flow Designer basics</p><span class="go">Open →</span></a>
+        <a href="modules/MODULE_FULL_E2E_PRACTICE.html"><h4>MODULE_FULL_E2E_PRACTICE</h4><p>Cross-module SecOps summary lab</p><span class="go">Open →</span></a>
+        <a href="VISUAL_FROM_SCRATCH_00_16.html"><h4>VISUAL_FROM_SCRATCH_00_16</h4><p>Visual tutorial system (same CSS classes)</p><span class="go">Open →</span></a>
+        <a href="09_MODULES_AND_INTEGRATION.html"><h4>09 Modules &amp; Integration</h4><p>Module map including SecOps slot</p><span class="go">Open →</span></a>
+      </div>
+
+      <h3>VR description cycle — single-page recap flow</h3>
+      <div class="flow">
+        <div class="n impl"><b>Qualys</b>Export</div><span class="arrow">→</span>
+        <div class="n"><b>IH</b>Spoke</div><span class="arrow">→</span>
+        <div class="n"><b>sn_vul_entry</b>Stage</div><span class="arrow">→</span>
+        <div class="n"><b>Transform</b>Map</div><span class="arrow">→</span>
+        <div class="n"><b>sn_vul_vulnerability</b>Master</div><span class="arrow">→</span>
+        <div class="n"><b>sn_vul_vulnerable_item</b>+cmdb_ci</div><span class="arrow">→</span>
+        <div class="n adm"><b>sn_vul_assignment_rule</b></div><span class="arrow">→</span>
+        <div class="n dev"><b>Flow</b>Notify</div><span class="arrow">→</span>
+        <div class="n"><b>sn_vul_remediation_task</b></div><span class="arrow">→</span>
+        <div class="n"><b>change_request</b>Fix</div><span class="arrow">→</span>
+        <div class="n"><b>Rescan</b>Pass</div><span class="arrow">→</span>
+        <div class="n"><b>VI</b>Closed</div>
+      </div>
+
+      <h3>SIR ↔ VR ↔ TI ↔ CTD — operator glance board</h3>
+      <div class="glance">
+        <h3>When to open which app</h3>
+        <div class="grid3">
+          <div class="box"><strong>Active exploit on prod</strong><p>VR VI + likely SIR incident; TI enrichment; emergency change.</p></div>
+          <div class="box"><strong>Missing patch bulk</strong><p>VR vulnerability group / patch rollup → one change many CIs.</p></div>
+          <div class="box"><strong>CIS hardening drift</strong><p>CTD fail → VI or config task; not always SIR unless policy breach incident.</p></div>
+        </div>
+      </div>
+
+      <h3>Appendix — State vocabulary (typical VI)</h3>
+      <table>
+        <thead><tr><th>Phase</th><th>VI state (conceptual)</th><th>Owner action</th></tr></thead>
+        <tbody>
+          <tr><td>Triage</td><td>Open / New</td><td>Validate CI, priority, false positive check</td></tr>
+          <tr><td>Plan</td><td>In progress</td><td>Schedule change, assign remediation task</td></tr>
+          <tr><td>Execute</td><td>In progress</td><td>Implement patch/config; link CHG</td></tr>
+          <tr><td>Verify</td><td>Pending verification</td><td>Rescan import confirms fix</td></tr>
+          <tr><td>Done</td><td>Closed</td><td>Document close code; master counts update</td></tr>
+          <tr><td>Exception</td><td>Deferred / risk accepted</td><td>Approval + expiry date; monitor</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Appendix — Priority ↔ SLA (OOB reference bands)</h3>
+      <table class="field-table">
+        <thead><tr><th>Priority</th><th>Label</th><th>Typical SLA target</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Critical</td><td>7 days</td></tr>
+          <tr><td>2</td><td>High</td><td>30 days</td></tr>
+          <tr><td>3</td><td>Medium</td><td>90 days</td></tr>
+          <tr><td>4</td><td>Low</td><td>180 days</td></tr>
+          <tr><td>5</td><td>Info</td><td>Best effort</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Appendix — Scanner integration checklist</h3>
+      <ul>
+        <li>Connection credentials in <a href="{BASE}/sys_hub_connection_list.do">IH Connection</a> (mid-server if on-prem scanner).</li>
+        <li>Spoke actions scheduled via <a href="{BASE}/sysauto_script_list.do?sysparm_query=nameLIKEvul">Scheduled job</a> or vendor pull frequency.</li>
+        <li>Transform errors: <a href="{BASE}/sys_import_set_run_list.do">Import set runs</a> → error rows.</li>
+        <li>Duplicate VI prevention: OOB dedupe on CI + vulnerability; do not disable without design.</li>
+        <li>Post-import: run VR prioritization job if enabled (check <a href="{BASE}/sysauto_script_list.do">Jobs</a> named Vulnerability).</li>
+      </ul>
+
+      <h3>Appendix — CMDB fields that affect VR score</h3>
+      <table class="field-table">
+        <thead><tr><th>cmdb_ci field</th><th>Why VR cares</th></tr></thead>
+        <tbody>
+          <tr><td><code>business_criticality</code></td><td>Weight in risk score / priority</td></tr>
+          <tr><td><code>support_group</code></td><td>Default assignment when rule matches</td></tr>
+          <tr><td><code>location</code></td><td>Regional assignment rules</td></tr>
+          <tr><td><code>os</code> / class</td><td>Route to Unix vs Windows admins</td></tr>
+          <tr><td><code>install_status</code></td><td>Filter retired CIs from open VIs</td></tr>
+          <tr><td>Service mapping</td><td>Business impact via dependent services</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Appendix — sn_si_incident vs VR</h3>
+      <p>Create SIR when human response is required for active threat (malware, exfil, account compromise). VR handles exposure management (vuln present). Same CI may appear on both; use related records instead of duplicating work in ITSM incident unless policy requires.</p>
+
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+          <span class="ttl">SIR incident · linked context</span><span class="path">sn_si_incident.do</span></div>
+        <div class="body">
+          <div class="side"><div class="on">Overview</div><div>Observables</div><div>Affected CIs</div><div>Playbook</div></div>
+          <div class="main">
+            <div class="row"><span>Category</span><span>Malware / Phishing / …</span></div>
+            <div class="row"><span>MITRE</span><span>Tactics &amp; techniques tagged</span></div>
+            <div class="row"><span>CI</span><span>Same cmdb_ci as open VI</span></div>
+            <div class="row"><span>TI</span><span>Indicators linked from sn_ti_indicator</span></div>
+            <div class="row"><span>VR</span><span>Related VI for patch gap after contain</span></div>
+          </div>
+        </div>
+        <div class="cap"><strong>Screen</strong> — after containment, VR remediation closes underlying exposure.</div>
+      </div>
+
+      <h3>Appendix — Third-party intel (sn_vul_third_party_entry)</h3>
+      <p>Feeds update exploit availability on CVE masters. Implementers schedule intel pull (NVD, vendor APIs). Analysts use exploit flag to escalate priority without manual CVE research.</p>
+
+      <div class="url-box"><strong>Intel &amp; software</strong>
+        <a href="{BASE}/sn_vul_third_party_entry_list.do">Third party entries</a>
+        <a href="{BASE}/sn_vul_software_list.do">Software catalog</a>
+        <a href="{BASE}/sn_vul_solution_list.do">Solutions</a>
+      </div>
+
+      <h3>Appendix — Vulnerability groups (bulk remediation)</h3>
+      <p>Group VIs by host, application, or patch ID to open one change for many items. Search lists/filters on VI for shared <code>vulnerability.patch_id</code> or business service. Pattern documented in <a href="modules/SECOPS.html">SECOPS.html</a> §4.5.</p>
+
+      <div class="pre-wrap">
+        <button type="button" class="copy-btn" data-copy="bulk-chg">Copy</button>
+        <pre id="bulk-chg">// Bulk change pattern (background — adapt thresholds)
+var agg = new GlideAggregate('sn_vul_vulnerable_item');
+agg.addQuery('state', 'open');
+agg.addQuery('priority', 'IN', '1,2');
+agg.addAggregate('COUNT');
+agg.groupBy('vulnerability.patch_id');
+agg.query();
+while (agg.next()) {
+  var patchId = agg.getValue('vulnerability.patch_id');
+  var count = parseInt(agg.getAggregate('COUNT'), 10);
+  if (patchId && count >= 5) {
+    gs.info('Consider bulk CHG for patch ' + patchId + ' (' + count + ' VIs)');
+  }
+}</pre>
+      </div>
+
+      <h3>Appendix — Roles smoke test (impersonation)</h3>
+      <ol>
+        <li>Impersonate vulnerability manager → workspace + edit VI.</li>
+        <li>Impersonate CI owner → see only assigned VIs (ACL check).</li>
+        <li>Impersonate unauthorized user → expect read denial on admin lists.</li>
+      </ol>
+
+      <div class="chips">
+        <span class="chip url mod">modules/SECOPS.html</span>
+        <span class="chip url mod">SDK_CURSOR_FULL_DOCUMENTATION.html</span>
+        <span class="chip url">{BASE}/now/vulnerability/overview</span>
+        <span class="chip url">{BASE}/now/flow-designer</span>
+      </div>
+
+      <blockquote class="side-note">
+        <strong>Next depth:</strong> For certification-style labs and 30-question drills, continue in
+        <a href="modules/SECOPS.html#19-cis-vr-cis-sir-exam-z-to-hero-feature-labs-30-inline-q">SECOPS §19</a>.
+        For HR Leave scoped SDK examples, use scoped tables only — do not merge with OOB sn_vul store apps.
+      </blockquote>
+
+      <p class="footer">Practical SecOps + VRO From Scratch · visual tutorial · replace {BASE} via bar above · <a href="index.html">Portal</a></p>
+    </article>
+  </main>
+
+  <script src="assets/docs.js"></script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,4119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GRC / IRM — Governance, Risk &amp; Compliance (Zero → Pro) | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>GRC / IRM — Governance, Risk &amp; Compliance (Zero → Pro)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="grc-irm-governance-risk-compliance-zero-pro">GRC / IRM — Governance, Risk &amp; Compliance (Zero → Pro)</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً:</strong> <a href="../MASTER_ALL_IN_ONE_SUMMARY.html">../MASTER_ALL_IN_ONE_SUMMARY.md</a> · <a href="../html/MASTER_ALL_IN_ONE_SUMMARY.html">../html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل:</strong> <a href="../MASTER_ALL_IN_ONE.html">../MASTER_ALL_IN_ONE.md</a> · <a href="../html/MASTER_ALL_IN_ONE.html">../html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات:</strong> <a href="../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Australia · Scope <code>x_786686_hr_leave</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<h2 id="australia-instance">Australia Instance — نسخة أستراليا</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Region / Datacenter</strong></td>
+<td>ServiceNow <strong>Australia</strong></td>
+</tr>
+<tr>
+<td><strong>Release train</strong></td>
+<td>Zurich (Sep 2026 EA) · next EA: <strong>Brazil</strong></td>
+</tr>
+<tr>
+<td><strong>URL base</strong></td>
+<td><code>{BASE}</code></td>
+</tr>
+<tr>
+<td><strong>Scope note</strong></td>
+<td>HR Leave app: <code>x_786686_hr_leave</code></td>
+</tr>
+<tr>
+<td><strong>Guided Setup</strong></td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="direct-navigation-urls">Direct Navigation URLs — روابط التنقل المباشرة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page / Tool</th>
+<th>Navigation Path</th>
+<th>Direct URL</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GRC Workspace</strong></td>
+<td>Now Experience &gt; GRC</td>
+<td><a href="{BASE}/now/grc/home">{BASE}/now/grc/home</a></td>
+<td>Unified GRC workspace</td>
+</tr>
+<tr>
+<td><strong>Compliance Profiles</strong></td>
+<td>All &gt; GRC &gt; Profiles</td>
+<td><a href="{BASE}/sn_compliance_profile_list.do">{BASE}/sn_compliance_profile_list.do</a></td>
+<td>Compliance scope</td>
+</tr>
+<tr>
+<td><strong>Controls</strong></td>
+<td>All &gt; GRC &gt; Controls</td>
+<td><a href="{BASE}/sn_compliance_control_list.do">{BASE}/sn_compliance_control_list.do</a></td>
+<td>Control library</td>
+</tr>
+<tr>
+<td><strong>Policy Statements</strong></td>
+<td>All &gt; GRC &gt; Policies</td>
+<td><a href="{BASE}/sn_compliance_policy_statement_list.do">{BASE}/sn_compliance_policy_statement_list.do</a></td>
+<td>Policy management</td>
+</tr>
+<tr>
+<td><strong>Risk Register</strong></td>
+<td>All &gt; Risk Management &gt; Risks</td>
+<td><a href="{BASE}/sn_risk_risk_list.do">{BASE}/sn_risk_risk_list.do</a></td>
+<td>Enterprise risks</td>
+</tr>
+<tr>
+<td><strong>Audit Engagements</strong></td>
+<td>All &gt; Audit Management &gt; Engagements</td>
+<td><a href="{BASE}/sn_audit_engagement_list.do">{BASE}/sn_audit_engagement_list.do</a></td>
+<td>Audit planning</td>
+</tr>
+<tr>
+<td><strong>Vendor Risk</strong></td>
+<td>All &gt; Vendor Risk &gt; Assessments</td>
+<td><a href="{BASE}/sn_vdr_risk_assessment_list.do">{BASE}/sn_vdr_risk_assessment_list.do</a></td>
+<td>Third-party risk</td>
+</tr>
+<tr>
+<td><strong>BCM Plans</strong></td>
+<td>All &gt; Business Continuity &gt; Plans</td>
+<td><a href="{BASE}/sn_bcm_plan_list.do">{BASE}/sn_bcm_plan_list.do</a></td>
+<td>Continuity plans</td>
+</tr>
+<tr>
+<td><strong>Issues</strong></td>
+<td>All &gt; GRC &gt; Issues</td>
+<td><a href="{BASE}/sn_grc_issue_list.do">{BASE}/sn_grc_issue_list.do</a></td>
+<td>Findings &amp; issues</td>
+</tr>
+<tr>
+<td><strong>Guided Setup GRC/IRM</strong></td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+<td>Initial configuration</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>URLs:</strong> <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">../../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a><br />
+<strong>HR Leave:</strong> Scope x_786686_hr_leave</p>
+<p>CIS-RC (Risk &amp; Compliance) Professional Implementer Guide<br />
+الأسلوب: عربية + إنجليزية تكمّلان بعضهما — بدون ترجمة حرفية لأسماء الشاشات.</p>
+</blockquote>
+<hr />
+<h2 id="arabic-summary">ملخص ووصف بالعربية (Arabic Summary)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>البند</th>
+<th>الشرح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ما هو GRC / IRM؟</strong></td>
+<td><strong>GRC</strong> = مجال الحوكمة والمخاطر والامتثال · <strong>IRM</strong> = منتج ServiceNow (تطبيقات متعددة)</td>
+</tr>
+<tr>
+<td><strong>لماذا مهم؟</strong></td>
+<td>امتثال للوائح (ISO، SOX…) + سجل مخاطر + تدقيق + موردين + استمرارية أعمال</td>
+</tr>
+<tr>
+<td><strong>من يستخدمه؟</strong></td>
+<td>امتثال، مخاطر، تدقيق داخلي، CISO، BCM، مشتريات (موردين)</td>
+</tr>
+<tr>
+<td><strong>ماذا يغطي الملف؟</strong></td>
+<td>§1B/1C IRM كامل · Policy→Control→Indicator · Risk · Audit · TPRM · BCM · §16</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ملخص في سطر:</strong> من Profile وضابط وIndicator حتى Issue ومخاطr ومورد وBIA — حزمة IRM (~37 تطبيق في Application Manager).</p>
+<p><strong>وصف مختصر:</strong> يفرّق GRC عن IRM، يشرح كل تطبيق (Compliance، Risk، Audit Workspace، Metrics، CCM، Vendor Risk، BCM)، Application Manager، وتنفيذ 25 خطوة. الأعمق في المجلد — CIS-RC.</p>
+<hr />
+<h2 id="1-overview-business-value">1) Overview &amp; Business Value</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p><strong>GRC</strong> is the <strong>industry discipline</strong> (Governance, Risk, Compliance).<br />
+<strong>IRM</strong> is <strong>ServiceNow’s product name</strong> for the same capability on one platform. — <strong>GRC</strong> = مجال الأعمال (حوكمة + مخاطر + امتثال). <strong>IRM</strong> = اسم منتج ServiceNow — <strong>ليس</strong> منتجًا منافسًا لـ GRC، بل <strong>طريقة ServiceNow لتنفيذ GRC</strong>.</p>
+<blockquote>
+<p><strong>Read first:</strong> <a href="#1b-grc-vs-irm-vs-modules--clear-map">§1B GRC vs IRM vs Modules</a> · <a href="#1c-irm-product--all-applications-functions--implementation">§1C IRM All Apps &amp; Implementation</a></p>
+</blockquote>
+<p>ServiceNow delivers IRM as <strong>several licensed applications</strong> that share <strong>Profiles</strong>, <strong>Issues</strong>, and the <strong>GRC Workspace</strong> — not one monolithic “GRC table.”</p>
+<blockquote>
+<p><strong>Full IRM product catalog &amp; per-app implementation:</strong> <a href="#1c-irm-product--all-applications-functions--implementation">§1C IRM Product — All Applications</a></p>
+</blockquote>
+<p>Core applications (IRM suite — see §1C for complete list):</p>
+<table>
+<thead>
+<tr>
+<th>App (module)</th>
+<th>Short name</th>
+<th>One-line purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Policy &amp; Compliance Management</td>
+<td><strong>Compliance / IRM core</strong></td>
+<td>Policies, controls, attestations, indicators</td>
+</tr>
+<tr>
+<td>Risk Management</td>
+<td><strong>Risk</strong></td>
+<td>Risk register, scoring, treatment</td>
+</tr>
+<tr>
+<td>Audit Management</td>
+<td><strong>Audit</strong></td>
+<td>Engagements, findings, evidence</td>
+</tr>
+<tr>
+<td>Vendor Risk Management (VRM)</td>
+<td><strong>TPRM</strong></td>
+<td>Third-party / vendor risk</td>
+</tr>
+<tr>
+<td>Business Continuity Management</td>
+<td><strong>BCM</strong></td>
+<td>BIA, recovery plans, exercises</td>
+</tr>
+<tr>
+<td>GRC: Metrics / CCM / Accelerators</td>
+<td><strong>Monitoring</strong></td>
+<td>Automated controls, metrics, dashboards</td>
+</tr>
+<tr>
+<td>Audit / GRC Workspaces</td>
+<td><strong>Workspaces</strong></td>
+<td>Persona UIs (sn_audit_ws, /now/grc)</td>
+</tr>
+<tr>
+<td>Operational Resilience / Privacy</td>
+<td><strong>Optional</strong></td>
+<td>Resilience programs, privacy (if licensed)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1b-grc-vs-irm-vs-modules-clear-map">1B) GRC vs IRM vs Modules — Clear Map</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<blockquote>
+<p>Use this section in workshops, CIS-RC study, and when the client asks: <em>“Do we need GRC or IRM?”</em><br />
+الأسلوب: عربية + إنجليزية تكمّلان بعضهما في نفس السياق.</p>
+</blockquote>
+<h3 id="1b1-grc-vs-irm-not-eitheror">1B.1 GRC vs IRM — not “either/or”</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>GRC</strong></th>
+<th><strong>IRM</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>What is it?</strong></td>
+<td>Industry term + practice (frameworks, audits, board reporting)</td>
+<td>ServiceNow <strong>branding</strong> for the integrated risk platform (rebrand from “ServiceNow GRC”)</td>
+</tr>
+<tr>
+<td><strong>Who says it?</strong></td>
+<td>Auditors, regulators, CISO, ISO/NIST, consultants</td>
+<td>ServiceNow docs, Store, Guided Setup <strong>“GRC / IRM”</strong>, CIS-RC exam</td>
+</tr>
+<tr>
+<td><strong>Is it software?</strong></td>
+<td>No — a <strong>discipline</strong></td>
+<td>Yes — <strong>suite of apps</strong> on the Now Platform</td>
+</tr>
+<tr>
+<td><strong>Relationship</strong></td>
+<td><strong>Goal / outcome</strong> the client wants</td>
+<td><strong>Tool</strong> ServiceNow sells to achieve GRC outcomes</td>
+</tr>
+</tbody>
+</table>
+<p>You do <strong>not</strong> buy “GRC instead of IRM.” The client wants <strong>GRC outcomes</strong>; you implement them with <strong>ServiceNow IRM apps</strong>. — العميل يريد <strong>نتائج GRC</strong> (امتثال، مخاطر، تدقيق). أنت تُنفّذ ذلك بتطبيقات <strong>IRM</strong> على ServiceNow — الاسمان ليسا بديلين لبعض.</p>
+<pre><code class="language-text">┌─────────────────────────────────────────────────────────┐
+│ GRC (business discipline — what the board cares about) │
+│ Governance · Risk · Compliance │
+└──────────────────────────┬──────────────────────────────┘
+ │ implemented on
+ ▼
+┌─────────────────────────────────────────────────────────┐
+│ IRM (ServiceNow product suite — how you configure it) │
+│ Shared: Profiles · Issues · Workspace · Integrations │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+<p><strong>Old vs new naming (don’t confuse the client):</strong></p>
+<table>
+<thead>
+<tr>
+<th>You may hear</th>
+<th>Meaning today</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“ServiceNow GRC”</td>
+<td>Legacy name — same family as IRM</td>
+</tr>
+<tr>
+<td>“IRM”</td>
+<td>Current marketing / platform name</td>
+</tr>
+<tr>
+<td>“GRC Workspace” / “IRM Workspace”</td>
+<td>Same workspace URL often /now/grc</td>
+</tr>
+<tr>
+<td>CIS-RC exam</td>
+<td>Risk &amp; <strong>Compliance</strong> — covers IRM apps</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="1b2-modules-inside-irm-each-app-answers-a-different-question">1B.2 “Modules” inside IRM — each app answers a different question</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p>These are <strong>separate Store applications / plugins</strong> with different menus, roles, and tables — but they <strong>integrate</strong> via Profiles and Issues.</p>
+<table>
+<thead>
+<tr>
+<th>Module (app)</th>
+<th>Core business question</th>
+<th>Main objects</th>
+<th><strong>Not the same as…</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Policy &amp; Compliance</strong></td>
+<td><em>Are we meeting our obligations?</em></td>
+<td>Authority Document → Citation → Policy → <strong>Control</strong> → Indicator / Attestation</td>
+<td><strong>Risk</strong> (uncertainty future event) · <strong>Audit</strong> (independent review)</td>
+</tr>
+<tr>
+<td><strong>Risk Management</strong></td>
+<td><em>What could go wrong and how bad?</em></td>
+<td>Risk register, assessments, inherent/residual, treatment</td>
+<td><strong>Compliance</strong> (pass/fail vs standard) · <strong>BCM</strong> (recovery after disaster)</td>
+</tr>
+<tr>
+<td><strong>Audit Management</strong></td>
+<td><em>Can we prove it to internal/external audit?</em></td>
+<td>Engagements, audit tasks, findings, evidence</td>
+<td><strong>Compliance monitoring</strong> (continuous) · Audit is periodic/point-in-time</td>
+</tr>
+<tr>
+<td><strong>Vendor Risk (VRM / TPRM)</strong></td>
+<td><em>Are our suppliers/partners safe?</em></td>
+<td>Vendor profile, tier, questionnaires, vendor issues</td>
+<td><strong>Internal controls</strong> (your org) · <strong>Procurement</strong> (contract $ only)</td>
+</tr>
+<tr>
+<td><strong>BCM</strong></td>
+<td><em>Can we survive outage/disaster?</em></td>
+<td>Critical services, <strong>BIA</strong>, RTO/RPO, continuity plans, <strong>exercises</strong></td>
+<td><strong>IT DR</strong> alone · <strong>Risk register</strong> (BCM is operational recovery)</td>
+</tr>
+<tr>
+<td><strong>Privacy / Op. Resilience</strong> (optional)</td>
+<td><em>Privacy / resilience regulatory programs?</em></td>
+<td>Privacy tasks, resilience metrics</td>
+<td>Overlaps Compliance — license-dependent</td>
+</tr>
+</tbody>
+</table>
+<p>العربي — سؤال واحد لكل موديول:</p>
+<table>
+<thead>
+<tr>
+<th>الموديول</th>
+<th>السؤال بالعربي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Policy &amp; Compliance</td>
+<td>هل نلتزم بالضوابط والسياسات؟</td>
+</tr>
+<tr>
+<td>Risk</td>
+<td>ماذا قد يحدث من خطأ وما شدته؟</td>
+</tr>
+<tr>
+<td>Audit</td>
+<td>هل نستطيع إثبات ذلك للمدقق؟</td>
+</tr>
+<tr>
+<td>TPRM / VRM</td>
+<td>هل الموردون يعرّضوننا لمخاطر؟</td>
+</tr>
+<tr>
+<td>BCM</td>
+<td>هل نستطيع الاستمرار بعد انقطاع؟</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="1b3-how-modules-connect-integration-not-silos">1B.3 How modules connect (integration — not silos)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<pre><code class="language-text"> Profile (entity in scope: BU, app, vendor)
+ │
+ ┌─────────────────────┼─────────────────────┐
+ ▼ ▼ ▼
+ Policy &amp; Compliance Risk Management Vendor Risk (TPRM)
+ Controls · Indicators Risks · Treatment Tier · Assessment
+ │ │ │
+ └──────────┬──────────┴──────────┬──────────┘
+ ▼ ▼
+ sn_grc_issue Audit findings
+ (shared remediation) (may become issues)
+ │
+ ▼
+ BCM (critical services tied to same entity)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Shared concept</th>
+<th>Role across modules</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Profile / Profile Type</strong></td>
+<td>Scoping — <em>which</em> BU, system, or vendor is in scope</td>
+</tr>
+<tr>
+<td><strong>Issue</strong></td>
+<td>Failed control, audit finding, vendor gap → one remediation pipeline</td>
+</tr>
+<tr>
+<td><strong>Indicator (CCM)</strong></td>
+<td>Automated control test — often IT data (users, changes, patches)</td>
+</tr>
+<tr>
+<td><strong>Attestation</strong></td>
+<td>Manual “I confirm this control works” — control owner sign-off</td>
+</tr>
+<tr>
+<td><strong>GRC Workspace</strong> /now/grc</td>
+<td>Single agent UI across apps (if licensed)</td>
+</tr>
+</tbody>
+</table>
+<p>Without <strong>Profiles</strong>, modules feel disconnected. Profiles are the <strong>hub</strong>. — <strong>Profile</strong> = الكيان (فرع، نظام، مورد). بدون Profiles كل موديول يبدو منفصلًا.</p>
+<hr />
+<h3 id="1b4-irm-vs-other-servicenow-modules-boundaries">1B.4 IRM vs other ServiceNow modules (boundaries)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>ServiceNow module</th>
+<th>Focus</th>
+<th>vs IRM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ITSM</strong></td>
+<td>Incidents, changes, requests, SLA</td>
+<td>ITSM <strong>executes</strong> operations; IRM <strong>governs</strong> whether controls/risk are acceptable. Link: failed indicator → ITSM <strong>Problem/Issue</strong>.</td>
+</tr>
+<tr>
+<td><strong>CMDB / ITOM</strong></td>
+<td>CIs, discovery, events</td>
+<td>IRM <strong>indicators</strong> read CMDB/ITOM data (e.g. unauthorized CIs).</td>
+</tr>
+<tr>
+<td><strong>HRSD</strong></td>
+<td>HR cases, lifecycle</td>
+<td>Employee policies — different domain; may share <strong>Policy</strong> content for HR regs.</td>
+</tr>
+<tr>
+<td><strong>SecOps / VR</strong></td>
+<td>Vulnerabilities, security incidents</td>
+<td>Feeds <strong>indicators</strong>; IRM tracks <strong>risk treatment</strong> and compliance posture.</td>
+</tr>
+<tr>
+<td><strong>Excel / Archer / OneTrust</strong></td>
+<td>External GRC</td>
+<td>IRM replaces spreadsheets; integration via REST/IH optional.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ITSM</strong> = تشغيل يومي · <strong>IRM</strong> = حوكمة ومخاطر وامتثال · يتكاملان (مثلاً: Issue مرتبط بتغيير IT).</p>
+<hr />
+<h3 id="1b5-which-modules-to-license-first-consultant-guidance">1B.5 Which modules to license first (consultant guidance)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Client situation</th>
+<th>Start with</th>
+<th>Add later</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Audit / ISO deadline</td>
+<td><strong>Policy &amp; Compliance</strong> + <strong>Audit</strong></td>
+<td>Risk, TPRM</td>
+</tr>
+<tr>
+<td>Board wants risk heat map</td>
+<td><strong>Risk</strong> + <strong>Policy &amp; Compliance</strong></td>
+<td>Audit, BCM</td>
+</tr>
+<tr>
+<td>Heavy outsourcing / SaaS</td>
+<td><strong>Vendor Risk (TPRM)</strong> + Compliance</td>
+<td>Full risk</td>
+</tr>
+<tr>
+<td>Regulator asks BCM / DR proof</td>
+<td><strong>BCM</strong></td>
+<td>Link to Risk + Compliance</td>
+</tr>
+<tr>
+<td>“We want everything”</td>
+<td>Phased: <strong>Profiles</strong> → Compliance → Risk → TPRM → BCM</td>
+<td>Never big-bang all apps week 1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Compliance</strong> is the most common <strong>first</strong> app (controls + attestations). <strong>Risk</strong> and <strong>TPRM</strong> often phase 2. — ابدأ بـ <strong>Policy &amp; Compliance</strong> غالبًا، ثم <strong>Risk</strong> و <strong>TPRM</strong> حسب الأولوية.</p>
+<hr />
+<h3 id="1b6-quick-interview-answers">1B.6 Quick interview answers</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Short answer (EN)</th>
+<th>العربي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRC vs IRM?</td>
+<td>GRC = discipline; IRM = ServiceNow suite</td>
+<td>GRC مجال · IRM منتج ServiceNow</td>
+</tr>
+<tr>
+<td>One app or many?</td>
+<td>Many licensed apps, one platform</td>
+<td>عدة تطبيقات · منصة واحدة</td>
+</tr>
+<tr>
+<td>Profile purpose?</td>
+<td>Entity scoping for all modules</td>
+<td>تحديد الكيان في النطاق</td>
+</tr>
+<tr>
+<td>Control vs Risk?</td>
+<td>Control = rule you must satisfy; Risk = uncertain event + impact</td>
+<td>ضابط = التزام · مخاطر = حدث محتمل</td>
+</tr>
+<tr>
+<td>Compliance vs Audit?</td>
+<td>Compliance = ongoing monitoring; Audit = independent review cycle</td>
+<td>امتثال مستمر · تدقيق دوري</td>
+</tr>
+<tr>
+<td>TPRM vs internal risk?</td>
+<td>TPRM = third parties (vendors)</td>
+<td>TPRM = موردون خارجيون</td>
+</tr>
+<tr>
+<td>BCM vs Risk?</td>
+<td>BCM = recovery when disaster happens; Risk = identify/treat threats</td>
+<td>BCM استرداد · Risk تحديد ومعالجة</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1c-irm-product-all-applications-functions-implementation">1C) IRM Product — All Applications, Functions &amp; Implementation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<blockquote>
+<p><strong>Application Manager:</strong> When you opt into <strong>Integrated Risk Management</strong> as a ServiceNow <strong>Product</strong>, the instance installs a <strong>bundle</strong> of licensed apps (often <strong>30–40+</strong> apps — exact count depends on release and entitlements).</p>
+<p>Navigate: All &gt; System Applications &gt; Application Manager → <strong>Integrated Risk Management</strong> — <a href="{BASE}/now/app-manager">Open direct</a></p>
+<p>Status on your instance: <strong>In product · Will be installed</strong> (until setup completes).</p>
+<p>الأسلوب: عربية + إنجليزية تكمّلان بعضهما في نفس السياق.</p>
+</blockquote>
+<h3 id="1c1-how-irm-is-installed-application-manager-vs-classic-activate">1C.1 How IRM is installed (Application Manager vs classic activate)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Navigate</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A — Application Manager (current)</strong></td>
+<td>All &gt; System Applications &gt; Application Manager → <strong>Integrated Risk Management</strong> → Get started · <a href="{BASE}/now/app-manager">Open direct</a></td>
+<td>New instances, product-based licensing</td>
+</tr>
+<tr>
+<td><strong>B — All Available Applications</strong></td>
+<td>All &gt; System Applications &gt; All Available Applications &gt; All · <a href="{BASE}/v_plugin_list.do">Open direct</a></td>
+<td>Activate individual apps manually</td>
+</tr>
+<tr>
+<td><strong>C — Guided Setup</strong></td>
+<td>All &gt; Guided Setup &gt; GRC / IRM · <a href="{BASE}/now/guided-setup">Open direct</a></td>
+<td>After apps install — configuration wizard</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Product opt-in</strong> installs many apps at once (Metrics, Audit Workspace, accelerators, integrations). You still <strong>configure</strong> each domain via Guided Setup and §12 build order.</p>
+<p><strong>Application Manager</strong> يثبّت حزمة IRM دفعة واحدة — التفعيل ≠ التنفيذ — تحتاج Guided Setup وترتيب §12.</p>
+<pre><code class="language-text">Application Manager → IRM Product (opt-in)
+ │
+ ├─ Installs ~37 included apps (licensed bundle)
+ │
+ ▼
+Guided Setup (GRC / IRM) + §12 implementation phases
+ │
+ ▼
+Go-live per track: Compliance · Risk · Audit · TPRM · BCM
+</code></pre>
+<hr />
+<h3 id="1c2-irm-application-catalog-by-function-group">1C.2 IRM application catalog (by function group)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<blockquote>
+<p><strong>Note:</strong> App names and scope IDs vary slightly by <strong>release</strong> (Yokohama, Xanadu, etc.). Use Application Manager on <strong>your</strong> instance as source of truth. Below is the <strong>implementer map</strong> CIS-RC and projects need.</p>
+</blockquote>
+<h4 id="group-a-platform-shared-services-install-first-foundation">Group A — Platform &amp; shared services (install first — foundation)</h4>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>Scope / App ID (typical)</th>
+<th>Functions</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Integrated Risk Management Core / GRC Common</strong></td>
+<td>sn_grc / compliance core</td>
+<td>Profiles, shared GRC engine, cross-app navigation</td>
+<td>Guided Setup <strong>Foundation</strong> · Profile Types + Profiles</td>
+</tr>
+<tr>
+<td><strong>GRC: Issue Management</strong></td>
+<td>sn_grc</td>
+<td>Issues, remediation tasks, unified deficiency tracking</td>
+<td>Configure issue states · Flow for remediation · link failed indicators</td>
+</tr>
+<tr>
+<td><strong>GRC: Metrics</strong></td>
+<td>sn_grc_metric</td>
+<td>Metric definitions, data collection for dashboards &amp; CCM</td>
+<td>Define metrics · schedules · PA data sources</td>
+</tr>
+<tr>
+<td><strong>GRC: Mapping Engine</strong></td>
+<td>compliance suite</td>
+<td>Authority doc → citation → policy → control mapping</td>
+<td>Load frameworks · map citations to controls</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Profiles + Issues + Metrics</strong> = أساس كل IRM — لا تبدأ الضوابط قبل Profiles.</p>
+<hr />
+<h4 id="group-b-policy-compliance-core-compliance-ccm">Group B — Policy &amp; Compliance (core compliance / CCM)</h4>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>Scope / App ID</th>
+<th>Functions</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GRC: Policy and Compliance Management</strong></td>
+<td>com.sn_compliance / sn_compliance</td>
+<td>Authority documents, citations, policies, <strong>controls</strong>, attestations, control tests</td>
+<td>§12.3 steps 1–4 · §15 Phase 3A · §16 lab track A</td>
+</tr>
+<tr>
+<td><strong>GRC: Continuous Controls Monitoring (CCM)</strong></td>
+<td>compliance / indicators</td>
+<td><strong>Indicators</strong>, indicator sources, automated test runs, pass/fail</td>
+<td>Create indicator per control · data source query · schedule · fail → issue</td>
+</tr>
+<tr>
+<td><strong>GRC: Technology Controls Monitoring Accelerator</strong></td>
+<td>Store accelerator</td>
+<td>Pre-built control/indicators for IT regs (NIST, CIS, etc.)</td>
+<td>Install from bundle · map to your Profiles · tune queries for instance</td>
+</tr>
+<tr>
+<td><strong>GRC: Policy and Compliance Workspace</strong></td>
+<td>workspace app</td>
+<td>Persona UI for compliance officers</td>
+<td>Configure /now/grc · role assignment</td>
+</tr>
+<tr>
+<td><strong>Regulatory Change Management</strong></td>
+<td>sn_rcm (typical)</td>
+<td>Track regulatory changes → impact on controls</td>
+<td>Link new regs to authority docs · reassess controls</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key functions (Compliance):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Object</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Adopt framework</td>
+<td>Authority Document</td>
+<td>All &gt; Policy and Compliance &gt; Authority Documents · <a href="{BASE}/sn_compliance_authority_document_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Map regulation clause</td>
+<td>Citation</td>
+<td>Citations</td>
+</tr>
+<tr>
+<td>Internal policy</td>
+<td>Policy / Policy Statement</td>
+<td>Policies</td>
+</tr>
+<tr>
+<td>Control library</td>
+<td>Control</td>
+<td>Controls</td>
+</tr>
+<tr>
+<td>Manual sign-off</td>
+<td>Attestation campaign</td>
+<td>Attestations · portal /sp /esc</td>
+</tr>
+<tr>
+<td>Automated test</td>
+<td>Indicator + result</td>
+<td>Indicators · Indicator Results</td>
+</tr>
+<tr>
+<td>Non-conformance</td>
+<td>Issue</td>
+<td>All &gt; GRC &gt; Issues · <a href="{BASE}/sn_grc_issue_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="group-c-risk-management">Group C — Risk Management</h4>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>Scope / App ID</th>
+<th>Functions</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GRC: Risk Management</strong></td>
+<td>com.sn_risk / sn_risk</td>
+<td>Risk register, statements, assessments, inherent/residual, treatment</td>
+<td>Risk framework admin · scales · heat map · §15 Phase 3B</td>
+</tr>
+<tr>
+<td><strong>GRC: Advanced Risk</strong></td>
+<td>Store add-on</td>
+<td>Quantitative/advanced methodologies, simulations (if licensed)</td>
+<td>Enable after core risk live</td>
+</tr>
+<tr>
+<td><strong>GRC: Risk Management Workspace</strong></td>
+<td>workspace</td>
+<td>Risk manager persona UI</td>
+<td>Roles sn_risk.manager</td>
+</tr>
+<tr>
+<td><strong>Key Risk Indicators (KRIs)</strong></td>
+<td>risk app</td>
+<td>Monitor risk metrics over time</td>
+<td>Link KRIs to risks · indicator schedules</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key functions (Risk):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Object</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Register risk</td>
+<td>Risk / Risk Statement</td>
+<td>All &gt; Risk &gt; Risk Register · <a href="{BASE}/sn_risk_risk_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Score risk</td>
+<td>Assessment</td>
+<td>Assessments · likelihood × impact</td>
+</tr>
+<tr>
+<td>Treat risk</td>
+<td>Treatment plan</td>
+<td>Accept / mitigate / transfer / avoid</td>
+</tr>
+<tr>
+<td>Report</td>
+<td>Heat map / dashboard</td>
+<td>PA · /now/grc</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="group-d-audit-management">Group D — Audit Management</h4>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>Scope / App ID</th>
+<th>Functions</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GRC: Audit Management</strong></td>
+<td>com.sn_audit / sn_audit</td>
+<td>Audit plans, <strong>engagements</strong>, tasks, findings, evidence</td>
+<td>§15 audit track · engagement per framework</td>
+</tr>
+<tr>
+<td><strong>GRC: Audit Management Workspace</strong></td>
+<td>sn_audit_ws</td>
+<td>Persona workspace for auditors (your screenshot)</td>
+<td>Assign sn_audit.* roles · open Audit Workspace</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key functions (Audit):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Object</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plan audit cycle</td>
+<td>Audit plan</td>
+<td>All &gt; Audit &gt; Plans · <a href="{BASE}/sn_audit_engagement_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Run audit</td>
+<td>Engagement</td>
+<td>Engagements</td>
+</tr>
+<tr>
+<td>Work papers</td>
+<td>Audit tasks</td>
+<td>Tasks</td>
+</tr>
+<tr>
+<td>Findings</td>
+<td>Finding → Issue</td>
+<td>Findings · link to sn_grc_issue</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>Attachments / linked controls</td>
+<td>Engagement related lists</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="group-e-vendor-risk-tprm">Group E — Vendor Risk (TPRM)</h4>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>Scope / App ID</th>
+<th>Functions</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GRC: Vendor Risk Management</strong></td>
+<td>com.sn_vdr_risk_asmt / sn_vdr_*</td>
+<td>Vendor profiles, <strong>tiering</strong>, questionnaires, assessments, vendor issues</td>
+<td>§15 Phase 3C · Tier 1 list first</td>
+</tr>
+<tr>
+<td><strong>Vendor Risk Workspace</strong></td>
+<td>workspace (if in bundle)</td>
+<td>Persona UI for vendor risk analysts</td>
+<td>Vendor Risk menus</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key functions (TPRM):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Object</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inventory vendor</td>
+<td>Vendor profile</td>
+<td>All &gt; Vendor Risk Management &gt; Vendor Profiles · <a href="{BASE}/sn_vdr_risk_asmt_assessment_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Prioritize</td>
+<td>Tier 1/2/3</td>
+<td>Tier field on profile</td>
+</tr>
+<tr>
+<td>Assess</td>
+<td>Assessment / questionnaire</td>
+<td>Assessments</td>
+</tr>
+<tr>
+<td>Remediate</td>
+<td>Vendor issue</td>
+<td>Issues (vendor)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="group-f-business-continuity-bcm">Group F — Business Continuity (BCM)</h4>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>Scope / App ID</th>
+<th>Functions</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GRC: Business Continuity Management</strong></td>
+<td>BCM app (Store)</td>
+<td>Critical services, <strong>BIA</strong>, RTO/RPO, continuity plans, <strong>exercises</strong></td>
+<td>§15 Phase 3D · one exercise UAT</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key functions (BCM):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Object</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Critical service</td>
+<td>Service definition</td>
+<td>All &gt; Business Continuity &gt; Critical Services · <a href="{BASE}/sn_bcm_service_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Impact analysis</td>
+<td>BIA</td>
+<td>BIA records</td>
+</tr>
+<tr>
+<td>Recovery</td>
+<td>Continuity plan</td>
+<td>Continuity Plans</td>
+</tr>
+<tr>
+<td>Test</td>
+<td>Exercise</td>
+<td>Exercises · tasks · lessons learned</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="group-g-privacy-resilience-esg-optional-in-bundle">Group G — Privacy, resilience &amp; ESG (optional in bundle)</h4>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>Functions</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Privacy Management</strong></td>
+<td>Privacy tasks, processing activities, DPIA-style workflows</td>
+<td>Phase 2+ if GDPR/privacy driver</td>
+</tr>
+<tr>
+<td><strong>Operational Resilience Management</strong></td>
+<td>Resilience metrics, important business services</td>
+<td>Financial services regs</td>
+</tr>
+<tr>
+<td><strong>ESG Management / ESG Workspace</strong></td>
+<td>Environmental/social/governance disclosures</td>
+<td>Often separate initiative</td>
+</tr>
+<tr>
+<td><strong>Microsoft 365 for ServiceNow Reporting</strong></td>
+<td>sn_esg_msoff_intg — export/reporting with M365</td>
+<td>Configure integration · credentials</td>
+</tr>
+</tbody>
+</table>
+<p>قد لا تكون كل هذه مرخّصة — راجع Application Manager على مثيلك.</p>
+<hr />
+<h4 id="group-h-workspaces-executive-experience">Group H — Workspaces &amp; executive experience</h4>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>URL / access</th>
+<th>Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IRM / GRC Workspace</strong></td>
+<td>/now/grc</td>
+<td>Unified agent hub — compliance, risk, issues</td>
+</tr>
+<tr>
+<td><strong>Audit Management Workspace</strong></td>
+<td>sn_audit_ws</td>
+<td>Auditor engagements, tasks</td>
+</tr>
+<tr>
+<td><strong>Risk / Compliance workspaces</strong></td>
+<td>version-dependent</td>
+<td>Persona-based configurable workspaces</td>
+</tr>
+<tr>
+<td><strong>Executive dashboards</strong></td>
+<td>PA / Analytics</td>
+<td>Compliance %, top risks, audit status</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="group-i-integrations-platform-features-cross-cutting">Group I — Integrations &amp; platform features (cross-cutting)</h4>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Used by</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Assessment Designer</strong></td>
+<td>Demand-style scoring for risk/compliance assessments</td>
+<td>Metric definitions · scales</td>
+</tr>
+<tr>
+<td><strong>Flow Designer</strong></td>
+<td>Attestation reminders, issue escalation, audit approvals</td>
+<td>Scoped flows in HR Leave pattern</td>
+</tr>
+<tr>
+<td><strong>Performance Analytics</strong></td>
+<td>Posture dashboards</td>
+<td>KPIs on controls, issues aging</td>
+</tr>
+<tr>
+<td><strong>Now Assist for IRM</strong></td>
+<td>GenAI summaries (if licensed)</td>
+<td>Enable in AI controls</td>
+</tr>
+<tr>
+<td><strong>REST / IntegrationHub</strong></td>
+<td>External GRC, scanners, HRIS</td>
+<td>12_INTEGRATION_FULL_GUIDE.md pattern</td>
+</tr>
+<tr>
+<td><strong>CMDB / ITOM indicators</strong></td>
+<td>CCM — IT controls</td>
+<td>Indicator source = CMDB query</td>
+</tr>
+<tr>
+<td><strong>ITSM link</strong></td>
+<td>Remediation → change/incident</td>
+<td>Issue task → change request</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="1c3-apps-visible-in-application-manager-example-from-irm-product-page">1C.3 Apps visible in Application Manager (example from IRM product page)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p>Your instance <strong>Integrated Risk Management</strong> product includes licensed apps such as:</p>
+<table>
+<thead>
+<tr>
+<th>Application (as shown in UI)</th>
+<th>App ID (example)</th>
+<th>Will implement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRC: Audit Management Workspace</td>
+<td>sn_audit_ws</td>
+<td>Auditor persona UI</td>
+</tr>
+<tr>
+<td>GRC: Metrics</td>
+<td>sn_grc_metric</td>
+<td>Metrics &amp; monitoring data</td>
+</tr>
+<tr>
+<td>GRC: Technology Controls Monitoring Accelerator</td>
+<td>(accelerator)</td>
+<td>Pre-built IT control library</td>
+</tr>
+<tr>
+<td>Microsoft 365 for ServiceNow Reporting</td>
+<td>sn_esg_msoff_intg</td>
+<td>Reporting integration</td>
+</tr>
+</tbody>
+</table>
+<p>Scroll the full <strong>Included Applications (37)</strong> list in Application Manager and export/screenshot for your project&rsquo;s scope document. — افتح قائمة <strong>Included Applications</strong> كاملة على مثيلك — العدد والأسماء قد تختلف — وثّقها في charter المشروع.</p>
+<hr />
+<h3 id="1c4-implementation-order-all-irm-functions-recommended">1C.4 Implementation order (all IRM functions — recommended)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Apps / functions</th>
+<th>Deliverable</th>
+<th>§ reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0</strong></td>
+<td>Application Manager opt-in + sub-prod</td>
+<td>IRM product installing</td>
+<td>§15 Phase 1</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>Core + Profiles + Roles</td>
+<td>Profile types, RACI, groups</td>
+<td>§15 Phase 2</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Policy &amp; Compliance + Mapping</td>
+<td>Authority docs, controls, attestations</td>
+<td>§15 Phase 3A</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>Metrics + CCM + Tech Controls Accelerator</td>
+<td>Indicators live, pilot CCM</td>
+<td>§1C Group B</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Risk Management (+ Advanced if licensed)</td>
+<td>Register + heat map</td>
+<td>§15 Phase 3B</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>Issue Management + Flow remediation</td>
+<td>Fail → issue → close loop</td>
+<td>§8 Lab 4</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td>Audit Management + Audit Workspace</td>
+<td>One engagement UAT</td>
+<td>§15 + sn_audit_ws</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td>Vendor Risk (TPRM)</td>
+<td>Tier 1 vendors assessed</td>
+<td>§15 Phase 3C</td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td>BCM</td>
+<td>BIA + one exercise</td>
+<td>§15 Phase 3D</td>
+</tr>
+<tr>
+<td><strong>9</strong></td>
+<td>Workspaces + PA dashboards</td>
+<td>/now/grc, exec views</td>
+<td>§11</td>
+</tr>
+<tr>
+<td><strong>10</strong></td>
+<td>Privacy / Resilience / M365 (if licensed)</td>
+<td>Optional tracks</td>
+<td>§1C Group G</td>
+</tr>
+<tr>
+<td><strong>11</strong></td>
+<td>UAT + go-live + hypercare</td>
+<td>Signed test pack</td>
+<td>§16</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-text">Phase 0–1: Application Manager + Profiles (nothing else works without this)
+Phase 2–3: Compliance + CCM (audit readiness)
+Phase 4–5: Risk + Issues (board reporting)
+Phase 6: Audit Workspace (internal audit)
+Phase 7–8: TPRM + BCM (regulatory / resilience)
+Phase 9–11: Dashboards + optional + go-live
+</code></pre>
+<hr />
+<h3 id="1c5-function-app-quick-lookup-consultant-cheat-sheet">1C.5 Function → app quick lookup (consultant cheat sheet)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Client asks for…</th>
+<th>IRM function</th>
+<th>Primary app</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ISO 27001 / SOX controls</td>
+<td>Control library + attestations</td>
+<td>Policy &amp; Compliance</td>
+</tr>
+<tr>
+<td>Automated IT control tests</td>
+<td>Indicators / CCM</td>
+<td>CCM + Tech Controls Accelerator</td>
+</tr>
+<tr>
+<td>Risk heat map</td>
+<td>Inherent/residual scoring</td>
+<td>Risk Management</td>
+</tr>
+<tr>
+<td>Internal audit</td>
+<td>Engagements + findings</td>
+<td>Audit + <strong>Audit Workspace</strong></td>
+</tr>
+<tr>
+<td>Vendor questionnaires</td>
+<td>Tier + assessment</td>
+<td>Vendor Risk</td>
+</tr>
+<tr>
+<td>BIA / disaster recovery</td>
+<td>RTO/RPO, exercises</td>
+<td>BCM</td>
+</tr>
+<tr>
+<td>One remediation queue</td>
+<td>Issues</td>
+<td>Issue Management</td>
+</tr>
+<tr>
+<td>Executive single pane</td>
+<td>Dashboards</td>
+<td>Metrics + PA + GRC Workspace</td>
+</tr>
+<tr>
+<td>Control owner portal tasks</td>
+<td>Attestations</td>
+<td>Policy &amp; Compliance + /sp</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="1c6-post-install-verification-checklist">1C.6 Post-install verification checklist</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p>After Application Manager completes IRM install:</p>
+<ul>
+<li>[ ] All &gt; Guided Setup &gt; GRC / IRM opens and shows phases — <a href="{BASE}/now/guided-setup">Open direct</a></li>
+<li>[ ] All &gt; Policy and Compliance menu visible — <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></li>
+<li>[ ] All &gt; Risk menu visible — <a href="{BASE}/sn_risk_risk_list.do">Open direct</a></li>
+<li>[ ] All &gt; Audit menu visible (if licensed) — <a href="{BASE}/sn_audit_engagement_list.do">Open direct</a></li>
+<li>[ ] All &gt; Vendor Risk Management visible (if licensed) — <a href="{BASE}/sn_vdr_risk_asmt_assessment_list.do">Open direct</a></li>
+<li>[ ] All &gt; Business Continuity visible (if licensed) — <a href="{BASE}/sn_bcm_plan_list.do">Open direct</a></li>
+<li>[ ] sn_grc_metric / Metrics app functions (indicators/metrics admin)</li>
+<li>[ ] Audit Workspace (sn_audit_ws) opens for audit role</li>
+<li>[ ] /now/grc workspace loads for GRC admin</li>
+<li>[ ] Create test Profile → test Control → test Issue (smoke test)</li>
+<li>[ ] Update Set <strong>IRM Product Install</strong> captured for prod promotion</li>
+</ul>
+<hr />
+<h2 id="2-architecture-data-model">2) Architecture &amp; Data Model</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p>Key tables:</p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>الغرض</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sn_compliance_policy</td>
+<td>السياسات</td>
+</tr>
+<tr>
+<td>sn_compliance_control</td>
+<td>الضوابط (Controls)</td>
+</tr>
+<tr>
+<td>sn_compliance_policy_statement</td>
+<td>بنود السياسة</td>
+</tr>
+<tr>
+<td>sn_risk_risk</td>
+<td>المخاطر</td>
+</tr>
+<tr>
+<td>sn_risk_assessment</td>
+<td>تقييم المخاطر</td>
+</tr>
+<tr>
+<td>sn_grc_item (Profile)</td>
+<td>الكيانات الخاضعة (Entities)</td>
+</tr>
+<tr>
+<td>sn_audit_*</td>
+<td>التدقيق</td>
+</tr>
+<tr>
+<td>sn_grc_issue</td>
+<td>المشكلات/عدم المطابقة (Issues)</td>
+</tr>
+<tr>
+<td>sn_vdr_*</td>
+<td>مخاطر الموردين</td>
+</tr>
+</tbody>
+</table>
+<p>The GRC engine concept:</p>
+<pre><code class="language-text">Authority Document (لائحة/معيار خارجي)
+ → Citation (بند)
+ → Policy / Policy Statement
+ → Control (ضابط)
+ → Control Test / Indicator (هل يعمل الضابط؟)
+ → Issue (إن فشل) → Remediation
+Profile (الكيان: تطبيق/قسم/مورد) ← يربط كل ذلك بالمخاطر
+Risk → Assessment → Treatment
+</code></pre>
+<p>Profile و Profile Type أساس الربط بين كل شيء في GRC.</p>
+<hr />
+<h2 id="3-plugins-activation">3) Plugins &amp; Activation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<blockquote>
+<p><strong>Recommended (modern instances):</strong> <a href="#1c1-how-irm-is-installed-application-manager-vs-classic-activate">§1C.1 Application Manager</a> — opt into <strong>Integrated Risk Management</strong> product (~37 apps).<br />
+<strong>Alternative:</strong> activate individual apps below.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>App / Plugin</th>
+<th>Scope / App ID</th>
+<th>§1C group</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Integrated Risk Management (product bundle)</td>
+<td>multiple</td>
+<td>All groups</td>
+</tr>
+<tr>
+<td>GRC: Policy and Compliance</td>
+<td>com.sn_compliance</td>
+<td>B</td>
+</tr>
+<tr>
+<td>GRC: Risk Management</td>
+<td>com.sn_risk</td>
+<td>C</td>
+</tr>
+<tr>
+<td>GRC: Audit Management</td>
+<td>com.sn_audit</td>
+<td>D</td>
+</tr>
+<tr>
+<td>GRC: Audit Management Workspace</td>
+<td>sn_audit_ws</td>
+<td>D, H</td>
+</tr>
+<tr>
+<td>GRC: Vendor Risk Management</td>
+<td>com.sn_vdr_risk_asmt</td>
+<td>E</td>
+</tr>
+<tr>
+<td>GRC: Business Continuity Mgmt</td>
+<td>BCM app</td>
+<td>F</td>
+</tr>
+<tr>
+<td>GRC: Metrics</td>
+<td>sn_grc_metric</td>
+<td>A</td>
+</tr>
+<tr>
+<td>GRC: Technology Controls Monitoring Accelerator</td>
+<td>accelerator</td>
+<td>B</td>
+</tr>
+<tr>
+<td>GRC: Continuous Controls Monitoring</td>
+<td>compliance/CCM</td>
+<td>B</td>
+</tr>
+<tr>
+<td>Microsoft 365 for ServiceNow Reporting</td>
+<td>sn_esg_msoff_intg</td>
+<td>G</td>
+</tr>
+<tr>
+<td>Advanced Risk / Privacy / Op. Resilience</td>
+<td>Store</td>
+<td>C, G</td>
+</tr>
+</tbody>
+</table>
+<p>How to activate:</p>
+<p><strong>Option A — Application Manager (product):</strong></p>
+<ol>
+<li>Navigate: All &gt; System Applications &gt; Application Manager — <a href="{BASE}/now/app-manager">Open direct</a></li>
+<li>Select <strong>Integrated Risk Management</strong> → <strong>Get started</strong></li>
+<li>Wait for included applications to install (check progress %)</li>
+<li>Continue: Guided Setup All &gt; Guided Setup &gt; GRC / IRM — <a href="{BASE}/now/guided-setup">Open direct</a></li>
+</ol>
+<p><strong>Option B — Individual apps:</strong></p>
+<ol>
+<li>Navigate: All &gt; System Applications &gt; All Available Applications &gt; All — <a href="{BASE}/v_plugin_list.do">Open direct</a></li>
+<li>Activate Policy and Compliance, Risk, Audit, VRM, BCM as licensed</li>
+<li>Guided Setup: All &gt; Guided Setup &gt; GRC / IRM — <a href="{BASE}/now/guided-setup">Open direct</a></li>
+</ol>
+<p>Post-install verification: <a href="#1c6-post-install-verification-checklist">§1C.6 checklist</a></p>
+<hr />
+<h2 id="4-guided-setup-all-options">4) Guided Setup &amp; All Options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p>Sections:<br />
+- Foundation — profiles, profile types, entities.<br />
+- Authority Documents &amp; Citations — اللوائح والبنود.<br />
+- Policies &amp; Controls — السياسات والضوابط.<br />
+- Control Attestations &amp; Tests — الشهادات والاختبارات.<br />
+- Risk Framework — registers, statements, assessments.<br />
+- Indicators &amp; Continuous Monitoring — المؤشرات والمراقبة.<br />
+- Issues &amp; Remediation — المشكلات والمعالجة.<br />
+- Audit — engagements, tasks, findings.</p>
+<p>Important options:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Profile Types &amp; Profiles</td>
+<td>All &gt; Policy and Compliance &gt; Scoping · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Authority Documents</td>
+<td>All &gt; Policy and Compliance &gt; Authority Documents · <a href="{BASE}/sn_compliance_authority_document_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Controls &amp; Tests</td>
+<td>All &gt; Policy and Compliance &gt; Controls · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Risk Register</td>
+<td>All &gt; Risk &gt; Risk Register · <a href="{BASE}/sn_risk_risk_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Indicators</td>
+<td>All &gt; Policy and Compliance &gt; Indicators · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Issues</td>
+<td>All &gt; GRC &gt; Issues · <a href="{BASE}/sn_grc_issue_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Audit Engagements</td>
+<td>All &gt; Audit &gt; Engagements · <a href="{BASE}/sn_audit_engagement_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-end-to-end-process-cycle">5) End-to-End Process Cycle</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p>Compliance flow:</p>
+<pre><code class="language-text">Adopt Authority Document (e.g. ISO 27001)
+ → Map Citations to Policy Statements
+ → Define Controls
+ → Create Profiles (entities in scope)
+ → Generate Control attestations/tests
+ → Run Indicators (automated checks)
+ → Failures → Issues → Remediation tasks → close
+</code></pre>
+<p>Risk flow:</p>
+<pre><code class="language-text">Identify Risk → Assess (likelihood × impact)
+ → Score (inherent → residual)
+ → Treatment (accept/mitigate/transfer/avoid)
+ → Monitor via indicators
+</code></pre>
+<p>Audit flow:</p>
+<pre><code class="language-text">Plan Engagement → Scope → Audit Tasks → Findings → Issues → Report
+</code></pre>
+<hr />
+<h2 id="6-development">6) Development</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3Dc84db0e8839f0b509f02b0d6feaad3c9">Application Files</a><a href="../scripts/index.html">Scripts portal</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<h3 id="business-rule-auto-create-issue-on-failed-indicator">Business Rule — auto-create issue on failed indicator</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a><a href="../scripts/index.html">Scripts portal</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<pre><code class="language-javascript">(function executeRule(current, previous) {
+ // on sn_pc_indicator_result when failed
+ if (current.result == 'fail') {
+ var issue = new GlideRecord('sn_grc_issue');
+ issue.initialize();
+ issue.short_description = 'Failed control indicator: ' + current.indicator.getDisplayValue();
+ issue.state = 'open';
+ issue.insert();
+ }
+})(current, previous);
+</code></pre>
+<p>Development topics:<br />
+- Risk scoring methodologies (qualitative/quantitative).<br />
+- Indicators + Data sources (continuous monitoring).<br />
+- Assessment Designer (metrics, scales).<br />
+- Flow Designer for attestation &amp; remediation.<br />
+- Mapping engine (authority → policy → control).</p>
+<hr />
+<h2 id="7-administration">7) Administration</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Roles</td>
+<td>sn_compliance.<em>, sn_risk.</em>, sn_audit.*</td>
+</tr>
+<tr>
+<td>Profile Types</td>
+<td>All &gt; Policy and Compliance &gt; Scoping · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Risk framework setup</td>
+<td>All &gt; Risk &gt; Administration · <a href="{BASE}/sn_risk_risk_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Indicators schedule</td>
+<td>All &gt; Policy and Compliance &gt; Indicators · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<p>Key roles:<br />
+- sn_compliance.admin / manager / user.<br />
+- sn_risk.manager / user.<br />
+- sn_audit.admin / manager.<br />
+- sn_grc.* shared roles.</p>
+<hr />
+<h2 id="8-hands-on-labs">8) Hands-on Labs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p>Lab 1 — Foundation:<br />
+1. Create a Profile Type and Profiles (entities).<br />
+2. Adopt an Authority Document.</p>
+<p>Lab 2 — Policy &amp; Control:<br />
+1. Create a Policy with statements.<br />
+2. Create Controls and map to citations.</p>
+<p>Lab 3 — Indicator (automated test):<br />
+1. Create an Indicator with a condition/data source.<br />
+2. Run it; observe pass/fail.</p>
+<p>Lab 4 — Issue &amp; Remediation:<br />
+1. From a failed control, create an Issue.<br />
+2. Add remediation tasks; close it.</p>
+<p>Lab 5 — Risk:<br />
+1. Create a Risk, assess likelihood × impact.<br />
+2. Define treatment; track residual risk.</p>
+<hr />
+<h2 id="9-best-practices-common-mistakes">9) Best Practices &amp; Common Mistakes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p>Best practices:<br />
+- Build Profiles first — everything links to them.<br />
+- Reuse controls across multiple authority documents.<br />
+- Automate with Indicators (continuous monitoring) vs manual attestation.<br />
+- Keep inherent vs residual risk distinct.</p>
+<p>Common mistakes:<br />
+- إهمال Profiles فينكسر الربط بين الضوابط والمخاطر.<br />
+- خلط Policy و Control و Indicator.<br />
+- نسيان معالجة Issues فتبقى عدم المطابقة مفتوحة.</p>
+<hr />
+<h2 id="10-cis-rc-exam-focus">10) CIS-RC Exam Focus</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p>High-yield:<br />
+- <strong>GRC vs IRM vs modules</strong> — see <a href="#1b-grc-vs-irm-vs-modules--clear-map">§1B</a> (exam favorite).<br />
+- <strong>IRM Application Manager product</strong> + app groups — see <a href="#1c-irm-product--all-applications-functions--implementation">§1C</a>.<br />
+- <strong>Audit Workspace</strong> sn_audit_ws · <strong>GRC Metrics</strong> sn_grc_metric · CCM / Tech Controls Accelerator.<br />
+- GRC engine: Authority Document → Citation → Policy/Statement → Control.<br />
+- Profiles &amp; Profile Types (scoping).<br />
+- Controls, attestations, control tests, indicators.<br />
+- Issues &amp; remediation lifecycle.<br />
+- Risk: inherent vs residual, likelihood × impact, treatment options.<br />
+- Continuous Monitoring (indicators + data sources).<br />
+- Audit engagements, tasks, findings.<br />
+- IRM apps and their roles.</p>
+<p>Exam tip: — احفظ سلسلة المحرّك (Authority → Citation → Policy → Control → Indicator → Issue) ودور Profile.</p>
+<hr />
+<h2 id="11-portals-workspaces-role-hierarchy-feature-catalog">11) Portals, Workspaces, Role Hierarchy &amp; Feature Catalog</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<blockquote>
+<p>ملاحظة عن الروابط:<br />
+URLs الـ Workspaces قد تختلف حسب الإصدار والـ App Config.</p>
+</blockquote>
+<h3 id="111-portals-self-service">11.1 Portals &amp; Self-service</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>URL</th>
+<th>لمن</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Service Portal (attestations)</td>
+<td>/sp</td>
+<td>أصحاب الضوابط (control owners)</td>
+</tr>
+<tr>
+<td>Employee Center (policy ack)</td>
+<td>/esc</td>
+<td>الموظفون (إقرار السياسات)</td>
+</tr>
+<tr>
+<td>GRC attestation tasks</td>
+<td>/sp?id=&hellip;</td>
+<td>المعنيون</td>
+</tr>
+</tbody>
+</table>
+<h3 id="112-workspaces-riskcomplianceaudit-teams">11.2 Workspaces (risk/compliance/audit teams)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Workspace</th>
+<th>URL</th>
+<th>لمن</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IRM / GRC Workspace</td>
+<td>/now/grc or configurable</td>
+<td>فرق المخاطر والامتثال</td>
+</tr>
+<tr>
+<td>Risk Workspace</td>
+<td>/now/sow (Risk view)</td>
+<td>مديرو المخاطر</td>
+</tr>
+<tr>
+<td>Audit Workspace</td>
+<td>configurable</td>
+<td>المدققون</td>
+</tr>
+<tr>
+<td>CISO / Executive dashboards</td>
+<td>Dashboards</td>
+<td>القيادة</td>
+</tr>
+<tr>
+<td>Admin (classic)</td>
+<td>/nav_to.do</td>
+<td>admins</td>
+</tr>
+</tbody>
+</table>
+<h3 id="113-role-hierarchy">11.3 Role Hierarchy</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<pre><code class="language-text">admin
+└─ sn_grc.admin
+ ├─ sn_compliance.admin → sn_compliance.manager → sn_compliance.user
+ ├─ sn_risk.admin → sn_risk.manager → sn_risk.user
+ ├─ sn_audit.admin → sn_audit.manager → sn_audit.user
+ ├─ sn_vdr_risk_asmt.* (Vendor Risk)
+ └─ sn_grc.reader (read-only)
+control_owner / risk_owner / issue_owner (ownership على السجلات)
+</code></pre>
+<h3 id="114-full-business-cycle">11.4 Full Business Cycle</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<pre><code class="language-text">Adopt Authority Document (ISO/NIST/SOX...)
+ → Citations → Policies → Policy Statements → Controls
+ → Profiles (entities in scope: apps, depts, vendors)
+ → Control attestations + Indicators (continuous monitoring)
+ ↳ pass → evidence stored
+ ↳ fail → Issue → Remediation tasks → re-test → close
+Risk path:
+ Identify Risk → Assess (likelihood × impact) → inherent→residual
+ → Treatment (accept/mitigate/transfer/avoid) → monitor (indicators)
+Audit path:
+ Plan Engagement → scope → audit tasks → findings → Issues → report
+Output → Executive risk/compliance dashboards
+</code></pre>
+<h3 id="115-feature-catalog">11.5 Feature Catalog</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<blockquote>
+<p>Maps to Application Manager apps — detail in <a href="#1c-irm-product--all-applications-functions--implementation">§1C</a></p>
+</blockquote>
+<p>Process features (by IRM app):<br />
+- Policy &amp; Compliance Management (authority docs, citations, controls).<br />
+- Continuous Controls Monitoring + <strong>Technology Controls Monitoring Accelerator</strong>.<br />
+- <strong>GRC: Metrics</strong> (sn_grc_metric) — metric collection for posture dashboards.<br />
+- Risk Management (register, assessments, inherent/residual, treatments).<br />
+- Audit Management + <strong>Audit Management Workspace</strong> (sn_audit_ws).<br />
+- Vendor Risk Management (assessments, tiering).<br />
+- Business Continuity Management (BIA, plans, exercises).<br />
+- Operational Resilience / Privacy Management.<br />
+- Issue &amp; Remediation Management.<br />
+- Regulatory Change Management (regulatory impact).<br />
+- <strong>Microsoft 365 reporting integration</strong> (sn_esg_msoff_intg) — if in bundle.</p>
+<p>Platform features used:<br />
+- Assessment Designer (metrics, scales, scoring).<br />
+- Indicators + Data sources (automated control tests).<br />
+- Flow Designer (attestation/remediation workflows).<br />
+- Mapping engine (authority ↔ policy ↔ control).<br />
+- Performance Analytics (risk posture, compliance scores).<br />
+- Now Assist for IRM.<br />
+- Advanced Risk add-on.</p>
+<hr />
+<h2 id="12-end-to-end-implementation-post-activation">12) End-to-End Implementation (Post-Activation)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<blockquote>
+<p>اقرأ هذا بعد تفعيل Policy &amp; Compliance + Risk + Audit.</p>
+</blockquote>
+<h3 id="121-application-menus-map">12.1 Application Menus map</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<pre><code class="language-text">All &gt; Policy and Compliance
+ ├─ Authority Documents / Citations
+ ├─ Policies / Policy Statements
+ ├─ Controls / Control Objectives / Control Tests
+ ├─ Indicators / Indicator Results
+ ├─ Attestations
+ └─ Scoping (Profiles / Profile Types)
+All &gt; Risk
+ ├─ Risk Register / Risk Statements / Risk Assessments
+ ├─ Risk Framework / Methodologies
+ └─ Key Risk Indicators
+All &gt; Audit
+ ├─ Engagements / Audit Tasks / Findings
+ └─ Audit Plans
+All &gt; GRC
+ ├─ Issues / Remediations
+ └─ Advanced Risk / Continuous Monitoring
+All &gt; Vendor Risk Management (assessments / tiering)
+</code></pre>
+<h3 id="122-core-tables-to-know">12.2 Core tables to know</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>List</th>
+<th>Table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sn_compliance_policy.list</td>
+<td>policies</td>
+</tr>
+<tr>
+<td>sn_compliance_control.list</td>
+<td>controls</td>
+</tr>
+<tr>
+<td>sn_policy_citation.list</td>
+<td>citations</td>
+</tr>
+<tr>
+<td>sn_risk_risk.list</td>
+<td>risks</td>
+</tr>
+<tr>
+<td>sn_risk_assessment.list</td>
+<td>risk assessments</td>
+</tr>
+<tr>
+<td>sn_grc_item.list</td>
+<td>profiles (entities)</td>
+</tr>
+<tr>
+<td>sn_grc_issue.list</td>
+<td>issues</td>
+</tr>
+<tr>
+<td>sn_audit_engagement.list</td>
+<td>audit engagements</td>
+</tr>
+</tbody>
+</table>
+<h3 id="123-end-to-end-build-order">12.3 End-to-end build order</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<ol>
+<li>Foundation:<br />
+ - Profile Types + Profiles (entities in scope).<br />
+ All &gt; Policy and Compliance &gt; Scoping. — <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></li>
+<li>Content:<br />
+ - Adopt Authority Documents → Citations.</li>
+<li>Policy framework:<br />
+ - Policies → Policy Statements → Controls → map to citations.</li>
+<li>Risk framework:<br />
+ - Risk methodology, registers, statements, scales.</li>
+<li>Monitoring:<br />
+ - Indicators + data sources (automated control tests).<br />
+ - Attestation schedules for manual controls.</li>
+<li>Issues:<br />
+ - Issue + Remediation workflow (Flow Designer).</li>
+<li>Audit:<br />
+ - Audit plans → engagements → tasks → findings.</li>
+<li>Vendor Risk:<br />
+ - VRM assessments + tiering (if licensed).</li>
+<li>Self-service:<br />
+ - Attestation/policy-ack via /sp and /esc.</li>
+<li>Workspace + Dashboards:<br />
+ - IRM/GRC Workspace /now/grc, executive dashboards.</li>
+<li>Test + Deploy.</li>
+</ol>
+<h3 id="124-all-configuration-pages">12.4 All configuration pages</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Config</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRC/IRM properties</td>
+<td>All &gt; Policy and Compliance &gt; Administration · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Risk framework setup</td>
+<td>All &gt; Risk &gt; Administration · <a href="{BASE}/sn_risk_risk_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Indicator templates</td>
+<td>All &gt; Policy and Compliance &gt; Indicator Templates · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Assessment metrics</td>
+<td>All &gt; Assessments &gt; Metric Definitions · <a href="{BASE}/asmt_metric_definition_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Profile Types</td>
+<td>All &gt; Policy and Compliance &gt; Scoping &gt; Profile Types · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<p>Study path note: — للدراسة من الصفر اتبع: STUDY_ROADMAP.md</p>
+<hr />
+<h2 id="13-options-instance-notes">13) Options &amp; Instance Notes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Instance gaps</td>
+<td>MODULE_OPTIONS_AND_INSTANCE_NOTES.md → <strong>GRC</strong></td>
+</tr>
+<tr>
+<td><strong>Full implementation</strong></td>
+<td>MODULE_IMPLEMENTATION_PLAYBOOK.md → <strong>GRC</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="14-implementation-scenarios-options-best-practices-customizations">14) Implementation Scenarios, Options, Best Practices &amp; Customizations</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<blockquote>
+<p>Playbook: MODULE_IMPLEMENTATION_PLAYBOOK.md → <strong>GRC</strong></p>
+</blockquote>
+<h3 id="141-scenarios">14.1 Scenarios</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Scenario</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1</strong></td>
+<td>Policy &amp; compliance</td>
+<td>Authority docs + controls</td>
+</tr>
+<tr>
+<td><strong>S2</strong></td>
+<td>+ Risk</td>
+<td>Risk register + treatment</td>
+</tr>
+<tr>
+<td><strong>S3</strong></td>
+<td>+ Audit</td>
+<td>Engagements + evidence</td>
+</tr>
+</tbody>
+</table>
+<h3 id="142-options-matrix">14.2 Options matrix</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scope</td>
+<td><strong>Profiles</strong> per BU</td>
+<td>Global only</td>
+</tr>
+<tr>
+<td>Controls</td>
+<td>CCM indicators</td>
+<td>Manual attestation</td>
+</tr>
+<tr>
+<td>Risk</td>
+<td>Inherent/residual</td>
+<td>Single score</td>
+</tr>
+<tr>
+<td>Issues</td>
+<td>Auto from failed controls</td>
+<td>Ad-hoc</td>
+</tr>
+</tbody>
+</table>
+<h3 id="143-plugins">14.3 Plugins</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p>GRC/IRM suite, Risk, Audit, Policy Compliance — Store + Guided Setup <strong>GRC/IRM</strong></p>
+<h3 id="144-roles">14.4 Roles</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p>GRC admin, risk manager, compliance officer, control owner, auditor (read-heavy).</p>
+<h3 id="145-common-developments">14.5 Common developments</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p>Profile hierarchy, control libraries, indicator data sources, attestation campaigns (SP/ESC), risk remediation tasks, integration to ITSM for issues.</p>
+<h3 id="146-best-practices">14.6 Best practices</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p>Profiles mirror org structure; control owners must be named people; test indicator queries before CCM go-live.</p>
+<h3 id="147-go-live">14.7 Go-live</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<ul>
+<li>[ ] Profile scope signed off</li>
+<li>[ ] Attestation pilot campaign</li>
+<li>[ ] Risk heat map validated</li>
+</ul>
+<hr />
+<h2 id="15-zero-to-hero-end-to-end-implementation-scratch-go-live">15) Zero-to-Hero End-to-End Implementation (Scratch → Go-Live)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<blockquote>
+<p>Framework: MODULE_ZERO_TO_HERO_CONSULTING.md · Playbook: MODULE_IMPLEMENTATION_PLAYBOOK.md → <strong>GRC</strong></p>
+</blockquote>
+<p>هذا القسم يمشيك <strong>من لا تعرف GRC/IRM</strong> حتى <strong>مشروع مكتمل</strong> على ServiceNow، ويشمل <strong>IRM + BCM + TPRM</strong>.</p>
+<hr />
+<h3 id="151-business-goals-grcirm">15.1 Business goals — لماذا يشتري العميل GRC/IRM؟</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>English</th>
+<th>العربي — ماذا يريد الإدارة؟</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Compliance</strong></td>
+<td>Prove controls work for auditors/regulators</td>
+<td>إثبات الامتثال للوائح (ISO، SOX، SAMA، NCA…)</td>
+</tr>
+<tr>
+<td><strong>Risk visibility</strong></td>
+<td>Know top risks and residual exposure</td>
+<td>معرفة أهم المخاطر قبل وقوعها</td>
+</tr>
+<tr>
+<td><strong>Audit efficiency</strong></td>
+<td>One evidence repository</td>
+<td>تقليل وقت التدقيق الداخلي/الخارجي</td>
+</tr>
+<tr>
+<td><strong>Vendor assurance</strong></td>
+<td>Critical suppliers assessed</td>
+<td>التأكد أن الموردين لا يعرّضون الشركة</td>
+</tr>
+<tr>
+<td><strong>Continuity</strong></td>
+<td>Recover from disasters</td>
+<td>استمرار الأعمال بعد انقطاع</td>
+</tr>
+<tr>
+<td><strong>Accountability</strong></td>
+<td>Named control/risk owners</td>
+<td>مسؤوليات واضحة — لا &ldquo;الجميع مسؤول&rdquo;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Stakeholders you meet as consultant:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Cares about</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CISO / Risk</td>
+<td>IRM, risk heat map, TPRM</td>
+</tr>
+<tr>
+<td>Compliance / Legal</td>
+<td>Policies, controls, attestations</td>
+</tr>
+<tr>
+<td>Internal Audit</td>
+<td>Engagements, evidence, issues</td>
+</tr>
+<tr>
+<td>BCM / COO</td>
+<td>BIA, recovery plans, exercises</td>
+</tr>
+<tr>
+<td>Procurement + Legal</td>
+<td>Vendor tiering, contracts</td>
+</tr>
+<tr>
+<td>IT</td>
+<td>Indicators, integrations, ITSM issues</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="152-what-is-irm-vs-grc-vs-bcm-vs-tprm-business-language">15.2 What is IRM vs GRC vs BCM vs TPRM? (business language)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<blockquote>
+<p><strong>Full map with module boundaries:</strong> <a href="#1b-grc-vs-irm-vs-modules--clear-map">§1B GRC vs IRM vs Modules</a></p>
+</blockquote>
+<p><strong>GRC</strong> — industry umbrella (Governance + Risk + Compliance). — <strong>GRC</strong> = مجال الأعمال — ليس اسم تطبيق ServiceNow فقط.</p>
+<p><strong>IRM</strong> — ServiceNow’s <strong>integrated platform</strong> for GRC (multiple apps, shared Profiles/Issues). — <strong>IRM</strong> = تنفيذ GRC على ServiceNow — عدة تطبيقات مترابطة.</p>
+<p><strong>BCM</strong> — Business Continuity: BIA, recovery plans, exercises (after disruption). — <strong>BCM</strong> = استمرارية الأعمال — BIA + خطط + تمارين.</p>
+<p><strong>TPRM</strong> — Third-Party Risk: vendors, SaaS, outsourcers (own app: Vendor Risk / VRM). — <strong>TPRM</strong> = مخاطر <strong>الموردين</strong> — تطبيق Vendor Risk منفصل عن Risk الداخلي.</p>
+<pre><code class="language-text">GRC (discipline — what client wants)
+ │
+ ▼
+IRM (ServiceNow suite)
+├─ Policy &amp; Compliance → controls, attestations, indicators ← &quot;Am I compliant?&quot;
+├─ Risk Management → register, assess, treat ← &quot;What could go wrong?&quot;
+├─ Audit Management → engagements, findings ← &quot;Can auditor verify?&quot;
+├─ TPRM (Vendor Risk) → tier, assess vendors ← &quot;Are suppliers safe?&quot;
+└─ BCM → BIA, plans, exercises ← &quot;Can we recover?&quot;
+</code></pre>
+<p><strong>Do not confuse:</strong> Compliance module ≠ Risk module ≠ Audit module — separate licenses, linked by Profile and Issue. — كل موديول <strong>ترخيص وقوائم مختلفة</strong> — يربطهم Profile و Issue.</p>
+<hr />
+<h3 id="153-phase-0-discover-scope-week-12">15.3 Phase 0 — Discover &amp; scope (Week 1–2)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p><strong>Workshop outputs:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Deliverable</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Project charter</td>
+<td>Sponsor, scope, timeline</td>
+</tr>
+<tr>
+<td>Framework list</td>
+<td>ISO 27001, NIST, SOX, local regs</td>
+</tr>
+<tr>
+<td>Entity list</td>
+<td>BUs, apps, vendors for <strong>Profiles</strong></td>
+</tr>
+<tr>
+<td>RACI</td>
+<td>Control owner, risk owner, auditor</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Questions (Arabic discussion guide):</strong></p>
+<ul>
+<li>ما اللوائح الإلزامية عليكم هذا العام؟</li>
+<li>من يوقّع على السياسات؟ من ينفّذ الضوابط؟</li>
+<li>كيف تُدار مخاطر الموردين اليوم؟ (Excel؟)</li>
+<li>هل لديكم خطة استمرارية مُختبرة؟</li>
+</ul>
+<p><strong>Out of scope examples:</strong> every vendor globally day one → start with Tier 1 only.</p>
+<hr />
+<h3 id="154-phase-1-activate-apps-environment-week-23">15.4 Phase 1 — Activate apps &amp; environment (Week 2–3)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Sub-prod instance</td>
+<td>Dev/Test</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Install IRM apps</td>
+<td>All Available Applications</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Activate plugins</td>
+<td>Policy Compliance, Risk, Audit, VRM, BCM (Store)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Guided Setup</td>
+<td>All &gt; Guided Setup &gt; GRC / IRM · <a href="{BASE}/now/guided-setup">Open direct</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Update Set</td>
+<td>Create IRM Phase 1 current</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Plugins checklist:</strong></p>
+<table>
+<thead>
+<tr>
+<th>App</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Policy &amp; Compliance</td>
+<td>Controls, indicators, attestations</td>
+</tr>
+<tr>
+<td>Risk Management</td>
+<td>Risk register</td>
+</tr>
+<tr>
+<td>Audit Management</td>
+<td>Engagements</td>
+</tr>
+<tr>
+<td>Vendor Risk (VRM)</td>
+<td><strong>TPRM</strong></td>
+</tr>
+<tr>
+<td>Business Continuity</td>
+<td><strong>BCM</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="155-phase-2-foundation-profiles-governance-week-35">15.5 Phase 2 — Foundation: Profiles &amp; governance (Week 3–5)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p><strong>Profile = الكيان الخاضع للحوكمة</strong> (تطبيق، قسم، مورد، عملية). بدون Profiles ينهار IRM.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Task</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Profile Types</td>
+<td>Policy and Compliance &gt; Scoping &gt; Profile Types</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Profiles</td>
+<td>One per in-scope entity</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Roles on groups</td>
+<td>compliance, risk, audit, vendor, BCM teams</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Authority Documents</td>
+<td>ISO/NIST/SOX adoption</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Deliverable:</strong> Profile catalog signed by client.</p>
+<hr />
+<h3 id="156-phase-3a-irm-track-policy-controls-monitoring-week-510">15.6 Phase 3A — IRM track: Policy → Controls → Monitoring (Week 5–10)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_ui_policy_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">UI Policies</a><a href="{BASE}/sys_ui_policy_action_list.do">UI Policy Actions</a><a href="{BASE}/sys_data_policy2_list.do?sysparm_query=model_tableSTARTSWITHx_786686_hr_leave">Data Policies</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<pre><code class="language-text">Authority Document
+ → Citations
+ → Policies / Policy Statements
+ → Controls (mapped to Profiles)
+ → Control Tests / Attestations (manual)
+ → Indicators + Data Sources (automated CCM)
+ → Pass = evidence | Fail → Issue → Remediation
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Load or build control library</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Assign <strong>control owner</strong> per control</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Schedule attestations (quarterly)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Build indicators (e.g. &ldquo;all servers patched&rdquo;)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Flow for issue remediation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ServiceNow objects:</strong> sn_compliance_control, sn_pc_indicator, sn_grc_issue.</p>
+<p><strong>UAT scenario:</strong> Control fails indicator → Issue created → Owner remediates → Re-test pass.</p>
+<hr />
+<h3 id="157-phase-3b-irm-track-risk-management-week-610">15.7 Phase 3B — IRM track: Risk Management (Week 6–10)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<pre><code class="language-text">Risk identified → Risk Assessment (likelihood × impact)
+ → Inherent score → Controls applied → Residual score
+ → Treatment: Accept | Mitigate | Transfer | Avoid
+ → Monitor via KRI / indicators
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Arabic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inherent risk</td>
+<td>المخاطر قبل الضوابط</td>
+</tr>
+<tr>
+<td>Residual risk</td>
+<td>المخاطر بعد الضوابط</td>
+</tr>
+<tr>
+<td>Risk appetite</td>
+<td>ما تقبله الإدارة من مخاطر</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Deliverable:</strong> Risk heat map for steering committee.</p>
+<hr />
+<h3 id="158-phase-3c-tprm-track-third-party-risk-week-812">15.8 Phase 3C — TPRM track: Third-Party Risk (Week 8–12)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p>TPRM = <strong>من هم الموردون الحرجون؟</strong> → <strong>تقييم</strong> → <strong>معالجة</strong> → <strong>إعادة تقييم</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Vendor inventory (import or manual)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Tiering</strong> (Tier 1 = critical data/access)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Assessment questionnaires per tier</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Score → Issues for gaps</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Contract renewal gate (process + optional integration)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Navigate:</strong> Vendor Risk Management menus · tables sn_vdr_*</p>
+<p><strong>Business rule:</strong> Tier 1 without assessment → no new PO (process decision).</p>
+<p><strong>UAT:</strong> Onboard vendor → send assessment → fail → issue → remediate.</p>
+<hr />
+<h3 id="159-phase-3d-bcm-track-business-continuity-week-1014">15.9 Phase 3D — BCM track: Business Continuity (Week 10–14)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p>BCM = <strong>BIA</strong> (ما أثر التوقف؟) → <strong>Recovery strategies</strong> → <strong>Plans</strong> → <strong>Exercises</strong> → <strong>Lessons learned</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>BCM activity</th>
+<th>ServiceNow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Identify critical business services</td>
+<td>Link to Profiles / CIs</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>BIA</strong> — RTO/RPO, impact</td>
+<td>BCM app records</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Continuity strategies</td>
+<td>Document in platform</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Plans</strong> (runbooks)</td>
+<td>Plan objects + tasks</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Exercise / test</strong></td>
+<td>Schedule, findings → Issues</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Executive report</td>
+<td>Dashboard</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Link to ITSM/CMDB:</strong> Critical services = Application Services in CMDB.</p>
+<p><strong>UAT:</strong> Simulate outage of service X → plan activated → tasks assigned → exercise closed.</p>
+<hr />
+<h3 id="1510-phase-4-integrations-automation-week-1216">15.10 Phase 4 — Integrations &amp; automation (Week 12–16)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Integration</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ITSM</td>
+<td>Issues from failed controls → incidents/tasks</td>
+</tr>
+<tr>
+<td>CMDB</td>
+<td>Indicator data sources on CIs</td>
+</tr>
+<tr>
+<td>HR / Identity</td>
+<td>Control owners from HR data</td>
+</tr>
+<tr>
+<td>GRC ↔ Vendor</td>
+<td>Procurement vendor master</td>
+</tr>
+<tr>
+<td>REST / IH</td>
+<td>External GRC tools, security scanners</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="1511-phase-5-uat-evidence-week-1418">15.11 Phase 5 — UAT &amp; evidence (Week 14–18)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Pass criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Attestation campaign</td>
+<td>Owners complete in /sp or /esc</td>
+</tr>
+<tr>
+<td>Indicator fail</td>
+<td>Auto-issue + remediation</td>
+</tr>
+<tr>
+<td>Risk assessment</td>
+<td>Residual &lt; appetite</td>
+</tr>
+<tr>
+<td>Vendor Tier 1</td>
+<td>Assessment complete</td>
+</tr>
+<tr>
+<td>BCM exercise</td>
+<td>Plan tasks completed</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Consultant tip:</strong> Auditors want <strong>traceability</strong> — show record history.</p>
+<hr />
+<h3 id="1512-phase-6-go-live-hypercare-week-1820">15.12 Phase 6 — Go-live &amp; hypercare (Week 18–20)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<ul>
+<li>[ ] Production plugins active</li>
+<li>[ ] Profiles frozen for wave 1</li>
+<li>[ ] First attestation wave launched</li>
+<li>[ ] Tier 1 vendor assessments live</li>
+<li>[ ] BCM plan owner trained</li>
+<li>[ ] Hypercare 2–4 weeks daily standup</li>
+</ul>
+<hr />
+<h3 id="1513-phase-7-operate-improve-ongoing">15.13 Phase 7 — Operate &amp; improve (ongoing)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>% controls passing</td>
+<td>Compliance posture</td>
+</tr>
+<tr>
+<td>Open issues aging</td>
+<td>Remediation discipline</td>
+</tr>
+<tr>
+<td>Top 10 residual risks</td>
+<td>Board reporting</td>
+</tr>
+<tr>
+<td>Tier 1 vendor coverage</td>
+<td>TPRM maturity</td>
+</tr>
+<tr>
+<td>Exercise completion</td>
+<td>BCM readiness</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="1514-master-checklist-scratch-hero">15.14 Master checklist (Scratch → Hero)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<ul>
+<li>[ ] Phase 0 charter + frameworks</li>
+<li>[ ] Phase 1 apps on sub-prod</li>
+<li>[ ] Phase 2 Profiles + roles</li>
+<li>[ ] Phase 3A controls + indicators</li>
+<li>[ ] Phase 3B risk register</li>
+<li>[ ] Phase 3C TPRM tier 1</li>
+<li>[ ] Phase 3D BCM BIA + one exercise</li>
+<li>[ ] Phase 4 integrations</li>
+<li>[ ] Phase 5 UAT signed</li>
+<li>[ ] Phase 6 go-live</li>
+<li>[ ] Phase 7 KPIs in PA/dashboard</li>
+</ul>
+<hr />
+<h2 id="16-full-e2e-practice-pages-requirements-options-ar-en">16) Full E2E Practice · Pages · Requirements · Options (AR + EN)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<blockquote>
+<p>Extended reference: MODULE_FULL_E2E_PRACTICE.md · §12.4 for config pages</p>
+</blockquote>
+<p>دورة استشارة <strong>كاملة</strong> لـ IRM + BCM + TPRM: متطلبات، كل الصفحات، خيارات A/B/C، ومختبر 25 خطوة على PDI.</p>
+<hr />
+<h3 id="161-business-goals-regulatory-drivers">16.1 Business goals &amp; regulatory drivers</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Driver (EN)</th>
+<th>المحرّك (AR)</th>
+<th>Module track</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pass external audit</td>
+<td>اجتياز تدقيق خارجي</td>
+<td>IRM + Audit</td>
+</tr>
+<tr>
+<td>Board risk reporting</td>
+<td>تقارير مجلس إدارة</td>
+<td>Risk</td>
+</tr>
+<tr>
+<td>Regulatory attestation</td>
+<td>إقرارات امتثال</td>
+<td>Policy &amp; Compliance</td>
+</tr>
+<tr>
+<td>Critical vendor oversight</td>
+<td>إشراف على موردين حرجين</td>
+<td>TPRM</td>
+</tr>
+<tr>
+<td>Disaster recovery proof</td>
+<td>إثبات استرداد</td>
+<td>BCM</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Stakeholder map (consulting):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Pages they use</th>
+<th>Questions to ask</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CISO</td>
+<td>Risk register, dashboards</td>
+<td>Top 10 risks? Residual appetite?</td>
+</tr>
+<tr>
+<td>Compliance</td>
+<td>Controls, attestations</td>
+<td>Which framework wave 1?</td>
+</tr>
+<tr>
+<td>Internal Audit</td>
+<td>Engagements, evidence</td>
+<td>Sample size? Evidence format?</td>
+</tr>
+<tr>
+<td>BCM owner</td>
+<td>BIA, continuity plans</td>
+<td>RTO/RPO for tier-0 services?</td>
+</tr>
+<tr>
+<td>Procurement</td>
+<td>Vendor tiering</td>
+<td>Who is Tier 1 vendor list?</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="162-requirements-backlog-functional">16.2 Requirements backlog (functional)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>EN</th>
+<th>AR</th>
+<th>Track</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRC-R01</td>
+<td>Profile per legal entity / BU</td>
+<td>Profile لكل كيان</td>
+<td>IRM</td>
+</tr>
+<tr>
+<td>GRC-R02</td>
+<td>Authority doc → citation → policy</td>
+<td>سلسلة وثائق</td>
+<td>IRM</td>
+</tr>
+<tr>
+<td>GRC-R03</td>
+<td>Control library with owners</td>
+<td>مكتبة ضوابط + أصحاب</td>
+<td>IRM</td>
+</tr>
+<tr>
+<td>GRC-R04</td>
+<td>Automated indicators (CCM)</td>
+<td>مؤشرات آلية</td>
+<td>IRM</td>
+</tr>
+<tr>
+<td>GRC-R05</td>
+<td>Manual attestation campaigns</td>
+<td>حملات إقرار</td>
+<td>IRM</td>
+</tr>
+<tr>
+<td>GRC-R06</td>
+<td>Failed control → issue → remediate</td>
+<td>فشل → مشكلة → معالجة</td>
+<td>IRM</td>
+</tr>
+<tr>
+<td>GRC-R07</td>
+<td>Risk register inherent/residual</td>
+<td>سجل مخاطr متبقية</td>
+<td>Risk</td>
+</tr>
+<tr>
+<td>GRC-R08</td>
+<td>Audit engagement + findings</td>
+<td>تدقيق + ملاحظات</td>
+<td>Audit</td>
+</tr>
+<tr>
+<td>GRC-R09</td>
+<td>Vendor tier + assessment</td>
+<td>تصنيف وتقييم مورد</td>
+<td>TPRM</td>
+</tr>
+<tr>
+<td>GRC-R10</td>
+<td>BIA with RTO/RPO</td>
+<td>BIA مع RTO/RPO</td>
+<td>BCM</td>
+</tr>
+<tr>
+<td>GRC-R11</td>
+<td>Continuity plan + exercise</td>
+<td>خطة + تمرين</td>
+<td>BCM</td>
+</tr>
+<tr>
+<td>GRC-R12</td>
+<td>Executive dashboard</td>
+<td>لوحة تنفيذية</td>
+<td>All</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="163-full-consultation-cycle-irm-bcm-tprm">16.3 Full consultation cycle (IRM + BCM + TPRM)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Week</th>
+<th>Phase</th>
+<th>Activities (EN)</th>
+<th>العربي</th>
+<th>Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–2</td>
+<td>0 Discover</td>
+<td>Framework workshop, entity list</td>
+<td>ورشة إطار عمل + كيانات</td>
+<td>Charter, RACI</td>
+</tr>
+<tr>
+<td>2–3</td>
+<td>1 Gap</td>
+<td>Excel/process review</td>
+<td>مراجعة Excel الحالي</td>
+<td>Gap matrix</td>
+</tr>
+<tr>
+<td>3–4</td>
+<td>2 Design</td>
+<td>Profile model, control owners</td>
+<td>Profiles + أصحاب</td>
+<td>Design doc</td>
+</tr>
+<tr>
+<td>4–6</td>
+<td>3A IRM</td>
+<td>Controls, indicators, attest</td>
+<td>ضوابط ومؤشرات</td>
+<td>Config pack</td>
+</tr>
+<tr>
+<td>6–8</td>
+<td>3B Risk</td>
+<td>Register, scales, heat map</td>
+<td>سجل مخاطr</td>
+<td>Risk UAT</td>
+</tr>
+<tr>
+<td>8–10</td>
+<td>3C TPRM</td>
+<td>Tier 1 vendors, questionnaires</td>
+<td>موردين Tier 1</td>
+<td>Vendor assessments</td>
+</tr>
+<tr>
+<td>10–12</td>
+<td>3D BCM</td>
+<td>BIA, plan, exercise</td>
+<td>BIA + تمرين</td>
+<td>Exercise report</td>
+</tr>
+<tr>
+<td>12</td>
+<td>4 Integrate</td>
+<td>ITSM issues, HR for owners</td>
+<td>تكامل ITSM</td>
+<td>Integration spec</td>
+</tr>
+<tr>
+<td>13</td>
+<td>5 UAT</td>
+<td>Control owner + auditor scripts</td>
+<td>UAT</td>
+<td>Sign-off</td>
+</tr>
+<tr>
+<td>14</td>
+<td>6 Go-live</td>
+<td>Attestation wave 1</td>
+<td>موجة إقرار</td>
+<td>Hypercare</td>
+</tr>
+<tr>
+<td>15+</td>
+<td>7 Operate</td>
+<td>KPIs, quarterly attestation</td>
+<td>تشغيل</td>
+<td>PA dashboards</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="164-all-options-a-b-c-by-domain">16.4 All options (A / B / C) by domain</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Option A</th>
+<th>Option B</th>
+<th>Option C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Scope</strong></td>
+<td>Profiles per BU/country</td>
+<td>Single global profile</td>
+<td>Hybrid (global policies, local controls)</td>
+</tr>
+<tr>
+<td><strong>Controls</strong></td>
+<td>CCM indicators + attestation</td>
+<td>Attestation only</td>
+<td>Spreadsheet import phase 1</td>
+</tr>
+<tr>
+<td><strong>Risk scoring</strong></td>
+<td>Inherent + residual + treatment</td>
+<td>Single score</td>
+<td>Qualitative only</td>
+</tr>
+<tr>
+<td><strong>Issues</strong></td>
+<td>Auto-create from failed indicator</td>
+<td>Manual issues</td>
+<td>ITSM incidents only</td>
+</tr>
+<tr>
+<td><strong>Audit</strong></td>
+<td>Full engagements in SN</td>
+<td>Findings only</td>
+<td>External tool + SN summary</td>
+</tr>
+<tr>
+<td><strong>TPRM</strong></td>
+<td>Tier 1 in VRM app</td>
+<td>Survey via SP only</td>
+<td>Excel tier 1 year 1</td>
+</tr>
+<tr>
+<td><strong>BCM</strong></td>
+<td>Full BIA in app</td>
+<td>Plan docs only</td>
+<td>BCM phase 2</td>
+</tr>
+<tr>
+<td><strong>Portal</strong></td>
+<td>Attestations in /esc</td>
+<td>/sp</td>
+<td>Email links</td>
+</tr>
+<tr>
+<td><strong>Workspace</strong></td>
+<td>/now/grc</td>
+<td>Classic lists</td>
+<td>Mixed</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="165-all-pages-navigation-complete-map">16.5 All pages &amp; navigation (complete map)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p><strong>Policy &amp; Compliance (IRM)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigate</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Administration</td>
+<td>All &gt; Policy and Compliance &gt; Administration · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+<td>Properties</td>
+</tr>
+<tr>
+<td>Profile Types</td>
+<td>All &gt; Policy and Compliance &gt; Scoping &gt; Profile Types · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+<td>Entity types</td>
+</tr>
+<tr>
+<td>Profiles</td>
+<td>All &gt; Policy and Compliance &gt; Scoping &gt; Profiles · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+<td>Scope containers</td>
+</tr>
+<tr>
+<td>Authority Documents</td>
+<td>All &gt; Policy and Compliance &gt; Authority Documents · <a href="{BASE}/sn_compliance_authority_document_list.do">Open direct</a></td>
+<td>Frameworks (ISO, NIST)</td>
+</tr>
+<tr>
+<td>Citations</td>
+<td>All &gt; Policy and Compliance &gt; Citations · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+<td>Framework clauses</td>
+</tr>
+<tr>
+<td>Policies</td>
+<td>All &gt; Policy and Compliance &gt; Policies · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+<td>Internal policies</td>
+</tr>
+<tr>
+<td>Policy Statements</td>
+<td>All &gt; Policy and Compliance &gt; Policy Statements · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+<td>Policy text</td>
+</tr>
+<tr>
+<td>Controls</td>
+<td>All &gt; Policy and Compliance &gt; Controls · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+<td>Control library</td>
+</tr>
+<tr>
+<td>Control Tests</td>
+<td>All &gt; Policy and Compliance &gt; Control Tests · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+<td>Test definitions</td>
+</tr>
+<tr>
+<td>Indicators</td>
+<td>All &gt; Policy and Compliance &gt; Indicators · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+<td>CCM metrics</td>
+</tr>
+<tr>
+<td>Indicator Sources</td>
+<td>All &gt; Policy and Compliance &gt; Indicator Sources · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+<td>Data queries</td>
+</tr>
+<tr>
+<td>Attestations</td>
+<td>All &gt; Policy and Compliance &gt; Attestations · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+<td>Campaigns</td>
+</tr>
+<tr>
+<td>Attestation Tasks</td>
+<td>All &gt; Policy and Compliance &gt; My Attestation Tasks · <a href="{BASE}/sn_compliance_policy_list.do">Open direct</a></td>
+<td>Owner tasks</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Risk</strong></p>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Risk Administration</td>
+<td>All &gt; Risk &gt; Administration · <a href="{BASE}/sn_risk_risk_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Risk Register</td>
+<td>All &gt; Risk &gt; Risk Register · <a href="{BASE}/sn_risk_risk_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Risk Statements</td>
+<td>All &gt; Risk &gt; Risk Statements · <a href="{BASE}/sn_risk_risk_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Assessments</td>
+<td>All &gt; Risk &gt; Assessments · <a href="{BASE}/sn_risk_risk_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Audit</strong></p>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Audit Engagements</td>
+<td>All &gt; Audit &gt; Engagements · <a href="{BASE}/sn_audit_engagement_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Audit Tasks</td>
+<td>All &gt; Audit &gt; Tasks · <a href="{BASE}/sn_audit_engagement_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Findings</td>
+<td>All &gt; Audit &gt; Findings · <a href="{BASE}/sn_audit_engagement_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>TPRM (Vendor Risk)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vendor Risk Administration</td>
+<td>All &gt; Vendor Risk Management &gt; Administration · <a href="{BASE}/sn_vdr_risk_asmt_assessment_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Vendor Profiles</td>
+<td>All &gt; Vendor Risk Management &gt; Vendor Profiles · <a href="{BASE}/sn_vdr_risk_asmt_assessment_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Assessments</td>
+<td>All &gt; Vendor Risk Management &gt; Assessments · <a href="{BASE}/sn_vdr_risk_asmt_assessment_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Issues (vendor)</td>
+<td>All &gt; Vendor Risk Management &gt; Issues · <a href="{BASE}/sn_vdr_risk_asmt_assessment_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>BCM</strong></p>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigate (name may vary by version)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Business Continuity home</td>
+<td>All &gt; Business Continuity · <a href="{BASE}/sn_bcm_plan_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Critical Services</td>
+<td>All &gt; Business Continuity &gt; Critical Services · <a href="{BASE}/sn_bcm_service_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>BIA</td>
+<td>All &gt; Business Continuity &gt; Business Impact Analysis · <a href="{BASE}/sn_bcm_bia_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Continuity Plans</td>
+<td>All &gt; Business Continuity &gt; Continuity Plans · <a href="{BASE}/sn_bcm_plan_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Exercises</td>
+<td>All &gt; Business Continuity &gt; Exercises · <a href="{BASE}/sn_bcm_exercise_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cross-cutting</strong></p>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRC Issues</td>
+<td>All &gt; GRC &gt; Issues · <a href="{BASE}/sn_grc_issue_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Remediation tasks</td>
+<td>All &gt; GRC &gt; Remediation Tasks · <a href="{BASE}/sn_grc_task_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>GRC Workspace</td>
+<td>/now/grc</td>
+</tr>
+<tr>
+<td>Self-service attest</td>
+<td>/esc or /sp</td>
+</tr>
+<tr>
+<td>Guided Setup</td>
+<td>All &gt; Guided Setup &gt; GRC / IRM · <a href="{BASE}/now/guided-setup">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="166-full-pdi-practice-lab-25-steps-three-tracks">16.6 Full PDI practice lab (25 steps — three tracks)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p><strong>Prerequisites:</strong> IRM apps installed · Update Set GRC Lab 16 · test users: control owner, risk manager, auditor (read)</p>
+<h4 id="track-a-irm-steps-110">Track A — IRM (steps 1–10)</h4>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>EN</th>
+<th>AR</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Create Profile Type Business Unit</td>
+<td>نوع Profile</td>
+<td>Type saved</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Create Profile Finance BU</td>
+<td>Profile</td>
+<td>Scope container</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Create Authority Document ISO 27001</td>
+<td>وثيقة مرجعية</td>
+<td>AD record</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Add Citation clause</td>
+<td>Citation</td>
+<td>Linked to AD</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Create Policy + Statement</td>
+<td>سياسة</td>
+<td>Published draft</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Create Control Access Review + owner</td>
+<td>ضابط + مالك</td>
+<td>Owner assigned</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Map Control → Citation</td>
+<td>ربط</td>
+<td>Mapping visible</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Create Indicator (simple query e.g. inactive users)</td>
+<td>مؤشر</td>
+<td>Run → pass/fail</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Fail indicator → create Issue</td>
+<td>مشكلة</td>
+<td>Issue open</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Create attestation campaign → complete in portal</td>
+<td>إقرار</td>
+<td>Task closed</td>
+</tr>
+</tbody>
+</table>
+<h4 id="track-b-risk-steps-1114">Track B — Risk (steps 11–14)</h4>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>EN</th>
+<th>AR</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11</td>
+<td>Open Risk Register</td>
+<td>سجل</td>
+<td>List loads</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Create Risk Statement</td>
+<td>مخاطrة</td>
+<td>Inherent score</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Add assessment → treatment</td>
+<td>معالجة</td>
+<td>Residual lower</td>
+</tr>
+<tr>
+<td>14</td>
+<td>View heat map / report</td>
+<td>خريطة حرارية</td>
+<td>Executive view</td>
+</tr>
+</tbody>
+</table>
+<h4 id="track-c-tprm-steps-1518">Track C — TPRM (steps 15–18)</h4>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>EN</th>
+<th>AR</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>15</td>
+<td>Create Vendor Profile</td>
+<td>مورد</td>
+<td>Profile active</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Set Tier = 1</td>
+<td>Tier 1</td>
+<td>Tier saved</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Launch assessment questionnaire</td>
+<td>تقييم</td>
+<td>Responses recorded</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Fail item → vendor issue</td>
+<td>مشكلة مورد</td>
+<td>Remediation task</td>
+</tr>
+</tbody>
+</table>
+<h4 id="track-d-bcm-steps-1922">Track D — BCM (steps 19–22)</h4>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>EN</th>
+<th>AR</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>19</td>
+<td>Define Critical Service</td>
+<td>خدمة حرجة</td>
+<td>Service record</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Complete BIA (RTO/RPO)</td>
+<td>BIA</td>
+<td>Values set</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Create Continuity Plan</td>
+<td>خطة</td>
+<td>Plan approved</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Schedule Exercise → close with lessons</td>
+<td>تمرين</td>
+<td>Exercise complete</td>
+</tr>
+</tbody>
+</table>
+<h4 id="close-steps-2325">Close (steps 23–25)</h4>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>EN</th>
+<th>AR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>23</td>
+<td>Open /now/grc — verify unified view</td>
+<td>workspace</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Build simple dashboard: open issues + risk count</td>
+<td>لوحة</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Export Update Set + document Option choices (§16.4)</td>
+<td>توثيق</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="167-uat-sign-off-scenarios">16.7 UAT &amp; sign-off scenarios</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Scenario</th>
+<th>Expected</th>
+<th>Track</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U-G01</td>
+<td>Control owner attestation</td>
+<td>Portal task completes</td>
+<td>IRM</td>
+</tr>
+<tr>
+<td>U-G02</td>
+<td>Indicator fail → issue SLA</td>
+<td>Issue assigned</td>
+<td>IRM</td>
+</tr>
+<tr>
+<td>U-G03</td>
+<td>Risk residual after treatment</td>
+<td>Score reduced</td>
+<td>Risk</td>
+</tr>
+<tr>
+<td>U-G04</td>
+<td>Tier 1 vendor overdue assessment</td>
+<td>Escalation / report</td>
+<td>TPRM</td>
+</tr>
+<tr>
+<td>U-G05</td>
+<td>Exercise overdue tasks</td>
+<td>BCM manager notified</td>
+<td>BCM</td>
+</tr>
+<tr>
+<td>U-G06</td>
+<td>Auditor read-only on engagements</td>
+<td>No edit on controls</td>
+<td>Audit</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="168-consulting-sign-off-checklist">16.8 Consulting sign-off checklist</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<ul>
+<li>[ ] Framework list approved (ISO/NIST/local)</li>
+<li>[ ] Profile list = org structure wave 1</li>
+<li>[ ] Every control has <strong>named</strong> owner (not group-only)</li>
+<li>[ ] Indicator queries tested on prod-like data volume</li>
+<li>[ ] Tier 1 vendor list signed by Procurement</li>
+<li>[ ] BIA RTO/RPO signed by business + IT</li>
+<li>[ ] Attestation wave 1 dates in calendar</li>
+<li>[ ] Training deck AR+EN for control owners</li>
+<li>[ ] §16.5 every page opened once in sub-prod</li>
+</ul>
+<hr />
+<h2 id="17-power-user-playbook-grc-irm">§17 — Power User Playbook (GRC / IRM)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<h3 id="171-personas">17.1 Personas</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Primary actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compliance Officer</td>
+<td>Frameworks, policies, attestations</td>
+</tr>
+<tr>
+<td>Control Owner</td>
+<td>Periodic attestation, evidence upload</td>
+</tr>
+<tr>
+<td>Risk Owner</td>
+<td>Risk register, treatment plans, residual scoring</td>
+</tr>
+<tr>
+<td>Auditor (Internal/External)</td>
+<td>Engagements, findings, walk-throughs</td>
+</tr>
+<tr>
+<td>VRM Analyst</td>
+<td>Vendor onboarding, assessments, tier classification</td>
+</tr>
+<tr>
+<td>BCM Coordinator</td>
+<td>BIAs, plans, exercises</td>
+</tr>
+<tr>
+<td>Privacy Officer</td>
+<td>DPIA, PII inventory, breach response</td>
+</tr>
+<tr>
+<td>Executive (Board / Audit Committee)</td>
+<td>Risk appetite dashboard, top-risks</td>
+</tr>
+</tbody>
+</table>
+<h3 id="172-day-in-life-control-owner">17.2 Day-in-Life — Control Owner</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<ol>
+<li>Email &ldquo;You have 3 attestations due in 7 days&rdquo;.</li>
+<li>Open Employee Center / GRC Workspace → Attestations.</li>
+<li>Each attestation: review control description, upload evidence (screenshot, policy doc), answer questions, sign.</li>
+<li>Submit; system validates and updates control state.</li>
+</ol>
+<h3 id="173-day-in-life-risk-owner">17.3 Day-in-Life — Risk Owner</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<ol>
+<li>Open Risk Register → My Risks.</li>
+<li>Update inherent score after incident.</li>
+<li>Add new mitigation; assign to control owner.</li>
+<li>Re-score residual; if above appetite, escalate.</li>
+</ol>
+<h3 id="174-top-20-grc-scripts">17.4 Top 20 GRC Scripts</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p><strong>1. Auto-create issue when indicator fails</strong></p>
+<pre><code class="language-javascript">// Business Rule on sn_grc_indicator (after, update)
+(function (current, previous) {
+ if (current.last_result.changes() &amp;&amp; current.getValue('last_result') === 'fail') {
+ var issue = new GlideRecord('sn_grc_issue');
+ issue.initialize();
+ issue.setValue('short_description', 'Indicator failure: ' + current.getValue('name'));
+ issue.setValue('description', 'Indicator ' + current.getValue('number') +
+ ' returned failure. Investigate root cause and remediate.');
+ issue.setValue('source_indicator', current.getUniqueValue());
+ issue.setValue('control', current.getValue('control'));
+ issue.setValue('priority', _priority(current));
+ issue.setValue('owner', current.getValue('control.owned_by'));
+ issue.insert();
+ }
+</code></pre>
+<p>function _priority(ind) {<br />
+ var ctrl = new GlideRecord(&lsquo;sn_compliance_control&rsquo;);<br />
+ if (!ctrl.get(ind.getValue(&lsquo;control&rsquo;))) return 3;<br />
+ return ctrl.getValue(&lsquo;classification&rsquo;) === &lsquo;key&rsquo; ? 1 : 3;<br />
+ }<br />
+})(current, previous);</p>
+<p><strong>2. Vendor risk score calculator</strong></p>
+<pre><code class="language-javascript">var GRCVendorScorer = Class.create();
+GRCVendorScorer.prototype = {
+ initialize: function {},
+</code></pre>
+<p>/*<em> Computes vendor inherent risk based on data access, criticality, location </em>/<br />
+ score: function (vendorSysId) {<br />
+ var v = new GlideRecord(&lsquo;sn_vdr_risk_asmt_vendor&rsquo;);<br />
+ if (!v.get(vendorSysId)) return 0;</p>
+<p>var dataSensitivity = parseInt(v.getValue(&lsquo;data_sensitivity&rsquo;), 10) || 0; // 1-5<br />
+ var businessCrit = parseInt(v.getValue(&lsquo;business_criticality&rsquo;), 10) || 0;<br />
+ var geoRisk = this._geoRisk(v.getValue(&lsquo;country&rsquo;));<br />
+ var spendTier = this._spendTier(parseFloat(v.getValue(&lsquo;annual_spend&rsquo;)));</p>
+<p>var score = (dataSensitivity * 0.35) + (businessCrit * 0.30) +<br />
+ (geoRisk * 0.20) + (spendTier * 0.15);<br />
+ var tier = score &gt;= 4 ? 1 : (score &gt;= 2.5 ? 2 : 3);</p>
+<p>v.setValue(&lsquo;inherent_risk_score&rsquo;, score.toFixed(2));<br />
+ v.setValue(&lsquo;tier&rsquo;, tier);<br />
+ v.update();<br />
+ return { score: score, tier: tier };<br />
+ },</p>
+<p>_geoRisk: function (cc) {<br />
+ var high = [&lsquo;AF&rsquo;, &lsquo;IR&rsquo;, &lsquo;KP&rsquo;, &lsquo;SY&rsquo;, &lsquo;YE&rsquo;];<br />
+ var med = [&lsquo;IN&rsquo;, &lsquo;CN&rsquo;, &lsquo;RU&rsquo;, &lsquo;BR&rsquo;];<br />
+ if (high.indexOf(cc) &gt; -1) return 5;<br />
+ if (med.indexOf(cc) &gt; -1) return 3;<br />
+ return 1;<br />
+ },</p>
+<p>_spendTier: function (amt) {<br />
+ if (amt &gt;= 1000000) return 5;<br />
+ if (amt &gt;= 100000) return 3;<br />
+ return 1;<br />
+ },</p>
+<p>type: &lsquo;GRCVendorScorer&rsquo;<br />
+};</p>
+<p><strong>3. Attestation campaign launcher</strong></p>
+<pre><code class="language-javascript">function launchAttestationCampaign(frameworkSysId, dueDate) {
+ var ctrl = new GlideRecord('sn_compliance_control');
+ ctrl.addQuery('content.framework', frameworkSysId);
+ ctrl.addActiveQuery();
+ ctrl.query();
+</code></pre>
+<p>var count = 0;<br />
+ while (ctrl.next()) {<br />
+ var att = new GlideRecord(&lsquo;sn_compliance_control_attestation&rsquo;);<br />
+ att.initialize();<br />
+ att.setValue(&lsquo;control&rsquo;, ctrl.getUniqueValue());<br />
+ att.setValue(&lsquo;attestor&rsquo;, ctrl.getValue(&lsquo;owned_by&rsquo;));<br />
+ att.setValue(&lsquo;due_date&rsquo;, dueDate);<br />
+ att.setValue(&lsquo;state&rsquo;, &lsquo;pending&rsquo;);<br />
+ att.insert();<br />
+ count++;<br />
+ }<br />
+ return { campaign: frameworkSysId, count: count };<br />
+}</p>
+<p><strong>4. Issue → Risk → Control evidence trail audit</strong></p>
+<pre><code class="language-javascript">function auditTrail(issueSysId) {
+ var trail = [];
+ var i = new GlideRecord('sn_grc_issue');
+ if (!i.get(issueSysId)) return null;
+ trail.push({ type: 'issue', id: issueSysId, num: i.getValue('number') });
+</code></pre>
+<p>if (!i.control.nil()) {<br />
+ var c = new GlideRecord(&lsquo;sn_compliance_control&rsquo;);<br />
+ if (c.get(i.getValue(&lsquo;control&rsquo;))) {<br />
+ trail.push({ type: &lsquo;control&rsquo;, id: c.getUniqueValue(),<br />
+ num: c.getValue(&lsquo;number&rsquo;) });<br />
+ var prof = new GlideRecord(&lsquo;sn_grc_profile&rsquo;);<br />
+ if (prof.get(c.getValue(&lsquo;profile&rsquo;))) {<br />
+ trail.push({ type: &lsquo;profile&rsquo;, id: prof.getUniqueValue(),<br />
+ name: prof.getValue(&lsquo;name&rsquo;) });<br />
+ }<br />
+ }<br />
+ }</p>
+<p>if (!i.risk.nil()) {<br />
+ var r = new GlideRecord(&lsquo;sn_risk_risk&rsquo;);<br />
+ if (r.get(i.getValue(&lsquo;risk&rsquo;))) {<br />
+ trail.push({ type: &lsquo;risk&rsquo;, id: r.getUniqueValue(),<br />
+ num: r.getValue(&lsquo;number&rsquo;) });<br />
+ }<br />
+ }<br />
+ return trail;<br />
+}</p>
+<p><strong>5. Policy acknowledgement bulk-enforcement</strong></p>
+<pre><code class="language-javascript">// Triggered on policy update or new hire
+function enforcePolicyAck(policySysId, audienceSysIds) {
+ audienceSysIds.forEach(function (userId) {
+ var ack = new GlideRecord('sn_policy_acknowledgement');
+ ack.initialize();
+ ack.setValue('policy', policySysId);
+ ack.setValue('user', userId);
+ ack.setValue('state', 'pending');
+ ack.setValue('due_date', _addDays(14));
+ ack.insert();
+ gs.eventQueue('sn_grc.policy.ack.pending', ack, policySysId, userId);
+ });
+</code></pre>
+<p>function _addDays(d) {<br />
+ var gd = new GlideDateTime();<br />
+ gd.addDaysLocalTime(d);<br />
+ return gd;<br />
+ }<br />
+}</p>
+<p><strong>6. Residual risk = Inherent × (1 - control_effectiveness)</strong></p>
+<pre><code class="language-javascript">var GRCRiskCalculator = Class.create();
+GRCRiskCalculator.prototype = {
+ initialize: function {},
+</code></pre>
+<p>calcResidual: function (riskSysId) {<br />
+ var r = new GlideRecord(&lsquo;sn_risk_risk&rsquo;);<br />
+ if (!r.get(riskSysId)) return 0;<br />
+ var inherent = parseFloat(r.getValue(&lsquo;inherent_score&rsquo;));<br />
+ var ctrlEff = this._linkedControlsEffectiveness(riskSysId);<br />
+ var residual = inherent * (1 - ctrlEff);<br />
+ r.setValue(&lsquo;residual_score&rsquo;, residual.toFixed(2));<br />
+ r.update();<br />
+ return residual;<br />
+ },</p>
+<p>_linkedControlsEffectiveness: function (riskId) {<br />
+ var link = new GlideAggregate(&lsquo;sn_risk_risk_control&rsquo;);<br />
+ link.addQuery(&lsquo;risk&rsquo;, riskId);<br />
+ link.addAggregate(&lsquo;AVG&rsquo;, &lsquo;control.effectiveness_score&rsquo;);<br />
+ link.query();<br />
+ return link.next() ?<br />
+ parseFloat(link.getAggregate(&lsquo;AVG&rsquo;, &lsquo;control.effectiveness_score&rsquo;)) / 100 : 0;<br />
+ },</p>
+<p>type: &lsquo;GRCRiskCalculator&rsquo;<br />
+};</p>
+<p><strong>7. Audit engagement workflow</strong> — engagement → finding → action → remediation evidence.</p>
+<p><strong>8. Continuous Monitoring scheduler</strong> — indicators run daily/weekly.</p>
+<p><strong>9. SOX 302/404 controls testing</strong> — quarterly walkthrough flow.</p>
+<p><strong>10. Privacy breach response timer</strong> — GDPR 72h notification trigger.</p>
+<p><strong>11-20. Quick recipes</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11</td>
+<td>DPIA template generator (GDPR Art 35)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Vendor pen-test certificate expiry alert</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Top 10 risks dashboard with sparklines</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Multi-framework crosswalk (NIST ↔ ISO ↔ SOC2)</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Evidence freshness check (&gt;180 days = stale)</td>
+</tr>
+<tr>
+<td>16</td>
+<td>KRI threshold alert (Key Risk Indicator)</td>
+</tr>
+<tr>
+<td>17</td>
+<td>BCM tabletop exercise scheduling</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Audit finding heat map by department</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Now Assist for control description generation</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Regulatory change tracking (RegHub feed integration)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="18-from-scratch-implementation-day-0-day-30">§18 — From-Scratch Implementation (Day 0 → Day 30)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Days</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strategy + Setup</td>
+<td>0–4</td>
+<td>Frameworks chosen, plugins, profile structure</td>
+</tr>
+<tr>
+<td>Compliance</td>
+<td>5–12</td>
+<td>Controls, attestations, indicators</td>
+</tr>
+<tr>
+<td>Risk</td>
+<td>13–17</td>
+<td>Register, treatments, residual scoring</td>
+</tr>
+<tr>
+<td>VRM + BCM</td>
+<td>18–22</td>
+<td>Vendor lifecycle, BIA</td>
+</tr>
+<tr>
+<td>Audit + AI</td>
+<td>23–27</td>
+<td>Engagements, dashboards, Now Assist</td>
+</tr>
+<tr>
+<td>Launch</td>
+<td>28–30</td>
+<td>Training, UAT, go-live</td>
+</tr>
+</tbody>
+</table>
+<h3 id="181-day-by-day">18.1 Day-by-day</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p><strong>Day 0</strong> — Strategy<br />
+- Frameworks list (ISO 27001, NIST CSF, SOC2, PCI, GDPR, local reg)<br />
+- Risk appetite statement<br />
+- Lines of Defense map (1: Business, 2: Risk/Compliance, 3: Audit, +cyber, +executive)<br />
+- Compliance calendar (annual ISO audit, quarterly SOX, etc.)</p>
+<p><strong>Day 1</strong> — Plugins</p>
+<pre><code class="language-text">- com.sn_grc (Core GRC/IRM)
+- com.sn_grc_policy_compliance (Policy &amp; Compliance)
+- com.sn_grc_risk (Advanced Risk)
+- com.sn_grc_audit (Audit Mgmt)
+- com.sn_vdr_risk_asmt (Vendor Risk)
+- com.sn_bcm (Business Continuity)
+</code></pre>
+<p><strong>Day 2-3</strong> — Profile structure (the org)<br />
+- Business Profile (top)<br />
+- Sub-profiles per BU/Function/Process<br />
+- Each profile = sn_grc_profile record with relationships</p>
+<p><strong>Day 4</strong> — Frameworks + Authoritative Content<br />
+- Import ISO 27001 content<br />
+- Import NIST CSF<br />
+- Map your control library to both (crosswalk)</p>
+<p><strong>Day 5-6</strong> — Controls library<br />
+- Control objectives<br />
+- Control owners (named users, not groups)<br />
+- Control types: preventive / detective / corrective<br />
+- Classification: key / non-key</p>
+<p><strong>Day 7-8</strong> — Attestation campaigns<br />
+- Annual ISO attestation<br />
+- Quarterly SOX attestation<br />
+- Monthly key control attestation<br />
+- Evidence requirements per control</p>
+<p><strong>Day 9-10</strong> — Indicators (Continuous Monitoring)<br />
+- &ldquo;Privileged users with no MFA&rdquo; (query sys_user + auth profile)<br />
+- &ldquo;Inactive accounts not disabled in 30 days&rdquo;<br />
+- &ldquo;Vendor without valid contract&rdquo;<br />
+- &ldquo;Critical asset without owner&rdquo;</p>
+<p><strong>Day 11</strong> — Issues workflow — auto-create from failed indicator (script #1) or attestation rejection.</p>
+<p><strong>Day 12</strong> — Policies<br />
+- Policy library<br />
+- Acknowledgement workflow (mass-enforce, script #5)<br />
+- Versioning + supersession<br />
+- Exception management</p>
+<p><strong>Day 13-14</strong> — Risk Register<br />
+- Risk taxonomy<br />
+- Inherent scoring (likelihood × impact, both 1-5)<br />
+- Risk treatment (Accept, Mitigate, Transfer, Avoid)<br />
+- Residual scoring (script #6)</p>
+<p><strong>Day 15</strong> — Risk → Control mapping<br />
+- N:M relationship table<br />
+- Control effectiveness → impacts residual risk</p>
+<p><strong>Day 16-17</strong> — Risk appetite + Heat map<br />
+- Appetite per risk category<br />
+- Heat map dashboard<br />
+- Top risks tracker</p>
+<p><strong>Day 18-19</strong> — VRM (Vendor Risk)<br />
+- Vendor inventory<br />
+- Tier classification (script #2)<br />
+- Assessment questionnaires (per tier)<br />
+- Continuous monitoring (BitSight/SecurityScorecard integration)</p>
+<p><strong>Day 20-21</strong> — BCM<br />
+- BIA per process<br />
+- RTO/RPO<br />
+- Recovery plans<br />
+- Tabletop exercises</p>
+<p><strong>Day 22</strong> — Privacy / DPIA<br />
+- PII inventory<br />
+- DPIA template<br />
+- Breach response playbook<br />
+- 72h GDPR notification</p>
+<p><strong>Day 23</strong> — Audit Management<br />
+- Engagement lifecycle<br />
+- Walkthrough → testing → finding → action → remediation<br />
+- Auditor portal</p>
+<p><strong>Day 24</strong> — Dashboards<br />
+- Compliance posture (% controls passing)<br />
+- Risk heatmap<br />
+- Vendor risk distribution<br />
+- Issue burn-down<br />
+- Attestation completion</p>
+<p><strong>Day 25</strong> — Now Assist for IRM<br />
+- Control description draft<br />
+- Risk narrative summary<br />
+- Audit finding triage suggestion<br />
+- Policy violation detection</p>
+<p><strong>Day 26</strong> — ATF<br />
+- 10 scenarios: attestation, indicator fail → issue, risk treatment, vendor tier change, policy ack</p>
+<p><strong>Day 27</strong> — Integrations<br />
+- HRIS (employees + departments → profiles)<br />
+- SIEM (security events → indicators)<br />
+- ITSM (incidents → issues)<br />
+- AD/Okta (access reviews)</p>
+<p><strong>Day 28</strong> — Training<br />
+- Control owners (1h video + 30 min hands-on)<br />
+- Risk owners (½ day)<br />
+- Auditors (1 day on auditor workspace)<br />
+- Executives (board dashboard tour)</p>
+<p><strong>Day 29</strong> — UAT — 15 scenarios</p>
+<p><strong>Day 30</strong> — Go-live + Hypercare</p>
+<h3 id="182-kpis-month-1">18.2 KPIs Month 1</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Control attestation completion %</td>
+<td>≥ 95% on time</td>
+</tr>
+<tr>
+<td>Indicator pass rate</td>
+<td>≥ 90%</td>
+</tr>
+<tr>
+<td>Issue resolution within SLA</td>
+<td>≥ 90%</td>
+</tr>
+<tr>
+<td>Vendor assessment completion</td>
+<td>≥ 100% Tier 1</td>
+</tr>
+<tr>
+<td>Policy acknowledgement %</td>
+<td>≥ 98%</td>
+</tr>
+<tr>
+<td>Risks above appetite</td>
+<td>≤ 5</td>
+</tr>
+<tr>
+<td>Audit findings closed within deadline</td>
+<td>≥ 90%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="19-cis-rc-grcirm-exam-z-to-hero-feature-labs">§19 — CIS-RC (GRC/IRM) Exam &amp; Z-to-Hero Feature Labs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<h3 id="191-exam-bank">19.1 Exam bank</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p><strong>Primary</strong>: C:\SVCProject\EXAM_BANK_GRC_360.md (~120 Q, 91 KB).</p>
+<h3 id="192-z-to-hero-feature-labs-15-labs">19.2 Z-to-Hero Feature Labs (15 labs)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Lab</th>
+<th>Feature</th>
+<th>Bank topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>Profile structure (BU-aligned, 3 levels)</td>
+<td>Profiles</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>Framework import (ISO 27001 + NIST CSF)</td>
+<td>Authoritative Content</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>Control library + named owners (not groups)</td>
+<td>Controls</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>Crosswalk map (ISO ↔ NIST ↔ SOC2)</td>
+<td>Mapping</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>Attestation campaign launcher (script)</td>
+<td>Attestation</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>Indicator &ldquo;Privileged users without MFA&rdquo;</td>
+<td>Indicators</td>
+</tr>
+<tr>
+<td>L7</td>
+<td>Indicator fail → auto-Issue</td>
+<td>Continuous Monitoring</td>
+</tr>
+<tr>
+<td>L8</td>
+<td>Risk Register: Inherent score + Residual calc</td>
+<td>Risk</td>
+</tr>
+<tr>
+<td>L9</td>
+<td>Risk Treatment: Accept / Mitigate / Transfer / Avoid</td>
+<td>Risk lifecycle</td>
+</tr>
+<tr>
+<td>L10</td>
+<td>Vendor onboarding + Tier classification</td>
+<td>TPRM</td>
+</tr>
+<tr>
+<td>L11</td>
+<td>Vendor assessment questionnaire per tier</td>
+<td>TPRM</td>
+</tr>
+<tr>
+<td>L12</td>
+<td>Audit Engagement → Finding → Action</td>
+<td>Audit Mgmt</td>
+</tr>
+<tr>
+<td>L13</td>
+<td>Policy acknowledgement bulk-enforce</td>
+<td>Policy</td>
+</tr>
+<tr>
+<td>L14</td>
+<td>BCM BIA + Recovery Plan + Tabletop exercise</td>
+<td>BCM</td>
+</tr>
+<tr>
+<td>L15</td>
+<td>DPIA template for GDPR</td>
+<td>Privacy</td>
+</tr>
+</tbody>
+</table>
+<h3 id="193-top-15-grc-must-know-concepts">19.3 Top 15 GRC must-know concepts</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<ol>
+<li>Profile = scoping unit (BU, Process, System)</li>
+<li>Authoritative Content vs Internal Policy</li>
+<li>Control: named owner, classification (key/non-key), preventive/detective/corrective</li>
+<li>Indicator (CCM): continuous control monitoring → pass/fail</li>
+<li>Issue: opened from Indicator fail, attestation rejection, audit finding</li>
+<li>Risk: Inherent vs Residual; Treatment options</li>
+<li>Risk appetite per category</li>
+<li>Heat map: Likelihood × Impact (5×5 default)</li>
+<li>TPRM (Vendor Risk): Tier-based questionnaire frequency</li>
+<li>Audit Engagement lifecycle (Plan → Field → Report)</li>
+<li>Finding → Action → Remediation evidence chain</li>
+<li>Attestation campaign: bulk-launch + due dates</li>
+<li>Policy lifecycle: Draft → Review → Approved → Acknowledged → Reviewed</li>
+<li>BCM: BIA (RTO/RPO) → Plan → Exercise → Activation</li>
+<li>Lines of Defense model (Business / Risk / Audit / +Cyber / +Exec)</li>
+</ol>
+<h3 id="194-5-sample-cis-rc-questions">19.4 5 sample CIS-RC questions</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<blockquote>
+<p><strong>Q1.</strong> Residual risk = ?<br />
+A. Inherent × (1 - control effectiveness)<br />
+B. Inherent + control effectiveness<br />
+C. Inherent / impact<br />
+D. Always equal to inherent</p>
+<p><strong>Answer</strong>: A</p>
+<p><strong>Q2.</strong> When does an Issue auto-create from an Indicator?<br />
+A. When Indicator runs successfully<br />
+B. When Indicator last_result = fail (via Business Rule)<br />
+C. Always on schedule<br />
+D. Manual only</p>
+<p><strong>Answer</strong>: B</p>
+<p><strong>Q3.</strong> Profile structure is best modeled as:<br />
+A. Flat list<br />
+B. Hierarchical aligned to org structure (BU &gt; Function &gt; Process)<br />
+C. By risk category<br />
+D. By geography only</p>
+<p><strong>Answer</strong>: B</p>
+<p><strong>Q4.</strong> Vendor Tier 1 means:<br />
+A. Lowest risk<br />
+B. Highest risk / most critical<br />
+C. Smallest contract<br />
+D. Newest vendor</p>
+<p><strong>Answer</strong>: B</p>
+<p><strong>Q5.</strong> Control attestation typically uses:<br />
+A. Survey table<br />
+B. sn_compliance_control_attestation records routed to control owner<br />
+C. Email only<br />
+D. Manual update to control state</p>
+<p><strong>Answer</strong>: B</p>
+</blockquote>
+<p>Use EXAM_BANK_GRC_360.md for remaining 115+ questions.</p>
+<h3 id="195-what-hero-looks-like-for-grc">19.5 What &ldquo;Hero&rdquo; looks like for GRC</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p>Builds enterprise IRM: multi-framework controls, continuous monitoring with auto-issues, full risk lifecycle, tiered vendor risk, audit engagements, policy acknowledgement, BCM with BIA and exercises, privacy DPIA. Passes CIS-RC with ≥85%.</p>
+<hr />
+<h2 id="hands-on-labs">Hands-on Labs — مختبرات عملية</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<blockquote>
+<p>Step-by-step labs for PDI / Australia instance. Replace <code>{BASE}</code> with your instance URL.<br />
+مختبرات خطوة بخطوة — استبدل <code>{BASE}</code> برابط نسختك.</p>
+</blockquote>
+<ol>
+<li>
+<p><strong>Lab 1</strong> — <strong>Compliance Profile / ملف امتثال</strong> — Create profile at <a href="{BASE}/sn_compliance_profile_list.do">{BASE}/sn_compliance_profile_list.do</a> for ISO 27001 scope.</p>
+</li>
+<li>
+<p><strong>Lab 2</strong> — <strong>Control library / مكتبة ضوابط</strong> — Import or create controls; map to profile.</p>
+</li>
+<li>
+<p><strong>Lab 3</strong> — <strong>Policy attestation / إقرار سياسة</strong> — Launch attestation campaign; track responses.</p>
+</li>
+<li>
+<p><strong>Lab 4</strong> — <strong>Risk register / سجل مخاطر</strong> — Create risk at <a href="{BASE}/sn_risk_risk_list.do">{BASE}/sn_risk_risk_list.do</a>; score and assign owner.</p>
+</li>
+<li>
+<p><strong>Lab 5</strong> — <strong>Audit engagement / تدقيق</strong> — Plan engagement at <a href="{BASE}/sn_audit_engagement_list.do">{BASE}/sn_audit_engagement_list.do</a>; record finding.</p>
+</li>
+<li>
+<p><strong>Lab 6</strong> — <strong>Vendor assessment / تقييم مورد</strong> — Run VRM assessment for critical vendor.</p>
+</li>
+<li>
+<p><strong>Lab 7</strong> — <strong>BCM plan / خطة استمرارية</strong> — Create BIA and recovery plan at <a href="{BASE}/sn_bcm_plan_list.do">{BASE}/sn_bcm_plan_list.do</a>.</p>
+</li>
+<li>
+<p><strong>Lab 8</strong> — <strong>GRC Workspace / مساحة GRC</strong> — Navigate unified view at <a href="{BASE}/now/grc/home">{BASE}/now/grc/home</a>.</p>
+</li>
+</ol>
+<hr />
+<h2 id="best-practices">Best Practices — أفضل الممارسات</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Best practice (EN)</th>
+<th>أفضل ممارسة (AR)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Terminology</td>
+<td>GRC = discipline; IRM = ServiceNow product — same outcome</td>
+<td>GRC = مجال؛ IRM = منتج</td>
+</tr>
+<tr>
+<td>Profiles</td>
+<td>Scope compliance by business unit / regulation</td>
+<td>Profiles حسب الوحدة/اللائحة</td>
+</tr>
+<tr>
+<td>Issues</td>
+<td>Single Issues table across audit/compliance/risk</td>
+<td>جدول Issues موحّد</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>Attach evidence to controls and audit tests</td>
+<td>أرفق أدلة بالضوابط والاختبارات</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="deployment-checklist">Deployment Checklist — قائمة النشر</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task (EN)</th>
+<th>المهمة (AR)</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Install IRM apps (Compliance, Risk, Audit…)</td>
+<td>تثبيت IRM</td>
+<td>Licensed</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Profiles &amp; control framework</td>
+<td>Profiles والضوابط</td>
+<td>Framework mapped</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Risk scoring methodology</td>
+<td>منهجية المخاطر</td>
+<td>Scores consistent</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Audit plan &amp; engagements</td>
+<td>خطة التدقيق</td>
+<td>Engagements scheduled</td>
+</tr>
+<tr>
+<td>5</td>
+<td>VRM for critical vendors</td>
+<td>VRM للموردين</td>
+<td>Assessments run</td>
+</tr>
+<tr>
+<td>6</td>
+<td>BCM BIA templates</td>
+<td>قوالب BCM</td>
+<td>Plans documented</td>
+</tr>
+<tr>
+<td>7</td>
+<td>GRC Workspace personas</td>
+<td>شخصيات Workspace</td>
+<td>Users see role view</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Executive reporting</td>
+<td>تقارير تنفيذية</td>
+<td>Dashboards live</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="direct-urls-quick-reference">Direct URLs Quick Reference</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigation</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRC Workspace</td>
+<td>Now &gt; GRC</td>
+<td><a href="{BASE}/now/grc/home">{BASE}/now/grc/home</a></td>
+</tr>
+<tr>
+<td>Profiles</td>
+<td>All &gt; GRC &gt; Profiles</td>
+<td><a href="{BASE}/sn_compliance_profile_list.do">{BASE}/sn_compliance_profile_list.do</a></td>
+</tr>
+<tr>
+<td>Controls</td>
+<td>All &gt; GRC &gt; Controls</td>
+<td><a href="{BASE}/sn_compliance_control_list.do">{BASE}/sn_compliance_control_list.do</a></td>
+</tr>
+<tr>
+<td>Policies</td>
+<td>All &gt; GRC &gt; Policies</td>
+<td><a href="{BASE}/sn_compliance_policy_statement_list.do">{BASE}/sn_compliance_policy_statement_list.do</a></td>
+</tr>
+<tr>
+<td>Risks</td>
+<td>All &gt; Risk Management</td>
+<td><a href="{BASE}/sn_risk_risk_list.do">{BASE}/sn_risk_risk_list.do</a></td>
+</tr>
+<tr>
+<td>Audit Engagements</td>
+<td>All &gt; Audit Management</td>
+<td><a href="{BASE}/sn_audit_engagement_list.do">{BASE}/sn_audit_engagement_list.do</a></td>
+</tr>
+<tr>
+<td>Vendor Risk</td>
+<td>All &gt; Vendor Risk</td>
+<td><a href="{BASE}/sn_vdr_risk_assessment_list.do">{BASE}/sn_vdr_risk_assessment_list.do</a></td>
+</tr>
+<tr>
+<td>BCM Plans</td>
+<td>All &gt; Business Continuity</td>
+<td><a href="{BASE}/sn_bcm_plan_list.do">{BASE}/sn_bcm_plan_list.do</a></td>
+</tr>
+<tr>
+<td>Issues</td>
+<td>All &gt; GRC &gt; Issues</td>
+<td><a href="{BASE}/sn_grc_issue_list.do">{BASE}/sn_grc_issue_list.do</a></td>
+</tr>
+<tr>
+<td>Guided Setup</td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

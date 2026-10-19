@@ -1,0 +1,3673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>14 — AI in ServiceNow + Agents | HR Leave Australia</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+  <style>
+    .field-table th { white-space: nowrap; }
+    .step-num { font-weight: 700; color: var(--brand-2); }
+    .demo-box { border-left: 4px solid var(--brand-2); padding: .35rem 0 .35rem .85rem; margin: .75rem 0; }
+    .chapter-nav { display: flex; justify-content: space-between; gap: 1rem; margin: 2rem 0 1rem; padding: 1rem; background: #f8fafc; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All</a>
+      <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Links</a>
+      <a href="SCHEMA_AND_DATA.html">Schema</a>
+      <a href="scripts/index.html">Scripts</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+      <span class="badge">Chapter 14</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>14 — AI in ServiceNow + Agents</h1>
+      <p>Platform AI features after core Studio app (01–12) exists.</p>
+      <div class="meta-grid">
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.72rem">e5f5bc9493a303507520703efaba104d</code></div>
+        <div><strong>Instance lab</strong><code style="color:#fff;font-size:.72rem">dev398980</code></div>
+        <div><strong>URL token</strong><code style="color:#fff">{BASE}</code></div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Quick open</strong>
+<a href="#viz14">Visual map</a>
+<a href="{BASE}/now/assist">Now Assist</a>
+    </div>
+    <article class="content">
+
+<div class="glance" id="viz14">
+  <h3>Visual map — Ch.14 · AI — after core works</h3>
+  <div class="grid3">
+    <div class="box"><strong>See in 10 seconds</strong><p>Now Assist / VA / Agent Studio / Control Tower</p></div>
+    <div class="box"><strong>You build</strong><p>Optional layer</p></div>
+    <div class="box"><strong>Track</strong><p>Development</p></div>
+  </div>
+  <div class="flow"><div class="n"><b>E2E</b>Must be green</div><span class="arrow">→</span><div class="n"><b>AGENT</b>Tools</div><span class="arrow">→</span><div class="n"><b>ACL</b>Invoking user</div><span class="arrow">→</span><div class="n"><b>TOWER</b>Register</div></div>
+  <div class="chips"><a class="chip url" href="{BASE}/now/agent-studio">↗ agent-studio</a><a class="chip url" href="AI_SERVICENOW_FULL_DEMO_MASTER.html">↗ AI_SERVICENOW_FULL_DEMO_MASTER.html</a></div>
+  <div class="chips"><span class="chip do">✓ GlideRecordSecure</span><span class="chip do">✓ Read-mostly tools</span><span class="chip dont">✗ AI before ACLs</span><span class="chip dont">✗ Tool writes u_state</span></div>
+  <p class="note-sm">Full visual path (all chapters): <a href="VISUAL_FROM_SCRATCH_00_16.html">VISUAL_FROM_SCRATCH_00_16.html</a></p>
+</div>
+<div class="ok">
+<p><strong>Studio-only for core app:</strong> Create chapters <a href="01_DEVELOPMENT.html">01</a> through <a href="12_INTEGRATION_FULL_GUIDE.html">12</a> first. AI configuration uses ServiceNow platform UI (Now Assist, AI Agent Studio, Virtual Agent).</p>
+<p>Also open: <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Direct Links</a> · <a href="SCHEMA_AND_DATA.html">Schema</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All Objects</a> · Previous: <a href="13_2HOUR_MASTER_SUMMARY.html">13 Summary</a></p>
+</div>
+<div class="warn"><p><strong>Prerequisite:</strong> All tables, BR, Flow, and ACLs must exist on the instance before enabling AI features.</p></div>
+
+<h2 id="how-objects-relate">How AI features relate to HR Leave</h2>
+<div class="ok">
+<pre style="white-space:pre-wrap;font-family:var(--mono);font-size:.85rem;background:#0b1220;color:#e2e8f0;padding:1rem;border-radius:12px">
+Core app (ch.01–12) — tables, BR, Flow, ACLs
+        │
+        ▼
+Platform AI (this chapter) — Now Assist, Agents, VA, Search
+        │
+        ▼
+Optional: HR Leave skills/topics referencing req_v2 / bal_v2 data
+</pre>
+<p>AI layers sit <em>on top of</em> the scoped app — they do not replace Studio create steps in chapters 01–12.</p>
+</div>
+
+<hr />
+
+<h2 id="rule0">Rule 0 — Before any object (Application + Update Set + Studio)</h2>
+<p>Repeat these checks before creating or editing any application file. This section is also <strong>section 00 Update Set</strong> — create the capture set first.</p>
+<ol>
+  <li><span class="step-num">Application picker</span> — top-right globe / application menu → select <strong>HR Leave</strong> (<code>x_786686_hr_leave</code>). Never leave <em>Global</em> selected when creating scoped artifacts.</li>
+  <li><span class="step-num">Update Set</span> — All → <strong>System Update Sets → Local Update Sets</strong> → <strong>New</strong>:
+    <table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+    <tr><td>Name</td><td><code>HR Leave – Build</code></td></tr>
+    <tr><td>Application</td><td>HR Leave</td></tr>
+    <tr><td>State</td><td>In Progress</td></tr>
+    <tr><td>Description</td><td>Captures all HR Leave lab artifacts</td></tr></table>
+    After submit: open the record → click <strong>Make Current</strong>. Direct list: <a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a>
+  </li>
+  <li><span class="step-num">Open Studio</span> — <a href="{BASE}/$studio.do">{BASE}/$studio.do</a> → confirm header shows <strong>HR Leave</strong>.</li>
+</ol>
+<div class="warn"><p>If artifacts land in Global scope, delete them and recreate under HR Leave. ACLs and events created globally will not behave correctly for this app.</p></div>
+<div class="demo-box"><p><strong>Verify Update Set:</strong> Create a test Script Include in Studio → open <strong>HR Leave – Build</strong> → Related List <strong>Customer Updates</strong> shows the new file.</p></div>
+
+<hr />
+
+<p><em>Deep-dive sections below — original AI implementation guide content.</em></p>
+<hr />
+
+
+<h1 id="14-ai-in-servicenow-agents-complete-implementation-guide">14 — AI in ServiceNow + Agents — Complete Implementation Guide</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً (ملخص سريع):</strong> <a href="MASTER_ALL_IN_ONE_SUMMARY.html">MASTER_ALL_IN_ONE_SUMMARY.md</a> · HTML: <a href="html/MASTER_ALL_IN_ONE_SUMMARY.html">html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل الواحد:</strong> <a href="MASTER_ALL_IN_ONE.html">MASTER_ALL_IN_ONE.md</a> · HTML: <a href="html/MASTER_ALL_IN_ONE.html">html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات (New/Open):</strong> <a href="MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">MASTER_PRACTICE_GUIDE_ALL_TOPICS.md</a> · <a href="html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Platform: ServiceNow <strong>Australia</strong> · Scope <code>x_786686_hr_leave</code> · sys_id <code>e5f5bc9493a303507520703efaba104d</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<h1 id="_1">دليل الذكاء الاصطناعي والوكلاء — تنفيذ كامل من الصفر إلى الإنتاج</h1>
+<blockquote>
+<p><strong>Platform:</strong> ServiceNow <strong>Australia</strong> (September 2026) · <strong>Next EA:</strong> Brazil<br />
+<strong>App:</strong> Custom · <strong>Scope:</strong> <code>x_786686_hr_leave</code> · <strong>sys_id:</strong> <code>e5f5bc9493a303507520703efaba104d</code><br />
+<strong>Tables:</strong> <code>x_786686_hr_leave_employee_v2</code>, <code>x_786686_hr_leave_req_v2</code>, <code>x_786686_hr_leave_bal_v2</code>, <code>x_786686_hr_leave_audit_v2</code><br />
+<strong>URL pattern:</strong> <code>{BASE}</code> = <code>https://YOUR_INSTANCE.service-now.com</code><br />
+</blockquote>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<ol>
+<li><a href="#-what-you-will-build--ماذا-ستبني">What You Will Build</a></li>
+<li><a href="#-direct-navigation-urls--روابط-التنقل-المباشرة">Direct Navigation URLs</a></li>
+<li><a href="#part-0--quick-map--prerequisites">Part 0 — Quick Map &amp; Prerequisites</a></li>
+<li><a href="#part-1--plugin-activation--roles">Part 1 — Plugin Activation &amp; Roles</a></li>
+<li><a href="#part-2--now-assist-studio-skills">Part 2 — Now Assist Studio (Skills)</a></li>
+<li><a href="#part-3--ai-agent-studio">Part 3 — AI Agent Studio</a></li>
+<li><a href="#part-4--byo-llm-claude--gpt">Part 4 — BYO LLM (Claude / GPT)</a></li>
+<li><a href="#part-5--ai-search--genai-search">Part 5 — AI Search + GenAI Search</a></li>
+<li><a href="#part-6--predictive-intelligence">Part 6 — Predictive Intelligence</a></li>
+<li><a href="#part-7--virtual-agent--nlu-full-topics--flows">Part 7 — Virtual Agent + NLU (Full Topics &amp; Flows)</a></li>
+<li><a href="#part-8--document-intelligence-idp">Part 8 — Document Intelligence (IDP)</a></li>
+<li><a href="#part-9--workflow-studio-ai-actions">Part 9 — Workflow Studio AI Actions</a></li>
+<li><a href="#part-10--now-assist-for-developers">Part 10 — Now Assist for Developers</a></li>
+<li><a href="#part-11--end-to-end-hr-leave-ai-example">Part 11 — End-to-End HR Leave AI Example</a></li>
+<li><a href="#part-12--ai-governance--safety">Part 12 — AI Governance &amp; Safety</a></li>
+<li><a href="#part-13--performance--cost-optimization">Part 13 — Performance &amp; Cost Optimization</a></li>
+<li><a href="#part-14--hands-on-labs-5-sessions">Part 14 — Hands-On Labs (5 Sessions)</a></li>
+<li><a href="#part-15--best-practices">Part 15 — Best Practices</a></li>
+<li><a href="#part-16--production-deployment-checklist">Part 16 — Production Deployment Checklist</a></li>
+<li><a href="#appendices">Appendices</a></li>
+</ol>
+<hr />
+<h2 id="what-you-will-build">🎯 What You Will Build — ماذا ستبني</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>By the end of this guide you will have deployed a <strong>complete AI layer</strong> on the HR Leave scoped app:</p>
+<ul>
+<li>✅ <strong>6 Now Assist Skills</strong> (summarize, classify, suggest dates, history summary, sentiment, email draft)</li>
+<li>✅ <strong>1 AI Agent</strong> — <em>HR Leave Assistant</em> with 6 tools wired to <code>HRLXAIAgentTools</code></li>
+<li>✅ <strong>1 AI Search profile</strong> — <code>hrlx_kb_profile</code> with GenAI answers + masked sensitive fields</li>
+<li>✅ <strong>2 Predictive Intelligence solutions</strong> — approval prediction + duration regression</li>
+<li>✅ <strong>1 NLU model</strong> — <code>hrlx_leave_nlu</code> with 8 intents and 200+ utterances</li>
+<li>✅ <strong>8 Virtual Agent topics</strong> — balance, request, cancel, policy, status, handoff, greeting, fallback</li>
+<li>✅ <strong>1 IDP template</strong> — medical certificate extraction wired to sick-leave flow</li>
+<li>✅ <strong>3 Flow Designer AI Actions</strong> — summarize history, classify type, draft manager email</li>
+<li>✅ <strong>Governance</strong> — AI policies, PII redaction, audit to <code>x_786686_hr_leave_audit_v2</code></li>
+<li>✅ <strong>Monitoring dashboard</strong> — skill latency, agent containment, PI drift, search zero-results</li>
+</ul>
+<p><strong>Style in this doc:</strong> English instruction line → Arabic explanation on its own line where helpful. All code in fenced blocks.</p>
+<hr />
+<h2 id="direct-navigation-urls">📍 Direct Navigation URLs — روابط التنقل المباشرة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Replace <code>{BASE}</code> with your instance URL (e.g. <code>https://dev12345.service-now.com</code>).</p>
+<h3 id="now-assist-ai-agents">Now Assist &amp; AI Agents</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Navigation Path</th>
+<th>Direct URL</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Now Assist Admin</strong></td>
+<td>All &gt; Now Assist &gt; Now Assist Admin</td>
+<td><a href="{BASE}/now/assist/admin">{BASE}/now/assist/admin</a></td>
+<td>Skill setup wizard</td>
+</tr>
+<tr>
+<td><strong>Now Assist Studio</strong></td>
+<td>App Picker &gt; Now Assist Studio</td>
+<td><a href="{BASE}/now/assist/studio">{BASE}/now/assist/studio</a></td>
+<td>Create/edit skills</td>
+</tr>
+<tr>
+<td><strong>Now Assist Skills</strong></td>
+<td>Now Assist Admin &gt; Skills</td>
+<td><a href="{BASE}/sys_one_extend_skill_list.do">{BASE}/sys_one_extend_skill_list.do</a></td>
+<td>Skill records</td>
+</tr>
+<tr>
+<td><strong>Prompt Templates</strong></td>
+<td>(Skill) Templates related list</td>
+<td><a href="{BASE}/sys_one_extend_prompt_template_list.do">{BASE}/sys_one_extend_prompt_template_list.do</a></td>
+<td>Versioned prompts</td>
+</tr>
+<tr>
+<td><strong>Skill Audit Log</strong></td>
+<td>Now Assist Admin &gt; Audit</td>
+<td><a href="{BASE}/sys_one_extend_audit_list.do">{BASE}/sys_one_extend_audit_list.do</a></td>
+<td>Execution telemetry</td>
+</tr>
+<tr>
+<td><strong>AI Agent Studio</strong></td>
+<td>All &gt; AI Agent Studio</td>
+<td><a href="{BASE}/now/aia/studio">{BASE}/now/aia/studio</a></td>
+<td>Build agents + tools</td>
+</tr>
+<tr>
+<td><strong>AI Agents</strong></td>
+<td>AI Agent Studio &gt; Agents</td>
+<td><a href="{BASE}/sn_aia_agent_list.do">{BASE}/sn_aia_agent_list.do</a></td>
+<td>Agent definitions</td>
+</tr>
+<tr>
+<td><strong>AI Tools</strong></td>
+<td>AI Agent Studio &gt; Tools</td>
+<td><a href="{BASE}/sn_aia_tool_list.do">{BASE}/sn_aia_tool_list.do</a></td>
+<td>Callable tools</td>
+</tr>
+<tr>
+<td><strong>Agent Executions</strong></td>
+<td>AI Agent Studio &gt; Executions</td>
+<td><a href="{BASE}/sn_aia_execution_list.do">{BASE}/sn_aia_execution_list.do</a></td>
+<td>Run history</td>
+</tr>
+<tr>
+<td><strong>LLM Provider Config</strong></td>
+<td>Now Assist Admin &gt; LLM Providers</td>
+<td><a href="{BASE}/sys_one_extend_provider_config_list.do">{BASE}/sys_one_extend_provider_config_list.do</a></td>
+<td>BYO LLM setup</td>
+</tr>
+<tr>
+<td><strong>AI Policy Center</strong></td>
+<td>All &gt; AI Governance &gt; AI Policy Center</td>
+<td><a href="{BASE}/now/ai/policy">{BASE}/now/ai/policy</a></td>
+<td>Policies &amp; rules</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ai-search">AI Search</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Navigation Path</th>
+<th>Direct URL</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI Search Admin</strong></td>
+<td>All &gt; AI Search &gt; Admin</td>
+<td><a href="{BASE}/now/ais/admin">{BASE}/now/ais/admin</a></td>
+<td>Search admin home</td>
+</tr>
+<tr>
+<td><strong>Search Sources</strong></td>
+<td>AI Search Admin &gt; Sources</td>
+<td><a href="{BASE}/ais_search_source_list.do">{BASE}/ais_search_source_list.do</a></td>
+<td>Index sources</td>
+</tr>
+<tr>
+<td><strong>Search Profiles</strong></td>
+<td>AI Search Admin &gt; Profiles</td>
+<td><a href="{BASE}/ais_search_profile_list.do">{BASE}/ais_search_profile_list.do</a></td>
+<td>Profile config</td>
+</tr>
+<tr>
+<td><strong>Search Applications</strong></td>
+<td>AI Search Admin &gt; Applications</td>
+<td><a href="{BASE}/ais_search_application_list.do">{BASE}/ais_search_application_list.do</a></td>
+<td>Portal/Workspace UI</td>
+</tr>
+<tr>
+<td><strong>Query Log</strong></td>
+<td>AI Search Admin &gt; Analytics</td>
+<td><a href="{BASE}/sys_aisearch_query_log_list.do">{BASE}/sys_aisearch_query_log_list.do</a></td>
+<td>Zero-result analysis</td>
+</tr>
+<tr>
+<td><strong>GenAI Search Log</strong></td>
+<td>AI Search Admin &gt; GenAI Log</td>
+<td><a href="{BASE}/sys_aisearch_genai_log_list.do">{BASE}/sys_aisearch_genai_log_list.do</a></td>
+<td>RAG answers</td>
+</tr>
+</tbody>
+</table>
+<h3 id="predictive-intelligence">Predictive Intelligence</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Navigation Path</th>
+<th>Direct URL</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Solution Definitions</strong></td>
+<td>All &gt; Predictive Intelligence &gt; Solution Definitions</td>
+<td><a href="{BASE}/ml_solution_definition_list.do">{BASE}/ml_solution_definition_list.do</a></td>
+<td>Define ML problem</td>
+</tr>
+<tr>
+<td><strong>Solutions</strong></td>
+<td>All &gt; Predictive Intelligence &gt; Solutions</td>
+<td><a href="{BASE}/ml_solution_list.do">{BASE}/ml_solution_list.do</a></td>
+<td>Trained models</td>
+</tr>
+<tr>
+<td><strong>Solution Monitor</strong></td>
+<td>All &gt; Predictive Intelligence &gt; Solution Monitor</td>
+<td><a href="{BASE}/ml_solution_monitor_list.do">{BASE}/ml_solution_monitor_list.do</a></td>
+<td>Drift &amp; accuracy</td>
+</tr>
+<tr>
+<td><strong>Training Dataset</strong></td>
+<td>(Solution) Training Dataset</td>
+<td><a href="{BASE}/ml_capability_definition_base_list.do">{BASE}/ml_capability_definition_base_list.do</a></td>
+<td>Feature mapping</td>
+</tr>
+</tbody>
+</table>
+<h3 id="virtual-agent-nlu">Virtual Agent &amp; NLU</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Navigation Path</th>
+<th>Direct URL</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Virtual Agent Designer</strong></td>
+<td>All &gt; Virtual Agent &gt; Designer</td>
+<td><a href="{BASE}/now/virtual-agent/designer">{BASE}/now/virtual-agent/designer</a></td>
+<td>Topic builder</td>
+</tr>
+<tr>
+<td><strong>Topics</strong></td>
+<td>Virtual Agent &gt; Topics</td>
+<td><a href="{BASE}/sys_cs_topic_list.do">{BASE}/sys_cs_topic_list.do</a></td>
+<td>Topic records</td>
+</tr>
+<tr>
+<td><strong>Conversations</strong></td>
+<td>Virtual Agent &gt; Conversations</td>
+<td><a href="{BASE}/sys_cs_conversation_list.do">{BASE}/sys_cs_conversation_list.do</a></td>
+<td>Chat logs</td>
+</tr>
+<tr>
+<td><strong>NLU Workbench</strong></td>
+<td>All &gt; NLU &gt; Workbench</td>
+<td><a href="{BASE}/now/nlu/workbench">{BASE}/now/nlu/workbench</a></td>
+<td>Intent/entity models</td>
+</tr>
+<tr>
+<td><strong>NLU Models</strong></td>
+<td>NLU &gt; Models</td>
+<td><a href="{BASE}/nlu_model_list.do">{BASE}/nlu_model_list.do</a></td>
+<td>Model list</td>
+</tr>
+<tr>
+<td><strong>NLU Intents</strong></td>
+<td>(Model) Intents</td>
+<td><a href="{BASE}/nlu_intent_list.do">{BASE}/nlu_intent_list.do</a></td>
+<td>Intent definitions</td>
+</tr>
+<tr>
+<td><strong>Employee Center</strong></td>
+<td>Direct</td>
+<td><a href="{BASE}/esc">{BASE}/esc</a></td>
+<td>Test VA in prod-like UI</td>
+</tr>
+<tr>
+<td><strong>Service Portal</strong></td>
+<td>Direct</td>
+<td><a href="{BASE}/sp?id=chat">{BASE}/sp?id=chat</a></td>
+<td>Portal chat widget</td>
+</tr>
+</tbody>
+</table>
+<h3 id="document-intelligence">Document Intelligence</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Navigation Path</th>
+<th>Direct URL</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IDP Admin</strong></td>
+<td>All &gt; Document Intelligence</td>
+<td><a href="{BASE}/now/idp/admin">{BASE}/now/idp/admin</a></td>
+<td>IDP home</td>
+</tr>
+<tr>
+<td><strong>Templates</strong></td>
+<td>IDP Admin &gt; Templates</td>
+<td><a href="{BASE}/sn_idp_template_list.do">{BASE}/sn_idp_template_list.do</a></td>
+<td>Document templates</td>
+</tr>
+<tr>
+<td><strong>Extraction Models</strong></td>
+<td>IDP Admin &gt; Models</td>
+<td><a href="{BASE}/sn_idp_model_list.do">{BASE}/sn_idp_model_list.do</a></td>
+<td>Trained extractors</td>
+</tr>
+<tr>
+<td><strong>Extraction Results</strong></td>
+<td>IDP Admin &gt; Results</td>
+<td><a href="{BASE}/sn_idp_extraction_result_list.do">{BASE}/sn_idp_extraction_result_list.do</a></td>
+<td>Run output</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hr-leave-app-tables-grounding-tools">HR Leave App Tables (Grounding &amp; Tools)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Direct URL</th>
+<th>Key Fields for AI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Leave Request</td>
+<td><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">{BASE}/x_786686_hr_leave_req_v2_list.do</a></td>
+<td>u_leave_type, u_state, u_reason, u_days_count</td>
+</tr>
+<tr>
+<td>Employee</td>
+<td><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">{BASE}/x_786686_hr_leave_employee_v2_list.do</a></td>
+<td>u_employee_id, user reference</td>
+</tr>
+<tr>
+<td>Balance</td>
+<td><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">{BASE}/x_786686_hr_leave_bal_v2_list.do</a></td>
+<td>u_leave_type, u_remaining_days</td>
+</tr>
+<tr>
+<td>Audit</td>
+<td><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">{BASE}/x_786686_hr_leave_audit_v2_list.do</a></td>
+<td>u_action, u_payload</td>
+</tr>
+<tr>
+<td>Knowledge (policy)</td>
+<td><a href="{BASE}/kb_knowledge_list.do?sysparm_query=topic=HR Leave">{BASE}/kb_knowledge_list.do?sysparm_query=topic=HR Leave</a></td>
+<td>text, short_description</td>
+</tr>
+</tbody>
+</table>
+<h3 id="development-deployment">Development &amp; Deployment</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3De5f5bc9493a303507520703efaba104d">Application Files</a><a href="scripts/index.html">Scripts portal</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Studio</td>
+<td><a href="{BASE}/$studio.do">{BASE}/$studio.do</a></td>
+</tr>
+<tr>
+<td>Script Includes</td>
+<td><a href="{BASE}/sys_script_include_list.do?sysparm_query=sys_scope.scope=x_786686_hr_leave">{BASE}/sys_script_include_list.do?sysparm_query=sys_scope.scope=x_786686_hr_leave</a></td>
+</tr>
+<tr>
+<td>Business Rules</td>
+<td><a href="{BASE}/sys_script_list.do?sysparm_query=sys_scope.scope=x_786686_hr_leave">{BASE}/sys_script_list.do?sysparm_query=sys_scope.scope=x_786686_hr_leave</a></td>
+</tr>
+<tr>
+<td>Flow Designer</td>
+<td><a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a></td>
+</tr>
+<tr>
+<td>Update Sets</td>
+<td><a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a></td>
+</tr>
+<tr>
+<td>Background Scripts</td>
+<td><a href="{BASE}/sys.scripts.do">{BASE}/sys.scripts.do</a></td>
+</tr>
+<tr>
+<td>System Properties</td>
+<td><a href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave</a></td>
+</tr>
+<tr>
+<td>Plugins</td>
+<td><a href="{BASE}/v_plugin_list.do">{BASE}/v_plugin_list.do</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="part-0-quick-map-prerequisites">Part 0 — Quick Map &amp; Prerequisites</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="01-decision-matrix-which-ai-tool-when">0.1 Decision matrix — which AI tool when?</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>User need</th>
+<th>Best tool</th>
+<th>Why</th>
+<th>Section</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One-click summary on form</td>
+<td>Now Assist Skill</td>
+<td>Deterministic, cheap, fast</td>
+<td>§2</td>
+</tr>
+<tr>
+<td>&ldquo;How many days left?&rdquo; in chat</td>
+<td>Virtual Agent topic OR AI Agent tool</td>
+<td>VA = predictable; Agent = flexible</td>
+<td>§3, §7</td>
+</tr>
+<tr>
+<td>Open-ended policy Q&amp;A</td>
+<td>AI Search GenAI + Agent</td>
+<td>RAG with citations</td>
+<td>§3, §5</td>
+</tr>
+<tr>
+<td>Predict if manager approves in 24h</td>
+<td>Predictive Intelligence</td>
+<td>Classical ML on history</td>
+<td>§6</td>
+</tr>
+<tr>
+<td>Extract fields from medical PDF</td>
+<td>Document Intelligence</td>
+<td>Structured extraction</td>
+<td>§8</td>
+</tr>
+<tr>
+<td>Multi-step: check balance → request → confirm</td>
+<td>AI Agent Studio</td>
+<td>Plans + tools + memory</td>
+<td>§3</td>
+</tr>
+<tr>
+<td>Classify free-text leave reason</td>
+<td>Now Assist Skill OR PI</td>
+<td>Skill = LLM; PI = ML on features</td>
+<td>§2, §6</td>
+</tr>
+<tr>
+<td>Code a Business Rule faster</td>
+<td>Now Assist for Developers</td>
+<td>In-Studio codegen</td>
+<td>§10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ابدأ بـ Skill</strong> للمهام أحادية الخطوة. <strong>انتقل إلى Agent</strong> عندما يحتاج المستخدم محادثة متعددة الخطوات مع أدوات.</p>
+<h3 id="02-prerequisites-checklist">0.2 Prerequisites checklist</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">Before starting any AI work:
+
+[ ] HR Leave v2 tables exist and have ≥ 50 test leave requests
+[ ] Roles assigned: x_786686_hr_leave.employee, .manager, .hr_admin
+[ ] Update Set created: &quot;HR Leave AI v1.0&quot;
+[ ] Application picker set to HR Leave (x_786686_hr_leave) in Studio
+[ ] At least 5 KB articles tagged topic=HR Leave (for AI Search)
+[ ] Integration user NOT used for AI testing — use real employee personas
+[ ] Instance has outbound HTTPS to LLM APIs (if BYO) — check ACL network rules
+[ ] Admin access to activate plugins (requires admin role)
+</code></pre>
+<h3 id="03-verify-app-scope-background-script">0.3 Verify app scope (Background Script)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/$studio.do">Studio</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/sys.scripts.do">{BASE}/sys.scripts.do</a></p>
+<pre><code class="language-javascript">var app = new GlideRecord('sys_app');
+app.addQuery('scope', 'x_786686_hr_leave');
+app.query();
+if (app.next()) {
+    gs.info('App: ' + app.name + ' | sys_id: ' + app.sys_id);
+} else {
+    gs.error('HR Leave app not found — create via 01_DEVELOPMENT.md first');
+}
+
+var tables = ['x_786686_hr_leave_req_v2', 'x_786686_hr_leave_bal_v2',
+              'x_786686_hr_leave_employee_v2', 'x_786686_hr_leave_audit_v2'];
+tables.forEach(function (t) {
+    var gr = new GlideRecord(t);
+    gs.info(t + ' exists: ' + gr.isValid());
+});
+</code></pre>
+<hr />
+<h2 id="part-1-plugin-activation-roles">Part 1 — Plugin Activation &amp; Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<h3 id="step-11-activate-required-plugins">Step 1.1: Activate required plugins</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Navigation:</strong> All &gt; System Definition &gt; Plugins — <a href="{BASE}/v_plugin_list.do">Open direct</a><br />
+<strong>Direct URL:</strong> <a href="{BASE}/v_plugin_list.do">{BASE}/v_plugin_list.do</a></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Plugin name (search)</th>
+<th>Plugin ID (typical)</th>
+<th>Required for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Now Assist for HRSD</td>
+<td>com.snc.now_assist.hrsd</td>
+<td>HR skills pack</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Now Assist Platform</td>
+<td>com.snc.now_assist.platform</td>
+<td>Core GenAI</td>
+</tr>
+<tr>
+<td>3</td>
+<td>AI Agents</td>
+<td>com.snc.ai_agents</td>
+<td>Agent Studio</td>
+</tr>
+<tr>
+<td>4</td>
+<td>AI Search</td>
+<td>com.snc.ai_search</td>
+<td>Modern search + RAG</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Predictive Intelligence</td>
+<td>com.glide.platform_ml</td>
+<td>ML solutions</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Document Intelligence</td>
+<td>com.snc.document_intelligence</td>
+<td>IDP</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Virtual Agent</td>
+<td>com.glide.cs.chatbot</td>
+<td>Chatbot topics</td>
+</tr>
+<tr>
+<td>8</td>
+<td>NLU Workbench</td>
+<td>com.snc.nlu_workbench</td>
+<td>Intent models</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Now Assist for Creator</td>
+<td>com.snc.now_assist.creator</td>
+<td>Dev codegen (optional)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Detailed activation steps:</strong></p>
+<pre><code class="language-markdown">1. Open {BASE}/v_plugin_list.do
+2. Filter: Name contains &quot;Now Assist&quot; OR &quot;AI Search&quot; OR &quot;Virtual Agent&quot;
+3. For each plugin in the table above:
+   a. Click the plugin name
+   b. Click &quot;Activate&quot; (or &quot;Install&quot; on some instances)
+   c. UNCHECK &quot;Load demo data&quot; in production-like sub-prod
+   d. Wait for activation (may take 2–10 minutes)
+   e. Note any dependent plugins auto-activated
+4. After all activations: logout and login (refresh session roles)
+5. Open Now Assist Setup wizard: {BASE}/now/assist/admin
+6. Accept terms → select data region → Enable HRSD skill pack
+7. Verify: All &gt; Now Assist &gt; Now Assist Admin shows &quot;Configured&quot;
+</code></pre>
+<h3 id="step-12-assign-ai-admin-roles">Step 1.2: Assign AI admin roles</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p><strong>Navigation:</strong> All &gt; User Administration &gt; Users — <a href="{BASE}/sys_user_list.do">Open direct</a><br />
+<strong>Direct URL:</strong> <a href="{BASE}/sys_user_list.do">{BASE}/sys_user_list.do</a></p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Assign to</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sn_nowassist_admin</code></td>
+<td>AI lead developer</td>
+<td>Skills, providers</td>
+</tr>
+<tr>
+<td><code>sn_aia.admin</code></td>
+<td>AI lead developer</td>
+<td>Agent Studio</td>
+</tr>
+<tr>
+<td><code>ai_search_admin</code></td>
+<td>Search admin</td>
+<td>AI Search profiles</td>
+</tr>
+<tr>
+<td><code>ml_admin</code></td>
+<td>Data/ML owner</td>
+<td>Train PI solutions</td>
+</tr>
+<tr>
+<td><code>nlu_admin</code></td>
+<td>Chatbot owner</td>
+<td>NLU models</td>
+</tr>
+<tr>
+<td><code>sn_idp.admin</code></td>
+<td>Doc processing owner</td>
+<td>IDP templates</td>
+</tr>
+<tr>
+<td><code>x_786686_hr_leave.hr_admin</code></td>
+<td>HR team</td>
+<td>Use AI on records</td>
+</tr>
+<tr>
+<td><code>x_786686_hr_leave.manager</code></td>
+<td>Managers</td>
+<td>Summarize UI Action</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-13-create-system-properties-ai-config">Step 1.3: Create system properties (AI config)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Navigation:</strong> All &gt; System Properties — <a href="{BASE}/sys_properties_list.do">Open direct</a><br />
+<strong>Direct URL:</strong> <a href="{BASE}/sys_properties_list.do">{BASE}/sys_properties_list.do</a></p>
+<p>Create these properties in scope <strong>x_786686_hr_leave</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x_786686_hr_leave.ai.enabled</code></td>
+<td>true/false</td>
+<td>true</td>
+<td>Master kill switch</td>
+</tr>
+<tr>
+<td><code>x_786686_hr_leave.llm.daily_budget_usd</code></td>
+<td>string</td>
+<td>10</td>
+<td>Daily spend cap</td>
+</tr>
+<tr>
+<td><code>x_786686_hr_leave.llm.timeout_ms</code></td>
+<td>string</td>
+<td>15000</td>
+<td>REST timeout</td>
+</tr>
+<tr>
+<td><code>x_786686_hr_leave.llm.anthropic.api_key</code></td>
+<td>password2</td>
+<td>(empty)</td>
+<td>Claude key</td>
+</tr>
+<tr>
+<td><code>x_786686_hr_leave.llm.anthropic.model</code></td>
+<td>string</td>
+<td>claude-sonnet-4-5</td>
+<td>Model id</td>
+</tr>
+<tr>
+<td><code>x_786686_hr_leave.llm.openai.api_key</code></td>
+<td>password2</td>
+<td>(empty)</td>
+<td>OpenAI key</td>
+</tr>
+<tr>
+<td><code>x_786686_hr_leave.llm.openai.model</code></td>
+<td>string</td>
+<td>gpt-4o-mini</td>
+<td>Model id</td>
+</tr>
+<tr>
+<td><code>x_786686_hr_leave.ai_search.profile</code></td>
+<td>string</td>
+<td>hrlx_kb_profile</td>
+<td>Default profile</td>
+</tr>
+<tr>
+<td><code>x_786686_hr_leave.nlu.model</code></td>
+<td>string</td>
+<td>hrlx_leave_nlu</td>
+<td>NLU model name</td>
+</tr>
+<tr>
+<td><code>x_786686_hr_leave.idp.template</code></td>
+<td>string</td>
+<td>hrlx_medical_cert</td>
+<td>IDP template</td>
+</tr>
+<tr>
+<td><code>x_786686_hr_leave.va.bot_name</code></td>
+<td>string</td>
+<td>HR Leave Bot</td>
+<td>Display name</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Verification script:</strong></p>
+<pre><code class="language-javascript">var props = ['ai.enabled', 'llm.daily_budget_usd', 'ai_search.profile'];
+props.forEach(function (p) {
+    var v = gs.getProperty('x_786686_hr_leave.' + p, 'NOT SET');
+    gs.info('x_786686_hr_leave.' + p + ' = ' + v);
+});
+</code></pre>
+<hr />
+<h2 id="part-2-now-assist-studio-skills">Part 2 — Now Assist Studio (Skills)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="21-architecture-overview">2.1 Architecture overview</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Table</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Skill</td>
+<td>sys_one_extend_skill</td>
+<td>One GenAI capability</td>
+</tr>
+<tr>
+<td>Prompt template</td>
+<td>sys_one_extend_prompt_template</td>
+<td>Versioned prompt text</td>
+</tr>
+<tr>
+<td>Activation</td>
+<td>sys_one_extend_activation</td>
+<td>Where skill is enabled</td>
+</tr>
+<tr>
+<td>Audit</td>
+<td>sys_one_extend_audit</td>
+<td>Every execution logged</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-21-open-now-assist-studio">Step 2.1: Open Now Assist Studio</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/now/assist/studio">{BASE}/now/assist/studio</a></p>
+<pre><code class="language-markdown">1. App picker (top-left) → select &quot;HR Leave&quot; scope
+2. Click &quot;Skills&quot; in left nav
+3. Click &quot;New&quot; → &quot;Create Skill&quot;
+4. Confirm Application = x_786686_hr_leave on every record
+</code></pre>
+<h3 id="step-22-skill-1-hrlx_summarize_reason">Step 2.2: Skill 1 — hrlx_summarize_reason</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>hrlx_summarize_reason</td>
+</tr>
+<tr>
+<td>Label</td>
+<td>Summarize Leave Reason</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>Summarization</td>
+</tr>
+<tr>
+<td>Application</td>
+<td>HR Leave</td>
+</tr>
+<tr>
+<td>LLM</td>
+<td>Now LLM Service (change to BYO in §4)</td>
+</tr>
+<tr>
+<td>Max tokens</td>
+<td>120</td>
+</tr>
+<tr>
+<td>Temperature</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>PII redaction</td>
+<td>ON</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Prompt template (SYSTEM + USER):</strong></p>
+<pre><code class="language-text">SYSTEM:
+You are an HR assistant for a multinational company. Summarize the employee's
+leave reason in ONE sentence, maximum 25 words, neutral professional tone.
+Do NOT include medical diagnoses, medication names, or sensitive health details.
+If reason is empty, return exactly: &quot;No reason provided.&quot;
+Respond in the same language as the reason text (English or Arabic).
+
+USER:
+Employee: {{employee_name}}
+Leave type: {{u_leave_type}}
+Start: {{u_start_date}} | End: {{u_end_date}} | Days: {{u_days_count}}
+Reason:
+&quot;&quot;&quot;
+{{u_reason}}
+&quot;&quot;&quot;
+</code></pre>
+<p><strong>Variable mapping:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Source field on x_786686_hr_leave_req_v2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>employee_name</td>
+<td>u_requested_for_user (display)</td>
+</tr>
+<tr>
+<td>u_leave_type</td>
+<td>u_leave_type</td>
+</tr>
+<tr>
+<td>u_start_date</td>
+<td>u_start_date</td>
+</tr>
+<tr>
+<td>u_end_date</td>
+<td>u_end_date</td>
+</tr>
+<tr>
+<td>u_days_count</td>
+<td>u_days_count</td>
+</tr>
+<tr>
+<td>u_reason</td>
+<td>u_reason</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Grounding config:</strong></p>
+<pre><code class="language-markdown">1. Skill &gt; Grounding tab &gt; Enable
+2. Table: x_786686_hr_leave_req_v2
+3. Key: sys_id
+4. Map each {{variable}} to column above
+5. Save
+</code></pre>
+<p><strong>Test in Playground (5 samples):</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>u_reason input</th>
+<th>Expected output quality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>&ldquo;Family wedding in Dubai, need 4 days travel&rdquo;</td>
+<td>Mentions wedding/travel, no PII</td>
+</tr>
+<tr>
+<td>2</td>
+<td>&ldquo;Flu — doctor advised rest&rdquo;</td>
+<td>Generic &ldquo;medical rest&rdquo;, no diagnosis</td>
+</tr>
+<tr>
+<td>3</td>
+<td>(empty)</td>
+<td>&ldquo;No reason provided.&rdquo;</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Arabic: &ldquo;إجازة أمومة&rdquo;</td>
+<td>Arabic one-liner</td>
+</tr>
+<tr>
+<td>5</td>
+<td>500-word essay</td>
+<td>≤ 25 words</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-markdown">Playground steps:
+1. Skills &gt; hrlx_summarize_reason &gt; Test
+2. Paste sys_id of test request OR fill variables manually
+3. Run → check latency (target ≤ 2s)
+4. If bad output → edit prompt → Save as version 1.1
+5. Repeat until 90%+ acceptable on 20 samples
+6. Status → Active
+</code></pre>
+<h3 id="step-23-skill-2-hrlx_classify_leave_type">Step 2.3: Skill 2 — hrlx_classify_leave_type</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>hrlx_classify_leave_type</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>Classification</td>
+</tr>
+<tr>
+<td>Output validation</td>
+<td>Regex: <code>^(annual\|sick\|parental\|unpaid)$</code></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-text">SYSTEM:
+Classify the leave request text into EXACTLY ONE label:
+annual, sick, parental, unpaid
+Return ONLY the label, lowercase, no punctuation or explanation.
+
+USER:
+Leave type already selected (may be wrong): {{u_leave_type}}
+Employee reason: {{u_reason}}
+Additional notes: {{u_notes}}
+</code></pre>
+<p><strong>Wire to Business Rule (before insert/update when u_leave_type empty):</strong></p>
+<pre><code class="language-javascript">(function executeRule(current, previous) {
+    if (!gs.getProperty('x_786686_hr_leave.ai.enabled', 'true') === 'true') return;
+    if (current.u_leave_type) return;
+    if (!current.u_reason) return;
+
+    try {
+        var ext = new sn_one_extend.OneExtendUtil();
+        var res = ext.execute({
+            executionRequests: [{
+                capabilityId: 'hrlx_classify_leave_type',
+                payload: {
+                    u_leave_type: String(current.u_leave_type),
+                    u_reason: String(current.u_reason),
+                    u_notes: String(current.u_notes || '')
+                }
+            }]
+        });
+        var label = (res.capabilities[0] || {}).response;
+        if (/^(annual|sick|parental|unpaid)$/.test(label))
+            current.u_leave_type = label;
+    } catch (e) {
+        gs.warn('hrlx_classify_leave_type failed: ' + e);
+    }
+})(current, previous);
+</code></pre>
+<h3 id="step-24-skill-3-hrlx_suggest_dates">Step 2.4: Skill 3 — hrlx_suggest_dates</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>hrlx_suggest_dates</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>Generic / Structured output</td>
+</tr>
+<tr>
+<td>Output schema</td>
+<td>JSON Schema (see §12)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-text">SYSTEM:
+Suggest adjusted leave dates avoiding public holidays.
+Return ONLY valid JSON:
+{&quot;start&quot;:&quot;YYYY-MM-DD&quot;,&quot;end&quot;:&quot;YYYY-MM-DD&quot;,&quot;notes&quot;:&quot;...&quot;}
+No markdown fences.
+
+USER:
+Country: {{u_country}}
+Requested start: {{u_start_date}}
+Requested end: {{u_end_date}}
+Leave type: {{u_leave_type}}
+Public holidays next 90 days:
+{{holidays_json}}
+</code></pre>
+<p><strong>Pre-step Script Include to build holidays_json:</strong></p>
+<pre><code class="language-javascript">var HRLXHolidayUtil = Class.create();
+HRLXHolidayUtil.prototype = {
+    initialize: function() {},
+    getHolidaysJson: function(country, days) {
+        // Replace with your holiday table or IntegrationHub spoke
+        var out = [];
+        var gr = new GlideRecord('sn_hr_core_federal_holiday'); // if HRSD installed
+        if (gr.isValid()) {
+            gr.addQuery('country', country);
+            gr.addQuery('date', '&gt;=', new GlideDate());
+            gr.setLimit(days || 90);
+            gr.query();
+            while (gr.next()) {
+                out.push({ date: String(gr.date), name: String(gr.name) });
+            }
+        }
+        return JSON.stringify(out);
+    },
+    type: 'HRLXHolidayUtil'
+};
+</code></pre>
+<h3 id="step-25-skill-4-hrlx_summarize_history">Step 2.5: Skill 4 — hrlx_summarize_history</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Summarizes last N leave requests for a manager email.</p>
+<pre><code class="language-text">SYSTEM:
+Summarize this employee's leave history for a manager briefing.
+Max 150 words. Bullet format. Include totals by type. Neutral tone.
+
+USER:
+Employee: {{employee_name}}
+Lookback days: {{lookback_days}}
+History records:
+{{history_text}}
+</code></pre>
+<h3 id="step-26-skill-5-hrlx_detect_sentiment">Step 2.6: Skill 5 — hrlx_detect_sentiment</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">SYSTEM:
+Classify employee leave reason sentiment: positive, neutral, frustrated, urgent.
+Return ONLY the label.
+
+USER:
+Reason: {{u_reason}}
+</code></pre>
+<p>Use output to route frustrated → human HR in Flow Designer.</p>
+<h3 id="step-27-skill-6-hrlx_draft_manager_email">Step 2.7: Skill 6 — hrlx_draft_manager_email</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<pre><code class="language-text">SYSTEM:
+Draft a short email from HR system to employee about their leave request.
+Professional, empathetic. Max 120 words. Include request number and dates.
+Do not invent approval status — use {{u_state}} exactly.
+
+USER:
+Employee name: {{employee_name}}
+Request: {{u_number}}
+Type: {{u_leave_type}}
+Dates: {{u_start_date}} to {{u_end_date}}
+State: {{u_state}}
+Manager note: {{manager_comment}}
+</code></pre>
+<h3 id="step-28-activate-skills-per-channel">Step 2.8: Activate skills per channel</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/sys_one_extend_activation_list.do">{BASE}/sys_one_extend_activation_list.do</a></p>
+<p>For each skill create activation:</p>
+<table>
+<thead>
+<tr>
+<th>Skill</th>
+<th>Channels enabled</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hrlx_summarize_reason</td>
+<td>Workspace, UI Action, Flow Designer</td>
+</tr>
+<tr>
+<td>hrlx_classify_leave_type</td>
+<td>Business Rule (server), Flow Designer</td>
+</tr>
+<tr>
+<td>hrlx_suggest_dates</td>
+<td>Service Portal widget</td>
+</tr>
+<tr>
+<td>hrlx_summarize_history</td>
+<td>Flow Designer</td>
+</tr>
+<tr>
+<td>hrlx_detect_sentiment</td>
+<td>Flow Designer</td>
+</tr>
+<tr>
+<td>hrlx_draft_manager_email</td>
+<td>Workspace</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-29-ui-action-summarize-on-form">Step 2.9: UI Action — Summarize on form</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/sys_ui_action_list.do">{BASE}/sys_ui_action_list.do</a></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Summarize reason (AI)</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>x_786686_hr_leave_req_v2</td>
+</tr>
+<tr>
+<td>Condition</td>
+<td><code>current.u_state != 'cancelled' &amp;&amp; gs.hasRole('x_786686_hr_leave.manager')</code></td>
+</tr>
+<tr>
+<td>Form button</td>
+<td>true</td>
+</tr>
+<tr>
+<td>Client</td>
+<td>false (server-side)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-javascript">(function executeAction(current) {
+    var ext = new sn_one_extend.OneExtendUtil();
+    var res = ext.execute({
+        executionRequests: [{
+            capabilityId: 'hrlx_summarize_reason',
+            payload: { record: current.getUniqueValue() }
+        }]
+    });
+    var summary = (res.capabilities[0] || {}).response || 'No summary';
+    gs.addInfoMessage('AI Summary: ' + summary);
+})(current);
+</code></pre>
+<hr />
+<h2 id="part-3-ai-agent-studio">Part 3 — AI Agent Studio</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="31-what-ai-agent-studio-provides">3.1 What AI Agent Studio provides</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>AI Agent Studio</strong> builds <em>agentic</em> assistants: an LLM that plans steps, selects tools, executes them, observes results, and responds — across multiple conversation turns.</p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sn_aia_agent</td>
+<td>Agent definition + system prompt</td>
+</tr>
+<tr>
+<td>sn_aia_tool</td>
+<td>Callable action (Script Include, Flow, AI Search)</td>
+</tr>
+<tr>
+<td>sn_aia_team</td>
+<td>Multi-agent routing</td>
+</tr>
+<tr>
+<td>sn_aia_trigger</td>
+<td>Chat, email, record, schedule triggers</td>
+</tr>
+<tr>
+<td>sn_aia_execution</td>
+<td>One run (tokens, latency, cost)</td>
+</tr>
+<tr>
+<td>sn_aia_execution_step</td>
+<td>Each tool invocation</td>
+</tr>
+<tr>
+<td>sn_aia_audit</td>
+<td>Compliance-grade immutable log</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Direct URL:</strong> <a href="{BASE}/now/aia/studio">{BASE}/now/aia/studio</a></p>
+<h3 id="step-31-create-script-include-hrlxaiagenttools">Step 3.1: Create Script Include HRLXAIAgentTools</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a><a href="{BASE}/$studio.do">Studio</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/sys_script_include_list.do">{BASE}/sys_script_include_list.do</a><br />
+<strong>Application:</strong> HR Leave</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>HRLXAIAgentTools</td>
+</tr>
+<tr>
+<td>Client callable</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Accessible from</td>
+<td>This application scope only</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-javascript">var HRLXAIAgentTools = Class.create();
+HRLXAIAgentTools.prototype = {
+    initialize: function() {
+        this.SCOPE = 'x_786686_hr_leave';
+        this.T_EMP = 'x_786686_hr_leave_employee_v2';
+        this.T_REQ = 'x_786686_hr_leave_req_v2';
+        this.T_BAL = 'x_786686_hr_leave_bal_v2';
+        this.T_AUD = 'x_786686_hr_leave_audit_v2';
+    },
+
+    _getEmployeeByUser: function(userId) {
+        var gr = new GlideRecord(this.T_EMP);
+        gr.addQuery('user', userId);
+        gr.setLimit(1);
+        gr.query();
+        return gr.next() ? gr : null;
+    },
+
+    getBalance: function(userId) {
+        var emp = this._getEmployeeByUser(userId);
+        if (!emp) return { error: 'employee_not_found' };
+        var out = { annual: 0, sick: 0, parental: 0, unpaid: 0 };
+        var bal = new GlideRecord(this.T_BAL);
+        bal.addQuery('u_employee_ref', emp.getUniqueValue());
+        bal.query();
+        while (bal.next()) {
+            var t = String(bal.u_leave_type);
+            if (out.hasOwnProperty(t)) out[t] = Number(bal.u_remaining_days) || 0;
+        }
+        return out;
+    },
+
+    requestLeave: function(payload) {
+        try {
+            if (gs.getProperty(this.SCOPE + '.ai.enabled', 'true') !== 'true')
+                return { ok: false, error: 'ai_disabled' };
+
+            var emp = this._getEmployeeByUser(payload.user_id);
+            if (!emp) return { ok: false, error: 'employee_not_found' };
+
+            var start = new GlideDateTime(payload.start_date);
+            var end = new GlideDateTime(payload.end_date);
+            if (start.compareTo(end) &gt; 0)
+                return { ok: false, error: 'start_after_end' };
+
+            var bal = this.getBalance(payload.user_id);
+            var days = Math.ceil((end.getNumericValue() - start.getNumericValue()) / 86400000) + 1;
+            if ((bal[payload.type] || 0) &lt; days)
+                return { ok: false, error: 'insufficient_balance', needed: days, available: bal[payload.type] || 0 };
+
+            var req = new GlideRecord(this.T_REQ);
+            req.initialize();
+            req.u_requested_for_user = payload.user_id;
+            req.u_employee_ref = emp.getUniqueValue();
+            req.u_leave_type = payload.type;
+            req.u_start_date = payload.start_date;
+            req.u_end_date = payload.end_date;
+            req.u_reason = payload.reason || '';
+            req.u_state = 'submitted';
+            req.u_source = 'ai_agent';
+            var sysId = req.insert();
+            this._audit('ai_request_leave', sysId, payload);
+            return { ok: true, request_id: sysId, number: req.getValue('u_number') };
+        } catch (e) {
+            gs.error('HRLXAIAgentTools.requestLeave: ' + e);
+            return { ok: false, error: 'exception' };
+        }
+    },
+
+    checkPolicy: function(question) {
+        var profile = gs.getProperty(this.SCOPE + '.ai_search.profile', 'hrlx_kb_profile');
+        try {
+            var sn = new sn_ais.AISearch();
+            var results = sn.search(profile, question, { limit: 5, genai: true });
+            return {
+                answer: results.genai_answer || '',
+                citations: results.citations || []
+            };
+        } catch (e) {
+            return { answer: '', citations: [], error: String(e) };
+        }
+    },
+
+    escalate: function(userId, summary) {
+        var emp = this._getEmployeeByUser(userId);
+        if (!emp) return { ok: false, error: 'employee_not_found' };
+        var hr = new GlideRecord('sn_hr_core_case');
+        if (!hr.isValid()) {
+            // Fallback: create audit + notify
+            this._audit('ai_escalate_no_hrsd', userId, { summary: summary });
+            return { ok: true, case_id: null, note: 'HRSD not installed — audit only' };
+        }
+        hr.initialize();
+        hr.opened_for = userId;
+        hr.short_description = 'AI escalation: ' + (summary || '').substring(0, 80);
+        hr.description = summary;
+        hr.subject_person = userId;
+        var sysId = hr.insert();
+        this._audit('ai_escalate', sysId, { summary: summary });
+        return { ok: true, case_id: sysId };
+    },
+
+    getMyRequests: function(userId, days) {
+        var emp = this._getEmployeeByUser(userId);
+        if (!emp) return [];
+        var since = new GlideDateTime();
+        since.addDaysLocalTime(-1 * (days || 90));
+        var gr = new GlideRecord(this.T_REQ);
+        gr.addQuery('u_employee_ref', emp.getUniqueValue());
+        gr.addQuery('sys_created_on', '&gt;=', since);
+        gr.orderByDesc('sys_created_on');
+        gr.query();
+        var out = [];
+        while (gr.next()) {
+            out.push({
+                id: gr.getUniqueValue(),
+                number: String(gr.u_number),
+                type: String(gr.u_leave_type),
+                start: String(gr.u_start_date),
+                end: String(gr.u_end_date),
+                state: String(gr.u_state)
+            });
+        }
+        return out;
+    },
+
+    cancelRequest: function(userId, requestId) {
+        var gr = new GlideRecord(this.T_REQ);
+        if (!gr.get(requestId)) return { ok: false, error: 'not_found' };
+        if (gr.u_requested_for_user != userId) return { ok: false, error: 'not_owner' };
+        if (gr.u_state != 'submitted') return { ok: false, error: 'not_cancellable' };
+        gr.u_state = 'cancelled';
+        gr.update();
+        this._audit('ai_cancel_request', requestId, { user: userId });
+        return { ok: true };
+    },
+
+    _audit: function(action, recordId, payload) {
+        var a = new GlideRecord(this.T_AUD);
+        a.initialize();
+        a.u_action = action;
+        a.u_record = recordId;
+        a.u_payload = JSON.stringify(payload || {});
+        a.u_actor = gs.getUserID();
+        a.u_source = 'ai_agent';
+        a.insert();
+    },
+
+    type: 'HRLXAIAgentTools'
+};
+</code></pre>
+<h3 id="step-32-define-tools-in-ai-agent-studio">Step 3.2: Define tools in AI Agent Studio</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/sn_aia_tool_list.do">{BASE}/sn_aia_tool_list.do</a></p>
+<h4 id="tool-1-getmybalance">Tool 1 — GetMyBalance</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>GetMyBalance</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Returns current user&rsquo;s leave balance by type (annual, sick, parental, unpaid)</td>
+</tr>
+<tr>
+<td>Implementation</td>
+<td>Script Include</td>
+</tr>
+<tr>
+<td>Script Include</td>
+<td>HRLXAIAgentTools</td>
+</tr>
+<tr>
+<td>Method</td>
+<td>getBalance</td>
+</tr>
+<tr>
+<td>Input</td>
+<td>user_id (string) — auto-map from session</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>JSON object with balances</td>
+</tr>
+</tbody>
+</table>
+<h4 id="tool-2-requestleave">Tool 2 — RequestLeave</h4>
+<table>
+<thead>
+<tr>
+<th>Input field</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td>string</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string (enum)</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>date (YYYY-MM-DD)</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>date (YYYY-MM-DD)</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>reason</td>
+<td>string</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Confirmation gate:</strong> Enable &ldquo;Require user confirmation&rdquo; for this tool in Agent Studio.</p>
+<h4 id="tool-3-checkpolicy">Tool 3 — CheckPolicy</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Implementation</td>
+<td>AI Search Profile OR Script</td>
+</tr>
+<tr>
+<td>Profile</td>
+<td>hrlx_kb_profile</td>
+</tr>
+<tr>
+<td>Input</td>
+<td>question (string)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="tool-4-getmyrequests">Tool 4 — GetMyRequests</h4>
+<p>| Method | getMyRequests |<br />
+| Input | user_id, days (default 90) |</p>
+<h4 id="tool-5-cancelrequest">Tool 5 — CancelRequest</h4>
+<p>| Method | cancelRequest |<br />
+| Input | user_id, request_id |</p>
+<h4 id="tool-6-escalatetohr">Tool 6 — EscalateToHR</h4>
+<p>| Method | escalate |<br />
+| Input | user_id, summary |</p>
+<h3 id="step-33-create-agent-hr-leave-assistant">Step 3.3: Create agent &ldquo;HR Leave Assistant&rdquo;</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/sn_aia_agent_list.do">{BASE}/sn_aia_agent_list.do</a></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>HR Leave Assistant</td>
+</tr>
+<tr>
+<td>Application</td>
+<td>x_786686_hr_leave</td>
+</tr>
+<tr>
+<td>Model</td>
+<td>now-llm-pro-v1</td>
+</tr>
+<tr>
+<td>LLM Provider</td>
+<td>Now LLM Service</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Draft → Active</td>
+</tr>
+</tbody>
+</table>
+<p><strong>System prompt:</strong></p>
+<pre><code class="language-text">You are &quot;HR Leave Assistant&quot; for employees of this company.
+
+CAPABILITIES (use tools):
+- GetMyBalance: show remaining leave days
+- RequestLeave: submit a new request (ALWAYS confirm dates/type first)
+- CheckPolicy: answer policy questions from official KB (cite sources)
+- GetMyRequests: list recent requests
+- CancelRequest: cancel a submitted request owned by the user
+- EscalateToHR: create HR case when user is frustrated or issue is complex
+
+RULES:
+1. Identity comes from session — never ask for employee ID number.
+2. NEVER reveal another employee's data.
+3. Out of scope → &quot;I can only help with leave. Contact HR at hr@company.com.&quot;
+4. Match user language (English or Arabic).
+5. Before RequestLeave: summarize dates, type, days count, ask &quot;Shall I submit?&quot;
+6. If tool returns error insufficient_balance, explain clearly with numbers.
+7. For medical/sick policy, remind user a certificate may be required.
+
+STYLE: concise, friendly, professional. Use bullet lists for balances.
+</code></pre>
+<p><strong>Agent JSON export reference:</strong></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;HR Leave Assistant&quot;,
+  &quot;scope&quot;: &quot;x_786686_hr_leave&quot;,
+  &quot;model&quot;: &quot;now-llm-pro-v1&quot;,
+  &quot;tools&quot;: [&quot;GetMyBalance&quot;, &quot;RequestLeave&quot;, &quot;CheckPolicy&quot;, &quot;GetMyRequests&quot;, &quot;CancelRequest&quot;, &quot;EscalateToHR&quot;],
+  &quot;knowledge_sources&quot;: [{ &quot;type&quot;: &quot;ai_search_profile&quot;, &quot;name&quot;: &quot;hrlx_kb_profile&quot; }],
+  &quot;triggers&quot;: [
+    { &quot;type&quot;: &quot;chat&quot;, &quot;channel&quot;: &quot;employee_center&quot; },
+    { &quot;type&quot;: &quot;chat&quot;, &quot;channel&quot;: &quot;service_portal&quot; }
+  ],
+  &quot;memory&quot;: { &quot;session&quot;: true, &quot;persistent&quot;: { &quot;enabled&quot;: true, &quot;max_turns&quot;: 8 } },
+  &quot;guardrails&quot;: {
+    &quot;pii_redaction&quot;: true,
+    &quot;escalation_keywords&quot;: [&quot;urgent&quot;, &quot;complaint&quot;, &quot;discrimination&quot;, &quot;harassment&quot;, &quot;lawyer&quot;]
+  },
+  &quot;audit&quot;: { &quot;store_inputs&quot;: true, &quot;store_outputs&quot;: true, &quot;retention_days&quot;: 365 }
+}
+</code></pre>
+<h3 id="step-34-enable-agent-on-employee-center">Step 3.4: Enable agent on Employee Center</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<pre><code class="language-markdown">1. Open {BASE}/now/assist/admin
+2. Channels &gt; Employee Center
+3. Enable &quot;AI Agents&quot;
+4. Add agent: HR Leave Assistant
+5. Position: HR Leave category in chat launcher
+6. Save
+7. Test: {BASE}/esc → open chat → &quot;How many annual days do I have?&quot;
+</code></pre>
+<h3 id="step-35-test-agent-10-test-utterances">Step 3.5: Test agent (10 test utterances)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>User says</th>
+<th>Expected tool</th>
+<th>Pass criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>&ldquo;my balance&rdquo;</td>
+<td>GetMyBalance</td>
+<td>Shows 4 types</td>
+</tr>
+<tr>
+<td>2</td>
+<td>&ldquo;request 3 days annual next Mon-Wed&rdquo;</td>
+<td>RequestLeave (after confirm)</td>
+<td>Creates req</td>
+</tr>
+<tr>
+<td>3</td>
+<td>&ldquo;can I carry over leave?&rdquo;</td>
+<td>CheckPolicy</td>
+<td>Cites KB</td>
+</tr>
+<tr>
+<td>4</td>
+<td>&ldquo;show my last requests&rdquo;</td>
+<td>GetMyRequests</td>
+<td>Lists records</td>
+</tr>
+<tr>
+<td>5</td>
+<td>&ldquo;cancel HRLX0001234&rdquo;</td>
+<td>CancelRequest</td>
+<td>State=cancelled</td>
+</tr>
+<tr>
+<td>6</td>
+<td>&ldquo;what is parental leave?&rdquo;</td>
+<td>CheckPolicy</td>
+<td>Policy answer</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Arabic: &ldquo;كم يوم إجازة عندي؟&rdquo;</td>
+<td>GetMyBalance</td>
+<td>Arabic response</td>
+</tr>
+<tr>
+<td>8</td>
+<td>&ldquo;I want 100 days annual&rdquo;</td>
+<td>RequestLeave</td>
+<td>insufficient_balance error</td>
+</tr>
+<tr>
+<td>9</td>
+<td>&ldquo;this is discrimination!&rdquo;</td>
+<td>EscalateToHR</td>
+<td>Case created</td>
+</tr>
+<tr>
+<td>10</td>
+<td>&ldquo;what&rsquo;s the weather?&rdquo;</td>
+<td>none</td>
+<td>Out of scope message</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="part-4-byo-llm-claude-gpt">Part 4 — BYO LLM (Claude / GPT)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="step-41-when-to-use-byo-llm">Step 4.1: When to use BYO LLM</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default Now Assist skills</td>
+<td>Now LLM Service</td>
+</tr>
+<tr>
+<td>Regulated data residency</td>
+<td>Azure OpenAI in your region</td>
+</tr>
+<tr>
+<td>Existing Anthropic/OpenAI contract</td>
+<td>BYO</td>
+</tr>
+<tr>
+<td>Cost optimization at scale</td>
+<td>gpt-4o-mini for classify, Claude for complex</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-42-configure-anthropic-provider">Step 4.2: Configure Anthropic provider</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/sys_one_extend_provider_config_list.do">{BASE}/sys_one_extend_provider_config_list.do</a></p>
+<pre><code class="language-markdown">1. New &gt; Provider type: Anthropic (or Generic REST)
+2. Name: hrlx_anthropic
+3. API endpoint: https://api.anthropic.com/v1/messages
+4. Credential: link to Generic API Key credential (x-api-key)
+5. Default model: claude-sonnet-4-5
+6. Test connection
+7. Per skill: LLM Provider = hrlx_anthropic
+</code></pre>
+<h3 id="step-43-rest-message-claude_api">Step 4.3: REST Message — Claude_API</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/sys_rest_message_list.do">{BASE}/sys_rest_message_list.do</a></p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x-api-key</td>
+<td>${x_786686_hr_leave.llm.anthropic.api_key}</td>
+</tr>
+<tr>
+<td>anthropic-version</td>
+<td>2023-06-01</td>
+</tr>
+<tr>
+<td>content-type</td>
+<td>application/json</td>
+</tr>
+</tbody>
+</table>
+<p>Body template:</p>
+<pre><code class="language-json">{
+  &quot;model&quot;: &quot;${model}&quot;,
+  &quot;max_tokens&quot;: ${max_tokens},
+  &quot;system&quot;: &quot;${system}&quot;,
+  &quot;messages&quot;: [{ &quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;${user_message}&quot; }]
+}
+</code></pre>
+<h3 id="step-44-script-include-hrlxaiprovider-fallback-chain">Step 4.4: Script Include — HRLXAIProvider (fallback chain)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a><a href="{BASE}/$studio.do">Studio</a></nav>
+<pre><code class="language-javascript">var HRLXAIProvider = Class.create();
+HRLXAIProvider.prototype = {
+    initialize: function() {
+        this.SCOPE = 'x_786686_hr_leave';
+        this.TIMEOUT_MS = parseInt(gs.getProperty(this.SCOPE + '.llm.timeout_ms', '15000'), 10);
+    },
+
+    _prop: function(name, def) { return gs.getProperty(this.SCOPE + '.' + name, def); },
+
+    _budgetCheck: function(provider) {
+        var budget = parseFloat(this._prop('llm.daily_budget_usd', '10'));
+        var key = 'llm.spent.' + provider + '.' + new GlideDateTime().getDate().getDisplayValue();
+        return parseFloat(gs.getProperty(this.SCOPE + '.' + key, '0')) &lt; budget;
+    },
+
+    askClaude: function(prompt, model, maxTokens, system) {
+        if (!this._budgetCheck('anthropic')) return { error: 'budget_exceeded' };
+        try {
+            var rm = new sn_ws.RESTMessageV2('Claude_API', 'post');
+            rm.setHttpTimeout(this.TIMEOUT_MS);
+            rm.setStringParameterNoEscape('model', model || this._prop('llm.anthropic.model', 'claude-sonnet-4-5'));
+            rm.setStringParameterNoEscape('max_tokens', String(maxTokens || 400));
+            rm.setStringParameterNoEscape('system', system || 'You are a helpful HR assistant.');
+            rm.setStringParameterNoEscape('user_message', prompt);
+            var resp = rm.execute();
+            if (resp.getStatusCode() &gt;= 400) return { error: 'http_' + resp.getStatusCode() };
+            var json = JSON.parse(resp.getBody());
+            var text = '';
+            (json.content || []).forEach(function(c) { if (c.type === 'text') text += c.text; });
+            return { text: text, usage: json.usage || {} };
+        } catch (e) { return { error: 'exception', message: String(e) }; }
+    },
+
+    askWithFallback: function(prompt, options) {
+        options = options || {};
+        var chain = options.chain || ['anthropic', 'openai', 'now_llm'];
+        for (var i = 0; i &lt; chain.length; i++) {
+            var res = (chain[i] === 'anthropic') ? this.askClaude(prompt, options.model, options.max_tokens, options.system) : null;
+            if (res &amp;&amp; !res.error &amp;&amp; res.text) return res;
+        }
+        return { error: 'all_providers_failed' };
+    },
+
+    type: 'HRLXAIProvider'
+};
+</code></pre>
+<h3 id="step-45-hrlxragservice-custom-rag">Step 4.5: HRLXRagService (custom RAG)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">var HRLXRagService = Class.create();
+HRLXRagService.prototype = {
+    initialize: function() {
+        this.PROVIDER = new HRLXAIProvider();
+        this.PROFILE = gs.getProperty('x_786686_hr_leave.ai_search.profile', 'hrlx_kb_profile');
+    },
+
+    answer: function(question) {
+        var sn = new sn_ais.AISearch();
+        var res = sn.search(this.PROFILE, question, { limit: 5, genai: true, min_similarity: 0.65 });
+        if (res.genai_answer) return { text: res.genai_answer, citations: res.citations || [] };
+        return { text: 'I could not find an answer in HR Leave policies.', citations: [] };
+    },
+
+    type: 'HRLXRagService'
+};
+</code></pre>
+<hr />
+<h2 id="part-5-ai-search-genai-search">Part 5 — AI Search + GenAI Search</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="51-ai-search-vs-zing">5.1 AI Search vs Zing</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Zing</th>
+<th>AI Search</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vector search</td>
+<td>No</td>
+<td>Yes (RaptorDB)</td>
+</tr>
+<tr>
+<td>GenAI answers</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Re-ranking</td>
+<td>Basic</td>
+<td>ML re-ranker</td>
+</tr>
+<tr>
+<td>Multi-source profiles</td>
+<td>Limited</td>
+<td>Native</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-51-create-search-source-hrlx_kb">Step 5.1: Create search source — hrlx_kb</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/ais_search_source_list.do">{BASE}/ais_search_source_list.do</a></p>
+<pre><code class="language-markdown">1. New Search Source
+2. Name: hrlx_kb
+3. Table: kb_knowledge
+4. Condition: topic=HR Leave^workflow_state=published^active=true
+5. Indexed fields:
+   - title (boost 2.0)
+   - short_description (boost 1.5)
+   - text (boost 1.0)
+   - meta (boost 0.5)
+6. Index transform script (PII mask):
+</code></pre>
+<pre><code class="language-javascript">(function transform(record, indexed) {
+    indexed.title = record.short_description + '';
+    var body = (record.text || '') + '';
+    indexed.body = body.replace(/\b(SSN|PASSPORT|MRN|diagnosis)\b[: ]?\S+/gi, '[REDACTED]');
+    indexed.u_kb_number = record.number + '';
+    return indexed;
+})(record, indexed);
+</code></pre>
+<pre><code class="language-markdown">7. Save → Full Index (wait for completion)
+8. Verify: AI Search Admin &gt; Index Status = Green
+</code></pre>
+<h3 id="step-52-create-source-hrlx_policy_attachments">Step 5.2: Create source — hrlx_policy_attachments</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_ui_policy_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">UI Policies</a><a href="{BASE}/sys_ui_policy_action_list.do">UI Policy Actions</a><a href="{BASE}/sys_data_policy2_list.do?sysparm_query=model_tableSTARTSWITHx_786686_hr_leave">Data Policies</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>hrlx_policy_attachments</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>kb_knowledge (attachment text extraction)</td>
+</tr>
+<tr>
+<td>Condition</td>
+<td>Same as hrlx_kb</td>
+</tr>
+<tr>
+<td>Enable</td>
+<td>Attachment indexing</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-53-create-profile-hrlx_kb_profile">Step 5.3: Create profile — hrlx_kb_profile</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/ais_search_profile_list.do">{BASE}/ais_search_profile_list.do</a></p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>hrlx_kb_profile</td>
+</tr>
+<tr>
+<td>Sources</td>
+<td>hrlx_kb, hrlx_policy_attachments</td>
+</tr>
+<tr>
+<td>GenAI Search</td>
+<td>ON</td>
+</tr>
+<tr>
+<td>LLM</td>
+<td>Now LLM Service</td>
+</tr>
+<tr>
+<td>Max chunks</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Min similarity</td>
+<td>0.65</td>
+</tr>
+<tr>
+<td>Chunk size</td>
+<td>800</td>
+</tr>
+<tr>
+<td>Chunk overlap</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Refusal message</td>
+<td>&ldquo;I cannot find the answer in HR Leave policies. Contact HR.&rdquo;</td>
+</tr>
+<tr>
+<td>Citation format</td>
+<td>KB number + title</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-54-create-search-application-portal">Step 5.4: Create search application (Portal)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/ais_search_application_list.do">{BASE}/ais_search_application_list.do</a></p>
+<pre><code class="language-markdown">1. New Application: hrlx_portal_search
+2. Profile: hrlx_kb_profile
+3. UI: Service Portal
+4. Placeholder: &quot;Ask about leave policy, sick days, carry-over...&quot;
+5. Enable GenAI answer panel + citations
+6. Link to page: {BASE}/sp?id=hrlx_policy_search
+</code></pre>
+<p>Widget HTML (Service Portal):</p>
+<pre><code class="language-html">&lt;div class=&quot;hrlx-aisearch&quot;&gt;
+  &lt;sp-search
+    profile=&quot;hrlx_kb_profile&quot;
+    placeholder=&quot;Ask about leave policy&quot;
+    show-genai-answer=&quot;true&quot;
+    show-citations=&quot;true&quot;&gt;
+  &lt;/sp-search&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="step-55-boost-rules-synonyms">Step 5.5: Boost rules &amp; synonyms</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Synonym</td>
+<td>&ldquo;PTO&rdquo; = &ldquo;annual leave&rdquo; = &ldquo;vacation&rdquo;</td>
+</tr>
+<tr>
+<td>Synonym</td>
+<td>&ldquo;sick&rdquo; = &ldquo;medical&rdquo; = &ldquo;illness&rdquo;</td>
+</tr>
+<tr>
+<td>Boost</td>
+<td>u_leave_type field match × 1.3</td>
+</tr>
+<tr>
+<td>Filter facet</td>
+<td>country, leave_type</td>
+</tr>
+</tbody>
+</table>
+<p><strong>URL for synonyms:</strong> <a href="{BASE}/ais_dictionary_term_list.do">{BASE}/ais_dictionary_term_list.do</a></p>
+<h3 id="step-56-search-analytics-dashboard">Step 5.6: Search analytics dashboard</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<p>Build PA indicators from:</p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Metric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sys_aisearch_query_log</td>
+<td>Queries/day, zero-result rate</td>
+</tr>
+<tr>
+<td>sys_aisearch_click_log</td>
+<td>Click-through rate</td>
+</tr>
+<tr>
+<td>sys_aisearch_genai_log</td>
+<td>GenAI answer rate, citation count</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Target:</strong> zero-result rate &lt; 5% after 30 days.</p>
+<hr />
+<!-- CHUNK3 -->
+
+<h2 id="part-6-predictive-intelligence">Part 6 — Predictive Intelligence</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="61-solution-types-for-hr-leave">6.1 Solution types for HR Leave</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>HR Leave use case</th>
+<th>Output field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Classification</td>
+<td>Approved within 24h?</td>
+<td>u_predicted_approval_24h</td>
+</tr>
+<tr>
+<td>Regression</td>
+<td>Predict duration days</td>
+<td>u_predicted_duration</td>
+</tr>
+<tr>
+<td>Similarity</td>
+<td>Find similar past requests</td>
+<td>(UI Action link)</td>
+</tr>
+<tr>
+<td>Anomaly</td>
+<td>Unusual sick-leave pattern</td>
+<td>u_anomaly_score</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-61-add-ml-output-fields-to-req_v2">Step 6.1: Add ML output fields to req_v2</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/sys_dictionary_list.do?sysparm_query=name=x_786686_hr_leave_req_v2">{BASE}/sys_dictionary_list.do?sysparm_query=name=x_786686_hr_leave_req_v2</a></p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>u_predicted_approval_24h</td>
+<td>string (40)</td>
+<td>Predicted 24h Approval</td>
+</tr>
+<tr>
+<td>u_predicted_confidence_24h</td>
+<td>decimal</td>
+<td>Prediction Confidence</td>
+</tr>
+<tr>
+<td>u_predicted_duration</td>
+<td>decimal</td>
+<td>Predicted Duration</td>
+</tr>
+<tr>
+<td>u_anomaly_score</td>
+<td>decimal</td>
+<td>Anomaly Score</td>
+</tr>
+<tr>
+<td>u_approved_within_24h</td>
+<td>string</td>
+<td>Actual 24h Approval (training label)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-62-backfill-training-label-one-time-script">Step 6.2: Backfill training label (one-time script)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Run after you have historical approvals:</p>
+<pre><code class="language-javascript">var gr = new GlideRecord('x_786686_hr_leave_req_v2');
+gr.addQuery('u_state', 'IN', 'approved,rejected');
+gr.query();
+while (gr.next()) {
+    var created = new GlideDateTime(gr.sys_created_on);
+    var updated = new GlideDateTime(gr.sys_updated_on);
+    var hours = (updated.getNumericValue() - created.getNumericValue()) / 3600000;
+    var approved = gr.u_state == 'approved' &amp;&amp; hours &lt;= 24;
+    gr.u_approved_within_24h = approved ? 'yes' : 'no';
+    gr.setWorkflow(false);
+    gr.update();
+}
+gs.info('Backfill complete');
+</code></pre>
+<p><strong>Minimum training rows:</strong> ≥ 1,000 historical requests (≥ 100 per class for classification).</p>
+<h3 id="step-63-create-classification-solution-hrlx_predict_approval_24h">Step 6.3: Create classification solution — hrlx_predict_approval_24h</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/ml_solution_definition_list.do">{BASE}/ml_solution_definition_list.do</a></p>
+<pre><code class="language-markdown">1. New Solution Definition
+2. Name: hrlx_predict_approval_24h
+3. Table: x_786686_hr_leave_req_v2
+4. Solution type: Classification
+5. Input fields:
+   - u_leave_type
+   - u_days_count
+   - u_department (from employee)
+   - u_employee_tenure_days (calculated field or BR)
+   - day_of_week (derived from u_start_date)
+   - u_has_reason (boolean: u_reason length &gt; 5)
+6. Output field: u_approved_within_24h
+7. Prediction fields: u_predicted_approval_24h, u_predicted_confidence_24h
+8. Training window: last 18 months
+9. Exclusion: u_state=draft
+10. Click Train → wait (15–60 min)
+11. Review accuracy report: target ≥ 0.80 accuracy, F1 ≥ 0.65 minority class
+12. Activate solution
+</code></pre>
+<h3 id="step-64-business-rule-predict-on-insert">Step 6.4: Business Rule — predict on insert</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a><a href="scripts/index.html">Scripts portal</a></nav>
+<pre><code class="language-javascript">(function executeRule(current, previous) {
+    if (current.u_predicted_approval_24h) return;
+    try {
+        var ml = new sn_ml.SolutionStore().get('hrlx_predict_approval_24h');
+        if (!ml || !ml.isActive()) return;
+
+        var startDt = new GlideDateTime(current.u_start_date);
+        var input = {
+            u_leave_type: String(current.u_leave_type),
+            u_days_count: parseInt(current.u_days_count || '0', 10),
+            u_department: String(current.u_department || ''),
+            u_employee_tenure_days: parseInt(current.u_employee_tenure_days || '0', 10),
+            day_of_week: startDt.getDayOfWeekUTC(),
+            u_has_reason: (current.u_reason &amp;&amp; current.u_reason.length &gt; 5) ? 1 : 0
+        };
+        var pred = ml.predict([input]);
+        if (pred &amp;&amp; pred[0]) {
+            current.u_predicted_approval_24h = pred[0].predicted_value;
+            current.u_predicted_confidence_24h = pred[0].confidence;
+        }
+    } catch (e) {
+        gs.warn('PI predict failed: ' + e);
+    }
+})(current, previous);
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>BR setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>When</td>
+<td>before insert</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>x_786686_hr_leave_req_v2</td>
+</tr>
+<tr>
+<td>Order</td>
+<td>500</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-65-regression-solution-hrlx_predict_duration">Step 6.5: Regression solution — hrlx_predict_duration</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Same wizard, type = Regression, output = u_days_count (actual), prediction = u_predicted_duration.</p>
+<h3 id="step-66-solution-monitor">Step 6.6: Solution Monitor</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/ml_solution_monitor_list.do">{BASE}/ml_solution_monitor_list.do</a></p>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Threshold</th>
+<th>Action if breached</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accuracy</td>
+<td>≥ 0.80</td>
+<td>Re-train</td>
+</tr>
+<tr>
+<td>Drift score</td>
+<td>&lt; 0.20</td>
+<td>Investigate feature changes</td>
+</tr>
+<tr>
+<td>RMSE (regression)</td>
+<td>≤ 1.5 days</td>
+<td>Re-train</td>
+</tr>
+<tr>
+<td>Prediction volume</td>
+<td>track</td>
+<td>Capacity planning</td>
+</tr>
+</tbody>
+</table>
+<p>Schedule monthly re-train via <strong>Scheduled Script Execution</strong>.</p>
+<hr />
+<h2 id="part-7-virtual-agent-nlu-full-topics-flows">Part 7 — Virtual Agent + NLU (Full Topics &amp; Flows)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="71-virtual-agent-vs-ai-agent-coexistence">7.1 Virtual Agent vs AI Agent — coexistence</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Virtual Agent (VA)</th>
+<th>AI Agent (AIA)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logic</td>
+<td>Deterministic topic blocks</td>
+<td>LLM-planned</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>Low</td>
+<td>Per-token</td>
+</tr>
+<tr>
+<td>Best for</td>
+<td>Slot-filling, forms</td>
+<td>Open Q&amp;A</td>
+</tr>
+<tr>
+<td>Handoff</td>
+<td>VA → AIA via &ldquo;Transfer to AI Agent&rdquo; block</td>
+<td>AIA → VA via tool</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommended pattern:</strong> VA handles structured flows; fallback / policy Q&amp;A routes to AI Agent.</p>
+<h3 id="step-71-create-nlu-model-hrlx_leave_nlu">Step 7.1: Create NLU model — hrlx_leave_nlu</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/now/nlu/workbench">{BASE}/now/nlu/workbench</a></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model name</td>
+<td>hrlx_leave_nlu</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>en (add ar as second model if needed)</td>
+</tr>
+<tr>
+<td>Domain</td>
+<td>HR Leave</td>
+</tr>
+<tr>
+<td>Application</td>
+<td>x_786686_hr_leave</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-72-intents-8-total">Step 7.2: Intents (8 total)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Intent</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>greeting</td>
+<td>Hello, hi, start</td>
+</tr>
+<tr>
+<td>check_balance</td>
+<td>Remaining leave days</td>
+</tr>
+<tr>
+<td>request_leave</td>
+<td>Book time off</td>
+</tr>
+<tr>
+<td>check_policy</td>
+<td>Policy questions</td>
+</tr>
+<tr>
+<td>cancel_leave</td>
+<td>Withdraw request</td>
+</tr>
+<tr>
+<td>check_status</td>
+<td>Status of existing request</td>
+</tr>
+<tr>
+<td>speak_to_human</td>
+<td>Live agent handoff</td>
+</tr>
+<tr>
+<td>fallback</td>
+<td>Out of scope</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-73-entities">Step 7.3: Entities</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>Type</th>
+<th>Values / Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>leave_type</td>
+<td>List</td>
+<td>annual, sick, parental, unpaid</td>
+</tr>
+<tr>
+<td>date_range</td>
+<td>SYS.DATE</td>
+<td>&ldquo;next Monday&rdquo;, &ldquo;June 5 to 10&rdquo;</td>
+</tr>
+<tr>
+<td>days_count</td>
+<td>Number</td>
+<td>&ldquo;3 days&rdquo;, &ldquo;two weeks&rdquo;</td>
+</tr>
+<tr>
+<td>request_number</td>
+<td>Regex</td>
+<td>HRLX\d+</td>
+</tr>
+<tr>
+<td>leave_type_ar</td>
+<td>List</td>
+<td>سنوية, مرضية, أمومة</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-74-utterances-check_balance-30-examples">Step 7.4: Utterances — check_balance (30 examples)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">how many leave days do I have
+what is my annual leave balance
+show my remaining vacation days
+how much PTO do I have left
+check my sick leave balance
+remaining parental leave
+how many days off can I take
+what's my leave balance
+do I have any unpaid leave left
+show balance for annual leave
+how many annual days remaining
+tell me my vacation balance
+what leave do I have available
+check my time off balance
+how much annual leave is left
+show me sick days remaining
+balance inquiry for leave
+how many days of leave remain
+what is my current leave entitlement
+remaining days for sick leave
+how much leave have I got left
+annual balance please
+sick leave days left
+parental leave balance check
+unpaid leave remaining
+how many holidays can I still take
+leave days available
+my remaining leave
+check PTO balance
+how many days can I still book off
+</code></pre>
+<h3 id="step-75-utterances-request_leave-35-examples">Step 7.5: Utterances — request_leave (35 examples)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">I want to take leave next Monday
+request 3 days annual leave
+book sick leave for tomorrow
+I need time off from June 5 to June 10
+apply for parental leave starting next month
+request vacation days
+take 2 days off next week
+I want to book annual leave
+schedule sick leave for Friday
+need unpaid leave for 5 days
+book me 3 days annual starting Monday
+I would like to request leave
+can I take leave next Tuesday and Wednesday
+request time off for a wedding
+apply for 10 days annual leave in July
+I need sick leave for 2 days
+book parental leave from September 1
+request leave for family emergency
+take annual leave Dec 20 to Dec 31
+I want 1 week off
+schedule 4 days sick leave
+request unpaid leave next month
+book leave type annual for 3 days
+I need to take Friday off
+request half day sick leave
+apply for leave starting {date_range}
+book {days_count} days of {leave_type} leave
+I want {leave_type} leave from {date_range}
+need {days_count} days off
+request leave please
+take time off
+book my vacation
+I want to go on leave
+schedule my days off
+can I have next week off
+</code></pre>
+<h3 id="step-76-utterances-check_policy-25-examples">Step 7.6: Utterances — check_policy (25 examples)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_ui_policy_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">UI Policies</a><a href="{BASE}/sys_ui_policy_action_list.do">UI Policy Actions</a><a href="{BASE}/sys_data_policy2_list.do?sysparm_query=model_tableSTARTSWITHx_786686_hr_leave">Data Policies</a></nav>
+<pre><code class="language-text">what is the maternity leave policy
+can I carry over unused annual leave
+how many sick days am I allowed per year
+what is the parental leave entitlement
+do I need a medical certificate for sick leave
+what is the notice period for annual leave
+can managers reject my leave request
+what happens to unused leave at year end
+is unpaid leave available
+what is the maximum consecutive leave days
+how does sick leave accrue
+what is the leave policy for new joiners
+can I take leave during probation
+what documents are required for sick leave
+explain the annual leave policy
+how far in advance must I request leave
+what is the carry forward limit
+are public holidays deducted from leave
+what is bereavement leave policy
+can I split parental leave
+what is the leave approval process
+how is leave calculated for part time staff
+what is the sick leave waiting period
+tell me about leave encashment
+what are the rules for emergency leave
+</code></pre>
+<h3 id="step-77-utterances-cancel_leave-20-examples">Step 7.7: Utterances — cancel_leave (20 examples)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">cancel my leave request
+withdraw my leave application
+I want to cancel HRLX0001234
+cancel my upcoming vacation
+withdraw the leave I submitted
+delete my leave request
+cancel submitted leave
+I no longer need those days off
+please cancel my time off request
+revoke my leave request
+cancel annual leave for next week
+withdraw sick leave request
+cancel request number {request_number}
+I want to undo my leave request
+cancel my pending leave
+stop my leave application
+cancel the leave I booked
+withdraw my days off
+cancel leave starting Monday
+I need to cancel my vacation request
+</code></pre>
+<h3 id="step-78-utterances-check_status-20-examples">Step 7.8: Utterances — check_status (20 examples)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">what is the status of my leave request
+has my leave been approved
+track my leave application
+where is my request HRLX0001234
+is my leave approved yet
+check approval status
+status of my vacation request
+has manager approved my leave
+what happened to my leave request
+show status of pending leave
+is my sick leave approved
+check my submitted leave
+approval status please
+where is my annual leave request
+has HR approved my leave
+track request {request_number}
+what state is my leave in
+is my leave still pending
+did my leave get rejected
+update on my leave request
+</code></pre>
+<h3 id="step-79-train-and-publish-nlu">Step 7.9: Train and publish NLU</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">1. NLU Workbench &gt; hrlx_leave_nlu
+2. Add all utterances above (minimum 15 per intent; we have 20–35)
+3. Annotate entities in utterances (highlight dates, types)
+4. Click Train → wait for model metrics
+5. Target: Intent accuracy ≥ 0.92 on test set
+6. Publish model version 1.0
+7. Set property x_786686_hr_leave.nlu.model = hrlx_leave_nlu
+</code></pre>
+<h3 id="step-710-topic-catalog-8-topics">Step 7.10: Topic catalog (8 topics)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/now/virtual-agent/designer">{BASE}/now/virtual-agent/designer</a></p>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Trigger</th>
+<th>NLU intent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HRLX Greeting</td>
+<td>greeting</td>
+<td>greeting</td>
+</tr>
+<tr>
+<td>HRLX Check Balance</td>
+<td>check_balance</td>
+<td>check_balance</td>
+</tr>
+<tr>
+<td>HRLX Request Leave</td>
+<td>request_leave</td>
+<td>request_leave</td>
+</tr>
+<tr>
+<td>HRLX Check Policy</td>
+<td>check_policy</td>
+<td>check_policy OR transfer to AI Agent</td>
+</tr>
+<tr>
+<td>HRLX Cancel Leave</td>
+<td>cancel_leave</td>
+<td>cancel_leave</td>
+</tr>
+<tr>
+<td>HRLX Check Status</td>
+<td>check_status</td>
+<td>check_status</td>
+</tr>
+<tr>
+<td>HRLX Live Agent</td>
+<td>speak_to_human</td>
+<td>speak_to_human</td>
+</tr>
+<tr>
+<td>HRLX Fallback</td>
+<td>no match</td>
+<td>fallback</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="topic-flow-1-hrlx-check-balance-block-by-block">TOPIC FLOW 1 — HRLX Check Balance (block-by-block)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<pre><code class="language-text">Topic: HRLX Check Balance
+Channel: Employee Center, Service Portal
+NLU: check_balance (confidence ≥ 0.7)
+
+BLOCK 1 — Script Action &quot;Fetch Balance&quot;
+  Script:
+</code></pre>
+<pre><code class="language-javascript">(function execute() {
+    var userId = vaSystem.getUserId();
+    var tools = new x_786686_hr_leave.HRLXAIAgentTools();
+    var bal = tools.getBalance(userId);
+    if (bal.error) {
+        vaInputs.has_error = true;
+        vaInputs.error_msg = 'Employee profile not found. Contact HR.';
+        return;
+    }
+    vaInputs.has_error = false;
+    vaInputs.balance_text =
+        'Annual: ' + bal.annual + ' days\n' +
+        'Sick: ' + bal.sick + ' days\n' +
+        'Parental: ' + bal.parental + ' days\n' +
+        'Unpaid: ' + bal.unpaid + ' days';
+})();
+</code></pre>
+<pre><code class="language-text">BLOCK 2 — Decision
+  Condition: has_error == true
+  True → Bot Message: &quot;${error_msg}&quot; → End
+  False → continue
+
+BLOCK 3 — Bot Message
+  Text: &quot;Here is your current leave balance:\n${balance_text}&quot;
+
+BLOCK 4 — Quick Reply
+  Question: &quot;Would you like to request leave?&quot;
+  Options: Yes | No
+
+BLOCK 5 — Branch
+  Yes → Link to Topic &quot;HRLX Request Leave&quot;
+  No → Bot Message &quot;Have a great day!&quot; → End
+</code></pre>
+<hr />
+<h3 id="topic-flow-2-hrlx-request-leave-slot-filling">TOPIC FLOW 2 — HRLX Request Leave (slot filling)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<pre><code class="language-text">Topic: HRLX Request Leave
+NLU: request_leave
+
+BLOCK 1 — Collect leave_type (if not in NLU entities)
+  Prompt: &quot;Which type of leave? (annual / sick / parental / unpaid)&quot;
+  Slot: leave_type
+  Validation: must be in [annual, sick, parental, unpaid]
+  Max retries: 2 → on fail go to Fallback
+
+BLOCK 2 — Collect start_date
+  Prompt: &quot;What is the start date? (YYYY-MM-DD or 'next Monday')&quot;
+  Slot: start_date
+  Validation: date &gt;= today
+
+BLOCK 3 — Collect end_date
+  Prompt: &quot;What is the end date?&quot;
+  Slot: end_date
+  Validation: end_date &gt;= start_date
+
+BLOCK 4 — Collect reason (optional)
+  Prompt: &quot;Reason for leave? (optional — press Skip)&quot;
+  Slot: reason
+  Required: false
+
+BLOCK 5 — Script Action &quot;Calculate Days Preview&quot;
+</code></pre>
+<pre><code class="language-javascript">(function execute() {
+    var start = new GlideDateTime(vaVars.start_date);
+    var end = new GlideDateTime(vaVars.end_date);
+    var days = Math.ceil((end.getNumericValue() - start.getNumericValue()) / 86400000) + 1;
+    vaInputs.preview_days = days;
+    var tools = new x_786686_hr_leave.HRLXAIAgentTools();
+    var bal = tools.getBalance(vaSystem.getUserId());
+    vaInputs.enough = (bal[vaVars.leave_type] || 0) &gt;= days;
+    vaInputs.available = bal[vaVars.leave_type] || 0;
+})();
+</code></pre>
+<pre><code class="language-text">BLOCK 6 — Decision insufficient balance
+  Condition: enough == false
+  True → Message: &quot;You need ${preview_days} days but only have ${available}. Choose shorter dates.&quot;
+         → Go to BLOCK 2 (re-collect dates)
+  False → continue
+
+BLOCK 7 — Confirmation
+  Message: &quot;Please confirm:\nType: ${leave_type}\nFrom: ${start_date} To: ${end_date}\nDays: ${preview_days}\nReason: ${reason}&quot;
+  Quick Reply: Confirm | Cancel
+
+BLOCK 8 — Branch Cancel → End polite
+
+BLOCK 9 — Script Action &quot;Submit Request&quot;
+</code></pre>
+<pre><code class="language-javascript">(function execute() {
+    var tools = new x_786686_hr_leave.HRLXAIAgentTools();
+    var res = tools.requestLeave({
+        user_id: vaSystem.getUserId(),
+        type: vaVars.leave_type,
+        start_date: vaVars.start_date,
+        end_date: vaVars.end_date,
+        reason: vaVars.reason || ''
+    });
+    vaInputs.ok = !!res.ok;
+    vaInputs.req_number = res.number || '';
+    vaInputs.err = res.error || '';
+})();
+</code></pre>
+<pre><code class="language-text">BLOCK 10 — Decision ok
+  True → &quot;Your leave request ${req_number} has been submitted for approval.&quot;
+  False → &quot;Sorry, submission failed: ${err}. Try again or contact HR.&quot;
+  → End
+</code></pre>
+<hr />
+<h3 id="topic-flow-3-hrlx-check-policy">TOPIC FLOW 3 — HRLX Check Policy</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_ui_policy_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">UI Policies</a><a href="{BASE}/sys_ui_policy_action_list.do">UI Policy Actions</a><a href="{BASE}/sys_data_policy2_list.do?sysparm_query=model_tableSTARTSWITHx_786686_hr_leave">Data Policies</a><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<pre><code class="language-text">BLOCK 1 — Decision: use AI Agent for open questions
+  If utterance length &gt; 50 chars OR contains &quot;?&quot;
+    → Transfer to AI Agent &quot;HR Leave Assistant&quot; with context
+  Else
+    → Script Action CheckPolicy with vaInputs.last_utterance
+
+BLOCK 2 — Display answer + citations
+BLOCK 3 — &quot;Was this helpful?&quot; Yes/No → log to analytics
+</code></pre>
+<hr />
+<h3 id="topic-flow-4-hrlx-cancel-leave">TOPIC FLOW 4 — HRLX Cancel Leave</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<pre><code class="language-text">BLOCK 1 — Collect request_number (or pick from list)
+  Script Action: getMyRequests → build choice list
+
+BLOCK 2 — Confirm cancellation
+
+BLOCK 3 — Script Action cancelRequest
+
+BLOCK 4 — Success/fail message
+</code></pre>
+<hr />
+<h3 id="topic-flow-5-hrlx-live-agent-handoff">TOPIC FLOW 5 — HRLX Live Agent Handoff</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<pre><code class="language-text">BLOCK 1 — Collect issue summary (optional)
+
+BLOCK 2 — Live Agent Queue
+  Queue: HR Leave Support
+  Pre-chat fields: user_id, last_intent, last_5_messages
+
+BLOCK 3 — Fallback if no agent available
+  Script Action escalate()
+  Message: &quot;An HR partner will contact you. Case reference logged.&quot;
+</code></pre>
+<h3 id="step-711-enable-va-on-channels">Step 7.11: Enable VA on channels</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">1. Virtual Agent &gt; Administration &gt; Channels
+2. Employee Center: ON, Bot name from x_786686_hr_leave.va.bot_name
+3. Service Portal: add Virtual Agent widget to sp_page
+4. Topic recommendations: enable HR Leave topics
+5. Test: {BASE}/esc
+</code></pre>
+<h3 id="step-712-va-analytics-kpis">Step 7.12: VA analytics KPIs</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Target</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Containment rate</td>
+<td>≥ 70%</td>
+<td>sys_cs_conversation</td>
+</tr>
+<tr>
+<td>Avg turns</td>
+<td>≤ 6</td>
+<td>sys_cs_message count</td>
+</tr>
+<tr>
+<td>Intent recognition</td>
+<td>≥ 90%</td>
+<td>nlu_inference_result</td>
+</tr>
+<tr>
+<td>Handoff rate</td>
+<td>≤ 15%</td>
+<td>live agent transfers</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<!-- CHUNK4 -->
+
+<h2 id="part-8-document-intelligence-idp">Part 8 — Document Intelligence (IDP)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="81-use-case-medical-certificate-for-sick-leave">8.1 Use case — medical certificate for sick leave</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>When <code>u_leave_type = sick</code> and <code>u_days_count &gt; 2</code>, require medical certificate attachment. IDP extracts fields automatically.</p>
+<table>
+<thead>
+<tr>
+<th>Extracted field</th>
+<th>Maps to column</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>patient_name</td>
+<td>(validate vs employee)</td>
+</tr>
+<tr>
+<td>certificate_date</td>
+<td>u_cert_date</td>
+</tr>
+<tr>
+<td>days_recommended</td>
+<td>u_cert_days</td>
+</tr>
+<tr>
+<td>doctor_name</td>
+<td>u_cert_doctor</td>
+</tr>
+<tr>
+<td>clinic_name</td>
+<td>u_cert_clinic</td>
+</tr>
+<tr>
+<td>condition_summary</td>
+<td>u_cert_summary (masked in UI)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-81-create-idp-template-hrlx_medical_cert">Step 8.1: Create IDP template — hrlx_medical_cert</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/sn_idp_template_list.do">{BASE}/sn_idp_template_list.do</a></p>
+<pre><code class="language-markdown">1. New Template
+2. Name: hrlx_medical_cert
+3. Document type: Medical Certificate
+4. Upload 8–12 sample PDFs (anonymized):
+   - 3 hospital letterheads
+   - 3 clinic formats
+   - 2 Arabic certificates
+   - 2 poor-scan quality (for robustness)
+5. For each sample, annotate bounding boxes:
+   - patient_name
+   - certificate_date
+   - doctor_name
+   - days_recommended
+   - clinic_name
+   - condition_summary
+6. Save annotations
+</code></pre>
+<h3 id="step-82-train-extraction-model">Step 8.2: Train extraction model</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/sn_idp_model_list.do">{BASE}/sn_idp_model_list.do</a></p>
+<pre><code class="language-markdown">1. New Model → Template: hrlx_medical_cert
+2. Train/Test split: 80/20
+3. Click Train (30–90 minutes)
+4. Review per-field F1 scores (target ≥ 0.90 each)
+5. If condition_summary F1 low: add more samples or mark optional
+6. Activate model v1.0
+7. Set property x_786686_hr_leave.idp.template = hrlx_medical_cert
+</code></pre>
+<h3 id="step-83-flow-run-idp-on-attachment">Step 8.3: Flow — run IDP on attachment</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a></p>
+<pre><code class="language-text">Flow: HRLX IDP Medical Certificate
+Trigger: Attachment added to x_786686_hr_leave_req_v2
+Condition: u_leave_type=sick^u_days_count&gt;2
+
+Step 1 — Get attachment sys_id
+Step 2 — Action: Document Intelligence Extract
+  Template: hrlx_medical_cert
+  Input: attachment_sys_id
+Step 3 — Script (update request):
+</code></pre>
+<pre><code class="language-javascript">(function(inputs, outputs) {
+    var fields = inputs.extraction_result.fields || {};
+    var req = new GlideRecord('x_786686_hr_leave_req_v2');
+    if (!req.get(inputs.request_sys_id)) return;
+
+    req.u_cert_date = fields.certificate_date || '';
+    req.u_cert_days = fields.days_recommended || '';
+    req.u_cert_doctor = fields.doctor_name || '';
+    req.u_cert_clinic = fields.clinic_name || '';
+    // Mask sensitive summary for display
+    req.u_cert_summary = (fields.condition_summary || '').substring(0, 200);
+    req.update();
+
+    var aud = new GlideRecord('x_786686_hr_leave_audit_v2');
+    aud.initialize();
+    aud.u_action = 'idp_extract_cert';
+    aud.u_record = req.getUniqueValue();
+    aud.u_payload = JSON.stringify(fields);
+    aud.u_actor = gs.getUserID();
+    aud.u_source = 'idp';
+    aud.insert();
+})(inputs, outputs);
+</code></pre>
+<pre><code class="language-text">Step 4 — Decision: days_recommended &lt; u_days_count → notify HR for review
+Step 5 — Email employee if extraction failed (manual upload retry)
+</code></pre>
+<h3 id="step-84-standalone-idp-test">Step 8.4: Standalone IDP test</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">1. IDP Admin &gt; Test Extraction
+2. Upload new PDF not in training set
+3. Verify all fields extracted
+4. Latency target: ≤ 8 seconds per document
+</code></pre>
+<h3 id="step-85-idp-metrics-dashboard">Step 8.5: IDP metrics dashboard</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Field-level F1</td>
+<td>≥ 0.90</td>
+</tr>
+<tr>
+<td>Document success rate</td>
+<td>≥ 0.95</td>
+</tr>
+<tr>
+<td>Avg latency</td>
+<td>≤ 8s</td>
+</tr>
+<tr>
+<td>Manual correction rate</td>
+<td>≤ 10%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="part-9-workflow-studio-ai-actions">Part 9 — Workflow Studio AI Actions</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="step-91-built-in-actions-to-reuse">Step 9.1: Built-in actions to reuse</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Platform action</th>
+<th>HR Leave adaptation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Summarize Record</td>
+<td>Summarize u_reason on approval</td>
+</tr>
+<tr>
+<td>Categorize Text</td>
+<td>Classify leave type from reason</td>
+</tr>
+<tr>
+<td>Generate Email Response</td>
+<td>Manager approval/rejection email</td>
+</tr>
+<tr>
+<td>Sentiment Analysis</td>
+<td>Route frustrated requests</td>
+</tr>
+<tr>
+<td>Extract Entities</td>
+<td>Parse dates from free-text reason</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-92-custom-action-hrlx-summarize-leave-history">Step 9.2: Custom action — HRLX Summarize Leave History</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a> → Custom Actions</p>
+<pre><code class="language-markdown">1. New Custom Action: HRLX Summarize Leave History
+2. Application: HR Leave
+3. Inputs:
+   - employee_ref (Reference: x_786686_hr_leave_employee_v2)
+   - lookback_days (Integer, default 365)
+4. Outputs:
+   - summary_text (String)
+5. Steps:
+   a. Look Up Records: x_786686_hr_leave_req_v2
+      Query: u_employee_ref = employee_ref AND sys_created_on &gt;= lookback
+   b. Transform Data: build history_text lines
+   c. Now Assist Skill: hrlx_summarize_history
+   d. Return summary_text
+6. Guardrails: PII redaction ON, max_tokens 250
+</code></pre>
+<h3 id="step-93-flow-weekly-manager-digest">Step 9.3: Flow — weekly manager digest</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<pre><code class="language-text">Trigger: Scheduled weekly Monday 08:00
+For Each: managers with pending approvals
+  Action: HRLX Summarize Leave History (direct reports, 90 days)
+  Action: Send Email with summary + link to workspace
+</code></pre>
+<h3 id="step-94-flow-auto-classify-on-submit">Step 9.4: Flow — auto-classify on submit</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<pre><code class="language-text">Trigger: Record created x_786686_hr_leave_req_v2, u_state=submitted
+Action: Now Assist Skill hrlx_classify_leave_type
+Decision: if output != u_leave_type → set u_ai_suggested_type + notify HR
+Action: PI predict approval
+Decision: if confidence &lt; 0.6 → route to senior manager
+</code></pre>
+<hr />
+<h2 id="part-10-now-assist-for-developers">Part 10 — Now Assist for Developers</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="step-101-generate-script-include-from-prompt">Step 10.1: Generate Script Include from prompt</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a><a href="{BASE}/$studio.do">Studio</a></nav>
+<p>In Studio ({BASE}/$studio.do):</p>
+<pre><code class="language-text">Prompt:
+&quot;Create Script Include HRLXLeaveValidation in scope x_786686_hr_leave.
+Methods: validateDates(start, end), validateBalance(userId, type, days).
+Use GlideRecord on x_786686_hr_leave_bal_v2. Return {ok, error} objects.
+No client callable. Include null checks.&quot;
+</code></pre>
+<p>Review → Tab accept → add audit comment → ATF test.</p>
+<h3 id="step-102-inline-shortcuts">Step 10.2: Inline shortcuts</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Keys</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accept suggestion</td>
+<td>Tab</td>
+</tr>
+<tr>
+<td>Partial accept</td>
+<td>Ctrl+Right</td>
+</tr>
+<tr>
+<td>Multiline panel</td>
+<td>Ctrl+Enter</td>
+</tr>
+<tr>
+<td>Reject</td>
+<td>Esc</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-103-generate-atf-from-script-include">Step 10.3: Generate ATF from Script Include</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<pre><code class="language-markdown">1. Open HRLXAIAgentTools in Studio
+2. Now Assist &gt; Generate Tests
+3. Select: getBalance, requestLeave, cancelRequest
+4. Save tests under sys_atf_test scoped to HR Leave
+5. Run Test Runner: {BASE}/sys_atf_test_runner.do
+</code></pre>
+<h3 id="step-104-code-review-checklist-for-ai-generated-code">Step 10.4: Code review checklist for AI-generated code</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">[ ] No hard-coded sys_ids
+[ ] Scoped table names only (x_786686_hr_leave_*)
+[ ] ACL-safe (respects current user)
+[ ] No gs.print in production code
+[ ] Error handling with gs.error/gs.warn
+[ ] Human reviewer name in header comment
+</code></pre>
+<hr />
+<h2 id="part-11-end-to-end-hr-leave-ai-example">Part 11 — End-to-End HR Leave AI Example</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="scenario-employee-submits-sick-leave-via-chat-with-certificate">Scenario: Employee submits sick leave via chat with certificate</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Actors:</strong> Employee (ESS), HR Leave Assistant (AIA), VA topics, IDP, PI, Flow</p>
+<pre><code class="language-text">Step 1 — Employee opens {BASE}/esc
+Step 2 — &quot;I need sick leave Thu-Fri&quot; → VA Topic Request Leave OR AIA
+Step 3 — Slot fill: type=sick, dates confirmed
+Step 4 — AIA calls RequestLeave → req HRLX001234 created
+Step 5 — Employee uploads medical PDF on form
+Step 6 — Flow HRLX IDP Medical Certificate runs → fields extracted
+Step 7 — BR runs PI → u_predicted_approval_24h = yes (0.87)
+Step 8 — Manager opens record → UI Action Summarize reason (AI)
+Step 9 — Manager approves → Flow sends hrlx_draft_manager_email (optional)
+Step 10 — Audit rows in x_786686_hr_leave_audit_v2 for ai_request_leave, idp_extract_cert
+</code></pre>
+<h3 id="verification-queries">Verification queries</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// All AI-touched requests last 7 days
+var gr = new GlideRecord('x_786686_hr_leave_req_v2');
+gr.addQuery('u_source', 'ai_agent');
+gr.addQuery('sys_created_on', '&gt;=', gs.daysAgoStart(7));
+gr.query();
+gs.info('AI agent requests: ' + gr.getRowCount());
+
+var aud = new GlideRecord('x_786686_hr_leave_audit_v2');
+aud.addQuery('u_source', 'IN', 'ai_agent,idp');
+aud.addQuery('sys_created_on', '&gt;=', gs.daysAgoStart(7));
+aud.query();
+gs.info('AI audit rows: ' + aud.getRowCount());
+</code></pre>
+<hr />
+<h2 id="part-12-ai-governance-safety">Part 12 — AI Governance &amp; Safety</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="step-121-create-ai-policy-no_raw_medical_text">Step 12.1: Create AI policy — no_raw_medical_text</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_ui_policy_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">UI Policies</a><a href="{BASE}/sys_ui_policy_action_list.do">UI Policy Actions</a><a href="{BASE}/sys_data_policy2_list.do?sysparm_query=model_tableSTARTSWITHx_786686_hr_leave">Data Policies</a></nav>
+<p><strong>URL:</strong> <a href="{BASE}/now/ai/policy">{BASE}/now/ai/policy</a></p>
+<pre><code class="language-json">{
+  &quot;policy&quot;: &quot;hrlx_no_raw_medical_text&quot;,
+  &quot;scope&quot;: &quot;x_786686_hr_leave&quot;,
+  &quot;rules&quot;: [
+    {
+      &quot;id&quot;: &quot;redact_diagnosis&quot;,
+      &quot;applies_to&quot;: [&quot;input&quot;, &quot;output&quot;],
+      &quot;regex&quot;: &quot;(?i)(diagnosis|condition|illness|medication):\\s*[^\\n]+&quot;,
+      &quot;action&quot;: &quot;redact&quot;,
+      &quot;replacement&quot;: &quot;[REDACTED-MEDICAL]&quot;
+    },
+    {
+      &quot;id&quot;: &quot;block_external_emails&quot;,
+      &quot;applies_to&quot;: [&quot;output&quot;],
+      &quot;regex&quot;: &quot;\\b[A-Z0-9._%+-]+@(?!company\\.com)[A-Z0-9.-]+\\.[A-Z]{2,}\\b&quot;,
+      &quot;action&quot;: &quot;block&quot;
+    }
+  ]
+}
+</code></pre>
+<h3 id="step-122-human-in-the-loop-matrix">Step 12.2: Human-in-the-loop matrix</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>AI action</th>
+<th>Human checkpoint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RequestLeave</td>
+<td>User confirms in chat</td>
+</tr>
+<tr>
+<td>Auto-approve (never)</td>
+<td>Manager always approves</td>
+</tr>
+<tr>
+<td>PI low confidence</td>
+<td>Route to senior manager</td>
+</tr>
+<tr>
+<td>IDP mismatch days</td>
+<td>HR manual review</td>
+</tr>
+<tr>
+<td>Generated email</td>
+<td>Manager edits before send</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-123-compliance-notes">Step 12.3: Compliance notes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Regulation</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GDPR</td>
+<td>Right to erasure on sn_aia_audit / sys_one_extend_audit</td>
+</tr>
+<tr>
+<td>EU AI Act</td>
+<td>HR decisions = high-risk → transparency + human oversight</td>
+</tr>
+<tr>
+<td>HIPAA</td>
+<td>Encrypt certificate attachments, restrict ACL</td>
+</tr>
+<tr>
+<td>PDPL (GCC)</td>
+<td>Data residency → pick LLM region</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-124-audit-retention">Step 12.4: Audit retention</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p>Configure 365-day retention on sn_aia_audit and sys_one_extend_audit. Domain audit x_786686_hr_leave_audit_v2 retained per HR policy (typically 7 years).</p>
+<hr />
+<h2 id="part-13-performance-cost-optimization">Part 13 — Performance &amp; Cost Optimization</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="step-131-response-cache-table">Step 13.1: Response cache table</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<p>Create table x_786686_hr_leave_ai_cache (hash, skill, response, expires_at).</p>
+<pre><code class="language-javascript">var HRLXAICache = Class.create();
+HRLXAICache.prototype = {
+    initialize: function() { this.TABLE = 'x_786686_hr_leave_ai_cache'; },
+    _hash: function(s) { return new GlideDigest().getSHA256Base64(s); },
+    get: function(skill, input) {
+        var gr = new GlideRecord(this.TABLE);
+        gr.addQuery('u_hash', this._hash(skill + '|' + input));
+        gr.addQuery('u_expires_at', '&gt;', new GlideDateTime());
+        gr.setLimit(1);
+        gr.query();
+        return gr.next() ? String(gr.u_response) : null;
+    },
+    put: function(skill, input, response, ttlMin) {
+        var gr = new GlideRecord(this.TABLE);
+        gr.initialize();
+        gr.u_hash = this._hash(skill + '|' + input);
+        gr.u_skill = skill;
+        gr.u_response = response;
+        var exp = new GlideDateTime();
+        exp.addSeconds(60 * (ttlMin || 60));
+        gr.u_expires_at = exp;
+        gr.insert();
+    },
+    type: 'HRLXAICache'
+};
+</code></pre>
+<p>Use for hrlx_classify_leave_type (deterministic input).</p>
+<h3 id="step-132-model-right-sizing">Step 13.2: Model right-sizing</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>classify, sentiment</td>
+<td>gpt-4o-mini / Now LLM Generic</td>
+</tr>
+<tr>
+<td>summarize</td>
+<td>Now LLM Generic</td>
+</tr>
+<tr>
+<td>agent multi-step</td>
+<td>now-llm-pro-v1 / claude-sonnet-4-5</td>
+</tr>
+<tr>
+<td>code gen</td>
+<td>Now Assist for Creator</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-133-monitoring-dashboard-widgets">Step 13.3: Monitoring dashboard widgets</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<table>
+<thead>
+<tr>
+<th>Widget</th>
+<th>Source</th>
+<th>Alert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Skill calls/day</td>
+<td>sys_one_extend_audit</td>
+<td>&gt; 2× baseline</td>
+</tr>
+<tr>
+<td>p95 latency</td>
+<td>sys_one_extend_audit</td>
+<td>&gt; 3s</td>
+</tr>
+<tr>
+<td>Daily LLM spend</td>
+<td>system properties</td>
+<td>&gt; budget</td>
+</tr>
+<tr>
+<td>Agent containment</td>
+<td>sn_aia_execution</td>
+<td>&lt; 60%</td>
+</tr>
+<tr>
+<td>PI drift</td>
+<td>ml_solution_monitor</td>
+<td>&gt; 0.2</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="part-14-hands-on-labs-5-sessions">Part 14 — Hands-On Labs (5 Sessions)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="lab-1-now-assist-skill-45-min">Lab 1 — Now Assist Skill (45 min)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Goal:</strong> Deploy hrlx_summarize_reason with UI Action.</p>
+<pre><code class="language-markdown">| Time | Step |
+|------|------|
+| 0–5 | Verify prerequisites (§0.2) |
+| 5–15 | Create skill in Now Assist Studio (§2.2) |
+| 15–25 | Test 5 samples in Playground |
+| 25–35 | Create UI Action on req_v2 form |
+| 35–40 | Impersonate manager → click Summarize |
+| 40–45 | Check sys_one_extend_audit for log row |
+
+Pass: Summary appears ≤ 2s, no medical detail leaked.
+URL: {BASE}/now/assist/studio
+</code></pre>
+<h3 id="lab-2-ai-search-genai-45-min">Lab 2 — AI Search + GenAI (45 min)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Goal:</strong> Ask &ldquo;Can I carry over annual leave?&rdquo; and get cited answer.</p>
+<pre><code class="language-markdown">| Time | Step |
+|------|------|
+| 0–10 | Create 3 KB articles (topic=HR Leave) if missing |
+| 10–25 | Create source hrlx_kb + profile hrlx_kb_profile (§5) |
+| 25–35 | Full index → wait green |
+| 35–40 | Test in AI Search Admin preview |
+| 40–45 | Add sp-search widget to portal page |
+
+Pass: GenAI answer cites KB number.
+URL: {BASE}/now/ais/admin
+</code></pre>
+<h3 id="lab-3-virtual-agent-topic-60-min">Lab 3 — Virtual Agent topic (60 min)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Goal:</strong> Complete balance → request leave conversation.</p>
+<pre><code class="language-markdown">| Time | Step |
+|------|------|
+| 0–15 | Import NLU utterances for check_balance + request_leave |
+| 15–25 | Train + publish hrlx_leave_nlu |
+| 25–45 | Build topics per §7 block diagrams |
+| 45–55 | Enable on {BASE}/esc |
+| 55–60 | Run conversation test script (10 utterances) |
+
+Pass: Request created with u_source=virtual_agent (add field if needed).
+URL: {BASE}/now/virtual-agent/designer
+</code></pre>
+<h3 id="lab-4-ai-agent-tools-60-min">Lab 4 — AI Agent + tools (60 min)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Goal:</strong> HR Leave Assistant submits leave after confirmation.</p>
+<pre><code class="language-markdown">| Time | Step |
+|------|------|
+| 0–15 | Deploy HRLXAIAgentTools Script Include |
+| 15–30 | Create 6 tools in Agent Studio |
+| 30–45 | Create agent + system prompt |
+| 45–55 | Enable on Employee Center |
+| 55–60 | Test: &quot;book 2 days annual next week&quot; → confirm → verify req |
+
+Pass: Record in req_v2, audit row written.
+URL: {BASE}/now/aia/studio
+</code></pre>
+<h3 id="lab-5-idp-pi-90-min">Lab 5 — IDP + PI (90 min)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Goal:</strong> Sick leave + certificate extraction + approval prediction.</p>
+<pre><code class="language-markdown">| Time | Step |
+|------|------|
+| 0–20 | Upload samples + annotate hrlx_medical_cert |
+| 20–50 | Train IDP model (parallel: backfill PI labels) |
+| 50–65 | Create Flow for attachment trigger |
+| 65–80 | Train hrlx_predict_approval_24h |
+| 80–90 | Submit sick leave with PDF → verify cert fields + prediction |
+
+Pass: u_cert_date populated, u_predicted_approval_24h set.
+URL: {BASE}/now/idp/admin , {BASE}/ml_solution_definition_list.do
+</code></pre>
+<hr />
+<h2 id="part-15-best-practices">Part 15 — Best Practices</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="151-design">15.1 Design</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">✅ One skill = one job (summarize OR classify, not both)
+✅ Ground skills to specific tables with field-level mapping
+✅ VA for happy-path slots; AIA for long-tail questions
+✅ Always show citations for policy answers
+✅ Confirm destructive tool calls (RequestLeave, CancelRequest)
+✅ Log every AI action to x_786686_hr_leave_audit_v2
+❌ Do not send cross-employee data to LLM
+❌ Do not auto-approve leave based on PI alone
+❌ Do not index u_reason without PII masking
+❌ Do not skip human review on AI-generated code
+</code></pre>
+<h3 id="152-prompt-engineering">15.2 Prompt engineering</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">✅ Separate SYSTEM (rules) from USER (data)
+✅ Specify output format explicitly (JSON, single label, max words)
+✅ Include refusal behavior (&quot;If unsure, say...&quot;)
+✅ Test in Arabic and English if bilingual workforce
+✅ Version prompts; never edit production without version bump
+</code></pre>
+<h3 id="153-operations">15.3 Operations</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">✅ Weekly: review zero-result AI Search queries → add KB
+✅ Monthly: review skill latency + cost dashboards
+✅ Quarterly: re-train PI + NLU with new utterances
+✅ Per release: run 5 labs as regression suite
+✅ Maintain eval set (50 questions + expected answers) per skill
+</code></pre>
+<h3 id="154-security">15.4 Security</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<pre><code class="language-markdown">✅ Mask medical text in prompts sent to external LLMs
+✅ Use instance ACLs — tools run as authenticated user
+✅ Budget caps on BYO LLM properties
+✅ Disable x_786686_hr_leave.ai.enabled kill switch tested quarterly
+</code></pre>
+<hr />
+<h2 id="part-16-production-deployment-checklist">Part 16 — Production Deployment Checklist</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<h3 id="phase-a-pre-deployment-sub-prod-complete">Phase A — Pre-deployment (sub-prod complete)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<pre><code class="language-markdown">[ ] All 5 labs passed on sub-prod
+[ ] Update Set &quot;HR Leave AI v1.0&quot; complete + peer reviewed
+[ ] ATF tests green for HRLXAIAgentTools
+[ ] Eval set ≥ 90% pass rate per skill
+[ ] NLU intent accuracy ≥ 0.92
+[ ] IDP field F1 ≥ 0.90
+[ ] PI accuracy ≥ 0.80
+[ ] AI Search zero-result rate &lt; 10%
+[ ] Agent containment ≥ 70% in UAT
+[ ] Security review: PII redaction verified
+[ ] Cost model approved (projected RU/month)
+[ ] Rollback plan documented (disable ai.enabled property)
+</code></pre>
+<h3 id="phase-b-deployment-day">Phase B — Deployment day</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<pre><code class="language-markdown">[ ] Clone Update Set to production via DevOps/CD pipeline
+[ ] Set production LLM API keys (password2 properties)
+[ ] Activate plugins (if not already) — maintenance window
+[ ] Now Assist Admin → enable skills for production scope
+[ ] AI Search → full re-index on production
+[ ] NLU model published to production instance
+[ ] IDP model activated
+[ ] PI solutions activated (monitor only first 24h)
+[ ] Enable VA on Employee Center (feature flag gradual)
+[ ] Enable AI Agent on Employee Center (pilot group first)
+[ ] Verify kill switch: x_786686_hr_leave.ai.enabled = true
+[ ] Smoke test: 10 utterances from §3.5 + §7
+[ ] Monitor logs 2 hours: syslog, sn_aia_execution, sys_one_extend_audit
+</code></pre>
+<h3 id="phase-c-post-deployment-week-1">Phase C — Post-deployment (week 1)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<pre><code class="language-markdown">[ ] Day 1: review all sn_aia_audit for errors
+[ ] Day 2: review AI Search zero-result queries
+[ ] Day 3: review VA containment + handoff rate
+[ ] Day 5: review LLM spend vs budget
+[ ] Day 7: stakeholder sign-off meeting
+[ ] Document known issues + FAQ for HR helpdesk
+[ ] Schedule monthly PI re-train
+[ ] Schedule quarterly prompt review
+</code></pre>
+<h3 id="rollback-procedure">Rollback procedure</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">1. Set x_786686_hr_leave.ai.enabled = false (immediate stop)
+2. Disable AI Agent channel in Now Assist Admin
+3. Disable VA topics (set inactive)
+4. Deactivate PI solutions (optional — predictions stop)
+5. Revert Update Set if Script Include defects found
+6. Communicate to HR: &quot;AI assistant temporarily offline&quot;
+</code></pre>
+<hr />
+<h2 id="appendices">Appendices</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="appendix-a-key-tables-reference">Appendix A — Key tables reference</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Tables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Skills</td>
+<td>sys_one_extend_skill, sys_one_extend_prompt_template, sys_one_extend_audit</td>
+</tr>
+<tr>
+<td>Agents</td>
+<td>sn_aia_agent, sn_aia_tool, sn_aia_execution, sn_aia_execution_step, sn_aia_audit</td>
+</tr>
+<tr>
+<td>AI Search</td>
+<td>ais_search_source, ais_search_profile, sys_aisearch_query_log, sys_aisearch_genai_log</td>
+</tr>
+<tr>
+<td>PI</td>
+<td>ml_solution_definition, ml_solution, ml_solution_monitor</td>
+</tr>
+<tr>
+<td>NLU</td>
+<td>nlu_model, nlu_intent, nlu_entity, nlu_utterance</td>
+</tr>
+<tr>
+<td>VA</td>
+<td>sys_cs_topic, sys_cs_topic_block, sys_cs_conversation, sys_cs_message</td>
+</tr>
+<tr>
+<td>IDP</td>
+<td>sn_idp_template, sn_idp_model, sn_idp_extraction_result</td>
+</tr>
+<tr>
+<td>HR Leave</td>
+<td>x_786686_hr_leave_req_v2, _bal_v2, _employee_v2, _audit_v2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="appendix-b-script-includes">Appendix B — Script Includes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a><a href="{BASE}/$studio.do">Studio</a></nav>
+<table>
+<thead>
+<tr>
+<th>Script Include</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HRLXAIAgentTools</td>
+<td>Agent/VA tools</td>
+</tr>
+<tr>
+<td>HRLXAIProvider</td>
+<td>BYO LLM + fallback</td>
+</tr>
+<tr>
+<td>HRLXRagService</td>
+<td>RAG answers</td>
+</tr>
+<tr>
+<td>HRLXAICache</td>
+<td>Response cache</td>
+</tr>
+<tr>
+<td>HRLXHolidayUtil</td>
+<td>Holiday JSON for date skill</td>
+</tr>
+</tbody>
+</table>
+<h3 id="appendix-c-rest-messages">Appendix C — REST Messages</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Endpoint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude_API</td>
+<td>https://api.anthropic.com/v1/messages</td>
+</tr>
+<tr>
+<td>OpenAI_API</td>
+<td>https://api.openai.com/v1/chat/completions</td>
+</tr>
+</tbody>
+</table>
+<h3 id="appendix-d-roles">Appendix D — Roles</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sn_nowassist_admin</td>
+<td>Skills</td>
+</tr>
+<tr>
+<td>sn_aia.admin</td>
+<td>Agents</td>
+</tr>
+<tr>
+<td>ml_admin</td>
+<td>Predictive Intelligence</td>
+</tr>
+<tr>
+<td>ai_search_admin</td>
+<td>AI Search</td>
+</tr>
+<tr>
+<td>nlu_admin</td>
+<td>NLU</td>
+</tr>
+<tr>
+<td>sn_idp.admin</td>
+<td>IDP</td>
+</tr>
+<tr>
+<td>x_786686_hr_leave.manager</td>
+<td>UI Actions</td>
+</tr>
+<tr>
+<td>x_786686_hr_leave.hr_admin</td>
+<td>Full HR AI access</td>
+</tr>
+</tbody>
+</table>
+<h3 id="appendix-e-plugin-quick-search-terms">Appendix E — Plugin quick search terms</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">Now Assist, AI Agents, AI Search, Predictive Intelligence,
+Document Intelligence, Virtual Agent, NLU Workbench, Now Assist for Creator
+</code></pre>
+<h3 id="appendix-f-troubleshooting">Appendix F — Troubleshooting</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Skill returns empty</td>
+<td>Missing grounding sys_id</td>
+<td>Pass record in payload</td>
+</tr>
+<tr>
+<td>Agent can&rsquo;t call tool</td>
+<td>ACL on Script Include</td>
+<td>Check scope + roles</td>
+</tr>
+<tr>
+<td>AI Search no results</td>
+<td>Index not built</td>
+<td>Full index in admin</td>
+</tr>
+<tr>
+<td>NLU always fallback</td>
+<td>Model not published</td>
+<td>Publish + bind to topic</td>
+</tr>
+<tr>
+<td>IDP low F1</td>
+<td>Too few samples</td>
+<td>Add 5+ annotated PDFs</td>
+</tr>
+<tr>
+<td>PI predict null</td>
+<td>Solution inactive</td>
+<td>Activate + check field map</td>
+</tr>
+<tr>
+<td>Budget exceeded</td>
+<td>Daily cap hit</td>
+<td>Raise budget or wait</td>
+</tr>
+<tr>
+<td>VA handoff fails</td>
+<td>Queue empty</td>
+<td>Configure HR queue hours</td>
+</tr>
+</tbody>
+</table>
+<h3 id="appendix-g-related-documentation">Appendix G — Related documentation</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Doc</th>
+<th>Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01_DEVELOPMENT.md</td>
+<td>Tables, BRs, Script Includes</td>
+</tr>
+<tr>
+<td>03_SERVICE_CATALOG.md</td>
+<td>Record producer + catalog VA</td>
+</tr>
+<tr>
+<td>07_REPORTS_DASHBOARDS_PA.md</td>
+<td>AI metrics dashboards</td>
+</tr>
+<tr>
+<td>08_ATF_TESTING.md</td>
+<td>Test HRLXAIAgentTools</td>
+</tr>
+<tr>
+<td>External codegen</td>
+</tr>
+<tr>
+<td>12_INTEGRATION_FULL_GUIDE.md</td>
+<td>REST + Table API</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>End of guide.</strong> Start at <a href="#part-0--quick-map--prerequisites">Part 0</a> → pick your track (Skill, Agent, VA, Search, PI, IDP) → run matching <a href="#part-14--hands-on-labs-5-sessions">Lab</a> → complete <a href="#part-16--production-deployment-checklist">Deployment Checklist</a>.</p>
+<p>للأسئلة: ابدأ من Quick Map → نفّذ Lab المناسب → راجع Troubleshooting (Appendix F).</p>
+</blockquote>
+
+</article>
+    <nav class="chapter-nav"><a href="13_2HOUR_MASTER_SUMMARY.html">← Chapter 13</a><span>Chapter 14</span><a href="15_CLAUDE_CLI_CODE_SERVICENOW.html">Chapter 15 →</a></nav>
+    <p class="footer">HR Leave · Studio from scratch · scope x_786686_hr_leave · replace {BASE} with your instance URL</p>
+  </main>
+
+  <script src="assets/docs.js"></script>
+  <script>
+    (function () {
+      var BASE = 'https://dev398980.service-now.com';
+      document.querySelectorAll('a[href*="{BASE}"]').forEach(function (a) {
+        a.href = a.href.split('{BASE}').join(BASE);
+      });
+    })();
+  </script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

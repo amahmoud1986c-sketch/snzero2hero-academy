@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>03 — Service Catalog (Studio From Scratch) | HR Leave Australia</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+  <style>
+    .field-table th { white-space: nowrap; }
+    .step-num { font-weight: 700; color: var(--brand-2); }
+    .demo-box { border-left: 4px solid var(--brand-2); padding: .35rem 0 .35rem .85rem; margin: .75rem 0; }
+    .chapter-nav { display: flex; justify-content: space-between; gap: 1rem; margin: 2rem 0 1rem; padding: 1rem; background: #f8fafc; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All</a>
+      <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Links</a>
+      <a href="SCHEMA_AND_DATA.html">Schema</a>
+      <a href="scripts/index.html">Scripts</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+      <span class="badge">Chapter 03</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>03 — Service Catalog (Studio From Scratch)</h1>
+      <p>Category HR Leave, Record Producer Submit Leave Request, variables, producer script, publish</p>
+      <div class="meta-grid">
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.72rem">e5f5bc9493a303507520703efaba104d</code></div>
+        <div><strong>Instance lab</strong><code style="color:#fff;font-size:.72rem">dev398980</code></div>
+        <div><strong>URL token</strong><code style="color:#fff">{BASE}</code></div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Quick open</strong>
+<a href="#viz03">Visual map</a>
+<a href="{BASE}/sc_category_list.do">Categories</a>
+<a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a>
+<a href="{BASE}/esc">Employee Center</a>
+    </div>
+    <article class="content">
+
+<div class="glance" id="viz03">
+  <h3>Visual map — Ch.03 · Service Catalog — intake</h3>
+  <div class="grid3">
+    <div class="box"><strong>See in 10 seconds</strong><p>Category → Record Producer → variables → publish</p></div>
+    <div class="box"><strong>You build</strong><p>Submit Leave Request → req_v2</p></div>
+    <div class="box"><strong>Track</strong><p>Development</p></div>
+  </div>
+  <div class="flow"><div class="n"><b>CAT</b>Category</div><span class="arrow">→</span><div class="n"><b>RP</b>Producer</div><span class="arrow">→</span><div class="n"><b>VAR</b>Questions</div><span class="arrow">→</span><div class="n"><b>SCRIPT</b>Map fields</div><span class="arrow">→</span><div class="n"><b>PUB</b>Employee Center</div></div>
+  <div class="chips"><a class="chip url" href="{BASE}/sc_category_list.do">↗ sc_category_list.do</a><a class="chip url" href="{BASE}/sc_cat_item_list.do?sysparm_query=sys_scope.scope=x_786686_hr_leave">↗ sc_cat_item_list.do</a><a class="chip url" href="{BASE}/esc">↗ esc</a></div>
+  <div class="chips"><span class="chip do">✓ gs.getUserID()</span><span class="chip do">✓ Whitelist leave_type</span><span class="chip do">✓ Catalog UI Policy ≠ UI Policy</span><span class="chip dont">✗ Trust variable identity</span><span class="chip dont">✗ Skip employee lookup</span></div>
+  <p class="note-sm">Full visual path (all chapters): <a href="VISUAL_FROM_SCRATCH_00_16.html">VISUAL_FROM_SCRATCH_00_16.html</a></p>
+</div>
+<div class="ok">
+<p><strong>Studio-only from scratch:</strong> Service Catalog intake for leave requests. Requires req_v2 table and employee role from chapters 01–02.</p>
+<p>Also open: <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Direct Links</a> · <a href="SCHEMA_AND_DATA.html">Schema</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All Objects</a> · Previous: <a href="02_ADMINISTRATION.html">02 Administration</a></p>
+</div>
+<h2 id="how-objects-relate">How catalog objects relate</h2>
+<div class="ok">
+<pre style="white-space:pre-wrap;font-family:var(--mono);font-size:.85rem;background:#0b1220;color:#e2e8f0;padding:1rem;border-radius:12px">
+Part 1 Category (HR Leave)
+        │
+        ▼
+Part 2 Record Producer → Part 3 Variables
+        │
+        ▼
+Part 4 Producer script (maps variables → req_v2)
+        │
+        ▼
+Part 5 Publish → Employee Center / Portal catalog
+        │
+        ▼
+BR1 days + approver → BR2 event → Flow approval
+</pre>
+<p><strong>Flow:</strong> employee1 opens catalog → submits → req_v2 inserted in submitted state → same lifecycle as UI Action Submit.</p>
+</div>
+
+<hr />
+
+<h2 id="rule0">Rule 0 — Before any object (Application + Update Set + Studio)</h2>
+<p>Repeat these checks before creating or editing any application file. This section is also <strong>section 00 Update Set</strong> — create the capture set first.</p>
+<ol>
+  <li><span class="step-num">Application picker</span> — top-right globe / application menu → select <strong>HR Leave</strong> (<code>x_786686_hr_leave</code>). Never leave <em>Global</em> selected when creating scoped artifacts.</li>
+  <li><span class="step-num">Update Set</span> — All → <strong>System Update Sets → Local Update Sets</strong> → <strong>New</strong>:
+    <table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+    <tr><td>Name</td><td><code>HR Leave – Build</code></td></tr>
+    <tr><td>Application</td><td>HR Leave</td></tr>
+    <tr><td>State</td><td>In Progress</td></tr>
+    <tr><td>Description</td><td>Captures all HR Leave lab artifacts</td></tr></table>
+    After submit: open the record → click <strong>Make Current</strong>. Direct list: <a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a>
+  </li>
+  <li><span class="step-num">Open Studio</span> — <a href="{BASE}/$studio.do">{BASE}/$studio.do</a> → confirm header shows <strong>HR Leave</strong>.</li>
+</ol>
+<div class="warn"><p>If artifacts land in Global scope, delete them and recreate under HR Leave. ACLs and events created globally will not behave correctly for this app.</p></div>
+<div class="demo-box"><p><strong>Verify Update Set:</strong> Create a test Script Include in Studio → open <strong>HR Leave – Build</strong> → Related List <strong>Customer Updates</strong> shows the new file.</p></div>
+
+<hr />
+
+<h2 id="part-1-category">Part 1: Catalog Category — HR Leave</h2>
+<h3>Purpose</h3>
+<p>Groups the Submit Leave Request record producer under a dedicated HR Leave catalog category.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> Service Catalog → Categories</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sc_category.do?sys_id=-1">{BASE}/sc_category.do (New)</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="01_DEVELOPMENT.html#part-1-application">Part 1: Application Setup</a> (01 Development).</li><li>Rule 0 Update Set current.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody>
+<tr><td><strong>Title</strong></td><td>HR Leave</td></tr>
+<tr><td><strong>Description</strong></td><td>Leave requests and balances</td></tr>
+<tr><td>Active</td><td>true</td></tr>
+<tr><td>Order</td><td>100</td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr>
+</tbody></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Service Catalog → Categories → New.</li>
+<li>Fill Title, Description, Order from table. Active = true.</li>
+<li>Submit. Note category sys_id for record producer.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Category HR Leave appears in category list.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Open Employee Center → catalog browse → HR Leave category visible (after producer published).</p></div>
+
+<hr />
+
+<h2 id="part-2-record-producer">Part 2: Record Producer — Submit Leave Request</h2>
+<h3>Purpose</h3>
+<p>Service Catalog item that inserts submitted req_v2 from catalog variables.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> Service Catalog → Record Producers OR Studio → Record Producer</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sc_cat_item_producer_list.do?sysparm_query=nameLIKESubmit Leave">{BASE}/sc_cat_item_producer_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul>
+<li><a href="01_DEVELOPMENT.html#part-3-table-req">Part 3: Table — Leave Request</a> (01).</li>
+<li><a href="02_ADMINISTRATION.html#part-1-roles">Part 1: Roles</a> employee role (02).</li>
+<li><a href="#part-1-category">Part 1: Catalog Category</a>.</li>
+</ul>
+<h3>Form fields</h3>
+<table class="field-table"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody>
+<tr><td><strong>Name</strong></td><td>Submit Leave Request</td></tr>
+<tr><td><strong>Table</strong></td><td>x_786686_hr_leave_req_v2</td></tr>
+<tr><td><strong>Category</strong></td><td>HR Leave</td></tr>
+<tr><td>Roles</td><td>x_786686_hr_leave.employee</td></tr>
+<tr><td>Active</td><td>true</td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr>
+</tbody></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Record Producers → New. Fill header fields from table.</li>
+<li>Category = HR Leave. Table = req_v2. Roles = employee.</li>
+<li>Save. Continue to Part 3 for variables and Part 4 for script.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Producer record saved under HR Leave application.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Open producer form → Table field shows x_786686_hr_leave_req_v2.</p></div>
+
+<hr />
+
+<h2 id="part-3-variables">Part 3: Catalog Variables</h2>
+<h3>Purpose</h3>
+<p>Four question variables mapped by the producer script to req_v2 u_* fields.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> Record Producer → Related Lists → Variables</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-2-record-producer">Part 2: Record Producer</a> created.</li></ul>
+<h3>Form fields — each variable New</h3>
+<table class="field-table"><thead><tr><th>Name</th><th>Label</th><th>Type</th><th>Question</th><th>Mandatory</th></tr></thead><tbody>
+<tr><td>leave_type</td><td>Leave Type</td><td>Choice</td><td>Leave Type</td><td>Yes</td></tr>
+<tr><td>start_date</td><td>Start Date</td><td>Date</td><td>Start Date</td><td>Yes</td></tr>
+<tr><td>end_date</td><td>End Date</td><td>Date</td><td>End Date</td><td>Yes</td></tr>
+<tr><td>reason</td><td>Reason</td><td>Multi Line Text</td><td>Reason</td><td>No</td></tr>
+</tbody></table>
+<p>Choice values for leave_type: annual, sick, personal (match req_v2 u_leave_type choices).</p>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Open Submit Leave Request producer → Variables related list → New.</li>
+<li>For each row: Name must match producer.* references in script. Set Label, Type, Mandatory.</li>
+<li>Order: leave_type, start_date, end_date, reason.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Four variables on producer; names exactly leave_type, start_date, end_date, reason.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Try It → variable form renders all four questions.</p></div>
+
+<hr />
+
+<h2 id="part-4-producer-script">Part 4: Producer Script</h2>
+<h3>Purpose</h3>
+<p>Server-side script maps catalog variables to req_v2 fields and sets state submitted. Source: <code>src/catalog/RP_submit_leave.js</code>.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> Record Producer → Script tab</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="scripts/src/catalog/RP_submit_leave.js.html">Scripts portal — RP_submit_leave.js</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-3-variables">Part 3: Catalog Variables</a>.</li><li><a href="01_DEVELOPMENT.html#part-8-br1">Part 8: BR1</a> calculates days on insert.</li></ul>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Open producer → Script tab.</li>
+<li>Paste full script below.</li>
+<li>Save.</li>
+</ol>
+<h3>Full script (paste-ready)</h3>
+<pre><code>/**
+ * Record Producer Script: Submit Leave Request
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ * Target table: x_786686_hr_leave_req_v2
+ *
+ * Maps producer variables to record fields. Runs server-side when submitted.
+ * Variables expected: leave_type, start_date, end_date, reason
+ */
+(function () {
+
+    current.u_requested_for_user = gs.getUserID();
+    current.u_leave_type = producer.leave_type;
+    current.u_start_date = producer.start_date;
+    current.u_end_date = producer.end_date;
+    current.u_reason = producer.reason;
+    current.u_state = 'submitted';
+
+    // Link to employee profile of the current user (if exists)
+    var emp = new GlideRecord('x_786686_hr_leave_employee_v2');
+    emp.addQuery('u_user', gs.getUserID());
+    emp.query();
+    if (emp.next()) {
+        current.u_employee_ref = emp.getUniqueValue();
+    }
+
+    // BR1 will calculate days and set the approver on insert.
+
+})();
+</code></pre>
+<h3>Verify checklist</h3>
+<ul><li>Script saves without syntax errors.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Background: no errors on save. Catalog submit tested in Part 5.</p></div>
+
+<hr />
+
+<h2 id="part-5-publish-test">Part 5: Publish and Test</h2>
+<h3>Purpose</h3>
+<p>Publish catalog item and verify end-to-end submit from Employee Center.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> Service Catalog → Catalog Items → Publish</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/esc">Employee Center</a> · <a href="{BASE}/$sp.do">Service Portal</a></div>
+<h3>Prerequisites</h3>
+<ul><li>Parts 1–4 complete.</li><li>employee1 user with employee role and employee_v2 seeded.</li></ul>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Record Producer → Related Lists → Catalogs → add to HR Leave category.</li>
+<li>Service Catalog → open producer → <strong>Publish</strong>.</li>
+<li>Login as employee1 → Employee Center → HR Leave → Submit Leave Request.</li>
+<li>Fill variables → Submit.</li>
+<li>Verify req_v2 created in submitted state; u_days_count and u_approver_user set by BR1.</li>
+<li>Verify Flow starts for manager1 approval.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul>
+<li>Catalog item visible to employee role.</li>
+<li>Submit creates req_v2 in submitted state.</li>
+<li>sysapproval_approver row for manager1.</li>
+</ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>employee1 submits → req_v2 row, BR1 sets days + approver, Flow starts.</p></div>
+
+<h2 id="catalog-verify">Service Catalog verify checklist</h2>
+<div class="ok"><p>Complete after Parts 1–5.</p></div>
+<ol>
+<li>HR Leave category active.</li>
+<li>Record Producer scoped to HR Leave with four variables.</li>
+<li>Producer script from src/catalog/RP_submit_leave.js pasted.</li>
+<li>Published and visible in Employee Center.</li>
+<li>E2E submit creates submitted req_v2.</li>
+</ol>
+</article>
+    <nav class="chapter-nav"><a href="02_ADMINISTRATION.html">← Chapter 02</a><span>Chapter 03</span><a href="04_SERVICE_PORTAL.html">Chapter 04 →</a></nav>
+    <p class="footer">HR Leave · Studio from scratch · scope x_786686_hr_leave · replace {BASE} with your instance URL</p>
+  </main>
+
+  <script src="assets/docs.js"></script>
+  <script>
+    (function () {
+      var BASE = 'https://dev398980.service-now.com';
+      document.querySelectorAll('a[href*="{BASE}"]').forEach(function (a) {
+        a.href = a.href.split('{BASE}').join(BASE);
+      });
+    })();
+  </script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

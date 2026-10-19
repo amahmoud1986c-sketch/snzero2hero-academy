@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Practical AI with ServiceNow — From Zero | HR Leave Lab</title>
+  <meta name="description" content="Visual-first path from zero: Now Assist/Otto licensing, AI Control Tower, direct URLs, read-only agent lab (leave or incidents), agentic workflows, RAG, MCP pointer, data access, SDK AiAgent Fluent APIs, and best practices." />
+  <link rel="stylesheet" href="assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Practical AI</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="14_AI_SERVICENOW_AGENTS.html">Ch.14 Deep</a>
+      <a href="TUTORIAL_AGENTIC_AI_CONTROL_TOWER_3MIN.html">Control Tower 3 min</a>
+      <a href="AI_SERVICENOW_FULL_DEMO_MASTER.html">AI Full Demo</a>
+      <span class="badge">Visual-first</span>
+      <span class="badge">Read-only v1</span>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <section class="hero">
+      <h1>Practical AI with ServiceNow — from zero</h1>
+      <p>Open the pictures first. Each block maps to a real screen on your instance. Ship a <strong>read-only</strong> agent before you let tools touch state fields.</p>
+      <div class="meta-grid">
+        <div><strong>Scope (HR lab)</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>URL token</strong><code style="color:#fff">{BASE}</code></div>
+        <div><strong>Alt table lab</strong><code style="color:#fff">incident</code> (ITSM)</div>
+        <div><strong>Time</strong>~90 min hands-on</div>
+      </div>
+    </section>
+
+    <article class="content">
+
+      <div class="viz-banner">
+        <h2>Read the diagram, then click the URL</h2>
+        <p>Zero → prerequisites → open consoles → one read-only agent → governance → RAG/MCP pointers → SDK boundaries.</p>
+      </div>
+
+      <div class="flow">
+        <div class="n"><b>0</b>License + roles</div>
+        <span class="arrow">→</span>
+        <div class="n adm"><b>1</b>Control Tower</div>
+        <span class="arrow">→</span>
+        <div class="n dev"><b>2</b>Agent Studio</div>
+        <span class="arrow">→</span>
+        <div class="n dev"><b>3</b>Read tool</div>
+        <span class="arrow">→</span>
+        <div class="n adm"><b>4</b>Register</div>
+        <span class="arrow">→</span>
+        <div class="n impl"><b>5</b>Test ACLs</div>
+      </div>
+
+      <nav class="toc" aria-label="On this page">
+        <strong>Contents</strong>
+        <ul>
+          <li><a href="#prereq">1. Prerequisites</a></li>
+          <li><a href="#urls">2. Direct URLs</a></li>
+          <li><a href="#lab">3. Lab — read-only agent</a></li>
+          <li><a href="#workflow-vs-agent">4. Agentic workflow vs single agent</a></li>
+          <li><a href="#rag">5. RAG — practical steps</a></li>
+          <li><a href="#mcp">6. MCP pointer</a></li>
+          <li><a href="#data-access">7. Data access identity</a></li>
+          <li><a href="#best">8. Best practices</a></li>
+          <li><a href="#sdk">9. SDK — can and cannot</a></li>
+          <li><a href="#related">10. Related guides</a></li>
+        </ul>
+      </nav>
+
+      <!-- 1 Prerequisites -->
+      <h2 id="prereq">1. Prerequisites — before you open Agent Studio</h2>
+
+      <div class="stepboard">
+        <div class="s"><b>Core app exists</b><span>Tables, BR, Flow, ACLs green (ch.01–12). AI sits on top — it does not replace Studio create steps.</span></div>
+        <div class="s"><b>Now Assist / Otto SKUs</b><span>Licensed on the instance. PDI may lack AI Agents or Control Tower — plan a licensed lab for Parts that 404.</span></div>
+        <div class="s"><b>Plugins</b><span>Search filter navigator: <em>Now Assist AI Agents</em>, <em>AI Agent Studio</em>, <em>AI Control Tower</em> as your contract allows.</span></div>
+        <div class="s"><b>Roles</b><span><code>sn_aia.admin</code> (author), <code>sn_aia.user</code> (run), platform admin for plugin activation only — not for production agent runtime.</span></div>
+        <div class="s"><b>AI Control Tower</b><span>Governance plane: inventory, approval posture, runs. Register every agent before wider rollout.</span></div>
+        <div class="s"><b>Update Set</b><span>Scoped capture under HR Leave (or your app). Script Include tools belong in application scope.</span></div>
+      </div>
+
+      <div class="ok">
+        <p><strong>Minimum green light:</strong> you can open Agent Studio without 404, ACLs enforce row-level access on your lab table, and you have two test users (employee + manager) to prove invoking-user behavior.</p>
+      </div>
+      <div class="warn">
+        <p><strong>Licensing reality:</strong> Now Assist, AI Agents, Agent Studio, and Control Tower are separate SKUs. If a URL fails, use filter navigator search — do not paste admin credentials into external LLM tools to “work around” missing product.</p>
+      </div>
+
+      <div class="chips">
+        <span class="chip do">✓ ACLs before AI</span>
+        <span class="chip do">✓ Invoking user first</span>
+        <span class="chip do">✓ Control Tower register</span>
+        <span class="chip dont">✗ AI before tables</span>
+        <span class="chip dont">✗ admin as AI User</span>
+      </div>
+
+      <!-- 2 URLs -->
+      <h2 id="urls">2. Direct URLs — bookmark these</h2>
+      <p>Replace <code>{BASE}</code> with your instance (use the bar at top after page load). All links open in a new tab once applied.</p>
+
+      <div class="url-box"><strong>Agent &amp; governance</strong>
+        <a href="{BASE}/now/ai-agent-studio">AI Agent Studio</a>
+        <a href="{BASE}/now/aia/studio">AI Agent Studio (alt)</a>
+        <a href="{BASE}/now/ai-control-tower">AI Control Tower</a>
+        <a href="{BASE}/nav_to.do?uri=%2Fai_agent_list.do">AI Agents list</a>
+      </div>
+      <div class="url-box"><strong>Assist &amp; conversation</strong>
+        <a href="{BASE}/now/assist">Now Assist / Otto panel</a>
+        <a href="{BASE}/$conversation-builder.do">Virtual Agent Designer</a>
+        <a href="{BASE}/nav_to.do?uri=%2Fsys_cs_topic_list.do">VA topics list</a>
+      </div>
+      <div class="url-box"><strong>Search &amp; ML</strong>
+        <a href="{BASE}/nav_to.do?uri=%2Fai_search_application_list.do">AI Search applications</a>
+        <a href="{BASE}/nav_to.do?uri=%2Fml_solution_list.do">Predictive Intelligence (ML solutions)</a>
+      </div>
+
+      <div class="modmap">
+        <a href="{BASE}/now/ai-agent-studio"><h4>Agent Studio</h4><p>Agents, tools, agentic workflows, test traces.</p><span class="go">Open →</span></a>
+        <a href="{BASE}/now/ai-control-tower"><h4>Control Tower</h4><p>Inventory, policies, runs, third-party AI assets.</p><span class="go">Open →</span></a>
+        <a href="{BASE}/now/assist"><h4>Now Assist / Otto</h4><p>End-user assistant surface — routes to skills, VA, agents.</p><span class="go">Open →</span></a>
+        <a href="{BASE}/$conversation-builder.do"><h4>VA Designer</h4><p>Deterministic topics — still best for high-volume scripted flows.</p><span class="go">Open →</span></a>
+        <a href="{BASE}/nav_to.do?uri=%2Fai_search_application_list.do"><h4>AI Search</h4><p>Indexed retrieval — native half of RAG.</p><span class="go">Open →</span></a>
+        <a href="{BASE}/nav_to.do?uri=%2Fml_solution_list.do"><h4>Predictive Intelligence</h4><p>Classification / similarity ML — not generative chat.</p><span class="go">Open →</span></a>
+      </div>
+
+      <!-- 3 Lab -->
+      <h2 id="lab">3. Lab — one read-only agent (leave <em>or</em> incidents)</h2>
+
+      <p>Pick <strong>one</strong> track. Both use the same pattern: Script Include tool → register in Agent Studio → data access = <em>invoking user</em> → <code>GlideRecordSecure</code> so ACLs apply as the human who asked.</p>
+
+      <table>
+        <thead><tr><th>Track</th><th>Table</th><th>What the agent may do (v1)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>A — HR Leave</strong></td><td><code>x_786686_hr_leave_req_v2</code></td><td>List/count <em>my</em> requests; summarize dates and state — no insert, no <code>u_state</code> writes.</td></tr>
+          <tr><td><strong>B — Security / ITSM</strong></td><td><code>incident</code></td><td>List open incidents caller can see; get one by number — read-only, no assignment/state changes.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="stepboard">
+        <div class="s"><b>Script Include</b><span>Create <code>LabAIReadTools</code> in your app scope. Client callable: false.</span></div>
+        <div class="s"><b>Tool method</b><span>Return JSON only. Use <code>GlideRecordSecure</code> + encoded query scoped to caller.</span></div>
+        <div class="s"><b>Agent Studio → Tools</b><span>New → Script → pick include + method. Describe inputs in plain English.</span></div>
+        <div class="s"><b>New AI Agent</b><span>Instructions: refuse writes; cite record numbers; say when ACL hides data.</span></div>
+        <div class="s"><b>Data access</b><span><strong>Invoking user</strong> (not AI User) for v1.</span></div>
+        <div class="s"><b>Test</b><span>Run as employee1 vs manager — different row counts must appear.</span></div>
+      </div>
+
+      <div class="screen">
+        <div class="bar">
+          <span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+          <span class="ttl">Agent Studio · New tool (Script)</span>
+          <span class="path">{BASE}/now/ai-agent-studio</span>
+        </div>
+        <div class="body">
+          <div class="side">
+            <div>Agents</div>
+            <div class="on">Tools</div>
+            <div>Workflows</div>
+            <div>Evaluations</div>
+          </div>
+          <div class="main">
+            <div class="row"><span>Name</span><span>list_my_leave_requests</span></div>
+            <div class="row"><span>Type</span><span>Script Include</span></div>
+            <div class="row"><span>Include</span><span>LabAIReadTools</span></div>
+            <div class="row"><span>Method</span><span>listLeaveForUser</span></div>
+            <div class="row"><span>Execution</span><span>Invoking user (via agent data access)</span></div>
+          </div>
+        </div>
+        <div class="cap"><strong>You are here:</strong> tool wiring — business logic stays in the Script Include, not in the prompt.</div>
+      </div>
+
+      <h3>3.1 Script Include — Track A (leave, read-only)</h3>
+      <pre><code>var LabAIReadTools = Class.create();
+LabAIReadTools.prototype = {
+    initialize: function() {
+        this.T_REQ = 'x_786686_hr_leave_req_v2';
+        this.T_EMP = 'x_786686_hr_leave_employee_v2';
+    },
+
+    _employeeSysIdForUser: function(userId) {
+        var gr = new GlideRecordSecure(this.T_EMP);
+        gr.addQuery('user', userId);
+        gr.setLimit(1);
+        gr.query();
+        return gr.next() ? gr.getUniqueValue() : null;
+    },
+
+    /** AI Agent tool — list leave requests visible to invoking user via ACLs */
+    listLeaveForUser: function() {
+        var userId = gs.getUserID();
+        var empId = this._employeeSysIdForUser(userId);
+        if (!empId) return { ok: true, rows: [], note: 'no_employee_profile' };
+
+        var out = [];
+        var req = new GlideRecordSecure(this.T_REQ);
+        req.addQuery('u_employee_ref', empId);
+        req.orderByDesc('sys_created_on');
+        req.setLimit(25);
+        req.query();
+        while (req.next()) {
+            out.push({
+                number: req.getValue('number'),
+                state: req.getDisplayValue('u_state'),
+                type: req.getDisplayValue('u_leave_type'),
+                start: req.getValue('u_start_date'),
+                end: req.getValue('u_end_date'),
+                days: req.getValue('u_days')
+            });
+        }
+        return { ok: true, count: out.length, rows: out };
+    },
+
+    type: 'LabAIReadTools'
+};</code></pre>
+
+      <h3>3.2 Script Include — Track B (incidents, read-only)</h3>
+      <pre><code>var LabAIReadTools = Class.create();
+LabAIReadTools.prototype = {
+    initialize: function() {},
+
+    /** AI Agent tool — open incidents the invoking user may read (ACL-enforced) */
+    listOpenIncidents: function(limit) {
+        var max = Math.min(parseInt(limit, 10) || 10, 25);
+        var out = [];
+        var inc = new GlideRecordSecure('incident');
+        inc.addActiveQuery();
+        inc.orderByDesc('opened_at');
+        inc.setLimit(max);
+        inc.query();
+        while (inc.next()) {
+            out.push({
+                number: inc.getValue('number'),
+                short_description: inc.getValue('short_description'),
+                state: inc.getDisplayValue('state'),
+                priority: inc.getDisplayValue('priority'),
+                assignment_group: inc.getDisplayValue('assignment_group')
+            });
+        }
+        return { ok: true, count: out.length, rows: out };
+    },
+
+    getIncidentByNumber: function(number) {
+        if (!number) return { ok: false, error: 'number_required' };
+        var inc = new GlideRecordSecure('incident');
+        inc.addQuery('number', number);
+        inc.setLimit(1);
+        inc.query();
+        if (!inc.next()) return { ok: false, error: 'not_found_or_denied' };
+        return {
+            ok: true,
+            number: inc.getValue('number'),
+            description: inc.getValue('description'),
+            state: inc.getDisplayValue('state'),
+            opened_at: inc.getValue('opened_at')
+        };
+    },
+
+    type: 'LabAIReadTools'
+};</code></pre>
+
+      <div class="warn">
+        <p><strong>v1 rule:</strong> do not register <code>requestLeave</code>, state changes, or Flow actions yet. First release = read + summarize only. Add writes only after ACL review and Control Tower registration.</p>
+      </div>
+
+      <div class="ok">
+        <p><strong>Pass criteria:</strong> test trace shows tool call → JSON rows → natural language answer; impersonating a user with no rows returns empty list, not an error stack; no field named <code>u_state</code> or <code>incident.state</code> is updated by the tool.</p>
+      </div>
+
+      <!-- 4 Workflow vs agent -->
+      <h2 id="workflow-vs-agent">4. Agentic workflow vs single agent</h2>
+
+      <div class="flow">
+        <div class="n dev"><b>SINGLE</b>One LLM + tools</div>
+        <span class="arrow">→</span>
+        <div class="n"><b>PLAN</b>Pick tool per turn</div>
+        <span class="arrow">→</span>
+        <div class="n adm"><b>WORKFLOW</b>Orchestrated graph</div>
+        <span class="arrow">→</span>
+        <div class="n impl"><b>ROUTE</b>Specialists</div>
+      </div>
+
+      <table>
+        <thead><tr><th>Pattern</th><th>When to use</th><th>Where in UI</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Single AI Agent</strong></td><td>One domain, few tools, conversational Q&amp;A (this lab).</td><td>Agent Studio → <em>AI Agents</em></td></tr>
+          <tr><td><strong>Agentic workflow</strong></td><td>Multi-step process with branches, hand-offs, or separate “specialist” agents (triage → enrich → notify).</td><td>Agent Studio → <em>Agentic Workflows</em></td></tr>
+          <tr><td><strong>Virtual Agent topic</strong></td><td>Fixed dialog, predictable utterances, compliance scripts.</td><td>VA Designer / topics</td></tr>
+        </tbody>
+      </table>
+
+      <p class="side-note">Start with a single agent. Promote to agentic workflow when you can draw the steps on a whiteboard and name which agent owns each step.</p>
+
+      <!-- 5 RAG -->
+      <h2 id="rag">5. RAG — practical steps (high level)</h2>
+
+      <p><strong>Retrieval Augmented Generation</strong> = give the model relevant text at question time; do not rely on training memory. On ServiceNow you usually implement retrieval first, generation second.</p>
+
+      <div class="stepboard">
+        <div class="s"><b>Ingest</b><span>KB articles, policy docs, scoped tables — only published/current sources.</span></div>
+        <div class="s"><b>Index</b><span>AI Search application + sources + relevancy profile.</span></div>
+        <div class="s"><b>Retrieve</b><span>Top-k chunks with minimum score; respect user criteria + ACLs.</span></div>
+        <div class="s"><b>Generate</b><span>Now Assist skill, AI Search gen answer, or agent tool (<code>search_retrieval</code> / custom Script Include).</span></div>
+      </div>
+
+      <div class="chips">
+        <span class="chip do">✓ Filter kb_knowledge published</span>
+        <span class="chip do">✓ Citations in answers</span>
+        <span class="chip dont">✗ Dump entire KB into prompt</span>
+        <span class="chip dont">✗ RAG before source hygiene</span>
+      </div>
+
+      <p>Deep implementation (three patterns A/B/C): <a href="AI_SERVICENOW_FULL_DEMO_MASTER.html#p7">AI Full Demo Master — Part 7 (RAG)</a>.</p>
+
+      <!-- 6 MCP -->
+      <h2 id="mcp">6. MCP — practical pointer</h2>
+
+      <p><strong>Model Context Protocol</strong> connects AI clients (Cursor, Claude Desktop, agent frameworks) to tools through a standard interface. For ServiceNow labs, the security boundary stays on the instance: allow-listed Script Includes or Scripted REST, not ad-hoc SQL from a laptop.</p>
+
+      <div class="ok">
+        <p><strong>Do this next on a PDI:</strong> follow <a href="AI_SERVICENOW_FULL_DEMO_MASTER.html#p8">AI_SERVICENOW_FULL_DEMO_MASTER.html — Part 8 (MCP)</a> — Scripted REST tool surface on the instance, thin local MCP server, editor config. Control Tower can inventory MCP servers as governed AI assets when licensed.</p>
+      </div>
+
+      <div class="flow">
+        <div class="n"><b>IDE</b>MCP client</div>
+        <span class="arrow">→</span>
+        <div class="n dev"><b>LOCAL</b>stdio adapter</div>
+        <span class="arrow">→</span>
+        <div class="n adm"><b>SN</b>REST + ACLs</div>
+        <span class="arrow">→</span>
+        <div class="n"><b>DATA</b>Allow-list</div>
+      </div>
+
+      <!-- 7 Data access -->
+      <h2 id="data-access">7. Define data access — invoking user vs AI User</h2>
+
+      <table>
+        <thead><tr><th>Mode</th><th>Runtime identity</th><th>Use when</th><th>Risk</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Invoking user</strong></td><td>Same roles/ACLs as the human who triggered the agent.</td><td>Default for employee/manager self-service (this lab).</td><td>Low — behavior matches portal ACLs.</td></tr>
+          <tr><td><strong>AI User</strong></td><td>Dedicated service account with its own roles.</td><td>Scheduled/unattended jobs where no human is in session.</td><td>High if over-roled — never <code>admin</code> for convenience.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="screen">
+        <div class="bar">
+          <span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+          <span class="ttl">AI Agent · Data access</span>
+          <span class="path">Agent definition</span>
+        </div>
+        <div class="body">
+          <div class="side">
+            <div class="on">General</div>
+            <div>Instructions</div>
+            <div>Tools</div>
+            <div>Triggers</div>
+          </div>
+          <div class="main">
+            <div class="row"><span>Access</span><span>Invoking user ✓</span></div>
+            <div class="row"><span>AI User</span><span>(empty — add only with written justification)</span></div>
+            <div class="row"><span>Tools</span><span>list_my_leave_requests</span></div>
+            <div class="row"><span>Trace</span><span>shows gs.getUserID() context</span></div>
+          </div>
+        </div>
+        <div class="cap"><strong>Rule:</strong> switch to AI User one role at a time only after invoking-user tests document a real gap.</div>
+      </div>
+
+      <div class="warn">
+        <p><strong>Production incident pattern:</strong> AI User granted <code>admin</code> to unblock a demo → agent summarizes restricted records into a public channel. Default invoking user unless you can explain why not in one sentence.</p>
+      </div>
+
+      <!-- 8 Best practices -->
+      <h2 id="best">8. Best practices — do / don’t</h2>
+
+      <div class="chips">
+        <span class="chip do">✓ GlideRecordSecure in tools</span>
+        <span class="chip do">✓ Read-mostly first release</span>
+        <span class="chip do">✓ Register in Control Tower</span>
+        <span class="chip do">✓ Export test traces</span>
+        <span class="chip do">✓ Narrow tool descriptions</span>
+        <span class="chip dont">✗ Tools write u_state / assignment</span>
+        <span class="chip dont">✗ Bypass ACLs in Script Include</span>
+        <span class="chip dont">✗ Shadow API keys in chat</span>
+        <span class="chip dont">✗ Unregistered agents in prod</span>
+        <span class="chip dont">✗ GlideRecord without Secure</span>
+      </div>
+
+      <div class="ok">
+        <p><strong>First release contract:</strong> agents may <em>read</em> and <em>explain</em>; humans or approved Flows still <em>commit</em> state changes until security sign-off.</p>
+      </div>
+
+      <!-- 9 SDK -->
+      <h2 id="sdk">9. ServiceNow SDK — what it CAN and CANNOT do (AI agents)</h2>
+
+      <p>From <strong>SDK 4.4+</strong>, Fluent APIs include <code>AiAgent</code>, agent tools, triggers, and agentic workflow artefacts — same governance tables as UI (<code>sn_aia_*</code>), expressed as TypeScript in your repo.</p>
+
+      <table>
+        <thead><tr><th>SDK CAN</th><th>SDK CANNOT</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>
+              Define agents, tools, triggers as code; review in PRs; deploy with <code>npx @servicenow/sdk build/deploy</code>.<br />
+              Follow official topics: <code>building-ai-agents-guide</code>, <code>building-ai-agents-tools-guide</code>, <code>building-ai-agents-advanced-guide</code> (see <a href="SDK_CURSOR_FULL_DOCUMENTATION.html">SDK Cursor documentation</a> topic list).
+            </td>
+            <td>
+              Replace AI Control Tower governance (inventory, policy, monitoring still required).<br />
+              Invent arbitrary tools without ACL allow-list and scoped Script Includes — runtime still enforces platform security.<br />
+              Skip licensing — SKUs must exist on the target instance.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre><code>// Conceptual Fluent shape — see building-ai-agents-guide in SDK docs
+import { AiAgent } from '@servicenow/sdk/core'
+
+export const leaveReadAgent = AiAgent({
+  name: 'Leave Read Assistant (lab)',
+  description: 'Read-only leave visibility for invoking user',
+  // tools, instructions, triggers: defined alongside Script Include APIs in repo
+})</code></pre>
+
+      <p>Full SDK + MCP pairing: <a href="AI_SERVICENOW_FULL_DEMO_MASTER.html#p10">Full Demo Part 10</a> · Local SDK walkthrough: <a href="16_SDK_FULL_DEV_ADMIN_FROM_SCRATCH.html">16 SDK from scratch</a>.</p>
+
+      <!-- 10 Related -->
+      <h2 id="related">10. Related guides — go deeper</h2>
+
+      <div class="modmap">
+        <a href="AI_SERVICENOW_FULL_DEMO_MASTER.html"><h4>AI ServiceNow Full Demo Master</h4><p>2–3 h · Agent Studio, workflows, Control Tower, RAG, MCP, Python + LLM, SDK commands.</p><span class="go">Open master →</span></a>
+        <a href="TUTORIAL_AGENTIC_AI_CONTROL_TOWER_3MIN.html"><h4>Agentic AI + Control Tower (3 min)</h4><p>Fast instance click-path for Tower and Studio screens.</p><span class="go">Open 3-min →</span></a>
+        <a href="14_AI_SERVICENOW_AGENTS.html"><h4>14 — AI in ServiceNow + Agents</h4><p>Full HR Leave AI layer: skills, HRLXAIAgentTools, search, VA, governance.</p><span class="go">Open ch.14 →</span></a>
+        <a href="PRACTICAL_SECOPS_VRO_FROM_SCRATCH.html"><h4>Practical SecOps + VRO</h4><p>Security + vulnerability lifecycle for AI read tools.</p><span class="go">Open →</span></a>
+        <a href="PRACTICAL_FLOW_DESIGNER_FROM_SCRATCH.html"><h4>Practical Flow Designer</h4><p>Approvals and VI triage automation.</p><span class="go">Open →</span></a>
+        <a href="SDK_WINDOWS_FULL_CYCLE_CAN_CANNOT.html"><h4>SDK Windows Full Cycle</h4><p>Install · auth · deploy · AiAgent can/cannot.</p><span class="go">Open →</span></a>
+      </div>
+
+      <div class="pathline">
+        <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html" title="Core app">Core</a>
+        <span class="sep">→</span>
+        <span title="You are here">Practical AI</span>
+        <span class="sep">→</span>
+        <a href="AI_SERVICENOW_FULL_DEMO_MASTER.html" title="Full demo">Full demo</a>
+      </div>
+
+      <footer class="footer">
+        HR Leave lab · Practical AI from zero · Scope <code>x_786686_hr_leave</code> · URLs use <code>{BASE}</code>
+      </footer>
+    </article>
+  </main>
+
+  <script src="assets/docs.js"></script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

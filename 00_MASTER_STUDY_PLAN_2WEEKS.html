@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>00 — Master Study Plan (2 Weeks · Z → Hero) | HR Leave Australia</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="scripts/index.html">Scripts</a>
+      <a href="modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>00 — Master Study Plan (2 Weeks · Z → Hero)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">e5f5bc9493a303507520703efaba104d</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="#viz00">Visual map</a>
+<a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+
+<div class="glance" id="viz00">
+  <h3>Visual map — Ch.00 · Study Plan — 14 days</h3>
+  <div class="grid3">
+    <div class="box"><strong>See in 10 seconds</strong><p>Programme map: study PDI vs implement target</p></div>
+    <div class="box"><strong>You build</strong><p>Named owner · named instance · day plan</p></div>
+    <div class="box"><strong>Track</strong><p>Implementation</p></div>
+  </div>
+  <div class="flow"><div class="n"><b>PLAN</b>Pick track</div><span class="arrow">→</span><div class="n"><b>PDI</b>Study only</div><span class="arrow">→</span><div class="n"><b>TARGET</b>Implement</div><span class="arrow">→</span><div class="n"><b>GATE</b>Ch.10 UAT</div></div>
+  <div class="chips"><a class="chip url" href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">↗ sys_app.do</a></div>
+  <div class="chips"><span class="chip do">✓ Study ≠ go-live</span><span class="chip do">✓ One update set per person</span><span class="chip dont">✗ Share current update set</span><span class="chip dont">✗ Exam banks before E2E</span></div>
+  <p class="note-sm">Full visual path (all chapters): <a href="VISUAL_FROM_SCRATCH_00_16.html">VISUAL_FROM_SCRATCH_00_16.html</a></p>
+</div>
+<div class="box"><strong>You build</strong><p>Named owner · named instance · day plan</p></div>
+    <div class="box"><strong>Track</strong><p>Implementation</p></div>
+  </div>
+  <div class="flow"><div class="n"><b>PLAN</b>Pick track</div><span class="arrow">→</span><div class="n"><b>PDI</b>Study only</div><span class="arrow">→</span><div class="n"><b>TARGET</b>Implement</div><span class="arrow">→</span><div class="n"><b>GATE</b>Ch.10 UAT</div></div>
+  <div class="chips"><a class="chip url" href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">↗ sys_app.do</a></div>
+  <div class="chips"><span class="chip do">✓ Study ≠ go-live</span><span class="chip do">✓ One update set per person</span><span class="chip dont">✗ Share current update set</span><span class="chip dont">✗ Exam banks before E2E</span></div>
+  <p class="note-sm">Full visual path (all chapters): <a href="VISUAL_FROM_SCRATCH_00_16.html">VISUAL_FROM_SCRATCH_00_16.html</a></p>
+</div>
+<h1 id="00-master-study-plan-2-weeks-z-hero">00 — Master Study Plan (2 Weeks · Z → Hero)</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً (ملخص سريع):</strong> <a href="MASTER_ALL_IN_ONE_SUMMARY.html">MASTER_ALL_IN_ONE_SUMMARY.md</a> · HTML: <a href="html/MASTER_ALL_IN_ONE_SUMMARY.html">html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل الواحد:</strong> <a href="MASTER_ALL_IN_ONE.html">MASTER_ALL_IN_ONE.md</a> · HTML: <a href="html/MASTER_ALL_IN_ONE.html">html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات (New/Open):</strong> <a href="MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">MASTER_PRACTICE_GUIDE_ALL_TOPICS.md</a> · <a href="html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Platform: ServiceNow <strong>Australia</strong> · Scope <code>x_786686_hr_leave</code> · sys_id <code>e5f5bc9493a303507520703efaba104d</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (current family, Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>App:</strong> Custom · Scope x_786686_hr_leave · sys_id e5f5bc9493a303507520703efaba104d<br />
+<strong>URLs:</strong> <a href="root/SERVICENOW_DIRECT_URLS_CATALOG.html">../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a></p>
+</blockquote>
+<h2 id="_1">خطة الدراسة الرئيسية — أسبوعان من الصفر إلى الاحتراف</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<blockquote>
+<p>Single source-of-truth daily plan to master <strong>administration + development + every module</strong> in 14 days, with explicit links to feature labs, CIS exam banks, and the 180-question CMDB study guide.</p>
+<p>دليل دراسة يومي موحّد لإتقان الإدارة والتطوير وكل الموديولات في 14 يومًا، مع روابط واضحة لكل المختبرات وبنوك أسئلة CIS و 180 سؤال CMDB.</p>
+</blockquote>
+<hr />
+<h2 id="1-prerequisites">§1 — Prerequisites / المتطلبات قبل البدء</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Where</th>
+<th>Effort</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Personal Developer Instance (PDI)</td>
+<td>https://developer.servicenow.com</td>
+<td>30 min</td>
+</tr>
+<tr>
+<td>Studio bookmarked</td>
+<td>/now/studio</td>
+<td>1 min</td>
+</tr>
+<tr>
+<td>Browser dev tools enabled</td>
+<td>Chrome F12</td>
+<td>—</td>
+</tr>
+<tr>
+<td>admin role on PDI</td>
+<td>Default on PDI</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Update Set per topic</td>
+<td>System Update Sets &gt; Local Update Sets</td>
+<td>per topic</td>
+</tr>
+<tr>
+<td>GitHub repo for snapshots (optional)</td>
+<td>github.com</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Note-taking tool (markdown)</td>
+<td>Obsidian / Notion / VS Code</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total prep</strong>: ≤ 1 hour.</p>
+<hr />
+<h2 id="2-how-to-use-this-plan">§2 — How to use this plan / كيف تستخدم الخطة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ol>
+<li><strong>Daily 2-3h block</strong> (90 min reading/lab + 30 min note-taking + 30 min CIS questions).</li>
+<li><strong>End-of-day artifact</strong>: One Update Set + 3 screenshots + 5 CIS questions answered.</li>
+<li><strong>End-of-week milestone</strong>: One deliverable demo (recorded ≤5 min screencast).</li>
+<li><strong>End of 14 days</strong>: Full portfolio + ready for 2-3 CIS exams. — - بلوك يومي 2-3 ساعة (قراءة + مختبر + أسئلة). - في نهاية كل يوم: Update Set + 3 لقطات + 5 أسئلة. - في نهاية الأسبوع: عرض/فيديو 5 دقائق. - بعد 14 يومًا: محفظة كاملة + جاهز لـ 2-3 امتحانات CIS.</li>
+</ol>
+<hr />
+<h2 id="3-at-a-glance-plan">§3 — At-a-glance plan / نظرة شاملة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>WEEK 1 — Foundation, Platform, ITSM core, HR App, Catalog/Portal<br />
+WEEK 2 — Modules deep-dive, Workspace/AI, Integration, CIS exam prep</p>
+<table>
+<thead>
+<tr>
+<th>Day</th>
+<th>Focus</th>
+<th>Primary doc</th>
+<th>Lab outcome</th>
+<th>CIS Bank</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Platform fundamentals</td>
+<td>13_2HOUR_MASTER_SUMMARY.md</td>
+<td>Studio + scope created</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Tables, fields, ACLs</td>
+<td>01_DEVELOPMENT.md + 02_ADMINISTRATION.md</td>
+<td>HR Leave tables built</td>
+<td>CSA</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Server-side scripting</td>
+<td>01_DEVELOPMENT.md (BR + SI)</td>
+<td>3 Script Includes + 3 BRs</td>
+<td>CSA / CAD</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Client-side + Catalog</td>
+<td>03_SERVICE_CATALOG.md</td>
+<td>Record Producer + Catalog UI Policies</td>
+<td>CSA</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Service Portal</td>
+<td>04_SERVICE_PORTAL.md</td>
+<td>&ldquo;My Leaves&rdquo; widget live</td>
+<td>CAD</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Workspace + UI Builder</td>
+<td>05_WORKSPACE_UIBUILDER.md</td>
+<td>HR Agent workspace page</td>
+<td>CAD / CIS-HR</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Notifications + ATF</td>
+<td>06_NOTIFICATIONS_EVENTS_JOBS.md + 08_ATF_TESTING.md</td>
+<td>5 notifications + 5 ATF tests</td>
+<td>CAD</td>
+</tr>
+<tr>
+<td>8</td>
+<td>CMDB (deep, foundation for all)</td>
+<td>modules/CMDB.md</td>
+<td>Manual CI + IRE + Health</td>
+<td><strong>180Q CIS-DF/CMDB</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>ITSM</td>
+<td>modules/ITSM.md</td>
+<td>Incident → Problem → Change → SLA → Catalog</td>
+<td>EXAM_BANK_ITSM_360</td>
+</tr>
+<tr>
+<td>10</td>
+<td>HRSD + EC</td>
+<td>modules/HRSD.md + 09_MODULES_AND_INTEGRATION.md</td>
+<td>HR Profile + Criteria + EC topic</td>
+<td>EXAM_BANK_HRSD_360</td>
+</tr>
+<tr>
+<td>11</td>
+<td>CSM + FSM</td>
+<td>modules/CSM.md + modules/FSM.md</td>
+<td>Account + Entitlement + WO</td>
+<td>EXAM_BANK_CSM_360 + FSM</td>
+</tr>
+<tr>
+<td>12</td>
+<td>SPM + GRC</td>
+<td>modules/SPM.md + modules/GRC.md</td>
+<td>Idea→Demand→Project + Control attestation</td>
+<td>EXAM_BANK_GRC_360</td>
+</tr>
+<tr>
+<td>13</td>
+<td>ITOM + ITAM + SecOps</td>
+<td>modules/ITOM.md, ITAM.md, SECOPS.md</td>
+<td>MID + Stockroom + SIR incident</td>
+<td>(inline Q&amp;A)</td>
+</tr>
+<tr>
+<td>14</td>
+<td>DevOps + App Engine + AI + Integration + Final</td>
+<td>DEVOPS.md, APP_ENGINE.md, 14_AI_<em>.md, 15_CLAUDE_</em>.md, 12_INTEGRATION_*.md</td>
+<td>App Engine app + REST API + Agent</td>
+<td>(inline Q&amp;A)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total commitment</strong>: 35-40 hours over 14 days.</p>
+<hr />
+<h2 id="4-week-1-foundation-core">§4 — WEEK 1 — Foundation &amp; Core / الأسبوع الأول</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="day-1-platform-fundamentals-2-3h-first-day-at-servicenow">Day 1 — Platform Fundamentals (2-3h) — &ldquo;First Day at ServiceNow&rdquo;</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Read</strong>:<br />
+- 13_2HOUR_MASTER_SUMMARY.md §1-§5 (Tables, Roles, ACLs, Script Includes basics)</p>
+<p><strong>Lab (90 min)</strong>:<br />
+1. Log into PDI.<br />
+2. Open Studio (/now/studio).<br />
+3. Create a scoped app <strong>HR Leave</strong> (scope auto-generated).<br />
+4. Tour navigation: All menu, Favorites, History, Filter Navigator.<br />
+5. Open a few base tables (sys_user, incident, task) — observe inheritance.<br />
+6. Create your first Update Set named HRLeave_Day1.</p>
+<p><strong>End-of-day quiz</strong> (5 Q):<br />
+- Q1. What is the difference between task and a custom table extending it?<br />
+- Q2. Where do scoped app changes get captured?<br />
+- Q3. What gs.* function logs an info message that appears in syslog?<br />
+- Q4. What is the icon difference between System Properties at Global vs Scoped?<br />
+- Q5. List 3 of the 6 task states.</p>
+<p><strong>Artifact</strong>: Screenshot of Studio with your app open.</p>
+<hr />
+<h3 id="day-2-tables-fields-acls-3h-build-the-data-model">Day 2 — Tables, Fields, ACLs (3h) — &ldquo;Build the Data Model&rdquo;</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<p><strong>Read</strong>:<br />
+- 01_DEVELOPMENT.md §Tables + §Fields + §ACLs<br />
+- 02_ADMINISTRATION.md §Roles &amp; Groups</p>
+<p><strong>Lab (2h)</strong>:<br />
+1. Create 4 HR Leave tables (employee_v2, req_v2, bal_v2, audit_v2) with u_ fields.<br />
+2. Add 2 reference fields.<br />
+3. Configure form layout + section.<br />
+4. Create 3 roles: x_<em>.user, x_</em>.agent, x_*.admin.<br />
+5. Create 1 group HR Leave Admins; assign role.<br />
+6. Add 3 ACLs: record read (any user), record write (agent), record delete (admin).<br />
+7. Impersonate test (3 personas).</p>
+<p><strong>Quiz</strong> (5 Q from EXAM_BANK_ITSM_360 for ACL section):<br />
+- ACL evaluation order (which wins: deny in read, allow in write?)<br />
+- Field-level vs record-level ACL examples<br />
+- Scoped vs Global ACL behavior</p>
+<p><strong>Artifact</strong>: ACL matrix in spreadsheet/markdown.</p>
+<hr />
+<h3 id="day-3-server-side-scripting-3h-code-behind-the-app">Day 3 — Server-side Scripting (3h) — &ldquo;Code Behind the App&rdquo;</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a><a href="scripts/index.html">Scripts portal</a></nav>
+<p><strong>Read</strong>:<br />
+- 01_DEVELOPMENT.md §Script Includes + §Business Rules<br />
+- src/server/script_includes/HRLXProLeaveUtilsV2.js (existing file)</p>
+<p><strong>Lab (2.5h)</strong>:<br />
+1. Create Script Include HRLXProLeaveUtilsV2 (calculate business days, get balance, check overlap).<br />
+2. Mark Client callable=true; expose via GlideAjax.<br />
+3. Create BR1 &ldquo;Calculate days on insert&rdquo; (before-insert).<br />
+4. Create BR2 &ldquo;Fire event on submit&rdquo; (after-insert).<br />
+5. Create BR3 &ldquo;Audit state change&rdquo; (after-update).<br />
+6. Run <strong>Background Scripts</strong>: var u = new x_786686_hr_leave.HRLXProLeaveUtilsV2(); gs.info(u.businessDaysBetween(&lsquo;2026-01-01&rsquo;,&lsquo;2026-01-10&rsquo;));</p>
+<p><strong>Quiz</strong> (5 Q on Script Include patterns).</p>
+<p><strong>Artifact</strong>: Background Scripts log showing your function return.</p>
+<hr />
+<h3 id="day-4-client-side-service-catalog-3h-user-interaction">Day 4 — Client-side + Service Catalog (3h) — &ldquo;User Interaction&rdquo;</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_client_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">Client Scripts</a><a href="scripts/index.html">Scripts portal</a><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a></nav>
+<p><strong>Read</strong>:<br />
+- 03_SERVICE_CATALOG.md §Record Producer + §Variable Sets + §Catalog Client Scripts</p>
+<p><strong>Lab (2.5h)</strong>:<br />
+1. Create Catalog Category &ldquo;HR Self-Service&rdquo;.<br />
+2. Create Record Producer &ldquo;Submit Leave Request&rdquo; with 4 variables (type, start, end, reason).<br />
+3. Add Variable Set &ldquo;Common HR variables&rdquo; for reuse.<br />
+4. Add Catalog UI Policy: hide &ldquo;manager_note&rdquo; until state=submitted.<br />
+5. Add Catalog Client Script: calculate days dynamically via GlideAjax → Script Include.<br />
+6. Submit a leave from /sp.</p>
+<p><strong>Quiz</strong> (5 Q on RP vs Catalog Item).</p>
+<p><strong>Artifact</strong>: /sp screenshot + RITM number created.</p>
+<hr />
+<h3 id="day-5-service-portal-3h-branded-self-service-ux">Day 5 — Service Portal (3h) — &ldquo;Branded Self-Service UX&rdquo;</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<p><strong>Read</strong>:<br />
+- 04_SERVICE_PORTAL.md §Theme + §My Leaves widget + §Leave Balance widget</p>
+<p><strong>Lab (2.5h)</strong>:<br />
+1. Clone OOTB theme → &ldquo;HRLeave Theme&rdquo; with custom CSS variables (brand colors).<br />
+2. Add dark-mode CSS and RTL stylesheet.<br />
+3. Build &ldquo;My Leaves&rdquo; widget (HTML + client + server) using the existing snippet.<br />
+4. Add cards layout + loading skeleton + filter chips.<br />
+5. Build &ldquo;Leave Balance&rdquo; widget with animated counter.<br />
+6. Add both widgets to a portal page /sp?id=hr_dashboard.</p>
+<p><strong>Quiz</strong> (5 Q on Service Portal lifecycle: $scope vs $ctrl, server data object, c.server.update()).</p>
+<p><strong>Artifact</strong>: Recorded 60s walk-through of your portal page.</p>
+<hr />
+<h3 id="day-6-workspace-ui-builder-3h-agent-power">Day 6 — Workspace + UI Builder (3h) — &ldquo;Agent Power&rdquo;</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<p><strong>Read</strong>:<br />
+- 05_WORKSPACE_UIBUILDER.md §UX Theme + §UI Builder layouts + §KPI cards</p>
+<p><strong>Lab (2.5h)</strong>:<br />
+1. Open UI Builder (/now/ui-builder).<br />
+2. Create UX Theme with brand tokens (JSON).<br />
+3. Create UX App Config + Experience + Page Route for &ldquo;HR Agent Workspace&rdquo;.<br />
+4. Add 12-column layout with: KPI card row + Data Grid + Side panel.<br />
+5. Add Data Resource (server-side script wrap of HRLXProLeaveUtilsV2).<br />
+6. Wire KPI card titles to the data resource.<br />
+7. Add custom CSS via UX Client Asset (glassmorphism card, dark mode).</p>
+<p><strong>Quiz</strong> (5 Q on UI Builder Macroponent vs Component).</p>
+<p><strong>Artifact</strong>: Screenshot of agent workspace running on PDI.</p>
+<hr />
+<h3 id="day-7-notifications-atf-3h-communication-trust">Day 7 — Notifications + ATF (3h) — &ldquo;Communication &amp; Trust&rdquo;</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<p><strong>Read</strong>:<br />
+- 06_NOTIFICATIONS_EVENTS_JOBS.md §Event taxonomy + §Mail Scripts + §Scheduled Jobs<br />
+- 08_ATF_TESTING.md §Step Categories + §5 E2E Tests</p>
+<p><strong>Lab (2.5h)</strong>:<br />
+1. Define 4 events (x_*.leave.submitted, .approved, .rejected, .balance_low).<br />
+2. Create 4 notifications with email templates (HTML + mail script for balance).<br />
+3. Add 1 scheduled job: &ldquo;Annual Accrual on Jan 1&rdquo;.<br />
+4. Add inbound email action: approve/reject by replying &ldquo;APPROVE&rdquo; / &ldquo;REJECT&rdquo;.<br />
+5. Create ATF Test Suite &ldquo;HR Leave E2E&rdquo; with 5 tests (CRUD, SI unit, REST POST=201, approval flow, ACL negative).<br />
+6. Run suite → green.</p>
+<p><strong>Quiz</strong> (5 Q on Event-driven vs sync Business Rule).</p>
+<p><strong>Artifact</strong>: ATF result page screenshot showing 5/5 passed.</p>
+<hr />
+<h3 id="end-of-week-1-milestone">🎯 End of Week 1 Milestone</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li>[ ] HR Leave app fully built (tables, BRs, SIs, RP, Portal, Workspace, Notifications, ATF)</li>
+<li>[ ] Update Set HRLeave_Week1 exported</li>
+<li>[ ] 35 CIS questions answered (5 per day)</li>
+<li>[ ] 5-min screencast: &ldquo;End-to-end HR Leave demo&rdquo;</li>
+</ul>
+<hr />
+<h2 id="5-week-2-modules-deep-dive-exam-prep">§5 — WEEK 2 — Modules Deep-Dive &amp; Exam Prep / الأسبوع الثاني</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="day-8-cmdb-3-4h-foundation-of-everything">Day 8 — CMDB (3-4h) — &ldquo;Foundation of Everything&rdquo;</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p><strong>Why first in Week 2</strong>: every module depends on CMDB. Master it before ITSM/SecOps/HRSD-CI-link.</p>
+<p><strong>Read</strong>:<br />
+- modules/CMDB.md (full file — Power User §17 + From-Scratch §18)<br />
+- Open the <strong>180-question study guide</strong> at C:\SVCProject\SERVICENOW_CIS_DF_CMDB_STUDY_GUIDE.md — Part III</p>
+<p><strong>Lab (3h)</strong> — Map to your 157/180 questions:</p>
+<table>
+<thead>
+<tr>
+<th>Lab</th>
+<th>What you do</th>
+<th>CIS Q (180-bank)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>Create 1 CI manually in cmdb_ci_server</td>
+<td>Q1-Q15 (CI basics)</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>Define IRE Identification rule on serial+name</td>
+<td>Q40-Q60 (IRE)</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>Trigger duplicate detection (insert same serial)</td>
+<td>Q55-Q70</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>Import 100 CIs via Import Set + Transform Map</td>
+<td>Q70-Q85</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>Add Multisource reconciliation rule</td>
+<td>Q85-Q95</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>Create Application Service with 3 CIs + relationships</td>
+<td>Q100-Q115 (CSDM)</td>
+</tr>
+<tr>
+<td>L7</td>
+<td>Run CMDB Health → identify completeness gap</td>
+<td>Q120-Q140 (Health)</td>
+</tr>
+<tr>
+<td>L8</td>
+<td>Configure CSDM 4 domains (Foundation, Design, Build, Manage)</td>
+<td>Q140-Q165</td>
+</tr>
+<tr>
+<td>L9</td>
+<td>Discovery schedule (skip if no Discovery license — read only)</td>
+<td>Q165-Q175</td>
+</tr>
+<tr>
+<td>L10</td>
+<td>Service Mapping demo (read OOTB if no license)</td>
+<td>Q175-Q180</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quiz (60 Q)</strong>: Answer Q1-Q60 from the 180-bank — focus on:<br />
+- IRE identifier rules<br />
+- Reconciliation source priority<br />
+- CSDM 4 domains<br />
+- CMDB Health metrics</p>
+<p><strong>Artifact</strong>: CMDB Health dashboard screenshot (Completeness/Compliance/Correctness).</p>
+<hr />
+<h3 id="day-9-itsm-3-4h-run-the-business">Day 9 — ITSM (3-4h) — &ldquo;Run the Business&rdquo;</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p><strong>Read</strong>:<br />
+- modules/ITSM.md (full file)<br />
+- C:\SVCProject\EXAM_BANK_ITSM_360.md — read 30 questions across topics</p>
+<p><strong>Lab (3h) — Z-to-Hero ITSM feature labs</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Lab</th>
+<th>Feature</th>
+<th>EXAM_BANK_ITSM_360 ref</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>Create P1 incident → CI link → SLA starts</td>
+<td>Inc basics</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>Major Incident flag → mass comms</td>
+<td>Major Inc</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>Problem from incident → workaround → known error</td>
+<td>Problem mgmt</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>Standard Change template + auto-approve</td>
+<td>Change types</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>Normal Change + CAB + approval matrix</td>
+<td>Change workflows</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>Emergency Change + post-implementation review</td>
+<td>Emergency</td>
+</tr>
+<tr>
+<td>L7</td>
+<td>Knowledge article from resolved incident</td>
+<td>KCS</td>
+</tr>
+<tr>
+<td>L8</td>
+<td>Self-service catalog item (Hardware Request)</td>
+<td>Catalog</td>
+</tr>
+<tr>
+<td>L9</td>
+<td>SLA pause/stop on hold + resume</td>
+<td>SLA</td>
+</tr>
+<tr>
+<td>L10</td>
+<td>Service Operations Workspace /now/sow/home</td>
+<td>SOW</td>
+</tr>
+<tr>
+<td>L11</td>
+<td>Assignment Rule by category</td>
+<td>Assignment</td>
+</tr>
+<tr>
+<td>L12</td>
+<td>Priority Lookup matrix (Impact × Urgency)</td>
+<td>Priority</td>
+</tr>
+<tr>
+<td>L13</td>
+<td>Reports + SLA breach dashboard</td>
+<td>Reports</td>
+</tr>
+<tr>
+<td>L14</td>
+<td>Now Assist: summarize long incident</td>
+<td>AI in ITSM</td>
+</tr>
+<tr>
+<td>L15</td>
+<td>Bulk close incidents via list action</td>
+<td>Productivity</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quiz (40 Q)</strong> from EXAM_BANK_ITSM_360.</p>
+<p><strong>Artifact</strong>: Incident → Problem → Change → Resolution screencast 3 min.</p>
+<hr />
+<h3 id="day-10-hrsd-employee-center-3h">Day 10 — HRSD + Employee Center (3h)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a></nav>
+<p><strong>Read</strong>:<br />
+- modules/HRSD.md §17 + §18<br />
+- 09_MODULES_AND_INTEGRATION.md (HRSD section)<br />
+- EXAM_BANK_HRSD_360.md — 30 Q</p>
+<p><strong>Lab (2.5h)</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Lab</th>
+<th>Feature</th>
+<th>HRSD Q ref</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>Import HR Profiles (bulk)</td>
+<td>Profile mgmt</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>HR Service definition + COE routing</td>
+<td>HR Services</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>HR Criteria — restrict salary info</td>
+<td>HR Security</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>Employee Center /esc config + Topic</td>
+<td>EC</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>Connected Content (KB → Topic)</td>
+<td>EC content</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>Onboarding Lifecycle Event (LCE)</td>
+<td>LCE</td>
+</tr>
+<tr>
+<td>L7</td>
+<td>Cross-link x_786686_hr_leave to HR Case</td>
+<td>HR-Leave cross</td>
+</tr>
+<tr>
+<td>L8</td>
+<td>Workday-style HRIS sync (mock)</td>
+<td>HRIS Integration</td>
+</tr>
+<tr>
+<td>L9</td>
+<td>Now Assist for HR — case summarization</td>
+<td>AI HR</td>
+</tr>
+<tr>
+<td>L10</td>
+<td>Employee mobile self-service</td>
+<td>Mobile EC</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quiz (30 Q)</strong> from EXAM_BANK_HRSD_360.</p>
+<p><strong>Artifact</strong>: /esc portal screenshot + 1 LCE running.</p>
+<hr />
+<h3 id="day-11-csm-fsm-3-4h">Day 11 — CSM + FSM (3-4h)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<p><strong>Read</strong>:<br />
+- modules/CSM.md §17 + §18<br />
+- modules/FSM.md §17 + §18<br />
+- EXAM_BANK_CSM_360.md + EXAM_BANK_FSM_360.md</p>
+<p><strong>Lab (3h)</strong>:</p>
+<p>CSM:<br />
+- L1 Account + Contact bulk import<br />
+- L2 Entitlement matrix Gold/Silver/Bronze<br />
+- L3 Case → CMDB CI link → Knowledge match<br />
+- L4 AWA skill-based routing<br />
+- L5 CSM Workspace /now/cwf/agent<br />
+- L6 Customer Portal /csm branding<br />
+- L7 Major Outage banner</p>
+<p>FSM:<br />
+- L1 Territory + Skill matrix<br />
+- L2 Work Order with parts consumption<br />
+- L3 Dispatcher Workspace map<br />
+- L4 Mobile Now app — start/complete WO<br />
+- L5 Signature capture + photo attach<br />
+- L6 ETA SMS to customer (Twilio)<br />
+- L7 Preventive Maintenance scheduling</p>
+<p><strong>Quiz</strong>: 25 Q CSM + 25 Q FSM.</p>
+<p><strong>Artifact</strong>: CSM Case → FSM WO handoff demo.</p>
+<hr />
+<h3 id="day-12-spm-grc-3-4h">Day 12 — SPM + GRC (3-4h)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p><strong>Read</strong>:<br />
+- modules/SPM.md §17 + §18<br />
+- modules/GRC.md §17 + §18<br />
+- EXAM_BANK_GRC_360.md — 30 Q<br />
+- SPM has no bank — use inline Q&amp;A in SPM.md §19 (new)</p>
+<p><strong>Lab (3h)</strong>:</p>
+<p>SPM:<br />
+- L1 Portfolio + Program structure<br />
+- L2 Idea Portal voting<br />
+- L3 Idea → Demand auto-promotion<br />
+- L4 Demand scoring (strategic + financial)<br />
+- L5 Project from template + tasks<br />
+- L6 Resource Plan + Allocation<br />
+- L7 Conflict resolution (over-allocation)<br />
+- L8 Cost Plan + Variance<br />
+- L9 RAG dashboard (script #6 in SPM.md §17.4)<br />
+- L10 Agile board + sprint<br />
+- L11 OKR scoring</p>
+<p>GRC:<br />
+- L1 Profile structure (BU-aligned)<br />
+- L2 Framework import (ISO 27001 + NIST CSF)<br />
+- L3 Control library + named owners<br />
+- L4 Attestation campaign (script #3 in GRC.md §17.4)<br />
+- L5 Indicator: failed-login policy fail → Issue<br />
+- L6 Risk Register + Inherent/Residual calc<br />
+- L7 Vendor Risk tier classification<br />
+- L8 Audit Engagement → Finding → Action<br />
+- L9 Policy acknowledgement bulk-enforce<br />
+- L10 BCM BIA + Recovery Plan</p>
+<p><strong>Quiz</strong>: 30 Q GRC + 30 Q SPM (inline).</p>
+<p><strong>Artifact</strong>: Demand → Project → Cost Plan demo + GRC heatmap.</p>
+<hr />
+<h3 id="day-13-itom-itam-secops-3-4h">Day 13 — ITOM + ITAM + SecOps (3-4h)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p><strong>Read</strong>:<br />
+- modules/ITOM.md §17 + §18<br />
+- modules/ITAM.md §17 + §18<br />
+- modules/SECOPS.md (full)</p>
+<p><strong>Lab (3h)</strong>:</p>
+<p>ITOM:<br />
+- L1 MID Server install/credentials (or read OOTB)<br />
+- L2 Discovery Schedule with IP range<br />
+- L3 Discovery Status review<br />
+- L4 Event Connector demo (Splunk mock)<br />
+- L5 Alert correlation rule<br />
+- L6 Service Mapping for 1 app</p>
+<p>ITAM:<br />
+- L1 Hardware Asset model<br />
+- L2 Stockroom + bin location<br />
+- L3 Receive PO → asset created<br />
+- L4 Deploy to user → CMDB CI link<br />
+- L5 Asset transfer<br />
+- L6 Retire workflow<br />
+- L7 SAM compliance dashboard</p>
+<p>SecOps:<br />
+- L1 SIR incident from SIEM webhook (script #1 in SECOPS.md §17.3)<br />
+- L2 MITRE ATT&amp;CK tagging<br />
+- L3 IoC enrichment + threat hunt<br />
+- L4 Vulnerability prioritization formula<br />
+- L5 Bulk-VI → Change automation<br />
+- L6 Host containment via EDR (mock)<br />
+- L7 CIS benchmark scan + remediation</p>
+<p><strong>Quiz</strong>: 20 Q ITOM + 25 Q ITAM + 25 Q SecOps (inline in respective module docs).</p>
+<p><strong>Artifact</strong>: SIR incident → contained host demo.</p>
+<hr />
+<h3 id="day-14-devops-app-engine-ai-integration-final-4h">Day 14 — DevOps + App Engine + AI + Integration + Final (4h)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p><strong>Read</strong>:<br />
+- modules/DEVOPS.md (skim first half + key sections)<br />
+- modules/APP_ENGINE.md §17 + §18<br />
+- 14_AI_SERVICENOW_AGENTS.md Parts 1-5<br />
+- 15_CLAUDE_CLI_CODE_SERVICENOW.md (Quickstart)<br />
+- 12_INTEGRATION_FULL_GUIDE.md</p>
+<p><strong>Lab (3h)</strong>:</p>
+<p>DevOps:<br />
+- L1 GitHub spoke connection<br />
+- L2 Jenkins/Pipeline ingest<br />
+- L3 Auto-CR creation rule<br />
+- L4 DORA dashboard</p>
+<p>App Engine:<br />
+- L1 AES → &ldquo;Visitor Management&rdquo; app<br />
+- L2 Workflow Studio flow (visit approval)<br />
+- L3 Mobile Studio applet<br />
+- L4 Publish to App Repo</p>
+<p>AI:<br />
+- L1 Now Assist Skill (custom prompt template)<br />
+- L2 AI Agent in AI Agent Studio (with 1 tool)<br />
+- L3 BYO LLM config (Claude/OpenAI connection)<br />
+- L4 AI Search index</p>
+<p>Integration:<br />
+- L1 REST API Explorer (table API GET/POST)<br />
+- L2 Scripted REST API (custom endpoint)<br />
+- L3 Outbound REST Message (POST to httpbin.org)<br />
+- L4 IntegrationHub action (any spoke)<br />
+- L5 Email-to-record</p>
+<p><strong>Quiz (40 Q)</strong>: AI + DevOps + App Engine + Integration.</p>
+<p><strong>Final artifact</strong>: 7-min &ldquo;Mega Story&rdquo; screencast spanning HR Leave + ITSM + CMDB + CSM + AI Agent.</p>
+<hr />
+<h2 id="6-end-of-2-weeks-deliverables">§6 — End-of-2-Weeks Deliverables / مخرجات الأسبوعين</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="61-portfolio-must-produce">6.1 Portfolio (must produce)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<ul>
+<li>[ ] HR Leave app — Update Set (full)</li>
+<li>[ ] Service Portal page screencast (60s)</li>
+<li>[ ] Workspace page screencast (60s)</li>
+<li>[ ] ATF Test Suite green</li>
+<li>[ ] CMDB Health dashboard (≥80%)</li>
+<li>[ ] ITSM full workflow demo (3 min)</li>
+<li>[ ] HRSD /esc topic demo</li>
+<li>[ ] CSM /csm portal demo</li>
+<li>[ ] FSM dispatcher map demo</li>
+<li>[ ] SPM dashboard demo</li>
+<li>[ ] GRC heatmap demo</li>
+<li>[ ] SecOps SIR incident demo</li>
+<li>[ ] App Engine app (Visitor Mgmt) published</li>
+<li>[ ] One AI Agent with at least 1 tool working</li>
+<li>[ ] Mega Story screencast (7 min)</li>
+<li>[ ] All Update Sets exported (15+)</li>
+</ul>
+<h3 id="62-cis-exam-bank-coverage">6.2 CIS Exam Bank coverage</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Bank</th>
+<th>Questions answered</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSA (foundational)</td>
+<td>50+</td>
+<td>High after Day 7</td>
+</tr>
+<tr>
+<td>CIS-DF (CMDB) — 180 Q</td>
+<td>180/180</td>
+<td>High after Day 8</td>
+</tr>
+<tr>
+<td>EXAM_BANK_ITSM_360 (~120 Q)</td>
+<td>80+</td>
+<td>High after Day 9</td>
+</tr>
+<tr>
+<td>EXAM_BANK_HRSD_360 (~120 Q)</td>
+<td>60+</td>
+<td>Medium after Day 10</td>
+</tr>
+<tr>
+<td>EXAM_BANK_CSM_360 (~120 Q)</td>
+<td>40+</td>
+<td>Medium after Day 11</td>
+</tr>
+<tr>
+<td>EXAM_BANK_FSM_360 (~120 Q)</td>
+<td>40+</td>
+<td>Medium after Day 11</td>
+</tr>
+<tr>
+<td>EXAM_BANK_GRC_360 (~120 Q)</td>
+<td>60+</td>
+<td>Medium after Day 12</td>
+</tr>
+<tr>
+<td>SPM inline (40 Q)</td>
+<td>40</td>
+<td>Medium after Day 12</td>
+</tr>
+<tr>
+<td>ITAM, ITOM, SecOps, DevOps, App Engine inline</td>
+<td>All</td>
+<td>Medium after Day 13-14</td>
+</tr>
+<tr>
+<td>CAD (developer)</td>
+<td>30+</td>
+<td>High after Day 7 + 14</td>
+</tr>
+</tbody>
+</table>
+<h3 id="63-suggested-cis-exams-to-target-after-14-days">6.3 Suggested CIS exams to target after 14 days</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Exam</th>
+<th>Why</th>
+<th>Effort to certify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CSA</strong> (Certified System Admin)</td>
+<td>Foundation; required for all CIS</td>
+<td>1 week extra prep</td>
+</tr>
+<tr>
+<td><strong>CAD</strong> (Certified App Developer)</td>
+<td>Builds on HR Leave + App Engine</td>
+<td>2 weeks extra prep</td>
+</tr>
+<tr>
+<td><strong>CIS-DF / CIS-CMDB</strong></td>
+<td>Critical for any ServiceNow career</td>
+<td>1 week extra prep (you have 180 Q already)</td>
+</tr>
+<tr>
+<td><strong>CIS-ITSM</strong></td>
+<td>Most common implementation cert</td>
+<td>1 week extra prep</td>
+</tr>
+<tr>
+<td><strong>CIS-HR</strong></td>
+<td>Strong demand</td>
+<td>1 week extra prep</td>
+</tr>
+</tbody>
+</table>
+<p>Pick <strong>2-3 exams</strong> based on your target role.</p>
+<hr />
+<h2 id="7-what-i-recommend-you-know">§7 — What I recommend you know / ما أنصحك بمعرفته بدقة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="71-top-30-must-know-concepts-any-role">7.1 Top 30 must-know concepts (any role)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<ol>
+<li>Tables, Fields, Dictionary</li>
+<li>Scope (Global vs Scoped x_*)</li>
+<li>ACLs (record + field, evaluation order, deny-first)</li>
+<li>Roles + Groups (assign to groups, not users)</li>
+<li>UI Policies vs Data Policies vs Client Scripts (when each runs)</li>
+<li>Business Rules (before/after/async/display)</li>
+<li>Script Includes (client-callable vs server-only, AbstractAjaxProcessor)</li>
+<li>GlideRecord (encoded queries, setLimit, GlideAggregate)</li>
+<li>GlideAjax pattern</li>
+<li>Flow Designer (vs legacy Workflow)</li>
+<li>Service Catalog (Item vs RP, Variable Set, Order Guide)</li>
+<li>Service Portal (widget anatomy: server.js, client.js, template.html, style.scss)</li>
+<li>UI Builder + UX Theme + Macroponent</li>
+<li>Notifications + Events (gs.eventQueue then Email Template subscribes)</li>
+<li>Scheduled Jobs (cron, retries)</li>
+<li>Inbound Email Actions (sender verification, anti-loop)</li>
+<li>REST: Scripted REST (inbound) vs RESTMessageV2 (outbound)</li>
+<li>Authentication: Basic, OAuth 2.0, mTLS</li>
+<li>MID Server (when needed, secure transfer)</li>
+<li>IntegrationHub (Spokes, Custom Actions, Subflows)</li>
+<li>Update Sets discipline + merge conflicts</li>
+<li>CMDB (CI, relationships, IRE Identifier vs Reconciliation, CSDM)</li>
+<li>ATF (steps, suites, parameterized, CI/CD)</li>
+<li>Performance Analytics (Indicator, Breakdown, Data Collector)</li>
+<li>Now Assist (Skill, Prompt, Grounding)</li>
+<li>AI Agent (Definition, Tools, Guardrails)</li>
+<li>Studio + Application Repository</li>
+<li>ServiceNow SDK (Fluent API, TypeScript)</li>
+<li>Cursor + Claude Code workflow for ServiceNow</li>
+<li>Mobile (Now Mobile app config)</li>
+</ol>
+<h3 id="72-top-15-must-build-with-your-own-hands-artifacts">7.2 Top 15 must-build-with-your-own-hands artifacts</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ol>
+<li>A scoped app with 4+ tables</li>
+<li>A Script Include with client_callable=true invoked from a Client Script via GlideAjax</li>
+<li>A Business Rule that fires an event + a notification subscribed to that event</li>
+<li>A Catalog Record Producer with at least one Variable Set</li>
+<li>A Service Portal page with 2+ custom widgets</li>
+<li>A Workspace page in UI Builder with Data Resource + KPI cards</li>
+<li>A Flow that handles approval with timeout + escalation</li>
+<li>A Scripted REST API with auth + 201/400/404 returns</li>
+<li>An Outbound REST Message with OAuth + retry</li>
+<li>An ATF Test Suite that covers a server unit + a portal UI + a REST integration</li>
+<li>A CMDB Identification Rule that prevents duplicates</li>
+<li>A PA Indicator with a Breakdown and a Dashboard tile</li>
+<li>A Now Assist Skill with a grounded prompt</li>
+<li>An AI Agent with at least 1 callable Tool</li>
+<li>A Mobile applet with offline cache</li>
+</ol>
+<h3 id="73-top-10-mistakes-to-avoid">7.3 Top 10 mistakes to avoid</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ol>
+<li>❌ Writing assignment logic in Business Rules instead of Assignment Rules</li>
+<li>❌ Using client_callable=false on a Script Include but trying to call from client</li>
+<li>❌ Adding roles to users directly instead of groups</li>
+<li>❌ Skipping Update Set when working in a sub-prod instance</li>
+<li>❌ Hardcoding sys_id values in scripts (use gs.getProperty() or lookups)</li>
+<li>❌ Forgetting setLimit(N) on GlideRecord queries</li>
+<li>❌ Not handling async Business Rule race conditions</li>
+<li>❌ Creating Global-scope artifacts instead of in your scoped app</li>
+<li>❌ Not using try/catch around outbound REST calls</li>
+<li>❌ Forgetting to test ACLs with Impersonate</li>
+</ol>
+<h3 id="74-top-10-advanced-tricks-impress-interviewers">7.4 Top 10 advanced tricks (impress interviewers)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ol>
+<li>Use GlideAggregate instead of getRowCount() for performance</li>
+<li>Use setQueryNoDomain(true) for cross-domain queries in domain-separated instances</li>
+<li>Use current.update() inside a BR — avoid second BR retrigger via gs.setProperty flag</li>
+<li>Use gs.executeNow(scheduled_job_record) to trigger SJ programmatically</li>
+<li>Use RESTMessageV2.setHttpTimeout(ms) + try/catch always</li>
+<li>Use JSUtil.notNil(x) instead of x != null &amp;&amp; x != &lsquo;&rsquo;</li>
+<li>Use Service Portal $rootScope.$broadcast() for inter-widget communication</li>
+<li>Use sn_ws.RESTAPIRequest headers for content negotiation</li>
+<li>Use Decision Tables for business rules expressed as data, not code</li>
+<li>Use Background Scripts + gs.execute() to script Update Set previews</li>
+</ol>
+<hr />
+<h2 id="8-cleanup-docs-to-merge-or-retire">§8 — Cleanup: docs to merge or retire / تنظيف الوثائق</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="recommendation-kept-conservative">Recommendation (kept conservative)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Recommendation</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00_PLAN.md</td>
+<td>KEEP as quick reference (it&rsquo;s 2 KB and useful for the 3-day fast path)</td>
+<td>Doesn&rsquo;t conflict with this 2-week plan</td>
+</tr>
+<tr>
+<td>00_TUTORIAL_OPTIONS_REFERENCE.md</td>
+<td>KEEP as hub</td>
+<td>Points to multiple docs</td>
+</tr>
+<tr>
+<td>01_DEVELOPMENT_OPTIONS.md</td>
+<td>KEEP</td>
+<td>Contains field-level alternatives not in 01_DEVELOPMENT.md</td>
+</tr>
+<tr>
+<td>Module MODULE_OPTIONS_AND_INSTANCE_NOTES.md</td>
+<td>KEEP</td>
+<td>Cross-module options index</td>
+</tr>
+</tbody>
+</table>
+<p><strong>No deletions recommended</strong> — all files serve distinct purposes after the §17/§18 expansion. The 2-week plan is the new top-level navigator.</p>
+<p>If you do want to reduce file count:<br />
+- Optional candidate: merge 00_PLAN.md into this file&rsquo;s §11 (already covered).<br />
+- Optional candidate: collapse 01_DEVELOPMENT_OPTIONS.md into 01_DEVELOPMENT.md &ldquo;Options&rdquo; sub-sections.</p>
+<hr />
+<h2 id="9-reading-order-priority">§9 — Reading order priority / ترتيب القراءة الأولوية</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>If you have less than 2 weeks, prioritize:</p>
+<p><strong>3-day crash (must-do, 8h/day)</strong>:<br />
+- Day 1: 13_2HOUR_MASTER_SUMMARY.md + 01_DEVELOPMENT.md + 02_ADMINISTRATION.md<br />
+- Day 2: modules/CMDB.md + modules/ITSM.md + relevant exam banks<br />
+- Day 3: Pick 1 specialty module + 14_AI_SERVICENOW_AGENTS.md + integration</p>
+<p><strong>1-week (4h/day)</strong>:<br />
+- Days 1-3 as above<br />
+- Day 4: Service Portal + Workspace<br />
+- Day 5: HRSD + Lifecycle + EC<br />
+- Day 6: SecOps OR DevOps (depending on target role)<br />
+- Day 7: Final review + exam prep</p>
+<p><strong>2 weeks (3h/day)</strong>: Follow this document literally.</p>
+<p><strong>4 weeks (1-2h/day)</strong>: Same content as 2 weeks, with extra hands-on practice each day.</p>
+<hr />
+<h2 id="10-daily-progress-tracker-template">§10 — Daily progress tracker (template) / متعقّب التقدم</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Copy this template; fill daily:</p>
+<h2 id="day-n-topic">Day [N] — [Topic]</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li>[ ] Read assigned section(s)</li>
+<li>[ ] Lab completed</li>
+<li>[ ] 5 CIS questions answered</li>
+<li>[ ] Update Set exported</li>
+<li>[ ] Screenshot/screencast captured</li>
+<li>[ ] Reflection (1-2 sentences):</li>
+<li>[ ] Tomorrow&rsquo;s prep:</li>
+</ul>
+<hr />
+<h2 id="11-resource-summary">§11 — Resource summary / ملخص الموارد</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>### 11.1 At root of C:\SVCProject\</p>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EXAM_BANK_ITSM_360.md (103 KB)</td>
+<td>~120 CIS-ITSM questions</td>
+</tr>
+<tr>
+<td>EXAM_BANK_CSM_360.md (95 KB)</td>
+<td>~120 CIS-CSM questions</td>
+</tr>
+<tr>
+<td>EXAM_BANK_FSM_360.md (95 KB)</td>
+<td>~120 CIS-FSM questions</td>
+</tr>
+<tr>
+<td>EXAM_BANK_HRSD_360.md (95 KB)</td>
+<td>~120 CIS-HR questions</td>
+</tr>
+<tr>
+<td>EXAM_BANK_GRC_360.md (91 KB)</td>
+<td>~120 CIS-RC questions</td>
+</tr>
+<tr>
+<td>SERVICENOW_CIS_DF_CMDB_STUDY_GUIDE.md (146 KB)</td>
+<td><strong>180 CMDB questions + labs (your &ldquo;157&rdquo; + more)</strong></td>
+</tr>
+<tr>
+<td>CMDB_CSDM_LABS_FULL_STEPS_TOPIC1_2.md (29 KB)</td>
+<td>CMDB lab walk-through Topic 1-2</td>
+</tr>
+<tr>
+<td>CMDB_CSDM_LABS_FULL_STEPS_TOPIC3_5.md (63 KB)</td>
+<td>CMDB lab walk-through Topic 3-5</td>
+</tr>
+<tr>
+<td>CIS_DF_CMDB_2HR_REVISION_COMPLETE.md (32 KB)</td>
+<td>2-hour CMDB revision</td>
+</tr>
+<tr>
+<td>CRM_ACCOUNTS_80MIN_COMPLETE_GUIDE.md (~8200 lines)</td>
+<td>Studio-first CRM tutorial</td>
+</tr>
+</tbody>
+</table>
+<h3 id="112-in-hr_leave_app-root-level">11.2 In HR_Leave_App/ (root level)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Doc</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00_MASTER_STUDY_PLAN_2WEEKS.md</td>
+<td><strong>(this file)</strong> central plan</td>
+</tr>
+<tr>
+<td>00_CIS_EXAM_INDEX.md</td>
+<td>Bank routing per module</td>
+</tr>
+<tr>
+<td>01-12 files</td>
+<td>Topic-by-topic deep dives</td>
+</tr>
+<tr>
+<td>13_2HOUR_MASTER_SUMMARY.md</td>
+<td>2-hour everything-summary</td>
+</tr>
+<tr>
+<td>14_AI_SERVICENOW_AGENTS.md</td>
+<td>AI + Agents + LLM</td>
+</tr>
+<tr>
+<td>15_CLAUDE_CLI_CODE_SERVICENOW.md</td>
+<td>Claude Code + SDK</td>
+</tr>
+</tbody>
+</table>
+<h3 id="113-in-hr_leave_appmodules">11.3 In HR_Leave_App/modules/</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>12 module files (each with §17 Power User + §18 30-Day) + helper docs (00_MODULES_INDEX.md, STUDY_ROADMAP.md, MODULE_*.md).</p>
+<hr />
+<h2 id="12-one-more-thing-build-muscle-memory">§12 — One more thing: build muscle memory / آخر نصيحة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>The biggest mistake in ServiceNow learning is <strong>passive reading</strong>. After every section in this 2-week plan, <strong>close the doc and re-implement from memory</strong> on your PDI.</p>
+<p>If you cannot recreate it in &lt;50% of the original time, you have not learned it yet. — أكبر خطأ هو القراءة السلبية. أغلق الدليل وأعد البناء من الذاكرة. إذا لم تستطع، عُد للقراءة.</p>
+<hr />
+<p><strong>Start Day 1 now.</strong> Bookmark this file. Track progress daily. By Day 14, you will be operating at Implementer level across all modules.</p>
+<p>ابدأ اليوم 1 الآن. ضع إشارة مرجعية على هذا الملف. تابع تقدمك يوميًا. بحلول اليوم 14، ستعمل بمستوى Implementer في كل الموديولات.</p>
+
+</article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="assets/docs.js"></script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

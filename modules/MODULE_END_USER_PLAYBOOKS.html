@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Module End-User Playbooks — كل الأدوار بكل الموديولات | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Module End-User Playbooks — كل الأدوار بكل الموديولات</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="module-end-user-playbooks">Module End-User Playbooks — كل الأدوار بكل الموديولات</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً:</strong> <a href="../MASTER_ALL_IN_ONE_SUMMARY.html">../MASTER_ALL_IN_ONE_SUMMARY.md</a> · <a href="../html/MASTER_ALL_IN_ONE_SUMMARY.html">../html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل:</strong> <a href="../MASTER_ALL_IN_ONE.html">../MASTER_ALL_IN_ONE.md</a> · <a href="../html/MASTER_ALL_IN_ONE.html">../html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات:</strong> <a href="../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Australia · Scope <code>x_786686_hr_leave</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>URLs:</strong> <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">../../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a><br />
+<strong>HR Leave:</strong> Scope x_786686_hr_leave</p>
+</blockquote>
+<h2 id="_1">دلائل المستخدم النهائي عبر جميع الموديولات</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<blockquote>
+<p>Single reference for <strong>every persona across every module</strong> — what they do in a day, where they click, what scripts power their work.</p>
+<p>مرجع موحّد لكل شخصية في كل موديول — ما هي مهامها اليومية ومن أين تعمل.</p>
+</blockquote>
+<hr />
+<h2 id="1-how-to-use-this-document">§1 — How to use this document / كيفية الاستخدام</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<table>
+<thead>
+<tr>
+<th>Reader</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trainer</td>
+<td>Use the persona tables as session outlines</td>
+</tr>
+<tr>
+<td>End user</td>
+<td>Read your role&rsquo;s &ldquo;Day in Life&rdquo; + &ldquo;Top 5 actions&rdquo;</td>
+</tr>
+<tr>
+<td>Consultant</td>
+<td>Use the role catalog when scoping personas in Phase 1-2</td>
+</tr>
+<tr>
+<td>Hiring manager</td>
+<td>Use as job description seed</td>
+</tr>
+</tbody>
+</table>
+<p>Each module file has a deep §17 — Power User Playbook with full scripts. This file is the <strong>cross-module index</strong> + quick reference.</p>
+<hr />
+<h2 id="2-universal-personas-cross-module">§2 — Universal personas / الأدوار الشاملة (cross-module)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Primary modules</th>
+<th>Workspace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Employee</strong></td>
+<td>HRSD, ITSM Catalog, CSM portal</td>
+<td>/esc, /sp</td>
+</tr>
+<tr>
+<td><strong>Manager (any line)</strong></td>
+<td>HRSD, ITSM (approvals), SPM</td>
+<td>/now/&hellip;, mobile</td>
+</tr>
+<tr>
+<td><strong>IT Service Desk</strong></td>
+<td>ITSM</td>
+<td>/now/sow/home</td>
+</tr>
+<tr>
+<td><strong>HR Agent</strong></td>
+<td>HRSD</td>
+<td>/now/hrx/home</td>
+</tr>
+<tr>
+<td><strong>CSR (Customer)</strong></td>
+<td>CSM</td>
+<td>/now/cwf/agent</td>
+</tr>
+<tr>
+<td><strong>Field Technician</strong></td>
+<td>FSM</td>
+<td>Now Mobile</td>
+</tr>
+<tr>
+<td><strong>Dispatcher</strong></td>
+<td>FSM</td>
+<td>/now/fsm/dispatcher</td>
+</tr>
+<tr>
+<td><strong>Risk / Control Owner</strong></td>
+<td>GRC</td>
+<td>EC + GRC Workspace</td>
+</tr>
+<tr>
+<td><strong>SOC Analyst</strong></td>
+<td>SecOps</td>
+<td>/now/sir/agent</td>
+</tr>
+<tr>
+<td><strong>Vulnerability Owner</strong></td>
+<td>SecOps VR</td>
+<td>VR workspace</td>
+</tr>
+<tr>
+<td><strong>Developer (Pro)</strong></td>
+<td>App Engine, DevOps</td>
+<td>Studio + AES</td>
+</tr>
+<tr>
+<td><strong>Citizen Developer</strong></td>
+<td>App Engine</td>
+<td>AES</td>
+</tr>
+<tr>
+<td><strong>Project Manager</strong></td>
+<td>SPM</td>
+<td>Planning Console</td>
+</tr>
+<tr>
+<td><strong>Resource Manager</strong></td>
+<td>SPM</td>
+<td>/now/rm</td>
+</tr>
+<tr>
+<td><strong>Executive</strong></td>
+<td>All (dashboards)</td>
+<td>UI Builder dashboards</td>
+</tr>
+<tr>
+<td><strong>Auditor (internal/external)</strong></td>
+<td>GRC</td>
+<td>Auditor workspace</td>
+</tr>
+<tr>
+<td><strong>Asset Manager</strong></td>
+<td>ITAM</td>
+<td>/now/ham</td>
+</tr>
+<tr>
+<td><strong>CMDB Steward</strong></td>
+<td>CMDB</td>
+<td>CMDB workspace</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-employee-across-modules">§3 — Employee (across modules)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<h3 id="31-day-in-life">3.1 Day-in-Life</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Action</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8:00</td>
+<td>Log into /esc Employee Center</td>
+<td>Web/Mobile</td>
+</tr>
+<tr>
+<td>8:30</td>
+<td>Open HR case (e.g., &ldquo;Salary certificate&rdquo;)</td>
+<td>/esc → HR topic</td>
+</tr>
+<tr>
+<td>9:30</td>
+<td>Request a new monitor (ITSM Catalog)</td>
+<td>/esc → Catalog</td>
+</tr>
+<tr>
+<td>10:30</td>
+<td>Check open tickets</td>
+<td>/esc → My Cases</td>
+</tr>
+<tr>
+<td>14:00</td>
+<td>Complete annual policy acknowledgement (GRC)</td>
+<td>/esc → Tasks</td>
+</tr>
+<tr>
+<td>16:00</td>
+<td>Submit time-off (HR Leave app or HRSD)</td>
+<td>/esc → HR Services</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-top-5-employee-actions">3.2 Top 5 employee actions</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<ol>
+<li>Browse Topics (Catalog + KB)</li>
+<li>Open a case / request / leave</li>
+<li>Track their requests</li>
+<li>Acknowledge policies / training</li>
+<li>Update their profile</li>
+</ol>
+<h3 id="33-what-powers-it">3.3 What powers it</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<ul>
+<li>Service Portal /esc + widgets</li>
+<li>Mobile App (Now Mobile)</li>
+<li>Notifications (email + push)</li>
+<li>Virtual Agent (24/7 self-service)</li>
+<li>KB Suggester (when typing description, suggest articles)</li>
+</ul>
+<hr />
+<h2 id="4-manager-universal-approval-persona">§4 — Manager (universal approval persona)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<h3 id="41-day-in-life">4.1 Day-in-Life</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Morning</td>
+<td>Open approvals queue (email digest + mobile)</td>
+</tr>
+<tr>
+<td></td>
+<td>Approve leave requests, hardware requests, change requests</td>
+</tr>
+<tr>
+<td></td>
+<td>Review team SLAs in dashboard</td>
+</tr>
+<tr>
+<td>Lunch</td>
+<td>1:1s with reports — check open employee cases</td>
+</tr>
+<tr>
+<td>Afternoon</td>
+<td>Approve project funding (SPM Demand)</td>
+</tr>
+<tr>
+<td>EOD</td>
+<td>Review weekly attestation tasks (GRC)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-top-5-manager-actions">4.2 Top 5 manager actions</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<ol>
+<li>Approve / reject in inbox</li>
+<li>Delegate authority during travel</li>
+<li>Review team metrics (utilization, on-time, SLA)</li>
+<li>Submit demand for new initiatives (SPM)</li>
+<li>Complete control attestations (GRC)</li>
+</ol>
+<h3 id="43-mobile-first">4.3 Mobile-first</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>Most manager actions happen on mobile via the Approval card UX — single-tap approve, swipe to reject.</p>
+<hr />
+<h2 id="5-it-service-desk-agent-itsm">§5 — IT Service Desk Agent (ITSM)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<h3 id="51-day-in-life">5.1 Day-in-Life</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>Refer to <strong>ITSM.md §17.2</strong> for full detail. Quick recap:</p>
+<ol>
+<li>Workspace inbox (/now/sow/home)</li>
+<li>Triage P1/P2/P3 — assign to self or escalate</li>
+<li>Investigate, run KB, knowledge-suggest</li>
+<li>Apply fix, log activity, attach evidence</li>
+<li>Resolve + close + survey</li>
+</ol>
+<h3 id="52-pro-tips">5.2 Pro tips</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<ul>
+<li>Use Alt+1..9 keyboard shortcuts</li>
+<li>Pin top 3 customer-impact dashboards</li>
+<li>Run &ldquo;Bulk update&rdquo; for known mass events</li>
+</ul>
+<hr />
+<h2 id="6-hr-agent-hrsd">§6 — HR Agent (HRSD)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>See <strong>HRSD.md §17.2-17.4</strong> for full playbook (20 scripts).</p>
+<p>Quick: handle HR cases with PII redaction, COE escalation, criteria-based hiding, Workday sync, KB suggestion.</p>
+<hr />
+<h2 id="7-csr-customer-service-rep-csm">§7 — CSR / Customer Service Rep (CSM)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>See <strong>CSM.md §17.3</strong> for full day-in-life (8 steps from queue to reply).</p>
+<p>Quick: identify account via email domain, check entitlement, route to right team, use AI to summarize past cases, send branded reply.</p>
+<hr />
+<h2 id="8-field-technician-fsm">§8 — Field Technician (FSM)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>See <strong>FSM.md §17.3</strong> for full mobile-centric day.</p>
+<p>Quick: travel → arrive → start → consume parts → complete with signature → next WO.</p>
+<hr />
+<h2 id="9-dispatcher-fsm">§9 — Dispatcher (FSM)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>See <strong>FSM.md §17.2</strong>.</p>
+<p>Quick: map view, drag-drop WOs to technicians, optimize routes, handle emergencies.</p>
+<hr />
+<h2 id="10-risk-control-owner-grc">§10 — Risk / Control Owner (GRC)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>See <strong>GRC.md §17.2</strong>.</p>
+<p>Quick: complete attestations on time, upload evidence, sign off controls.</p>
+<hr />
+<h2 id="11-soc-analyst-t1-secops">§11 — SOC Analyst T1 (SecOps)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>See <strong>SECOPS.md §17.2</strong>.</p>
+<p>Quick: triage SIEM alerts, validate true/false positive, enrich IoCs, escalate to T2.</p>
+<hr />
+<h2 id="12-vulnerability-owner-secops-vr">§12 — Vulnerability Owner (SecOps VR)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>Quick: receive new VIs by team, prioritize, drive remediation within SLA, document accepted risks.</p>
+<hr />
+<h2 id="13-project-manager-spm">§13 — Project Manager (SPM)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>See <strong>SPM.md §17.2</strong> for hybrid waterfall/agile day-in-life.</p>
+<p>Quick: review plan, update %complete, manage risks, run sprints, log timecards.</p>
+<hr />
+<h2 id="14-resource-manager-spm">§14 — Resource Manager (SPM)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>See <strong>SPM.md §17.3</strong>.</p>
+<p>Quick: capacity heatmap, allocate, resolve over-allocations.</p>
+<hr />
+<h2 id="15-citizen-developer-app-engine">§15 — Citizen Developer (App Engine)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>See <strong>APP_ENGINE.md §17.2</strong>.</p>
+<p>Quick: describe app in plain English → AI generates → adjust → preview → share.</p>
+<hr />
+<h2 id="16-pro-developer-app-engine-devops">§16 — Pro Developer (App Engine + DevOps)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>See <strong>DEVOPS.md</strong> for full DevOps workflow.</p>
+<p>Quick: commit → CI runs → auto-CR → approve → deploy → monitor DORA metrics.</p>
+<hr />
+<h2 id="17-executive-cross-module">§17 — Executive (Cross-module)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<h3 id="171-daily-5-min-view">17.1 Daily 5-min view</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open P1 incidents</td>
+<td>ITSM</td>
+</tr>
+<tr>
+<td>Major risks above appetite</td>
+<td>GRC</td>
+</tr>
+<tr>
+<td>Customer NPS trend</td>
+<td>CSM</td>
+</tr>
+<tr>
+<td>Project portfolio RAG</td>
+<td>SPM</td>
+</tr>
+<tr>
+<td>SecOps critical findings</td>
+<td>SecOps</td>
+</tr>
+<tr>
+<td>New ideas under evaluation</td>
+<td>SPM</td>
+</tr>
+<tr>
+<td>Cost variance YTD</td>
+<td>SPM / ITAM</td>
+</tr>
+<tr>
+<td>Employee NPS / pulse</td>
+<td>HRSD</td>
+</tr>
+</tbody>
+</table>
+<p>All on one <strong>UI Builder Executive Dashboard</strong>.</p>
+<h3 id="172-weekly-digest">17.2 Weekly digest</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>Auto-emailed Monday 7am with one-pager from each module.</p>
+<hr />
+<h2 id="18-cmdb-steward">§18 — CMDB Steward</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<h3 id="181-day-in-life">18.1 Day-in-Life</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<ol>
+<li>Open CMDB Workspace</li>
+<li>Review CMDB Health score</li>
+<li>Investigate stale CIs (no update &gt;30 days)</li>
+<li>Resolve duplicate CIs (IRE conflicts)</li>
+<li>Add new authoritative source (e.g., Azure)</li>
+</ol>
+<h3 id="182-top-5">18.2 Top 5</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<ol>
+<li>Identification rules (IRE)</li>
+<li>Reconciliation conflicts</li>
+<li>Stale CI cleanup</li>
+<li>CSDM compliance check</li>
+<li>Relationship maintenance</li>
+</ol>
+<p>See <strong>CMDB.md</strong> for full playbook.</p>
+<hr />
+<h2 id="19-asset-manager-itam">§19 — Asset Manager (ITAM)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<h3 id="191-day-in-life">19.1 Day-in-Life</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<ol>
+<li>Process receiving — match PO to incoming</li>
+<li>Allocate assets to users</li>
+<li>Investigate &ldquo;Missing&rdquo; assets</li>
+<li>Run reclamation report (SAM)</li>
+<li>Plan refresh cycle</li>
+</ol>
+<p>See <strong>ITAM.md §17</strong> for the full deep-dive.</p>
+<hr />
+<h2 id="20-auditor-internalexternal">§20 — Auditor (Internal/External)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<h3 id="201-day-in-life">20.1 Day-in-Life</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<ol>
+<li>Open Audit Engagements list</li>
+<li>Plan walkthrough (process owners)</li>
+<li>Test controls (sample, test, document)</li>
+<li>Raise findings with evidence</li>
+<li>Track remediation</li>
+</ol>
+<p>See <strong>GRC.md §17</strong> sub-section on auditor persona.</p>
+<hr />
+<h2 id="21-common-workflows-for-each-persona">§21 — Common workflows for each persona</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<h3 id="211-approve-reject">21.1 Approve / Reject</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All approvers</td>
+<td>Inbox + Mobile push</td>
+</tr>
+<tr>
+<td>Bulk approve</td>
+<td>Workspace bulk action</td>
+</tr>
+<tr>
+<td>Delegate</td>
+<td>User Profile → Delegate during travel</td>
+</tr>
+</tbody>
+</table>
+<h3 id="212-search">21.2 Search</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<table>
+<thead>
+<tr>
+<th>Search type</th>
+<th>Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Records</td>
+<td>Global search header</td>
+</tr>
+<tr>
+<td>KB</td>
+<td>Service Portal search box</td>
+</tr>
+<tr>
+<td>Federated (across modules)</td>
+<td>AI Search (Now Assist)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="213-notifications-channels-by-preference">21.3 Notifications channels by preference</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email</td>
+<td>Default</td>
+</tr>
+<tr>
+<td>In-app</td>
+<td>Workspace inbox</td>
+</tr>
+<tr>
+<td>Push (mobile)</td>
+<td>Time-sensitive (approval, P1 incident)</td>
+</tr>
+<tr>
+<td>SMS (Twilio)</td>
+<td>Critical/emergency (Sev 1 SecOps, outage)</td>
+</tr>
+<tr>
+<td>Teams/Slack</td>
+<td>Team-level (project, incident channels)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="22-persona-engagement-levels">§22 — Persona engagement levels</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Engagement</th>
+<th>Training need</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Frequent (daily)</strong></td>
+<td>Agent, technician, analyst, PM</td>
+<td>Full training course (1-3 days) + ongoing</td>
+</tr>
+<tr>
+<td><strong>Regular (weekly)</strong></td>
+<td>Manager, control owner, asset mgr</td>
+<td>½-day training + quick-reference card</td>
+</tr>
+<tr>
+<td><strong>Occasional (monthly)</strong></td>
+<td>Employee, auditor</td>
+<td>30-min video + portal walkthrough</td>
+</tr>
+<tr>
+<td><strong>Rare (annual)</strong></td>
+<td>Vendor (1× attestation)</td>
+<td>Self-service portal with clear nav</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="23-persona-to-feature-mapping-one-look">§23 — Persona-to-feature mapping (one-look)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Personas affected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Employee Center /esc</td>
+<td>Employee, Manager, Auditor (read)</td>
+</tr>
+<tr>
+<td>Service Portal /sp (legacy)</td>
+<td>Employee, Customer (CSM /csm)</td>
+</tr>
+<tr>
+<td>ITSM Workspace /now/sow/home</td>
+<td>Service Desk, ITIL roles</td>
+</tr>
+<tr>
+<td>HRSD Workspace /now/hrx/home</td>
+<td>HR Agent, COE Specialist</td>
+</tr>
+<tr>
+<td>CSM Workspace /now/cwf/agent</td>
+<td>CSR, T2 Engineer, Account Mgr</td>
+</tr>
+<tr>
+<td>FSM Dispatcher /now/fsm/dispatcher</td>
+<td>Dispatcher</td>
+</tr>
+<tr>
+<td>Now Mobile</td>
+<td>Field Tech, Manager (approvals), Employee (lite)</td>
+</tr>
+<tr>
+<td>GRC Workspace</td>
+<td>Risk/Control Owner, Compliance, Auditor</td>
+</tr>
+<tr>
+<td>SecOps Workspace /now/sir/agent</td>
+<td>SOC Analyst, IR Manager</td>
+</tr>
+<tr>
+<td>SPM Planning Console</td>
+<td>PM, PMO, Resource Mgr</td>
+</tr>
+<tr>
+<td>App Engine Studio /now/app-engine-studio</td>
+<td>Citizen Dev, Pro Dev, CoE</td>
+</tr>
+<tr>
+<td>Now Assist Studio</td>
+<td>AI Builder, Skill Author</td>
+</tr>
+<tr>
+<td>AI Agent Studio</td>
+<td>Agent Builder, Solution Architect</td>
+</tr>
+<tr>
+<td>Dashboards (UI Builder)</td>
+<td>Executive, Manager</td>
+</tr>
+<tr>
+<td>Performance Analytics</td>
+<td>Analyst, Exec</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="24-top-10-cross-persona-scripts-reusable">§24 — Top 10 cross-persona scripts (reusable)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>Each module file has its own scripts in §17. These are common patterns reused across:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Pattern</th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Email-domain auto-link to Account/Org</td>
+<td>CSM, HRSD</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Multi-tier approval engine</td>
+<td>ITSM, HRSD, SPM, GRC</td>
+</tr>
+<tr>
+<td>3</td>
+<td>SLA pause on waiting</td>
+<td>ITSM, CSM, HRSD</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Bulk-notification (push + email + SMS)</td>
+<td>All</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Skill-based routing</td>
+<td>ITSM, CSM, FSM</td>
+</tr>
+<tr>
+<td>6</td>
+<td>KB suggester for description</td>
+<td>All</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Now Assist summarizer</td>
+<td>All</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Audit-trail composer</td>
+<td>All</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Org-chart traversal (manager + skip-level)</td>
+<td>HRSD, ITSM (approval chain)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Bulk-update with permission scope</td>
+<td>All</td>
+</tr>
+</tbody>
+</table>
+<p>Reusable Script Includes live in your scoped app or global scope, and each module references them.</p>
+<hr />
+<h2 id="25-training-resources-by-persona">§25 — Training resources by persona</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Hours</th>
+<th>Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Daily users</td>
+<td>8-16</td>
+<td>Instructor + hands-on + quizzes</td>
+</tr>
+<tr>
+<td>Weekly users</td>
+<td>2-4</td>
+<td>Recorded video + role-specific lab</td>
+</tr>
+<tr>
+<td>Occasional</td>
+<td>0.5-1</td>
+<td>Embedded onboarding tour</td>
+</tr>
+<tr>
+<td>Rare</td>
+<td>0.25</td>
+<td>Self-service portal</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="26-persona-scorecard-template">§26 — Persona scorecard template</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>After 30 days post go-live, measure each persona:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Adoption % (logged in last 30 days)</td>
+<td>≥ 85%</td>
+</tr>
+<tr>
+<td>Productivity uplift (tasks/day)</td>
+<td>+20%</td>
+</tr>
+<tr>
+<td>User CSAT on tool</td>
+<td>≥ 4.0 / 5</td>
+</tr>
+<tr>
+<td>Time-to-competency (new joiner)</td>
+<td>≤ 5 days</td>
+</tr>
+<tr>
+<td>Self-service deflection</td>
+<td>≥ 30%</td>
+</tr>
+<tr>
+<td>Mobile usage (where relevant)</td>
+<td>≥ 40% of actions</td>
+</tr>
+</tbody>
+</table>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

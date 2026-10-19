@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ITSM — Professional Implementation from Scratch to Production | HR Leave Australia</title>
+  <link rel="stylesheet" href="../../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../../index.html">Portal</a>
+      <a href="../../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../../scripts/index.html">Scripts</a>
+      <a href="../../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>ITSM — Professional Implementation from Scratch to Production</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/incident_list.do">Incident</a>
+<a href="{BASE}/problem_list.do">Problem</a>
+<a href="{BASE}/change_request_list.do">Change</a>
+<a href="{BASE}/now/sow/home">SOW</a>
+</div>
+    <article class="content">
+<p class="nav-coverage"><strong>Direct navigation:</strong> 11/12 documented <code>All &gt; ...</code> paths linked to this ServiceNow instance.</p>
+<h1 id="itsm-professional-implementation-from-scratch-to-production">ITSM — Professional Implementation from Scratch to Production</h1>
+<blockquote>
+<p><strong>Release baseline:</strong> ServiceNow <strong>Australia</strong> (current GA · Sep 2026)<br />
+<strong>Audience:</strong> Professional Implementers · Platform Admins · Developers · Product Owners · Test Leads<br />
+<strong>Instance token:</strong> <code>{BASE}</code> = <code>https://YOUR_INSTANCE.service-now.com</code><br />
+<strong>Related module encyclopedia:</strong> <a href="../ITSM.html">../ITSM.md</a><br />
+<strong>All implementation guides:</strong> <a href="INDEX.html">INDEX.md</a></p>
+</blockquote>
+<h2 id="0-outcome-and-guardrails">0. Outcome and guardrails</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p><strong>IT Service Management:</strong> Restore service, remove root causes, control changes, fulfil requests, and reuse knowledge.</p>
+<ul>
+<li>Confirm product entitlement before plugin activation.</li>
+<li>Build and test in sub-production/PDI; never activate major plugins first in production.</li>
+<li>Prefer out-of-box process/configuration before custom scripts.</li>
+<li>Use Flow Designer for new automation; maintain legacy Workflow only when required.</li>
+<li>Protect data with roles, ACLs, groups, criteria, and persona-based tests.</li>
+<li>Australia is the deployment baseline; Brazil preview/EA is not the production baseline unless your organization explicitly validates it.</li>
+</ul>
+<h2 id="1-end-to-end-operating-model">1. End-to-end operating model</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<pre><code class="language-text">Discover → Design → Configure → Integrate → Secure → Test → Deploy → Operate → Improve
+</code></pre>
+<p><strong>Module lifecycle:</strong> Incident → Major Incident when impact requires → Problem / Known Error → Change → Knowledge; Catalog request → RITM → task → fulfilment</p>
+<h2 id="2-discovery-workshops-and-scope">2. Discovery workshops and scope</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p>Run these workshops before configuration:</p>
+<table>
+<thead>
+<tr>
+<th>Workshop</th>
+<th>Required decisions</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vision and outcomes</td>
+<td>business outcomes, KPIs, scope/exclusions</td>
+<td>signed charter</td>
+</tr>
+<tr>
+<td>Process</td>
+<td>states, ownership, approvals, exceptions, SLAs</td>
+<td>BPMN/process map</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>source of truth, retention, migration, reference data</td>
+<td>data dictionary</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>personas, groups, roles, segregation, sensitive fields</td>
+<td>access matrix</td>
+</tr>
+<tr>
+<td>Integration</td>
+<td>systems, direction, frequency, failure/replay</td>
+<td>interface contract</td>
+</tr>
+<tr>
+<td>Experience</td>
+<td>workspace, portal, mobile, accessibility</td>
+<td>persona journeys</td>
+</tr>
+<tr>
+<td>Reporting</td>
+<td>operational vs PA, targets, audiences</td>
+<td>KPI catalog</td>
+</tr>
+<tr>
+<td>Deployment</td>
+<td>environments, Update Sets/App Repo, rollback</td>
+<td>release plan</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-licensing-plugins-and-release-readiness">3. Licensing, plugins, and release readiness</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p><strong>Expected products/plugins:</strong> ITSM core; Change Management; Problem Management; Service Operations Workspace; Performance Analytics (licensed/optional)</p>
+<ol>
+<li>Open <a href="{BASE}/v_plugin_list.do">Plugins</a>.</li>
+<li>Confirm entitlement with ServiceNow account/product owner.</li>
+<li>Activate in a non-production instance.</li>
+<li>Review activation logs and newly created roles/modules.</li>
+<li>Capture configuration in a named Update Set where supported.</li>
+<li>Confirm Australia release/build at <a href="{BASE}/stats.do">System Stats</a>.</li>
+</ol>
+<h2 id="4-roles-groups-and-security-model">4. Roles, groups, and security model</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p><strong>Typical roles:</strong> <code>itil, itil_admin, incident_manager, problem_manager, change_manager, knowledge_admin, catalog_admin</code></p>
+<p>Professional rules:</p>
+<ul>
+<li>Roles → Groups → Users; avoid direct role grants.</li>
+<li>Separate admin/configurer, manager, fulfiller/agent, requester, auditor, and integration personas.</li>
+<li>Test table, row, and field access with impersonation.</li>
+<li>Never treat UI visibility as security; enforce ACL/criteria.</li>
+<li>Record privileged access and quarterly access review.</li>
+</ul>
+<h2 id="5-foundation-configuration-sequence">5. Foundation configuration sequence</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<ol>
+<li>Create reference data and ownership groups.</li>
+<li>Configure states/models/templates before automation.</li>
+<li>Configure assignment/routing and schedules.</li>
+<li>Configure SLAs/entitlements where applicable.</li>
+<li>Configure notifications and knowledge.</li>
+<li>Configure workspace/portal/mobile experience.</li>
+<li>Configure integrations and system properties.</li>
+<li>Build reports and dashboards.</li>
+<li>Build ATF and UAT packs.</li>
+<li>Complete deployment/rollback runbook.</li>
+</ol>
+<h2 id="6-all-component-pages-and-direct-urls">6. All component pages and direct URLs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Filter Navigator</th>
+<th>Direct instance URL</th>
+<th>Implementation purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Users</strong></td>
+<td>All &gt; User Administration &gt; Users</td>
+<td><a href="{BASE}/sys_user_list.do">Open direct</a></td>
+<td>Create personas and test users</td>
+</tr>
+<tr>
+<td><strong>Groups</strong></td>
+<td>All &gt; User Administration &gt; Groups</td>
+<td><a href="{BASE}/sys_user_group_list.do">Open direct</a></td>
+<td>Assignment and role groups</td>
+</tr>
+<tr>
+<td><strong>Roles</strong></td>
+<td>All &gt; User Administration &gt; Roles</td>
+<td><a href="{BASE}/sys_user_role_list.do">Open direct</a></td>
+<td>Role model and least privilege</td>
+</tr>
+<tr>
+<td><strong>Plugins</strong></td>
+<td>All &gt; System Definition &gt; Plugins</td>
+<td><a href="{BASE}/v_plugin_list.do">Open direct</a></td>
+<td>Verify entitlement and activation</td>
+</tr>
+<tr>
+<td><strong>Update Sets</strong></td>
+<td>All &gt; System Update Sets &gt; Local Update Sets</td>
+<td><a href="{BASE}/sys_update_set_list.do">Open direct</a></td>
+<td>Capture configuration</td>
+</tr>
+<tr>
+<td><strong>Flow Designer</strong></td>
+<td>All &gt; Process Automation &gt; Flow Designer</td>
+<td><a href="{BASE}/now/flow-designer">Open direct</a></td>
+<td>Modern process automation</td>
+</tr>
+<tr>
+<td><strong>ATF</strong></td>
+<td>All &gt; Automated Test Framework &gt; Tests</td>
+<td><a href="{BASE}/sys_atf_test_list.do">Open direct</a></td>
+<td>Regression tests</td>
+</tr>
+<tr>
+<td><strong>Reports</strong></td>
+<td>All &gt; Reports &gt; View / Run</td>
+<td><a href="{BASE}/sys_report_list.do">Open direct</a></td>
+<td>Operational reporting</td>
+</tr>
+<tr>
+<td><strong>Dashboards</strong></td>
+<td>All &gt; Performance Analytics &gt; Dashboards</td>
+<td><a href="{BASE}/pa_dashboards_list.do">Open direct</a></td>
+<td>Role-based KPI dashboard</td>
+</tr>
+<tr>
+<td><strong>Incidents</strong></td>
+<td>All &gt; Incident &gt; All</td>
+<td><a href="{BASE}/incident_list.do">Open direct</a></td>
+<td>Restore normal service</td>
+</tr>
+<tr>
+<td><strong>Create Incident</strong></td>
+<td>All &gt; Incident &gt; Create New</td>
+<td><a href="{BASE}/incident.do?sys_id=-1">Open direct</a></td>
+<td>Create a controlled test record</td>
+</tr>
+<tr>
+<td><strong>Problems</strong></td>
+<td>All &gt; Problem &gt; All</td>
+<td><a href="{BASE}/problem_list.do">Open direct</a></td>
+<td>Root-cause management</td>
+</tr>
+<tr>
+<td><strong>Known Errors</strong></td>
+<td>All &gt; Problem &gt; Known Errors</td>
+<td><a href="{BASE}/problem_list.do?sysparm_query=known_error%3Dtrue">Open direct</a></td>
+<td>Document workaround and root cause</td>
+</tr>
+<tr>
+<td><strong>Changes</strong></td>
+<td>All &gt; Change &gt; All</td>
+<td><a href="{BASE}/change_request_list.do">Open direct</a></td>
+<td>Normal/Standard/Emergency change</td>
+</tr>
+<tr>
+<td><strong>Change Models</strong></td>
+<td>All &gt; Change &gt; Administration &gt; Models</td>
+<td><a href="{BASE}/chg_model_list.do">Open direct</a></td>
+<td>Standardize change lifecycle</td>
+</tr>
+<tr>
+<td><strong>Catalog Items</strong></td>
+<td>All &gt; Service Catalog &gt; Maintain Items</td>
+<td><a href="{BASE}/sc_cat_item_list.do">Open direct</a></td>
+<td>Requestable services</td>
+</tr>
+<tr>
+<td><strong>Requested Items</strong></td>
+<td>All &gt; Service Catalog &gt; Requested Items</td>
+<td><a href="{BASE}/sc_req_item_list.do">Open direct</a></td>
+<td>Fulfil catalog demand</td>
+</tr>
+<tr>
+<td><strong>Knowledge</strong></td>
+<td>All &gt; Knowledge &gt; Articles</td>
+<td><a href="{BASE}/kb_knowledge_list.do">Open direct</a></td>
+<td>KCS and self-service content</td>
+</tr>
+<tr>
+<td><strong>SLA Definitions</strong></td>
+<td>All &gt; Service Level Management &gt; SLA Definitions</td>
+<td><a href="{BASE}/contract_sla_list.do">Open direct</a></td>
+<td>Response/resolution commitments</td>
+</tr>
+<tr>
+<td><strong>Assignment Rules</strong></td>
+<td>All &gt; System Policy &gt; Assignment</td>
+<td><a href="{BASE}/sysrule_assignment_list.do">Open direct</a></td>
+<td>Route work consistently</td>
+</tr>
+<tr>
+<td><strong>SOW</strong></td>
+<td>All &gt; Service Operations Workspace</td>
+<td><a href="{BASE}/now/sow/home">Open direct</a></td>
+<td>Agent workspace</td>
+</tr>
+</tbody>
+</table>
+<p>Enter your instance once in the HTML header; every <code>{BASE}</code> link then opens the correct page in that instance.</p>
+<h2 id="7-module-configuration-tutorial">7. Module configuration tutorial</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<ol>
+<li>Open each component in the order shown in §6.</li>
+<li>Create minimum viable reference data and one happy-path record.</li>
+<li>Configure state transitions, assignment, approvals, notifications, and SLAs.</li>
+<li>Validate agent and requester experiences using different personas.</li>
+<li>Add exception paths: rejection, reassignment, cancellation, timeout, integration failure.</li>
+<li>Keep customization decisions in an OOTB-vs-config-vs-custom register.</li>
+</ol>
+<h3 id="71-complete-settings-and-configuration-control-matrix">7.1 Complete settings and configuration control matrix</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p>Use this as the minimum configuration workbook. Add product-specific rows discovered during workshops; do not leave a changed setting without an owner and test.</p>
+<table>
+<thead>
+<tr>
+<th>Configuration area</th>
+<th>What must be configured</th>
+<th>Direct page</th>
+<th>Verification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product activation</td>
+<td>entitlement, dependencies, activation order</td>
+<td><a href="{BASE}/v_plugin_list.do">Plugins</a></td>
+<td>module menus and roles appear</td>
+</tr>
+<tr>
+<td>System properties</td>
+<td>module defaults; document every non-OOTB value</td>
+<td><a href="{BASE}/sys_properties_list.do">Properties</a></td>
+<td>compare export with decision log</td>
+</tr>
+<tr>
+<td>Tables/Dictionary</td>
+<td>required fields, references, choices, indexes</td>
+<td><a href="{BASE}/sys_db_object_list.do">Tables</a></td>
+<td>schema and reference integrity</td>
+</tr>
+<tr>
+<td>Forms/Lists</td>
+<td>views per persona; related lists; mandatory/read-only</td>
+<td><a href="{BASE}/sys_ui_section_list.do">Form Layout</a></td>
+<td>impersonate every persona</td>
+</tr>
+<tr>
+<td>Templates/Models</td>
+<td>repeatable record defaults and lifecycle models</td>
+<td><a href="{BASE}/sys_template_list.do">Templates</a></td>
+<td>create record from each template</td>
+</tr>
+<tr>
+<td>Assignment/Routing</td>
+<td>rules, groups, skills, queues, fallback owner</td>
+<td><a href="{BASE}/sysrule_assignment_list.do">Assignment Rules</a></td>
+<td>normal + no-match + overload tests</td>
+</tr>
+<tr>
+<td>States/Transitions</td>
+<td>allowed transitions, closure codes, reopen/cancel</td>
+<td><a href="{BASE}/sys_state_model_list.do">State Models</a></td>
+<td>positive and blocked transitions</td>
+</tr>
+<tr>
+<td>SLA/Entitlement</td>
+<td>start/pause/resume/stop; schedules; breach actions</td>
+<td><a href="{BASE}/contract_sla_list.do">SLA Definitions</a></td>
+<td>runtime <code>task_sla</code> records</td>
+</tr>
+<tr>
+<td>Flow/Approvals</td>
+<td>trigger, conditions, approvers, timeout, rejection</td>
+<td><a href="{BASE}/now/flow-designer">Flow Designer</a></td>
+<td>execution details show all branches</td>
+</tr>
+<tr>
+<td>Events/Notifications</td>
+<td>event registry, recipients, conditions, templates</td>
+<td><a href="{BASE}/sysevent_email_action_list.do">Notifications</a></td>
+<td>event/email logs and recipient test</td>
+</tr>
+<tr>
+<td>Roles/ACLs</td>
+<td>table/row/field protection and separation of duties</td>
+<td><a href="{BASE}/sys_security_acl_list.do">ACLs</a></td>
+<td>impersonation + unauthorized denial</td>
+</tr>
+<tr>
+<td>Workspace</td>
+<td>lists, forms, declarative actions, landing pages</td>
+<td><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a></td>
+<td>agent persona completes full process</td>
+</tr>
+<tr>
+<td>Portal/Employee Center</td>
+<td>taxonomy, topics, audience, request pages</td>
+<td><a href="{BASE}/esc">Employee Center</a></td>
+<td>requester discovers and submits service</td>
+</tr>
+<tr>
+<td>Integration</td>
+<td>aliases, credentials, mappings, retry/replay, monitoring</td>
+<td><a href="{BASE}/sys_alias_list.do">Connections</a></td>
+<td>success + outage + duplicate tests</td>
+</tr>
+<tr>
+<td>Data migration</td>
+<td>source profile, coalesce keys, transform/reject handling</td>
+<td><a href="{BASE}/sys_transform_map_list.do">Transform Maps</a></td>
+<td>reconciliation and reject report</td>
+</tr>
+<tr>
+<td>Reporting/PA</td>
+<td>operational reports, KPI definitions, targets, collectors</td>
+<td><a href="{BASE}/sys_report_list.do">Reports</a></td>
+<td>role visibility and KPI reconciliation</td>
+</tr>
+<tr>
+<td>ATF/UAT</td>
+<td>smoke, process, security, integration, regression</td>
+<td><a href="{BASE}/sys_atf_test_list.do">ATF</a></td>
+<td>signed pass evidence</td>
+</tr>
+<tr>
+<td>Deployment</td>
+<td>Update Sets/App Repo, preview, commit, rollback, smoke</td>
+<td><a href="{BASE}/sys_update_set_list.do">Update Sets</a></td>
+<td>release checklist and rollback rehearsal</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Configuration rule for ITSM:</strong> record OOTB default, approved value, owner, rationale, environment, transport method, and test case for every changed setting.</p>
+<h3 id="72-component-by-component-hands-on-labs">7.2 Component-by-component hands-on labs</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p>Complete every lab below in a non-production instance. These labs cover every module-specific page listed in §6.</p>
+<h3 id="component-lab-1-incidents">Component Lab 1 — Incidents</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p><strong>Purpose:</strong> Restore normal service<br />
+<strong>Navigator:</strong> <code>All &gt; Incident &gt; All</code> — <a href="{BASE}/incident_list.do">Open direct</a><br />
+<strong>Direct:</strong> <a href="{BASE}/incident_list.do">Open Incidents</a></p>
+<ol>
+<li>Confirm plugin, role, group, and prerequisite reference data.</li>
+<li>Open the direct page and review OOTB fields, states, related lists, and existing records.</li>
+<li>Create a pilot record named/prefixed <code>LAB-01</code> where the component supports records.</li>
+<li>Configure form/view, states, mandatory fields, assignment, priority, SLA, closure, and reopen rules.</li>
+<li>Test happy path plus reject/cancel/reassign/escalate/timeout/reopen.</li>
+<li>Impersonate requester/agent/manager/admin as applicable; record expected and actual results.</li>
+<li>Capture evidence: URL, sys_id/number, screenshot, configuration decision, owner, and rollback step.</li>
+</ol>
+<h3 id="component-lab-2-create-incident">Component Lab 2 — Create Incident</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p><strong>Purpose:</strong> Create a controlled test record<br />
+<strong>Navigator:</strong> <code>All &gt; Incident &gt; Create New</code> — <a href="{BASE}/incident.do?sys_id=-1">Open direct</a><br />
+<strong>Direct:</strong> <a href="{BASE}/incident.do?sys_id=-1">Open Create Incident</a></p>
+<ol>
+<li>Confirm plugin, role, group, and prerequisite reference data.</li>
+<li>Open the direct page and review OOTB fields, states, related lists, and existing records.</li>
+<li>Create a pilot record named/prefixed <code>LAB-02</code> where the component supports records.</li>
+<li>Configure form/view, states, mandatory fields, assignment, priority, SLA, closure, and reopen rules.</li>
+<li>Test happy path plus reject/cancel/reassign/escalate/timeout/reopen.</li>
+<li>Impersonate requester/agent/manager/admin as applicable; record expected and actual results.</li>
+<li>Capture evidence: URL, sys_id/number, screenshot, configuration decision, owner, and rollback step.</li>
+</ol>
+<h3 id="component-lab-3-problems">Component Lab 3 — Problems</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p><strong>Purpose:</strong> Root-cause management<br />
+<strong>Navigator:</strong> <code>All &gt; Problem &gt; All</code> — <a href="{BASE}/problem_list.do">Open direct</a><br />
+<strong>Direct:</strong> <a href="{BASE}/problem_list.do">Open Problems</a></p>
+<ol>
+<li>Confirm plugin, role, group, and prerequisite reference data.</li>
+<li>Open the direct page and review OOTB fields, states, related lists, and existing records.</li>
+<li>Create a pilot record named/prefixed <code>LAB-03</code> where the component supports records.</li>
+<li>Configure form/view, states, mandatory fields, assignment, priority, SLA, closure, and reopen rules.</li>
+<li>Test happy path plus reject/cancel/reassign/escalate/timeout/reopen.</li>
+<li>Impersonate requester/agent/manager/admin as applicable; record expected and actual results.</li>
+<li>Capture evidence: URL, sys_id/number, screenshot, configuration decision, owner, and rollback step.</li>
+</ol>
+<h3 id="component-lab-4-known-errors">Component Lab 4 — Known Errors</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p><strong>Purpose:</strong> Document workaround and root cause<br />
+<strong>Navigator:</strong> <code>All &gt; Problem &gt; Known Errors</code> — <a href="{BASE}/problem_list.do?sysparm_query=known_error%3Dtrue">Open direct</a><br />
+<strong>Direct:</strong> <a href="{BASE}/problem_list.do?sysparm_query=known_error%3Dtrue">Open Known Errors</a></p>
+<ol>
+<li>Confirm plugin, role, group, and prerequisite reference data.</li>
+<li>Open the direct page and review OOTB fields, states, related lists, and existing records.</li>
+<li>Create a pilot record named/prefixed <code>LAB-04</code> where the component supports records.</li>
+<li>Configure ownership, required fields, references, lifecycle, security, and automation for: Document workaround and root cause.</li>
+<li>Test create/read/update/close and a negative-access case with the correct personas.</li>
+<li>Impersonate requester/agent/manager/admin as applicable; record expected and actual results.</li>
+<li>Capture evidence: URL, sys_id/number, screenshot, configuration decision, owner, and rollback step.</li>
+</ol>
+<h3 id="component-lab-5-changes">Component Lab 5 — Changes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p><strong>Purpose:</strong> Normal/Standard/Emergency change<br />
+<strong>Navigator:</strong> <code>All &gt; Change &gt; All</code> — <a href="{BASE}/change_request_list.do">Open direct</a><br />
+<strong>Direct:</strong> <a href="{BASE}/change_request_list.do">Open Changes</a></p>
+<ol>
+<li>Confirm plugin, role, group, and prerequisite reference data.</li>
+<li>Open the direct page and review OOTB fields, states, related lists, and existing records.</li>
+<li>Create a pilot record named/prefixed <code>LAB-05</code> where the component supports records.</li>
+<li>Configure form/view, states, mandatory fields, assignment, priority, SLA, closure, and reopen rules.</li>
+<li>Test happy path plus reject/cancel/reassign/escalate/timeout/reopen.</li>
+<li>Impersonate requester/agent/manager/admin as applicable; record expected and actual results.</li>
+<li>Capture evidence: URL, sys_id/number, screenshot, configuration decision, owner, and rollback step.</li>
+</ol>
+<h3 id="component-lab-6-change-models">Component Lab 6 — Change Models</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p><strong>Purpose:</strong> Standardize change lifecycle<br />
+<strong>Navigator:</strong> <code>All &gt; Change &gt; Administration &gt; Models</code> — <a href="{BASE}/chg_model_list.do">Open direct</a><br />
+<strong>Direct:</strong> <a href="{BASE}/chg_model_list.do">Open Change Models</a></p>
+<ol>
+<li>Confirm plugin, role, group, and prerequisite reference data.</li>
+<li>Open the direct page and review OOTB fields, states, related lists, and existing records.</li>
+<li>Create a pilot record named/prefixed <code>LAB-06</code> where the component supports records.</li>
+<li>Configure form/view, states, mandatory fields, assignment, priority, SLA, closure, and reopen rules.</li>
+<li>Test happy path plus reject/cancel/reassign/escalate/timeout/reopen.</li>
+<li>Impersonate requester/agent/manager/admin as applicable; record expected and actual results.</li>
+<li>Capture evidence: URL, sys_id/number, screenshot, configuration decision, owner, and rollback step.</li>
+</ol>
+<h3 id="component-lab-7-catalog-items">Component Lab 7 — Catalog Items</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p><strong>Purpose:</strong> Requestable services<br />
+<strong>Navigator:</strong> <code>All &gt; Service Catalog &gt; Maintain Items</code> — <a href="{BASE}/sc_cat_item_list.do">Open direct</a><br />
+<strong>Direct:</strong> <a href="{BASE}/sc_cat_item_list.do">Open Catalog Items</a></p>
+<ol>
+<li>Confirm plugin, role, group, and prerequisite reference data.</li>
+<li>Open the direct page and review OOTB fields, states, related lists, and existing records.</li>
+<li>Create a pilot record named/prefixed <code>LAB-07</code> where the component supports records.</li>
+<li>Configure ownership, required fields, references, lifecycle, security, and automation for: Requestable services.</li>
+<li>Test create/read/update/close and a negative-access case with the correct personas.</li>
+<li>Impersonate requester/agent/manager/admin as applicable; record expected and actual results.</li>
+<li>Capture evidence: URL, sys_id/number, screenshot, configuration decision, owner, and rollback step.</li>
+</ol>
+<h3 id="component-lab-8-requested-items">Component Lab 8 — Requested Items</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p><strong>Purpose:</strong> Fulfil catalog demand<br />
+<strong>Navigator:</strong> <code>All &gt; Service Catalog &gt; Requested Items</code> — <a href="{BASE}/sc_catalog_list.do">Open direct</a><br />
+<strong>Direct:</strong> <a href="{BASE}/sc_req_item_list.do">Open Requested Items</a></p>
+<ol>
+<li>Confirm plugin, role, group, and prerequisite reference data.</li>
+<li>Open the direct page and review OOTB fields, states, related lists, and existing records.</li>
+<li>Create a pilot record named/prefixed <code>LAB-08</code> where the component supports records.</li>
+<li>Configure ownership, required fields, references, lifecycle, security, and automation for: Fulfil catalog demand.</li>
+<li>Test create/read/update/close and a negative-access case with the correct personas.</li>
+<li>Impersonate requester/agent/manager/admin as applicable; record expected and actual results.</li>
+<li>Capture evidence: URL, sys_id/number, screenshot, configuration decision, owner, and rollback step.</li>
+</ol>
+<h3 id="component-lab-9-knowledge">Component Lab 9 — Knowledge</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p><strong>Purpose:</strong> KCS and self-service content<br />
+<strong>Navigator:</strong> <code>All &gt; Knowledge &gt; Articles</code> — <a href="{BASE}/kb_knowledge_list.do">Open direct</a><br />
+<strong>Direct:</strong> <a href="{BASE}/kb_knowledge_list.do">Open Knowledge</a></p>
+<ol>
+<li>Confirm plugin, role, group, and prerequisite reference data.</li>
+<li>Open the direct page and review OOTB fields, states, related lists, and existing records.</li>
+<li>Create a pilot record named/prefixed <code>LAB-09</code> where the component supports records.</li>
+<li>Configure ownership, required fields, references, lifecycle, security, and automation for: KCS and self-service content.</li>
+<li>Test create/read/update/close and a negative-access case with the correct personas.</li>
+<li>Impersonate requester/agent/manager/admin as applicable; record expected and actual results.</li>
+<li>Capture evidence: URL, sys_id/number, screenshot, configuration decision, owner, and rollback step.</li>
+</ol>
+<h3 id="component-lab-10-sla-definitions">Component Lab 10 — SLA Definitions</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p><strong>Purpose:</strong> Response/resolution commitments<br />
+<strong>Navigator:</strong> <code>All &gt; Service Level Management &gt; SLA Definitions</code> — <a href="{BASE}/contract_sla_list.do">Open direct</a><br />
+<strong>Direct:</strong> <a href="{BASE}/contract_sla_list.do">Open SLA Definitions</a></p>
+<ol>
+<li>Confirm plugin, role, group, and prerequisite reference data.</li>
+<li>Open the direct page and review OOTB fields, states, related lists, and existing records.</li>
+<li>Create a pilot record named/prefixed <code>LAB-10</code> where the component supports records.</li>
+<li>Define start, pause, resume, stop, schedule, duration/target, and breach actions.</li>
+<li>Test eligible, ineligible, paused, breached, and retroactive records.</li>
+<li>Impersonate requester/agent/manager/admin as applicable; record expected and actual results.</li>
+<li>Capture evidence: URL, sys_id/number, screenshot, configuration decision, owner, and rollback step.</li>
+</ol>
+<h3 id="component-lab-11-assignment-rules">Component Lab 11 — Assignment Rules</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p><strong>Purpose:</strong> Route work consistently<br />
+<strong>Navigator:</strong> <code>All &gt; System Policy &gt; Assignment</code> — <a href="{BASE}/sysrule_assignment_list.do">Open direct</a><br />
+<strong>Direct:</strong> <a href="{BASE}/sysrule_assignment_list.do">Open Assignment Rules</a></p>
+<ol>
+<li>Confirm plugin, role, group, and prerequisite reference data.</li>
+<li>Open the direct page and review OOTB fields, states, related lists, and existing records.</li>
+<li>Create a pilot record named/prefixed <code>LAB-11</code> where the component supports records.</li>
+<li>Define eligibility, group/queue, skills, capacity, order, and no-match fallback.</li>
+<li>Test normal routing, no qualified agent, capacity full, and reassignment.</li>
+<li>Impersonate requester/agent/manager/admin as applicable; record expected and actual results.</li>
+<li>Capture evidence: URL, sys_id/number, screenshot, configuration decision, owner, and rollback step.</li>
+</ol>
+<h3 id="component-lab-12-sow">Component Lab 12 — SOW</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p><strong>Purpose:</strong> Agent workspace<br />
+<strong>Navigator:</strong> <code>All &gt; Service Operations Workspace</code><br />
+<strong>Direct:</strong> <a href="{BASE}/now/sow/home">Open SOW</a></p>
+<ol>
+<li>Confirm plugin, role, group, and prerequisite reference data.</li>
+<li>Open the direct page and review OOTB fields, states, related lists, and existing records.</li>
+<li>Create a pilot record named/prefixed <code>LAB-12</code> where the component supports records.</li>
+<li>Configure ownership, required fields, references, lifecycle, security, and automation for: Agent workspace.</li>
+<li>Test create/read/update/close and a negative-access case with the correct personas.</li>
+<li>Impersonate requester/agent/manager/admin as applicable; record expected and actual results.</li>
+<li>Capture evidence: URL, sys_id/number, screenshot, configuration decision, owner, and rollback step.</li>
+</ol>
+<h2 id="8-integration-architecture">8. Integration architecture</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p>Monitoring/event source → Incident; email intake; CMDB CI context; DevOps change evidence; external service desk via IntegrationHub/REST.</p>
+<p>For every interface define:</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authentication</td>
+<td>OAuth 2.0 / credential record; no secrets in scripts</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>dedicated integration role and least privilege</td>
+</tr>
+<tr>
+<td>Idempotency</td>
+<td>correlation key and duplicate protection</td>
+</tr>
+<tr>
+<td>Reliability</td>
+<td>retries, timeout, dead-letter/replay</td>
+</tr>
+<tr>
+<td>Observability</td>
+<td>transaction log, alert, owner, runbook</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>schema, mandatory fields, privacy classification</td>
+</tr>
+<tr>
+<td>Test</td>
+<td>positive, negative, volume, retry, unauthorized</td>
+</tr>
+</tbody>
+</table>
+<p>Direct: <a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a> · <a href="{BASE}/sys_rest_message_list.do">REST Messages</a> · <a href="{BASE}/sys_alias_list.do">Connections</a></p>
+<h2 id="9-reporting-and-performance-analytics">9. Reporting and Performance Analytics</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p><strong>KPIs:</strong> MTTA, MTTR, first-contact resolution, reopen rate, SLA attainment, change success rate, emergency-change rate, self-service deflection.</p>
+<ol>
+<li>Build operational reports first.</li>
+<li>Create role-based dashboard.</li>
+<li>Add PA indicators/targets only when licensed and historical trend is required.</li>
+<li>Validate report sharing and underlying ACLs.</li>
+</ol>
+<p>Direct: <a href="{BASE}/$report.do">Create Report</a> · <a href="{BASE}/sys_report_list.do">Reports</a> · <a href="{BASE}/pa_dashboards_list.do">Dashboards</a> · <a href="{BASE}/pa_indicators_list.do">PA Indicators</a></p>
+<h2 id="10-testing-strategy">10. Testing strategy</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<table>
+<thead>
+<tr>
+<th>Test layer</th>
+<th>Minimum coverage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Configuration</td>
+<td>states, mandatory fields, templates, routing</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>every persona + negative access</td>
+</tr>
+<tr>
+<td>Process</td>
+<td>happy path + rejection/cancel/timeout/reopen</td>
+</tr>
+<tr>
+<td>SLA/entitlement</td>
+<td>start, pause, resume, stop, breach</td>
+</tr>
+<tr>
+<td>Integration</td>
+<td>auth, mapping, duplicate, retry, outage</td>
+</tr>
+<tr>
+<td>Experience</td>
+<td>classic/workspace/portal/mobile as licensed</td>
+</tr>
+<tr>
+<td>Regression</td>
+<td>ATF smoke suite after update/upgrade</td>
+</tr>
+<tr>
+<td>UAT</td>
+<td>signed scenarios and traceability</td>
+</tr>
+</tbody>
+</table>
+<p>Direct: <a href="{BASE}/sys_atf_test_list.do">ATF Tests</a> · <a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></p>
+<h2 id="11-deployment-from-development-to-production">11. Deployment from development to production</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<ol>
+<li>Freeze scope and configuration.</li>
+<li>Peer-review Update Set/App Repo contents.</li>
+<li>Promote to test; Preview before Commit.</li>
+<li>Resolve collisions deliberately.</li>
+<li>Run ATF, security, integration, and UAT evidence.</li>
+<li>Prepare data migration/cutover and communications.</li>
+<li>Approve change record and rollback plan.</li>
+<li>Deploy in agreed window.</li>
+<li>Execute smoke tests and monitor.</li>
+<li>Handover support ownership/runbooks.</li>
+</ol>
+<p>Direct: <a href="{BASE}/sys_update_set_list.do">Local Update Sets</a> · <a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a> · <a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></p>
+<h2 id="12-hands-on-implementation-lab">12. Hands-on implementation lab</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p>This full lab program covers platform readiness, security, all settings, module configuration, exception handling, experience, integration, data, reporting, testing, deployment, and operations.</p>
+<h3 id="lab-0-instance-and-release-readiness">Lab 0 — Instance and release readiness</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<ol>
+<li>Confirm Australia build at <a href="{BASE}/stats.do">System Stats</a>.</li>
+<li>Verify entitlement/dependencies at <a href="{BASE}/v_plugin_list.do">Plugins</a>.</li>
+<li>Create Update Set <code>LAB-MODULE-FOUNDATION</code>.</li>
+<li>Record baseline screenshots/properties and rollback owner.</li>
+</ol>
+<h3 id="lab-1-personas-groups-roles-and-security">Lab 1 — Personas, groups, roles, and security</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<ol>
+<li>Create requester, fulfiller/agent, manager, admin, auditor, and integration test users.</li>
+<li>Create functional groups and grant roles to groups.</li>
+<li>Build the role/access matrix and validate it through impersonation.</li>
+<li>Test one unauthorized read and one unauthorized update.</li>
+</ol>
+<p>Direct: <a href="{BASE}/sys_user_list.do">Users</a> · <a href="{BASE}/sys_user_group_list.do">Groups</a> · <a href="{BASE}/sys_user_role_list.do">Roles</a> · <a href="{BASE}/sys_security_acl_list.do">ACLs</a></p>
+<h3 id="lab-2-module-core-happy-path">Lab 2 — Module core happy path</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p>Execute these module-specific steps:</p>
+<ul>
+<li>Create L1/L2 groups and assign itil roles through groups.</li>
+<li>Create a P1 incident; verify assignment and SLA attachment.</li>
+<li>Create a Problem from recurring incidents and document workaround.</li>
+<li>Create a Normal Change linked to the problem and CI; approve and close it.</li>
+<li>Publish a Knowledge article and link it to the resolved incident.</li>
+<li>Order one Catalog Item and complete REQ → RITM → SCTASK.</li>
+</ul>
+<h3 id="lab-3-settings-and-exception-paths">Lab 3 — Settings and exception paths</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<ol>
+<li>Complete every row in the settings workbook (§7).</li>
+<li>Test missing mandatory data, invalid transition, reassignment, cancellation, rejection, timeout, and reopen.</li>
+<li>Verify fallback assignment and ownership when no rule matches.</li>
+<li>Confirm system properties differ correctly by environment.</li>
+</ol>
+<h3 id="lab-4-automation-sla-and-notifications">Lab 4 — Automation, SLA, and notifications</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<ol>
+<li>Create/validate Flow trigger and all branches.</li>
+<li>Configure approval timeout and escalation.</li>
+<li>Validate SLA start/pause/resume/stop and breach.</li>
+<li>Validate event registry, notification conditions, recipients, and email log.</li>
+</ol>
+<p>Direct: <a href="{BASE}/now/flow-designer">Flow Designer</a> · <a href="{BASE}/contract_sla_list.do">SLA</a> · <a href="{BASE}/sysevent_email_action_list.do">Notifications</a> · <a href="{BASE}/sys_email_list.do">Email Log</a></p>
+<h3 id="lab-5-workspace-portal-and-mobile">Lab 5 — Workspace, portal, and mobile</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<ol>
+<li>Configure persona lists/forms/actions.</li>
+<li>Publish requester content/service where applicable.</li>
+<li>Complete one end-to-end transaction as requester and fulfiller.</li>
+<li>Validate accessibility, empty state, error state, and mobile behavior when licensed.</li>
+</ol>
+<h3 id="lab-6-integration-and-migration">Lab 6 — Integration and migration</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<ol>
+<li>Define contract/schema, correlation key, authentication, and ownership.</li>
+<li>Configure Connection Alias/Credential and environment property.</li>
+<li>Test success, invalid payload, unauthorized, duplicate, timeout, retry, and replay.</li>
+<li>Load a small migration file; validate coalesce, rejects, and reconciliation.</li>
+</ol>
+<p>Direct: <a href="{BASE}/$restapi.do">REST Explorer</a> · <a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a> · <a href="{BASE}/sys_rest_message_list.do">REST Messages</a> · <a href="{BASE}/sys_transform_map_list.do">Transform Maps</a></p>
+<h3 id="lab-7-reports-dashboard-and-pa">Lab 7 — Reports, dashboard, and PA</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<ol>
+<li>Build volume, backlog, aging, SLA/target, exception, and trend reports.</li>
+<li>Build manager/agent/executive dashboard variants.</li>
+<li>Validate sharing roles and source ACL behavior.</li>
+<li>If licensed, configure PA indicator source, collector, breakdown, target, and widget.</li>
+</ol>
+<h3 id="lab-8-atf-uat-and-regression">Lab 8 — ATF, UAT, and regression</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<ol>
+<li>Create smoke suite for create, route, progress, resolve/close.</li>
+<li>Add security negative tests and core exception branches.</li>
+<li>Execute UAT by persona and link defects to scenarios.</li>
+<li>Export pass evidence and define upgrade regression suite.</li>
+</ol>
+<h3 id="lab-9-deployment-and-hypercare">Lab 9 — Deployment and hypercare</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<ol>
+<li>Preview Update Set in test and resolve all collisions.</li>
+<li>Run ATF/UAT/integration/security checks.</li>
+<li>Execute approved change and production smoke tests.</li>
+<li>Monitor 24–72 hours; document defects, owners, SLA, and rollback decision.</li>
+<li>Handover admin guide, fulfiller guide, dashboard, and support runbook.</li>
+</ol>
+<p>Lab evidence: screenshots, record numbers, test-user results, Update Set, ATF result, dashboard, and rollback note.</p>
+<h2 id="13-production-operations">13. Production operations</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<ul>
+<li>Daily: queue/backlog, failures, SLAs, integration errors.</li>
+<li>Weekly: aging, throughput, exceptions, knowledge gaps.</li>
+<li>Monthly: KPIs, adoption, automation candidates, access exceptions.</li>
+<li>Quarterly: role review, retention, controls, upgrade readiness.</li>
+</ul>
+<h2 id="14-definition-of-done">14. Definition of Done</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<ul>
+<li>[ ] Entitlement/plugins and Australia compatibility confirmed</li>
+<li>[ ] Every §6 component lab completed with evidence</li>
+<li>[ ] Every §7 settings row has approved value, owner, transport, and test</li>
+<li>[ ] Signed scope, process, data, security, integration, KPI decisions</li>
+<li>[ ] Roles granted through groups and negative security tests passed</li>
+<li>[ ] Reference data, process, routing, SLA/entitlement configured</li>
+<li>[ ] Workspace/portal/mobile experience validated as applicable</li>
+<li>[ ] Integration controls and failure handling tested</li>
+<li>[ ] Reports/dashboard accepted by product owner</li>
+<li>[ ] ATF smoke + UAT + performance checks passed</li>
+<li>[ ] Deployment, rollback, support, and monitoring runbooks approved</li>
+<li>[ ] Knowledge transfer and operational ownership completed</li>
+</ul>
+<h2 id="15-306090-day-maturity-roadmap">15. 30/60/90-day maturity roadmap</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<table>
+<thead>
+<tr>
+<th>Window</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Day 0–30</td>
+<td>stabilize, adoption, defects, backlog and data quality</td>
+</tr>
+<tr>
+<td>Day 31–60</td>
+<td>tune routing/SLAs, automate repeated work, expand reporting</td>
+</tr>
+<tr>
+<td>Day 61–90</td>
+<td>PA targets, optimization, governance, upgrade regression</td>
+</tr>
+</tbody>
+</table>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../../assets/docs.js"></script>
+
+<script src="../../assets/author-brand.js" defer></script>
+</body>
+</html>

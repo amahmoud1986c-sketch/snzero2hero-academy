@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ServiceNow Australia — One-Week Study + Deploy (Mature Path) | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>ServiceNow Australia — One-Week Study + Deploy (Mature Path)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="servicenow-australia-one-week-study-deploy-mature-path">ServiceNow Australia — One-Week Study + Deploy (Mature Path)</h1>
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (current family, Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>Goal:</strong> دراسة + نشر عملي خلال <strong>7 أيام</strong> — Administration · Development · Implementation · ITSM · CSM · FSM · SPM · Reports/Dashboards · تطبيق HR Leave<br />
+<strong>App:</strong> Custom · Scope <code>x_786686_hr_leave</code> · sys_id <code>c84db0e8839f0b509f02b0d6feaad3c9</code><br />
+<strong>URLs:</strong> <a href="SERVICENOW_DIRECT_URLS_CATALOG.html">SERVICENOW_DIRECT_URLS_CATALOG.md</a><br />
+<strong>Scripts:</strong> <a href="../SCRIPTS_INVENTORY.html">HR_Leave_App/SCRIPTS_INVENTORY.md</a></p>
+</blockquote>
+<p><strong>الوقت اليومي المقترح:</strong> 6–8 ساعات (مختبر + قراءة مركّزة).<br />
+<strong>المثيل:</strong> PDI من <a href="https://developer.servicenow.com">developer.servicenow.com</a> على <strong>Australia</strong> إن أمكن.</p>
+<hr />
+<h2 id="_1">كيف تستخدم هذا الملف</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ol>
+<li>كل يوم = <strong>Deploy checklist</strong> + روابط مباشرة <a class="direct-url" href="{BASE}/…"><code>{BASE}/…</code></a> + ملف توثيق للغوص.</li>
+<li>في نهاية كل يوم: Update Set واحد + 3 لقطات شاشة + سجل في مذكرة.</li>
+<li>لا تقرأ كل موسوعة الموديول كاملة — نفّذ المختبر المحدد فقط، وارجع للفهرس عند الحاجة.</li>
+<li>استبدل <code>{BASE}</code> بعنوان مثيلك.</li>
+</ol>
+<hr />
+<h2 id="_2">خريطة الوثائق (ناضجة)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>طبقة</th>
+<th>ماذا تغطي</th>
+<th>ابدأ من</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Entry</strong></td>
+<td>هذا الملف + URLs</td>
+<td>أنت هنا</td>
+</tr>
+<tr>
+<td><strong>HR Leave build</strong></td>
+<td>تطوير + إدارة + كتالوج + بوابة + تكامل</td>
+<td><a href="../ROADMAP.html">HR_Leave_App/ROADMAP.md</a></td>
+</tr>
+<tr>
+<td><strong>Admin</strong></td>
+<td>Users/Groups/Roles/ACL/Update Sets</td>
+<td><a href="../02_ADMINISTRATION.html">HR_Leave_App/02_ADMINISTRATION.md</a></td>
+</tr>
+<tr>
+<td><strong>Dev</strong></td>
+<td>Tables/BR/CS/SI/Flow/REST</td>
+<td><a href="../01_DEVELOPMENT.html">HR_Leave_App/01_DEVELOPMENT.md</a> · <a href="../SCRIPTS_INVENTORY.html">SCRIPTS_INVENTORY.md</a></td>
+</tr>
+<tr>
+<td><strong>Reports</strong></td>
+<td>Reports + Dashboards + PA</td>
+<td><a href="SERVICENOW_REPORTS_DASHBOARDS_PA_COMPLETE_GUIDE.html">SERVICENOW_REPORTS_DASHBOARDS_PA_COMPLETE_GUIDE.md</a></td>
+</tr>
+<tr>
+<td><strong>ITSM</strong></td>
+<td>Incident/Problem/Change/SLA</td>
+<td><a href="../modules/ITSM.html">HR_Leave_App/modules/ITSM.md</a> · <a href="ITSM_MODULE_COMPLETE_GUIDE.html">ITSM_MODULE_COMPLETE_GUIDE.md</a></td>
+</tr>
+<tr>
+<td><strong>CSM</strong></td>
+<td>Account/Contact/Case</td>
+<td><a href="../modules/CSM.html">HR_Leave_App/modules/CSM.md</a> · <a href="CSM_MODULE_COMPLETE_GUIDE.html">CSM_MODULE_COMPLETE_GUIDE.md</a></td>
+</tr>
+<tr>
+<td><strong>FSM</strong></td>
+<td>Work Order / Dispatch</td>
+<td><a href="../modules/FSM.html">HR_Leave_App/modules/FSM.md</a> · <a href="FSM_MODULE_COMPLETE_GUIDE.html">FSM_MODULE_COMPLETE_GUIDE.md</a></td>
+</tr>
+<tr>
+<td><strong>SPM</strong></td>
+<td>Demand/Project/Portfolio</td>
+<td><a href="../modules/SPM.html">HR_Leave_App/modules/SPM.md</a> · <a href="SPM_MODULE_COMPLETE_GUIDE.html">SPM_MODULE_COMPLETE_GUIDE.md</a></td>
+</tr>
+<tr>
+<td><strong>Modules index</strong></td>
+<td>كل الموديولات Zero→Pro</td>
+<td><a href="../modules/00_MODULES_INDEX.html">HR_Leave_App/modules/00_MODULES_INDEX.md</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="day-1-platform-admin-app-shell">Day 1 — Platform Admin + App shell (نشر الأساس)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p><strong>Outcome:</strong> مستخدمون/مجموعات/أدوار + Update Set + تطبيق HR Leave مفتوح في Studio.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Deploy step</th>
+<th>Open URL / search</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Confirm release</td>
+<td><a class="direct-url" href="{BASE}/stats.do"><code>{BASE}/stats.do</code></a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>New Update Set <code>HRLX-W1-D1-Admin</code></td>
+<td><a class="direct-url" href="{BASE}/sys_update_set_list.do"><code>{BASE}/sys_update_set_list.do</code></a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Users / Groups / Roles</td>
+<td><a class="direct-url" href="{BASE}/sys_user_list.do"><code>{BASE}/sys_user_list.do</code></a> · <a class="direct-url" href="{BASE}/sys_user_group_list.do"><code>{BASE}/sys_user_group_list.do</code></a> · <a class="direct-url" href="{BASE}/sys_user_role_list.do"><code>{BASE}/sys_user_role_list.do</code></a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Open / verify app</td>
+<td><a class="direct-url" href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9"><code>{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9</code></a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Studio</td>
+<td><a class="direct-url" href="{BASE}/$studio.do"><code>{BASE}/$studio.do</code></a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Plugins check (ITSM/CSM as needed)</td>
+<td><a class="direct-url" href="{BASE}/v_plugin_list.do"><code>{BASE}/v_plugin_list.do</code></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Read/lab:</strong> <a href="../02_ADMINISTRATION.html">02_ADMINISTRATION.md</a> · <a href="../APPLICATION.html">APPLICATION.md</a><br />
+<strong>Create roles:</strong> <code>x_786686_hr_leave.employee</code> · <code>.manager</code> · <code>.hr_admin</code> · <code>.integration</code></p>
+<hr />
+<h2 id="day-2-development-core">Day 2 — Development core (جداول + سكربتات)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Outcome:</strong> 4 جداول + Script Includes + Business Rules + Client Scripts تعمل.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Deploy step</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Tables</td>
+<td><a class="direct-url" href="{BASE}/sys_db_object_list.do"><code>{BASE}/sys_db_object_list.do</code></a> · lists in URL catalog §I</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Script Includes</td>
+<td><a class="direct-url" href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave"><code>{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Business Rules</td>
+<td><a class="direct-url" href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave"><code>{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Client Scripts</td>
+<td><a class="direct-url" href="{BASE}/sys_script_client_list.do"><code>{BASE}/sys_script_client_list.do</code></a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>UI Policy sick reason</td>
+<td><a class="direct-url" href="{BASE}/sys_ui_policy_list.do"><code>{BASE}/sys_ui_policy_list.do</code></a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Test form</td>
+<td><a class="direct-url" href="{BASE}/x_786686_hr_leave_req_v2_list.do"><code>{BASE}/x_786686_hr_leave_req_v2_list.do</code></a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Background test (optional)</td>
+<td><a class="direct-url" href="{BASE}/sys.scripts.do"><code>{BASE}/sys.scripts.do</code></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Paste from:</strong> <a href="../SCRIPTS_INVENTORY.html">SCRIPTS_INVENTORY.md</a> · <a href="../01_DEVELOPMENT.html">01_DEVELOPMENT.md</a><br />
+<strong>GlideAjax must be:</strong> <code>x_786686_hr_leave.HRLXProLeaveUtilsV2</code></p>
+<hr />
+<h2 id="day-3-flow-catalog-portal-notifications">Day 3 — Flow · Catalog · Portal · Notifications</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<p><strong>Outcome:</strong> موافقة Flow + Record Producer + Widget + إشعار submitted.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Deploy step</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Flow Designer approval</td>
+<td><a class="direct-url" href="{BASE}/now/flow-designer"><code>{BASE}/now/flow-designer</code></a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Record Producer</td>
+<td><a class="direct-url" href="{BASE}/sc_cat_item_producer_list.do"><code>{BASE}/sc_cat_item_producer_list.do</code></a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Catalog Item / Category</td>
+<td><a class="direct-url" href="{BASE}/sc_cat_item_list.do"><code>{BASE}/sc_cat_item_list.do</code></a> · <a class="direct-url" href="{BASE}/sc_category_list.do"><code>{BASE}/sc_category_list.do</code></a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Portal / Widget</td>
+<td><a class="direct-url" href="{BASE}/sp"><code>{BASE}/sp</code></a> · <a class="direct-url" href="{BASE}/sp_widget_list.do"><code>{BASE}/sp_widget_list.do</code></a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Employee Center</td>
+<td><a class="direct-url" href="{BASE}/esc"><code>{BASE}/esc</code></a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Events + Notifications</td>
+<td><a class="direct-url" href="{BASE}/sysevent_register_list.do"><code>{BASE}/sysevent_register_list.do</code></a> · <a class="direct-url" href="{BASE}/sysevent_email_action_list.do"><code>{BASE}/sysevent_email_action_list.do</code></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Docs:</strong> <a href="../03_SERVICE_CATALOG.html">03_SERVICE_CATALOG.md</a> · <a href="../04_SERVICE_PORTAL.html">04_SERVICE_PORTAL.md</a> · <a href="../06_NOTIFICATIONS_EVENTS_JOBS.html">06_NOTIFICATIONS_EVENTS_JOBS.md</a></p>
+<hr />
+<h2 id="day-4-reports-dashboards-pa-acl-harden">Day 4 — Reports · Dashboards · PA + ACL harden</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<p><strong>Outcome:</strong> 4 تقارير + لوحة HR Leave Ops + (إن وُجد ترخيص) Indicator واحد.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Deploy step</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Report Designer</td>
+<td><a class="direct-url" href="{BASE}/$report.do"><code>{BASE}/$report.do</code></a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Saved reports</td>
+<td><a class="direct-url" href="{BASE}/sys_report_list.do"><code>{BASE}/sys_report_list.do</code></a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Dashboard</td>
+<td><a class="direct-url" href="{BASE}/pa_dashboards_list.do"><code>{BASE}/pa_dashboards_list.do</code></a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>PA Indicators (if licensed)</td>
+<td><a class="direct-url" href="{BASE}/pa_indicators_list.do"><code>{BASE}/pa_indicators_list.do</code></a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>ACL review</td>
+<td><a class="direct-url" href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave"><code>{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Docs:</strong> <a href="SERVICENOW_REPORTS_DASHBOARDS_PA_COMPLETE_GUIDE.html">SERVICENOW_REPORTS_DASHBOARDS_PA_COMPLETE_GUIDE.md</a> · <a href="../07_REPORTS_DASHBOARDS_PA.html">07_REPORTS_DASHBOARDS_PA.md</a> · <a href="../src/security/acls.html">src/security/acls.md</a></p>
+<hr />
+<h2 id="day-5-itsm-csm">Day 5 — ITSM + CSM (عمليات المنصة)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p><strong>Outcome:</strong> Incident→Problem→Change مختبر قصير + Case CSM واحد مربوط بحساب.</p>
+<h3 id="itsm">ITSM (صباح)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Incident</td>
+<td><a class="direct-url" href="{BASE}/incident_list.do"><code>{BASE}/incident_list.do</code></a></td>
+</tr>
+<tr>
+<td>Problem</td>
+<td><a class="direct-url" href="{BASE}/problem_list.do"><code>{BASE}/problem_list.do</code></a></td>
+</tr>
+<tr>
+<td>Change</td>
+<td><a class="direct-url" href="{BASE}/change_request_list.do"><code>{BASE}/change_request_list.do</code></a></td>
+</tr>
+<tr>
+<td>SLA</td>
+<td><a class="direct-url" href="{BASE}/contract_sla_list.do"><code>{BASE}/contract_sla_list.do</code></a></td>
+</tr>
+<tr>
+<td>SOW</td>
+<td><a class="direct-url" href="{BASE}/now/sow/home"><code>{BASE}/now/sow/home</code></a></td>
+</tr>
+<tr>
+<td>Assignment Rules</td>
+<td><a class="direct-url" href="{BASE}/sysrule_assignment_list.do"><code>{BASE}/sysrule_assignment_list.do</code></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Doc:</strong> <a href="../modules/ITSM.html">modules/ITSM.md</a> — نفّذ § labs الأساسية فقط (إنشاء INC، ربط PRB، CHG عادي).</p>
+<h3 id="csm">CSM (مساء)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Account</td>
+<td><a class="direct-url" href="{BASE}/customer_account_list.do"><code>{BASE}/customer_account_list.do</code></a></td>
+</tr>
+<tr>
+<td>Contact</td>
+<td><a class="direct-url" href="{BASE}/customer_contact_list.do"><code>{BASE}/customer_contact_list.do</code></a></td>
+</tr>
+<tr>
+<td>Case</td>
+<td><a class="direct-url" href="{BASE}/sn_customerservice_case_list.do"><code>{BASE}/sn_customerservice_case_list.do</code></a></td>
+</tr>
+<tr>
+<td>Workspace</td>
+<td><a class="direct-url" href="{BASE}/now/cwf/agent"><code>{BASE}/now/cwf/agent</code></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Doc:</strong> <a href="../modules/CSM.html">modules/CSM.md</a></p>
+<hr />
+<h2 id="day-6-fsm-spm">Day 6 — FSM + SPM</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<h3 id="fsm">FSM (صباح)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Work Order</td>
+<td><a class="direct-url" href="{BASE}/wm_order_list.do"><code>{BASE}/wm_order_list.do</code></a></td>
+</tr>
+<tr>
+<td>Work Order Task</td>
+<td><a class="direct-url" href="{BASE}/wm_task_list.do"><code>{BASE}/wm_task_list.do</code></a></td>
+</tr>
+<tr>
+<td>Dispatch</td>
+<td><a class="direct-url" href="{BASE}/now/fsm/dispatcher"><code>{BASE}/now/fsm/dispatcher</code></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Doc:</strong> <a href="../modules/FSM.html">modules/FSM.md</a></p>
+<h3 id="spm">SPM (مساء)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Demand</td>
+<td><a class="direct-url" href="{BASE}/dmn_demand_list.do"><code>{BASE}/dmn_demand_list.do</code></a></td>
+</tr>
+<tr>
+<td>Project</td>
+<td><a class="direct-url" href="{BASE}/pm_project_list.do"><code>{BASE}/pm_project_list.do</code></a></td>
+</tr>
+<tr>
+<td>Portfolio</td>
+<td><a class="direct-url" href="{BASE}/pm_portfolio_list.do"><code>{BASE}/pm_portfolio_list.do</code></a></td>
+</tr>
+<tr>
+<td>Time Card</td>
+<td><a class="direct-url" href="{BASE}/time_card_list.do"><code>{BASE}/time_card_list.do</code></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Doc:</strong> <a href="../modules/SPM.html">modules/SPM.md</a><br />
+<strong>Pipeline:</strong> Idea → Demand → Project ⊂ Portfolio</p>
+<hr />
+<h2 id="day-7-integration-atf-demo-freeze">Day 7 — Integration · ATF · Demo · Freeze</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<p><strong>Outcome:</strong> REST وارد أو صادر يعمل + ATF smoke + Update Set جاهز + ديمو 5 دقائق.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Deploy step</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Scripted REST</td>
+<td><a class="direct-url" href="{BASE}/sys_ws_definition_list.do"><code>{BASE}/sys_ws_definition_list.do</code></a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>REST Message</td>
+<td><a class="direct-url" href="{BASE}/sys_rest_message_list.do"><code>{BASE}/sys_rest_message_list.do</code></a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>ATF</td>
+<td><a class="direct-url" href="{BASE}/sys_atf_test_list.do"><code>{BASE}/sys_atf_test_list.do</code></a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Properties check</td>
+<td><a class="direct-url" href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave"><code>{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Complete Update Set</td>
+<td><a class="direct-url" href="{BASE}/sys_update_set_list.do"><code>{BASE}/sys_update_set_list.do</code></a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Demo path</td>
+<td>Catalog/EC → submit leave → approve → report dashboard</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Docs:</strong> <a href="../12_INTEGRATION_FULL_GUIDE.html">12_INTEGRATION_FULL_GUIDE.md</a> · <a href="../08_ATF_TESTING.html">08_ATF_TESTING.md</a> · <a href="../10_IMPLEMENTATION_AND_CONFIG.html">10_IMPLEMENTATION_AND_CONFIG.md</a></p>
+<h3 id="demo-script-5-min">Demo script (5 min)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ol>
+<li>Employee Center / Portal → Submit Leave  </li>
+<li>Manager approves (Flow)  </li>
+<li>Balance updates · Notification fires  </li>
+<li>Open Dashboard widgets  </li>
+<li>Show Incident + Case created earlier (multi-module maturity)</li>
+</ol>
+<hr />
+<h2 id="definition-of-done">Definition of Done (نضج الحل)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li>[ ] Scope <code>x_786686_hr_leave</code> يحتوي الجداول الأربعة + BR/CS/SI من SCRIPTS_INVENTORY  </li>
+<li>[ ] Roles + ACLs + Update Set كامل  </li>
+<li>[ ] Catalog RP + Flow approval + Notification  </li>
+<li>[ ] 4 Reports + 1 Dashboard  </li>
+<li>[ ] ITSM: INC + PRB أو CHG واحد  </li>
+<li>[ ] CSM: Account + Case  </li>
+<li>[ ] FSM: Work Order أو Task  </li>
+<li>[ ] SPM: Demand أو Project  </li>
+<li>[ ] REST أو ATF واحد على الأقل  </li>
+<li>[ ] كل الروابط فُتحت من <a href="SERVICENOW_DIRECT_URLS_CATALOG.html">SERVICENOW_DIRECT_URLS_CATALOG.md</a></li>
+</ul>
+<hr />
+<h2 id="_3">إذا احتجت أسبوعين بدل أسبوع</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>استخدم: <a href="../00_MASTER_STUDY_PLAN_2WEEKS.html">HR_Leave_App/00_MASTER_STUDY_PLAN_2WEEKS.md</a><br />
+هذا الملف = <strong>مسار مكثّف أسبوع واحد</strong>؛ خطة الأسبوعين = عمق CIS + كل الموديولات.</p>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

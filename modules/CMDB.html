@@ -1,0 +1,3417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CMDB — Configuration Management Database (Zero → Pro) | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>CMDB — Configuration Management Database (Zero → Pro)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="cmdb-configuration-management-database-zero-pro">CMDB — Configuration Management Database (Zero → Pro)</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً:</strong> <a href="../MASTER_ALL_IN_ONE_SUMMARY.html">../MASTER_ALL_IN_ONE_SUMMARY.md</a> · <a href="../html/MASTER_ALL_IN_ONE_SUMMARY.html">../html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل:</strong> <a href="../MASTER_ALL_IN_ONE.html">../MASTER_ALL_IN_ONE.md</a> · <a href="../html/MASTER_ALL_IN_ONE.html">../html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات:</strong> <a href="../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Australia · Scope <code>x_786686_hr_leave</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<h2 id="australia-instance">Australia Instance — نسخة أستراليا</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Region / Datacenter</strong></td>
+<td>ServiceNow <strong>Australia</strong></td>
+</tr>
+<tr>
+<td><strong>Release train</strong></td>
+<td>Zurich (Sep 2026 EA) · next EA: <strong>Brazil</strong></td>
+</tr>
+<tr>
+<td><strong>URL base</strong></td>
+<td><code>{BASE}</code></td>
+</tr>
+<tr>
+<td><strong>Scope note</strong></td>
+<td>HR Leave app: <code>x_786686_hr_leave</code></td>
+</tr>
+<tr>
+<td><strong>Guided Setup</strong></td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="direct-navigation-urls">Direct Navigation URLs — روابط التنقل المباشرة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page / Tool</th>
+<th>Navigation Path</th>
+<th>Direct URL</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>All CIs</strong></td>
+<td>All &gt; Configuration &gt; All</td>
+<td><a href="{BASE}/cmdb_ci_list.do">{BASE}/cmdb_ci_list.do</a></td>
+<td>CI inventory</td>
+</tr>
+<tr>
+<td><strong>CI Class Manager</strong></td>
+<td>All &gt; Configuration &gt; CI Class Manager</td>
+<td><a href="{BASE}/now/cmdb/home">{BASE}/now/cmdb/home</a></td>
+<td>Class hierarchy</td>
+</tr>
+<tr>
+<td><strong>CMDB Health Dashboard</strong></td>
+<td>All &gt; Configuration &gt; CMDB Health</td>
+<td><a href="{BASE}/now/cmdb-health/home">{BASE}/now/cmdb-health/home</a></td>
+<td>Data quality</td>
+</tr>
+<tr>
+<td><strong>Identification Rules</strong></td>
+<td>All &gt; Configuration &gt; Identification/Reconciliation</td>
+<td><a href="{BASE}/cmdb_identifier_entry_list.do">{BASE}/cmdb_identifier_entry_list.do</a></td>
+<td>IRE rules</td>
+</tr>
+<tr>
+<td><strong>Reconciliation Rules</strong></td>
+<td>All &gt; Configuration &gt; Reconciliation</td>
+<td><a href="{BASE}/cmdb_reconciliation_definition_list.do">{BASE}/cmdb_reconciliation_definition_list.do</a></td>
+<td>Source priority</td>
+</tr>
+<tr>
+<td><strong>Dependency Views</strong></td>
+<td>All &gt; Configuration &gt; Dependency Views</td>
+<td><a href="{BASE}/cmdb_ci_list.do">{BASE}/cmdb_ci_list.do</a></td>
+<td>Impact maps</td>
+</tr>
+<tr>
+<td><strong>Import Sets</strong></td>
+<td>All &gt; System Import Sets</td>
+<td><a href="{BASE}/sys_import_set_list.do">{BASE}/sys_import_set_list.do</a></td>
+<td>Bulk CI load</td>
+</tr>
+<tr>
+<td><strong>Service Model</strong></td>
+<td>All &gt; CSDM &gt; Application Services</td>
+<td><a href="{BASE}/cmdb_ci_service_list.do">{BASE}/cmdb_ci_service_list.do</a></td>
+<td>Business services</td>
+</tr>
+<tr>
+<td><strong>Relationship Types</strong></td>
+<td>All &gt; Configuration &gt; Relationship Types</td>
+<td><a href="{BASE}/cmdb_rel_type_list.do">{BASE}/cmdb_rel_type_list.do</a></td>
+<td>CI relationships</td>
+</tr>
+<tr>
+<td><strong>Guided Setup CMDB</strong></td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+<td>Initial configuration</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>URLs:</strong> <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">../../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a><br />
+<strong>HR Leave:</strong> Scope x_786686_hr_leave</p>
+<p>CIS-Discovery / CMDB / CSDM Professional Implementer Guide<br />
+الأسلوب: عربية + إنجليزية تكمّلان بعضهما — بدون ترجمة حرفية لأسماء الشاشات.</p>
+</blockquote>
+<hr />
+<h2 id="arabic-summary">ملخص ووصف بالعربية (Arabic Summary)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>البند</th>
+<th>الشرح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ما هو CMDB؟</strong></td>
+<td>قاعدة بيانات التكوين — سجلات CI (خوادم، تطبيقات…) وعلاقاتها (يعتمد على، يشغّل…)</td>
+</tr>
+<tr>
+<td><strong>لماذا مهم؟</strong></td>
+<td>بدون CMDB دقيق لا يعمل تحليل التأثير ولا Discovery ولا ITSM بشكل صحيح</td>
+</tr>
+<tr>
+<td><strong>من يستخدمه؟</strong></td>
+<td>CMDB admin، ITOM، فريق الحوادث، معماري الخدمة (CSDM)</td>
+</tr>
+<tr>
+<td><strong>ماذا يغطي الملف؟</strong></td>
+<td>IRE، Reconciliation، CMDB Health، Import، Dependency · §16 مختبر</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ملخص في سطر:</strong> مصدر واحد للحقيقة عن البنية التقنية — من إدخال CI يدويًا حتى الاكتشاف والجودة.</p>
+<p><strong>وصف مختصر:</strong> يغطي CSDM، CI Class Manager، منع التكرار (IRE)، استيراد CSV، خريطة الاعتماد، وربط الحوادث بـ CI. يُدرس مع ITOM للاكتشاف.</p>
+<hr />
+<h2 id="1-overview-business-value">1) Overview &amp; Business Value</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>CMDB stores Configuration Items (CIs) and their relationships. — هو الأساس الذي تعتمد عليه كل الموديولات (ITSM, ITOM, SecOps&hellip;). بيانات سيئة في CMDB = قرارات سيئة في كل مكان.</p>
+<p>Core value:<br />
+- Single source of truth for infrastructure &amp; services.<br />
+- Impact analysis (ما الذي يتأثر إذا تعطّل هذا الخادم؟).<br />
+- Service mapping &amp; dependency views.<br />
+- Foundation for Discovery, Event Management, Change.</p>
+<hr />
+<h2 id="2-architecture-data-model">2) Architecture &amp; Data Model</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>CI class hierarchy:</p>
+<pre><code class="language-text">cmdb (base)
+└─ cmdb_ci (Configuration Item)
+ ├─ cmdb_ci_hardware
+ │ ├─ cmdb_ci_computer
+ │ │ ├─ cmdb_ci_server
+ │ │ └─ cmdb_ci_win_server / linux_server
+ │ └─ cmdb_ci_netgear
+ ├─ cmdb_ci_appl (applications)
+ ├─ cmdb_ci_service (services)
+ │ └─ cmdb_ci_service_auto (Application Service / CSDM)
+ └─ cmdb_ci_business_app
+</code></pre>
+<p>Key tables:</p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>الغرض</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cmdb_ci</td>
+<td>الجدول الأساس لكل عناصر التهيئة</td>
+</tr>
+<tr>
+<td>cmdb_rel_ci</td>
+<td>العلاقات بين العناصر</td>
+</tr>
+<tr>
+<td>cmdb_rel_type</td>
+<td>أنواع العلاقات</td>
+</tr>
+<tr>
+<td>sys_class_name</td>
+<td>فئة كل CI (table per class)</td>
+</tr>
+<tr>
+<td>cmdb_ci_service</td>
+<td>الخدمات</td>
+</tr>
+<tr>
+<td>cmdb_metadata (IRE)</td>
+<td>محرك التطابق</td>
+</tr>
+</tbody>
+</table>
+<p>CSDM (Common Service Data Model): — CSDM هو الإطار/المعيار المعتمد لتنظيم CMDB في أربع طبقات.</p>
+<pre><code class="language-text">Foundation → Design → Manage Technical Services → Sell/Consume
+(Business App → Application Service → Technical Service Offering...)
+</code></pre>
+<hr />
+<h2 id="3-plugins-activation">3) Plugins &amp; Activation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>App / Plugin</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CMDB (core)</td>
+<td>active by default</td>
+</tr>
+<tr>
+<td>CMDB CI Class Models (CIM)</td>
+<td>from Store</td>
+</tr>
+<tr>
+<td>Discovery</td>
+<td>com.snc.discovery (subscription)</td>
+</tr>
+<tr>
+<td>Service Mapping</td>
+<td>com.snc.service-mapping (subscription)</td>
+</tr>
+<tr>
+<td>CMDB Health / Health Dashboard</td>
+<td>included</td>
+</tr>
+<tr>
+<td>Identification and Reconciliation (IRE)</td>
+<td>core</td>
+</tr>
+<tr>
+<td>Multisource CMDB</td>
+<td>included</td>
+</tr>
+<tr>
+<td>CSDM Data Foundations</td>
+<td>from Store</td>
+</tr>
+</tbody>
+</table>
+<p>How to activate:</p>
+<ol>
+<li>Navigate: All &gt; System Definition &gt; Plugins (for core). — <a href="{BASE}/v_plugin_list.do">Open direct</a></li>
+<li>For Discovery/Service Mapping (licensed):<br />
+ Navigate: All &gt; System Applications &gt; All Available Applications &gt; All. — <a href="{BASE}/v_plugin_list.do">Open direct</a></li>
+<li>Guided Setup:<br />
+ Navigate: All &gt; Guided Setup &gt; CMDB and &gt; ITOM (for Discovery). — <a href="{BASE}/now/guided-setup">Open direct</a></li>
+</ol>
+<hr />
+<h2 id="4-guided-setup-all-options">4) Guided Setup &amp; All Options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Sections:<br />
+- CMDB foundations — classes, CSDM alignment.<br />
+- Identification &amp; Reconciliation (IRE) rules.<br />
+- Data sources &amp; Discovery (if licensed).<br />
+- CMDB Health — completeness, compliance, correctness.<br />
+- Relationships &amp; dependency views.<br />
+- Service mapping.</p>
+<p>Important options:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CI Class Manager</td>
+<td>All &gt; Configuration &gt; CI Class Manager · <a href="{BASE}/now/cmdb/ci-class-manager">Open direct</a></td>
+</tr>
+<tr>
+<td>Identification Rules (IRE)</td>
+<td>All &gt; Configuration &gt; CI Identifiers · <a href="{BASE}/cmdb_identifier_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Reconciliation Rules</td>
+<td>All &gt; Configuration &gt; Reconciliation Definitions · <a href="{BASE}/cmdb_reconciliation_definition_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>CMDB Health Dashboard</td>
+<td>All &gt; Configuration &gt; CMDB Health / Dashboard · <a href="{BASE}/pa_dashboards_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Dependency Views (BSM map)</td>
+<td>open a CI → Dependency View</td>
+</tr>
+<tr>
+<td>Discovery Schedules</td>
+<td>All &gt; Discovery &gt; Discovery Schedules · <a href="{BASE}/discovery_schedule_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>MID Server</td>
+<td>All &gt; MID Server &gt; Servers · <a href="{BASE}/ecc_agent_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-end-to-end-process-cycle">5) End-to-End Process Cycle</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Populate &amp; maintain CMDB:</p>
+<pre><code class="language-text">Choose CSDM scope
+ → Define CI classes (CI Class Manager)
+ → Set Identification &amp; Reconciliation rules (IRE)
+ → Populate:
+ - Discovery (MID Server) for infra
+ - Integrations / Import Sets for external sources
+ - Service Mapping for application services
+ → Reconcile (IRE prevents duplicates, manages authoritative source)
+ → Maintain via CMDB Health (completeness/compliance/correctness)
+ → Consume: ITSM (incident CI), Change impact, Event Management
+</code></pre>
+<p>IRE هو الحكَم: يقرّر إنشاء CI جديد أم تحديث الموجود، ومن المصدر الموثوق.</p>
+<hr />
+<h2 id="6-development">6) Development</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3Dc84db0e8839f0b509f02b0d6feaad3c9">Application Files</a><a href="../scripts/index.html">Scripts portal</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<h3 id="build-a-relationship-via-script">Build a relationship via script</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-javascript">// relate an application to the server it runs on
+var rel = new GlideRecord('cmdb_rel_ci');
+rel.initialize();
+rel.parent = appCiSysId; // cmdb_ci_appl
+rel.child = serverCiSysId; // cmdb_ci_server
+rel.type = relTypeRunsOnSysId; // 'Runs on::Runs'
+rel.insert();
+</code></pre>
+<h3 id="query-cis-safely">Query CIs safely</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-javascript">var ci = new GlideRecord('cmdb_ci_server');
+ci.addActiveQuery();
+ci.query();
+while (ci.next()) {
+ gs.info(ci.name + ' — ' + ci.sys_class_name);
+}
+</code></pre>
+<p>Development topics:<br />
+- IRE: identification rules, reconciliation, data source precedence.<br />
+- CI Class Manager (extend classes, dependent attributes).<br />
+- Transform maps + coalesce for imports (avoid duplicates).<br />
+- Dependency views &amp; relationship types.<br />
+- CMDB Health remediation.</p>
+<hr />
+<h2 id="7-administration">7) Administration</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Roles</td>
+<td>cmdb_admin, itil, discovery_admin</td>
+</tr>
+<tr>
+<td>CI Class Manager</td>
+<td>All &gt; Configuration &gt; CI Class Manager · <a href="{BASE}/now/cmdb/ci-class-manager">Open direct</a></td>
+</tr>
+<tr>
+<td>CMDB Health</td>
+<td>All &gt; Configuration &gt; CMDB Health · <a href="{BASE}/now/cmdb/health">Open direct</a></td>
+</tr>
+<tr>
+<td>MID Server</td>
+<td>All &gt; MID Server &gt; Servers · <a href="{BASE}/ecc_agent_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Data Manager (stale CIs)</td>
+<td>All &gt; CMDB Data Manager · <a href="{BASE}/now/cmdb-data-manager">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<p>Key roles:<br />
+- cmdb_admin — إدارة CMDB.<br />
+- discovery_admin — إدارة الاكتشاف.<br />
+- itil — قراءة/استخدام في العمليات.</p>
+<hr />
+<h2 id="8-hands-on-labs">8) Hands-on Labs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Lab 1 — Explore classes:<br />
+1. Navigate: All &gt; Configuration &gt; CI Class Manager. — <a href="{BASE}/now/cmdb/ci-class-manager">Open direct</a><br />
+2. Inspect the hierarchy (Server → Windows/Linux).</p>
+<p>Lab 2 — Create CIs + relationship:<br />
+1. Create a Server CI and an Application CI.<br />
+2. Relate them (&ldquo;Runs on::Runs&rdquo;).<br />
+3. Open the Dependency View.</p>
+<p>Lab 3 — Import with coalesce:<br />
+1. Import a CSV of servers via Import Set.<br />
+2. Set coalesce on a unique key (serial/name) to avoid duplicates.</p>
+<p>Lab 4 — IRE:<br />
+1. Inspect identification rules for cmdb_ci_server.<br />
+2. Re-import the same data; confirm no duplicates created.</p>
+<p>Lab 5 — CMDB Health:<br />
+1. Open CMDB Health Dashboard.<br />
+2. Identify completeness/correctness gaps and remediate one.</p>
+<hr />
+<h2 id="9-best-practices-common-mistakes">9) Best Practices &amp; Common Mistakes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Best practices:<br />
+- Follow CSDM — don&rsquo;t invent your own structure.<br />
+- Let IRE manage identity; never bypass it on imports.<br />
+- Always coalesce on a stable unique attribute.<br />
+- Monitor CMDB Health continuously; assign data owners.<br />
+- Use the most specific CI class (not generic cmdb_ci).</p>
+<p>Common mistakes:<br />
+- استيراد بلا coalesce → تكرار CIs.<br />
+- وضع كل شيء في cmdb_ci العام بدل الفئة الصحيحة.<br />
+- تجاهل CSDM فيصبح CMDB فوضويًا.<br />
+- تعطيل/تجاوز IRE.</p>
+<hr />
+<h2 id="10-cis-exam-focus-discovery-cmdb-csdm">10) CIS Exam Focus (Discovery / CMDB / CSDM)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>High-yield:<br />
+- CI class hierarchy &amp; table-per-class.<br />
+- IRE: identification rules, reconciliation, authoritative data source.<br />
+- CSDM 4 domains (Foundation/Design/Manage/Consume).<br />
+- Relationships (cmdb_rel_ci, relationship types, parent/child).<br />
+- CMDB Health: completeness, compliance, correctness.<br />
+- Discovery: MID Server, schedules, probes/sensors, patterns.<br />
+- Service Mapping vs Discovery.<br />
+- Coalesce in Transform Maps (deduplication).</p>
+<p>Exam tip: — ركّز على IRE و CSDM والعلاقات — أكثر ما يُختبر في CMDB/Discovery.</p>
+<hr />
+<h2 id="11-portals-workspaces-role-hierarchy-feature-catalog">11) Portals, Workspaces, Role Hierarchy &amp; Feature Catalog</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<blockquote>
+<p>ملاحظة عن الروابط:<br />
+CMDB يُدار غالبًا عبر Workspaces والأدوات الإدارية، لا Portal للمستخدم النهائي.</p>
+</blockquote>
+<h3 id="111-portals-self-service">11.1 Portals &amp; Self-service</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>URL</th>
+<th>لمن</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Service Portal (CI requests)</td>
+<td>/sp</td>
+<td>المستخدمون (طلب أصول مرتبطة بـ CI)</td>
+</tr>
+<tr>
+<td>Employee Center</td>
+<td>/esc</td>
+<td>الموظفون</td>
+</tr>
+</tbody>
+</table>
+<h3 id="112-workspaces-admin-tools">11.2 Workspaces &amp; Admin Tools</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>URL</th>
+<th>لمن</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CMDB Workspace</td>
+<td>/now/cmdb or configurable</td>
+<td>مديرو CMDB</td>
+</tr>
+<tr>
+<td>Service Operations Workspace</td>
+<td>/now/sow/home</td>
+<td>الوكلاء (CI في سياق الحادث)</td>
+</tr>
+<tr>
+<td>CI Class Manager</td>
+<td>All &gt; Configuration &gt; CI Class Manager · <a href="{BASE}/now/cmdb/ci-class-manager">Open direct</a></td>
+<td>المهندسون</td>
+</tr>
+<tr>
+<td>CMDB Health Dashboard</td>
+<td>All &gt; Configuration &gt; CMDB Health · <a href="{BASE}/pa_dashboards_list.do">Open direct</a></td>
+<td>مالكو البيانات</td>
+</tr>
+<tr>
+<td>CMDB Data Manager</td>
+<td>All &gt; CMDB Data Manager · <a href="{BASE}/now/cmdb-data-manager">Open direct</a></td>
+<td>المسؤولون</td>
+</tr>
+<tr>
+<td>Discovery Home</td>
+<td>All &gt; Discovery &gt; Home · <a href="{BASE}/now/discovery">Open direct</a></td>
+<td>مسؤولو الاكتشاف</td>
+</tr>
+<tr>
+<td>Service Mapping Workspace</td>
+<td>All &gt; Service Mapping · <a href="{BASE}/cmdb_ci_service_auto_list.do">Open direct</a></td>
+<td>المهندسون</td>
+</tr>
+<tr>
+<td>Dependency Views (BSM map)</td>
+<td>افتح CI → Dependency View</td>
+<td>الجميع المخوّلون</td>
+</tr>
+</tbody>
+</table>
+<h3 id="113-role-hierarchy">11.3 Role Hierarchy</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">admin
+└─ cmdb_admin
+ ├─ itil (read/use CIs in processes)
+ ├─ discovery_admin (Discovery config)
+ ├─ service_mapping_admin
+ ├─ cmdb_read / asset roles
+ └─ data owners (per CI class / domain)
+</code></pre>
+<h3 id="114-full-business-cycle">11.4 Full Business Cycle</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">Define scope via CSDM (Foundation → Design → Manage → Consume)
+ → Model CI classes (CI Class Manager)
+ → Set Identification &amp; Reconciliation rules (IRE)
+ → Populate:
+ Discovery (MID Server, schedules, probes/sensors, patterns)
+ Service Mapping (top-down application services)
+ Integrations / Import Sets (coalesce to dedupe)
+ → IRE reconciles (authoritative source, no duplicates)
+ → Build relationships (cmdb_rel_ci)
+ → Maintain via CMDB Health (completeness/compliance/correctness)
+ → Data Manager retires stale CIs
+ → Consume: ITSM (incident CI), Change impact, Event Mgmt, SecOps
+</code></pre>
+<h3 id="115-feature-catalog">11.5 Feature Catalog</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Process/data features:<br />
+- CI Class modeling (CI Class Manager, dependent attributes).<br />
+- Identification &amp; Reconciliation Engine (IRE).<br />
+- Multisource CMDB (multiple authoritative sources).<br />
+- CMDB Health (completeness/compliance/correctness + remediation).<br />
+- CMDB Data Manager (lifecycle, staleness, deletion).<br />
+- Relationships &amp; relationship types + Dependency Views.<br />
+- CSDM alignment.</p>
+<p>ITOM features that populate CMDB:<br />
+- Discovery (MID Server, schedules, probes/sensors, patterns, credentials).<br />
+- Service Mapping (top-down service modeling).<br />
+- Cloud Discovery (AWS/Azure/GCP).<br />
+- Certificate/Inventory discovery.</p>
+<p>Platform features used:<br />
+- Transform Maps + coalesce (import dedup).<br />
+- Flow Designer / IntegrationHub (external CMDB feeds).<br />
+- Performance Analytics (CMDB Health trends).<br />
+- Now Assist / Predictive for data quality.</p>
+<hr />
+<h2 id="12-end-to-end-implementation-post-activation">12) End-to-End Implementation (Post-Activation)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<blockquote>
+<p>اقرأ هذا بعد تفعيل CMDB/Discovery/Service Mapping.</p>
+</blockquote>
+<h3 id="121-application-menus-map">12.1 Application Menus map</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">All &gt; Configuration
+ ├─ CI Class Manager
+ ├─ Servers / Computers / Network Gear / Applications / Services
+ ├─ CI Identifiers (Identification Rules)
+ ├─ Reconciliation Definitions
+ ├─ CMDB Health (Dashboard / Completeness / Compliance / Correctness)
+ └─ Relationships / Relationship Types
+All &gt; CMDB Data Manager (stale CIs / lifecycle)
+All &gt; Discovery
+ ├─ Discovery Schedules / Discovery Status
+ ├─ Credentials / IP Ranges
+ ├─ Probes &amp; Sensors / Patterns (Pattern Designer)
+ └─ MID Servers
+All &gt; Service Mapping (Business/Application Services)
+</code></pre>
+<h3 id="122-core-tables-to-know">12.2 Core tables to know</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>List</th>
+<th>Table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cmdb_ci.list</td>
+<td>all CIs (base)</td>
+</tr>
+<tr>
+<td>cmdb_ci_server.list</td>
+<td>servers</td>
+</tr>
+<tr>
+<td>cmdb_ci_appl.list</td>
+<td>applications</td>
+</tr>
+<tr>
+<td>cmdb_ci_service.list</td>
+<td>services</td>
+</tr>
+<tr>
+<td>cmdb_rel_ci.list</td>
+<td>relationships</td>
+</tr>
+<tr>
+<td>cmdb_rel_type.list</td>
+<td>relationship types</td>
+</tr>
+<tr>
+<td>discovery_status.list</td>
+<td>discovery runs</td>
+</tr>
+<tr>
+<td>ecc_queue.list</td>
+<td>MID Server queue</td>
+</tr>
+</tbody>
+</table>
+<h3 id="123-end-to-end-build-order">12.3 End-to-end build order</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<ol>
+<li>Strategy:<br />
+ - Choose CSDM scope (Foundation → Design → Manage → Consume).</li>
+<li>Model:<br />
+ - CI Class Manager: classes, attributes, dependent attributes.</li>
+<li>Identity:<br />
+ - Identification Rules (IRE) + Reconciliation Definitions + data source precedence.</li>
+<li>MID Server:<br />
+ - Install + validate MID Server.<br />
+ All &gt; MID Server &gt; Servers. — <a href="{BASE}/ecc_agent_list.do">Open direct</a></li>
+<li>Discovery (if licensed):<br />
+ - Credentials → IP ranges → Discovery Schedules → run.<br />
+ - Patterns / Probes &amp; Sensors as needed.</li>
+<li>Service Mapping (if licensed):<br />
+ - Entry points → map application services top-down.</li>
+<li>Imports:<br />
+ - Import Sets + Transform Maps with coalesce (dedupe) for external sources.</li>
+<li>Multisource:<br />
+ - Configure multiple authoritative sources.</li>
+<li>Health:<br />
+ - CMDB Health Dashboard: assign data owners, remediate gaps.</li>
+<li>Data Manager:<br />
+ - Lifecycle/staleness rules to retire dead CIs.</li>
+<li>Consume:<br />
+ - Link CIs to ITSM/Change/Event Mgmt; build Dependency Views.</li>
+<li>Test + Deploy.</li>
+</ol>
+<h3 id="124-all-configuration-pages">12.4 All configuration pages</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Config</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CMDB properties</td>
+<td>All &gt; Configuration &gt; CMDB Properties · <a href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHglide.cmdb">Open direct</a></td>
+</tr>
+<tr>
+<td>Identification rules</td>
+<td>All &gt; Configuration &gt; CI Identifiers · <a href="{BASE}/cmdb_identifier_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Reconciliation</td>
+<td>All &gt; Configuration &gt; Reconciliation Definitions · <a href="{BASE}/cmdb_reconciliation_definition_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>CMDB Health config</td>
+<td>All &gt; Configuration &gt; CMDB Health · <a href="{BASE}/now/cmdb/health">Open direct</a></td>
+</tr>
+<tr>
+<td>Discovery properties</td>
+<td>All &gt; Discovery &gt; Properties · <a href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHglide.discovery">Open direct</a></td>
+</tr>
+<tr>
+<td>MID Server</td>
+<td>All &gt; MID Server &gt; Servers · <a href="{BASE}/ecc_agent_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Data Manager policies</td>
+<td>All &gt; CMDB Data Manager · <a href="{BASE}/now/cmdb-data-manager">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<p>Study path note: — للدراسة من الصفر اتبع: STUDY_ROADMAP.md</p>
+<hr />
+<h2 id="13-options-instance-notes">13) Options &amp; Instance Notes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Instance gaps</td>
+<td>MODULE_OPTIONS_AND_INSTANCE_NOTES.md → <strong>CMDB</strong></td>
+</tr>
+<tr>
+<td><strong>Full implementation</strong></td>
+<td>MODULE_IMPLEMENTATION_PLAYBOOK.md → <strong>CMDB</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="14-implementation-scenarios-options-best-practices-customizations">14) Implementation Scenarios, Options, Best Practices &amp; Customizations</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<blockquote>
+<p>Playbook: MODULE_IMPLEMENTATION_PLAYBOOK.md → <strong>CMDB</strong></p>
+</blockquote>
+<h3 id="141-scenarios">14.1 Scenarios</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Scenario</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1</strong></td>
+<td>Manual CMDB</td>
+<td>Import Set + CI Class Manager</td>
+</tr>
+<tr>
+<td><strong>S2</strong></td>
+<td>Discovery-led</td>
+<td>MID + schedules + IRE (ITOM.md)</td>
+</tr>
+<tr>
+<td><strong>S3</strong></td>
+<td>CSDM enterprise</td>
+<td>Multisource + Service Mapping + Health</td>
+</tr>
+</tbody>
+</table>
+<h3 id="142-options-matrix">14.2 Options matrix</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>A (recommended)</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Populate</td>
+<td>Discovery</td>
+<td>Import/coalesce</td>
+</tr>
+<tr>
+<td>Dedup</td>
+<td>IRE</td>
+<td>Transform coalesce only</td>
+</tr>
+<tr>
+<td>Services</td>
+<td>Service Mapping</td>
+<td>Manual cmdb_ci_service</td>
+</tr>
+<tr>
+<td>Quality</td>
+<td>CMDB Health KPIs</td>
+<td>Manual audit</td>
+</tr>
+</tbody>
+</table>
+<h3 id="143-plugins">14.3 Plugins</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>ID</th>
+<th>Order</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CMDB</td>
+<td>core</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Discovery</td>
+<td>com.snc.discovery</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Service Mapping</td>
+<td>com.snc.service-mapping</td>
+<td>3</td>
+</tr>
+<tr>
+<td>CSDM</td>
+<td>Store</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>Guided Setup: CMDB + ITOM</p>
+<h3 id="144-roles">14.4 Roles</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>cmdb_admin, discovery_admin, service_mapping_admin, <strong>data owners</strong> per CI class/domain.</p>
+<h3 id="145-common-developments">14.5 Common developments</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>IRE rules, custom CI classes/attributes, relationship types, Transform Maps, Health remediation projects, external CMDB sync (IntegrationHub), dependency views for change impact.</p>
+<h3 id="146-best-practices">14.6 Best practices</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>CSDM alignment workshop first; one authoritative source per class; retire stale CIs (Data Manager).</p>
+<h3 id="147-go-live">14.7 Go-live</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<ul>
+<li>[ ] IRE tested with duplicate imports</li>
+<li>[ ] Health dashboard owners assigned</li>
+<li>[ ] Discovery schedule pilot (one subnet)</li>
+<li>[ ] Relationships validated for top services</li>
+</ul>
+<hr />
+<h2 id="15-zero-to-hero-end-to-end-implementation-scratch-go-live">15) Zero-to-Hero End-to-End Implementation (Scratch → Go-Live)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<blockquote>
+<p>Framework: MODULE_ZERO_TO_HERO_CONSULTING.md · Often with ITOM.md</p>
+</blockquote>
+<p>من <strong>استراتيجية CSDM</strong> حتى <strong>CMDB موثوق</strong> يغذّي ITSM/Change/Events.</p>
+<h3 id="151-business-goals">15.1 Business goals</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>العربي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single source of truth</td>
+<td>مصدر واحد للبنية التحتية</td>
+</tr>
+<tr>
+<td>Impact analysis</td>
+<td>من يتأثر إذا تعطل خادم؟</td>
+</tr>
+<tr>
+<td>Audit quality</td>
+<td>بيانات دقيقة للتدقيق والامتثال</td>
+</tr>
+<tr>
+<td>Automation input</td>
+<td>Discovery يغذّي CMDB تلقائيًا</td>
+</tr>
+</tbody>
+</table>
+<h3 id="152-phase-0-discover-week-12">15.2 Phase 0 — Discover (Week 1–2)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>CSDM scope workshop, CI classes in scope, authoritative sources, data owners.</p>
+<h3 id="153-phase-1-activate-week-2">15.3 Phase 1 — Activate (Week 2)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>CMDB core, Discovery/Service Mapping if licensed, Guided Setup CMDB+ITOM.</p>
+<h3 id="154-phase-2-model-week-34">15.4 Phase 2 — Model (Week 3–4)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>CI Class Manager, attributes, relationship types, IRE identification + reconciliation rules.</p>
+<h3 id="155-phase-3-populate-week-48">15.5 Phase 3 — Populate (Week 4–8)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Steps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Discovery</strong></td>
+<td>MID → credentials → IP range → schedule → validate CIs</td>
+</tr>
+<tr>
+<td><strong>Import</strong></td>
+<td>CSV → Import Set → Transform → coalesce</td>
+</tr>
+<tr>
+<td><strong>Manual</strong></td>
+<td>Pilot 50 CIs + relationships</td>
+</tr>
+</tbody>
+</table>
+<h3 id="156-phase-4-quality-week-810">15.6 Phase 4 — Quality (Week 8–10)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>CMDB Health dashboard, assign owners, remediate completeness gaps, Data Manager staleness.</p>
+<h3 id="157-phase-5-consume-week-1011">15.7 Phase 5 — Consume (Week 10–11)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Link to ITSM incidents/changes, dependency views, optional Service Mapping.</p>
+<h3 id="158-phase-6-uat-go-live">15.8 Phase 6 — UAT &amp; go-live</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Duplicate CI test, impact analysis demo, sign-off from operations.</p>
+<h3 id="159-phase-7-operate">15.9 Phase 7 — Operate</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Monthly health review, discovery schedule expansion, reconciliation audits.</p>
+<h3 id="1510-master-checklist">15.10 Master checklist</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<ul>
+<li>[ ] CSDM scope doc · [ ] IRE tested · [ ] Health KPIs green pilot · [ ] ITSM using CIs</li>
+</ul>
+<hr />
+<h2 id="16-full-e2e-practice-pages-requirements-options-ar-en">16) Full E2E Practice · Pages · Requirements · Options (AR + EN)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<blockquote>
+<p>Extended: MODULE_FULL_E2E_PRACTICE.md · Pairs with ITOM.md for Discovery</p>
+</blockquote>
+<hr />
+<h3 id="161-business-goals">16.1 Business goals</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Goal (EN)</th>
+<th>الهدف (AR)</th>
+<th>KPI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single source of truth for IT</td>
+<td>مصدر واحد للحقيقة</td>
+<td>Duplicate CI %</td>
+</tr>
+<tr>
+<td>Impact analysis</td>
+<td>تحليل التأثير</td>
+<td>Dependency map usage</td>
+</tr>
+<tr>
+<td>Discovery accuracy</td>
+<td>دقة الاكتشاف</td>
+<td>Completeness score</td>
+</tr>
+<tr>
+<td>Service-aware CMDB (CSDM)</td>
+<td>CMDB مرتبط بالخدمة</td>
+<td>App service coverage</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why buy CMDB:</strong> English: Incidents and changes need to know <em>what</em> broke and <em>who</em> depends on it. — بدون CMDB دقيق، ITSM يعمل &ldquo;أعمى&rdquo; — لا تأثير ولا root cause على البنية.</p>
+<hr />
+<h3 id="162-requirements">16.2 Requirements</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>EN</th>
+<th>AR</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CM-R01</td>
+<td>CI classes aligned to CSDM</td>
+<td>فئات CI حسب CSDM</td>
+<td>Must</td>
+</tr>
+<tr>
+<td>CM-R02</td>
+<td>IRE prevents duplicates</td>
+<td>IRE يمنع التكرار</td>
+<td>Must</td>
+</tr>
+<tr>
+<td>CM-R03</td>
+<td>Relationships Runs on / Depends on</td>
+<td>علاقات تشغيل/اعتماد</td>
+<td>Must</td>
+</tr>
+<tr>
+<td>CM-R04</td>
+<td>Reconciliation with external source</td>
+<td>مطابقة مع مصدر خارجي</td>
+<td>Should</td>
+</tr>
+<tr>
+<td>CM-R05</td>
+<td>CMDB Health KPIs owned</td>
+<td>مؤشرات صحة بمسؤول</td>
+<td>Must</td>
+</tr>
+<tr>
+<td>CM-R06</td>
+<td>Link CI on incident/change</td>
+<td>ربط CI بالحادث/التغيير</td>
+<td>Should</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="163-consultation-cycle">16.3 Consultation cycle</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Workshop (EN)</th>
+<th>العربي</th>
+<th>Deliverable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>What services are tier-0?</td>
+<td>ما الخدمات حرجة؟</td>
+<td>Service inventory</td>
+</tr>
+<tr>
+<td>1</td>
+<td>As-is spreadsheet/tools</td>
+<td>أين البيانات اليوم؟</td>
+<td>Gap analysis</td>
+</tr>
+<tr>
+<td>2</td>
+<td>CSDM foundation vs advanced</td>
+<td>نطاق CSDM</td>
+<td>Scope doc</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Class model + IRE rules</td>
+<td>نموذج الفئات</td>
+<td>Design</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Populate (manual/import/discovery)</td>
+<td>تعبئة</td>
+<td>Data load plan</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Health + ownership</td>
+<td>صحة + ملكية</td>
+<td>Health dashboard</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ITSM consumption UAT</td>
+<td>UAT مع ITSM</td>
+<td>Sign-off</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Questions:</strong> Which CIs are authoritative source? Who owns application service records?<br />
+من المصدر الموثوق للـ CI؟ من يملك سجل خدمة التطبيق؟</p>
+<hr />
+<h3 id="164-options-a-b-c">16.4 Options (A / B / C)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Population</td>
+<td>Discovery (ITOM)</td>
+<td>Import Set / Integration</td>
+<td>Manual pilot</td>
+</tr>
+<tr>
+<td>Identity</td>
+<td>Full IRE rules</td>
+<td>Basic serial match</td>
+<td>No IRE (bad)</td>
+</tr>
+<tr>
+<td>Scope</td>
+<td>CSDM Foundation</td>
+<td>Technical CI only</td>
+<td>Full Service Mapping day 1</td>
+</tr>
+<tr>
+<td>Quality</td>
+<td>CMDB Health + Data Manager</td>
+<td>Health only</td>
+<td>Ad-hoc reports</td>
+</tr>
+<tr>
+<td>Governance</td>
+<td>CI owners on Health</td>
+<td>IT-only ownership</td>
+<td>No owners</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="165-all-pages-navigate">16.5 All pages (Navigate)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigate</th>
+<th>Table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CI Class Manager</td>
+<td>All &gt; Configuration &gt; CI Class Manager · <a href="{BASE}/now/cmdb/ci-class-manager">Open direct</a></td>
+<td>class definitions</td>
+</tr>
+<tr>
+<td>CI list</td>
+<td>cmdb_ci.list</td>
+<td>cmdb_ci</td>
+</tr>
+<tr>
+<td>Relationships</td>
+<td>cmdb_rel_ci.list</td>
+<td>cmdb_rel_ci</td>
+</tr>
+<tr>
+<td>CI Identifiers (IRE)</td>
+<td>All &gt; Configuration &gt; CI Identifiers · <a href="{BASE}/cmdb_identifier_list.do">Open direct</a></td>
+<td>IRE</td>
+</tr>
+<tr>
+<td>Reconciliation</td>
+<td>All &gt; Configuration &gt; Reconciliation Definitions · <a href="{BASE}/cmdb_reconciliation_definition_list.do">Open direct</a></td>
+<td>recon</td>
+</tr>
+<tr>
+<td>CMDB Health</td>
+<td>All &gt; Configuration &gt; CMDB Health · <a href="{BASE}/now/cmdb/health">Open direct</a></td>
+<td>KPIs</td>
+</tr>
+<tr>
+<td>Data Manager</td>
+<td>All &gt; Configuration &gt; Data Manager · <a href="{BASE}/now/cmdb-data-manager">Open direct</a></td>
+<td>staleness</td>
+</tr>
+<tr>
+<td>CMDB Workspace</td>
+<td>/now/cmdb</td>
+<td>workspace</td>
+</tr>
+<tr>
+<td>Dependency View</td>
+<td>Open CI → Related Items → Dependency</td>
+<td>graph</td>
+</tr>
+<tr>
+<td>Import Sets</td>
+<td>All &gt; System Import Sets · <a href="{BASE}/sys_data_source_list.do">Open direct</a></td>
+<td>import</td>
+</tr>
+<tr>
+<td>Baseline</td>
+<td>All &gt; Configuration &gt; Baseline · <a href="{BASE}/cmdb_baseline_list.do">Open direct</a></td>
+<td>compare</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="166-full-pdi-lab-18-steps">16.6 Full PDI lab (18 steps)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>EN</th>
+<th>AR</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Open CI Class Manager — note Server class</td>
+<td>مدير الفئات</td>
+<td>Hierarchy visible</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Create cmdb_ci_server manually</td>
+<td>CI يدوي</td>
+<td>Record saved</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Duplicate same serial — run IRE</td>
+<td>تكرار serial</td>
+<td>Merge or reject per rule</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Create Application CI + link Depends on Server</td>
+<td>علاقة</td>
+<td>cmdb_rel_ci</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Open Dependency View</td>
+<td>خريطة</td>
+<td>Graph shows link</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Create Import Set for 5 servers CSV</td>
+<td>استيراد</td>
+<td>Staging rows</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Transform + coalesce on serial</td>
+<td>تحويل</td>
+<td>Target CIs created</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Assign CMDB Health owner</td>
+<td>مالك صحة</td>
+<td>Dashboard assigned</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Review completeness KPI</td>
+<td>اكتمال</td>
+<td>Score visible</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Link CI on test incident (ITSM.md)</td>
+<td>ربط حادث</td>
+<td>CI on form</td>
+</tr>
+<tr>
+<td>11</td>
+<td>(Optional) Run discovery — see ITOM §16</td>
+<td>اكتشاف</td>
+<td>New CIs</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Reconciliation definition draft</td>
+<td>مطابقة</td>
+<td>Rule saved</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Baseline two CIs</td>
+<td>baseline</td>
+<td>Compare works</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Document chosen Option A/B/C</td>
+<td>توثيق</td>
+<td>Options doc</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Impersonate read-only user — CI access</td>
+<td>أمان</td>
+<td>ACL ok</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Export Update Set CMDB Lab 16</td>
+<td>Update Set</td>
+<td>Captured</td>
+</tr>
+<tr>
+<td>17</td>
+<td>UAT: impact &ldquo;what depends on this server?&rdquo;</td>
+<td>UAT تأثير</td>
+<td>Demo to stakeholder</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Sign-off checklist §16.8</td>
+<td>اعتماد</td>
+<td>Complete</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="167-sign-off">16.7 Sign-off</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<ul>
+<li>[ ] No duplicate serials in pilot scope · [ ] Health owner named · [ ] ITSM agents trained to pick CI · [ ] CSDM scope doc approved</li>
+</ul>
+<hr />
+<h2 id="17-power-user-playbook-cmdb">§17 — Power User Playbook (CMDB)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Day-in-life recipes for each CMDB persona + 20 production-ready scripts.<br />
+ملف عملي لكل دور — مدير CMDB، مالك CI، حارس البيانات، مدير الاكتشاف، معماري CSDM، مدقق.</p>
+<hr />
+<h3 id="171-personas-what-each-role-does">17.1 Personas — what each role does</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Primary tables</th>
+<th>Day-1 menus</th>
+<th>Main outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CMDB Manager</strong></td>
+<td>cmdb_ci, cmdb_health_*</td>
+<td>CMDB Workspace /now/cmdb</td>
+<td>Govern health, owners, lifecycle</td>
+</tr>
+<tr>
+<td><strong>CI Owner</strong></td>
+<td>cmdb_ci (their class)</td>
+<td>CI list filtered to owned CIs</td>
+<td>Keep CIs accurate, attest quarterly</td>
+</tr>
+<tr>
+<td><strong>Data Steward</strong></td>
+<td>All cmdb_*, import_set_row</td>
+<td>Data Manager, Health</td>
+<td>Resolve duplicates, fix completeness</td>
+</tr>
+<tr>
+<td><strong>Discovery Admin</strong></td>
+<td>discovery_schedule, mid_server</td>
+<td>Discovery, MID Server</td>
+<td>Healthy probes, schedules, exceptions</td>
+</tr>
+<tr>
+<td><strong>CSDM Architect</strong></td>
+<td>cmdb_ci_business_app, cmdb_ci_service_auto</td>
+<td>CSDM Workspace</td>
+<td>Model business + application services</td>
+</tr>
+<tr>
+<td><strong>Auditor / Compliance</strong></td>
+<td>cmdb_ci, sys_audit</td>
+<td>CMDB audit log + reports</td>
+<td>Evidence, traceability, change history</td>
+</tr>
+<tr>
+<td><strong>ITSM Agent (consumer)</strong></td>
+<td>cmdb_ci (read), task_ci</td>
+<td>Incident → &ldquo;Affected CIs&rdquo;</td>
+<td>Pick correct CI; see impact in topology</td>
+</tr>
+</tbody>
+</table>
+<p>لكل دور صفحات بدء يومه. مدير CMDB يبدأ من Workspace، حارس البيانات من Data Manager، ومالك CI من قائمة مفلترة على ملكيته.</p>
+<p>⚠️ مالك CI ليس بالضرورة مالك العملية — افصل بينهما.</p>
+<hr />
+<h3 id="172-itsm-agent-using-cmdb-context">17.2 ITSM Agent — using CMDB context</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p><strong>On an incident form:</strong></p>
+<pre><code class="language-text">1) Pick CI in cmdb_ci field — autocomplete shows operational CIs only
+2) Side panel → &quot;Affected CIs&quot; → adds downstream services automatically
+3) Side panel → &quot;Dependency View&quot; → topology graph
+4) Related list &quot;Affected CIs&quot; → tracks impact
+5) On resolve → CI stays linked → fuels Problem RCA + CSI analytics
+</code></pre>
+<p><strong>Topology read:</strong></p>
+<pre><code class="language-text">Open CI → Related Items → Dependency View
+- Outgoing (children): what depends on this CI
+- Incoming (parents): what this CI depends on
+- Click any node → drill into incidents/changes/problems on that CI
+</code></pre>
+<p>وكلاء ITSM لا يبنون CI — هم فقط يربطون ويرون التأثير. أمّا الإدخال فمن Discovery أو Import.</p>
+<hr />
+<h3 id="173-cmdb-manager-recipes">17.3 CMDB Manager recipes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p><strong>Recipe A — Read the Data Quality dashboard</strong></p>
+<pre><code class="language-text">Navigate: All &gt; Configuration &gt; CMDB Dashboard
+Tiles to watch:
+- Completeness → % required attrs filled (target ≥ 90%)
+- Correctness → IRE rule pass rate (target ≥ 95%)
+- Compliance → CIs with owner + class (target ≥ 90%)
+- Health Score → weighted overall (target ≥ 80, §18.20)
+- Staleness → not updated &gt; 90 days (target ≤ 10%)
+- Duplicates → IRE rejects + suspects (target = 0 confirmed)
+</code></pre>
+<p><strong>Recipe B — Stale CI cleanup</strong></p>
+<pre><code class="language-javascript">// Background script — find stale, optionally archive
+var stale = new GlideRecord('cmdb_ci');
+stale.addQuery('sys_updated_on', '&lt;', gs.daysAgo(90));
+stale.addQuery('operational_status', '1'); // currently operational
+stale.addQuery('discovery_source', '!=', '');
+stale.setLimit(200);
+stale.query();
+var ids = [];
+while (stale.next()) ids.push(stale.number + ' ' + stale.name);
+gs.info('Stale CIs: ' + ids.length + '\n' + ids.join('\n'));
+// To act: switch to write mode, set install_status = 7 (Retired)
+</code></pre>
+<p><strong>Recipe C — Duplicate detection via IRE</strong></p>
+<pre><code class="language-text">Navigate: All &gt; Configuration &gt; CI Identifiers
+For each class verify:
+- Independent attributes (e.g. serial_number)
+- Dependent attributes (e.g. fqdn + ip_address)
+- Run IRE simulation → see duplicates flagged before insert
+</code></pre>
+<p><strong>Recipe D — Class mapping &amp; reclassification</strong></p>
+<pre><code class="language-text">Navigate: All &gt; Configuration &gt; CI Class Manager
+1) Browse hierarchy — note &quot;cmdb_ci_server&quot; parent of Linux/Windows/Unix
+2) Pick CI from list → &quot;Suggest reclassification&quot;
+3) Confirm → IRE re-validates → no duplicates created
+</code></pre>
+<p><strong>Recipe E — Attribute completeness audit</strong></p>
+<pre><code class="language-javascript">// Script Include: report completeness per class
+var classes = ['cmdb_ci_server', 'cmdb_ci_appl', 'cmdb_ci_database', 'cmdb_ci_service_auto'];
+var required = {
+ cmdb_ci_server: ['name', 'serial_number', 'os', 'ip_address', 'owned_by'],
+ cmdb_ci_appl: ['name', 'version', 'install_status', 'owned_by'],
+ cmdb_ci_database: ['name', 'version', 'instance', 'owned_by'],
+ cmdb_ci_service_auto: ['name', 'service_classification', 'business_criticality', 'owned_by']
+};
+classes.forEach(function(cls) {
+ var ga = new GlideAggregate(cls);
+ ga.addAggregate('COUNT');
+ ga.query(); ga.next();
+ var total = ga.getAggregate('COUNT');
+ var missing = 0;
+ required[cls].forEach(function(attr) {
+ var miss = new GlideRecord(cls);
+ miss.addQuery(attr, '');
+ miss.query();
+ missing += miss.getRowCount();
+ });
+ gs.info(cls + ' completeness: ' + total + ' CIs, missing-attr instances: ' + missing);
+});
+</code></pre>
+<hr />
+<h3 id="174-csdm-model-a-real-service-hr-leave-portal">17.4 CSDM — model a real service (HR Leave Portal)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p><strong>CSDM 4 domains (Foundation / Design / Build / Manage):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Purpose</th>
+<th>Key tables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Foundation</strong></td>
+<td>Org &amp; topology basics</td>
+<td>sys_user, cmn_department, cmn_location, core_company</td>
+</tr>
+<tr>
+<td><strong>Design</strong></td>
+<td>Logical service &amp; offering layer</td>
+<td>cmdb_ci_business_app, cmdb_ci_service_offering, cmdb_ci_service_auto (App Service)</td>
+</tr>
+<tr>
+<td><strong>Build</strong></td>
+<td>Technical components</td>
+<td>cmdb_ci_server, cmdb_ci_appl_dot_net, cmdb_ci_database, cmdb_ci_web_service</td>
+</tr>
+<tr>
+<td><strong>Manage</strong></td>
+<td>Operational records linked</td>
+<td>incident, change_request, problem, task_ci</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Model the &ldquo;HR Leave Portal&rdquo; — top to bottom:</strong></p>
+<pre><code class="language-text">Business Application (cmdb_ci_business_app)
+ HR Leave Portal
+ └── Service Offering (cmdb_ci_service_offering)
+ HR Leave — Premium 24x7
+ └── Application Service (cmdb_ci_service_auto)
+ x_786686_hr_leave (Scoped App)
+ ├── Web tier → cmdb_ci_web_server (Nginx)
+ ├── App tier → cmdb_ci_appl (ServiceNow scope)
+ ├── DB tier → cmdb_ci_database (Postgres / Mongo / mysql)
+ └── Identity → cmdb_ci_appl (Okta / Azure AD)
+</code></pre>
+<p><strong>Relationships used:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parent</th>
+<th>Type</th>
+<th>Child</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR Leave Portal (BizApp)</td>
+<td>Contains</td>
+<td>HR Leave — Premium (Service Offering)</td>
+</tr>
+<tr>
+<td>HR Leave — Premium</td>
+<td>Provided by</td>
+<td>x_786686_hr_leave (App Service)</td>
+</tr>
+<tr>
+<td>x_786686_hr_leave</td>
+<td>Runs on</td>
+<td>Web/App/DB tier CIs</td>
+</tr>
+<tr>
+<td>App tier CI</td>
+<td>Depends on</td>
+<td>DB tier CI</td>
+</tr>
+<tr>
+<td>App tier CI</td>
+<td>Uses</td>
+<td>Identity CI</td>
+</tr>
+</tbody>
+</table>
+<p>CSDM يعطي نموذجًا واحدًا متفقًا عليه — لا تختصر طبقات Design لأنها التي يربط بها العمل والخدمات بـ ITOM.</p>
+<hr />
+<h3 id="175-ci-class-manager-custom-class-for-hr-leave">17.5 CI Class Manager — custom class for HR Leave</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">Navigate: All &gt; Configuration &gt; CI Class Manager
+1) Pick parent: cmdb_ci_application_software
+2) &quot;Create child class&quot;: cmdb_ci_hr_leave_component
+3) Add attributes:
+ - tier (choice: web / app / db)
+ - environment (choice: dev / uat / prod)
+ - app_scope (string default x_786686_hr_leave)
+ - cost_center (reference cmn_cost_center)
+4) Save → triggers schema change (review with admin)
+5) Add IRE: independent attr &quot;name + environment&quot;
+6) Add suggested reclassification rule from cmdb_ci_appl
+</code></pre>
+<p><strong>MID Server integration check:</strong></p>
+<pre><code class="language-text">Navigate: All &gt; MID Server &gt; Servers
+Verify status: Up
+Capabilities: ALL (or specific: Discovery, Service Mapping)
+Configure Parameters: mid.proxy.host / port if behind proxy
+</code></pre>
+<hr />
+<h3 id="176-service-mapping-top-down-vs-bottom-up">17.6 Service Mapping — top-down vs bottom-up</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>When</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Top-down (Service Mapping app)</strong></td>
+<td>Web-facing services with entry point</td>
+<td>Entry point URL → MID traverses → builds map</td>
+</tr>
+<tr>
+<td><strong>Bottom-up (Discovery)</strong></td>
+<td>Tech infra inventory</td>
+<td>IP-range scan → finds CIs → CMDB</td>
+</tr>
+<tr>
+<td><strong>Tag-based</strong></td>
+<td>Cloud (AWS/Azure/GCP)</td>
+<td>Tag service=HR-Leave → group into App Service</td>
+</tr>
+<tr>
+<td><strong>Pattern-based (OS)</strong></td>
+<td>Servers w/ specific OS</td>
+<td>Discovery patterns per OS family</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reconcile gaps:</strong></p>
+<pre><code class="language-text">Open App Service &quot;HR Leave&quot;
+Side panel → &quot;Map status&quot;
+Expected: 4 CIs, mapped: 3
+Missing: DB tier
+Cause: credential expired
+Fix: refresh credential, re-run Service Mapping
+</code></pre>
+<p><strong>Troubleshoot Service Mapping failures:</strong></p>
+<pre><code class="language-text">1) Run &quot;Test Mapping&quot; from the App Service form
+2) Open mapping log → look for &quot;Connection refused&quot; or &quot;Auth failed&quot;
+3) Validate MID can reach all hops (mid_server &gt; Run Diagnostics)
+4) Inspect Pattern Designer if pattern not catching components
+</code></pre>
+<hr />
+<h3 id="177-discovery-probesensor-design-overview">17.7 Discovery probe/sensor design (overview)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Probe</td>
+<td>Outbound command the MID Server runs (SNMP/SSH/WMI/REST)</td>
+</tr>
+<tr>
+<td>Sensor</td>
+<td>Server-side script that parses probe payload into CIs</td>
+</tr>
+<tr>
+<td>Pattern</td>
+<td>Modern equivalent of probe+sensor, declarative steps</td>
+</tr>
+<tr>
+<td>Schedule</td>
+<td>When + what IP range to scan</td>
+</tr>
+<tr>
+<td>Credential</td>
+<td>Auth used by probe (per-MID via vault)</td>
+</tr>
+<tr>
+<td>Classifier</td>
+<td>Decides which CI class a target belongs to</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-text">Sample flow for a Linux server:
+schedule fires → MID gets IP → SSH probe lands → sensor parses → classifier picks cmdb_ci_linux_server → IRE upserts CI → relationships added (Runs on hardware, hosts apps)
+</code></pre>
+<p>الاكتشاف يبدأ من جدول الخدول → MID → probe → sensor → IRE → CI نهائي. أي عطل ينعكس على Health.</p>
+<hr />
+<h3 id="178-quick-navigation-cheatsheet">17.8 Quick navigation cheatsheet</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">cmdb_ci.list → all CIs
+cmdb_rel_ci.list → all relationships
+/now/cmdb → CMDB Workspace
+/now/cmdb/ci-class-manager → class manager
+sys_db_object.list (filter table starts with cmdb_ci) → all CI tables
+cmdb_health_metric.list → metric records
+cmdb_ci_business_app.list → CSDM Business Apps
+cmdb_ci_service_auto.list → Application Services (CSDM)
+cmdb_ci_service_offering.list → Service Offerings
+mid_server.list → MID Servers
+discovery_status.list → Discovery runs
+discovery_schedule.list → schedules
+sa_pattern.list → Service Mapping patterns
+cmdb_data_certification.list → owner attestation
+</code></pre>
+<hr />
+<h3 id="179-top-20-cmdb-scripts-copypaste-ready">17.9 Top 20 CMDB scripts — copy/paste ready</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<blockquote>
+<p>All scripts in scope global. Verify in dev before scheduling.<br />
+Add try/catch when scheduling daily.</p>
+</blockquote>
+<p><strong>1) Detect duplicates via IRE rule (manual scan)</strong></p>
+<pre><code class="language-javascript">// Background script — find CIs sharing the same serial_number
+var ga = new GlideAggregate('cmdb_ci');
+ga.addNotNullQuery('serial_number');
+ga.addAggregate('COUNT', 'serial_number');
+ga.groupBy('serial_number');
+ga.addHaving('COUNT', '&gt;', 1);
+ga.query();
+while (ga.next()) {
+ var s = ga.serial_number.toString();
+ gs.info('Duplicate serial ' + s + ' has ' + ga.getAggregate('COUNT', 'serial_number') + ' CIs');
+ var dup = new GlideRecord('cmdb_ci');
+ dup.addQuery('serial_number', s);
+ dup.query();
+ while (dup.next()) gs.info(' - ' + dup.number + ' ' + dup.name + ' class=' + dup.sys_class_name);
+}
+</code></pre>
+<p><strong>2) Find blast radius (downstream impact of a CI)</strong></p>
+<pre><code class="language-javascript">function findBlastRadius(ciId, maxDepth) {
+ var visited = {};
+ var queue = [{id: ciId, depth: 0}];
+ var result = [];
+ while (queue.length) {
+ var n = queue.shift();
+ if (visited[n.id] || n.depth &gt; (maxDepth || 4)) continue;
+ visited[n.id] = true;
+ if (n.depth &gt; 0) result.push(n.id);
+ var rel = new GlideRecord('cmdb_rel_ci');
+ rel.addQuery('parent', n.id);
+ rel.query();
+ while (rel.next()) {
+ queue.push({id: rel.child.toString(), depth: n.depth + 1});
+ }
+ }
+ return result;
+}
+var blast = findBlastRadius('&lt;ci_sys_id&gt;', 4);
+gs.info('Blast radius: ' + blast.length + ' downstream CIs');
+</code></pre>
+<p><strong>3) Bulk import CIs from CSV via Import Set + Transform Map</strong></p>
+<pre><code class="language-javascript">// Background script — programmatic insert into staging then transform
+var STAGING = 'u_imp_server'; // your staging table
+var rows = [
+ {u_name:'web01.prod', u_serial:'AB123', u_ip:'10.0.0.1', u_os:'Linux'},
+ {u_name:'web02.prod', u_serial:'AB124', u_ip:'10.0.0.2', u_os:'Linux'}
+];
+rows.forEach(function(r) {
+ var gr = new GlideRecord(STAGING);
+ gr.initialize();
+ for (var k in r) gr.setValue(k, r[k]);
+ gr.insert();
+});
+// Now run Transform Map manually:
+// All &gt; System Import Sets &gt; Run Transform → pick your map → coalesce on serial_number
+gs.info('Staged ' + rows.length + ' rows in ' + STAGING);
+</code></pre>
+<p><strong>4) Reclassify CIs (Server → Linux Server)</strong></p>
+<pre><code class="language-javascript">// Switch a CI's class
+var gr = new GlideRecord('cmdb_ci_server');
+gr.addQuery('os', 'STARTSWITH', 'Linux');
+gr.addQuery('sys_class_name', 'cmdb_ci_server'); // generic only
+gr.setLimit(50);
+gr.query();
+while (gr.next()) {
+ gr.sys_class_name = 'cmdb_ci_linux_server';
+ gr.update();
+}
+gs.info('Reclassified ' + gr.getRowCount());
+</code></pre>
+<p><strong>5) Data quality score per class</strong></p>
+<pre><code class="language-javascript">// Compute basic quality score: % CIs with name, owned_by, serial_number, location
+var classes = ['cmdb_ci_server', 'cmdb_ci_appl', 'cmdb_ci_database'];
+classes.forEach(function(cls) {
+ var t = new GlideAggregate(cls); t.addAggregate('COUNT'); t.query(); t.next();
+ var total = parseInt(t.getAggregate('COUNT')) || 0;
+ if (!total) return;
+ function pctMissing(attr) {
+ var m = new GlideRecord(cls);
+ m.addQuery(attr, '');
+ m.query();
+ return Math.round((m.getRowCount() / total) * 100);
+ }
+ var sumMissing = pctMissing('name') + pctMissing('owned_by') + pctMissing('serial_number') + pctMissing('location');
+ var score = Math.max(0, 100 - Math.round(sumMissing / 4));
+ gs.info(cls + ' quality score: ' + score + ' (' + total + ' CIs)');
+});
+</code></pre>
+<p><strong>6) Stale CI detector (no update &gt; 90d)</strong></p>
+<pre><code class="language-javascript">// Scheduled Job — weekly
+var stale = new GlideRecord('cmdb_ci');
+stale.addQuery('sys_updated_on', '&lt;', gs.daysAgo(90));
+stale.addQuery('install_status', '1'); // installed
+stale.query();
+while (stale.next()) {
+ stale.work_notes = 'Stale: no update &gt;90 days — verify with owner.';
+ stale.update();
+ gs.eventQueue('cmdb.stale.ci', stale, stale.owned_by.toString(), '');
+}
+</code></pre>
+<p><strong>7) Orphan CI detector (no relationships)</strong></p>
+<pre><code class="language-javascript">// Find CIs with zero relationships
+var ci = new GlideRecord('cmdb_ci');
+ci.addQuery('install_status', '1');
+ci.setLimit(500);
+ci.query();
+var orphans = [];
+while (ci.next()) {
+ var rel = new GlideRecord('cmdb_rel_ci');
+ rel.addQuery('parent', ci.sys_id).addOrCondition('child', ci.sys_id);
+ rel.query();
+ if (!rel.hasNext()) orphans.push(ci.number + ' ' + ci.name);
+}
+gs.info('Orphans: ' + orphans.length);
+orphans.slice(0, 50).forEach(function(o){ gs.info(' ' + o); });
+</code></pre>
+<p><strong>8) CMDB Health Dashboard refresher</strong></p>
+<pre><code class="language-javascript">// Scheduled Job — nightly 01:00
+var indicator = new GlideRecord('pa_indicators');
+indicator.addQuery('name', 'STARTSWITH', 'CMDB');
+indicator.query();
+while (indicator.next()) {
+ new sn_pa.PADataCollector().collectIndicator(indicator.sys_id.toString());
+}
+gs.info('Refreshed ' + indicator.getRowCount() + ' CMDB indicators');
+</code></pre>
+<p><strong>9) Mass-update CI owner from AD group</strong></p>
+<pre><code class="language-javascript">// Map all CIs of class X to the group manager
+var grp = new GlideRecord('sys_user_group');
+if (grp.get('name', 'HR Leave App Owners')) {
+ var ci = new GlideRecord('cmdb_ci_hr_leave_component');
+ ci.query();
+ while (ci.next()) {
+ ci.owned_by = grp.manager.toString();
+ ci.support_group = grp.sys_id.toString();
+ ci.update();
+ }
+ gs.info('Updated ' + ci.getRowCount() + ' CIs');
+}
+</code></pre>
+<p><strong>10) CI lifecycle state transitions</strong></p>
+<pre><code class="language-javascript">// Move retired CIs to operational_status=Retired and unlink from active services
+var retire = new GlideRecord('cmdb_ci');
+retire.addQuery('install_status', '7'); // Retired
+retire.addQuery('operational_status', '1'); // still operational — wrong
+retire.query();
+while (retire.next()) {
+ retire.operational_status = 6; // Non-Operational
+ retire.update();
+}
+gs.info('State-corrected: ' + retire.getRowCount());
+</code></pre>
+<p><strong>11) Auto-create relationship from Service Map data</strong></p>
+<pre><code class="language-javascript">// Script Action — on insert into a custom mapping table
+(function createRel(parentCi, childCi, relTypeName) {
+ var t = new GlideRecord('cmdb_rel_type');
+ if (!t.get('name', relTypeName)) return;
+ var rel = new GlideRecord('cmdb_rel_ci');
+ rel.addQuery('parent', parentCi);
+ rel.addQuery('child', childCi);
+ rel.addQuery('type', t.sys_id);
+ rel.query();
+ if (!rel.hasNext()) {
+ var r = new GlideRecord('cmdb_rel_ci');
+ r.initialize();
+ r.parent = parentCi;
+ r.child = childCi;
+ r.type = t.sys_id;
+ r.insert();
+ }
+})(current.u_parent, current.u_child, 'Depends on::Used by');
+</code></pre>
+<p><strong>12) CI categorization via Predictive Intelligence</strong></p>
+<pre><code class="language-javascript">// On insert of a generic cmdb_ci, ask PI for class suggestion
+(function classify() {
+ if (current.sys_class_name != 'cmdb_ci') return;
+ try {
+ var pi = new sn_ml.SolutionStore();
+ var solution = pi.get('cmdb_class_solution');
+ if (!solution) return;
+ var pred = solution.predict({short_description: current.name + ' ' + current.short_description});
+ if (pred &amp;&amp; pred.predicted &amp;&amp; pred.confidence &gt; 0.7) {
+ current.sys_class_name = pred.predicted;
+ current.work_notes = 'PI classified as ' + pred.predicted + ' (conf ' + pred.confidence + ')';
+ }
+ } catch (e) {
+ gs.warn('PI classify failed: ' + e.message);
+ }
+})();
+</code></pre>
+<p><strong>13) Audit log CI changes</strong></p>
+<pre><code class="language-javascript">// Business Rule — after update on cmdb_ci
+// Capture critical attribute changes to a custom audit table
+var WATCH = ['name', 'serial_number', 'ip_address', 'owned_by', 'operational_status', 'sys_class_name'];
+WATCH.forEach(function(attr) {
+ if (current[attr] != previous[attr]) {
+ var a = new GlideRecord('u_cmdb_audit');
+ a.initialize();
+ a.u_ci = current.sys_id;
+ a.u_attribute = attr;
+ a.u_old_value = previous[attr];
+ a.u_new_value = current[attr];
+ a.u_changed_by = gs.getUserID();
+ a.insert();
+ }
+});
+</code></pre>
+<p><strong>14) Application Service auto-create from tag</strong></p>
+<pre><code class="language-javascript">// Scheduled Job — daily
+// Group all CIs with the same tag:service=&lt;x&gt; into an Application Service
+var tags = {};
+var tagRec = new GlideRecord('label_entry');
+tagRec.addQuery('label.name', 'service');
+tagRec.query();
+while (tagRec.next()) {
+ var svc = tagRec.title.toString();
+ if (!tags[svc]) tags[svc] = [];
+ tags[svc].push(tagRec.table_key.toString());
+}
+Object.keys(tags).forEach(function(svc) {
+ var svcCi = new GlideRecord('cmdb_ci_service_auto');
+ if (!svcCi.get('name', svc)) {
+ svcCi.initialize();
+ svcCi.name = svc;
+ svcCi.short_description = 'Auto-created from tag service=' + svc;
+ svcCi.operational_status = 1;
+ svcCi.insert();
+ }
+ tags[svc].forEach(function(memberCi) {
+ var rel = new GlideRecord('cmdb_rel_ci');
+ rel.addQuery('parent', svcCi.sys_id);
+ rel.addQuery('child', memberCi);
+ rel.query();
+ if (!rel.hasNext()) {
+ var r = new GlideRecord('cmdb_rel_ci');
+ r.initialize();
+ r.parent = svcCi.sys_id;
+ r.child = memberCi;
+ r.type = '0c5c1199c0a8010101e93f8d44b1cdb1'; // &quot;Contains::Contained by&quot;
+ r.insert();
+ }
+ });
+});
+</code></pre>
+<p><strong>15) CMDB-to-spreadsheet diff for vendor reconciliation</strong></p>
+<pre><code class="language-javascript">// Compare CMDB to staged vendor sheet
+var vendorTable = 'u_imp_vendor_assets'; // staged sheet
+var vendor = new GlideRecord(vendorTable);
+vendor.query();
+while (vendor.next()) {
+ var ci = new GlideRecord('cmdb_ci_hardware');
+ ci.addQuery('serial_number', vendor.u_serial);
+ ci.query();
+ if (!ci.next()) {
+ gs.info('Vendor has ' + vendor.u_serial + ' — missing in CMDB');
+ } else if (ci.owned_by.toString() != vendor.u_owner.toString()) {
+ gs.info('Owner mismatch on ' + vendor.u_serial + ' CMDB=' + ci.owned_by.getDisplayValue() + ' Vendor=' + vendor.u_owner.getDisplayValue());
+ }
+}
+</code></pre>
+<p><strong>16) Detect CI without business_service / Application Service</strong></p>
+<pre><code class="language-javascript">var ci = new GlideRecord('cmdb_ci_appl');
+ci.addQuery('install_status', '1');
+ci.query();
+var orphanApps = [];
+while (ci.next()) {
+ var rel = new GlideRecord('cmdb_rel_ci');
+ rel.addQuery('child', ci.sys_id);
+ rel.addQuery('parent.sys_class_name', 'IN', 'cmdb_ci_service_auto,cmdb_ci_service,cmdb_ci_business_app');
+ rel.query();
+ if (!rel.hasNext()) orphanApps.push(ci.name.toString());
+}
+gs.info('Apps without service: ' + orphanApps.length);
+orphanApps.slice(0, 30).forEach(function(a){ gs.info(' ' + a); });
+</code></pre>
+<p><strong>17) Bulk-archive retired CIs</strong></p>
+<pre><code class="language-javascript">// Run quarterly
+var ret = new GlideRecord('cmdb_ci');
+ret.addQuery('install_status', '7'); // Retired
+ret.addQuery('sys_updated_on', '&lt;', gs.daysAgo(180));
+ret.query();
+while (ret.next()) {
+ // archive: remove relationships first
+ var rel = new GlideRecord('cmdb_rel_ci');
+ rel.addQuery('parent', ret.sys_id).addOrCondition('child', ret.sys_id);
+ rel.query();
+ rel.deleteMultiple();
+ ret.deleteRecord();
+}
+gs.info('Archived ' + ret.getRowCount() + ' retired CIs');
+</code></pre>
+<p><strong>18) Find all CIs owned by a leaving employee</strong></p>
+<pre><code class="language-javascript">// Used during offboarding
+var leavingUserId = '&lt;sys_id_of_user&gt;';
+var owned = new GlideRecord('cmdb_ci');
+owned.addQuery('owned_by', leavingUserId).addOrCondition('managed_by', leavingUserId).addOrCondition('assigned_to', leavingUserId);
+owned.query();
+var list = [];
+while (owned.next()) list.push(owned.number + ' ' + owned.name + ' (' + owned.sys_class_name + ')');
+gs.info('CIs owned by user: ' + list.length);
+list.forEach(function(x){ gs.info(' ' + x); });
+// Next step: reassign to manager
+</code></pre>
+<p><strong>19) Map CIs to KB articles</strong></p>
+<pre><code class="language-javascript">// Suggest KB articles for a given CI based on incident history
+function ciToKbArticles(ciId, limit) {
+ var inc = new GlideRecord('incident');
+ inc.addQuery('cmdb_ci', ciId);
+ inc.addNotNullQuery('kb_knowledge');
+ inc.orderByDesc('opened_at');
+ inc.setLimit(limit || 10);
+ inc.query();
+ var seen = {};
+ var kbs = [];
+ while (inc.next()) {
+ var k = inc.kb_knowledge.toString();
+ if (k &amp;&amp; !seen[k]) {
+ seen[k] = true;
+ kbs.push({sys_id: k, title: inc.kb_knowledge.getDisplayValue()});
+ }
+ }
+ return kbs;
+}
+gs.info(JSON.stringify(ciToKbArticles('&lt;ci_sys_id&gt;'), null, 2));
+</code></pre>
+<p><strong>20) CI suggestion via short description match</strong></p>
+<pre><code class="language-javascript">// Reusable Script Include — called from incident or change form
+var CIShortDescMatcher = Class.create();
+CIShortDescMatcher.prototype = {
+ initialize: function() {},
+ suggest: function(text) {
+ var words = (text || '').toString().toLowerCase().split(/\W+/).filter(function(w){ return w.length &gt; 3; });
+ if (!words.length) return [];
+ var enc = words.map(function(w){ return 'nameLIKE' + w; }).join('^OR');
+ var ci = new GlideRecord('cmdb_ci');
+ ci.addQuery('operational_status', '1');
+ ci.addEncodedQuery(enc);
+ ci.setLimit(5);
+ ci.query();
+ var out = [];
+ while (ci.next()) out.push({sys_id: ci.sys_id.toString(), name: ci.name.toString(), cls: ci.sys_class_name.toString()});
+ return out;
+ },
+ type: 'CIShortDescMatcher'
+};
+</code></pre>
+<hr />
+<h3 id="1710-power-user-keyboard-url-tips">17.10 Power-user keyboard &amp; URL tips</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open IRE rule for a class</td>
+<td>cmdb_identifier.do?sys_id=<id></td>
+</tr>
+<tr>
+<td>Direct dependency view</td>
+<td>/dependency_view.do?sysparm_ci=<sys_id></td>
+</tr>
+<tr>
+<td>Open Class Manager on a specific class</td>
+<td>/now/cmdb/ci-class-manager/<class></td>
+</tr>
+<tr>
+<td>Workspace home</td>
+<td>/now/cmdb</td>
+</tr>
+<tr>
+<td>Data Manager</td>
+<td>cmdb_data_certification.list</td>
+</tr>
+</tbody>
+</table>
+<p>URLs المباشرة أسرع من التنقل بالقوائم بعد أن تحفظ الجدول.</p>
+<hr />
+<h2 id="18-from-scratch-implementation-day-0-day-30">§18 — From-Scratch Implementation (Day 0 → Day 30)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>30-day CMDB build plan with CSDM as the backbone.<br />
+خطة 30 يومًا لبناء CMDB من الصفر بالاعتماد على CSDM.</p>
+<hr />
+<h3 id="181-day-0-prep-the-week-before">18.1 Day 0 — Prep (the week before)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p><strong>CSDM strategy (pick a starting tier):</strong></p>
+<pre><code class="language-text">Crawl → Foundation only (users, locations, departments)
+Walk → + Design (Business Apps, Service Offerings, App Services)
+Run → + Build (technical CIs, relationships)
+Fly → + Manage (linked incidents/changes), Discovery + Service Mapping
+Default for HR Leave App: start Walk; reach Run by Day 20
+</code></pre>
+<p><strong>Data sources inventory:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Type</th>
+<th>Owner</th>
+<th>API/Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Excel asset register</td>
+<td>CSV</td>
+<td>IT Asset Mgr</td>
+<td>Import Set</td>
+</tr>
+<tr>
+<td>Active Directory</td>
+<td>LDAP</td>
+<td>Identity team</td>
+<td>AD/LDAP integration</td>
+</tr>
+<tr>
+<td>AWS account(s)</td>
+<td>Cloud</td>
+<td>Cloud team</td>
+<td>AWS Service Mgmt Spoke</td>
+</tr>
+<tr>
+<td>Azure subscription(s)</td>
+<td>Cloud</td>
+<td>Cloud team</td>
+<td>Azure Spoke</td>
+</tr>
+<tr>
+<td>Okta/Entra ID users</td>
+<td>SaaS</td>
+<td>Identity team</td>
+<td>API spoke</td>
+</tr>
+<tr>
+<td>Vendor spreadsheets</td>
+<td>CSV</td>
+<td>Procurement</td>
+<td>Manual upload</td>
+</tr>
+<tr>
+<td>Existing CMDB (legacy)</td>
+<td>DB / API</td>
+<td>Outgoing tool</td>
+<td>One-time export</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ownership model:</strong></p>
+<pre><code class="language-text">Tier Owner Cadence
+Business App Business product Annual attest
+Service Offer Service owner Quarterly attest
+App Service Engineering lead Quarterly attest
+Server Server ops Monthly via Discovery
+Database DBA team Monthly
+Workstation IT Asset Quarterly
+</code></pre>
+<p>⚠️ Without owners assigned, Day 14 attestation step fails.</p>
+<hr />
+<h3 id="182-day-1-activate-cmdb-plugins-ire-ci-class-manager-mid-server-install-windows">18.2 Day 1 — Activate CMDB plugins, IRE, CI Class Manager, MID Server install (Windows)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p><strong>Plugins:</strong></p>
+<pre><code class="language-text">Navigate: All &gt; System Definition &gt; Plugins
+- com.snc.cmdb (Configuration Management Database)
+- com.snc.cmdb_workspace (CMDB Workspace)
+- com.snc.cmdb_ci_class_manager (CI Class Manager)
+- com.snc.identification_reconciliation (IRE)
+- com.sn_cmdb_data_certification (Data Manager / certification)
+- com.snc.cmdb.health (CMDB Health metrics)
+- (if licensed) com.snc.discovery (Discovery)
+- (if licensed) com.snc.service-mapping (Service Mapping)
+</code></pre>
+<p><strong>MID Server install on Windows:</strong></p>
+<pre><code class="language-bash">:: 1) On a Windows VM (server-grade, 4 vCPU, 8 GB RAM min)
+:: 2) Navigate in ServiceNow: All &gt; MID Server &gt; Downloads → Windows 64-bit
+:: 3) Extract: C:\ServiceNow\MID_Server\
+:: 4) Edit config.xml
+:: &lt;parameter name=&quot;url&quot; value=&quot;https://&lt;your-instance&gt;.service-now.com/&quot; /&gt;
+:: &lt;parameter name=&quot;mid.instance.username&quot; value=&quot;mid.user&quot; /&gt;
+:: &lt;parameter name=&quot;mid.instance.password&quot; value=&quot;&lt;obfuscated&gt;&quot; /&gt;
+:: &lt;parameter name=&quot;name&quot; value=&quot;MID-HR-Leave-01&quot; /&gt;
+:: 5) Run as service:
+cd &quot;C:\ServiceNow\MID_Server\agent&quot;
+installconf.cmd :: install Windows service
+start.cmd :: start service
+:: 6) Validate in ServiceNow: All &gt; MID Server &gt; Servers
+:: Status should turn &quot;Up&quot; within 2 minutes.
+</code></pre>
+<p>⚠️ Never embed plain credentials in config.xml; use keystore and external secret store.</p>
+<hr />
+<h3 id="183-day-23-foundation-tables">18.3 Day 2–3 — Foundation tables</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p><strong>Tables to populate first:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Description</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sys_user</td>
+<td>Employees</td>
+<td>AD/Okta/Entra sync</td>
+</tr>
+<tr>
+<td>sys_user_group</td>
+<td>Groups (support, owners)</td>
+<td>AD groups</td>
+</tr>
+<tr>
+<td>cmn_department</td>
+<td>Departments</td>
+<td>HR feed</td>
+</tr>
+<tr>
+<td>cmn_location</td>
+<td>Locations</td>
+<td>Facilities / Excel</td>
+</tr>
+<tr>
+<td>core_company</td>
+<td>Companies / vendors</td>
+<td>Procurement</td>
+</tr>
+<tr>
+<td>cmn_cost_center</td>
+<td>Cost centers</td>
+<td>Finance</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-text">Navigate: System LDAP → Configure LDAP server → Schedule (nightly)
+Mappings: AD user attrs → sys_user (sAMAccountName → user_name; mail → email; manager DN → manager)
+Test transform: 50 users dry-run, then full
+</code></pre>
+<hr />
+<h3 id="184-day-45-core-ci-tables-in-scope-class-hierarchy">18.4 Day 4–5 — Core CI tables in scope, class hierarchy</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">Navigate: All &gt; Configuration &gt; CI Class Manager
+Review hierarchy:
+cmdb_ci
+├── cmdb_ci_hardware
+│ ├── cmdb_ci_server (Linux, Windows, Solaris, AIX)
+│ ├── cmdb_ci_storage
+│ └── cmdb_ci_network_gear
+├── cmdb_ci_appl
+│ ├── cmdb_ci_appl_dot_net
+│ └── cmdb_ci_database
+├── cmdb_ci_service_auto (Application Service)
+├── cmdb_ci_service_offering
+└── cmdb_ci_business_app
+</code></pre>
+<p><strong>In-scope CI tables for HR Leave Portal:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cmdb_ci_business_app</td>
+<td>&ldquo;HR Leave Portal&rdquo; entry</td>
+</tr>
+<tr>
+<td>cmdb_ci_service_offering</td>
+<td>Premium 24x7 vs Standard</td>
+</tr>
+<tr>
+<td>cmdb_ci_service_auto</td>
+<td>The scoped app x_786686_hr_leave</td>
+</tr>
+<tr>
+<td>cmdb_ci_web_server</td>
+<td>Nginx front</td>
+</tr>
+<tr>
+<td>cmdb_ci_database</td>
+<td>DB tier</td>
+</tr>
+<tr>
+<td>Custom cmdb_ci_hr_leave_component</td>
+<td>Logical tier mapping</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="185-day-67-discovery-setup">18.5 Day 6–7 — Discovery setup</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">Navigate: All &gt; Discovery &gt; Schedules
+Create:
+ Name: &quot;HR Leave Prod Subnet&quot;
+ IP range: 10.10.20.0/24
+ MID server: MID-HR-Leave-01
+ Schedule: Daily 03:00
+ Credentials: SSH (linux.svc) + WMI (win.svc) + SNMPv3
+</code></pre>
+<p><strong>Credentials (Vault recommended):</strong></p>
+<pre><code class="language-text">Navigate: All &gt; Credentials
+Type: SSH Username/Password
+Name: &quot;linux.svc PROD&quot;
+User: linux.svc
+Tag: applies_to = MID-HR-Leave-01 only
+</code></pre>
+<p><strong>MID Server clustering (HA):</strong></p>
+<pre><code class="language-text">Install MID #2 on a second VM, same config.xml but unique mid.instance.name
+Group both MIDs into a Cluster:
+ Navigate: All &gt; MID Server &gt; Clusters
+ Add: MID-HR-Leave-01, MID-HR-Leave-02
+ Mode: Load balancing
+</code></pre>
+<hr />
+<h3 id="186-day-8-first-discovery-run-results-review">18.6 Day 8 — First Discovery run + results review</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">Trigger schedule manually → All &gt; Discovery &gt; Quick Discovery (use single IP first)
+Watch: All &gt; Discovery &gt; Discovery Statuses
+Expect: 100% Probes Complete; 0 unclassified; 0 errors after 2 runs
+</code></pre>
+<p><strong>Common Discovery exceptions:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authentication failed</td>
+<td>Wrong credential or expired</td>
+<td>Rotate, ensure tag applies</td>
+</tr>
+<tr>
+<td>Cannot reach host</td>
+<td>Firewall / segmentation</td>
+<td>Open ports 22, 135-139, 161</td>
+</tr>
+<tr>
+<td>Unclassified CIs</td>
+<td>Pattern missing</td>
+<td>Pattern Designer or Sensor update</td>
+</tr>
+<tr>
+<td>Duplicate inserts</td>
+<td>Missing IRE rule</td>
+<td>Day 11 step</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="187-day-910-service-mapping-setup-top-down-map-of-hr-leave-portal">18.7 Day 9–10 — Service Mapping setup (top-down map of &ldquo;HR Leave Portal&rdquo;)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">Navigate: All &gt; Service Mapping &gt; Services
+New: &quot;HR Leave Portal&quot;
+Entry point: https://hr.example.com (URL)
+Discovery: pick MID
+Run &quot;Discover service&quot; → traverses → builds map
+Review: side panel topology
+Save map → CIs created or matched (web/app/db tiers)
+</code></pre>
+<hr />
+<h3 id="188-day-11-ire-rules-matching-attributes">18.8 Day 11 — IRE rules &amp; matching attributes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">Navigate: All &gt; Configuration &gt; CI Identifiers
+For cmdb_ci_server:
+ Independent attrs (first priority): serial_number
+ Dependent attrs (fallback): name + fqdn
+For cmdb_ci_appl:
+ Independent: name + install_directory
+ Dependent: name + version + host
+For custom cmdb_ci_hr_leave_component:
+ Independent: name + environment
+Test IRE: All &gt; Configuration &gt; CI Identifier Simulation → paste sample payload → confirm &quot;match&quot; vs &quot;create&quot;
+</code></pre>
+<hr />
+<h3 id="189-day-1213-import-from-cmdb-sources">18.9 Day 12–13 — Import from CMDB sources</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p><strong>Excel → Import Set → Transform:</strong></p>
+<pre><code class="language-text">1) System Import Sets → Load Data → Upload CSV
+2) Create Transform Map: source u_imp_server → target cmdb_ci_server
+3) Map fields: u_name → name, u_serial → serial_number, etc.
+4) Coalesce on serial_number
+5) Run Transform → review staging/target rows
+</code></pre>
+<p><strong>AD groups → CI owners script</strong> — see §17.9 script #9.</p>
+<p><strong>AWS via spoke:</strong></p>
+<pre><code class="language-text">Plugin: AWS Service Management Connector
+1) Configure AWS account credentials (IAM access key + secret)
+2) Schedule: AWS Cloud Discovery
+3) Result: cmdb_ci_compute (EC2), cmdb_ci_aws_lambda, cmdb_ci_rds_cluster, etc.
+4) Tag strategy in AWS: service=HR-Leave env=prod app=hr_leave
+ → use script §17.9 #14 to auto-group
+</code></pre>
+<hr />
+<h3 id="1810-day-14-csdm-foundation-populated">18.10 Day 14 — CSDM Foundation populated</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p><strong>Acceptance:</strong></p>
+<pre><code class="language-text">- 100% sys_user from AD up to date
+- All departments have manager assigned
+- All locations have country + city
+- All cost centers reference an owner
+- core_company has primary contact for each vendor
+</code></pre>
+<p>Attest with Data Manager:</p>
+<pre><code class="language-text">Navigate: All &gt; Configuration &gt; Data Certification → certification per group
+Owners receive email; click link → confirm 10 sample records → digital sign-off
+</code></pre>
+<hr />
+<h3 id="1811-day-15-csdm-design-service-offerings-app-services">18.11 Day 15 — CSDM Design (Service Offerings, App Services)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">Create Business App: &quot;HR Leave Portal&quot;
+Owner: HR product mgr
+Criticality: Tier 2 (employee-facing, non-revenue)
+Compliance: GDPR + PDPL applicable
+Lifecycle phase: In Production
+</code></pre>
+<p>Service Offerings (children):<br />
+- &ldquo;HR Leave — Premium 24x7&rdquo; SLA P1 4h<br />
+- &ldquo;HR Leave — Standard 8x5&rdquo; SLA P2 8h</p>
+<p>Application Services (children of Service Offerings):<br />
+- x_786686_hr_leave (Scoped App)</p>
+<hr />
+<h3 id="1812-day-1617-csdm-build-software-deployment">18.12 Day 16–17 — CSDM Build (software + deployment)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">Add to App Service &quot;x_786686_hr_leave&quot;:
+- cmdb_ci_appl : &quot;HR Leave Web&quot; runs on Nginx CI
+- cmdb_ci_appl : &quot;HR Leave Engine&quot; runs on ServiceNow Tomcat container
+- cmdb_ci_database : &quot;hr_leave_db&quot; Postgres 15
+- cmdb_ci_appl : &quot;Okta Federation&quot; external identity
+Relationships:
+- Application Service &quot;Contains&quot; each component
+- Component &quot;Depends on&quot; hardware/cloud CI
+- Web &quot;Sends data to&quot; Engine
+- Engine &quot;Reads/Writes&quot; Database
+</code></pre>
+<hr />
+<h3 id="1813-day-1819-csdm-manage-linkage-to-itsm">18.13 Day 18–19 — CSDM Manage (linkage to ITSM)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">On incident form:
+ Configuration item field → mandatory for category in (hardware, software, network)
+ Affected CIs → side panel
+On change_request:
+ Configuration item → mandatory always
+ Conflict detection enabled (ITSM §17.10.10)
+On problem:
+ Cmdb_ci required when known_error=true
+</code></pre>
+<p><strong>Validate:</strong></p>
+<pre><code class="language-text">Pick a real incident → confirm CI populated → open Dependency View → see App Service ancestor → CSDM is paying off
+</code></pre>
+<hr />
+<h3 id="1814-day-20-cmdb-health-dashboard-data-quality">18.14 Day 20 — CMDB Health Dashboard + Data Quality</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">Navigate: All &gt; Configuration &gt; CMDB Dashboard
+Activate metrics:
+- Completeness (per class)
+- Correctness (IRE pass)
+- Compliance (owner + class assigned)
+- Staleness (no update 90d)
+- Duplicate suspects
+Set owners per metric (CI Owner role) → email reports weekly
+Target Health Score: ≥ 80 by Day 30 (see §18.21)
+</code></pre>
+<hr />
+<h3 id="1815-day-2122-compliance-completeness-correctness-audits">18.15 Day 21–22 — Compliance, completeness, correctness audits</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Audit</th>
+<th>Query</th>
+<th>Acceptance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Owned_by populated</td>
+<td>cmdb_ci.owned_by IS NOT EMPTY</td>
+<td>≥ 95%</td>
+</tr>
+<tr>
+<td>Class assigned</td>
+<td>sys_class_name != &lsquo;cmdb_ci&rsquo;</td>
+<td>≥ 95%</td>
+</tr>
+<tr>
+<td>Serial unique</td>
+<td>dedup script (§17.9 #1)</td>
+<td>0 confirmed dupes</td>
+</tr>
+<tr>
+<td>Location set on hardware</td>
+<td>cmdb_ci_hardware.location IS NOT EMPTY</td>
+<td>≥ 90%</td>
+</tr>
+<tr>
+<td>Updated within 90d</td>
+<td>sys_updated_on &gt;= -90d</td>
+<td>≥ 90%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="1816-day-23-ire-rules-for-cloud-awsazuregcp">18.16 Day 23 — IRE rules for cloud (AWS/Azure/GCP)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">Cloud CIs identifying attrs:
+AWS → arn (independent)
+Azure → resource_id (independent)
+GCP → self_link (independent)
+Test:
+ - Insert EC2 with arn=arn:aws:ec2:us-east-1:111:instance/i-xxx → 1 CI
+ - Re-run AWS Discovery → no duplicate
+ - Change tag → CI updated, not duplicated
+</code></pre>
+<hr />
+<h3 id="1817-day-24-tagging-strategy-governance">18.17 Day 24 — Tagging strategy &amp; governance</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p><strong>Required tags:</strong></p>
+<pre><code class="language-text">env = dev | uat | prod
+app = hr_leave | itsm | itam | ...
+cost-center = CC1234
+owner = user.email
+classification = public | internal | confidential
+</code></pre>
+<p><strong>Governance:</strong></p>
+<pre><code class="language-text">- Reject creation of cloud resources missing tags (cloud governance layer e.g. AWS SCP / Azure Policy)
+- ServiceNow nightly check: untagged cloud CIs → notify owner
+- Application Service auto-creation via §17.9 #14
+</code></pre>
+<hr />
+<h3 id="1818-day-25-custom-ci-class-for-hr-leave-components">18.18 Day 25 — Custom CI class for HR Leave components</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">Already created Day 5; verify:
+- Inherits from cmdb_ci_application_software
+- Attributes: tier, environment, app_scope, cost_center
+- IRE rule: name + environment
+- Suggested reclassification: from cmdb_ci_appl when scope=x_786686_hr_leave
+</code></pre>
+<p><strong>Seed records (manual or import):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Tier</th>
+<th>Env</th>
+<th>Cost Center</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR-Leave-Web (prod)</td>
+<td>web</td>
+<td>prod</td>
+<td>CC1234</td>
+</tr>
+<tr>
+<td>HR-Leave-Engine (prod)</td>
+<td>app</td>
+<td>prod</td>
+<td>CC1234</td>
+</tr>
+<tr>
+<td>hr_leave_db (prod)</td>
+<td>db</td>
+<td>prod</td>
+<td>CC1234</td>
+</tr>
+<tr>
+<td>HR-Leave-Web (uat)</td>
+<td>web</td>
+<td>uat</td>
+<td>CC1234</td>
+</tr>
+<tr>
+<td>HR-Leave-Engine (uat)</td>
+<td>app</td>
+<td>uat</td>
+<td>CC1234</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="1819-day-26-relationships-catalog">18.19 Day 26 — Relationships catalog</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Relationship</th>
+<th>Direction</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Runs on / Runs</td>
+<td>App → Host</td>
+<td>Software on hardware</td>
+</tr>
+<tr>
+<td>Depends on / Used by</td>
+<td>App → App/Service</td>
+<td>Logical dependency</td>
+</tr>
+<tr>
+<td>Contains / Contained by</td>
+<td>Service → CI</td>
+<td>App Service membership</td>
+</tr>
+<tr>
+<td>Hosts / Hosted on</td>
+<td>Hardware → App</td>
+<td>Reverse of Runs on</td>
+</tr>
+<tr>
+<td>Cluster of / Member of</td>
+<td>Cluster → Node</td>
+<td>HA clusters</td>
+</tr>
+<tr>
+<td>Sends data to / Receives data from</td>
+<td>App → App</td>
+<td>Data flow</td>
+</tr>
+<tr>
+<td>Replicates / Replicated by</td>
+<td>DB → DB</td>
+<td>DR pairs</td>
+</tr>
+<tr>
+<td>Provided by / Provides</td>
+<td>Service Offering → App Service</td>
+<td>CSDM</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-text">Navigate: All &gt; Configuration &gt; Relationship Types
+Confirm above types exist (OOTB) and have correct labels (EN + AR if multilingual instance).
+</code></pre>
+<hr />
+<h3 id="1820-day-27-acls-for-sensitive-cis">18.20 Day 27 — ACLs for sensitive CIs</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Operation</th>
+<th>Role</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cmdb_ci_business_app</td>
+<td>write</td>
+<td>itil_admin, cmdb_admin</td>
+<td>—</td>
+</tr>
+<tr>
+<td>cmdb_ci_database</td>
+<td>read</td>
+<td>itil, dba</td>
+<td>—</td>
+</tr>
+<tr>
+<td>cmdb_ci_database</td>
+<td>write</td>
+<td>dba, cmdb_admin</td>
+<td>—</td>
+</tr>
+<tr>
+<td>cmdb_ci_* (PCI scope)</td>
+<td>read</td>
+<td>role pci_reader OR owner</td>
+<td>data_classification = &ldquo;PCI&rdquo;</td>
+</tr>
+<tr>
+<td>cmdb_rel_ci</td>
+<td>write</td>
+<td>itil, cmdb_admin</td>
+<td>—</td>
+</tr>
+<tr>
+<td>cmdb_data_certification</td>
+<td>write</td>
+<td>self (owner)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>⚠️ Avoid blanket cmdb_admin for staff; use data_steward for read-write narrowed to a class.</p>
+<hr />
+<h3 id="1821-day-28-atf-ire-rules-relationship-integrity">18.21 Day 28 — ATF: IRE rules + relationship integrity</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">Navigate: All &gt; Automated Test Framework &gt; Tests
+Create:
+T1 — Insert duplicate serial server → IRE rejects, no duplicate
+T2 — Insert with all attrs → CI created, sys_class_name correct
+T3 — Reclassify generic Server → Linux Server → child class updates
+T4 — Add Depends-on relationship → cmdb_rel_ci row created
+T5 — Delete CI with relationships → rel removed
+T6 — Custom HR Leave class IRE: name+env coalesces correctly
+T7 — Tag-based Application Service script (§17.9 #14) creates rel
+T8 — Stale CI detector (§17.9 #6) flags &gt;90d
+T9 — Health dashboard renders all 5 metrics
+T10 — Discovery patterns produce 0 unclassified for sample IP
+Schedule: nightly 22:30
+</code></pre>
+<hr />
+<h3 id="1822-day-29-training-ownership-handover">18.22 Day 29 — Training + ownership handover</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">Audiences (≤ 90 min each):
+1) cmdb_admin / data_steward → Workspace, Health, Data Manager, IRE
+2) CI Owners → quarterly attestation flow, edit rights
+3) ITSM agents → how to pick a CI, dependency view, escalation
+4) CSDM Architects → ongoing maintenance of Business App → App Service mapping
+Deliverables:
+- Slides EN + AR
+- Recorded video (≤ 10 min)
+- 1-page quick reference per audience
+</code></pre>
+<hr />
+<h3 id="1823-day-30-go-live-hypercare">18.23 Day 30 — Go-Live + Hypercare</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">Sign-off pre-check:
+[ ] CSDM modeled for top 5 services (incl. HR Leave Portal)
+[ ] CMDB Health Score ≥ 80 (see formula §18.24)
+[ ] 0 confirmed duplicate serials in prod scope
+[ ] Discovery green for 3 consecutive nights
+[ ] Service Mapping green for HR Leave Portal
+[ ] All Application Services have owner + criticality
+[ ] ATF nightly pass rate 100% for prior 3 nights
+[ ] ACLs tested with itil and data_steward impersonations
+[ ] Update Set &quot;CMDB_Baseline_v1&quot; exported
+Hypercare:
+- Daily 15-min standup week 1
+- Twice-daily Health check
+- Owner outreach for any metric &lt; target
+- Fix-forward via short Change requests
+</code></pre>
+<hr />
+<h3 id="1824-cmdb-health-score-target-80">18.24 CMDB Health Score — target ≥ 80</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p><strong>Formula (weighted average of 5 metrics, each 0–100):</strong></p>
+<pre><code class="language-text">Health = 0.30*Completeness + 0.25*Correctness + 0.20*Compliance + 0.15*Staleness_inv + 0.10*Duplicate_inv
+</code></pre>
+<p>Where:<br />
+- Completeness = % required attrs filled per class, averaged<br />
+- Correctness = IRE pass rate over last 30 days<br />
+- Compliance = % CIs with owner_by AND non-generic sys_class_name<br />
+- Staleness_inv = 100 - % stale (sys_updated_on &lt; -90d)<br />
+- Duplicate_inv = 100 - (confirmed_duplicates / total_cis * 100)</p>
+<p>Example numbers for HR Leave scope at Day 30:<br />
+- Completeness = 92<br />
+- Correctness = 96<br />
+- Compliance = 88<br />
+- Staleness_inv = 90<br />
+- Duplicate_inv = 99<br />
+- Health = 0.30<em>92 + 0.25</em>96 + 0.20<em>88 + 0.15</em>90 + 0.10*99 = 92.0 ✅ (≥ 80) — لو حاصلك أقل من 80، تابع: أولًا اكتمال البيانات، ثم تعيين المالكين، ثم تنظيف الـ stale.</p>
+<hr />
+<h3 id="1825-common-pitfalls-fixes">18.25 Common pitfalls + fixes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Pitfall</th>
+<th>Symptom</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No CSDM strategy — class soup</td>
+<td>Many CIs in generic cmdb_ci</td>
+<td>Walk-tier Day 0; classify via PI (§17.9 #12)</td>
+</tr>
+<tr>
+<td>IRE rules missing</td>
+<td>Discovery creates duplicates</td>
+<td>Define IRE per class Day 11</td>
+</tr>
+<tr>
+<td>Owners not assigned</td>
+<td>Stale CIs, no attestation</td>
+<td>Day 14 + automation §17.9 #9</td>
+</tr>
+<tr>
+<td>Cloud CIs untagged</td>
+<td>Cannot map to App Service</td>
+<td>Day 17 governance + nightly check</td>
+</tr>
+<tr>
+<td>Service Map broken</td>
+<td>Engineering changed endpoint</td>
+<td>Run Test Mapping; review pattern</td>
+</tr>
+<tr>
+<td>MID Server credential expired</td>
+<td>Discovery red</td>
+<td>Vault rotation + alerting</td>
+</tr>
+<tr>
+<td>Custom class abuse</td>
+<td>Schema sprawl</td>
+<td>Approval gate via cmdb_admin council</td>
+</tr>
+<tr>
+<td>Healthy dashboard, bad data</td>
+<td>Metrics not configured</td>
+<td>Set owners + thresholds Day 20</td>
+</tr>
+<tr>
+<td>ITSM ignores CI field</td>
+<td>No impact analysis</td>
+<td>Make CI required by category (Day 19)</td>
+</tr>
+<tr>
+<td>Manual edits override Discovery</td>
+<td>Drift between scans</td>
+<td>Set discovery_source mandatory &amp; non-editable for discovered fields</td>
+</tr>
+<tr>
+<td>Retired CIs never archived</td>
+<td>Bloat</td>
+<td>Quarterly archive script §17.9 #17</td>
+</tr>
+<tr>
+<td>No data certification</td>
+<td>Decay over months</td>
+<td>Quarterly cycle via Data Manager</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="1826-final-cmdb-implementation-checklist">18.26 Final CMDB implementation checklist</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<ul>
+<li>[ ] §18.1 Strategy + sources + owners agreed</li>
+<li>[ ] §18.2 Plugins active; MID Server up</li>
+<li>[ ] §18.3 Foundation tables populated via LDAP</li>
+<li>[ ] §18.4 Class hierarchy reviewed, in-scope classes locked</li>
+<li>[ ] §18.5 Discovery schedule + credentials</li>
+<li>[ ] §18.6 First Discovery run green</li>
+<li>[ ] §18.7 Service Mapping HR Leave Portal built top-down</li>
+<li>[ ] §18.8 IRE rules per class, simulation tested</li>
+<li>[ ] §18.9 Excel/AD/AWS imports validated</li>
+<li>[ ] §18.10 CSDM Foundation certified</li>
+<li>[ ] §18.11 CSDM Design (Business App + Service Offer + App Service)</li>
+<li>[ ] §18.12 CSDM Build (technical CIs and relationships)</li>
+<li>[ ] §18.13 CSDM Manage (ITSM linkage live)</li>
+<li>[ ] §18.14 CMDB Health dashboard activated</li>
+<li>[ ] §18.15 Compliance audits passing</li>
+<li>[ ] §18.16 Cloud IRE rules</li>
+<li>[ ] §18.17 Tagging governance enforced</li>
+<li>[ ] §18.18 Custom HR Leave class seeded</li>
+<li>[ ] §18.19 Relationships catalog confirmed</li>
+<li>[ ] §18.20 ACLs hardened</li>
+<li>[ ] §18.21 ATF GREEN for 3 nights</li>
+<li>[ ] §18.22 Training delivered + recordings</li>
+<li>[ ] §18.23 Go-Live + hypercare runbook</li>
+<li>[ ] §18.24 Health Score ≥ 80</li>
+<li>[ ] §18.25 Pitfalls scan complete — لا تذهب لـ ITSM Go-Live قبل اكتمال هذه القائمة — CMDB هو الأساس الذي يقف عليه كل شيء.</li>
+</ul>
+<hr />
+<h2 id="19-cis-df-cmdb-exam-z-to-hero-feature-labs">§19 — CIS-DF (CMDB) Exam &amp; Z-to-Hero Feature Labs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<h2 id="19-cis-df-cmdb">§19 — امتحان CIS-DF (CMDB) ومختبرات من الصفر إلى الاحتراف</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<h3 id="191-exam-bank-linkage-your-180-question-study-guide">19.1 Exam bank linkage — Your 180-question study guide</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p><strong>Bank file</strong>: C:\SVCProject\SERVICENOW_CIS_DF_CMDB_STUDY_GUIDE.md (146 KB, 180 questions)</p>
+<p>This file covers your 157 questions + 23 additional Zurich-aligned questions. Use it as the primary practice resource. — ملف بنك الأسئلة في الجذر — C:\SVCProject\SERVICENOW_CIS_DF_CMDB_STUDY_GUIDE.md يحوي 180 سؤالاً (مما يشمل الـ 157 التي تذكرتها).</p>
+<h3 id="192-question-to-lab-matrix-z-to-hero">19.2 Question-to-Lab matrix (Z-to-Hero)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Each lab maps to a question range — do the lab, then answer the corresponding questions:</p>
+<table>
+<thead>
+<tr>
+<th>Lab #</th>
+<th>Feature / Concept</th>
+<th>What you build on PDI</th>
+<th>Question range (180-bank)</th>
+<th>Difficulty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>CI fundamentals</td>
+<td>Manually create 1 CI in cmdb_ci_server with required fields</td>
+<td>Q1-Q15</td>
+<td>Easy</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>CI class hierarchy</td>
+<td>Extend cmdb_ci → custom class x_hrleave_kiosk</td>
+<td>Q16-Q22</td>
+<td>Easy</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>Relationships (cmdb_rel_ci)</td>
+<td>Add Runs On / Depends On / Used By</td>
+<td>Q23-Q30</td>
+<td>Easy</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>IRE Identifier rules</td>
+<td>Define independent identifier on serial+name</td>
+<td>Q31-Q45</td>
+<td><strong>Medium</strong></td>
+</tr>
+<tr>
+<td>L5</td>
+<td>IRE Reconciliation</td>
+<td>Configure 2 sources with priority on field-by-field</td>
+<td>Q46-Q60</td>
+<td><strong>Medium</strong></td>
+</tr>
+<tr>
+<td>L6</td>
+<td>Dependent CIs</td>
+<td>Set &ldquo;Contained by&rdquo; + &ldquo;Dependent on&rdquo; combinations</td>
+<td>Q61-Q70</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>L7</td>
+<td>Multisource CMDB</td>
+<td>Add reconciliation rule with last-discovered wins</td>
+<td>Q71-Q85</td>
+<td><strong>Hard</strong></td>
+</tr>
+<tr>
+<td>L8</td>
+<td>Import Set + Transform Map</td>
+<td>Bulk-load 100 CIs with coalesce key</td>
+<td>Q86-Q95</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>L9</td>
+<td>Service Graph Connector</td>
+<td>(read OOTB) — understand sn_sg_* tables</td>
+<td>Q96-Q100</td>
+<td>Hard</td>
+</tr>
+<tr>
+<td>L10</td>
+<td>MID Server setup</td>
+<td>Install (or read docs); credentials store</td>
+<td>Q101-Q110</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>L11</td>
+<td>Discovery Schedule</td>
+<td>Configure IP range scan</td>
+<td>Q111-Q120</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>L12</td>
+<td>Pattern Designer</td>
+<td>Read OOTB pattern for Linux server</td>
+<td>Q121-Q125</td>
+<td>Hard</td>
+</tr>
+<tr>
+<td>L13</td>
+<td>Application Service</td>
+<td>Create Application Service via Service Mapping or manual</td>
+<td>Q126-Q135</td>
+<td><strong>Medium</strong></td>
+</tr>
+<tr>
+<td>L14</td>
+<td>CSDM 4 domains</td>
+<td>Create one CI in each: Foundation, Design, Build, Manage</td>
+<td>Q136-Q150</td>
+<td><strong>Hard</strong></td>
+</tr>
+<tr>
+<td>L15</td>
+<td>CSDM mapping</td>
+<td>Map CI to Lifecycle Stage + Status (different concepts!)</td>
+<td>Q151-Q160</td>
+<td><strong>Hard</strong></td>
+</tr>
+<tr>
+<td>L16</td>
+<td>CMDB Health (Completeness)</td>
+<td>Run Health → identify gaps → remediate</td>
+<td>Q161-Q170</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>L17</td>
+<td>CMDB Health (Compliance)</td>
+<td>Required CI Class attestation</td>
+<td>Q171-Q175</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>L18</td>
+<td>CMDB Health (Correctness)</td>
+<td>Duplicate detection + cleanup</td>
+<td>Q176-Q180</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>L19</td>
+<td>CMDB Workspace</td>
+<td>Configure tabs + filters</td>
+<td>(cross-cutting)</td>
+<td>Easy</td>
+</tr>
+<tr>
+<td>L20</td>
+<td>CMDB Query Builder</td>
+<td>Build &ldquo;Servers depended on by App X&rdquo;</td>
+<td>(cross-cutting)</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>L21</td>
+<td>Unified Map</td>
+<td>Generate map for an Application Service</td>
+<td>(cross-cutting)</td>
+<td>Easy</td>
+</tr>
+<tr>
+<td>L22</td>
+<td>Data Manager</td>
+<td>Set up periodic CI archival</td>
+<td>(cross-cutting)</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>L23</td>
+<td>Attestation campaign</td>
+<td>Owner attests CI is current</td>
+<td>(cross-cutting)</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>L24</td>
+<td>API access</td>
+<td>cmdb_ci.list REST + GraphQL</td>
+<td>(cross-cutting)</td>
+<td>Easy</td>
+</tr>
+<tr>
+<td>L25</td>
+<td>Cross-link to HR Leave</td>
+<td>Reference cmdb_ci_application_software from x_786686_hr_leave_employee_v2</td>
+<td>(cross-cutting)</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total</strong>: 25 labs covering all 180 questions across 6 exam domains.</p>
+<h3 id="193-top-30-quick-recall-facts-must-memorize-for-cis-df">19.3 Top 30 quick-recall facts (must memorize for CIS-DF)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<ol>
+<li><strong>CMDB table prefix</strong>: cmdb_ci_* (CIs), cmdb_rel_ci (relationships)</li>
+<li><strong>CSDM domains</strong>: Foundation, Design, Build, Manage (memorize this order!)</li>
+<li><strong>Lifecycle Stage ≠ Lifecycle Status</strong> (Stage = strategic; Status = operational)</li>
+<li><strong>IRE Identifier</strong>: independent (1 attribute) or dependent (parent + attributes)</li>
+<li><strong>Reconciliation</strong>: source priority per attribute, not per record</li>
+<li><strong>Multisource</strong>: &ldquo;Last wins&rdquo; is NOT the default — explicit priority is the default</li>
+<li><strong>Discovery output</strong>: discovery_messages → IRE → CMDB</li>
+<li><strong>MID Server</strong>: needed for on-prem; not for SaaS</li>
+<li><strong>Service Graph Connector</strong>: Workday, ServiceNow, AWS connectors — standardized ingestion</li>
+<li><strong>CMDB Health = C³</strong>: Completeness + Compliance + Correctness</li>
+<li><strong>Completeness</strong>: required attributes filled</li>
+<li><strong>Compliance</strong>: CI classes used correctly</li>
+<li><strong>Correctness</strong>: no duplicates, valid relationships</li>
+<li><strong>Audit (cmdb_audit)</strong>: only for CIs with audit enabled</li>
+<li><strong>Tags</strong>: applied via CMDB Tagging app</li>
+<li><strong>Authoritative Source</strong>: defines who can update which fields</li>
+<li><strong>Sys Class Name</strong>: drives polymorphism in CMDB</li>
+<li><strong>Relationship types</strong>: stored in cmdb_rel_type (Runs On, Depends On, etc.)</li>
+<li><strong>Service Mapping</strong>: top-down pattern-based discovery</li>
+<li><strong>Service Graph Map</strong>: Application Service ↔ CIs ↔ Infrastructure</li>
+<li><strong>CMDB Query Builder</strong>: visual query for navigating relationships</li>
+<li><strong>Unified Map</strong>: visual representation of Application Service</li>
+<li><strong>Dependency Views (legacy)</strong>: replaced by Unified Map in newer releases</li>
+<li><strong>CMDB Workspace</strong>: /now/cmdb (URL may vary)</li>
+<li><strong>Identification Rule API</strong>: IRESearchEngine, IRECommand</li>
+<li><strong>Reconciliation Rule API</strong>: handled by IRE backbone</li>
+<li><strong>CI Class Manager</strong>: define new CI classes + extend</li>
+<li><strong>Data Manager</strong>: archive + delete stale CIs (compliance lifecycle)</li>
+<li><strong>CSDM Best Practice</strong>: don&rsquo;t put apps in Infrastructure domain</li>
+<li><strong>Common error</strong>: putting Application Service in Build domain (it&rsquo;s Design)</li>
+</ol>
+<h3 id="194-sample-cis-df-questions-with-explanations-10-examples">19.4 Sample CIS-DF questions with explanations (10 examples)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<blockquote>
+<p><strong>Q1.</strong> In CMDB IRE, which option best describes an <strong>Independent Identifier</strong>?<br />
+A. An identifier that uses parent CI attributes<br />
+B. An identifier that uses one or more attributes of the CI itself<br />
+C. An identifier that requires Service Mapping<br />
+D. An identifier inherited from cmdb_ci_class_manager</p>
+<p><strong>Answer</strong>: B<br />
+<strong>Explanation</strong>: Independent identifiers use the CI&rsquo;s own attributes (e.g., serial number for hardware). Dependent identifiers require a parent CI (e.g., disk depends on computer).</p>
+<p><strong>Q2.</strong> What is the correct CSDM domain order?<br />
+A. Build → Design → Foundation → Manage<br />
+B. Foundation → Design → Build → Manage<br />
+C. Design → Foundation → Manage → Build<br />
+D. Manage → Build → Design → Foundation</p>
+<p><strong>Answer</strong>: B<br />
+<strong>Explanation</strong>: Foundation (organizations, locations, contacts) → Design (services, applications, technical services) → Build (infrastructure CIs) → Manage (incidents, changes, etc. — operational data).</p>
+<p><strong>Q3.</strong> When two sources update the same CI&rsquo;s os_version attribute with different values, which wins by default?<br />
+A. The most recently updated source<br />
+B. The source with the highest configured priority for os_version<br />
+C. The source that discovered the CI first<br />
+D. Both are kept; an issue is created</p>
+<p><strong>Answer</strong>: B<br />
+<strong>Explanation</strong>: Multisource CMDB uses per-attribute source priority. Last-wins is NOT the default.</p>
+<p><strong>Q4.</strong> Which Service Graph Connector pattern correctly enriches HR Profile CIs from Workday?<br />
+A. Custom REST script in cmdb_ci_person<br />
+B. Workday SGC + IRE rule on employee_number<br />
+C. Import Set with daily transform<br />
+D. SOAP integration with manual mapping</p>
+<p><strong>Answer</strong>: B<br />
+<strong>Explanation</strong>: SGC is the modern, governed path. IRE on employee_number ensures idempotency.</p>
+<p><strong>Q5.</strong> What does <strong>CMDB Health Completeness</strong> measure?<br />
+A. Number of CIs in production<br />
+B. % of required attributes populated for in-scope CIs<br />
+C. % of CIs without duplicates<br />
+D. % of CIs with correct class</p>
+<p><strong>Answer</strong>: B<br />
+<strong>Explanation</strong>: Completeness = required attributes filled. Correctness = no duplicates. Compliance = correct class.</p>
+<p><strong>Q6.</strong> A CI has been duplicated 5 times due to a discovery misconfiguration. Best remediation?<br />
+A. Manually delete all but the oldest<br />
+B. Run de-dup utility based on IRE identifier rules<br />
+C. Mark all 5 as retired<br />
+D. Update the discovery pattern, leave duplicates</p>
+<p><strong>Answer</strong>: B<br />
+<strong>Explanation</strong>: Use the de-dup utility based on IRE rules to merge duplicates. Manual deletion loses history.</p>
+<p><strong>Q7.</strong> Which is NOT a recommended approach for adding a custom CI class?<br />
+A. Use CI Class Manager<br />
+B. Extend from the closest base class<br />
+C. Add to Global scope to ensure visibility<br />
+D. Define IRE identifier for the new class</p>
+<p><strong>Answer</strong>: C<br />
+<strong>Explanation</strong>: Custom CI classes should be in a scoped app, not Global, to follow ServiceNow best practices.</p>
+<p><strong>Q8.</strong> What field on cmdb_ci_application_service distinguishes it from cmdb_ci_service?<br />
+A. service_classification<br />
+B. business_criticality<br />
+C. lifecycle_status<br />
+D. business_service_type</p>
+<p><strong>Answer</strong>: A<br />
+<strong>Explanation</strong>: service_classification = &lsquo;application_service&rsquo; differentiates from business_service.</p>
+<p><strong>Q9.</strong> Why use Unified Map instead of legacy Dependency Views?<br />
+A. Faster rendering<br />
+B. Better mobile support<br />
+C. Supports multi-level relationships with filters<br />
+D. All of the above</p>
+<p><strong>Answer</strong>: D</p>
+<p><strong>Q10.</strong> Which APIs are recommended for programmatic CI creation respecting IRE?<br />
+A. Direct GlideRecord insert on cmdb_ci<br />
+B. IRE Command API (new IRECommand()&hellip;)<br />
+C. CMDB Service Graph API (/api/now/cmdb)<br />
+D. Both B and C</p>
+<p><strong>Answer</strong>: D<br />
+<strong>Explanation</strong>: Direct GlideRecord bypasses IRE; both IRE Command API and CMDB Service Graph API enforce identifier rules.</p>
+</blockquote>
+<h3 id="195-lab-question-quick-jump-table">19.5 Lab → Question quick-jump table</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Need to answer Q range</th>
+<th>Do Lab(s)</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q1-Q30 (Fundamentals)</td>
+<td>L1, L2, L3</td>
+<td>1 hour</td>
+</tr>
+<tr>
+<td>Q31-Q70 (IRE)</td>
+<td>L4, L5, L6</td>
+<td>2 hours</td>
+</tr>
+<tr>
+<td>Q71-Q100 (Multisource + SGC)</td>
+<td>L7, L8, L9</td>
+<td>2 hours</td>
+</tr>
+<tr>
+<td>Q101-Q125 (Discovery + MID)</td>
+<td>L10, L11, L12</td>
+<td>2 hours (Read-only if no license)</td>
+</tr>
+<tr>
+<td>Q126-Q160 (CSDM)</td>
+<td>L13, L14, L15</td>
+<td>3 hours</td>
+</tr>
+<tr>
+<td>Q161-Q180 (Health)</td>
+<td>L16, L17, L18</td>
+<td>2 hours</td>
+</tr>
+</tbody>
+</table>
+<h3 id="196-z-to-hero-day-plan-1-full-day-on-cmdb">19.6 Z-to-Hero day plan (1 full day on CMDB)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0:00-0:30</td>
+<td>Read §3-§5 of CMDB.md (CI, classes, IRE)</td>
+</tr>
+<tr>
+<td>0:30-1:30</td>
+<td>Labs L1-L3</td>
+</tr>
+<tr>
+<td>1:30-2:00</td>
+<td>Answer Q1-Q30; review wrong</td>
+</tr>
+<tr>
+<td>2:00-3:30</td>
+<td>Labs L4-L6 (IRE deep)</td>
+</tr>
+<tr>
+<td>3:30-4:00</td>
+<td>Answer Q31-Q70</td>
+</tr>
+<tr>
+<td>4:00-5:30</td>
+<td>Labs L7-L9 (Multisource + SGC)</td>
+</tr>
+<tr>
+<td>5:30-6:00</td>
+<td>Answer Q71-Q100</td>
+</tr>
+<tr>
+<td>6:00-7:00</td>
+<td>Labs L13-L15 (CSDM)</td>
+</tr>
+<tr>
+<td>7:00-7:30</td>
+<td>Answer Q126-Q160</td>
+</tr>
+<tr>
+<td>7:30-8:30</td>
+<td>Labs L16-L18 (Health)</td>
+</tr>
+<tr>
+<td>8:30-9:00</td>
+<td>Answer Q161-Q180</td>
+</tr>
+</tbody>
+</table>
+<p><strong>End-of-day deliverable</strong>:<br />
+- Update Set CMDB_Day8<br />
+- CMDB Health screenshot<br />
+- 180/180 questions reviewed (at least flagged)<br />
+- Confidence score per domain</p>
+<h3 id="197-what-hero-looks-like-for-cmdb">19.7 What &ldquo;Hero&rdquo; looks like for CMDB</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>A CMDB hero can:<br />
+- Design IRE identifier rules for new classes<br />
+- Resolve multisource conflicts via priority matrix<br />
+- Explain CSDM 4 domains to a junior dev in 5 minutes<br />
+- Diagnose Health failures and fix them<br />
+- Build a custom Service Mapping pattern<br />
+- Write IRE Command API calls programmatically<br />
+- Govern data quality via Data Manager<br />
+- Migrate from legacy to CSDM model<br />
+- Pass CIS-DF with ≥85% on first attempt</p>
+<hr />
+<h2 id="hands-on-labs">Hands-on Labs — مختبرات عملية</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<blockquote>
+<p>Step-by-step labs for PDI / Australia instance. Replace <code>{BASE}</code> with your instance URL.<br />
+مختبرات خطوة بخطوة — استبدل <code>{BASE}</code> برابط نسختك.</p>
+</blockquote>
+<ol>
+<li>
+<p><strong>Lab 1</strong> — <strong>Manual CI / CI يدوي</strong> — Create server CI at <a href="{BASE}/cmdb_ci_server.do?sys_id=-1">{BASE}/cmdb_ci_server.do?sys_id=-1</a>.</p>
+</li>
+<li>
+<p><strong>Lab 2</strong> — <strong>Relationships / علاقات</strong> — Link application CI Runs on server CI.</p>
+</li>
+<li>
+<p><strong>Lab 3</strong> — <strong>IRE rule / قاعدة IRE</strong> — Configure identifier at <a href="{BASE}/cmdb_identifier_entry_list.do">{BASE}/cmdb_identifier_entry_list.do</a>.</p>
+</li>
+<li>
+<p><strong>Lab 4</strong> — <strong>Import set / استيراد</strong> — Load CSV via <a href="{BASE}/sys_import_set_list.do">{BASE}/sys_import_set_list.do</a>; transform to cmdb_ci.</p>
+</li>
+<li>
+<p><strong>Lab 5</strong> — <strong>CMDB Health / صحة CMDB</strong> — Review dashboard at <a href="{BASE}/now/cmdb-health/home">{BASE}/now/cmdb-health/home</a>.</p>
+</li>
+<li>
+<p><strong>Lab 6</strong> — <strong>Dependency map / خريطة اعتماد</strong> — Open Dependency View from CI record.</p>
+</li>
+<li>
+<p><strong>Lab 7</strong> — <strong>Reconciliation / مطابقة</strong> — Set source priority for Discovery vs manual.</p>
+</li>
+<li>
+<p><strong>Lab 8</strong> — <strong>Service model / نموذج خدمة</strong> — Create Application Service at <a href="{BASE}/cmdb_ci_service_list.do">{BASE}/cmdb_ci_service_list.do</a>.</p>
+</li>
+</ol>
+<hr />
+<h2 id="best-practices">Best Practices — أفضل الممارسات</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Best practice (EN)</th>
+<th>أفضل ممارسة (AR)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quality</td>
+<td>CMDB Health KPIs before go-live — target &gt;90% completeness</td>
+<td>KPIs صحة CMDB &gt;90%</td>
+</tr>
+<tr>
+<td>IRE</td>
+<td>One identification rule per class — avoid duplicates</td>
+<td>قاعدة IRE واحدة لكل class</td>
+</tr>
+<tr>
+<td>CSDM</td>
+<td>Align to Common Service Data Model tiers</td>
+<td>محاذاة CSDM</td>
+</tr>
+<tr>
+<td>Governance</td>
+<td>CMDB data owner per CI class</td>
+<td>مالك بيانات لكل class</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="deployment-checklist">Deployment Checklist — قائمة النشر</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task (EN)</th>
+<th>المهمة (AR)</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>CI Class Manager review</td>
+<td>مراجعة Classes</td>
+<td>Hierarchy correct</td>
+</tr>
+<tr>
+<td>2</td>
+<td>IRE + reconciliation rules</td>
+<td>IRE + reconciliation</td>
+<td>No duplicates</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Relationship types</td>
+<td>أنواع العلاقات</td>
+<td>Maps render</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Import or Discovery feed</td>
+<td>Import/Discovery</td>
+<td>CIs populated</td>
+</tr>
+<tr>
+<td>5</td>
+<td>CMDB Health baseline</td>
+<td>خط أساس Health</td>
+<td>Scores recorded</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Application Services (CSDM)</td>
+<td>Application Services</td>
+<td>Services mapped</td>
+</tr>
+<tr>
+<td>7</td>
+<td>ACLs for CI data</td>
+<td>ACLs</td>
+<td>Roles correct</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Integration with ITSM/ITOM</td>
+<td>تكامل ITSM/ITOM</td>
+<td>Incidents link CI</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="direct-urls-quick-reference">Direct URLs Quick Reference</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigation</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All CIs</td>
+<td>All &gt; Configuration &gt; All</td>
+<td><a href="{BASE}/cmdb_ci_list.do">{BASE}/cmdb_ci_list.do</a></td>
+</tr>
+<tr>
+<td>CI Class Manager</td>
+<td>All &gt; Configuration</td>
+<td><a href="{BASE}/now/cmdb/home">{BASE}/now/cmdb/home</a></td>
+</tr>
+<tr>
+<td>CMDB Health</td>
+<td>All &gt; Configuration</td>
+<td><a href="{BASE}/now/cmdb-health/home">{BASE}/now/cmdb-health/home</a></td>
+</tr>
+<tr>
+<td>Identification Rules</td>
+<td>All &gt; Configuration &gt; IRE</td>
+<td><a href="{BASE}/cmdb_identifier_entry_list.do">{BASE}/cmdb_identifier_entry_list.do</a></td>
+</tr>
+<tr>
+<td>Reconciliation</td>
+<td>All &gt; Configuration</td>
+<td><a href="{BASE}/cmdb_reconciliation_definition_list.do">{BASE}/cmdb_reconciliation_definition_list.do</a></td>
+</tr>
+<tr>
+<td>Import Sets</td>
+<td>All &gt; System Import Sets</td>
+<td><a href="{BASE}/sys_import_set_list.do">{BASE}/sys_import_set_list.do</a></td>
+</tr>
+<tr>
+<td>Application Services</td>
+<td>All &gt; CSDM</td>
+<td><a href="{BASE}/cmdb_ci_service_list.do">{BASE}/cmdb_ci_service_list.do</a></td>
+</tr>
+<tr>
+<td>Relationship Types</td>
+<td>All &gt; Configuration</td>
+<td><a href="{BASE}/cmdb_rel_type_list.do">{BASE}/cmdb_rel_type_list.do</a></td>
+</tr>
+<tr>
+<td>Guided Setup</td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

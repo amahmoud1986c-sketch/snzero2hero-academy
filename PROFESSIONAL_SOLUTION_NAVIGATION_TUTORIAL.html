@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HR Leave Professional Solution — Navigation &amp; Deployment Tutorial | HR Leave Australia</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="scripts/index.html">Scripts</a>
+      <a href="modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>HR Leave Professional Solution — Navigation &amp; Deployment Tutorial</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="hr-leave-professional-solution-navigation-deployment-tutorial">HR Leave Professional Solution — Navigation &amp; Deployment Tutorial</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً (ملخص سريع):</strong> <a href="MASTER_ALL_IN_ONE_SUMMARY.html">MASTER_ALL_IN_ONE_SUMMARY.md</a> · HTML: <a href="html/MASTER_ALL_IN_ONE_SUMMARY.html">html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل الواحد:</strong> <a href="MASTER_ALL_IN_ONE.html">MASTER_ALL_IN_ONE.md</a> · HTML: <a href="html/MASTER_ALL_IN_ONE.html">html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات (New/Open):</strong> <a href="MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">MASTER_PRACTICE_GUIDE_ALL_TOPICS.md</a> · <a href="html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Platform: ServiceNow <strong>Australia</strong> · Scope <code>x_786686_hr_leave</code> · sys_id <code>c84db0e8839f0b509f02b0d6feaad3c9</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<blockquote>
+<p><strong>Platform:</strong> ServiceNow Australia (current family · Sep 2026)<br />
+<strong>Application:</strong> Custom · Scope <code>x_786686_hr_leave</code> · sys_id <code>c84db0e8839f0b509f02b0d6feaad3c9</code><br />
+<strong>HTML portal:</strong> <code>html/index.html</code><br />
+Replace <code>{BASE}</code> with your instance, or enter it once at the top of the HTML portal.</p>
+</blockquote>
+<p>This is the execution path for a mature HR Leave solution: Foundation → Development → Security → Experience → Automation → Integration → Analytics → Testing → Deployment.</p>
+<hr />
+<h2 id="1-solution-architecture">1. Solution architecture</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">Employee Center / Service Portal
+        │
+        ▼
+Record Producer / Catalog Item
+        │
+        ▼
+x_786686_hr_leave_req_v2
+   │       │        │
+   │       │        └─ Events → Notifications
+   │       └─ Flow Designer → Manager approval
+   └─ Business Rules → Balance + Audit
+        │
+        ├─ REST / Integration Hub → HR/ERP
+        ├─ Reports / Dashboard / PA
+        └─ ATF + ACL validation
+</code></pre>
+<p>Core data:</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application</td>
+<td><a class="direct-url" href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9"><code>{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9</code></a></td>
+</tr>
+<tr>
+<td>Leave Requests</td>
+<td><a class="direct-url" href="{BASE}/x_786686_hr_leave_req_v2_list.do"><code>{BASE}/x_786686_hr_leave_req_v2_list.do</code></a></td>
+</tr>
+<tr>
+<td>Employees</td>
+<td><a class="direct-url" href="{BASE}/x_786686_hr_leave_employee_v2_list.do"><code>{BASE}/x_786686_hr_leave_employee_v2_list.do</code></a></td>
+</tr>
+<tr>
+<td>Balances</td>
+<td><a class="direct-url" href="{BASE}/x_786686_hr_leave_bal_v2_list.do"><code>{BASE}/x_786686_hr_leave_bal_v2_list.do</code></a></td>
+</tr>
+<tr>
+<td>Audit</td>
+<td><a class="direct-url" href="{BASE}/x_786686_hr_leave_audit_v2_list.do"><code>{BASE}/x_786686_hr_leave_audit_v2_list.do</code></a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-administration-foundation">2. Administration foundation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="tutorial">Tutorial</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ol>
+<li>Create one Update Set per deployment stage.</li>
+<li>Create Groups first, then assign Roles to Groups.</li>
+<li>Add test users to Groups; avoid direct role grants.</li>
+<li>Create table and field ACLs for employee, manager, HR admin, and integration.</li>
+<li>Put environment-specific values in System Properties.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Filter Navigator path</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Users</td>
+<td>All &gt; User Administration &gt; Users</td>
+<td><a class="direct-url" href="{BASE}/sys_user_list.do"><code>{BASE}/sys_user_list.do</code></a></td>
+</tr>
+<tr>
+<td>Groups</td>
+<td>All &gt; User Administration &gt; Groups</td>
+<td><a class="direct-url" href="{BASE}/sys_user_group_list.do"><code>{BASE}/sys_user_group_list.do</code></a></td>
+</tr>
+<tr>
+<td>Roles</td>
+<td>All &gt; User Administration &gt; Roles</td>
+<td><a class="direct-url" href="{BASE}/sys_user_role_list.do"><code>{BASE}/sys_user_role_list.do</code></a></td>
+</tr>
+<tr>
+<td>ACLs</td>
+<td>All &gt; System Security &gt; Access Control (ACL)</td>
+<td><a class="direct-url" href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave"><code>{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+<tr>
+<td>Update Sets</td>
+<td>All &gt; System Update Sets &gt; Local Update Sets</td>
+<td><a class="direct-url" href="{BASE}/sys_update_set_list.do"><code>{BASE}/sys_update_set_list.do</code></a></td>
+</tr>
+<tr>
+<td>Properties</td>
+<td>All &gt; System Properties</td>
+<td><a class="direct-url" href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave"><code>{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gate A:</strong> employee sees only own requests; manager sees assigned requests; HR admin sees all; integration role can execute only the API.</p>
+<hr />
+<h2 id="3-development">3. Development</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3Dc84db0e8839f0b509f02b0d6feaad3c9">Application Files</a><a href="scripts/index.html">Scripts portal</a></nav>
+<h3 id="build-order">Build order</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ol>
+<li>Tables and Dictionary fields.</li>
+<li>Script Includes (reusable logic).</li>
+<li>Business Rules (server orchestration).</li>
+<li>Client Scripts and UI Policies.</li>
+<li>Flow Designer.</li>
+<li>Catalog / Record Producer.</li>
+<li>Portal or Employee Center.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Filter Navigator path</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Studio</td>
+<td>All &gt; System Applications &gt; Studio</td>
+<td><a class="direct-url" href="{BASE}/$studio.do"><code>{BASE}/$studio.do</code></a></td>
+</tr>
+<tr>
+<td>Tables</td>
+<td>All &gt; System Definition &gt; Tables</td>
+<td><a class="direct-url" href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave"><code>{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+<tr>
+<td>Business Rules</td>
+<td>All &gt; System Definition &gt; Business Rules</td>
+<td><a class="direct-url" href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave"><code>{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+<tr>
+<td>Client Scripts</td>
+<td>All &gt; System Definition &gt; Client Scripts</td>
+<td><a class="direct-url" href="{BASE}/sys_script_client_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave"><code>{BASE}/sys_script_client_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+<tr>
+<td>Script Includes</td>
+<td>All &gt; System Definition &gt; Script Includes</td>
+<td><a class="direct-url" href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave"><code>{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+<tr>
+<td>UI Policies</td>
+<td>All &gt; System UI &gt; UI Policies</td>
+<td><a class="direct-url" href="{BASE}/sys_ui_policy_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave"><code>{BASE}/sys_ui_policy_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+<tr>
+<td>Flow Designer</td>
+<td>All &gt; Process Automation &gt; Flow Designer</td>
+<td><a class="direct-url" href="{BASE}/now/flow-designer"><code>{BASE}/now/flow-designer</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Copy-ready scripts: <code>SCRIPTS_INVENTORY.md</code> and HTML → <code>html/scripts/index.html</code>.</p>
+<p><strong>Gate B:</strong> date validation works; business days calculate; approver resolves; state change creates audit; approval updates balance.</p>
+<hr />
+<h2 id="4-catalog-and-employee-experience">4. Catalog and employee experience</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Filter Navigator path</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Record Producers</td>
+<td>All &gt; Service Catalog &gt; Catalog Definitions &gt; Record Producers</td>
+<td><a class="direct-url" href="{BASE}/sc_cat_item_producer_list.do"><code>{BASE}/sc_cat_item_producer_list.do</code></a></td>
+</tr>
+<tr>
+<td>Catalog Items</td>
+<td>All &gt; Service Catalog &gt; Catalog Definitions &gt; Maintain Items</td>
+<td><a class="direct-url" href="{BASE}/sc_cat_item_list.do"><code>{BASE}/sc_cat_item_list.do</code></a></td>
+</tr>
+<tr>
+<td>Variables</td>
+<td>All &gt; Service Catalog &gt; Catalog Variables &gt; Variables</td>
+<td><a class="direct-url" href="{BASE}/item_option_new_list.do"><code>{BASE}/item_option_new_list.do</code></a></td>
+</tr>
+<tr>
+<td>User Criteria</td>
+<td>All &gt; Service Catalog &gt; User Criteria</td>
+<td><a class="direct-url" href="{BASE}/user_criteria_list.do"><code>{BASE}/user_criteria_list.do</code></a></td>
+</tr>
+<tr>
+<td>Portals</td>
+<td>All &gt; Service Portal &gt; Portals</td>
+<td><a class="direct-url" href="{BASE}/sp_portal_list.do"><code>{BASE}/sp_portal_list.do</code></a></td>
+</tr>
+<tr>
+<td>Widgets</td>
+<td>All &gt; Service Portal &gt; Widgets</td>
+<td><a class="direct-url" href="{BASE}/sp_widget_list.do"><code>{BASE}/sp_widget_list.do</code></a></td>
+</tr>
+<tr>
+<td>Employee Center</td>
+<td>All &gt; Employee Center</td>
+<td><a class="direct-url" href="{BASE}/esc"><code>{BASE}/esc</code></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gate C:</strong> employee submits from Catalog/Employee Center and receives the created request number.</p>
+<hr />
+<h2 id="5-automation-and-notifications">5. Automation and notifications</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Filter Navigator path</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flows</td>
+<td>All &gt; Process Automation &gt; Flow Designer</td>
+<td><a class="direct-url" href="{BASE}/now/flow-designer"><code>{BASE}/now/flow-designer</code></a></td>
+</tr>
+<tr>
+<td>Event Registry</td>
+<td>All &gt; System Policy &gt; Events &gt; Registry</td>
+<td><a class="direct-url" href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave"><code>{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+<tr>
+<td>Event Log</td>
+<td>All &gt; System Policy &gt; Events &gt; Event Log</td>
+<td><a class="direct-url" href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave"><code>{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+<tr>
+<td>Notifications</td>
+<td>All &gt; System Notification &gt; Email &gt; Notifications</td>
+<td><a class="direct-url" href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave"><code>{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+<tr>
+<td>Scheduled Jobs</td>
+<td>All &gt; System Definition &gt; Scheduled Jobs</td>
+<td><a class="direct-url" href="{BASE}/sysauto_script_list.do"><code>{BASE}/sysauto_script_list.do</code></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gate D:</strong> submitted/approved/rejected events appear in Event Log and the correct recipient receives each notification.</p>
+<hr />
+<h2 id="6-integration">6. Integration</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Filter Navigator path</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scripted REST</td>
+<td>All &gt; System Web Services &gt; Scripted REST APIs</td>
+<td><a class="direct-url" href="{BASE}/sys_ws_definition_list.do"><code>{BASE}/sys_ws_definition_list.do</code></a></td>
+</tr>
+<tr>
+<td>REST Messages</td>
+<td>All &gt; System Web Services &gt; Outbound &gt; REST Message</td>
+<td><a class="direct-url" href="{BASE}/sys_rest_message_list.do"><code>{BASE}/sys_rest_message_list.do</code></a></td>
+</tr>
+<tr>
+<td>Connections</td>
+<td>All &gt; Connections &amp; Credentials &gt; Connection &amp; Credential Aliases</td>
+<td><a class="direct-url" href="{BASE}/sys_alias_list.do"><code>{BASE}/sys_alias_list.do</code></a></td>
+</tr>
+<tr>
+<td>REST API Explorer</td>
+<td>All &gt; System Web Services &gt; REST API Explorer</td>
+<td><a class="direct-url" href="{BASE}/$restapi.do"><code>{BASE}/$restapi.do</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Security requirements: dedicated integration user, scoped integration role, no credentials in scripts, properties/credential records per environment.</p>
+<p><strong>Gate E:</strong> positive and negative API tests pass; unauthorized request returns 401/403; logs contain no secrets.</p>
+<hr />
+<h2 id="7-reports-and-dashboards">7. Reports and dashboards</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Filter Navigator path</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Create Report</td>
+<td>All &gt; Reports &gt; Create New</td>
+<td><a class="direct-url" href="{BASE}/$report.do"><code>{BASE}/$report.do</code></a></td>
+</tr>
+<tr>
+<td>Reports</td>
+<td>All &gt; Reports &gt; View / Run</td>
+<td><a class="direct-url" href="{BASE}/sys_report_list.do"><code>{BASE}/sys_report_list.do</code></a></td>
+</tr>
+<tr>
+<td>Dashboards</td>
+<td>All &gt; Performance Analytics &amp; Reporting &gt; Dashboards</td>
+<td><a class="direct-url" href="{BASE}/pa_dashboards_list.do"><code>{BASE}/pa_dashboards_list.do</code></a></td>
+</tr>
+<tr>
+<td>Indicators</td>
+<td>All &gt; Performance Analytics &gt; Indicators</td>
+<td><a class="direct-url" href="{BASE}/pa_indicators_list.do"><code>{BASE}/pa_indicators_list.do</code></a></td>
+</tr>
+<tr>
+<td>Data Collectors</td>
+<td>All &gt; Performance Analytics &gt; Jobs</td>
+<td><a class="direct-url" href="{BASE}/pa_collectors_list.do"><code>{BASE}/pa_collectors_list.do</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Required dashboard: Requests by state, requests by type, pending approvals, days by month, approval time, rejection rate.</p>
+<p><strong>Gate F:</strong> HR role sees dashboard; employee cannot discover restricted report data; PA collector has a successful run when licensed.</p>
+<hr />
+<h2 id="8-testing-and-deployment">8. Testing and deployment</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Filter Navigator path</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ATF Tests</td>
+<td>All &gt; Automated Test Framework &gt; Tests</td>
+<td><a class="direct-url" href="{BASE}/sys_atf_test_list.do"><code>{BASE}/sys_atf_test_list.do</code></a></td>
+</tr>
+<tr>
+<td>ATF Suites</td>
+<td>All &gt; Automated Test Framework &gt; Suites</td>
+<td><a class="direct-url" href="{BASE}/sys_atf_test_suite_list.do"><code>{BASE}/sys_atf_test_suite_list.do</code></a></td>
+</tr>
+<tr>
+<td>Retrieved Update Sets</td>
+<td>All &gt; System Update Sets &gt; Retrieved Update Sets</td>
+<td><a class="direct-url" href="{BASE}/sys_remote_update_set_list.do"><code>{BASE}/sys_remote_update_set_list.do</code></a></td>
+</tr>
+<tr>
+<td>Upgrade History</td>
+<td>All &gt; System Diagnostics &gt; Upgrade History</td>
+<td><a class="direct-url" href="{BASE}/sys_upgrade_history_list.do"><code>{BASE}/sys_upgrade_history_list.do</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Deployment sequence:</p>
+<ol>
+<li>Freeze Update Set and peer review.</li>
+<li>Export/import or retrieve; Preview before Commit.</li>
+<li>Resolve collisions deliberately—never skip without evidence.</li>
+<li>Run ATF smoke suite.</li>
+<li>Validate ACLs using impersonation.</li>
+<li>Validate Flow, events, notifications, reports, and integration.</li>
+<li>Record rollback steps and release evidence.</li>
+</ol>
+<p><strong>Gate G:</strong> no unresolved Update Set errors; ATF passes; audit trail and rollback plan are documented.</p>
+<hr />
+<h2 id="9-module-maturity-extensions">9. Module maturity extensions</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Professional use in this solution</th>
+<th>Direct starting URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ITSM</td>
+<td>Incidents for integration failures; Change for production release</td>
+<td><a class="direct-url" href="{BASE}/incident_list.do"><code>{BASE}/incident_list.do</code></a> · <a class="direct-url" href="{BASE}/change_request_list.do"><code>{BASE}/change_request_list.do</code></a></td>
+</tr>
+<tr>
+<td>CSM</td>
+<td>Cases when leave service is exposed to customer/partner workers</td>
+<td><a class="direct-url" href="{BASE}/sn_customerservice_case_list.do"><code>{BASE}/sn_customerservice_case_list.do</code></a></td>
+</tr>
+<tr>
+<td>FSM</td>
+<td>Work Order only when leave affects scheduled field resources</td>
+<td><a class="direct-url" href="{BASE}/wm_order_list.do"><code>{BASE}/wm_order_list.do</code></a></td>
+</tr>
+<tr>
+<td>SPM</td>
+<td>Demand/Project to govern roadmap, budget, benefits</td>
+<td><a class="direct-url" href="{BASE}/dmn_demand_list.do"><code>{BASE}/dmn_demand_list.do</code></a> · <a class="direct-url" href="{BASE}/pm_project_list.do"><code>{BASE}/pm_project_list.do</code></a></td>
+</tr>
+<tr>
+<td>HRSD</td>
+<td>Prefer HR Case/HR Service for licensed enterprise HR delivery</td>
+<td><a class="direct-url" href="{BASE}/sn_hr_core_case_list.do"><code>{BASE}/sn_hr_core_case_list.do</code></a></td>
+</tr>
+<tr>
+<td>CMDB/CSDM</td>
+<td>Register HR Leave as an Application Service and owner relationship</td>
+<td><a class="direct-url" href="{BASE}/cmdb_ci_service_auto_list.do"><code>{BASE}/cmdb_ci_service_auto_list.do</code></a></td>
+</tr>
+<tr>
+<td>ITOM</td>
+<td>Monitor app/integration health when infrastructure is in scope</td>
+<td><a class="direct-url" href="{BASE}/em_alert_list.do"><code>{BASE}/em_alert_list.do</code></a></td>
+</tr>
+<tr>
+<td>ITAM</td>
+<td>No direct dependency; use only for devices/assets tied to workforce operations</td>
+<td><a class="direct-url" href="{BASE}/alm_asset_list.do"><code>{BASE}/alm_asset_list.do</code></a></td>
+</tr>
+<tr>
+<td>GRC/IRM</td>
+<td>Controls for privacy, access review, retention, and evidence</td>
+<td><a class="direct-url" href="{BASE}/sn_compliance_control_list.do"><code>{BASE}/sn_compliance_control_list.do</code></a></td>
+</tr>
+<tr>
+<td>SecOps</td>
+<td>Security incident escalation for detected abuse</td>
+<td><a class="direct-url" href="{BASE}/sn_si_incident_list.do"><code>{BASE}/sn_si_incident_list.do</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Do not force every module into HR Leave. Add a module only when there is a business capability, license, owner, data contract, and support model.</p>
+<hr />
+<h2 id="10-australia-upgrade-readiness">10. Australia upgrade readiness</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<ol>
+<li>Confirm family/build: <a class="direct-url" href="{BASE}/stats.do"><code>{BASE}/stats.do</code></a>.</li>
+<li>Review skipped changes and customizations.</li>
+<li>Test on sub-production before production.</li>
+<li>Re-run ATF and role-based UAT.</li>
+<li>Prefer Flow Designer over new legacy Workflow.</li>
+<li>Validate licensed workspace routes because plugins and UI versions can change.</li>
+<li>Keep the scoped API names and table names unchanged during family upgrade.</li>
+</ol>
+<p>Study sequence: <code>../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</code> → this tutorial → module-specific documents → ATF/Deployment gates.</p>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="assets/docs.js"></script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

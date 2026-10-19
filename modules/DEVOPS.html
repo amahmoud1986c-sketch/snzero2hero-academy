@@ -1,0 +1,2966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DevOps — Change Velocity &amp; CI/CD Orchestration (Zero → Pro) | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>DevOps — Change Velocity &amp; CI/CD Orchestration (Zero → Pro)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="devops-change-velocity-cicd-orchestration-zero-pro">DevOps — Change Velocity &amp; CI/CD Orchestration (Zero → Pro)</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً:</strong> <a href="../MASTER_ALL_IN_ONE_SUMMARY.html">../MASTER_ALL_IN_ONE_SUMMARY.md</a> · <a href="../html/MASTER_ALL_IN_ONE_SUMMARY.html">../html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل:</strong> <a href="../MASTER_ALL_IN_ONE.html">../MASTER_ALL_IN_ONE.md</a> · <a href="../html/MASTER_ALL_IN_ONE.html">../html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات:</strong> <a href="../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Australia · Scope <code>x_786686_hr_leave</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<h2 id="australia-instance">Australia Instance — نسخة أستراليا</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Region / Datacenter</strong></td>
+<td>ServiceNow <strong>Australia</strong></td>
+</tr>
+<tr>
+<td><strong>Release train</strong></td>
+<td>Zurich (Sep 2026 EA) · next EA: <strong>Brazil</strong></td>
+</tr>
+<tr>
+<td><strong>URL base</strong></td>
+<td><code>{BASE}</code></td>
+</tr>
+<tr>
+<td><strong>Scope note</strong></td>
+<td>HR Leave app: <code>x_786686_hr_leave</code></td>
+</tr>
+<tr>
+<td><strong>Guided Setup</strong></td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="direct-navigation-urls">Direct Navigation URLs — روابط التنقل المباشرة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page / Tool</th>
+<th>Navigation Path</th>
+<th>Direct URL</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DevOps Change Velocity</strong></td>
+<td>All &gt; DevOps &gt; Change Velocity</td>
+<td><a href="{BASE}/now/devops/home">{BASE}/now/devops/home</a></td>
+<td>DevOps dashboard</td>
+</tr>
+<tr>
+<td><strong>Tool Integrations</strong></td>
+<td>All &gt; DevOps &gt; Integrations</td>
+<td><a href="{BASE}/sn_devops_tool_integration_list.do">{BASE}/sn_devops_tool_integration_list.do</a></td>
+<td>CI/CD tools</td>
+</tr>
+<tr>
+<td><strong>Pipelines</strong></td>
+<td>All &gt; DevOps &gt; Pipelines</td>
+<td><a href="{BASE}/sn_devops_pipeline_list.do">{BASE}/sn_devops_pipeline_list.do</a></td>
+<td>Pipeline registry</td>
+</tr>
+<tr>
+<td><strong>Change Requests</strong></td>
+<td>All &gt; Change &gt; All</td>
+<td><a href="{BASE}/change_request_list.do">{BASE}/change_request_list.do</a></td>
+<td>Governed changes</td>
+</tr>
+<tr>
+<td><strong>Standard Change Templates</strong></td>
+<td>All &gt; Change &gt; Standard Change Templates</td>
+<td><a href="{BASE}/std_change_record_producer_list.do">{BASE}/std_change_record_producer_list.do</a></td>
+<td>Auto-approved CRs</td>
+</tr>
+<tr>
+<td><strong>Application Repositories</strong></td>
+<td>All &gt; DevOps &gt; Application Repositories</td>
+<td><a href="{BASE}/sn_devops_app_repo_list.do">{BASE}/sn_devops_app_repo_list.do</a></td>
+<td>Artifact repos</td>
+</tr>
+<tr>
+<td><strong>Orchestration Tasks</strong></td>
+<td>All &gt; DevOps &gt; Orchestration</td>
+<td><a href="{BASE}/sn_devops_orchestration_task_list.do">{BASE}/sn_devops_orchestration_task_list.do</a></td>
+<td>Pipeline tasks</td>
+</tr>
+<tr>
+<td><strong>DORA Dashboards</strong></td>
+<td>All &gt; Performance Analytics &gt; DevOps</td>
+<td><a href="{BASE}/$pa_dashboard.do">{BASE}/$pa_dashboard.do</a></td>
+<td>DORA metrics</td>
+</tr>
+<tr>
+<td><strong>Flow Designer</strong></td>
+<td>All &gt; Process Automation &gt; Flow Designer</td>
+<td><a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a></td>
+<td>Approval flows</td>
+</tr>
+<tr>
+<td><strong>Guided Setup DevOps</strong></td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+<td>Initial configuration</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>URLs:</strong> <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">../../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a><br />
+<strong>HR Leave:</strong> Scope x_786686_hr_leave</p>
+<p>CIS-DevOps Implementer Guide — ServiceNow Australia (post-Zurich)<br />
+الأسلوب: عربية + إنجليزية تكمّلان بعضهما — بدون ترجمة حرفية لأسماء الشاشات.</p>
+</blockquote>
+<hr />
+<h2 id="arabic-summary">ملخص ووصف بالعربية (Arabic Summary)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>البند</th>
+<th>الشرح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ما هو DevOps Change Velocity؟</strong></td>
+<td>جسر بين أدوات CI/CD (Jenkins، GitHub، GitLab، Azure DevOps) وبين ITSM Change Management</td>
+</tr>
+<tr>
+<td><strong>لماذا مهم؟</strong></td>
+<td>يخفّض زمن التغيير من أيام إلى دقائق ويعطيك تتبّع كامل (commit → deploy → incident)</td>
+</tr>
+<tr>
+<td><strong>من يستخدمه؟</strong></td>
+<td>مطور، DevOps Engineer، SRE، Release Manager، Change Manager، Auditor</td>
+</tr>
+<tr>
+<td><strong>ماذا يغطي الملف؟</strong></td>
+<td>§1–12 تقني · §13 خيارات · §14–15 تنفيذ · §16 صفحات · §17 Power User · §18 Day 0→30</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ملخص في سطر:</strong> من Git commit حتى نشر إنتاج وقياس DORA — التغيير صار آليًا، آمنًا، ومُدقَّقًا.</p>
+<p><strong>وصف مختصر:</strong> يشرح كيف يربط ServiceNow أدوات السلسلة (Jenkins/GitHub Actions/GitLab CI/Azure DevOps)، يفتح Change Request تلقائيًا من البايبلاين، يطبّق سياسات الموافقة، يجمع نتائج الاختبارات وفحوصات الجودة والأمن، يحدّث CMDB من Artifact، ويولّد DORA metrics. مناسب CIS-DevOps والتنفيذ من الصفر.</p>
+<hr />
+<h2 id="1-overview-business-value">1) Overview &amp; Business Value</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>DevOps Change Velocity connects pipelines to ITSM so every build, test, and deploy is recorded as governed change. — هي الطبقة التي تجعل البايبلاين يفتح ويغلق Change Request تلقائيًا بدلاً من النموذج اليدوي.</p>
+<p>Why customers buy it:</p>
+<ul>
+<li>Reduce mean change lead time from days to minutes by automating Standard Changes.</li>
+<li>اختصار زمن التغيير وتحويل الطلبات المتكرّرة إلى موافقات تلقائية.</li>
+<li>Provide auditable trail (SOX, ISO 27001, ITIL) — every artifact tied to a CR, every CR tied to a CI.</li>
+<li>إثبات للمراجع: كل نشر معروف من أين جاء، من وافق عليه، وماذا غيّر.</li>
+<li>Surface DORA metrics (Deployment frequency, Lead time, Change failure rate, MTTR) at executive level.</li>
+<li>مؤشرات DORA الأربعة جاهزة من Performance Analytics دون استخراج يدوي.</li>
+<li>Reduce change failure rate via gates: code quality (SonarQube), security (Snyk/Veracode), test coverage.</li>
+<li>بوابات قبل النشر تمنع التغييرات الخطرة من الوصول للإنتاج.</li>
+<li>Connect deployments to incidents and CIs through Service Graph for blast-radius awareness.</li>
+<li>ربط كل نشر بالخدمة المتأثرة لمعرفة من سيتألم لو فشل.</li>
+</ul>
+<p>Business outcomes (typical 12-month):</p>
+<ul>
+<li>60–80% of CRs become Standard auto-approved (was 0–15%).</li>
+<li>25–40% reduction in change failure rate.</li>
+<li>30–50% faster MTTR (because deploy → incident link is instant).</li>
+<li>Audit prep drops from weeks to hours.</li>
+</ul>
+<p>⚠️ DevOps is not a replacement for Change Management — it accelerates it. Governance still applies.</p>
+<hr />
+<h2 id="2-architecture-data-model">2) Architecture &amp; Data Model</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<p>Core tables (prefix sn_devops_):</p>
+<pre><code class="language-text">sn_devops_tool — registered tool (Jenkins, GitHub, Jira ...)
+sn_devops_pipeline — pipeline definition imported from tool
+sn_devops_pipeline_execution — single run of a pipeline
+sn_devops_step — definition of one step in a pipeline
+sn_devops_step_execution — execution record per step
+sn_devops_artifact — built artifact (jar, image, package)
+sn_devops_artifact_version — versioned artifact (sha, tag)
+sn_devops_package — group of artifacts deployed together
+sn_devops_change_request — bridge table linking pipeline to change_request
+sn_devops_change_ctrl — change control rules per step
+sn_devops_orchestration_task — pending work for the pipeline
+sn_devops_config — configuration items (feature flags, configs)
+sn_devops_test_result — JUnit/TestNG ingest target
+sn_devops_test_summary — per-pipeline-execution aggregated test
+sn_devops_security_result — SonarQube/Snyk/Veracode ingest
+sn_devops_insight_metric — pre-computed DORA metric rows
+sn_devops_repo — SCM repository (GitHub, GitLab repo)
+sn_devops_commit — commit metadata
+sn_devops_pull_request — PR metadata
+sn_devops_branch — branch metadata
+</code></pre>
+<p>Relationship to Change Management:</p>
+<pre><code class="language-text">sn_devops_pipeline_execution
+ └─ sn_devops_change_request (bridge)
+ └─ change_request (ITSM)
+ ├─ change_task (deployment steps)
+ ├─ task_ci (impacted CIs from Service Graph)
+ └─ sysapproval_approver
+</code></pre>
+<p>كل Pipeline Execution ينتج Change Request في change_request عبر جسر sn_devops_change_request.<br />
+ربط CI يتم تلقائيًا من Artifact → Service Graph → cmdb_ci.</p>
+<p>Key foreign-keys &amp; joins (CIS-DevOps exam favourite):</p>
+<table>
+<thead>
+<tr>
+<th>From</th>
+<th>To</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sn_devops_artifact.cmdb_ci</td>
+<td>cmdb_ci</td>
+<td>Tie build to CI</td>
+</tr>
+<tr>
+<td>sn_devops_pipeline_execution.change_request</td>
+<td>change_request</td>
+<td>The actual CR</td>
+</tr>
+<tr>
+<td>sn_devops_commit.pull_request</td>
+<td>sn_devops_pull_request</td>
+<td>Merge audit</td>
+</tr>
+<tr>
+<td>sn_devops_test_result.test_summary</td>
+<td>sn_devops_test_summary</td>
+<td>Aggregation</td>
+</tr>
+<tr>
+<td>sn_devops_step.tool</td>
+<td>sn_devops_tool</td>
+<td>Tool ownership</td>
+</tr>
+<tr>
+<td>sn_devops_insight_metric.application_service</td>
+<td>cmdb_ci_service_auto</td>
+<td>DORA per service</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-plugins-activation">3) Plugins &amp; Activation — كيف تفتح وتفعّل</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Plugin / App</th>
+<th>Name</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DevOps Change Velocity (core)</td>
+<td>com.snc.devops</td>
+<td>Base tables, REST APIs</td>
+</tr>
+<tr>
+<td>DevOps Change Acceleration</td>
+<td>com.snc.devops_change_acceleration</td>
+<td>Standard-CR auto-approval engine</td>
+</tr>
+<tr>
+<td>DevOps Insights</td>
+<td>com.snc.devops.insights</td>
+<td>DORA metrics, dashboards</td>
+</tr>
+<tr>
+<td>DevOps Config</td>
+<td>com.snc.devops_config</td>
+<td>Config-as-code, feature flags</td>
+</tr>
+<tr>
+<td>DevOps Integrations Hub</td>
+<td>com.snc.devops.integrationhub</td>
+<td>IH spokes for Jenkins/GH/GL</td>
+</tr>
+<tr>
+<td>Integration Hub Installer</td>
+<td>com.glide.hub.integration.installer</td>
+<td>Per-spoke install</td>
+</tr>
+<tr>
+<td>Jenkins Spoke</td>
+<td>sn_jenkins_spoke</td>
+<td>From Store</td>
+</tr>
+<tr>
+<td>GitHub Spoke</td>
+<td>sn_github_spoke</td>
+<td>From Store</td>
+</tr>
+<tr>
+<td>GitLab Spoke</td>
+<td>sn_gitlab_spoke</td>
+<td>From Store</td>
+</tr>
+<tr>
+<td>Azure DevOps Spoke</td>
+<td>sn_azure_devops_spoke</td>
+<td>From Store</td>
+</tr>
+<tr>
+<td>Jira Spoke</td>
+<td>sn_jira_spoke</td>
+<td>From Store</td>
+</tr>
+<tr>
+<td>ServiceNow DevOps for GitHub Actions</td>
+<td>GitHub Marketplace action</td>
+<td>OSS, free</td>
+</tr>
+<tr>
+<td>ServiceNow DevOps for Jenkins</td>
+<td>Jenkins plugin</td>
+<td>OSS, free</td>
+</tr>
+</tbody>
+</table>
+<p>How to activate:</p>
+<pre><code class="language-text">Navigate: All &gt; System Definition &gt; Plugins
+Search: com.snc.devops
+Right-click → Activate/Repair
+Then:
+Navigate: All &gt; System Applications &gt; All Available Applications &gt; All
+Install: DevOps Change Velocity, DevOps Insights, DevOps Config
+For spokes:
+Navigate: All &gt; IntegrationHub &gt; Spokes Installer
+Install: Jenkins, GitHub, GitLab spokes as needed
+</code></pre>
+<p>بعد تفعيل القاعدة (com.snc.devops) ركّب الـ spokes لكل أداة CI/CD تستخدمها.<br />
+لا تركّب spoke لا تحتاجه — وفّر طبقات وموارد.</p>
+<p>⚠️ com.snc.devops يتطلّب اشتراك DevOps Change Velocity (مدفوع). جرّبه على PDI أولاً.</p>
+<hr />
+<h2 id="4-guided-setup-all-options">4) Guided Setup &amp; All Options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Navigate: All &gt; DevOps &gt; Administration &gt; Guided Setup — <a href="{BASE}/now/guided-setup">Open direct</a></p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>What you configure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Welcome</td>
+<td>License confirmation, persona selection</td>
+</tr>
+<tr>
+<td>Connect Tools</td>
+<td>Add Jenkins / GitHub / GitLab / Azure DevOps / Jira</td>
+</tr>
+<tr>
+<td>Map Pipelines</td>
+<td>Map imported pipelines to Application Services</td>
+</tr>
+<tr>
+<td>Change Control</td>
+<td>Define which steps require CR; choose Standard vs Normal</td>
+</tr>
+<tr>
+<td>Test Ingestion</td>
+<td>Configure JUnit/TestNG endpoints</td>
+</tr>
+<tr>
+<td>Code Quality &amp; Security</td>
+<td>SonarQube, Snyk, Veracode endpoints</td>
+</tr>
+<tr>
+<td>Artifact &amp; CMDB</td>
+<td>Artifact registries; CMDB CI mapping</td>
+</tr>
+<tr>
+<td>Insights</td>
+<td>Enable DORA metric collectors</td>
+</tr>
+<tr>
+<td>Notifications</td>
+<td>Slack/Teams/Email webhooks</td>
+</tr>
+<tr>
+<td>Now Assist (optional)</td>
+<td>Change risk score, deployment summary</td>
+</tr>
+</tbody>
+</table>
+<p>Important configuration options:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tool registry</td>
+<td>All &gt; DevOps &gt; Administration &gt; Tools · <a href="{BASE}/sn_devops_tool_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Pipeline list</td>
+<td>All &gt; DevOps &gt; Pipelines · <a href="{BASE}/sn_devops_pipeline_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Step library</td>
+<td>All &gt; DevOps &gt; Administration &gt; Steps · <a href="{BASE}/sn_devops_step_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Change control rules</td>
+<td>All &gt; DevOps &gt; Administration &gt; Change Control · <a href="{BASE}/change_request_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Policy Validations</td>
+<td>All &gt; DevOps &gt; Change &gt; Change Policies · <a href="{BASE}/change_request_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Artifact registries</td>
+<td>All &gt; DevOps &gt; Artifacts &gt; Registries · <a href="{BASE}/sn_devops_artifact_registry_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Insight Indicators</td>
+<td>All &gt; DevOps &gt; Insights &gt; Indicators · <a href="{BASE}/sn_devops_insight_indicator_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Application Services map</td>
+<td>All &gt; DevOps &gt; Service Mapping &gt; Applications · <a href="{BASE}/cmdb_ci_service_auto_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Webhook test page</td>
+<td>All &gt; DevOps &gt; Administration &gt; Webhook Inspector · <a href="{BASE}/sn_devops_webhook_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<p>ابدأ من Guided Setup ولا تتخطّاه — كل خطوة فيها فحوصات صحة.</p>
+<hr />
+<h2 id="5-end-to-end-process-cycle">5) End-to-End Process Cycle</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>The full pipeline → ITSM cycle:</p>
+<pre><code class="language-text">Commit (developer)
+ → SCM webhook to DevOps (sn_devops_commit row)
+ → Build (Jenkins/GitHub Actions step → sn_devops_step_execution)
+ → Test (JUnit/Cypress → sn_devops_test_result)
+ → Code quality (SonarQube → sn_devops_security_result)
+ → Security scan (Snyk/Veracode → sn_devops_security_result)
+ → Artifact published (sn_devops_artifact_version)
+ → Change Request (sn_devops_change_request → change_request)
+ ├─ Standard? auto-approve via policy
+ └─ Normal? CAB workflow
+ → Deploy step blocked until CR approved
+ → Deploy (artifact → cmdb_ci)
+ → Verify (smoke tests, health checks)
+ → Close CR (auto from pipeline)
+ → Monitor (incidents linked back)
+ → Feedback (Insights: DORA + change failure rate)
+</code></pre>
+<p>دورة كاملة من commit حتى مراقبة الإنتاج — كل خطوة لها سجلّ.</p>
+<p>Stage breakdown:</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>ServiceNow table</th>
+<th>Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commit</td>
+<td>sn_devops_commit</td>
+<td>SCM webhook</td>
+</tr>
+<tr>
+<td>Build start</td>
+<td>sn_devops_step_execution</td>
+<td>CI job start</td>
+</tr>
+<tr>
+<td>Tests</td>
+<td>sn_devops_test_result + summary</td>
+<td>Test step end</td>
+</tr>
+<tr>
+<td>Quality</td>
+<td>sn_devops_security_result</td>
+<td>Sonar webhook</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>sn_devops_security_result</td>
+<td>Snyk/Veracode</td>
+</tr>
+<tr>
+<td>Artifact</td>
+<td>sn_devops_artifact_version</td>
+<td>Publish step</td>
+</tr>
+<tr>
+<td>Change</td>
+<td>change_request via bridge</td>
+<td>Change step in pipeline</td>
+</tr>
+<tr>
+<td>Approval</td>
+<td>sysapproval_approver</td>
+<td>Policy or CAB</td>
+</tr>
+<tr>
+<td>Deploy</td>
+<td>change_task + post-deploy callback</td>
+<td>Deploy step end</td>
+</tr>
+<tr>
+<td>Verify</td>
+<td>sn_devops_step_execution (verify type)</td>
+<td>Smoke tests</td>
+</tr>
+<tr>
+<td>Close</td>
+<td>change_request.state = Closed</td>
+<td>Close callback</td>
+</tr>
+<tr>
+<td>Insights</td>
+<td>sn_devops_insight_metric</td>
+<td>Scheduled aggregator</td>
+</tr>
+</tbody>
+</table>
+<p>⚠️ The pipeline is the source of truth for state, not the CR. ServiceNow mirrors pipeline state.</p>
+<hr />
+<h2 id="6-development-custom-step-definitions-tools">6) Development — Custom Step Definitions &amp; Tools</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3Dc84db0e8839f0b509f02b0d6feaad3c9">Application Files</a><a href="../scripts/index.html">Scripts portal</a></nav>
+<p>Custom step types (for tools without out-of-box spoke):</p>
+<pre><code class="language-javascript">// Script Include: CustomDevOpsStepHandler
+var CustomDevOpsStepHandler = Class.create();
+CustomDevOpsStepHandler.prototype = {
+ initialize: function() {},
+</code></pre>
+<p>handleStepStart: function(payload) {<br />
+ var step = new GlideRecord(&lsquo;sn_devops_step_execution&rsquo;);<br />
+ step.initialize();<br />
+ step.pipeline_execution = payload.pipelineExecutionId;<br />
+ step.tool = payload.toolId;<br />
+ step.name = payload.stepName;<br />
+ step.state = &lsquo;in_progress&rsquo;;<br />
+ step.start_time = new GlideDateTime();<br />
+ step.external_id = payload.externalId;<br />
+ step.external_url = payload.url;<br />
+ return step.insert();<br />
+ },</p>
+<p>handleStepEnd: function(payload) {<br />
+ var step = new GlideRecord(&lsquo;sn_devops_step_execution&rsquo;);<br />
+ if (step.get(&lsquo;external_id&rsquo;, payload.externalId)) {<br />
+ step.state = payload.success ? &lsquo;success&rsquo; : &lsquo;failed&rsquo;;<br />
+ step.end_time = new GlideDateTime();<br />
+ step.output = payload.output;<br />
+ step.update();<br />
+ }<br />
+ },</p>
+<p>type: &lsquo;CustomDevOpsStepHandler&rsquo;<br />
+};</p>
+<p>Register a custom tool (Argo CD example):</p>
+<pre><code class="language-javascript">var tool = new GlideRecord('sn_devops_tool');
+tool.initialize();
+tool.name = 'Argo CD — prod cluster';
+tool.tool_type = 'orchestration';
+tool.url = 'https://argo.example.internal';
+tool.active = true;
+tool.connection_status = 'connected';
+var sysId = tool.insert();
+gs.info('Argo tool sys_id: ' + sysId);
+</code></pre>
+<p>Inbound REST handler (custom webhook):</p>
+<pre><code class="language-javascript">// Scripted REST resource: /api/x_acme/devops/argo
+(function process(request, response) {
+ var body = request.body.data;
+ var handler = new CustomDevOpsStepHandler();
+ if (body.event === 'sync_started') {
+ handler.handleStepStart({
+ pipelineExecutionId: body.pipelineExecutionId,
+ toolId: body.toolId,
+ stepName: 'Argo Sync ' + body.app,
+ externalId: body.syncId,
+ url: body.argoUrl
+ });
+ } else if (body.event === 'sync_completed') {
+ handler.handleStepEnd({
+ externalId: body.syncId,
+ success: body.status === 'Synced',
+ output: body.message
+ });
+ }
+ response.setStatus(200);
+})(request, response);
+</code></pre>
+<p>كل أداة لا تملك Spoke جاهز يمكن دمجها يدويًا عبر REST webhook + Script Include.</p>
+<hr />
+<h2 id="7-administration-roles-tool-config">7) Administration — Roles, Tool Config</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>Core roles:</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sn_devops.admin</td>
+<td>Full admin: tools, pipelines, policies</td>
+</tr>
+<tr>
+<td>sn_devops.user</td>
+<td>Read DevOps records</td>
+</tr>
+<tr>
+<td>sn_devops.pipeline_owner</td>
+<td>Modify pipelines they own</td>
+</tr>
+<tr>
+<td>sn_devops.integration_user</td>
+<td>Service account for inbound webhooks</td>
+</tr>
+<tr>
+<td>sn_devops.read</td>
+<td>Read-only insights dashboards</td>
+</tr>
+<tr>
+<td>sn_devops_config.admin</td>
+<td>Manage DevOps Config (feature flags)</td>
+</tr>
+<tr>
+<td>change_manager</td>
+<td>Approve CRs raised by pipelines</td>
+</tr>
+<tr>
+<td>change_coordinator</td>
+<td>Coordinate Normal CRs</td>
+</tr>
+</tbody>
+</table>
+<p>Tool registration checklist (per tool):</p>
+<pre><code class="language-text">1) Generate ServiceNow integration user + role sn_devops.integration_user
+2) Create OAuth credential record (System OAuth &gt; Application Registry)
+3) Register tool: All &gt; DevOps &gt; Administration &gt; Tools &gt; New
+4) Set Tool Type (orchestration / scm / artifact / test / quality / security)
+5) Test connection — should show &quot;connected&quot;
+6) Map projects/repos to Application Service in CMDB
+7) Confirm first webhook event arrives in Webhook Inspector
+</code></pre>
+<p>Common admin tasks:</p>
+<ul>
+<li>Rotate webhook secret quarterly (security baseline).</li>
+<li>Monitor sn_devops_step_execution for stuck state (&ldquo;in_progress&rdquo; &gt; 24h) — see §17 script 16.</li>
+<li>Archive pipeline executions older than 365 days.</li>
+<li>Review policy approvals weekly — auto-approval should stay &gt; 60%.</li>
+<li>Patch spokes monthly when Store updates publish.</li>
+</ul>
+<p>⚠️ Do NOT use admin for integrations. Always use sn_devops.integration_user so audit shows source.</p>
+<hr />
+<h2 id="8-hands-on-labs">8) Hands-on Labs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="lab-1-connect-jenkins-and-import-a-pipeline">Lab 1 — Connect Jenkins and import a pipeline</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">1) On Jenkins controller, install plugin &quot;ServiceNow DevOps&quot;
+2) In Jenkins &gt; Manage Jenkins &gt; System, add ServiceNow:
+ - Instance URL: https://&lt;pdi&gt;.service-now.com
+ - Credentials: Username/Password (sn_devops.integration_user)
+ - Tool ID: (created in next step)
+3) In ServiceNow: All &gt; DevOps &gt; Administration &gt; Tools &gt; New
+ - Name: Jenkins-PDI
+ - Tool Type: orchestration
+ - Active: true
+4) Add a Pipeline job in Jenkins; in Jenkinsfile add snDevOpsStep blocks (see §17 script 3)
+5) Run the job
+6) In ServiceNow: All &gt; DevOps &gt; Pipelines — the job appears
+</code></pre>
+<h3 id="lab-2-auto-create-change-request-from-build">Lab 2 — Auto-create Change Request from build</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<pre><code class="language-text">1) In Jenkinsfile add the snDevOpsChange step:
+2) Trigger the build
+3) In ServiceNow: change_request list — a new CR appears
+ - Type: Normal (default until policy applies)
+ - Description: auto-populated from Jenkins
+4) Approve the CR
+5) Jenkins pipeline resumes
+6) Inspect bridge record: sn_devops_change_request
+</code></pre>
+<h3 id="lab-3-standard-cr-auto-approval-policy">Lab 3 — Standard CR auto-approval policy</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_ui_policy_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">UI Policies</a><a href="{BASE}/sys_ui_policy_action_list.do">UI Policy Actions</a><a href="{BASE}/sys_data_policy2_list.do?sysparm_query=model_tableSTARTSWITHx_786686_hr_leave">Data Policies</a><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<pre><code class="language-text">1) Navigate: All &gt; DevOps &gt; Change &gt; Change Policies &gt; New
+2) Name: &quot;Auto-approve docs changes&quot;
+3) Conditions:
+ - Repo: docs-site
+ - Branch: main
+ - Tests passed: true
+ - Code coverage &gt;= 80
+4) Action: Set CR type = Standard, approval = Approved
+5) Trigger a build on docs-site/main with passing tests
+6) Observe CR auto-approved within seconds; deploy step continues
+</code></pre>
+<h3 id="lab-4-dora-metrics-dashboard">Lab 4 — DORA metrics dashboard</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<pre><code class="language-text">1) Navigate: All &gt; DevOps &gt; Insights &gt; Dashboards &gt; DORA Metrics
+2) Select Application Service: &quot;HR Leave App&quot;
+3) Verify 4 widgets render:
+ - Deployment Frequency
+ - Lead Time for Changes
+ - Change Failure Rate
+ - MTTR
+4) Trigger 3 builds in lab to populate data
+5) Export dashboard as PDF for sponsor demo
+</code></pre>
+<h3 id="lab-5-block-deploy-on-sonar-quality-gate">Lab 5 — Block deploy on Sonar quality gate</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">1) Connect SonarQube as a quality tool
+2) Add a quality gate to your pipeline policy:
+ - Conditions: Sonar Quality Gate Status = &quot;PASSED&quot;
+3) Push code with a critical bug; Sonar reports FAILED
+4) Pipeline deploy step blocked; CR stays Awaiting approval
+5) Fix bug; rerun; CR approves; deploy proceeds
+</code></pre>
+<hr />
+<h2 id="9-best-practices-common-mistakes">9) Best Practices &amp; Common Mistakes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Best practices:</p>
+<ul>
+<li>Start with one team and one pipeline; expand by team, not by feature.</li>
+<li>ابدأ بفريق واحد، لا تحاول تغطية الجميع من اليوم الأول.</li>
+<li>Map every pipeline to an Application Service in CMDB before turning on auto-CR.</li>
+<li>اربط كل بايبلاين بخدمة CMDB قبل تفعيل الـ CR التلقائي.</li>
+<li>Define Standard Change templates with explicit guardrails (tests, security, coverage).</li>
+<li>اشترط بوّابات اختبار + كود كوفر + فحص أمان قبل اعتبار التغيير Standard.</li>
+<li>Use Service Graph to compute blast radius — surface in CR risk score.</li>
+<li>استخدم Service Graph ليعرف Risk Score الفئة المتأثرة.</li>
+<li>Run DORA quarterly review with engineering leadership.</li>
+<li>اجتماع ربعي يعرض DORA على القيادة الهندسية.</li>
+</ul>
+<p>Common mistakes:</p>
+<ul>
+<li>Treating every pipeline as Normal CR — kills velocity gain.</li>
+<li>اعتبار كل تغيير Normal CR — يلغي الفائدة من الأتمتة.</li>
+<li>Forgetting to rotate webhook secrets — security finding waiting to happen.</li>
+<li>نسيان تدوير أسرار الويب هوك — ثغرة أمنية مؤكدة في المراجعة.</li>
+<li>Pushing pipeline data without CMDB mapping — CRs orphaned from CIs.</li>
+<li>إدخال البايبلاين دون ربط CMDB — CR بدون CI = لا تتبّع تأثير.</li>
+<li>Letting sn_devops.integration_user get admin — over-privileged service account.</li>
+<li>منح المستخدم التكاملي صلاحيات أكثر من اللازم — أكبر خطأ أمني شائع.</li>
+<li>Allowing both ServiceNow and Jira to be source of truth — pick one master.</li>
+<li>ازدواج مصدر الحقيقة بين Jira و ServiceNow — اختر واحدًا.</li>
+</ul>
+<p>⚠️ A CR without a CI link is a CR you cannot audit. Block at policy level.</p>
+<hr />
+<h2 id="10-cis-devops-exam-focus">10) CIS-DevOps Exam Focus</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>High-yield topics:</p>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>What to memorize</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Architecture</td>
+<td>Bridge table sn_devops_change_request linking pipeline to change_request</td>
+</tr>
+<tr>
+<td>Tool types</td>
+<td>orchestration, scm, artifact, test, quality, security, planning</td>
+</tr>
+<tr>
+<td>Step definitions</td>
+<td>sn_devops_step defines, sn_devops_step_execution runs</td>
+</tr>
+<tr>
+<td>Change policy engine</td>
+<td>Order, condition group, action (set type/state)</td>
+</tr>
+<tr>
+<td>Spokes</td>
+<td>Jenkins, GitHub, GitLab, Azure DevOps installed via IH Installer</td>
+</tr>
+<tr>
+<td>DORA metrics</td>
+<td>4 metrics, computed in sn_devops_insight_metric</td>
+</tr>
+<tr>
+<td>Integration user</td>
+<td>Role sn_devops.integration_user for inbound</td>
+</tr>
+<tr>
+<td>Webhooks</td>
+<td>Secret-signed, configurable per tool</td>
+</tr>
+<tr>
+<td>Service Graph link</td>
+<td>sn_devops_artifact.cmdb_ci</td>
+</tr>
+<tr>
+<td>Standard vs Normal</td>
+<td>Standard = template + policy auto-approve; Normal = CAB</td>
+</tr>
+</tbody>
+</table>
+<p>Likely exam scenarios:</p>
+<ul>
+<li>&ldquo;A pipeline raises CR but it sits in New&rdquo; — answer: missing policy or service account lacks role.</li>
+<li>&ldquo;Auto-approval not firing&rdquo; — answer: policy conditions, order, or Active = false.</li>
+<li>&ldquo;CR closed but pipeline shows running&rdquo; — answer: pipeline did not send close callback.</li>
+<li>&ldquo;DORA shows 0 deploys&rdquo; — answer: deployment step type not flagged as deploy on the step. — احفظ أسماء الجداول والأدوار بالضبط — يسأل عنها بالاسم الكامل.</li>
+</ul>
+<hr />
+<h2 id="11-portals-workspaces-roles-feature-catalog">11) Portals, Workspaces, Roles &amp; Feature Catalog</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>URL / Path</th>
+<th>Audience</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DevOps Change Workspace</td>
+<td>/now/devops-change/home</td>
+<td>DevOps Engineer, Change Manager</td>
+</tr>
+<tr>
+<td>DevOps Admin Console</td>
+<td>All &gt; DevOps &gt; Administration · <a href="{BASE}/sn_devops_list.do">Open direct</a></td>
+<td>sn_devops.admin</td>
+</tr>
+<tr>
+<td>Pipeline list</td>
+<td>All &gt; DevOps &gt; Pipelines · <a href="{BASE}/sn_devops_pipeline_list.do">Open direct</a></td>
+<td>Pipeline Owner</td>
+</tr>
+<tr>
+<td>Insights Dashboards</td>
+<td>All &gt; DevOps &gt; Insights &gt; Dashboards · <a href="{BASE}/pa_dashboards_list.do">Open direct</a></td>
+<td>Release Manager, Exec</td>
+</tr>
+<tr>
+<td>Change Workbench</td>
+<td>All &gt; Change &gt; Change Workbench · <a href="{BASE}/change_request_list.do">Open direct</a></td>
+<td>Change Manager</td>
+</tr>
+<tr>
+<td>Service Operations Workspace</td>
+<td>/now/sow/home</td>
+<td>Cross-role</td>
+</tr>
+<tr>
+<td>Now Mobile (approvals)</td>
+<td>App</td>
+<td>Approver</td>
+</tr>
+<tr>
+<td>Service Portal — My Approvals</td>
+<td>/sp or /esc</td>
+<td>Approver</td>
+</tr>
+</tbody>
+</table>
+<p>Role hierarchy quick reference:</p>
+<pre><code class="language-text">sn_devops.admin
+ ├─ sn_devops.pipeline_owner
+ ├─ sn_devops.user
+ └─ sn_devops.read
+</code></pre>
+<p>change_manager<br />
+change_coordinator<br />
+change_user<br />
+itil</p>
+<p>Feature catalog:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Where</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pipeline-driven CR</td>
+<td>Auto on connected tools</td>
+<td>The base value</td>
+</tr>
+<tr>
+<td>Standard change auto-approval</td>
+<td>Change Policy</td>
+<td>Single biggest velocity win</td>
+</tr>
+<tr>
+<td>Test result ingest</td>
+<td>Per pipeline step</td>
+<td>JUnit, TestNG, Cypress</td>
+</tr>
+<tr>
+<td>Quality gate</td>
+<td>Sonar spoke</td>
+<td>Blocks deploy on FAILED</td>
+</tr>
+<tr>
+<td>Security gate</td>
+<td>Snyk/Veracode</td>
+<td>Blocks on critical CVE</td>
+</tr>
+<tr>
+<td>DORA metrics</td>
+<td>Insights</td>
+<td>4 widgets out of box</td>
+</tr>
+<tr>
+<td>Rollback automation</td>
+<td>Custom flow</td>
+<td>See §17 script 8</td>
+</tr>
+<tr>
+<td>Feature flags</td>
+<td>DevOps Config</td>
+<td>LaunchDarkly integration</td>
+</tr>
+<tr>
+<td>Change risk score</td>
+<td>Now Assist for DevOps</td>
+<td>GenAI subscription</td>
+</tr>
+<tr>
+<td>Deployment summary</td>
+<td>Now Assist</td>
+<td>One-paragraph synopsis</td>
+</tr>
+<tr>
+<td>Service-aware deployment</td>
+<td>Service Graph</td>
+<td>Order deploys by dependency</td>
+</tr>
+<tr>
+<td>Multi-tool aggregation</td>
+<td>Pipeline graph</td>
+<td>One CR, many tools</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12-end-to-end-implementation-post-activation">12) End-to-End Implementation (Post-Activation)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>Phase 1 — Foundation (week 1):</p>
+<pre><code class="language-text">1) Activate com.snc.devops on a clone
+2) Install spokes for tools you use (Jenkins, GitHub, GitLab, Azure DevOps)
+3) Create service accounts; assign sn_devops.integration_user
+4) Register Tools (one for each Jenkins controller, GitHub org, etc.)
+5) Validate webhook inspector receives first event
+</code></pre>
+<p>Phase 2 — First pipeline (week 2):</p>
+<pre><code class="language-text">1) Pick a low-risk service (docs site or internal tool)
+2) Add snDevOpsStep / snDevOpsChange to Jenkinsfile (or GH Actions yml)
+3) Run the pipeline; confirm CR appears
+4) Approve manually; deploy proceeds
+5) Confirm close callback closes CR
+</code></pre>
+<p>Phase 3 — Policy automation (week 3):</p>
+<pre><code class="language-text">1) Build first Change Policy: Standard auto-approve for docs site
+2) Test 5 builds; verify auto-approval rate 100%
+3) Expand policy to next service with stricter conditions
+4) Document policy in KB for engineering org
+</code></pre>
+<p>Phase 4 — Quality &amp; security gates (week 4):</p>
+<pre><code class="language-text">1) Connect SonarQube and Snyk
+2) Build quality + security policy:
+ - Sonar Quality Gate = PASSED
+ - Snyk Critical = 0
+3) Test by intentionally failing each gate
+4) Confirm CR blocked; pipeline halted
+</code></pre>
+<p>Phase 5 — Insights &amp; DORA (week 5):</p>
+<pre><code class="language-text">1) Tag pipeline steps with their type (build, test, deploy, verify)
+2) Enable DORA collectors
+3) Populate 4 weeks of data
+4) Demo dashboard to engineering leadership
+</code></pre>
+<p>Phase 6 — Scale (week 6+):</p>
+<pre><code class="language-text">1) Rollout to next team (use Phase 2 checklist)
+2) Quarterly DORA review
+3) Monthly policy review (drop policies that never fire)
+4) Onboard new tools as needed
+</code></pre>
+<hr />
+<h2 id="13-options-instance-notes">13) Options &amp; Instance Notes — بدائل وميزات قد لا تظهر</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li>DevOps Change Velocity vs Change Acceleration: Velocity = base; Acceleration = policy engine. Some bundles require both.</li>
+<li>DevOps Insights vs Performance Analytics: Insights is preconfigured DORA, PA can be extended with custom indicators.</li>
+<li>Now Assist for DevOps: optional subscription; deployment risk score and CR summary.</li>
+<li>DevOps Config: separate license; feature flags, JSON config-as-code, LaunchDarkly integration.</li>
+<li>ServiceNow PDI does not include DevOps subscription — use trial or partner instance.</li>
+<li>Spokes from Store update independently — pin versions in change-controlled instances.</li>
+</ul>
+<p>⚠️ Always check entitlement in your contract before promising features to stakeholders.</p>
+<hr />
+<h2 id="14-implementation-scenarios">14) Implementation Scenarios</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>Scenario A — Single Jenkins → ServiceNow:</p>
+<pre><code class="language-text">- Tool: Jenkins (1)
+- Pipelines: 5–20
+- Outcome: All builds raise CR; docs/configs auto-approve
+- Time to value: 2 weeks
+</code></pre>
+<p>Scenario B — Multi-tool aggregation:</p>
+<pre><code class="language-text">- Tools: GitHub (SCM), Jenkins (CI), Argo (CD), Jira (planning), Sonar, Snyk
+- Pipelines: one logical pipeline graph from PR to prod
+- Outcome: One CR per release containing all tools' evidence
+- Time to value: 6–8 weeks
+</code></pre>
+<p>Scenario C — Federated enterprise:</p>
+<pre><code class="language-text">- Tools: 10+ Jenkins controllers across regions
+- Pipelines: 200+
+- Outcome: Centralized policy, region-aware change windows
+- Time to value: 6 months phased
+</code></pre>
+<p>Scenario D — Greenfield cloud-native (GitHub Actions only):</p>
+<pre><code class="language-text">- Tools: GitHub Actions, GitHub Packages, Snyk, Datadog
+- Pipelines: per-microservice, ~50
+- Outcome: Standard CR is default; deploy hundreds of times per day
+- Time to value: 4 weeks
+</code></pre>
+<p>Scenario E — Regulated (banking, ISO 27001, SOX):</p>
+<pre><code class="language-text">- Tools: Azure DevOps, Veracode, Splunk
+- Pipelines: per-application
+- Outcome: Every artifact tied to CR, every CR tied to ticket, full audit pack export
+- Time to value: 8–10 weeks
+</code></pre>
+<hr />
+<h2 id="15-zero-to-hero-end-to-end-implementation-scratch-go-live">15) Zero-to-Hero End-to-End Implementation (Scratch → Go-Live)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>End-to-end target: from blank instance to first auto-approved deploy in production within 30 days.</p>
+<p>Milestones:</p>
+<table>
+<thead>
+<tr>
+<th>Week</th>
+<th>Milestone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Plugins active, tools registered, first webhook received</td>
+</tr>
+<tr>
+<td>2</td>
+<td>First pipeline imports, first manual CR raised from build</td>
+</tr>
+<tr>
+<td>3</td>
+<td>First Standard policy live for one repo</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Quality + security gates wired</td>
+</tr>
+<tr>
+<td>5</td>
+<td>DORA dashboard live</td>
+</tr>
+<tr>
+<td>6</td>
+<td>First production deployment via auto-approved CR</td>
+</tr>
+</tbody>
+</table>
+<p>Exit criteria for go-live:</p>
+<ul>
+<li>All P1 services have an Application Service in CMDB.</li>
+<li>At least one Standard Change policy per service.</li>
+<li>Audit pack exportable from Insights.</li>
+<li>Runbook for rollback documented and tested twice.</li>
+<li>On-call DevOps SRE rotation set up. — لا تذهب للإنتاج قبل اختبار rollback حقيقي مرتين على الأقل في بيئة staging.</li>
+</ul>
+<hr />
+<h2 id="16-full-e2e-practice-pages-requirements-options-ar-en">16) Full E2E Practice · Pages · Requirements · Options (AR + EN)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Pages and forms a CIS-DevOps candidate must navigate fluently:</p>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Purpose</th>
+<th>Key actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All &gt; DevOps &gt; Administration &gt; Tools · <a href="{BASE}/sn_devops_tool_list.do">Open direct</a></td>
+<td>Tool list</td>
+<td>Add, test connection, rotate secret</td>
+</tr>
+<tr>
+<td>Tool form</td>
+<td>Tool detail</td>
+<td>Set type, URL, OAuth, owner</td>
+</tr>
+<tr>
+<td>All &gt; DevOps &gt; Pipelines · <a href="{BASE}/sn_devops_pipeline_list.do">Open direct</a></td>
+<td>Pipeline list</td>
+<td>Open pipeline, view graph</td>
+</tr>
+<tr>
+<td>Pipeline form</td>
+<td>Pipeline detail</td>
+<td>Map to Application Service, tag steps</td>
+</tr>
+<tr>
+<td>All &gt; DevOps &gt; Pipelines &gt; Executions · <a href="{BASE}/sn_devops_pipeline_list.do">Open direct</a></td>
+<td>Per-run history</td>
+<td>Drill into a single run, inspect steps</td>
+</tr>
+<tr>
+<td>Pipeline Execution form</td>
+<td>Run detail</td>
+<td>View CR link, artifacts, tests, security</td>
+</tr>
+<tr>
+<td>All &gt; DevOps &gt; Change &gt; Change Policies · <a href="{BASE}/change_request_list.do">Open direct</a></td>
+<td>Policy list</td>
+<td>Order, conditions, actions</td>
+</tr>
+<tr>
+<td>Policy form</td>
+<td>Policy detail</td>
+<td>Add condition, set CR type/state</td>
+</tr>
+<tr>
+<td>All &gt; DevOps &gt; Artifacts &gt; Registries · <a href="{BASE}/sn_devops_artifact_registry_list.do">Open direct</a></td>
+<td>Registry list</td>
+<td>Add JFrog, Nexus, GH Packages</td>
+</tr>
+<tr>
+<td>Artifact Version form</td>
+<td>Version detail</td>
+<td>CI mapping, vulnerability list</td>
+</tr>
+<tr>
+<td>change_request form (DevOps)</td>
+<td>CR raised by pipeline</td>
+<td>Approve, view pipeline back-link</td>
+</tr>
+<tr>
+<td>All &gt; DevOps &gt; Insights &gt; Dashboards · <a href="{BASE}/change_request_list.do">Open direct</a></td>
+<td>DORA &amp; change health</td>
+<td>Filter by Application Service</td>
+</tr>
+<tr>
+<td>All &gt; DevOps &gt; Administration &gt; Webhook Inspector · <a href="{BASE}/sn_devops_webhook_list.do">Open direct</a></td>
+<td>Live webhook trace</td>
+<td>Replay, view payload</td>
+</tr>
+<tr>
+<td>All &gt; DevOps &gt; Service Mapping &gt; Applications · <a href="{BASE}/sn_devops_pipeline_list.do">Open direct</a></td>
+<td>App-pipeline map</td>
+<td>Bind pipelines to services</td>
+</tr>
+<tr>
+<td>Now Mobile &gt; Approvals</td>
+<td>On-the-go approval</td>
+<td>Swipe approve/reject</td>
+</tr>
+</tbody>
+</table>
+<p>Practice exercise (full E2E):</p>
+<pre><code class="language-text">1) Stand up PDI, activate com.snc.devops + spokes
+2) Connect GitHub (org level) and Jenkins (one controller)
+3) Pick a sample repo &quot;leave-app-docs&quot; and a Jenkinsfile that builds + deploys to S3
+4) Wire snDevOpsStep + snDevOpsChange in Jenkinsfile
+5) Push a commit; observe CR raised in ServiceNow
+6) Approve CR manually first time; confirm deploy proceeds
+7) Build Standard policy on repo + branch + tests-passed; observe auto-approve next run
+8) Connect SonarQube; add quality gate; deliberately fail Sonar; observe deploy blocked
+9) Connect Datadog; correlate post-deploy incidents to the CR
+10) Open DORA dashboard; capture screenshots for sponsor demo
+11) Export Update Set &quot;DevOps_Baseline_v1&quot;
+</code></pre>
+<p>نفّذ التمرين على PDI كاملاً قبل دخول الامتحان — الأسئلة عملية وليست نظرية فقط.</p>
+<hr />
+<h2 id="17-power-user-playbook-devops">§17 — Power User Playbook (DevOps)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>Day-in-the-life recipes, role workflows, and 20 production-grade scripts.<br />
+ملف عملي مكثّف لكل دور — مطور، DevOps Engineer، SRE، Release Manager، Change Manager، Auditor.</p>
+<hr />
+<h3 id="171-personas-what-each-role-does-in-a-day">17.1 Personas — what each role does in a day</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Primary table(s)</th>
+<th>Day-1 menus</th>
+<th>Main outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Developer</strong></td>
+<td>sn_devops_pull_request, sn_devops_commit</td>
+<td>GitHub UI, /now/devops-change/home</td>
+<td>Merge PR, see CR auto-approve, deploy</td>
+</tr>
+<tr>
+<td><strong>DevOps Engineer</strong></td>
+<td>sn_devops_pipeline, sn_devops_tool</td>
+<td>DevOps Admin Console</td>
+<td>Configure tools, policies, gates</td>
+</tr>
+<tr>
+<td><strong>SRE</strong></td>
+<td>change_request, sn_devops_pipeline_execution, incident</td>
+<td>SOW + DevOps Insights</td>
+<td>Monitor deploys, rollback, post-mortem</td>
+</tr>
+<tr>
+<td><strong>Release Manager</strong></td>
+<td>change_request (release), sn_devops_insight_metric</td>
+<td>Change Workbench</td>
+<td>Plan release train, balance velocity vs risk</td>
+</tr>
+<tr>
+<td><strong>Change Manager</strong></td>
+<td>change_request, change_policy</td>
+<td>Change Workbench, CAB calendar</td>
+<td>Approve Normal CRs, govern policies</td>
+</tr>
+<tr>
+<td><strong>Auditor</strong></td>
+<td>sn_devops_*, change_request, audit_event</td>
+<td>DevOps Insights, GRC</td>
+<td>Export change velocity report, prove trail</td>
+</tr>
+</tbody>
+</table>
+<p>كل دور له شاشة أساسية يفتحها كل صباح — لا تخلط بينها.</p>
+<p>⚠️ Do not give Developers sn_devops.admin — sn_devops.pipeline_owner is enough for self-service.</p>
+<hr />
+<h3 id="172-developer-day-in-the-life">17.2 Developer — day in the life</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Step-by-step (commit to deploy):</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action (EN)</th>
+<th>الإجراء (AR)</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Branch from main in GitHub</td>
+<td>فرع جديد من main</td>
+<td>GitHub</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Commit code; CI runs unit tests</td>
+<td>كومت + اختبارات تلقائية</td>
+<td>Jenkins/GH Actions</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Open PR; reviewers assigned automatically</td>
+<td>فتح PR</td>
+<td>GitHub</td>
+</tr>
+<tr>
+<td>4</td>
+<td>PR merges to main → pipeline triggers</td>
+<td>الدمج يطلق البايبلاين</td>
+<td>GitHub</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Pipeline raises CR in ServiceNow (auto)</td>
+<td>CR يُفتح تلقائيًا</td>
+<td>DevOps Workspace</td>
+</tr>
+<tr>
+<td>6</td>
+<td>If Standard policy matches → auto-approved</td>
+<td>اعتماد تلقائي إن طابق السياسة</td>
+<td>Policy engine</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Deploy step runs; artifact pushed to registry</td>
+<td>النشر يبدأ والـ artifact ينشر</td>
+<td>Jenkins/Argo</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Verify step runs smoke tests</td>
+<td>اختبارات تحقّق سريعة</td>
+<td>CI</td>
+</tr>
+<tr>
+<td>9</td>
+<td>CR closed; deployment recorded in CMDB</td>
+<td>CR يغلق + CMDB يحدّث</td>
+<td>ServiceNow</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Datadog alert fires if regression → linked back to CR</td>
+<td>Datadog يربط الحادث بالنشر</td>
+<td>SOW</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quick commands for developer:</strong></p>
+<pre><code class="language-bash">git checkout -b feature/leave-balance-fix
+git commit -am &quot;fix: leave balance off by one&quot;
+git push origin feature/leave-balance-fix
+gh pr create --fill --base main
+gh pr merge --auto --squash
+</code></pre>
+<p>المطور لا يفتح ServiceNow أبدًا في الحالة العادية — كل شيء يبدأ من Git.</p>
+<hr />
+<h3 id="173-devops-engineer-recipes-first-hour-with-a-new-pipeline">17.3 DevOps Engineer recipes — first hour with a new pipeline</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Recipe A — Onboard a new Jenkins controller:</strong></p>
+<pre><code class="language-text">1) All &gt; DevOps &gt; Administration &gt; Tools &gt; New
+2) Name: jenkins-eu-prod · Tool Type: orchestration · URL: https://jenkins-eu.example
+3) Authentication: OAuth (recommended) or Basic with service account
+4) Test connection — must return HTTP 200 from /api/json
+5) On Jenkins controller, install &quot;ServiceNow DevOps&quot; plugin
+6) Configure plugin with Tool ID from step 2 + service account creds
+7) Pin plugin version in change control
+</code></pre>
+<p><strong>Recipe B — Wire Jenkinsfile to ServiceNow:</strong></p>
+<pre><code class="language-text">1) Wrap each stage in snDevOpsStep
+2) Add snDevOpsChange before deploy stage
+3) Set snDevOpsArtifact when publishing build output
+4) Set snDevOpsPackage before deploy to group artifacts
+5) Commit Jenkinsfile, trigger first run, watch Webhook Inspector
+</code></pre>
+<p><strong>Recipe C — Define your first Change Policy:</strong></p>
+<pre><code class="language-text">1) All &gt; DevOps &gt; Change &gt; Change Policies &gt; New
+2) Name: &quot;Docs site standard auto-approve&quot;
+3) Conditions:
+ - Repository = docs-site
+ - Branch = main
+ - Test Pass Rate &gt;= 95
+4) Action: CR Type = Standard · State = Approved
+5) Save, set Order = 100, Active = true
+6) Run 3 builds; verify auto-approval ratio
+</code></pre>
+<p>ابدأ بسياسة واحدة بسيطة، ثم اضف الشروط تدريجيًا.</p>
+<hr />
+<h3 id="174-sre-recipes-deploy-monitoring-rollback">17.4 SRE recipes — deploy monitoring &amp; rollback</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Recipe A — Monitor active deploys:</strong></p>
+<pre><code class="language-text">1) /now/sow/home → Deployments tab (custom workspace)
+2) Filter: state = In Progress AND environment = prod
+3) Side panel: linked CIs, recent incidents, Datadog widget
+4) Click pipeline link to view live step log
+</code></pre>
+<p><strong>Recipe B — Trigger rollback (one-click):</strong></p>
+<pre><code class="language-javascript">// UI Action on change_request — &quot;Rollback this deployment&quot;
+(function rollback(current) {
+ if (!current.u_pipeline_execution) {
+ gs.addErrorMessage('No pipeline link found.');
+ return;
+ }
+ var roll = new GlideRecord('change_request');
+ roll.initialize();
+ roll.short_description = 'ROLLBACK: ' + current.short_description;
+ roll.type = 'emergency';
+ roll.priority = 1;
+ roll.description = 'Auto-rollback of CR ' + current.number;
+ roll.cmdb_ci = current.cmdb_ci;
+ roll.parent = current.sys_id;
+ var rollId = roll.insert();
+</code></pre>
+<p>var ihEvent = new sn_ih.IntegrationHubEvent(&lsquo;devops.rollback.trigger&rsquo;);<br />
+ ihEvent.setPayload({<br />
+ originalExecutionId: current.u_pipeline_execution.toString(),<br />
+ rollbackCr: rollId,<br />
+ target: current.cmdb_ci.getDisplayValue()<br />
+ });<br />
+ ihEvent.send();</p>
+<p>gs.addInfoMessage(&lsquo;Rollback CR &rsquo; + roll.number + &rsquo; created and pipeline triggered.&rsquo;);<br />
+})(current); — السكربت يفتح CR جديد من نوع Emergency ويرسل حدث IH للبايبلاين الذي يعرف كيف يرجع للنسخة السابقة.</p>
+<hr />
+<h3 id="175-release-manager-recipes-release-train">17.5 Release Manager recipes — release train</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Recipe A — Build a release record from many CRs:</strong></p>
+<pre><code class="language-text">1) All &gt; Change &gt; Releases &gt; New
+2) Name: &quot;2026.06 monthly platform release&quot;
+3) Window: 2026-06-25 22:00 → 02:00 AEST
+4) Add CRs by filter: state = Approved AND target_release IS EMPTY AND planned_start_date BETWEEN window
+5) Run conflict check (calendar overlap, freeze windows)
+6) Notify owners via release notification template
+</code></pre>
+<p><strong>Recipe B — Use Now Assist to summarize release risk:</strong></p>
+<pre><code class="language-javascript">// Background script — summarize release risk
+var releaseSysId = '&lt;release sys_id&gt;';
+var crs = new GlideRecord('change_request');
+crs.addQuery('target_release', releaseSysId);
+crs.query();
+var notes = [];
+while (crs.next()) {
+ notes.push(crs.number + ' / ' + crs.cmdb_ci.getDisplayValue() + ' / risk=' + crs.risk);
+}
+var na = new sn_nowassist.NowAssistInline();
+var summary = na.summarizeText('Release ' + releaseSysId + ' contains: ' + notes.join('; '));
+gs.info('Risk summary: ' + summary);
+</code></pre>
+<hr />
+<h3 id="176-change-manager-governance-day">17.6 Change Manager — governance day</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<pre><code class="language-text">- Open Change Workbench
+- Tab: Awaiting CAB → 12 CRs
+- For each: click Risk panel → see Now Assist risk score + CI blast radius
+- Approve / Reject / Defer
+- Tab: Auto-approval health → ratio per policy → flag policies &lt; 80% success
+- Schedule next CAB: pull Standard CRs from previous week into &quot;FYI&quot; log
+</code></pre>
+<p>مدير التغيير لا يوقف العمل — هو يحوكم السياسات.</p>
+<hr />
+<h3 id="177-auditor-exporting-audit-pack">17.7 Auditor — exporting audit pack</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<pre><code class="language-text">1) All &gt; DevOps &gt; Insights &gt; Reports &gt; Change Velocity
+2) Filter: Last 90 days · Production environments only
+3) Export Excel — columns: CR number, pipeline, commit hash, approver, deploy time, close time
+4) Cross-check with GRC &gt; Audit Engagement evidence requests
+5) Pull Update Set logs for prod scope (sys_update_set)
+6) Attach to GRC engagement
+</code></pre>
+<hr />
+<h3 id="178-top-20-devops-scripts">17.8 Top 20 DevOps scripts</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>1) Auto-create Change Request from pipeline build (Business Rule):</strong></p>
+<pre><code class="language-javascript">// Business Rule — after insert on sn_devops_pipeline_execution
+(function createCR(current) {
+ var cr = new GlideRecord('change_request');
+ cr.initialize();
+ cr.short_description = 'Pipeline ' + current.pipeline.getDisplayValue() + ' build ' + current.number;
+ cr.description = 'Auto-raised by DevOps. Pipeline: ' + current.pipeline_url;
+ cr.type = 'normal';
+ cr.cmdb_ci = current.pipeline.application_service;
+ cr.requested_by = current.triggered_by;
+ cr.assignment_group = current.pipeline.assignment_group;
+ var crId = cr.insert();
+</code></pre>
+<p>var bridge = new GlideRecord(&lsquo;sn_devops_change_request&rsquo;);<br />
+ bridge.initialize();<br />
+ bridge.pipeline_execution = current.sys_id;<br />
+ bridge.change_request = crId;<br />
+ bridge.insert();<br />
+})(current);</p>
+<p><strong>2) Policy-based auto-approval for Standard Changes:</strong></p>
+<pre><code class="language-javascript">// Script Include: DevOpsPolicyEngine.evaluate
+var DevOpsPolicyEngine = Class.create();
+DevOpsPolicyEngine.prototype = {
+ initialize: function() {},
+</code></pre>
+<p>evaluate: function(crSysId) {<br />
+ var cr = new GlideRecord(&lsquo;change_request&rsquo;);<br />
+ if (!cr.get(crSysId)) return false;</p>
+<p>var policy = new GlideRecord(&lsquo;sn_devops_change_policy&rsquo;);<br />
+ policy.addQuery(&lsquo;active&rsquo;, true);<br />
+ policy.orderBy(&lsquo;order&rsquo;);<br />
+ policy.query();<br />
+ while (policy.next()) {<br />
+ if (this._matches(cr, policy)) {<br />
+ cr.type = &lsquo;standard&rsquo;;<br />
+ cr.approval = &lsquo;approved&rsquo;;<br />
+ cr.state = -3;<br />
+ cr.work_notes = &lsquo;Auto-approved by policy: &rsquo; + policy.name;<br />
+ cr.update();<br />
+ return true;<br />
+ }<br />
+ }<br />
+ return false;<br />
+ },</p>
+<p>_matches: function(cr, policy) {<br />
+ return GlideFilter.checkRecord(cr, policy.condition);<br />
+ },</p>
+<p>type: &lsquo;DevOpsPolicyEngine&rsquo;<br />
+};</p>
+<p><strong>3) Pipeline status sync to CR (snDevOpsChange Jenkinsfile snippet):</strong></p>
+<pre><code class="language-text">pipeline {
+ agent any
+ stages {
+ stage('Build') {
+ steps { snDevOpsStep() { sh 'mvn -B clean package' } }
+ }
+ stage('Test') {
+ steps { snDevOpsStep() { sh 'mvn -B test' } }
+ post { always { snDevOpsTestSummaries(testSummaries: [[name: 'JUnit', testType: 'JUnit']]) } }
+ }
+ stage('Change') {
+ steps { snDevOpsChange(applicationName: 'HR Leave App', changeRequestDetails: '{&quot;setCloseCode&quot;: true}') }
+ }
+ stage('Deploy') {
+ steps { snDevOpsStep() { sh './deploy.sh prod' } }
+ }
+ }
+}
+</code></pre>
+<p><strong>4) Artifact-to-CI mapping (automatic CMDB update):</strong></p>
+<pre><code class="language-javascript">// Business Rule — after insert on sn_devops_artifact_version
+(function mapToCi(current) {
+ var ci = new GlideRecord('cmdb_ci_appl');
+ ci.addQuery('name', current.artifact.name);
+ ci.setLimit(1);
+ ci.query();
+ if (ci.next()) {
+ current.cmdb_ci = ci.sys_id;
+ current.update();
+ gs.info('Artifact ' + current.version + ' linked to CI ' + ci.name);
+ } else {
+ gs.warn('No CI for artifact ' + current.artifact.name);
+ }
+})(current);
+</code></pre>
+<p><strong>5) Test result aggregator (JUnit → Insights):</strong></p>
+<pre><code class="language-javascript">// Scripted REST resource: POST /api/x_acme/devops/junit
+(function process(request, response) {
+ var data = request.body.data;
+ var summary = new GlideRecord('sn_devops_test_summary');
+ summary.initialize();
+ summary.pipeline_execution = data.executionId;
+ summary.passed = data.passed;
+ summary.failed = data.failed;
+ summary.skipped = data.skipped;
+ summary.total = data.total;
+ var sid = summary.insert();
+</code></pre>
+<p>data.cases.forEach(function(c) {<br />
+ var r = new GlideRecord(&lsquo;sn_devops_test_result&rsquo;);<br />
+ r.initialize();<br />
+ r.test_summary = sid;<br />
+ r.name = c.name;<br />
+ r.classname = c.classname;<br />
+ r.status = c.status;<br />
+ r.duration = c.duration;<br />
+ r.insert();<br />
+ });</p>
+<p>response.setStatus(201);<br />
+})(request, response);</p>
+<p><strong>6) Code quality gate (SonarQube → block deploy):</strong></p>
+<pre><code class="language-javascript">// Flow Designer subflow (Script step): block_if_sonar_failed
+(function execute(inputs, outputs) {
+ var sonar = new GlideRecord('sn_devops_security_result');
+ sonar.addQuery('pipeline_execution', inputs.executionId);
+ sonar.addQuery('tool_type', 'quality');
+ sonar.addQuery('gate_status', 'FAILED');
+ sonar.query();
+ outputs.block = sonar.hasNext();
+ outputs.reason = outputs.block ? 'Sonar quality gate FAILED' : 'OK';
+})(inputs, outputs);
+</code></pre>
+<p><strong>7) Vulnerability gate (Snyk/Veracode block on critical CVE):</strong></p>
+<pre><code class="language-javascript">// Business Rule — before update on sn_devops_pipeline_execution where step = deploy
+(function gateCves(current) {
+ var sec = new GlideAggregate('sn_devops_security_result');
+ sec.addQuery('pipeline_execution', current.sys_id);
+ sec.addQuery('severity', 'critical');
+ sec.addAggregate('COUNT');
+ sec.query();
+ sec.next();
+ var count = parseInt(sec.getAggregate('COUNT'), 10) || 0;
+ if (count &gt; 0) {
+ current.state = 'blocked';
+ current.block_reason = count + ' critical CVE(s) found';
+ gs.addErrorMessage('Deploy blocked: ' + count + ' critical CVEs');
+ }
+})(current);
+</code></pre>
+<p><strong>8) Rollback automation (auto-create rollback CR + trigger):</strong></p>
+<pre><code class="language-javascript">// Scheduled Job — detect failed deploy in last 15 min and auto-rollback
+var failed = new GlideRecord('sn_devops_pipeline_execution');
+failed.addQuery('state', 'failed');
+failed.addQuery('step_type', 'deploy');
+failed.addQuery('end_time', '&gt;', gs.minutesAgo(15));
+failed.addQuery('rollback_triggered', false);
+failed.query();
+while (failed.next()) {
+ var cr = new GlideRecord('change_request');
+ cr.initialize();
+ cr.short_description = 'AUTO-ROLLBACK: ' + failed.pipeline.getDisplayValue();
+ cr.type = 'emergency';
+ cr.priority = 1;
+ cr.cmdb_ci = failed.pipeline.application_service;
+ cr.insert();
+</code></pre>
+<p>var ev = new sn_ih.IntegrationHubEvent(&lsquo;devops.rollback.trigger&rsquo;);<br />
+ ev.setPayload({ executionId: failed.sys_id.toString(), crSysId: cr.sys_id.toString() });<br />
+ ev.send();</p>
+<p>failed.rollback_triggered = true;<br />
+ failed.update();<br />
+}</p>
+<p><strong>9) Feature flag toggle automation (LaunchDarkly via DevOps Config):</strong></p>
+<pre><code class="language-javascript">// Background script — toggle feature flag at deploy time
+var ld = new sn_devops_config.LaunchDarklyClient();
+ld.toggleFlag({
+ project: 'leave-app',
+ environment: 'prod',
+ flag: 'new-balance-engine',
+ state: true,
+ reason: 'CR0010234 deploy completed'
+});
+</code></pre>
+<p><strong>10) Deployment frequency (DORA) calculator:</strong></p>
+<pre><code class="language-javascript">// Scheduled Job — daily 02:00
+var ga = new GlideAggregate('sn_devops_pipeline_execution');
+ga.addQuery('step_type', 'deploy');
+ga.addQuery('state', 'success');
+ga.addQuery('end_time', '&gt;=', gs.daysAgoStart(1));
+ga.addQuery('end_time', '&lt;', gs.daysAgoStart(0));
+ga.addAggregate('COUNT');
+ga.groupBy('pipeline.application_service');
+ga.query();
+while (ga.next()) {
+ var m = new GlideRecord('sn_devops_insight_metric');
+ m.initialize();
+ m.metric_type = 'deployment_frequency';
+ m.application_service = ga.getValue('pipeline.application_service');
+ m.value = ga.getAggregate('COUNT');
+ m.period_start = gs.daysAgoStart(1);
+ m.period_end = gs.daysAgoStart(0);
+ m.insert();
+}
+</code></pre>
+<p><strong>11) Lead time for changes (DORA):</strong></p>
+<pre><code class="language-javascript">// Scheduled Job — daily
+var rs = new GlideRecord('sn_devops_pipeline_execution');
+rs.addQuery('step_type', 'deploy');
+rs.addQuery('state', 'success');
+rs.addQuery('end_time', '&gt;=', gs.daysAgoStart(1));
+rs.query();
+while (rs.next()) {
+ var firstCommit = new GlideRecord('sn_devops_commit');
+ firstCommit.addQuery('pipeline_execution', rs.sys_id);
+ firstCommit.orderBy('commit_time');
+ firstCommit.setLimit(1);
+ firstCommit.query();
+ if (firstCommit.next()) {
+ var leadMs = new GlideDateTime(rs.end_time).getNumericValue() -
+ new GlideDateTime(firstCommit.commit_time).getNumericValue();
+ var m = new GlideRecord('sn_devops_insight_metric');
+ m.initialize();
+ m.metric_type = 'lead_time_for_changes';
+ m.application_service = rs.pipeline.application_service;
+ m.value = leadMs / 1000 / 60; // minutes
+ m.execution = rs.sys_id;
+ m.insert();
+ }
+}
+</code></pre>
+<p><strong>12) Change failure rate (DORA):</strong></p>
+<pre><code class="language-javascript">// Scheduled Job — daily
+var total = new GlideAggregate('change_request');
+total.addQuery('closed_at', '&gt;=', gs.daysAgoStart(1));
+total.addAggregate('COUNT');
+total.groupBy('cmdb_ci');
+total.query();
+</code></pre>
+<p>var failed = {};<br />
+var f = new GlideAggregate(&lsquo;change_request&rsquo;);<br />
+f.addQuery(&lsquo;closed_at&rsquo;, &lsquo;&gt;=&rsquo;, gs.daysAgoStart(1));<br />
+f.addQuery(&lsquo;close_code&rsquo;, &lsquo;IN&rsquo;, &lsquo;unsuccessful,backed_out&rsquo;);<br />
+f.addAggregate(&lsquo;COUNT&rsquo;);<br />
+f.groupBy(&lsquo;cmdb_ci&rsquo;);<br />
+f.query();<br />
+while (f.next()) {<br />
+ failed[f.getValue(&lsquo;cmdb_ci&rsquo;)] = parseInt(f.getAggregate(&lsquo;COUNT&rsquo;), 10);<br />
+}</p>
+<p>while (total.next()) {<br />
+ var ci = total.getValue(&lsquo;cmdb_ci&rsquo;);<br />
+ var t = parseInt(total.getAggregate(&lsquo;COUNT&rsquo;), 10);<br />
+ var fr = (failed[ci] || 0) / t;<br />
+ var m = new GlideRecord(&lsquo;sn_devops_insight_metric&rsquo;);<br />
+ m.initialize();<br />
+ m.metric_type = &lsquo;change_failure_rate&rsquo;;<br />
+ m.application_service = ci;<br />
+ m.value = fr;<br />
+ m.insert();<br />
+}</p>
+<p><strong>13) MTTR for failures (DORA):</strong></p>
+<pre><code class="language-javascript">// Scheduled Job — daily
+var inc = new GlideRecord('incident');
+inc.addQuery('caused_by_change.isNotEmpty', true);
+inc.addQuery('resolved_at', '&gt;=', gs.daysAgoStart(1));
+inc.query();
+while (inc.next()) {
+ var openMs = new GlideDateTime(inc.resolved_at).getNumericValue() -
+ new GlideDateTime(inc.opened_at).getNumericValue();
+ var m = new GlideRecord('sn_devops_insight_metric');
+ m.initialize();
+ m.metric_type = 'mttr';
+ m.application_service = inc.business_service;
+ m.value = openMs / 1000 / 60;
+ m.incident = inc.sys_id;
+ m.insert();
+}
+</code></pre>
+<p><strong>14) Pull Request → CR linker (multiple PRs to one CR):</strong></p>
+<pre><code class="language-javascript">// Business Rule — after insert on sn_devops_pull_request (merged)
+(function linkPrToCr(current) {
+ if (current.state != 'merged') return;
+ var cr = new GlideRecord('change_request');
+ cr.addQuery('cmdb_ci', current.repository.application_service);
+ cr.addQuery('state', 'IN', '-3,-2,-1,0'); // open / approved
+ cr.orderByDesc('sys_created_on');
+ cr.setLimit(1);
+ cr.query();
+ if (cr.next()) {
+ var link = new GlideRecord('sn_devops_pr_cr_link');
+ link.initialize();
+ link.pull_request = current.sys_id;
+ link.change_request = cr.sys_id;
+ link.insert();
+ cr.work_notes = 'Linked PR #' + current.number + ' (' + current.title + ')';
+ cr.update();
+ }
+})(current);
+</code></pre>
+<p><strong>15) Multi-stage approval orchestrator:</strong></p>
+<pre><code class="language-javascript">// Subflow trigger: pipeline reaches &quot;approval-gate&quot; step
+// Script step: route to right approver groups based on environment + risk
+(function execute(inputs, outputs) {
+ var cr = new GlideRecord('change_request');
+ cr.get(inputs.crSysId);
+ var groups = [];
+ if (cr.risk == '2') groups.push('CAB');
+ if (cr.cmdb_ci.support_group) groups.push(cr.cmdb_ci.support_group.toString());
+ if (cr.business_service.environment == 'prod') groups.push('Production Owners');
+ outputs.approverGroups = groups.join(',');
+})(inputs, outputs);
+</code></pre>
+<p><strong>16) Slack/Teams notification for stuck pipelines:</strong></p>
+<pre><code class="language-javascript">// Scheduled Job — every 15 min
+var stuck = new GlideRecord('sn_devops_step_execution');
+stuck.addQuery('state', 'in_progress');
+stuck.addQuery('start_time', '&lt;', gs.hoursAgo(1));
+stuck.query();
+while (stuck.next()) {
+ var payload = {
+ text: ':warning: Pipeline step stuck: ' + stuck.name +
+ ' in ' + stuck.pipeline_execution.getDisplayValue() +
+ ' (' + stuck.external_url + ')'
+ };
+ var r = new sn_ws.RESTMessageV2();
+ r.setEndpoint(gs.getProperty('x_acme.slack.webhook'));
+ r.setHttpMethod('POST');
+ r.setRequestHeader('Content-Type', 'application/json');
+ r.setRequestBody(JSON.stringify(payload));
+ r.execute();
+}
+</code></pre>
+<p><strong>17) Auto-link incident to deployment (post-deploy issues):</strong></p>
+<pre><code class="language-javascript">// Business Rule — after insert on incident
+(function linkInc(current) {
+ var cutoff = new GlideDateTime();
+ cutoff.addSeconds(-3600); // last hour
+ var dep = new GlideRecord('sn_devops_pipeline_execution');
+ dep.addQuery('step_type', 'deploy');
+ dep.addQuery('state', 'success');
+ dep.addQuery('pipeline.application_service', current.business_service);
+ dep.addQuery('end_time', '&gt;', cutoff);
+ dep.orderByDesc('end_time');
+ dep.setLimit(1);
+ dep.query();
+ if (dep.next()) {
+ current.caused_by_change = dep.change_request.toString();
+ current.work_notes = 'Auto-linked to recent deployment: ' + dep.pipeline.getDisplayValue();
+ current.update();
+ }
+})(current);
+</code></pre>
+<p><strong>18) Pipeline ownership audit:</strong></p>
+<pre><code class="language-javascript">// Background script — find pipelines with no owner or stale owner
+var p = new GlideRecord('sn_devops_pipeline');
+p.query();
+var orphans = [];
+while (p.next()) {
+ if (p.owner.nil()) { orphans.push(p.name + ' :: NO_OWNER'); continue; }
+ var u = new GlideRecord('sys_user');
+ if (u.get(p.owner) &amp;&amp; !u.active) orphans.push(p.name + ' :: INACTIVE_OWNER ' + u.user_name);
+}
+gs.info('Pipelines needing owner attention:\n' + orphans.join('\n'));
+</code></pre>
+<p><strong>19) Service dependency-aware deployment ordering:</strong></p>
+<pre><code class="language-javascript">// Script Include: DevOpsDependencyOrdering.next
+var DevOpsDependencyOrdering = Class.create();
+DevOpsDependencyOrdering.prototype = {
+ initialize: function() {},
+</code></pre>
+<p>next: function(releaseSysId) {<br />
+ var crs = new GlideRecord(&lsquo;change_request&rsquo;);<br />
+ crs.addQuery(&lsquo;target_release&rsquo;, releaseSysId);<br />
+ crs.addQuery(&lsquo;state&rsquo;, &lsquo;-2&rsquo;); // approved<br />
+ crs.query();<br />
+ var byCi = {};<br />
+ while (crs.next()) byCi[crs.cmdb_ci.toString()] = crs.sys_id.toString();</p>
+<p>var ordered = [];<br />
+ var seen = {};<br />
+ var self = this;<br />
+ Object.keys(byCi).forEach(function(ci) { self._walk(ci, byCi, seen, ordered); });<br />
+ return ordered;<br />
+ },</p>
+<p>_walk: function(ci, byCi, seen, ordered) {<br />
+ if (seen[ci]) return;<br />
+ seen[ci] = true;<br />
+ var rel = new GlideRecord(&lsquo;cmdb_rel_ci&rsquo;);<br />
+ rel.addQuery(&lsquo;child&rsquo;, ci);<br />
+ rel.addQuery(&lsquo;type.name&rsquo;, &lsquo;Depends on::Used by&rsquo;);<br />
+ rel.query();<br />
+ while (rel.next()) this._walk(rel.parent.toString(), byCi, seen, ordered);<br />
+ if (byCi[ci]) ordered.push(byCi[ci]);<br />
+ },</p>
+<p>type: &lsquo;DevOpsDependencyOrdering&rsquo;<br />
+};</p>
+<p><strong>20) Cost-aware deployment recommendation:</strong></p>
+<pre><code class="language-javascript">// Background script — recommend deploy window by cloud cost (mock)
+var costs = {
+ aws_us_east_1: { peak: 1.0, off: 0.6 },
+ aws_eu_west_2: { peak: 1.2, off: 0.7 }
+};
+var region = 'aws_us_east_1';
+var now = new Date();
+var hour = now.getUTCHours();
+var isPeak = hour &gt;= 12 &amp;&amp; hour &lt; 22;
+var pricing = isPeak ? costs[region].peak : costs[region].off;
+var saving = isPeak ? '0%' : Math.round((1 - costs[region].off / costs[region].peak) * 100) + '%';
+gs.info('Region ' + region + ' pricing factor: ' + pricing + ' (saving vs peak: ' + saving + ')');
+gs.info('Recommendation: ' + (isPeak ? 'Defer if non-urgent' : 'Deploy now — cost optimal'));
+</code></pre>
+<p>عشرون سكربتًا جاهزة للنسخ — كل واحد منها يحل مشكلة شائعة في الإنتاج.</p>
+<hr />
+<h3 id="179-dora-metrics-dashboard">17.9 DORA Metrics dashboard</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<p>Out-of-box dashboard structure:</p>
+<pre><code class="language-text">Tab 1 — Velocity
+ ├─ Deployment Frequency (per service, per env)
+ ├─ Lead Time for Changes (median, p95)
+Tab 2 — Stability
+ ├─ Change Failure Rate (%)
+ └─ MTTR (minutes, median)
+Tab 3 — Quality
+ ├─ Test pass rate trend
+ ├─ Code coverage trend
+ └─ Open critical vulns
+Tab 4 — Adoption
+ ├─ Auto-approval ratio per policy
+ ├─ Pipelines with no CR mapping
+ └─ Tools without traffic in 7 days
+</code></pre>
+<p>Recommended filters: Application Service, Environment, Team, Tool. — أضف فلتر فريق + بيئة لكل ودجت — بدونها الأرقام غير قابلة للمقارنة بين الفرق.</p>
+<hr />
+<h2 id="18-from-scratch-implementation-day-0-day-30">§18 — From-Scratch Implementation (Day 0 → Day 30)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<p>A 30-day pragmatic DevOps Change Velocity rollout.<br />
+خطة بناء DevOps من الصفر في 30 يومًا — كل يوم له مخرجات وتسليم.</p>
+<hr />
+<h3 id="181-day-0-maturity-assessment-branching-strategy">18.1 Day 0 — Maturity assessment &amp; branching strategy</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>DevOps maturity self-assessment (score each 1–5):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Practice</th>
+<th>Score</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source control</td>
+<td>__</td>
+<td>All code in Git? Branch protection?</td>
+</tr>
+<tr>
+<td>CI automation</td>
+<td>__</td>
+<td>Every commit triggers tests?</td>
+</tr>
+<tr>
+<td>CD automation</td>
+<td>__</td>
+<td>Deploys are scripted?</td>
+</tr>
+<tr>
+<td>Test automation</td>
+<td>__</td>
+<td>Unit + integration + smoke?</td>
+</tr>
+<tr>
+<td>Quality gates</td>
+<td>__</td>
+<td>Coverage, lint, static analysis?</td>
+</tr>
+<tr>
+<td>Security scanning</td>
+<td>__</td>
+<td>SAST, SCA, secret detection?</td>
+</tr>
+<tr>
+<td>Observability</td>
+<td>__</td>
+<td>APM + logs + dashboards live?</td>
+</tr>
+<tr>
+<td>Change governance</td>
+<td>__</td>
+<td>All prod changes recorded?</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tool inventory:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Tool</th>
+<th>Version</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCM</td>
+<td>GitHub Enterprise</td>
+<td>__</td>
+<td>__</td>
+</tr>
+<tr>
+<td>CI</td>
+<td>Jenkins</td>
+<td>__</td>
+<td>__</td>
+</tr>
+<tr>
+<td>CD</td>
+<td>Argo CD</td>
+<td>__</td>
+<td>__</td>
+</tr>
+<tr>
+<td>Artifact</td>
+<td>JFrog Artifactory</td>
+<td>__</td>
+<td>__</td>
+</tr>
+<tr>
+<td>Quality</td>
+<td>SonarQube</td>
+<td>__</td>
+<td>__</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>Snyk + Veracode</td>
+<td>__</td>
+<td>__</td>
+</tr>
+<tr>
+<td>Observability</td>
+<td>Datadog + Splunk</td>
+<td>__</td>
+<td>__</td>
+</tr>
+<tr>
+<td>Planning</td>
+<td>Jira Cloud</td>
+<td>__</td>
+<td>__</td>
+</tr>
+<tr>
+<td>Cloud</td>
+<td>AWS + Azure</td>
+<td>__</td>
+<td>__</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Branching strategy review (pick one):</strong></p>
+<pre><code class="language-text">- Trunk-based (recommended for high velocity):
+ main → feature → PR → merge → CI → deploy
+- GitFlow (regulated industries):
+ main, develop, feature/*, release/*, hotfix/*
+- Release branches (long-lived versions):
+ main, release/v1.x, release/v2.x
+</code></pre>
+<p><strong>Success criteria (must agree before Day 1):</strong></p>
+<pre><code class="language-text">- One signed-off pilot team with one application service
+- DevOps Change Velocity entitlement confirmed in contract
+- Service accounts approved by security team
+- Webhook egress allow-listed at network layer
+- KB owners identified for runbooks
+</code></pre>
+<p>لا تنتقل ليوم 1 قبل الحصول على توقيع الراعي + تأكيد ترخيص DevOps.</p>
+<p>⚠️ DevOps Change Velocity is a paid add-on — confirm SKU before committing to a date.</p>
+<hr />
+<h3 id="182-day-1-activate-devops-plugin">18.2 Day 1 — Activate DevOps plugin</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">Navigate: All &gt; System Definition &gt; Plugins
+Activate (in dev/clone first):
+- com.snc.devops (DevOps Change Velocity)
+- com.snc.devops_change_acceleration (Policy engine)
+- com.snc.devops.insights (DORA)
+- com.snc.devops_config (Feature flags / config-as-code)
+- com.snc.devops.integrationhub (IH spokes glue)
+</code></pre>
+<p>Then install spokes from Store (only those needed):<br />
+- ServiceNow IntegrationHub Installer<br />
+- Jenkins Spoke / GitHub Spoke / GitLab Spoke / Azure DevOps Spoke / Jira Spoke</p>
+<p>⚠️ Activate on a dev or clone first. Capture in Update Set &ldquo;DevOps_Activation_v1&rdquo;.</p>
+<hr />
+<h3 id="183-day-23-roles-groups">18.3 Day 2–3 — Roles &amp; groups</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Roles</th>
+<th>Members</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DevOps Admins</td>
+<td>sn_devops.admin, admin</td>
+<td>2–3</td>
+<td>Platform owners</td>
+</tr>
+<tr>
+<td>Pipeline Owners</td>
+<td>sn_devops.pipeline_owner</td>
+<td>5–15</td>
+<td>Team leads who own pipelines</td>
+</tr>
+<tr>
+<td>DevOps Read</td>
+<td>sn_devops.read</td>
+<td>All engineering</td>
+<td>View dashboards</td>
+</tr>
+<tr>
+<td>DevOps Integrations</td>
+<td>sn_devops.integration_user</td>
+<td>Service accts</td>
+<td>Inbound API only</td>
+</tr>
+<tr>
+<td>Change Managers</td>
+<td>change_manager</td>
+<td>2–4</td>
+<td>Approve Normal CRs</td>
+</tr>
+<tr>
+<td>Change Coordinators</td>
+<td>change_coordinator</td>
+<td>5–10</td>
+<td>Coordinate releases</td>
+</tr>
+</tbody>
+</table>
+<p>Create with:</p>
+<pre><code class="language-text">Navigate: All &gt; User Administration &gt; Groups &gt; New
+Name: DevOps Admins
+Roles: sn_devops.admin, admin
+Members: &lt;named users&gt;
+</code></pre>
+<p>حدّد المالكين قبل تركيب أي أداة — أكبر سبب لفشل المشاريع هو غياب الـ owner.</p>
+<hr />
+<h3 id="184-day-45-tool-registrations-github-jenkins-jira">18.4 Day 4–5 — Tool registrations (GitHub, Jenkins, Jira)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>GitHub registration:</strong></p>
+<pre><code class="language-text">1) GitHub &gt; Organization &gt; Settings &gt; Developer settings &gt; GitHub Apps &gt; New
+2) Create app &quot;ServiceNow DevOps Bridge&quot;
+3) Permissions: contents read, pull requests read, statuses write, webhooks write
+4) Install app on target repos
+5) ServiceNow: All &gt; DevOps &gt; Administration &gt; Tools &gt; New
+ - Name: GitHub Enterprise — Engineering Org
+ - Tool Type: SCM
+ - Webhook URL: copy and paste into GitHub app config
+ - Webhook Secret: generate, paste into both sides
+6) Test by pushing a commit → Webhook Inspector should show event
+</code></pre>
+<p><strong>Jenkins registration:</strong></p>
+<pre><code class="language-text">1) Jenkins &gt; Manage Plugins &gt; Available &gt; &quot;ServiceNow DevOps&quot; &gt; Install
+2) Restart Jenkins
+3) Manage Jenkins &gt; System &gt; ServiceNow DevOps section
+ - Instance URL: https://&lt;inst&gt;.service-now.com
+ - Tool ID: &lt;created in ServiceNow next step&gt;
+ - Credentials: service account user/pass
+4) ServiceNow: All &gt; DevOps &gt; Administration &gt; Tools &gt; New
+ - Name: Jenkins — Eng Controller
+ - Tool Type: orchestration
+ - URL: https://jenkins.example
+5) Copy Tool ID into Jenkins config
+6) Save; &quot;Test Connection&quot; — must be green
+</code></pre>
+<p><strong>Jira registration:</strong></p>
+<pre><code class="language-text">1) Jira &gt; Settings &gt; Apps &gt; Manage apps &gt; ServiceNow DevOps
+2) Configure: ServiceNow URL + service account
+3) ServiceNow: Tools &gt; New
+ - Name: Jira Cloud — Engineering
+ - Tool Type: planning
+4) Map Jira project keys to Application Services
+5) Push a Jira issue transition → confirm event in Webhook Inspector
+</code></pre>
+<p>الصور تُذكر في الـ runbook الداخلي عند كل خطوة — هنا الخطوات فقط.</p>
+<hr />
+<h3 id="185-day-67-first-pipeline-integration-jenkins-servicenow">18.5 Day 6–7 — First pipeline integration (Jenkins → ServiceNow)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<pre><code class="language-text">Pick a low-risk Jenkins job (e.g. docs site build).
+Edit Jenkinsfile:
+</code></pre>
+<pre><code class="language-text">pipeline {
+ agent any
+ stages {
+ stage('Build') { steps { snDevOpsStep() { sh 'make build' } } }
+ stage('Test') { steps { snDevOpsStep() { sh 'make test' } }
+ post { always { snDevOpsTestSummaries(testSummaries: [[name: 'JUnit', testType: 'JUnit']]) } } }
+ stage('Deploy') { steps { snDevOpsStep() { sh 'make deploy' } } }
+ }
+}
+</code></pre>
+<pre><code class="language-text">Run the job 3 times. Verify in ServiceNow:
+- Pipeline visible in DevOps &gt; Pipelines
+- Each run appears in Pipeline Executions
+- Step states transition correctly
+- Test summary populated
+</code></pre>
+<hr />
+<h3 id="186-day-89-auto-create-cr-from-pipeline">18.6 Day 8–9 — Auto-create CR from pipeline</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">Edit Jenkinsfile to add Change stage:
+</code></pre>
+<pre><code class="language-text">stage('Change') {
+ steps {
+ snDevOpsChange(applicationName: 'HR Leave App',
+ changeRequestDetails: '{&quot;setCloseCode&quot;: true, &quot;type&quot;: &quot;normal&quot;}')
+ }
+}
+</code></pre>
+<pre><code class="language-text">1) Trigger pipeline
+2) Pipeline pauses at Change stage
+3) ServiceNow: new CR appears under change_request
+4) Approve manually
+5) Jenkins resumes; deploy starts
+6) After deploy, CR auto-closes with close_code from pipeline
+</code></pre>
+<p>الـ snDevOpsChange هو الحدث الذي يربط البايبلاين بـ CR — تأكد أنه قبل خطوة Deploy.</p>
+<hr />
+<h3 id="187-day-1011-policy-based-approval-for-standard-changes">18.7 Day 10–11 — Policy-based approval for Standard Changes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_ui_policy_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">UI Policies</a><a href="{BASE}/sys_ui_policy_action_list.do">UI Policy Actions</a><a href="{BASE}/sys_data_policy2_list.do?sysparm_query=model_tableSTARTSWITHx_786686_hr_leave">Data Policies</a><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<pre><code class="language-text">1) All &gt; DevOps &gt; Change &gt; Change Policies &gt; New
+2) Name: &quot;Docs Site Standard Auto-Approve&quot;
+3) Conditions (all must match):
+ - Repository: docs-site
+ - Branch: main
+ - Test pass rate: &gt;= 95
+ - Code coverage: &gt;= 70
+ - Open critical CVEs: 0
+4) Action:
+ - Set Change Type: Standard
+ - Set State: Approved
+ - Add work note: &quot;Auto-approved by policy docs-site-std&quot;
+5) Order: 100 · Active: true
+6) Test: trigger 5 builds; verify auto-approve rate
+</code></pre>
+<p>⚠️ Always test policies in non-prod first — a bad condition can auto-approve everything.</p>
+<hr />
+<h3 id="188-day-12-multi-tool-aggregation-github-jenkins-jira">18.8 Day 12 — Multi-tool aggregation (GitHub + Jenkins + Jira)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">Goal: Single CR shows commit, build, test, and Jira issues together.
+</code></pre>
+<p>1) In Jenkinsfile, ensure environment exposes BUILD_TAG and GIT_COMMIT<br />
+2) snDevOpsStep auto-correlates GIT_COMMIT to sn_devops_commit<br />
+3) Jira spoke maps issue key from commit message (e.g. &ldquo;ABC-123: fix&rdquo;)<br />
+4) Open the auto-raised CR; related lists show:<br />
+ - Pipeline execution<br />
+ - Linked commits<br />
+ - Linked PRs<br />
+ - Linked Jira issues<br />
+ - Test summary<br />
+ - Security findings</p>
+<hr />
+<h3 id="189-day-1314-artifact-tracking-cmdb-mapping">18.9 Day 13–14 — Artifact tracking + CMDB mapping</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">1) Register artifact registry:
+ All &gt; DevOps &gt; Artifacts &gt; Registries &gt; New
+ - Name: JFrog — Prod
+ - Type: artifactory
+ - URL: https://artifactory.example
+2) Pipeline publishes artifact; snDevOpsArtifact records version
+3) Business rule (script 4 in §17) maps artifact to cmdb_ci
+4) Verify: open Artifact Version → CI link populated
+5) Verify: open CI → related list &quot;Recent Artifacts&quot; shows latest 5
+</code></pre>
+<hr />
+<h3 id="1810-day-15-test-result-integration-junit-cypress">18.10 Day 15 — Test result integration (JUnit, Cypress)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<pre><code class="language-text">1) JUnit: snDevOpsTestSummaries collects test-reports/junit/*.xml
+2) Cypress: add Mochawesome reporter; convert JSON to JUnit XML
+3) For custom test tools, use Scripted REST (§17 script 5)
+4) Verify summaries in Pipeline Execution
+5) Build PA indicator: avg pass rate per service per week
+</code></pre>
+<hr />
+<h3 id="1811-day-16-code-quality-security-gates">18.11 Day 16 — Code quality + security gates</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<pre><code class="language-text">1) Connect SonarQube:
+ - Tools &gt; New: Tool Type = quality
+ - Sonar webhook → /api/sn_devops/v1/devops/tool/sonar
+2) Connect Snyk:
+ - Tools &gt; New: Tool Type = security
+ - Add Snyk webhook → /api/sn_devops/v1/devops/tool/snyk
+3) Build quality+security policy that blocks deploy when:
+ - sonar.gate = FAILED OR snyk.critical &gt; 0
+4) Test by introducing a known critical vuln; confirm CR blocked
+5) Document override path (manual emergency CR + dual approval)
+</code></pre>
+<hr />
+<h3 id="1812-day-1718-rollback-automations">18.12 Day 17–18 — Rollback automations</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">1) Build rollback subflow:
+ Trigger: change_request update → close_code = unsuccessful
+ Actions:
+ - Create rollback CR (type emergency)
+ - Call IH event devops.rollback.trigger
+ - Notify on-call SRE via Slack
+2) In Jenkinsfile, add stage('Rollback') that reads CR sys_id from event
+3) Argo / Jenkins pulls previous artifact version and redeploys
+4) Test by deliberately breaking a deploy in staging
+5) Confirm rollback completes and CR auto-closes with cause
+</code></pre>
+<p>اختبر rollback مرتين في staging قبل أن يصل لـ prod — لا توجد فرصة ثانية.</p>
+<hr />
+<h3 id="1813-day-19-feature-flags-launchdarkly-integration">18.13 Day 19 — Feature flags (LaunchDarkly integration)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<pre><code class="language-text">1) DevOps Config &gt; Connections &gt; New: LaunchDarkly
+2) API key stored in sys_credentials
+3) Map projects/environments to ServiceNow CIs
+4) In pipeline, after deploy: call snDevOpsConfigSetFlag
+5) Build dashboard widget: open flags per service
+6) Decommission stale flags after 90 days (script automated)
+</code></pre>
+<hr />
+<h3 id="1814-day-20-dora-metrics-dashboard">18.14 Day 20 — DORA metrics dashboard</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<pre><code class="language-text">1) Enable Insights collectors:
+ - Deployment Frequency
+ - Lead Time for Changes
+ - Change Failure Rate
+ - MTTR
+2) Populate 7 days of historic data via background script
+3) Open Insights Dashboards &gt; DORA Metrics
+4) Add filters: Application Service, Environment
+5) Share with engineering leadership; collect feedback
+</code></pre>
+<hr />
+<h3 id="1815-day-21-service-graph-integration-deployment-aware-cmdb">18.15 Day 21 — Service Graph integration (deployment-aware CMDB)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">1) Run Service Graph Connector for GitHub:
+ - Maps repos → Application Services
+2) Run Service Graph for Jenkins/Argo:
+ - Maps pipelines → CIs
+3) Verify cmdb_ci_appl rows have:
+ - .source_url (Git repo)
+ - .build_pipeline (Jenkins)
+ - .deployment_pipeline (Argo)
+4) Visualize in Service Map: see code → build → deploy → runtime
+</code></pre>
+<hr />
+<h3 id="1816-day-22-notification-rules-slackteamsemail">18.16 Day 22 — Notification rules (Slack/Teams/Email)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<pre><code class="language-text">1) Build notification:
+ - Trigger: change_request created from pipeline
+ - Recipients: pipeline owner + assignment group
+ - Channel: Slack via webhook (sys_properties holds URL)
+2) Build escalation:
+ - Stuck step &gt; 1 hour → notify SRE on-call
+3) Build digest:
+ - Daily 18:00 → release manager: today's deploys + failures
+4) Test each notification path before go-live
+</code></pre>
+<hr />
+<h3 id="1817-day-23-custom-dashboards-release-health-pipeline-health-mttr">18.17 Day 23 — Custom dashboards (release health, pipeline health, MTTR)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<pre><code class="language-text">1) Build Performance Analytics workspace &quot;Release Health&quot;
+2) Widgets:
+ - Pipelines passing vs failing (last 7d)
+ - Mean stage duration trend
+ - Top 5 noisy steps (most retries)
+ - Change failure rate by team
+ - MTTR by service
+3) Schedule weekly email of dashboard PDF to leadership
+</code></pre>
+<hr />
+<h3 id="1818-day-24-pa-indicators">18.18 Day 24 — PA Indicators</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Source</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deployment Frequency</td>
+<td>sn_devops_pipeline_execution (deploy + success)</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>Lead Time for Changes</td>
+<td>sn_devops_commit + execution</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>Change Failure Rate</td>
+<td>change_request close_code</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>MTTR</td>
+<td>incident caused_by_change</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>Auto-approval Ratio</td>
+<td>change_request type=standard / total</td>
+<td>Weekly</td>
+</tr>
+<tr>
+<td>Avg Build Duration</td>
+<td>step_execution duration</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>Open Critical CVEs</td>
+<td>security_result severity=critical</td>
+<td>Daily</td>
+</tr>
+</tbody>
+</table>
+<p>Build each in PA &gt; Indicators &gt; New.</p>
+<hr />
+<h3 id="1819-day-25-now-assist-deployment-risk-score-change-suggestions">18.19 Day 25 — Now Assist (deployment risk score, change suggestions)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<pre><code class="language-text">Pre-req: Now Assist for DevOps subscription
+1) Enable plugin com.snowflake.nowassist.devops
+2) Configure model assignments:
+ - CR risk scorer
+ - Deployment summarizer
+3) On CR form, &quot;Risk&quot; panel shows AI-generated risk + reasoning
+4) On Pipeline Execution form, &quot;Summary&quot; shows one-paragraph deploy summary
+5) Train approvers: AI score is advisory, not deterministic
+</code></pre>
+<hr />
+<h3 id="1820-day-26-atf-devops-workflow-tests">18.20 Day 26 — ATF (DevOps workflow tests)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<pre><code class="language-text">1) All &gt; Automated Test Framework &gt; Tests &gt; New: &quot;DevOps Auto-Approve Flow&quot;
+2) Steps:
+ - Create test pipeline execution via REST
+ - Simulate test results 100% pass
+ - Assert CR raised with type=normal
+ - Wait for policy evaluation
+ - Assert CR auto-approved within 30s
+3) Build &quot;Rollback Trigger&quot; test
+4) Add tests to nightly suite; failures notify DevOps Admins
+</code></pre>
+<hr />
+<h3 id="1821-day-27-training-devs-devops-engineers-change-board">18.21 Day 27 — Training (devs, DevOps engineers, change board)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<pre><code class="language-text">Training tracks:
+- Developer (45 min): how to read a CR, why builds wait, how to fix a failed gate
+- DevOps Engineer (3 hours): tools, pipelines, policies, troubleshooting
+- Change Manager (90 min): policy review, auto-approval governance, override path
+- Auditor (60 min): how to pull change velocity report, evidence locations
+- SRE (2 hours): rollback runbook, incident-to-deploy linkage
+Materials: Loom videos + KB articles + one printed cheat sheet per role
+</code></pre>
+<hr />
+<h3 id="1822-day-28-pilot-with-1-team">18.22 Day 28 — Pilot with 1 team</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">1) Pick one engineering team with one application service
+2) Enable DevOps end-to-end for them only (limit policies by repo)
+3) Daily 15-min stand-up with team for 1 week
+4) Track: time saved per CR, auto-approval rate, blocker count
+5) Capture testimonials + screenshots for rollout deck
+</code></pre>
+<hr />
+<h3 id="1823-day-29-rollout-planning">18.23 Day 29 — Rollout planning</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">1) Rank remaining teams by readiness (CI maturity, test coverage)
+2) Wave plan:
+ - Wave 1 (week 1–2): 3 teams similar to pilot
+ - Wave 2 (week 3–4): 5 mid-maturity teams
+ - Wave 3 (month 2): rest
+3) Per-team onboarding checklist:
+ - Tools registered
+ - Pipelines mapped to services
+ - Policies tuned to team risk
+ - Owners trained
+4) Communications plan: kick-off email, Slack channel, office hours twice weekly
+</code></pre>
+<hr />
+<h3 id="1824-day-30-go-live-hypercare">18.24 Day 30 — Go-Live + Hypercare</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">Go-live checklist:
+- Update Set promoted to prod with sign-off
+- Webhook secrets rotated and stored in vault
+- Service accounts confirmed least-privilege
+- Rollback runbook tested in prod-like environment
+- On-call DevOps SRE rota live
+- Monitoring dashboards green for 48h
+- Sponsor sign-off recorded
+</code></pre>
+<p>Hypercare (2 weeks):<br />
+- Daily 15-min sync with pilot teams<br />
+- Weekly DORA review with leadership<br />
+- Burn down policy tuning backlog<br />
+- Capture lessons learnt for next wave</p>
+<p>Exit hypercare when:<br />
+- Auto-approval ratio &gt; 60% sustained<br />
+- Change failure rate within target band<br />
+- &lt; 3 high-severity DevOps tickets per week<br />
+- Engineering NPS for DevOps &gt; +20 — نهاية اليوم 30 ليست نهاية المشروع — هي بداية تشغيل مستدام. استمر بتحسين السياسات شهريًا ومراجعة DORA ربعيًا.</p>
+<p>⚠️ Do not declare success until two full release cycles pass without manual workaround.</p>
+<hr />
+<h2 id="appendix-a-jenkinsfile-full-example">Appendix A — Jenkinsfile (full example)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">pipeline {
+ agent any
+ options {
+ timestamps()
+ timeout(time: 60, unit: 'MINUTES')
+ }
+ environment {
+ SN_INSTANCE = 'https://acme.service-now.com'
+ APP_NAME = 'HR Leave App'
+ }
+ stages {
+ stage('Checkout') {
+ steps { checkout scm }
+ }
+ stage('Build') {
+ steps {
+ snDevOpsStep() {
+ sh 'mvn -B clean package'
+ }
+ }
+ }
+ stage('Unit tests') {
+ steps {
+ snDevOpsStep() { sh 'mvn -B test' }
+ }
+ post {
+ always {
+ snDevOpsTestSummaries(testSummaries: [[name: 'JUnit', testType: 'JUnit']])
+ }
+ }
+ }
+ stage('Quality') {
+ steps {
+ snDevOpsStep() {
+ sh 'mvn sonar:sonar -Dsonar.projectKey=hr-leave-app'
+ }
+ }
+ }
+ stage('Security') {
+ steps {
+ snDevOpsStep() {
+ sh 'snyk test --severity-threshold=critical'
+ }
+ }
+ }
+ stage('Artifact') {
+ steps {
+ snDevOpsArtifact(artifactsPayload: &quot;&quot;&quot;{
+ &quot;artifacts&quot;: [{
+ &quot;name&quot;: &quot;hr-leave-app&quot;,
+ &quot;version&quot;: &quot;${BUILD_NUMBER}&quot;,
+ &quot;semanticVersion&quot;: &quot;1.0.${BUILD_NUMBER}&quot;,
+ &quot;repositoryName&quot;: &quot;hr-leave-app-releases&quot;
+ }],
+ &quot;branchName&quot;: &quot;${BRANCH_NAME}&quot;
+ }&quot;&quot;&quot;)
+ }
+ }
+ stage('Change') {
+ steps {
+ snDevOpsChange(applicationName: &quot;${APP_NAME}&quot;,
+ changeRequestDetails: '{&quot;setCloseCode&quot;:true,&quot;attributes&quot;:{&quot;chg_model&quot;:&quot;prb_chg_model_normal&quot;}}')
+ }
+ }
+ stage('Deploy') {
+ steps {
+ snDevOpsStep() {
+ sh './deploy.sh prod'
+ }
+ }
+ }
+ stage('Verify') {
+ steps {
+ snDevOpsStep() {
+ sh './smoke-tests.sh prod'
+ }
+ }
+ }
+ }
+ post {
+ failure {
+ snDevOpsStep() {
+ sh 'echo &quot;Deployment failed — rollback will be triggered by ServiceNow&quot;'
+ }
+ }
+ }
+}
+</code></pre>
+<hr />
+<h2 id="appendix-b-github-actions-workflow-full-example">Appendix B — GitHub Actions workflow (full example)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">name: hr-leave-app-pipeline
+on:
+ push:
+ branches: [ main, release/** ]
+ pull_request:
+ branches: [ main ]
+</code></pre>
+<p>permissions:<br />
+ contents: read<br />
+ pull-requests: write</p>
+<p>jobs:<br />
+ build-test-deploy:<br />
+ runs-on: ubuntu-latest<br />
+ env:<br />
+ SN_INSTANCE_URL: ${{ secrets.SN_INSTANCE_URL }}<br />
+ SN_DEVOPS_USER: ${{ secrets.SN_DEVOPS_USER }}<br />
+ SN_DEVOPS_PASS: ${{ secrets.SN_DEVOPS_PASS }}<br />
+ SN_DEVOPS_TOOL_ID: ${{ secrets.SN_DEVOPS_TOOL_ID }}<br />
+ steps:<br />
+ - name: Checkout<br />
+ uses: actions/checkout@v4</p>
+<ul>
+<li>
+<p>name: ServiceNow DevOps — Register Build<br />
+ uses: ServiceNow/servicenow-devops-build@v4<br />
+ with:<br />
+ devops-integration-user-name: ${{ env.SN_DEVOPS_USER }}<br />
+ devops-integration-user-password: ${{ env.SN_DEVOPS_PASS }}<br />
+ instance-url: ${{ env.SN_INSTANCE_URL }}<br />
+ tool-id: ${{ env.SN_DEVOPS_TOOL_ID }}<br />
+ context-github: ${{ toJSON(github) }}<br />
+ job-name: &lsquo;Build&rsquo;</p>
+</li>
+<li>
+<p>name: Build<br />
+ run: ./gradlew build</p>
+</li>
+<li>
+<p>name: Test<br />
+ run: ./gradlew test</p>
+</li>
+<li>
+<p>name: ServiceNow DevOps — Test Summaries<br />
+ uses: ServiceNow/servicenow-devops-test-report@v4<br />
+ with:<br />
+ devops-integration-user-name: ${{ env.SN_DEVOPS_USER }}<br />
+ devops-integration-user-password: ${{ env.SN_DEVOPS_PASS }}<br />
+ instance-url: ${{ env.SN_INSTANCE_URL }}<br />
+ tool-id: ${{ env.SN_DEVOPS_TOOL_ID }}<br />
+ context-github: ${{ toJSON(github) }}<br />
+ xml-report-filename: build/test-results/test/TEST-*.xml<br />
+ job-name: &lsquo;Test&rsquo;</p>
+</li>
+<li>
+<p>name: SonarQube scan<br />
+ run: ./gradlew sonarqube</p>
+</li>
+<li>
+<p>name: Snyk security scan<br />
+ uses: snyk/actions/gradle@master<br />
+ with:<br />
+ command: test<br />
+ args: &ndash;severity-threshold=critical</p>
+</li>
+<li>
+<p>name: ServiceNow DevOps — Register Artifact<br />
+ uses: ServiceNow/servicenow-devops-register-artifact@v4<br />
+ with:<br />
+ devops-integration-user-name: ${{ env.SN_DEVOPS_USER }}<br />
+ devops-integration-user-password: ${{ env.SN_DEVOPS_PASS }}<br />
+ instance-url: ${{ env.SN_INSTANCE_URL }}<br />
+ tool-id: ${{ env.SN_DEVOPS_TOOL_ID }}<br />
+ context-github: ${{ toJSON(github) }}<br />
+ job-name: &lsquo;Artifact&rsquo;<br />
+ artifacts: |<br />
+ [<br />
+ {<br />
+ &ldquo;name&rdquo;: &ldquo;hr-leave-app&rdquo;,<br />
+ &ldquo;version&rdquo;: &ldquo;${{ github.run_number }}&rdquo;,<br />
+ &ldquo;semanticVersion&rdquo;: &ldquo;1.0.${{ github.run_number }}&rdquo;,<br />
+ &ldquo;repositoryName&rdquo;: &ldquo;hr-leave-app-releases&rdquo;<br />
+ }<br />
+ ]</p>
+</li>
+<li>
+<p>name: ServiceNow DevOps — Change Request<br />
+ uses: ServiceNow/servicenow-devops-change@v4<br />
+ with:<br />
+ devops-integration-user-name: ${{ env.SN_DEVOPS_USER }}<br />
+ devops-integration-user-password: ${{ env.SN_DEVOPS_PASS }}<br />
+ instance-url: ${{ env.SN_INSTANCE_URL }}<br />
+ tool-id: ${{ env.SN_DEVOPS_TOOL_ID }}<br />
+ context-github: ${{ toJSON(github) }}<br />
+ job-name: &lsquo;Change&rsquo;<br />
+ change-request: |<br />
+ {<br />
+ &ldquo;setCloseCode&rdquo;: &ldquo;true&rdquo;,<br />
+ &ldquo;attributes&rdquo;: {<br />
+ &ldquo;short_description&rdquo;: &ldquo;Deploy HR Leave App build ${{ github.run_number }}&rdquo;,<br />
+ &ldquo;description&rdquo;: &ldquo;Auto-raised from GitHub Actions&rdquo;,<br />
+ &ldquo;chg_model&rdquo;: &ldquo;prb_chg_model_normal&rdquo;<br />
+ }<br />
+ }</p>
+</li>
+<li>
+<p>name: Deploy to production<br />
+ run: ./deploy.sh prod</p>
+</li>
+<li>
+<p>name: Smoke test<br />
+ run: ./smoke.sh prod</p>
+</li>
+</ul>
+<hr />
+<h2 id="appendix-c-quick-command-reference">Appendix C — Quick command reference</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add a tool</td>
+<td>All &gt; DevOps &gt; Administration &gt; Tools &gt; New · <a href="{BASE}/sn_devops_tool_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Inspect webhook</td>
+<td>All &gt; DevOps &gt; Administration &gt; Webhook Inspector · <a href="{BASE}/sn_devops_webhook_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Build a policy</td>
+<td>All &gt; DevOps &gt; Change &gt; Change Policies &gt; New · <a href="{BASE}/change_request_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>See DORA</td>
+<td>All &gt; DevOps &gt; Insights &gt; Dashboards &gt; DORA Metrics · <a href="{BASE}/pa_dashboards_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Replay a webhook</td>
+<td>Webhook Inspector → row → Replay</td>
+</tr>
+<tr>
+<td>Rotate webhook secret</td>
+<td>Tool form → Webhook tab → Regenerate</td>
+</tr>
+<tr>
+<td>Disable a policy fast</td>
+<td>Policy form → Active = false → Update</td>
+</tr>
+<tr>
+<td>Stop runaway auto-approve</td>
+<td>DevOps Admin Console → Emergency Stop</td>
+</tr>
+</tbody>
+</table>
+<p>احفظ هذا الجدول — معظم العمليات اليومية تبدأ من هنا.</p>
+<hr />
+<p>End of DevOps module.<br />
+نهاية ملف الـ DevOps.</p>
+<hr />
+<h2 id="19-cis-devops-exam-z-to-hero-feature-labs-20-inline-q">§19 — CIS-DevOps Exam &amp; Z-to-Hero Feature Labs (20 inline Q)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="191-z-to-hero-feature-labs-10-labs">19.1 Z-to-Hero Feature Labs (10 labs)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Lab</th>
+<th>Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>GitHub spoke + connection alias</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>Jenkins/Azure DevOps pipeline ingestion</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>Tool integration: Sonar/Snyk/Veracode ingest</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>Auto-CR rule (config-as-code)</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>DORA dashboard (deploy freq, lead time, MTTR, CFR)</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>Value Stream Map for one critical service</td>
+</tr>
+<tr>
+<td>L7</td>
+<td>Code change → CR with risk score</td>
+</tr>
+<tr>
+<td>L8</td>
+<td>Release Coordination (multi-CR rollout)</td>
+</tr>
+<tr>
+<td>L9</td>
+<td>Now Pipelines for ServiceNow app CI/CD</td>
+</tr>
+<tr>
+<td>L10</td>
+<td>Insights for engineering productivity</td>
+</tr>
+</tbody>
+</table>
+<h3 id="192-20-devops-practice-questions">19.2 20 DevOps Practice Questions</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ol>
+<li>DevOps Change Velocity table: A. sn_devops_change_request ext of change_request | B. Independent | C. None | D. Random — <strong>Answer: A</strong></li>
+<li>DORA metrics: A. Deployment Frequency, Lead Time for Changes, MTTR, Change Failure Rate | B. Just speed | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Pipeline ingestion: A. Inbound webhook from Jenkins/Azure/GitHub | B. Polling | C. Manual | D. None — <strong>Answer: A</strong></li>
+<li>Auto-CR creation: A. From pipeline event + risk assessment | B. Manual only | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>DevOps Config: A. Track config-as-code via Tool | B. Manual | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Velocity vs Stability tradeoff: A. Optimize both via gates | B. Speed-only | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>CR Risk Score inputs: A. Files changed, blast radius, deploy frequency, prior failures | B. Random | C. Manual | D. None — <strong>Answer: A</strong></li>
+<li>Standard Change template: A. Pre-approved, low-risk, frequent | B. Always emergency | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>ServiceNow SDK + Now Pipelines: A. CI/CD for ServiceNow apps | B. None | C. Random | D. Manual — <strong>Answer: A</strong></li>
+<li>Tool table: A. sn_devops_tool (Jenkins, GitHub, Sonar, etc.) | B. Random | C. None | D. Manual — <strong>Answer: A</strong></li>
+<li>Insights dashboard: A. Engineering productivity by team/pipeline/service | B. None | C. Random | D. Manual — <strong>Answer: A</strong></li>
+<li>CR auto-approval gate: A. Test pass + coverage threshold + security scan clean | B. Manual only | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Pipeline event types: A. Build, Test, Deploy, Approval, Rollback | B. Just deploy | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Source of Truth for pipeline metadata: A. ServiceNow CMDB (cmdb_ci_devops_<em>) | B. Excel | C. Random | D. None — </em><em>Answer: A</em>*</li>
+<li>Multi-tool aggregation: A. One CR shows all tool stages | B. Multiple CRs | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Deploy to ServiceNow itself: A. Update Sets via Now Pipelines or REST | B. Manual only | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Rollback workflow: A. CR with category=rollback linked to original | B. Random | C. None | D. Manual — <strong>Answer: A</strong></li>
+<li>Value Stream metric: A. End-to-end flow time per change | B. Just lead time | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Release coordination: A. Multiple linked CRs + dependency map | B. Single CR | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>ChatOps integration: A. Teams/Slack bot for CR approval | B. Email only | C. Random | D. None — <strong>Answer: A</strong></li>
+</ol>
+<h3 id="193-what-hero-looks-like-for-devops">19.3 What &ldquo;Hero&rdquo; looks like for DevOps</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Reduces CR cycle 50%+; auto-CR from pipelines; risk-aware approval gates; DORA dashboard for execs; multi-tool ingestion; ChatOps approvals; Now Pipelines for SN apps; value-stream-driven improvements.</p>
+<hr />
+<h2 id="hands-on-labs">Hands-on Labs — مختبرات عملية</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<blockquote>
+<p>Step-by-step labs for PDI / Australia instance. Replace <code>{BASE}</code> with your instance URL.<br />
+مختبرات خطوة بخطوة — استبدل <code>{BASE}</code> برابط نسختك.</p>
+</blockquote>
+<ol>
+<li>
+<p><strong>Lab 1</strong> — <strong>Tool integration / تكامل أداة</strong> — Register Jenkins/GitHub at <a href="{BASE}/sn_devops_tool_integration_list.do">{BASE}/sn_devops_tool_integration_list.do</a>.</p>
+</li>
+<li>
+<p><strong>Lab 2</strong> — <strong>Pipeline mapping / ربط pipeline</strong> — Map repo branch to ServiceNow application.</p>
+</li>
+<li>
+<p><strong>Lab 3</strong> — <strong>Standard Change template / قالب Standard</strong> — Create auto-approved template at <a href="{BASE}/std_change_record_producer_list.do">{BASE}/std_change_record_producer_list.do</a>.</p>
+</li>
+<li>
+<p><strong>Lab 4</strong> — <strong>Pipeline run / تشغيل pipeline</strong> — Trigger build; verify CR auto-created.</p>
+</li>
+<li>
+<p><strong>Lab 5</strong> — <strong>Quality gate / بوابة جودة</strong> — Block deploy on failed SonarQube/Snyk scan.</p>
+</li>
+<li>
+<p><strong>Lab 6</strong> — <strong>Artifact → CI / Artifact → CI</strong> — Confirm deployment updates cmdb_ci.</p>
+</li>
+<li>
+<p><strong>Lab 7</strong> — <strong>DORA dashboard / لوحة DORA</strong> — Review metrics at <a href="{BASE}/$pa_dashboard.do">{BASE}/$pa_dashboard.do</a>.</p>
+</li>
+</ol>
+<hr />
+<h2 id="best-practices">Best Practices — أفضل الممارسات</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Best practice (EN)</th>
+<th>أفضل ممارسة (AR)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Change</td>
+<td>DevOps accelerates Change — does not replace governance</td>
+<td>DevOps يسرّع التغيير لا يلغيه</td>
+</tr>
+<tr>
+<td>Standard</td>
+<td>Maximize Standard Changes for repeat deploys</td>
+<td>Standard للنشر المتكرر</td>
+</tr>
+<tr>
+<td>Gates</td>
+<td>Fail pipeline on security/quality — not post-deploy regret</td>
+<td>أوقف Pipeline عند فشل الأمن</td>
+</tr>
+<tr>
+<td>Traceability</td>
+<td>Every deploy links commit → CR → CI</td>
+<td>commit → CR → CI</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="deployment-checklist">Deployment Checklist — قائمة النشر</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task (EN)</th>
+<th>المهمة (AR)</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>DevOps Change Velocity licensed</td>
+<td>ترخيص DevOps</td>
+<td>Active</td>
+</tr>
+<tr>
+<td>2</td>
+<td>CI/CD tool integrations</td>
+<td>تكامل CI/CD</td>
+<td>Webhooks work</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Standard Change templates</td>
+<td>قوالب Standard</td>
+<td>Auto-approve</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Pipeline → CR automation</td>
+<td>Pipeline → CR</td>
+<td>CR on deploy</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Quality/security gates</td>
+<td>بوابات</td>
+<td>Failed scan blocks</td>
+</tr>
+<tr>
+<td>6</td>
+<td>CMDB artifact mapping</td>
+<td>CMDB mapping</td>
+<td>CI updated</td>
+</tr>
+<tr>
+<td>7</td>
+<td>DORA PA indicators</td>
+<td>DORA</td>
+<td>Dashboard live</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Audit trail validation</td>
+<td>تدقيق</td>
+<td>SOX-ready</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="direct-urls-quick-reference">Direct URLs Quick Reference</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigation</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DevOps Home</td>
+<td>All &gt; DevOps</td>
+<td><a href="{BASE}/now/devops/home">{BASE}/now/devops/home</a></td>
+</tr>
+<tr>
+<td>Tool Integrations</td>
+<td>All &gt; DevOps</td>
+<td><a href="{BASE}/sn_devops_tool_integration_list.do">{BASE}/sn_devops_tool_integration_list.do</a></td>
+</tr>
+<tr>
+<td>Pipelines</td>
+<td>All &gt; DevOps</td>
+<td><a href="{BASE}/sn_devops_pipeline_list.do">{BASE}/sn_devops_pipeline_list.do</a></td>
+</tr>
+<tr>
+<td>Change Requests</td>
+<td>All &gt; Change</td>
+<td><a href="{BASE}/change_request_list.do">{BASE}/change_request_list.do</a></td>
+</tr>
+<tr>
+<td>Std Change Templates</td>
+<td>All &gt; Change</td>
+<td><a href="{BASE}/std_change_record_producer_list.do">{BASE}/std_change_record_producer_list.do</a></td>
+</tr>
+<tr>
+<td>App Repositories</td>
+<td>All &gt; DevOps</td>
+<td><a href="{BASE}/sn_devops_app_repo_list.do">{BASE}/sn_devops_app_repo_list.do</a></td>
+</tr>
+<tr>
+<td>Orchestration Tasks</td>
+<td>All &gt; DevOps</td>
+<td><a href="{BASE}/sn_devops_orchestration_task_list.do">{BASE}/sn_devops_orchestration_task_list.do</a></td>
+</tr>
+<tr>
+<td>DORA Dashboards</td>
+<td>All &gt; PA</td>
+<td><a href="{BASE}/$pa_dashboard.do">{BASE}/$pa_dashboard.do</a></td>
+</tr>
+<tr>
+<td>Flow Designer</td>
+<td>All &gt; Flow Designer</td>
+<td><a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a></td>
+</tr>
+<tr>
+<td>Guided Setup</td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

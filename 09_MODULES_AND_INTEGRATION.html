@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>09 — Modules & Integration (Studio From Scratch) | HR Leave Australia</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+  <style>
+    .field-table th { white-space: nowrap; }
+    .step-num { font-weight: 700; color: var(--brand-2); }
+    .demo-box { border-left: 4px solid var(--brand-2); padding: .35rem 0 .35rem .85rem; margin: .75rem 0; }
+    .chapter-nav { display: flex; justify-content: space-between; gap: 1rem; margin: 2rem 0 1rem; padding: 1rem; background: #f8fafc; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All</a>
+      <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Links</a>
+      <a href="SCHEMA_AND_DATA.html">Schema</a>
+      <a href="scripts/index.html">Scripts</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+      <span class="badge">Chapter 09</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>09 — Modules & Integration (Studio From Scratch)</h1>
+      <p>Application Menu, Modules, Flow — full create; cross-module study abbreviated</p>
+      <div class="meta-grid">
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.72rem">e5f5bc9493a303507520703efaba104d</code></div>
+        <div><strong>Instance lab</strong><code style="color:#fff;font-size:.72rem">dev398980</code></div>
+        <div><strong>URL token</strong><code style="color:#fff">{BASE}</code></div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Quick open</strong>
+<a href="#viz09">Visual map</a>
+<a href="{BASE}/sys_app_application_list.do?sysparm_query=name=HR Leave">App Menu</a>
+<a href="{BASE}/sys_app_module_list.do?sysparm_query=application.name=HR Leave">Modules</a>
+<a href="{BASE}/now/flow-designer">Flow Designer</a>
+    </div>
+    <article class="content">
+
+<div class="glance" id="viz09">
+  <h3>Visual map — Ch.09 · Modules & Flow</h3>
+  <div class="grid3">
+    <div class="box"><strong>See in 10 seconds</strong><p>Application menu + Ask For Approval flow</p></div>
+    <div class="box"><strong>You build</strong><p>Navigator modules · exclusive flow</p></div>
+    <div class="box"><strong>Track</strong><p>Development</p></div>
+  </div>
+  <div class="flow"><div class="n"><b>MENU</b>HR Leave</div><span class="arrow">→</span><div class="n"><b>MOD</b>4 modules</div><span class="arrow">→</span><div class="n"><b>FLOW</b>Ask approval</div><span class="arrow">→</span><div class="n"><b>STATE</b>approved</div></div>
+  <div class="chips"><a class="chip url" href="{BASE}/sys_app_application_list.do">↗ sys_app_application_list.do</a><a class="chip url" href="{BASE}/now/flow-designer">↗ flow-designer</a><a class="chip url" href="{BASE}/sysapproval_approver_list.do">↗ sysapproval_approver_list.do</a></div>
+  <div class="chips"><span class="chip do">✓ Role per module</span><span class="chip do">✓ Flow exclusive</span><span class="chip do">✓ No Send Email in flow</span><span class="chip dont">✗ Empty approver = stuck</span></div>
+  <p class="note-sm">Full visual path (all chapters): <a href="VISUAL_FROM_SCRATCH_00_16.html">VISUAL_FROM_SCRATCH_00_16.html</a></p>
+</div>
+<div class="ok">
+<p><strong>Studio-only from scratch:</strong> Full create steps for navigator and approval flow. Cross-module study is optional reading.</p>
+<p>Also open: <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Direct Links</a> · <a href="SCHEMA_AND_DATA.html">Schema</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All Objects</a> · Previous: <a href="08_ATF_TESTING.html">08 ATF Testing</a></p>
+</div>
+<h2 id="how-objects-relate">How menu, modules, and flow relate</h2>
+<div class="ok">
+<pre style="white-space:pre-wrap;font-family:var(--mono);font-size:.85rem;background:#0b1220;color:#e2e8f0;padding:1rem;border-radius:12px">
+Part 1 Application Menu → Part 2 Modules (4 list links)
+Submit (UI Action / Catalog) → Part 3 Flow → Approval → BR3/BR4
+</pre>
+</div>
+<hr />
+<h2 id="rule0">Rule 0 — Before any object (Application + Update Set + Studio)</h2>
+<p>Repeat these checks before creating or editing any application file. This section is also <strong>section 00 Update Set</strong> — create the capture set first.</p>
+<ol>
+  <li><span class="step-num">Application picker</span> — top-right globe / application menu → select <strong>HR Leave</strong> (<code>x_786686_hr_leave</code>). Never leave <em>Global</em> selected when creating scoped artifacts.</li>
+  <li><span class="step-num">Update Set</span> — All → <strong>System Update Sets → Local Update Sets</strong> → <strong>New</strong>:
+    <table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+    <tr><td>Name</td><td><code>HR Leave – Build</code></td></tr>
+    <tr><td>Application</td><td>HR Leave</td></tr>
+    <tr><td>State</td><td>In Progress</td></tr>
+    <tr><td>Description</td><td>Captures all HR Leave lab artifacts</td></tr></table>
+    After submit: open the record → click <strong>Make Current</strong>. Direct list: <a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a>
+  </li>
+  <li><span class="step-num">Open Studio</span> — <a href="{BASE}/$studio.do">{BASE}/$studio.do</a> → confirm header shows <strong>HR Leave</strong>.</li>
+</ol>
+<div class="warn"><p>If artifacts land in Global scope, delete them and recreate under HR Leave. ACLs and events created globally will not behave correctly for this app.</p></div>
+<div class="demo-box"><p><strong>Verify Update Set:</strong> Create a test Script Include in Studio → open <strong>HR Leave – Build</strong> → Related List <strong>Customer Updates</strong> shows the new file.</p></div>
+<hr />
+<h2 id="part-1-menu">Part 1: Application Menu</h2>
+<h3>Purpose</h3>
+<p>Top-level Application Navigator entry for HR Leave modules.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>System Definition → Application Menus</strong> OR created with Application Setup</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_app_application_list.do?sysparm_query=name=HR Leave">{BASE}/sys_app_application_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-1-application">Part 1: Application Setup</a> with Create application menu checked.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Title</td><td>HR Leave</td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr>
+<tr><td>Order</td><td>100</td></tr>
+<tr><td>Roles</td><td>x_786686_hr_leave.employee (minimum)</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>If missing: Studio → Application Menu → New → fill fields.</li>
+<li>Save. Confirm appears in Application Navigator.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Navigator shows HR Leave heading.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>employee1 login → sees HR Leave menu after modules Modules.</p></div>
+<hr />
+<h2 id="part-2-modules">Part 2: Modules</h2>
+<h3>Purpose</h3>
+<p>Four list modules linking to req_v2, employee_v2, bal_v2, audit_v2 tables.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> Studio → <strong>Create Application File → Module</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_app_module_list.do?sysparm_query=application.name=HR Leave">{BASE}/sys_app_module_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="09_MODULES_AND_INTEGRATION.html#part-1-menu">Part 1: Application Menu</a> menu. Tables Table HR Employee..05.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><thead><tr><th>Title</th><th>Type</th><th>Table</th><th>Order</th><th>Roles</th></tr></thead>
+<tbody>
+<tr><td>Leave Requests</td><td>List</td><td>x_786686_hr_leave_req_v2</td><td>10</td><td>employee, manager, hr_admin</td></tr>
+<tr><td>Employees</td><td>List</td><td>x_786686_hr_leave_employee_v2</td><td>20</td><td>hr_admin</td></tr>
+<tr><td>Balances</td><td>List</td><td>x_786686_hr_leave_bal_v2</td><td>30</td><td>hr_admin</td></tr>
+<tr><td>Audit Trail</td><td>List</td><td>x_786686_hr_leave_audit_v2</td><td>40</td><td>hr_admin</td></tr>
+</tbody></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Module → New for each row. Application Menu = HR Leave.</li>
+<li>Type = List → Table = as listed. Order as table.</li>
+<li>Roles: restrict Employees/Balances/Audit to hr_admin; Requests to all three roles.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Four modules under HR Leave menu.</li><li>URLs x_786686_hr_leave_*_list.do open.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>employee1 → only Leave Requests visible.</p></div>
+<hr />
+<h2 id="part-3-flow">Part 3: Flow Designer — Leave Approval</h2>
+<h3>Purpose</h3>
+<p>When leave state becomes submitted, sends approval to u_approver_user; on approve/reject updates u_state.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>Flow Designer</strong> (application HR Leave)</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a> · <a href="{BASE}/sys_hub_flow_list.do">{BASE}/sys_hub_flow_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul>
+<li><a href="01_DEVELOPMENT.html#part-3-table-req">Part 3: Table</a> req_v2 with u_state, u_approver_user.</li>
+<li><a href="01_DEVELOPMENT.html#part-8-br1">Part 8: Business Rule BR1</a> BR1 fills approver.</li>
+<li>manager1 user for approval tests.</li>
+</ul>
+<h3>Form fields — Create Flow wizard</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td>HRLX Leave Approval</td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr>
+<tr><td>Description</td><td>Approval flow for submitted leave requests</td></tr></table>
+<h4>Trigger — Record Updated</h4>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Trigger type</td><td>Record Updated</td></tr>
+<tr><td>Table</td><td>x_786686_hr_leave_req_v2</td></tr>
+<tr><td>Condition</td><td>State [u_state] <strong>is</strong> submitted AND State <strong>changes</strong></td></tr>
+<tr><td>Run flow</td><td>Once per record (recommended)</td></tr></table>
+<h4>Action 1 — Ask For Approval</h4>
+<table class="field-table"><tr><th>Input</th><th>Value</th></tr>
+<tr><td>Record</td><td>Trigger → Leave Request Record (data pill)</td></tr>
+<tr><td>Table</td><td>x_786686_hr_leave_req_v2</td></tr>
+<tr><td>Approval field</td><td>u_approver_user</td></tr>
+<tr><td>Approval reason</td><td>Leave approval required</td></tr>
+<tr><td>Rules → Approve</td><td><strong>Anyone approves</strong> (required — do not leave empty)</td></tr></table>
+<h4>If Approved → Update Record</h4>
+<table class="field-table"><tr><td>Record</td><td>Trigger record pill</td></tr>
+<tr><td>Field map</td><td>u_state = approved</td></tr></table>
+<h4>Else → Update Record</h4>
+<table class="field-table"><tr><td>Field map</td><td>u_state = rejected</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Flow Designer → <strong>Create Flow</strong> → Name HRLX Leave Approval, Application HR Leave.</li>
+<li><strong>Add trigger</strong> → Record Updated → table req_v2 → condition u_state is submitted + changes.</li>
+<li><strong>+</strong> → Ask for Approval → fill Action 1 table → Rules: Anyone approves → Done.</li>
+<li><strong>+</strong> → Flow Logic → If → condition "approval was Approved".</li>
+<li>Yes branch → Update Record → u_state = approved.</li>
+<li>Else branch → Update Record → u_state = rejected.</li>
+<li><strong>Save</strong> → fix any red errors (missing approval rule is common).</li>
+<li><strong>Test</strong> → pick sample submitted req_v2 → Run test.</li>
+<li><strong>Publish</strong> → Publish new version → wait for Published status.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul>
+<li>Submitted req creates sysapproval_approver for manager.</li>
+<li>Approve → u_state approved → BR3 audit + BR4 event.</li>
+<li>Reject → u_state rejected.</li>
+</ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><ol>
+<li>employee1 submits leave (UI Action or catalog).</li>
+<li>manager1 → <a href="{BASE}/sysapproval_approver_list.do">My Approvals</a> → Approve.</li>
+<li>Verify state, audit_v2, bal_v2 updated.</li>
+</ol></div>
+<hr />
+<h2 id="part-4-cross-module">Part 4: Professional Module Encyclopedias</h2>
+<h3>Purpose</h3>
+<p>After HR Leave menu/flow works, use the professional implementer guides (same Part structure as 01 Development) for ITSM, CMDB, ITOM, ITAM, HRSD, CSM, FSM, SPM, GRC, SecOps, DevOps, App Engine — with direct URLs, properties, and navigator module publish steps.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>Portal</strong> → Modules Index · Properties Catalog · Implementation Runbooks</nav>
+<h3>Direct URL</h3>
+<div class="url-box">
+<a href="modules/00_MODULES_INDEX.html">Modules Index</a>
+<a href="modules/MODULE_PROPERTIES_AND_DIRECT_LINKS.html">Properties + Direct Links</a>
+<a href="modules/implementation/INDEX.html">Implementation Runbooks</a>
+</div>
+<h3>Prerequisites</h3>
+<ul><li>Parts 1–3 complete for core HR Leave.</li></ul>
+<h3>Related guides</h3>
+<ul>
+<li><a href="modules/00_MODULES_INDEX.html">00 Modules Index</a> — hub + study order for all 12 modules</li>
+<li><a href="modules/ITSM.html">ITSM</a> · <a href="modules/CMDB.html">CMDB</a> · <a href="modules/ITOM.html">ITOM</a> · <a href="modules/ITAM.html">ITAM</a></li>
+<li><a href="modules/HRSD.html">HRSD</a> · <a href="modules/CSM.html">CSM</a> · <a href="modules/FSM.html">FSM</a> · <a href="modules/SPM.html">SPM</a></li>
+<li><a href="modules/GRC.html">GRC</a> · <a href="modules/SECOPS.html">SecOps</a> · <a href="modules/DEVOPS.html">DevOps</a> · <a href="modules/APP_ENGINE.html">App Engine</a></li>
+<li><a href="12_INTEGRATION_FULL_GUIDE.html">12 Integration</a> — Scripted REST after menu/flow works</li>
+</ul>
+<h3>Verify checklist</h3>
+<ul><li>Core app E2E works without optional modules.</li><li>Modules Index opens and links resolve.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>employee1 → HR Leave menu → submit → manager approves. Then open <a href="modules/HRSD.html">HRSD</a> Part 13 for HR Leave cross-link.</p></div>
+<h2 id="modules-verify">Modules verify checklist</h2>
+<ol><li>HR Leave menu visible.</li><li>Four modules with correct roles.</li><li>Flow published and approving.</li></ol>
+
+</article>
+    <nav class="chapter-nav"><a href="08_ATF_TESTING.html">← Chapter 08</a><span>Chapter 09</span><a href="10_IMPLEMENTATION_AND_CONFIG.html">Chapter 10 →</a></nav>
+    <p class="footer">HR Leave · Studio from scratch · scope x_786686_hr_leave · replace {BASE} with your instance URL</p>
+  </main>
+
+  <script src="assets/docs.js"></script>
+  <script>
+    (function () {
+      var BASE = 'https://dev398980.service-now.com';
+      document.querySelectorAll('a[href*="{BASE}"]').forEach(function (a) {
+        a.href = a.href.split('{BASE}').join(BASE);
+      });
+    })();
+  </script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

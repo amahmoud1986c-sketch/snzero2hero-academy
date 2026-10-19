@@ -1,0 +1,2683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ITOM — IT Operations Management (Zero → Pro) | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>ITOM — IT Operations Management (Zero → Pro)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="itom-it-operations-management-zero-pro">ITOM — IT Operations Management (Zero → Pro)</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً:</strong> <a href="../MASTER_ALL_IN_ONE_SUMMARY.html">../MASTER_ALL_IN_ONE_SUMMARY.md</a> · <a href="../html/MASTER_ALL_IN_ONE_SUMMARY.html">../html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل:</strong> <a href="../MASTER_ALL_IN_ONE.html">../MASTER_ALL_IN_ONE.md</a> · <a href="../html/MASTER_ALL_IN_ONE.html">../html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات:</strong> <a href="../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Australia · Scope <code>x_786686_hr_leave</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<h2 id="australia-instance">Australia Instance — نسخة أستراليا</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Region / Datacenter</strong></td>
+<td>ServiceNow <strong>Australia</strong></td>
+</tr>
+<tr>
+<td><strong>Release train</strong></td>
+<td>Zurich (Sep 2026 EA) · next EA: <strong>Brazil</strong></td>
+</tr>
+<tr>
+<td><strong>URL base</strong></td>
+<td><code>{BASE}</code></td>
+</tr>
+<tr>
+<td><strong>Scope note</strong></td>
+<td>HR Leave app: <code>x_786686_hr_leave</code></td>
+</tr>
+<tr>
+<td><strong>Guided Setup</strong></td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="direct-navigation-urls">Direct Navigation URLs — روابط التنقل المباشرة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page / Tool</th>
+<th>Navigation Path</th>
+<th>Direct URL</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MID Servers</strong></td>
+<td>All &gt; MID Server &gt; Servers</td>
+<td><a href="{BASE}/ecc_agent_list.do">{BASE}/ecc_agent_list.do</a></td>
+<td>MID Server status</td>
+</tr>
+<tr>
+<td><strong>Discovery Schedules</strong></td>
+<td>All &gt; Discovery &gt; Schedules</td>
+<td><a href="{BASE}/discovery_schedule_list.do">{BASE}/discovery_schedule_list.do</a></td>
+<td>Discovery jobs</td>
+</tr>
+<tr>
+<td><strong>Discovery Status</strong></td>
+<td>All &gt; Discovery &gt; Status</td>
+<td><a href="{BASE}/discovery_status_list.do">{BASE}/discovery_status_list.do</a></td>
+<td>Run results</td>
+</tr>
+<tr>
+<td><strong>Credentials</strong></td>
+<td>All &gt; Discovery &gt; Credentials</td>
+<td><a href="{BASE}/discovery_credentials_list.do">{BASE}/discovery_credentials_list.do</a></td>
+<td>Auth for probes</td>
+</tr>
+<tr>
+<td><strong>Service Mapping</strong></td>
+<td>All &gt; Service Mapping</td>
+<td><a href="{BASE}/sa_service_list.do">{BASE}/sa_service_list.do</a></td>
+<td>Application services</td>
+</tr>
+<tr>
+<td><strong>Event Management</strong></td>
+<td>All &gt; Event Management &gt; Events</td>
+<td><a href="{BASE}/em_event_list.do">{BASE}/em_event_list.do</a></td>
+<td>Alert correlation</td>
+</tr>
+<tr>
+<td><strong>Cloud Discovery</strong></td>
+<td>All &gt; Cloud Management</td>
+<td><a href="{BASE}/cmdb_ci_cloud_service_account_list.do">{BASE}/cmdb_ci_cloud_service_account_list.do</a></td>
+<td>Cloud accounts</td>
+</tr>
+<tr>
+<td><strong>Operational Intelligence</strong></td>
+<td>All &gt; Operational Intelligence</td>
+<td><a href="{BASE}/now/oi/home">{BASE}/now/oi/home</a></td>
+<td>Analytics</td>
+</tr>
+<tr>
+<td><strong>ACC Agents</strong></td>
+<td>All &gt; Agent Client Collector</td>
+<td><a href="{BASE}/ecc_agent_ext_list.do">{BASE}/ecc_agent_ext_list.do</a></td>
+<td>Lightweight agents</td>
+</tr>
+<tr>
+<td><strong>Guided Setup ITOM</strong></td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+<td>Initial configuration</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>URLs:</strong> <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">../../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a><br />
+<strong>HR Leave:</strong> Scope x_786686_hr_leave</p>
+<p>CIS-Discovery / ITOM Professional Implementer &amp; Interview Guide<br />
+الأسلوب: عربية + إنجليزية تكمّلان بعضهما — بدون ترجمة حرفية لأسماء الشاشات.<br />
+Interview deep revision:<br />
+File: ../interview/MODULES_INTERVIEW_REVISION.md (§ ITOM)</p>
+</blockquote>
+<hr />
+<h2 id="arabic-summary">ملخص ووصف بالعربية (Arabic Summary)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>البند</th>
+<th>الشرح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ما هو ITOM؟</strong></td>
+<td>عمليات IT — اكتشاف الشبكة (Discovery)، MID Server، أحداث، خرائط خدمة</td>
+</tr>
+<tr>
+<td><strong>لماذا مهم؟</strong></td>
+<td>يملأ CMDB تلقائيًا ويربط التنبيهات بالعمليات — يقلل الإدخال اليدوي</td>
+</tr>
+<tr>
+<td><strong>من يستخدمه؟</strong></td>
+<td>فريق العمليات، Discovery admin، NOC</td>
+</tr>
+<tr>
+<td><strong>ماذا يغطي الملف؟</strong></td>
+<td>MID، جداول Discovery، Event Management · §16 مختبر MID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ملخص في سطر:</strong> اكتشاف البنية التحتية ومراقبة الأحداث — الجسر بين الشبكة وCMDB.</p>
+<p><strong>وصف مختصر:</strong> يشرح تثبيت MID، بيانات الاعتماد، نطاق IP، جداول Discovery، اختياري Event→Incident وService Mapping. يكمّل CMDB.md.</p>
+<hr />
+<h2 id="1-overview-business-value">1) Overview &amp; Business Value</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>ITOM automates discovery, monitoring, and service visibility for infrastructure. — ITOM = اكتشاف + مراقبة + ربط الخدمات + CMDB. بدون ITOM تملأ CMDB يدويًا — بطيء وغير دقيق.</p>
+<p>Core applications in ITOM suite:<br />
+- <strong>Discovery</strong> — finds servers, apps, network devices automatically.<br />
+- <strong>Service Mapping</strong> — maps application services top-down.<br />
+- <strong>Event Management</strong> — correlates alerts/events from monitoring tools.<br />
+- <strong>Cloud Discovery</strong> — AWS, Azure, GCP resources.<br />
+- <strong>Operational Intelligence</strong> — analytics on operational data.<br />
+- <strong>Agent Client Collector (ACC)</strong> — lightweight discovery agent.</p>
+<p>Relationship to CMDB: — Discovery <strong>يغذّي</strong> CMDB. Service Mapping <strong>يبني</strong> Application Services. Event Management <strong>يربط</strong> alerts بـ CIs.</p>
+<hr />
+<h2 id="2-architecture-data-model">2) Architecture &amp; Data Model</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">MID Server (on-prem bridge)
+ ↓ probes/sensors/patterns
+Discovery Schedule → discovers CIs
+ ↓ IRE reconciles
+CMDB (cmdb_ci_*)
+ ↓
+Service Mapping → cmdb_ci_service_auto
+ ↓
+Event Management → em_alert, em_event
+ ↓
+ITSM (incident on CI) / Change impact
+</code></pre>
+<p>Key tables:</p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>الغرض</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>discovery_status</td>
+<td>Discovery run status</td>
+</tr>
+<tr>
+<td>ecc_queue</td>
+<td>MID Server message queue</td>
+</tr>
+<tr>
+<td>discovery_credentials</td>
+<td>Credentials for discovery</td>
+</tr>
+<tr>
+<td>sa_discovery_credentials</td>
+<td>Service Mapping credentials</td>
+</tr>
+<tr>
+<td>cmdb_ci_*</td>
+<td>Discovered CIs</td>
+</tr>
+<tr>
+<td>cmdb_ci_service_auto</td>
+<td>Mapped application services</td>
+</tr>
+<tr>
+<td>em_event</td>
+<td>Raw events from sources</td>
+</tr>
+<tr>
+<td>em_alert</td>
+<td>Correlated alerts</td>
+</tr>
+<tr>
+<td>em_connector_instance</td>
+<td>Event connectors (Splunk, etc.)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-plugins-activation">3) Plugins &amp; Activation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Plugin / App</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Discovery</td>
+<td>com.snc.discovery</td>
+</tr>
+<tr>
+<td>Service Mapping</td>
+<td>com.snc.service-mapping</td>
+</tr>
+<tr>
+<td>Event Management</td>
+<td>com.snc.sa.server (Service Analytics)</td>
+</tr>
+<tr>
+<td>Cloud Discovery</td>
+<td>AWS/Azure/GCP plugins</td>
+</tr>
+<tr>
+<td>Operational Intelligence</td>
+<td>from Store</td>
+</tr>
+<tr>
+<td>Pattern Designer</td>
+<td>included with Discovery</td>
+</tr>
+<tr>
+<td>Agent Client Collector</td>
+<td>from Store</td>
+</tr>
+</tbody>
+</table>
+<p>How to activate:</p>
+<ol>
+<li>Navigate: All &gt; System Definition &gt; Plugins — <a href="{BASE}/v_plugin_list.do">Open direct</a></li>
+<li>Search plugin name → Activate.</li>
+<li>For licensed apps:<br />
+ Navigate: All &gt; System Applications &gt; All Available Applications &gt; All — <a href="{BASE}/v_plugin_list.do">Open direct</a></li>
+<li>Guided Setup:<br />
+ Navigate: All &gt; Guided Setup &gt; ITOM or Discovery — <a href="{BASE}/now/guided-setup">Open direct</a></li>
+</ol>
+<hr />
+<h2 id="4-guided-setup-all-options">4) Guided Setup &amp; All Options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Sections:<br />
+- MID Server installation &amp; validation.<br />
+- Credentials (Windows, SSH, SNMP, vCenter, cloud).<br />
+- Discovery Schedules &amp; IP ranges.<br />
+- Classification &amp; probes/sensors.<br />
+- Service Mapping entry points.<br />
+- Event connectors &amp; rules.<br />
+- Cloud accounts.</p>
+<p>Important navigation:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Discovery Home</td>
+<td>All &gt; Discovery &gt; Home · <a href="{BASE}/now/discovery">Open direct</a></td>
+</tr>
+<tr>
+<td>Discovery Schedules</td>
+<td>All &gt; Discovery &gt; Discovery Schedules · <a href="{BASE}/discovery_schedule_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>MID Servers</td>
+<td>All &gt; MID Server &gt; Servers · <a href="{BASE}/ecc_agent_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Credentials</td>
+<td>All &gt; Discovery &gt; Credentials · <a href="{BASE}/discovery_credentials_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>IP Ranges / Networks</td>
+<td>All &gt; Discovery &gt; Networks · <a href="{BASE}/discovery_range_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Probes &amp; Sensors</td>
+<td>All &gt; Discovery &gt; Probes and Sensors · <a href="{BASE}/now/discovery">Open direct</a></td>
+</tr>
+<tr>
+<td>Pattern Designer</td>
+<td>All &gt; Pattern Designer · <a href="{BASE}/now/pattern-designer">Open direct</a></td>
+</tr>
+<tr>
+<td>Service Mapping</td>
+<td>All &gt; Service Mapping · <a href="{BASE}/cmdb_ci_service_auto_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Event Management</td>
+<td>All &gt; Event Management · <a href="{BASE}/em_event_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Connectors</td>
+<td>All &gt; Event Management &gt; Connectors · <a href="{BASE}/em_connector_instance_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-end-to-end-process-cycle">5) End-to-End Process Cycle</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">Install MID Server (Windows/Linux)
+ → Validate MID (heartbeat in ecc_queue)
+ → Create Credentials (domain/SSH/SNMP)
+ → Define IP Ranges / Networks
+ → Create Discovery Schedule (daily/weekly)
+ → Run Discovery → CIs created/updated via IRE
+ → (Optional) Service Mapping from entry points
+ → (Optional) Event connectors ingest alerts
+ → Event rules correlate → em_alert
+ → Alerts create/link incidents (ITSM)
+ → CMDB Health monitors data quality
+</code></pre>
+<hr />
+<h2 id="6-development">6) Development</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3Dc84db0e8839f0b509f02b0d6feaad3c9">Application Files</a><a href="../scripts/index.html">Scripts portal</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<h3 id="scheduled-script-alert-to-incident-concept">Scheduled script — alert to incident (concept)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-javascript">// after em_alert created, optional BR creates incident
+var inc = new GlideRecord('incident');
+inc.initialize();
+inc.short_description = 'Alert: ' + current.getDisplayValue('source');
+inc.cmdb_ci = current.getValue('cmdb_ci');
+inc.impact = 2;
+inc.urgency = 2;
+inc.insert();
+</code></pre>
+<p>Development topics:<br />
+- Discovery patterns (Pattern Designer).<br />
+- Identification/Reconciliation (shared with CMDB).<br />
+- Event rules &amp; correlation filters.<br />
+- Transform maps for external CMDB feeds.<br />
+- MID Server script includes (rare — usually config).</p>
+<hr />
+<h2 id="7-administration">7) Administration</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Roles</td>
+<td>discovery_admin, evt_mgmt_admin, service_mapping_admin</td>
+</tr>
+<tr>
+<td>MID Server</td>
+<td>All &gt; MID Server &gt; Servers · <a href="{BASE}/ecc_agent_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Discovery properties</td>
+<td>All &gt; Discovery &gt; Properties · <a href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHglide.discovery">Open direct</a></td>
+</tr>
+<tr>
+<td>Event Management admin</td>
+<td>All &gt; Event Management &gt; Administration · <a href="{BASE}/em_event_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<p>Key roles:<br />
+- discovery_admin — Discovery configuration.<br />
+- evt_mgmt_admin — Event Management.<br />
+- service_mapping_admin — Service Mapping.<br />
+- cmdb_admin — CMDB (overlaps).</p>
+<hr />
+<h2 id="8-hands-on-labs">8) Hands-on Labs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Lab 1 — MID Server:<br />
+1. Download MID from instance.<br />
+2. Install on Windows server.<br />
+3. Validate in All &gt; MID Server &gt; Servers. — <a href="{BASE}/ecc_agent_list.do">Open direct</a></p>
+<p>Lab 2 — Discovery:<br />
+1. Create credential.<br />
+2. Create IP range.<br />
+3. Create schedule → Run now.<br />
+4. Check discovery_status and new CIs.</p>
+<p>Lab 3 — Service Mapping:<br />
+1. Define entry point (URL or process).<br />
+2. Run mapping → view Application Service.</p>
+<p>Lab 4 — Event Management:<br />
+1. Create connector (or use demo).<br />
+2. Ingest test event → verify em_event → em_alert.</p>
+<hr />
+<h2 id="9-best-practices-common-mistakes">9) Best Practices &amp; Common Mistakes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Best practices:<br />
+- One MID per network zone (firewall rules).<br />
+- Use least-privilege credentials.<br />
+- Let IRE handle identity — don&rsquo;t duplicate CIs manually.<br />
+- Map services after Discovery stabilizes.</p>
+<p>Common mistakes:<br />
+- MID not validated (wrong URL/proxy).<br />
+- Discovery without credentials.<br />
+- Ignoring CMDB Health after Discovery.<br />
+- Service Mapping before Discovery completes.</p>
+<hr />
+<h2 id="10-cis-interview-focus">10) CIS / Interview Focus</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>High-yield:<br />
+- MID Server purpose &amp; ecc_queue.<br />
+- Discovery vs Service Mapping vs Event Management.<br />
+- Probes vs sensors vs patterns.<br />
+- IRE role in Discovery.<br />
+- em_event vs em_alert correlation.<br />
+- Cloud Discovery vs traditional Discovery.<br />
+- Integration with ITSM (CI on incident, alert→incident).</p>
+<hr />
+<h2 id="11-portals-workspaces-role-hierarchy-feature-catalog">11) Portals, Workspaces, Role Hierarchy &amp; Feature Catalog</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<h3 id="portals-workspaces">Portals &amp; Workspaces</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>URL / Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Discovery Home</td>
+<td>All &gt; Discovery &gt; Home · <a href="{BASE}/now/discovery">Open direct</a></td>
+</tr>
+<tr>
+<td>Service Mapping Workspace</td>
+<td>All &gt; Service Mapping · <a href="{BASE}/cmdb_ci_service_auto_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Event Management Workspace</td>
+<td>All &gt; Event Management · <a href="{BASE}/em_event_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>CMDB Workspace</td>
+<td>/now/cmdb</td>
+</tr>
+<tr>
+<td>Service Operations Workspace</td>
+<td>/now/sow/home (ITSM+CMDB)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="role-hierarchy">Role Hierarchy</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">admin
+└─ discovery_admin / evt_mgmt_admin
+ └─ itil (consume CIs/alerts in ITSM)
+</code></pre>
+<h3 id="feature-catalog">Feature Catalog</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<ul>
+<li>Discovery (schedules, credentials, MID, patterns).</li>
+<li>Service Mapping (top-down application services).</li>
+<li>Event Management (connectors, correlation, alerting).</li>
+<li>Cloud Discovery (AWS/Azure/GCP).</li>
+<li>Operational Intelligence.</li>
+<li>Agent Client Collector.</li>
+<li>Integration with CMDB Health &amp; ITSM.</li>
+</ul>
+<hr />
+<h2 id="12-end-to-end-implementation-post-activation">12) End-to-End Implementation (Post-Activation)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<h3 id="application-menus-map">Application Menus map</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">All &gt; Discovery
+ ├─ Home / Schedules / Status / Credentials
+ ├─ Networks / IP Ranges
+ └─ Probes and Sensors / Classification
+All &gt; MID Server &gt; Servers
+All &gt; Service Mapping
+All &gt; Event Management
+ ├─ Connectors / Rules / Alerts
+ └─ Administration
+All &gt; Pattern Designer
+</code></pre>
+<h3 id="build-order">Build order</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<ol>
+<li>MID Server install + validate.</li>
+<li>Credentials + IP ranges.</li>
+<li>Discovery schedules → populate CMDB.</li>
+<li>IRE rules verified (see CMDB.md).</li>
+<li>Service Mapping (if licensed).</li>
+<li>Event connectors + correlation rules.</li>
+<li>ITSM integration (alert→incident, CI on forms).</li>
+<li>Dashboards + CMDB Health remediation.</li>
+</ol>
+<p>Study path:<br />
+File: ../interview/00_MASTER_DEV_ADMIN_INTERVIEW.md</p>
+<hr />
+<h2 id="13-options-instance-notes">13) Options &amp; Instance Notes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Instance gaps</td>
+<td>MODULE_OPTIONS_AND_INSTANCE_NOTES.md → <strong>ITOM</strong></td>
+</tr>
+<tr>
+<td><strong>Full implementation</strong></td>
+<td>MODULE_IMPLEMENTATION_PLAYBOOK.md → <strong>ITOM</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="14-implementation-scenarios-options-best-practices-customizations">14) Implementation Scenarios, Options, Best Practices &amp; Customizations</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<blockquote>
+<p>Playbook: MODULE_IMPLEMENTATION_PLAYBOOK.md → <strong>ITOM</strong></p>
+</blockquote>
+<h3 id="141-scenarios">14.1 Scenarios</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Scenario</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1</strong></td>
+<td>Discovery only</td>
+<td>MID + credentials + schedules</td>
+</tr>
+<tr>
+<td><strong>S2</strong></td>
+<td>+ Event Management</td>
+<td>Connectors + correlation</td>
+</tr>
+<tr>
+<td><strong>S3</strong></td>
+<td>Full stack</td>
+<td>+ Service Mapping + Cloud Discovery</td>
+</tr>
+</tbody>
+</table>
+<h3 id="142-options-matrix">14.2 Options matrix</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MID</td>
+<td>One per network zone</td>
+<td>Shared MID (risk)</td>
+</tr>
+<tr>
+<td>Credentials</td>
+<td>Least privilege per OS</td>
+<td>Shared admin (avoid)</td>
+</tr>
+<tr>
+<td>Events</td>
+<td>Connector (Splunk/Datadog)</td>
+<td>Email-in</td>
+</tr>
+<tr>
+<td>Alert→Ticket</td>
+<td>Flow from em_alert</td>
+<td>Manual</td>
+</tr>
+</tbody>
+</table>
+<h3 id="143-plugins-order">14.3 Plugins (order)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<ol>
+<li>com.snc.discovery 2. com.snc.service-mapping 3. com.snc.sa.server (events) 4. Cloud plugins (AWS/Azure/GCP)</li>
+</ol>
+<h3 id="144-roles">14.4 Roles</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>discovery_admin, evt_mgmt_admin, service_mapping_admin, cmdb_admin.</p>
+<h3 id="145-common-developments">14.5 Common developments</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Custom Discovery patterns, event rules/filters, alert-to-incident automation, MID hardening, firewall documentation, ECC queue monitoring.</p>
+<h3 id="146-best-practices">14.6 Best practices</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Discovery before Service Mapping; validate MID heartbeat before schedules; CMDB Health after first discovery run.</p>
+<h3 id="147-go-live">14.7 Go-live</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<ul>
+<li>[ ] MID validated (ecc_queue)</li>
+<li>[ ] Pilot IP range success</li>
+<li>[ ] IRE not creating duplicates</li>
+<li>[ ] Event connector test alert</li>
+</ul>
+<hr />
+<h2 id="15-zero-to-hero-end-to-end-implementation-scratch-go-live">15) Zero-to-Hero End-to-End Implementation (Scratch → Go-Live)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<blockquote>
+<p>Framework: MODULE_ZERO_TO_HERO_CONSULTING.md · Feeds CMDB.md</p>
+</blockquote>
+<p>من <strong>تثبيت MID</strong> حتى <strong>اكتشاف + (اختياري) أحداث وخدمات</strong>.</p>
+<h3 id="151-business-goals">15.1 Business goals</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>العربي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Auto-discover infra</td>
+<td>اكتشاف تلقائي للخوادم والتطبيقات</td>
+</tr>
+<tr>
+<td>Reduce manual CMDB</td>
+<td>تقليل Excel والإدخال اليدوي</td>
+</tr>
+<tr>
+<td>Event correlation</td>
+<td>ربط التنبيهات بالـ CIs</td>
+</tr>
+<tr>
+<td>Service visibility</td>
+<td>رؤية خدمات التطبيق</td>
+</tr>
+</tbody>
+</table>
+<h3 id="152-phase-0-discover">15.2 Phase 0 — Discover</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Network zones, firewall rules, credential policy, discovery scope (IP ranges).</p>
+<h3 id="153-phase-1-activate">15.3 Phase 1 — Activate</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>com.snc.discovery, Service Mapping, Event Management (as licensed).</p>
+<h3 id="154-phase-2-mid-server-week-23">15.4 Phase 2 — MID Server (Week 2–3)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Download, install, validate heartbeat (ecc_queue), one MID per zone.</p>
+<h3 id="155-phase-3-discovery-week-36">15.5 Phase 3 — Discovery (Week 3–6)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Credentials → IP ranges → schedule → run → review discovery_status → fix IRE duplicates.</p>
+<h3 id="156-phase-4-optional-event-mgmt-week-68">15.6 Phase 4 — Optional Event Mgmt (Week 6–8)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Connectors, correlation rules, alert→incident Flow.</p>
+<h3 id="157-phase-5-optional-service-mapping-week-810">15.7 Phase 5 — Optional Service Mapping (Week 8–10)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Entry points, map application services, link to CMDB.</p>
+<h3 id="158-phase-6-uat-go-live">15.8 Phase 6 — UAT &amp; go-live</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Pilot subnet 100% discovered, CI accuracy sample, event test alert.</p>
+<h3 id="159-phase-7-operate">15.9 Phase 7 — Operate</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Expand schedules, MID patching, CMDB Health after each run.</p>
+<h3 id="1510-master-checklist">15.10 Master checklist</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<ul>
+<li>[ ] MID prod-ready · [ ] Pilot discovery · [ ] CMDB Health · [ ] Runbook for ops</li>
+</ul>
+<hr />
+<h2 id="16-full-e2e-practice-pages-requirements-options-ar-en">16) Full E2E Practice · Pages · Requirements · Options (AR + EN)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<blockquote>
+<p>Requires CMDB.md · MID Server is the bridge between network and CMDB.</p>
+</blockquote>
+<hr />
+<h3 id="161-business-goals">16.1 Business goals</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Goal (EN)</th>
+<th>الهدف (AR)</th>
+<th>KPI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Automated inventory</td>
+<td>جرد آلي</td>
+<td>% CIs from Discovery</td>
+</tr>
+<tr>
+<td>Reduce manual CMDB entry</td>
+<td>تقليل الإدخال اليدوي</td>
+<td>Hours saved</td>
+</tr>
+<tr>
+<td>Event-driven ops</td>
+<td>عمليات driven by events</td>
+<td>MTTR from alerts</td>
+</tr>
+<tr>
+<td>Service visibility</td>
+<td>رؤية الخدمة</td>
+<td>Map coverage</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why buy ITOM:</strong> English: Humans cannot keep CMDB current at scale — Discovery + events do. — ITOM يملأ CMDB ويربط التنبيهات بالحوادث — بدونه البيانات قديمة.</p>
+<hr />
+<h3 id="162-requirements">16.2 Requirements</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>EN</th>
+<th>AR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OM-R01</td>
+<td>MID Server installed &amp; secured</td>
+<td>MID مثبت وآمن</td>
+</tr>
+<tr>
+<td>OM-R02</td>
+<td>Discovery schedule for pilot subnet</td>
+<td>جدول اكتشاف pilot</td>
+</tr>
+<tr>
+<td>OM-R03</td>
+<td>Credentials vault for Linux/Windows</td>
+<td>بيانات اعتماد</td>
+</tr>
+<tr>
+<td>OM-R04</td>
+<td>IRE integration with CMDB</td>
+<td>تكامل IRE</td>
+</tr>
+<tr>
+<td>OM-R05</td>
+<td>(Optional) Event → Incident correlation</td>
+<td>أحداث → حوادث</td>
+</tr>
+<tr>
+<td>OM-R06</td>
+<td>(Optional) Service Mapping entry points</td>
+<td>نقاط دخول الخرائط</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="163-consultation-cycle">16.3 Consultation cycle</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>EN</th>
+<th>AR</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Network zones, firewalls, creds policy</td>
+<td>شبكة وجدران</td>
+<td>Discovery design</td>
+</tr>
+<tr>
+<td>1</td>
+<td>MID placement (DMZ vs internal)</td>
+<td>موقع MID</td>
+<td>Architecture diagram</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Pilot IP ranges only</td>
+<td>نطاق pilot</td>
+<td>Scope</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Run + tune probes</td>
+<td>تشغيل وضبط</td>
+<td>CI accuracy report</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Expand schedules</td>
+<td>توسيع</td>
+<td>Rollout plan</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Event mgmt (if licensed)</td>
+<td>إدارة أحداث</td>
+<td>Connector list</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="164-options-a-b-c">16.4 Options (A / B / C)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Discovery</td>
+<td>Horizontal + vertical</td>
+<td>IP-based only</td>
+<td>Agentless minimal</td>
+</tr>
+<tr>
+<td>MID</td>
+<td>Dedicated prod MID</td>
+<td>Shared MID dev/test</td>
+<td>Multiple MIDs by region</td>
+</tr>
+<tr>
+<td>Events</td>
+<td>Event Management + Flow</td>
+<td>Email alerts</td>
+<td>No event mgmt</td>
+</tr>
+<tr>
+<td>Mapping</td>
+<td>Service Mapping top apps</td>
+<td>Dependency manual</td>
+<td>Phase 2</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="165-all-pages-navigate">16.5 All pages (Navigate)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MID Servers</td>
+<td>All &gt; MID Server &gt; Servers · <a href="{BASE}/ecc_agent_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>MID capabilities</td>
+<td>All &gt; MID Server &gt; Capabilities · <a href="{BASE}/ecc_agent_capability_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Discovery Schedules</td>
+<td>All &gt; Discovery &gt; Discovery Schedules · <a href="{BASE}/discovery_schedule_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Discovery Status</td>
+<td>All &gt; Discovery &gt; Discovery Status · <a href="{BASE}/discovery_status_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Discovery Credentials</td>
+<td>All &gt; Discovery &gt; Credentials · <a href="{BASE}/discovery_credentials_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>IP Ranges</td>
+<td>All &gt; Discovery &gt; IP Ranges · <a href="{BASE}/discovery_range_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Event Management</td>
+<td>All &gt; Event Management &gt; Events · <a href="{BASE}/em_event_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Connectors</td>
+<td>All &gt; Event Management &gt; Connectors · <a href="{BASE}/em_connector_instance_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Service Mapping</td>
+<td>All &gt; Service Mapping &gt; Maps · <a href="{BASE}/cmdb_ci_service_auto_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>ECC Queue</td>
+<td>ecc_queue.list (MID traffic)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="166-full-pdi-lab-16-steps">16.6 Full PDI lab (16 steps)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>EN</th>
+<th>AR</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Register MID (or use PDI MID)</td>
+<td>تسجيل MID</td>
+<td>Status Validated</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Create Windows/Linux credential</td>
+<td>اعتماد</td>
+<td>Test connection</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Define IP range (lab subnet)</td>
+<td>نطاق IP</td>
+<td>Range saved</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Create Discovery Schedule — run now</td>
+<td>جدول</td>
+<td>Job running</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Monitor discovery_status</td>
+<td>حالة</td>
+<td>Completed</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Open new cmdb_ci_server — check discovery fields</td>
+<td>CI</td>
+<td>Populated</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Duplicate test — IRE with CMDB</td>
+<td>IRE</td>
+<td>No dup</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Review CMDB Health post-discovery</td>
+<td>صحة</td>
+<td>Score changed</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Document firewall rules needed for prod</td>
+<td>جدار ناري</td>
+<td>Runbook</td>
+</tr>
+<tr>
+<td>10</td>
+<td>(Optional) Create connector test event</td>
+<td>حدث</td>
+<td>Event record</td>
+</tr>
+<tr>
+<td>11</td>
+<td>(Optional) Flow: event → incident</td>
+<td>Flow</td>
+<td>Incident created</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Expand schedule to second range</td>
+<td>توسيع</td>
+<td>Second run ok</td>
+</tr>
+<tr>
+<td>13</td>
+<td>MID log review</td>
+<td>سجلات</td>
+<td>No critical errors</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Options doc A/B/C</td>
+<td>خيارات</td>
+<td>Documented</td>
+</tr>
+<tr>
+<td>15</td>
+<td>UAT with ops: &ldquo;find unknown server&rdquo;</td>
+<td>UAT</td>
+<td>CI located</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Update Set ITOM Lab 16</td>
+<td>Export</td>
+<td>Done</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="167-sign-off">16.7 Sign-off</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<ul>
+<li>[ ] MID hardened (service account, patches) · [ ] Pilot subnet ≥95% discovered · [ ] CMDB team accepts IRE outcomes · [ ] Prod firewall change ticket ready</li>
+</ul>
+<hr />
+<h2 id="17-power-user-playbook-itom">§17 — Power User Playbook (ITOM)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<blockquote>
+<p>Daily operating manual for Discovery, Event Management, Service Mapping &amp; Cloud Ops.<br />
+دليل التشغيل اليومي لاكتشاف البنية، إدارة الأحداث، خرائط الخدمة، والسحابة.</p>
+</blockquote>
+<hr />
+<h3 id="171-personas-daily-mission">17.1 Personas &amp; Daily Mission</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Primary Tables / Workspaces</th>
+<th>Daily Mission (EN)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Discovery Admin</td>
+<td>discovery_status, discovery_log, ecc_queue, cmdb_ci_*</td>
+<td>Keep CIs fresh, fix failing probes, manage credentials &amp; schedules</td>
+</tr>
+<tr>
+<td>Event Management Operator</td>
+<td>em_event, em_alert, em_connector_instance, Alert Console</td>
+<td>Triage active alerts, suppress noise, escalate P1</td>
+</tr>
+<tr>
+<td>Cloud Ops Lead</td>
+<td>Cloud Discovery, cmdb_ci_aws_<em>, cmdb_ci_azure_</em>, cost tables</td>
+<td>Govern cloud accounts, tag accuracy, cost rollups</td>
+</tr>
+<tr>
+<td>NOC Engineer</td>
+<td>Service Operations Workspace /now/sow/home, Alert Intelligence</td>
+<td>First responder for alerts, link to incidents, drive bridge calls</td>
+</tr>
+<tr>
+<td>Service Mapping Architect</td>
+<td>cmdb_ci_service_auto, Service Map UI</td>
+<td>Map and reconcile business services, fix drift, govern entry points</td>
+</tr>
+<tr>
+<td>Capacity Planner</td>
+<td>Performance Analytics, Operational Intelligence</td>
+<td>Forecast resource exhaustion, baseline anomalies, plan refresh</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>الشخصية</th>
+<th>الجداول/مساحات العمل</th>
+<th>المهمة اليومية</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>مدير الاكتشاف</td>
+<td>حالة الاكتشاف، السجل، ECC، CIs</td>
+<td>تحديث الـ CIs ومعالجة المسابر الفاشلة</td>
+</tr>
+<tr>
+<td>مشغّل إدارة الأحداث</td>
+<td>الأحداث، التنبيهات، الموصلات</td>
+<td>فرز التنبيهات وكتم الضوضاء</td>
+</tr>
+<tr>
+<td>مسؤول السحابة</td>
+<td>اكتشاف السحابة، CIs السحابة</td>
+<td>حوكمة الحسابات والتاجات والتكلفة</td>
+</tr>
+<tr>
+<td>مهندس NOC</td>
+<td>مساحة عمل عمليات الخدمة</td>
+<td>الاستجابة الأولى للتنبيهات</td>
+</tr>
+<tr>
+<td>معماري خرائط الخدمة</td>
+<td>الخدمات التلقائية</td>
+<td>بناء الخرائط ومعالجة الانحراف</td>
+</tr>
+<tr>
+<td>مخطط السعة</td>
+<td>Performance Analytics + OI</td>
+<td>التنبؤ بنفاد الموارد</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="172-day-in-life-a-typical-tuesday">17.2 Day-in-Life — A Typical Tuesday</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">08:00 Check MID Server health → All &gt; MID Server &gt; Servers
+ Filter: Status != Up → investigate any Down/Warning MIDs.
+</code></pre>
+<p>08:15 Review Discovery Schedules nightly run<br />
+ → All &gt; Discovery &gt; Discovery Status (last 24h) — <a href="{BASE}/discovery_status_list.do">Open direct</a><br />
+ Look for: Completed with Errors, Stuck, Cancelled.</p>
+<p>08:30 Alert Intelligence triage<br />
+ → All &gt; Event Management &gt; All Alerts (Critical, Open) — <a href="{BASE}/em_alert_list.do">Open direct</a><br />
+ Group by: CI, source, alert_group_id.</p>
+<p>09:00 Open NOC bridge if P1 alert open &gt; 15 min and no incident.</p>
+<p>10:00 Service Map reconciliation<br />
+ → Pick one business service → verify topology vs reality.</p>
+<p>11:00 Cloud Discovery review<br />
+ → Cloud Resources page, check delta since yesterday.<br />
+ Tag governance: untagged &gt; 5% → notify owner.</p>
+<p>13:00 Pattern Designer — fix one failing probe surfaced in §17.3.</p>
+<p>14:00 Capacity review — Operational Intelligence anomalies.</p>
+<p>16:00 Update runbook with anything new learned. — دورة يوم نموذجي للمشغّل: فحص MID، مراجعة الاكتشاف الليلي، فرز التنبيهات، تسوية خرائط الخدمة، مراجعة السحابة، إصلاح نمط واحد، مراجعة السعة.</p>
+<hr />
+<h3 id="173-discovery-admin-recipes">17.3 Discovery Admin Recipes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<h4 id="recipe-a-add-new-ip-range-credential-5-minutes">Recipe A — Add new IP range + credential (5 minutes)</h4>
+<ol>
+<li>Navigate: All &gt; Discovery &gt; Credentials → New. — <a href="{BASE}/discovery_credentials_list.do">Open direct</a></li>
+<li>Pick <strong>Type</strong> (Windows / SSH / SNMPv3 / vCenter / WMI).</li>
+<li>Fill user, password (or key), Applies to <strong>specific MID(s)</strong> if zone-scoped.</li>
+<li>Click <strong>Test Credential</strong> → pick a known target IP → must return Success.</li>
+<li>Navigate: All &gt; Discovery &gt; IP Networks → New. — <a href="{BASE}/discovery_range_list.do">Open direct</a></li>
+<li>Fill CIDR (e.g. 10.20.0.0/24), MID Server, Discovery Schedule (optional).</li>
+<li>Save → open a <strong>Discovery Schedule</strong> → add this network → <strong>Discover Now</strong> (small scope). — أضف بيانات اعتماد، اختبرها، أنشئ نطاق IP، اربطه بجدول، شغّل اكتشاف فوري على نطاق صغير.</li>
+</ol>
+<h4 id="recipe-b-define-new-pattern-in-pattern-designer">Recipe B — Define new Pattern in Pattern Designer</h4>
+<ol>
+<li>Navigate: All &gt; Pattern Designer. — <a href="{BASE}/now/pattern-designer">Open direct</a></li>
+<li>Click <strong>New Pattern</strong> → choose type (Infrastructure or Application).</li>
+<li>Set CI Type (e.g. cmdb_ci_apache_web_server).</li>
+<li>Add <strong>Identification Section</strong> (commands / WMI / SNMP / file parse) producing identification attributes.</li>
+<li>Add <strong>Connection Section</strong> to find related CIs (TCP/UDP listening ports → process).</li>
+<li>Use <strong>Debug</strong> mode → run on a test host via MID.</li>
+<li>Validate parsed values appear in <strong>Pattern Result</strong> preview.</li>
+<li>Save &amp; publish → assign to <strong>Classification</strong> so future Discovery picks it up.</li>
+</ol>
+<pre><code class="language-text">Common operations inside a pattern step:
+- Parse Command Output (with delimiters / regex)
+- Match (regex extract groups)
+- Merge Table (combine into output variable)
+- Set Parameter Value (assign to CI attribute)
+</code></pre>
+<p>أنشئ نمطًا، عيّن CI Type، أضف خطوات الهوية والاتصال، شغّل Debug، انشره ثم اربطه بالتصنيف.</p>
+<h4 id="recipe-c-debug-a-failing-probe-via-discovery_log">Recipe C — Debug a failing probe via discovery_log</h4>
+<pre><code class="language-javascript">// Background script — last 24h failures grouped by sensor
+var gr = new GlideAggregate('discovery_log');
+gr.addQuery('sys_created_on', '&gt;=', gs.beginningOfYesterday());
+gr.addQuery('state', 'IN', 'error,warning');
+gr.addAggregate('COUNT');
+gr.groupBy('sensor');
+gr.orderByAggregate('COUNT', 'sensor');
+gr.query();
+while (gr.next()) {
+ gs.info('[discovery] sensor=' + gr.getValue('sensor') +
+ ' failures=' + gr.getAggregate('COUNT'));
+}
+</code></pre>
+<p>Steps:</p>
+<ol>
+<li>Run the script above in All &gt; Scripts - Background. — <a href="{BASE}/sys.scripts.do">Open direct</a></li>
+<li>Top offender → open discovery_log.list filtered by that sensor.</li>
+<li>Inspect <strong>Message</strong> field → most common errors:<br />
+ - Insufficient privileges → fix credential mapping.<br />
+ - Could not classify → missing/wrong pattern.<br />
+ - Connection refused → firewall or service down.</li>
+<li>Apply fix → re-run schedule on a single device. — شغّل السكربت لتجميع الفشل، افتح أعلى محسّس فاشل، اقرأ الرسالة، أصلح بيانات الاعتماد أو النمط أو جدار الحماية.</li>
+</ol>
+<h4 id="recipe-d-rolling-discovery-daily-prod-weekly-dev">Recipe D — Rolling discovery (daily prod, weekly dev)</h4>
+<pre><code class="language-javascript">// Idempotent: create or update two schedules covering same MID
+function upsertSchedule(name, mid, cron, runDuration) {
+ var gr = new GlideRecord('discovery_schedule');
+ gr.addQuery('name', name);
+ gr.query();
+ if (!gr.next()) {
+ gr.initialize();
+ gr.name = name;
+ }
+ gr.mid_server = mid;
+ gr.run_type = 'periodically';
+ gr.run_dayofweek = cron.dayOfWeek;
+ gr.run_time = cron.runTime;
+ gr.max_run_time = runDuration;
+ gr.active = true;
+ gr.update();
+}
+</code></pre>
+<p>upsertSchedule(&lsquo;Prod Daily Servers&rsquo;, &lsquo;MID-PROD-01&rsquo;,<br />
+ { dayOfWeek: &lsquo;&rsquo;, runTime: &lsquo;01:00:00&rsquo; }, &lsquo;04:00:00&rsquo;);<br />
+upsertSchedule(&lsquo;Dev Weekly Servers&rsquo;, &lsquo;MID-DEV-01&rsquo;,<br />
+ { dayOfWeek: &lsquo;6&rsquo;, runTime: &lsquo;02:00:00&rsquo; }, &lsquo;06:00:00&rsquo;);</p>
+<p>Then attach the right <strong>IP Networks</strong> to each schedule via the related list. — شغّل البرنامج لإنشاء جدولين: يومي للإنتاج وأسبوعي للتطوير. اربط النطاقات بكل جدول.</p>
+<h4 id="recipe-e-mid-server-health-check-selector-strategy">Recipe E — MID Server health check + selector strategy</h4>
+<ol>
+<li>Navigate: All &gt; MID Server &gt; Servers → look at <strong>Status</strong>, <strong>Validation</strong>, <strong>Last refreshed</strong>. — <a href="{BASE}/ecc_agent_list.do">Open direct</a></li>
+<li>Open MID → related list <strong>MID Server Issues</strong> must be empty (acknowledge or resolve).</li>
+<li>Navigate: All &gt; MID Server &gt; Capabilities → MIDs grouped by ability (AWS, Azure, JDBC, Discovery, etc.). — <a href="{BASE}/ecc_agent_capability_list.do">Open direct</a></li>
+<li>Selector strategy:<br />
+ - <strong>MID Selector</strong> at Discovery Schedule level (per zone).<br />
+ - <strong>MID Cluster</strong> with Capability-based load balancing for high volume.<br />
+ - Set mid.use.ip.ranges on each MID so only its zone reaches it.</li>
+</ol>
+<pre><code class="language-javascript">// Lightweight heartbeat — alert if any MID hasn't responded &gt; 5 min
+var cutoff = new GlideDateTime();
+cutoff.addSeconds(-300);
+var gr = new GlideRecord('ecc_agent');
+gr.addQuery('status', '!=', 'Up');
+gr.query();
+while (gr.next()) {
+ gs.warn('[MID Health] ' + gr.name + ' status=' + gr.status +
+ ' last=' + gr.last_refreshed);
+}
+</code></pre>
+<p>افحص حالة كل MID، اربط النطاقات بمسؤولها، وفعّل اختيارًا على مستوى الجدول أو الكلستر.</p>
+<hr />
+<h3 id="174-event-management-recipes">17.4 Event Management Recipes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<h4 id="recipe-a-connect-external-monitoring-via-event-connector">Recipe A — Connect external monitoring via Event Connector</h4>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Connector type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nagios</td>
+<td>SNMP trap → REST</td>
+<td>Map host → CI by hostname</td>
+</tr>
+<tr>
+<td>Datadog</td>
+<td>Pull connector (API key)</td>
+<td>Filter by monitor tags</td>
+</tr>
+<tr>
+<td>Splunk</td>
+<td>Push to /api/now/v1/em/jsonv2</td>
+<td>One alert action per saved search</td>
+</tr>
+<tr>
+<td>SCOM</td>
+<td>Push (REST/Web Service)</td>
+<td>Use connector instance with severity map</td>
+</tr>
+</tbody>
+</table>
+<p>Steps for Datadog (example):</p>
+<ol>
+<li>Navigate: All &gt; Event Management &gt; Connectors &gt; Connector Instances → New. — <a href="{BASE}/em_connector_instance_list.do">Open direct</a></li>
+<li><strong>Type</strong>: Datadog. Provide <strong>API Key</strong> and <strong>Application Key</strong> (encrypted credential record).</li>
+<li><strong>MID Server</strong>: choose MID with internet egress.</li>
+<li><strong>Source instance</strong> = your DD URL.</li>
+<li>Save → <strong>Test Connector</strong> → ingest sample events to em_event.</li>
+<li>After ingest, set up a <strong>Mapping Rule</strong> to map Datadog tags → CI lookup field (host). — أنشئ موصلًا لـ Datadog، اختبره، وضع قاعدة لمطابقة العائل مع CI.</li>
+</ol>
+<h4 id="recipe-b-alert-correlation-by-time-topology">Recipe B — Alert correlation by time + topology</h4>
+<ol>
+<li>Navigate: All &gt; Event Management &gt; Rules &gt; Alert Correlation Rules. — <a href="{BASE}/em_alert_list.do">Open direct</a></li>
+<li>New rule:<br />
+ - <strong>Name</strong>: App stack correlation.<br />
+ - <strong>Group by</strong>: CI relationship (parent/child) and tag.<br />
+ - <strong>Time window</strong>: 5 minutes (sliding).<br />
+ - <strong>Condition</strong>: events of severity ≥ Major.<br />
+ - <strong>Action</strong>: create parent alert with severity = MAX(child).</li>
+</ol>
+<pre><code class="language-javascript">// Example &quot;Group Key&quot; advanced script for correlation
+(function() {
+ var ciSysId = current.cmdb_ci.toString();
+ var serviceMap = new GlideRecord('svc_ci_assoc');
+ serviceMap.addQuery('ci', ciSysId);
+ serviceMap.query();
+ var key = 'CI:' + ciSysId;
+ if (serviceMap.next()) key = 'SVC:' + serviceMap.service_id.toString();
+ return key;
+})();
+</code></pre>
+<p>Validate: trigger two alerts on parent + child within window → should result in 1 parent alert. — عرّف قاعدة تجميع تنبيهات بناءً على CI والخدمة خلال 5 دقائق وأرجع تنبيهًا أبًا واحدًا.</p>
+<h4 id="recipe-c-suppress-noise-via-alert-rules">Recipe C — Suppress noise via Alert Rules</h4>
+<pre><code class="language-text">Examples of high-value Alert Rules:
+- Suppress alerts on CIs in maintenance (CHG window).
+- Suppress recurring &quot;flap&quot; alerts (&gt;3 in 10 min).
+- Auto-close info severity after 30 min if no related higher severity.
+</code></pre>
+<p>Background snippet to identify flapping CIs:</p>
+<pre><code class="language-javascript">var gr = new GlideAggregate('em_alert');
+gr.addQuery('sys_created_on', '&gt;=', gs.minutesAgoStart(60));
+gr.addAggregate('COUNT');
+gr.groupBy('cmdb_ci');
+gr.having('COUNT', '&gt;', 10);
+gr.query();
+while (gr.next()) {
+ gs.info('[flap] CI ' + gr.getDisplayValue('cmdb_ci') +
+ ' raised ' + gr.getAggregate('COUNT') + ' alerts in last hour');
+}
+</code></pre>
+<h4 id="recipe-d-auto-create-incident-from-p1-alert">Recipe D — Auto-create incident from P1 alert</h4>
+<p>Flow Designer flow EM: P1 Alert → Incident:</p>
+<pre><code class="language-text">Trigger: Record created or updated on em_alert
+ Conditions: severity = Critical AND state = Open
+Action 1: Look Up Records cmdb_ci on current.cmdb_ci
+Action 2: Create Record incident:
+ short_description = current.description
+ cmdb_ci = current.cmdb_ci
+ impact = 1, urgency = 1
+ assignment_group = mapped from CI support_group
+Action 3: Update Record em_alert:
+ incident = result.incident.sys_id
+ state = Acknowledged
+</code></pre>
+<p>Flow ينشئ حادثة من أي تنبيه حرج ويربطها بالـ CI ويسند الفريق المالك.</p>
+<h4 id="recipe-e-self-healing-subflow">Recipe E — Self-healing subflow</h4>
+<pre><code class="language-text">Subflow: Restart Web Service on Linux
+Inputs: ci (cmdb_ci_linux_server), service_name
+Steps:
+1. Run SSH (MID): &quot;systemctl restart {{service_name}}&quot;
+2. Wait 30s
+3. Poll port via SSH &quot;ss -ltn | grep :443&quot; → true/false
+4. If healthy → close alert, post note &quot;Auto-resolved&quot;
+5. If unhealthy → escalate, set alert severity Critical
+</code></pre>
+<p>Trigger: Alert Action Rule on em_alert where description CONTAINS &ldquo;Apache down&rdquo;. — Subflow إصلاح ذاتي يعيد تشغيل الخدمة عبر SSH ثم يتحقق من المنفذ ويغلق التنبيه عند النجاح.</p>
+<hr />
+<h3 id="175-service-mapping-recipes">17.5 Service Mapping Recipes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<h4 id="recipe-a-top-down-vs-bottom-up-vs-tag-based">Recipe A — Top-down vs Bottom-up vs Tag-based</h4>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>When to use</th>
+<th>Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Top-down</td>
+<td>Public-facing apps with known URL/entry</td>
+<td>Start from URL or process, traverse connections</td>
+</tr>
+<tr>
+<td>Bottom-up</td>
+<td>Already discovered infra needing grouping</td>
+<td>Use Discovery + manual relationships</td>
+</tr>
+<tr>
+<td>Tag-based</td>
+<td>Cloud-native with service= tags</td>
+<td>Match CIs by tag → auto-build service</td>
+</tr>
+</tbody>
+</table>
+<p>Navigate: All &gt; Service Mapping &gt; Services &gt; Application Services → <strong>New</strong> → choose method. — <a href="{BASE}/cmdb_ci_service_auto_list.do">Open direct</a></p>
+<h4 id="recipe-b-reconcile-gaps-when-service-map-shows-missing-nodes">Recipe B — Reconcile gaps when Service Map shows missing nodes</h4>
+<ol>
+<li>Open Service Map → click missing relationship icon (greyed node).</li>
+<li>Use <strong>Discover</strong> action → triggers Pattern on candidate host.</li>
+<li>If still missing → check <strong>Traffic-based connections</strong> (sa_tcp_connection).</li>
+<li>Background:</li>
+</ol>
+<pre><code class="language-javascript">var gr = new GlideRecord('svc_ci_assoc');
+gr.addQuery('service_id', '&lt;service_sys_id&gt;');
+gr.query();
+gs.info('Service contains ' + gr.getRowCount() + ' CIs');
+var missing = new GlideRecord('sa_tcp_connection');
+missing.addQuery('service', '&lt;service_sys_id&gt;');
+missing.addNullQuery('to_ci');
+missing.query();
+gs.info('Unresolved TCP endpoints: ' + missing.getRowCount());
+</code></pre>
+<p>افحص الخريطة، شغّل Discover على العقد الناقصة، ثم راجع TCP غير المربوطة.</p>
+<h4 id="recipe-c-trace-from-incident-in-app-impacted-cis-impacted-users">Recipe C — Trace from &ldquo;Incident in app&rdquo; → impacted CIs → impacted users</h4>
+<pre><code class="language-javascript">// Given incident with cmdb_ci set, walk service map
+function impactReport(incidentSysId) {
+ var inc = new GlideRecord('incident');
+ if (!inc.get(incidentSysId) || !inc.cmdb_ci) return;
+ var ci = inc.cmdb_ci.toString();
+ var svc = new GlideRecord('svc_ci_assoc');
+ svc.addQuery('ci', ci);
+ svc.query();
+ while (svc.next()) {
+ var users = new GlideRecord('cmdb_rel_ci');
+ users.addQuery('parent', svc.service_id.toString());
+ users.addQuery('type.name', 'Used by::Uses');
+ users.query();
+ gs.info('Service ' + svc.service_id.getDisplayValue() +
+ ' impacts ' + users.getRowCount() + ' users');
+ }
+}
+impactReport('&lt;sys_id&gt;');
+</code></pre>
+<p>انطلق من الحادثة → الخدمة → المستخدمون المتأثرون.</p>
+<hr />
+<h3 id="176-cloud-discovery-recipes">17.6 Cloud Discovery Recipes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<h4 id="a-aws-connector">A — AWS connector</h4>
+<ol>
+<li>Navigate: All &gt; Cloud Resources &gt; Configuration &gt; Service Accounts → New AWS account. — <a href="{BASE}/customer_account_list.do">Open direct</a></li>
+<li>Choose auth: <strong>IAM Role (cross-account)</strong> or <strong>Access Key</strong>.</li>
+<li><strong>Datacenter Type</strong>: AWS, <strong>Regions</strong>: select target regions.</li>
+<li>Bind to MID with <strong>AWS</strong> capability.</li>
+<li>Run discovery → CIs populate cmdb_ci_ec2_instance, cmdb_ci_vpc, etc.</li>
+<li>Verify tag ingestion → cmdb_key_value.list related to the CI.</li>
+</ol>
+<h4 id="b-azure-arm-connector">B — Azure ARM connector</h4>
+<ol>
+<li>App registration in Azure AD → record Tenant ID, Client ID, Client Secret.</li>
+<li>Assign <strong>Reader</strong> + <strong>Cost Reader</strong> on target subscriptions.</li>
+<li>Navigate: All &gt; Cloud Admin Portal &gt; Accounts → New Azure account. — <a href="{BASE}/customer_account_list.do">Open direct</a></li>
+<li>Validate connection → run discovery → CIs in cmdb_ci_azure_*.</li>
+</ol>
+<h4 id="c-gcp-connector">C — GCP connector</h4>
+<ol>
+<li>Create GCP Service Account with Viewer + Billing Account Viewer.</li>
+<li>Download JSON key → store as encrypted credential.</li>
+<li>Configure connector → run discovery.</li>
+</ol>
+<h4 id="d-tag-based-ingestion-cost-reporting">D — Tag-based ingestion + cost reporting</h4>
+<p>Map AWS tag cost_center → CMDB attribute u_cost_center via Cloud Discovery transformation:</p>
+<pre><code class="language-javascript">// Inbound transform map script — cmdb_ci_ec2_instance
+(function map(source, target) {
+ var tags = JSON.parse(source.u_tags_json || '{}');
+ if (tags.cost_center) target.u_cost_center = tags.cost_center;
+ if (tags.environment) target.environment = tags.environment;
+ if (tags.owner) target.assigned_to = tags.owner;
+})(source, target);
+</code></pre>
+<p>Then build a Report on cmdb_ci_cloud_resource grouping by u_cost_center summing monthly_cost. — اربط تاج AWS بحقل CMDB، ثم أنشئ تقرير تكلفة شهري حسب مركز التكلفة.</p>
+<hr />
+<h3 id="177-top-20-itom-scripts-working-snippets">17.7 Top 20 ITOM Scripts (working snippets)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<h4 id="1-discovery-schedule-auto-create-from-ip-range-csv">1. Discovery schedule auto-create from IP range CSV</h4>
+<pre><code class="language-javascript">var data = [
+ { name: 'Riyadh DC', cidr: '10.10.0.0/16', mid: 'MID-RUH' },
+ { name: 'Jeddah DC', cidr: '10.20.0.0/16', mid: 'MID-JED' }
+];
+data.forEach(function(row) {
+ var net = new GlideRecord('discovery_range_item');
+ net.initialize();
+ net.name = row.name;
+ net.range = row.cidr;
+ net.mid_server.setDisplayValue(row.mid);
+ net.insert();
+});
+</code></pre>
+<h4 id="2-mid-server-failover-logic-business-rule-on-ecc_agent">2. MID Server failover logic (Business Rule on ecc_agent)</h4>
+<pre><code class="language-javascript">(function executeRule(current, previous) {
+ if (current.status != 'Down') return;
+ var alt = new GlideRecord('ecc_agent');
+ alt.addQuery('status', 'Up');
+ alt.addQuery('mid_cluster', current.mid_cluster);
+ alt.addQuery('sys_id', '!=', current.sys_id);
+ alt.setLimit(1);
+ alt.query();
+ if (alt.next()) {
+ var sched = new GlideRecord('discovery_schedule');
+ sched.addQuery('mid_server', current.sys_id);
+ sched.query();
+ while (sched.next()) { sched.mid_server = alt.sys_id; sched.update(); }
+ gs.warn('[MID Failover] reassigned schedules from ' + current.name + ' to ' + alt.name);
+ }
+})(current, previous);
+</code></pre>
+<h4 id="3-pattern-result-validator">3. Pattern result validator</h4>
+<pre><code class="language-javascript">function validatePatternResult(discoveryId) {
+ var dl = new GlideRecord('discovery_log');
+ dl.addQuery('discovery_id', discoveryId);
+ dl.addQuery('state', 'error');
+ dl.query();
+ var fails = [];
+ while (dl.next()) fails.push(dl.message + '');
+ return { ok: fails.length === 0, failures: fails };
+}
+</code></pre>
+<h4 id="4-alert-priority-normalizer-before-br-on-em_alert">4. Alert priority normalizer (Before BR on em_alert)</h4>
+<pre><code class="language-javascript">(function executeRule(current) {
+ var map = { critical: 1, major: 2, minor: 3, warning: 4, info: 5 };
+ var key = (current.severity + '').toLowerCase();
+ if (map[key]) current.priority = map[key];
+})(current);
+</code></pre>
+<h4 id="5-event-flood-suppressor-100min">5. Event flood suppressor (&gt;100/min)</h4>
+<pre><code class="language-javascript">var gr = new GlideAggregate('em_event');
+gr.addQuery('sys_created_on', '&gt;=', gs.minutesAgoStart(1));
+gr.addAggregate('COUNT');
+gr.groupBy('source');
+gr.having('COUNT', '&gt;', 100);
+gr.query();
+while (gr.next()) {
+ var src = gr.getValue('source');
+ gs.warn('[flood] source=' + src + ' rate=' + gr.getAggregate('COUNT') + '/min');
+ var sup = new GlideRecord('em_match_rule');
+ sup.initialize();
+ sup.name = 'TEMP suppress ' + src;
+ sup.source = src;
+ sup.suppression = true;
+ sup.active = true;
+ sup.expires_at = gs.minutesAgoStart(-30);
+ sup.insert();
+}
+</code></pre>
+<h4 id="6-topology-based-correlation-advanced-group-key">6. Topology-based correlation (advanced group key)</h4>
+<pre><code class="language-javascript">(function() {
+ var ci = current.cmdb_ci.toString();
+ if (!ci) return current.node;
+ var parent = new GlideRecord('cmdb_rel_ci');
+ parent.addQuery('child', ci);
+ parent.addQuery('type.name', 'Depends on::Used by');
+ parent.setLimit(1);
+ parent.query();
+ return parent.next() ? 'PARENT:' + parent.parent : 'CI:' + ci;
+})();
+</code></pre>
+<h4 id="7-auto-create-change-request-from-patch-mgmt-alert">7. Auto-create change request from Patch Mgmt alert</h4>
+<pre><code class="language-javascript">(function executeRule(current, previous) {
+ if (current.source != 'Patch Management' || current.state != 'New') return;
+ var ch = new GlideRecord('change_request');
+ ch.initialize();
+ ch.short_description = 'Patch required: ' + current.description;
+ ch.cmdb_ci = current.cmdb_ci;
+ ch.type = 'standard';
+ ch.category = 'Patching';
+ ch.risk = 'moderate';
+ ch.requested_by = gs.getUserID();
+ var id = ch.insert();
+ current.work_notes = 'Change opened: ' + id;
+})(current, previous);
+</code></pre>
+<h4 id="8-auto-acknowledge-sustained-alerts">8. Auto-acknowledge sustained alerts</h4>
+<pre><code class="language-javascript">var gr = new GlideRecord('em_alert');
+gr.addQuery('state', 'Open');
+gr.addQuery('sys_created_on', '&lt;', gs.hoursAgoStart(2));
+gr.addQuery('acknowledged', false);
+gr.query();
+while (gr.next()) {
+ gr.acknowledged = true;
+ gr.work_notes = 'Auto-ack after 2h (no user action)';
+ gr.update();
+}
+</code></pre>
+<h4 id="9-health-dashboard-refresher">9. Health Dashboard refresher</h4>
+<pre><code class="language-javascript">var refresh = new GlideRecord('pa_scores_history_recompute');
+refresh.initialize();
+refresh.indicator.setDisplayValue('ITOM Alert MTTR');
+refresh.insert();
+gs.info('Triggered PA recompute');
+</code></pre>
+<h4 id="10-cloud-discovery-scope-filter">10. Cloud Discovery scope filter</h4>
+<pre><code class="language-javascript">// Restrict an AWS schedule to two regions only
+var sched = new GlideRecord('cloud_discovery_schedule');
+sched.get('&lt;schedule_sys_id&gt;');
+sched.regions = 'ap-southeast-2,me-south-1';
+sched.update();
+</code></pre>
+<h4 id="11-aws-tag-cmdb-attribute-mapper-transform-script">11. AWS tag → CMDB attribute mapper (Transform Script)</h4>
+<pre><code class="language-javascript">(function map(source, target) {
+ var tags = source.u_tags_kv || '';
+ var pairs = tags.split('|');
+ pairs.forEach(function(p) {
+ var kv = p.split('=');
+ if (kv[0] == 'cost_center') target.u_cost_center = kv[1];
+ if (kv[0] == 'app') target.business_application = kv[1];
+ });
+})(source, target);
+</code></pre>
+<h4 id="12-cloud-cost-rollup-by-department">12. Cloud cost rollup by department</h4>
+<pre><code class="language-javascript">var agg = new GlideAggregate('cmdb_ci_cloud_resource');
+agg.addAggregate('SUM', 'monthly_cost');
+agg.groupBy('u_cost_center');
+agg.query();
+while (agg.next()) {
+ gs.info('[cost] dept=' + agg.getValue('u_cost_center') +
+ ' cost=' + agg.getAggregate('SUM', 'monthly_cost'));
+}
+</code></pre>
+<h4 id="13-maintenance-window-alert-suppression">13. Maintenance window alert suppression</h4>
+<pre><code class="language-javascript">(function executeRule(current) {
+ var ci = current.cmdb_ci.toString();
+ if (!ci) return;
+ var cw = new GlideRecord('change_request');
+ cw.addQuery('cmdb_ci', ci);
+ cw.addQuery('state', 'IN', '-2,-1'); // scheduled, implement
+ cw.addQuery('start_date', '&lt;=', gs.nowDateTime());
+ cw.addQuery('end_date', '&gt;=', gs.nowDateTime());
+ cw.query();
+ if (cw.next()) {
+ current.maintenance = true;
+ current.state = 'Suppressed';
+ current.work_notes = 'In maintenance window ' + cw.number;
+ }
+})(current);
+</code></pre>
+<h4 id="14-stale-ci-detector-discovery-didnt-see-in-30d">14. Stale CI detector (Discovery didn&rsquo;t see in 30d)</h4>
+<pre><code class="language-javascript">var gr = new GlideRecord('cmdb_ci_server');
+gr.addQuery('discovery_source', '!=', '');
+gr.addQuery('last_discovered', '&lt;', gs.daysAgoStart(30));
+gr.query();
+while (gr.next()) {
+ gs.info('[stale] ' + gr.name + ' last seen ' + gr.last_discovered);
+}
+</code></pre>
+<h4 id="15-mass-acknowledge-alerts-by-group">15. Mass-acknowledge alerts by group</h4>
+<pre><code class="language-javascript">function ackByGroup(groupId) {
+ var gr = new GlideRecord('em_alert');
+ gr.addQuery('assignment_group', groupId);
+ gr.addQuery('acknowledged', false);
+ gr.updateMultiple({ acknowledged: true, work_notes: 'Bulk ack by ' + gs.getUserName() });
+}
+</code></pre>
+<h4 id="16-service-map-relationship-rebuilder">16. Service Map relationship rebuilder</h4>
+<pre><code class="language-javascript">function rebuildService(serviceId) {
+ var clear = new GlideRecord('svc_ci_assoc');
+ clear.addQuery('service_id', serviceId);
+ clear.deleteMultiple();
+ var refresh = new SncSAEngine();
+ refresh.discoverService(serviceId);
+}
+</code></pre>
+<h4 id="17-pattern-timing-analyzer">17. Pattern timing analyzer</h4>
+<pre><code class="language-javascript">var gr = new GlideAggregate('discovery_pattern_log');
+gr.addAggregate('AVG', 'duration_ms');
+gr.addAggregate('MAX', 'duration_ms');
+gr.groupBy('pattern');
+gr.query();
+while (gr.next()) {
+ gs.info(gr.getValue('pattern') +
+ ' avg=' + gr.getAggregate('AVG', 'duration_ms') +
+ ' max=' + gr.getAggregate('MAX', 'duration_ms'));
+}
+</code></pre>
+<h4 id="18-mid-server-queue-depth-monitor">18. MID Server queue depth monitor</h4>
+<pre><code class="language-javascript">var depth = new GlideAggregate('ecc_queue');
+depth.addQuery('state', 'ready');
+depth.addAggregate('COUNT');
+depth.groupBy('agent');
+depth.query();
+while (depth.next()) {
+ var c = parseInt(depth.getAggregate('COUNT'), 10);
+ if (c &gt; 5000) gs.warn('[queue] ' + depth.getValue('agent') + ' depth=' + c);
+}
+</code></pre>
+<h4 id="19-discovery-success-rate-dashboard-data-source">19. Discovery success rate dashboard (data source)</h4>
+<pre><code class="language-javascript">var total = new GlideAggregate('discovery_status');
+total.addAggregate('COUNT');
+total.addQuery('sys_created_on', '&gt;=', gs.daysAgoStart(7));
+total.query();
+total.next();
+var grandTotal = parseInt(total.getAggregate('COUNT'), 10);
+</code></pre>
+<p>var ok = new GlideAggregate(&lsquo;discovery_status&rsquo;);<br />
+ok.addQuery(&lsquo;state&rsquo;, &lsquo;Completed&rsquo;);<br />
+ok.addQuery(&lsquo;sys_created_on&rsquo;, &lsquo;&gt;=&rsquo;, gs.daysAgoStart(7));<br />
+ok.addAggregate(&lsquo;COUNT&rsquo;);<br />
+ok.query();<br />
+ok.next();<br />
+var success = parseInt(ok.getAggregate(&lsquo;COUNT&rsquo;), 10);</p>
+<p>gs.info(&lsquo;Discovery success rate 7d = &rsquo; + ((success / grandTotal) * 100).toFixed(1) + &lsquo;%&rsquo;);</p>
+<h4 id="20-alert-now-assist-root-cause-suggestion">20. Alert → Now Assist root cause suggestion</h4>
+<pre><code class="language-javascript">(function executeRule(current) {
+ if (current.severity &gt; 2) return;
+ var na = new sn_nowassist.NowAssistAPI();
+ var summary = na.callSkill('alert_root_cause', {
+ alert: current.description + '',
+ ci: current.cmdb_ci.getDisplayValue(),
+ history_minutes: 60
+ });
+ current.work_notes = '[Now Assist] ' + (summary &amp;&amp; summary.answer || 'no suggestion');
+})(current);
+</code></pre>
+<p>عشرون سكربتًا جاهزًا للاستخدام تغطي الاكتشاف، MID، الأحداث، التنبيهات، السحابة، والتكامل مع Now Assist.</p>
+<hr />
+<h3 id="178-power-user-cheat-sheet">17.8 Power User Cheat Sheet</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">discovery_status.list → Runs (filter: state != Completed)
+discovery_log.list → Per-device probe logs
+ecc_queue.list → MID traffic (state, agent, queue)
+em_alert.list → Active alerts
+em_event.list → Raw events
+em_connector_instance.list → Connectors
+sa_tcp_connection.list → Service Mapping connections
+cmdb_key_value.list → Cloud tags
+cmdb_ci_cloud_resource.list → Cloud CIs
+</code></pre>
+<p>قائمة سريعة بأهم الجداول للوصول المباشر من شريط البحث.</p>
+<hr />
+<h2 id="18-from-scratch-implementation-day-0-day-30">§18 — From-Scratch Implementation (Day 0 → Day 30)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<blockquote>
+<p>Calendar to take ITOM from blank instance to Go-Live in 30 working days.<br />
+خطة 30 يوم عمل لإطلاق ITOM من الصفر.</p>
+<p>Sequence assumes Australia release. Adjust durations for org maturity.<br />
+الترتيب لإصدار أستراليا — عدّل حسب نضج المؤسسة.</p>
+</blockquote>
+<hr />
+<h3 id="180-overview-calendar">18.0 Overview Calendar</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<pre><code class="language-text">Week 1 → Day 0–5 Foundation (network, plugins, MID, credentials)
+Week 2 → Day 6–11 Discovery rollout
+Week 3 → Day 12–17 Service Mapping + Event Management
+Week 4 → Day 18–23 Self-healing + Cloud
+Week 5 → Day 24–30 Patch/Vuln, Dashboards, ATF, Training, Go-Live
+</code></pre>
+<p>خمسة أسابيع عمل — أساس، اكتشاف، خرائط/أحداث، علاج ذاتي/سحابة، إطلاق.</p>
+<hr />
+<h3 id="181-day-0-pre-flight-network-architecture-inventory">18.1 Day 0 — Pre-flight (network architecture &amp; inventory)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p><strong>Outputs (must exist before Day 1):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>Owner</th>
+<th>Format</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network zone diagram (VLANs, DMZ, SD-WAN)</td>
+<td>Network team</td>
+<td>Visio/Lucid</td>
+</tr>
+<tr>
+<td>MID Server placement plan</td>
+<td>ITOM Architect</td>
+<td>Diagram + table</td>
+</tr>
+<tr>
+<td>Firewall rule sheet</td>
+<td>Security</td>
+<td>CSV (src→dst:port)</td>
+</tr>
+<tr>
+<td>Credentials inventory</td>
+<td>Platform leads</td>
+<td>Vault export</td>
+</tr>
+<tr>
+<td>In-scope IP ranges &amp; exclusions</td>
+<td>Network + Sec</td>
+<td>CSV</td>
+</tr>
+<tr>
+<td>Existing monitoring tool list (Nagios/Splunk/DD/SCOM)</td>
+<td>Ops</td>
+<td>Spreadsheet</td>
+</tr>
+<tr>
+<td>Cloud accounts (AWS/Azure/GCP)</td>
+<td>Cloud Ops</td>
+<td>Tenant/account IDs</td>
+</tr>
+</tbody>
+</table>
+<p>Firewall minimum (per MID Server):</p>
+<pre><code class="language-text">MID Server → instance.service-now.com : TCP 443 (outbound, internet)
+MID Server → discovered targets : TCP 22 (SSH), 135/445 (WMI), 161 (SNMP),
+ 5985/5986 (WinRM), 443 (vCenter/cloud)
+MID Server ⇄ monitoring sources : varies (Splunk REST, Nagios SNMP trap 162)
+</code></pre>
+<p>⚠️ <strong>Warning:</strong> Do not allow inbound from MID — outbound only to instance. Document NAT. — يوم صفر يجمع المخططات وقواعد الحماية ومخزون الاعتمادات قبل أي تثبيت.</p>
+<hr />
+<h3 id="182-day-1-activate-plugins-cmdb-ready">18.2 Day 1 — Activate plugins; CMDB ready</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a></nav>
+<pre><code class="language-text">All &gt; System Definition &gt; Plugins → activate in order:
+ 1. com.snc.discovery
+ 2. com.snc.service-mapping (if licensed)
+ 3. com.snc.event_management (sa.server / Event Management)
+ 4. com.snc.cmdb_health (already on most instances)
+ 5. com.snc.itom_licensing (Operational Intelligence — if licensed)
+</code></pre>
+<p>Post-activation checks:</p>
+<pre><code class="language-javascript">['com.snc.discovery', 'com.snc.service-mapping', 'com.snc.event_management']
+.forEach(function(p) {
+ var gr = new GlideRecord('sys_plugins');
+ gr.addQuery('source', p);
+ gr.query();
+ gr.next();
+ gs.info(p + ' -&gt; active=' + gr.active);
+});
+</code></pre>
+<p>CMDB readiness (block ITOM if missing):</p>
+<ul>
+<li>IRE active: navigate All &gt; Configuration &gt; CI Class Manager. — <a href="{BASE}/now/cmdb/ci-class-manager">Open direct</a></li>
+<li>At least one <strong>CI Identification Rule</strong> per planned class (server, network gear, app).</li>
+<li>Domain separation decision finalized (do not retro-introduce). — فعّل البلجنز بالترتيب، تأكد من تشغيل IRE وقواعد الهوية، ثم اعتمد قرار العزل النطاقي.</li>
+</ul>
+<hr />
+<h3 id="183-day-23-install-mid-servers-ha-cluster-validate">18.3 Day 2–3 — Install MID Servers (HA cluster) + validate</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Steps per MID:</p>
+<ol>
+<li>Navigate: All &gt; MID Server &gt; Downloads → choose OS (Win/Linux), copy URL. — <a href="{BASE}/ecc_agent_download.do">Open direct</a></li>
+<li>On VM: install Java OpenJDK 17, create service account svc_midserver, install MID:</li>
+</ol>
+<pre><code class="language-bash"># Linux example
+sudo useradd -m -s /bin/bash svc_midserver
+sudo -u svc_midserver wget &lt;mid_zip_url&gt; -O /tmp/mid.zip
+sudo -u svc_midserver unzip /tmp/mid.zip -d /opt/snc_mid
+sudo -u svc_midserver /opt/snc_mid/agent/installer.sh -silent \
+ -instanceurl https://&lt;instance&gt;.service-now.com \
+ -instanceuser midserver_user \
+ -instancepass '&lt;encrypted&gt;' \
+ -midservername MID-RUH-01
+sudo systemctl enable --now mid_server
+</code></pre>
+<ol start="3">
+<li>Navigate: All &gt; MID Server &gt; Servers → record appears with <strong>Status=Up</strong>. — <a href="{BASE}/ecc_agent_list.do">Open direct</a></li>
+<li><strong>Validate</strong> the MID → must turn <strong>Validated</strong>.</li>
+<li>Repeat for second MID; cluster them: mid.cluster.name = ITOM-CL-01.</li>
+<li>HA test: stop one MID&rsquo;s service → schedules should re-route to peer (see §17 script #2).</li>
+</ol>
+<p>⚠️ Run MID as least-priv service user. Never under Administrator/root. — ثبّت MIDs على VM منفصلين، صادق عليهم، ثم اربطهم في كلستر HA واختبر التحويل.</p>
+<hr />
+<h3 id="184-day-45-credentials-ip-ranges-exclusion-lists">18.4 Day 4–5 — Credentials, IP ranges, exclusion lists</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Day 4 — Credentials:</p>
+<ol>
+<li>Navigate: All &gt; Discovery &gt; Credentials → New per OS family: — <a href="{BASE}/discovery_credentials_list.do">Open direct</a><br />
+ - Windows: domain account with <strong>Log on as service</strong>, Local admin via group policy.<br />
+ - Linux: SSH key (preferred) or sudo NOPASSWD on minimal commands.<br />
+ - SNMPv3: AuthPriv (SHA + AES128) — never SNMPv1.<br />
+ - vCenter: read-only role.<br />
+ - Cloud: SSO/role-based.</li>
+<li><strong>Test Credential</strong> against representative target → green.</li>
+<li>Tag credentials with MID assignment to scope blast radius.</li>
+</ol>
+<p>Day 5 — IP ranges:</p>
+<pre><code class="language-javascript">// Bulk import via Background Script
+var ranges = [
+ { name: 'Prod-Servers-RUH', cidr: '10.10.10.0/24', mid: 'MID-RUH-01' },
+ { name: 'Prod-Network-RUH', cidr: '10.10.20.0/24', mid: 'MID-RUH-01' },
+ { name: 'Dev-All', cidr: '10.50.0.0/16', mid: 'MID-DEV-01' }
+];
+ranges.forEach(function(r) {
+ var n = new GlideRecord('discovery_range_item');
+ n.initialize();
+ n.name = r.name;
+ n.range = r.cidr;
+ n.mid_server.setDisplayValue(r.mid);
+ n.insert();
+});
+</code></pre>
+<p>Exclusion list (must-have):</p>
+<pre><code class="language-text">- Printers VLAN (if not in scope)
+- IPMI/iLO networks (separate Discovery)
+- Customer-owned segments
+- DR network (only when DR drill)
+</code></pre>
+<p>Navigate: All &gt; Discovery &gt; Exclude Ranges → enter excluded CIDRs. — أنشئ بيانات اعتماد لكل نظام، اختبرها، ثم استورد النطاقات واستبعد المناطق الحساسة. — <a href="{BASE}/discovery_range_list.do">Open direct</a></p>
+<hr />
+<h3 id="185-day-68-first-discovery-small-subnet-fix-grow">18.5 Day 6–8 — First discovery (small subnet → fix → grow)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Day 6 — Pilot run:</p>
+<ol>
+<li>Pick 10.10.10.0/24 (≤256 hosts).</li>
+<li>Navigate: All &gt; Discovery &gt; Discovery Schedules → New Pilot-RUH. — <a href="{BASE}/discovery_schedule_list.do">Open direct</a></li>
+<li>Add the pilot range, MID, run type <strong>On demand</strong>.</li>
+<li>Click <strong>Discover Now</strong>.</li>
+<li>Monitor: All &gt; Discovery &gt; Discovery Status until <strong>Completed</strong>. — <a href="{BASE}/discovery_status_list.do">Open direct</a></li>
+</ol>
+<p>Day 7 — Review:</p>
+<pre><code class="language-javascript">// Pilot success summary
+var disc = new GlideRecord('discovery_status');
+disc.addQuery('name', 'Pilot-RUH');
+disc.orderByDesc('sys_created_on');
+disc.setLimit(1);
+disc.query();
+disc.next();
+gs.info('CIs touched: ' + disc.devices_discovered +
+ ' / errors: ' + disc.devices_failed);
+</code></pre>
+<p>Day 8 — Fix patterns:</p>
+<ul>
+<li>Open discovery_log filtered by <strong>state=error</strong> → group by sensor.</li>
+<li>Most common: missing credential, classification gap, firewall.</li>
+<li>Re-run on individual IPs via <strong>Discover Now (Single IP)</strong>.</li>
+</ul>
+<p>Exit criteria: ≥95% of pilot hosts classified into specific CI class (not just cmdb_ci). — شغّل اكتشافًا تجريبيًا، راجع السجلات، أصلح الأنماط والاعتمادات حتى يصل التصنيف لـ 95%+.</p>
+<hr />
+<h3 id="186-day-911-full-rollout-scheduling-strategy">18.6 Day 9–11 — Full rollout + scheduling strategy</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Day 9 — Expand ranges in waves (5 waves max).</p>
+<p>Day 10 — Scheduling:</p>
+<table>
+<thead>
+<tr>
+<th>Schedule</th>
+<th>Cadence</th>
+<th>Targets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Servers — Daily</td>
+<td>01:00–05:00</td>
+<td>Prod Linux/Windows servers</td>
+</tr>
+<tr>
+<td>Network — Weekly</td>
+<td>Sun 02:00</td>
+<td>Routers, switches, firewalls</td>
+</tr>
+<tr>
+<td>Storage — Weekly</td>
+<td>Sun 03:00</td>
+<td>SAN/NAS arrays</td>
+</tr>
+<tr>
+<td>Dev/Test — Weekly</td>
+<td>Sat 04:00</td>
+<td>Dev subnets</td>
+</tr>
+<tr>
+<td>Cloud — Hourly</td>
+<td>every hour</td>
+<td>AWS/Azure inventory</td>
+</tr>
+</tbody>
+</table>
+<p>Day 11 — Throttle settings:</p>
+<pre><code class="language-text">All &gt; Discovery &gt; Properties:
+ glide.discovery.max_devices_per_mid = 500
+ glide.discovery.batch_size = 50
+ glide.discovery.thread_count = 25
+</code></pre>
+<p>Verify ECC queue doesn&rsquo;t pile up:</p>
+<pre><code class="language-javascript">var q = new GlideAggregate('ecc_queue');
+q.addQuery('state', 'ready');
+q.addAggregate('COUNT');
+q.groupBy('agent');
+q.query();
+while (q.next()) gs.info(q.getValue('agent') + ' queue=' + q.getAggregate('COUNT'));
+</code></pre>
+<p>وزّع النطاقات على موجات، اضبط الجدولة، وراقب طابور ECC من الامتلاء.</p>
+<hr />
+<h3 id="187-day-1213-service-mapping-first-5-business-services">18.7 Day 12–13 — Service Mapping: first 5 business services</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Day 12 — Pick 5 services with measurable business impact (eg. Internet Banking, Payroll, ERP, CRM, Email).</p>
+<p>For each service:</p>
+<ol>
+<li>Navigate: All &gt; Service Mapping &gt; Services &gt; Application Services → New. — <a href="{BASE}/cmdb_ci_service_auto_list.do">Open direct</a></li>
+<li>Choose <strong>Top-down</strong>, set <strong>Entry Point</strong> (public URL or front-end host).</li>
+<li>Provide <strong>Service Mapping credentials</strong> (separate from Discovery if needed).</li>
+<li>Click <strong>Map</strong> → review topology.</li>
+</ol>
+<p>Day 13 — Reconciliation:</p>
+<ul>
+<li>Use §17.5 Recipe B to identify missing nodes.</li>
+<li>For each missing relationship: add <strong>manual connection</strong> or fix pattern.</li>
+<li>Document <strong>owners</strong> for each service (used by Event correlation later).</li>
+</ul>
+<p>Exit criteria: Each service maps host → app → DB → load balancer with ≤ 2 manual additions. — ابنِ خمس خدمات أعمال top-down، طابق الفجوات، ووثّق المالك لكل خدمة.</p>
+<hr />
+<h3 id="188-day-1415-event-management-connect-external-monitors">18.8 Day 14–15 — Event Management: connect external monitors</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Day 14 — Nagios via SNMP trap:</p>
+<ol>
+<li>Navigate: All &gt; Event Management &gt; Connectors &gt; Event Sources → New. — <a href="{BASE}/em_connector_instance_list.do">Open direct</a></li>
+<li>Type: <strong>SNMP</strong>, MID with EventManagementSNMPTrap capability.</li>
+<li>Configure trap receiver: UDP 162 on MID (firewall rule from Nagios).</li>
+<li>Test trap from Nagios → arrives in em_event.</li>
+<li>Build <strong>Event Field Mapping</strong>: trap OID → severity, host, message.</li>
+</ol>
+<p>Day 15 — Splunk:</p>
+<ol>
+<li>In Splunk: alert action Send to ServiceNow EM (HEC token + URL).</li>
+<li>URL: https://<instance>/api/now/v1/em/jsonv2.</li>
+<li>Test by triggering Splunk alert → event lands in em_event with source=Splunk.</li>
+<li>Create Datadog pull connector (§17.4 A).</li>
+</ol>
+<p>Field normalization snippet:</p>
+<pre><code class="language-javascript">// Inbound BR on em_event — normalize hosts to short name
+(function(current) {
+ var host = (current.node + '').toLowerCase();
+ var dot = host.indexOf('.');
+ current.node = dot &gt; 0 ? host.substring(0, dot) : host;
+})(current);
+</code></pre>
+<p>اربط Nagios عبر SNMP وSplunk عبر REST وDatadog عبر pull؛ وحّد أسماء العائل.</p>
+<hr />
+<h3 id="189-day-1617-alert-correlation-suppression">18.9 Day 16–17 — Alert correlation + suppression</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Day 16 — Correlation rules:</p>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Group key</th>
+<th>Window</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stack down</td>
+<td>CI parent</td>
+<td>5 min</td>
+<td>Single parent alert</td>
+</tr>
+<tr>
+<td>Service-wide</td>
+<td>Service ID</td>
+<td>10 min</td>
+<td>Parent alert per service</td>
+</tr>
+<tr>
+<td>Geographic</td>
+<td>Datacenter</td>
+<td>15 min</td>
+<td>Site outage alert</td>
+</tr>
+</tbody>
+</table>
+<p>Day 17 — Suppression rules:</p>
+<ul>
+<li>Maintenance: §17.7 script #13 enforced in flow.</li>
+<li>Flapping: auto-suppress &gt;5 alerts in 10 min from same CI for 30 min.</li>
+<li>Info severity: auto-close after 30 min without higher severity.</li>
+</ul>
+<p>Exit criteria: noise reduction ≥60% measured against pre-EM week. — عرّف قواعد التجميع والكتم — أقّل الضوضاء بنسبة 60% مقارنة بالأسبوع السابق.</p>
+<hr />
+<h3 id="1810-day-18-auto-create-incident-from-p1-alert-auto-resolve">18.10 Day 18 — Auto-create Incident from P1 alert + auto-resolve</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Build the flow described in §17.4 D. Add the resolution back-link:</p>
+<pre><code class="language-text">Trigger: em_alert updated, state changed to Closed
+Condition: incident is set, incident.state IN (1,2,3)
+Action: Update incident
+ state = Resolved
+ close_code = &quot;Auto-resolved by event clearance&quot;
+ close_notes = &quot;Source alert: &quot; + alert.number
+</code></pre>
+<p>Test:</p>
+<ol>
+<li>Inject Critical alert via REST → incident created within 2 min.</li>
+<li>Clear alert (close in source) → incident auto-resolves. — أنشئ Flow لإنتاج حادثة من تنبيه حرج، واغلقها تلقائيًا عند انتهاء التنبيه.</li>
+</ol>
+<hr />
+<h3 id="1811-day-1920-self-healing-subflows">18.11 Day 19–20 — Self-healing subflows</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Two subflows minimum:</p>
+<p><strong>A — Restart Linux service over SSH:</strong></p>
+<pre><code class="language-text">Inputs: ci, service_name
+Steps:
+1. Get CI credentials via Discovery Credentials API
+2. SSH probe (MID): &quot;sudo systemctl restart {{service_name}}&quot;
+3. Wait 30s
+4. SSH probe: &quot;systemctl is-active {{service_name}}&quot; → expect &quot;active&quot;
+5. If active → close alert + post work note
+6. Else → escalate severity, page on-call
+</code></pre>
+<p><strong>B — Scale AWS Auto Scaling Group:</strong></p>
+<pre><code class="language-text">Inputs: asg_name, desired_capacity, region
+Step 1: Call AWS Spoke action &quot;Update Auto Scaling Group&quot;
+Step 2: Wait until DesiredCapacity == InService
+Step 3: Update alert with scale event
+</code></pre>
+<p>Alert Action Rules in em_alert route by description regex (apache down, cpu_saturated).</p>
+<p>Exit criteria: 2 self-heal scenarios working end-to-end in non-prod. — صمم Subflow لإعادة تشغيل الخدمات وآخر لتوسيع ASG ثم اختبرهما.</p>
+<hr />
+<h3 id="1812-day-2122-cloud-connectors-aws-azure">18.12 Day 21–22 — Cloud connectors (AWS + Azure)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Day 21 — AWS:</p>
+<ol>
+<li>AWS side: create IAM Role ServiceNowDiscovery with policies:<br />
+ - ReadOnlyAccess<br />
+ - AWSConfigUserAccess<br />
+ - Cross-account trust to ServiceNow&rsquo;s connector account.</li>
+<li>SN side: All &gt; Cloud Resources &gt; Configuration &gt; Service Accounts → New → Role ARN. — <a href="{BASE}/customer_account_list.do">Open direct</a></li>
+<li>Add scope (regions, services).</li>
+<li>Run cloud discovery → verify cmdb_ci_ec2_instance populates.</li>
+</ol>
+<p>Day 22 — Azure:</p>
+<ol>
+<li>App Registration → Reader + Cost Management Reader.</li>
+<li>SN side: All &gt; Cloud Admin Portal &gt; Accounts → Azure → tenant + client ID/secret. — <a href="{BASE}/customer_account_list.do">Open direct</a></li>
+<li>Validate and discover.</li>
+</ol>
+<p>Common gotchas:</p>
+<pre><code class="language-text">- Throttling on AWS → batch by region; lower thread count.
+- Azure ARM rate limit → enable retries in connector config.
+- Tag drift → schedule cloud discovery hourly.
+</code></pre>
+<p>ربط AWS عبر IAM Role وAzure عبر App Registration؛ تجنّب التحديد بتقسيم المناطق.</p>
+<hr />
+<h3 id="1813-day-23-cost-rollup-tag-governance">18.13 Day 23 — Cost rollup + tag governance</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Required tags policy:</p>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Required</th>
+<th>Validation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cost_center</td>
+<td>Yes</td>
+<td>Must match list of cost centers</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>Yes</td>
+<td>Must be active employee</td>
+</tr>
+<tr>
+<td>environment</td>
+<td>Yes</td>
+<td>prod / staging / dev / test</td>
+</tr>
+<tr>
+<td>application</td>
+<td>Yes</td>
+<td>Must exist in cmdb_ci_business_app</td>
+</tr>
+</tbody>
+</table>
+<p>Validator script (scheduled daily):</p>
+<pre><code class="language-javascript">var bad = new GlideRecord('cmdb_ci_cloud_resource');
+bad.addQuery('u_cost_center', '');
+bad.query();
+gs.info('Untagged cloud CIs: ' + bad.getRowCount());
+// Open ticket per missing-tag owner — Flow Designer
+</code></pre>
+<p>Cost report: §17.7 script #12 turned into PA indicator Cloud Spend by Cost Center. — ألزم التاجات الإلزامية، شغّل المدقق يوميًا، وأنشئ مؤشر تكلفة شهري.</p>
+<hr />
+<h3 id="1814-day-2425-patch-management-vulnerability-response-integration">18.14 Day 24–25 — Patch Management + Vulnerability Response integration</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Day 24 — Patch Mgmt:</p>
+<ol>
+<li>Navigate: All &gt; Patch Management Application (Now Platform Plus). — <a href="{BASE}/now/patch-management">Open direct</a></li>
+<li>Connect to WSUS / Intune / SCCM via spoke.</li>
+<li>Map discovered software (cmdb_sam_sw_install) → patch baselines.</li>
+<li>Auto-create CHG using §17.7 script #7.</li>
+</ol>
+<p>Day 25 — VR:</p>
+<ol>
+<li>Activate com.snc.vulnerability (separate license).</li>
+<li>Connect Tenable / Qualys / Rapid7 (Now Marketplace integrations).</li>
+<li>Vulnerable Items (sn_vul_vulnerable_item) link to CIs from CMDB.</li>
+<li>Build response rule: Critical CVE on Internet-facing CI → priority 1 CHG. — اربط Patch Mgmt مع WSUS وأنشئ تغييرًا تلقائيًا، ثم اربط Tenable في Vulnerability Response.</li>
+</ol>
+<hr />
+<h3 id="1815-day-26-dashboards-kpis">18.15 Day 26 — Dashboards &amp; KPIs</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Build these PA dashboards (Workspace → Performance Analytics):</p>
+<table>
+<thead>
+<tr>
+<th>Dashboard</th>
+<th>Indicators</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ITOM Operations</td>
+<td>MTTI, MTTA, MTTR, alerts/day, suppressed %</td>
+</tr>
+<tr>
+<td>Discovery Coverage</td>
+<td>CIs discovered, % classification, stale CIs</td>
+</tr>
+<tr>
+<td>Service Health</td>
+<td>Per-service alert count, top noisy services</td>
+</tr>
+<tr>
+<td>Cloud</td>
+<td>Cost by cost_center, untagged %, drift</td>
+</tr>
+<tr>
+<td>MID Health</td>
+<td>Heartbeat success %, queue depth, validations</td>
+</tr>
+</tbody>
+</table>
+<p>Indicator example (MTTI — Mean Time To Identify):</p>
+<pre><code class="language-text">Source: em_alert
+Aggregate: AVG of (acknowledged_at - sys_created_on) WHERE acknowledged=true
+Group by: severity
+Breakdown by: source
+Frequency: hourly
+</code></pre>
+<p>بنِ خمس لوحات PA لقياس عمليات ITOM، وحدد المؤشرات الرئيسية: MTTI، MTTA، MTTR.</p>
+<hr />
+<h3 id="1816-day-27-atf-for-end-to-end-flow">18.16 Day 27 — ATF for end-to-end flow</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>ATF Suite ITOM E2E:</p>
+<pre><code class="language-text">Test 1 — MID Heartbeat:
+ Step: REST POST mock event → assert appears in ecc_queue
+Test 2 — Discovery Pattern (mock):
+ Step: Inject synthetic CI via Discovery Sensor → IRE returns existing CI
+Test 3 — Event → Alert:
+ Step: POST event → assert em_alert created with mapped CI
+Test 4 — Alert → Incident:
+ Step: Set severity=Critical → assert incident created in 60s
+Test 5 — Self-heal:
+ Step: Trigger Restart subflow → assert work_notes contain &quot;Auto-resolved&quot;
+Test 6 — Service Map impact:
+ Step: Set CI down → assert business service health reflects degraded
+</code></pre>
+<p>Run nightly via scheduled job; failure → notify ITOM Admin. — أنشئ مجموعة اختبارات تلقائية تغطي MID، الاكتشاف، الأحداث، الحوادث، العلاج الذاتي، وتأثير الخدمة.</p>
+<hr />
+<h3 id="1817-day-28-training">18.17 Day 28 — Training</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Audience</th>
+<th>Duration</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NOC engineers</td>
+<td>2× 2h</td>
+<td>Alert Console, triage, suppression, incident creation</td>
+</tr>
+<tr>
+<td>Cloud Ops</td>
+<td>1× 3h</td>
+<td>Cloud Resources, tag governance, cost dashboards</td>
+</tr>
+<tr>
+<td>Discovery Admin</td>
+<td>1× 4h</td>
+<td>Schedules, patterns, MID, credentials, debug</td>
+</tr>
+<tr>
+<td>Service owners</td>
+<td>1× 1h</td>
+<td>Service Map view, reading dependency impact</td>
+</tr>
+<tr>
+<td>Change managers</td>
+<td>1× 1h</td>
+<td>Maintenance window suppression, CHG ↔ Alert link</td>
+</tr>
+</tbody>
+</table>
+<p>Hands-on labs reuse §17 recipes. Provide runbook printable PDF. — جلسات تدريب لكل فئة مع كتيب runbook عملي. اعتمد على وصفات §17.</p>
+<hr />
+<h3 id="1818-day-29-go-live-hypercare-prep">18.18 Day 29 — Go-Live + Hypercare prep</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Pre-Go-Live checklist:</p>
+<ul>
+<li>[ ] All MIDs Validated, no warnings 48h</li>
+<li>[ ] Discovery coverage ≥95% in pilot ranges</li>
+<li>[ ] CMDB Health score baseline recorded</li>
+<li>[ ] All 5 services mapped with owners</li>
+<li>[ ] Connectors validated (Nagios, Splunk, Datadog, SCOM)</li>
+<li>[ ] Correlation/suppression rules active</li>
+<li>[ ] P1 alert → incident flow tested</li>
+<li>[ ] Self-healing subflows tested 2× successfully</li>
+<li>[ ] Cloud accounts connected, hourly schedule running</li>
+<li>[ ] Patch/Vuln integration handshake green</li>
+<li>[ ] Dashboards published to NOC/Cloud Ops</li>
+<li>[ ] ATF suite green for 3 consecutive runs</li>
+<li>[ ] Runbook + escalation matrix shared</li>
+<li>[ ] Hypercare bridge schedule (24/5) for 2 weeks — قائمة التحقق قبل الإطلاق — كل بند يجب اعتماده قبل اليوم 30.</li>
+</ul>
+<hr />
+<h3 id="1819-day-30-go-live">18.19 Day 30 — Go-Live</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Sequence:</p>
+<pre><code class="language-text">T-2h Freeze config in prod
+T-1h Verify MID heartbeats
+T-0 Switch monitoring tools to send to ServiceNow
+ (parallel mode — keep old tickets for 7 days for reconciliation)
+T+1h Smoke test from each source
+T+2h Confirm first auto-created incident
+T+1d Daily Go-Live standup, 2 weeks
+T+7d Decommission parallel ticketing
+T+14d Exit hypercare
+</code></pre>
+<p>Comms template (announcement):</p>
+<pre><code class="language-text">Subject: ServiceNow ITOM is live
+- New alert flow: monitors → ServiceNow → NOC
+- Old tickets remain visible for 7 days
+- Contact: itom-bridge@example.com / ext 5000
+</code></pre>
+<p>يوم الإطلاق: جمّد التغيير، حوّل أدوات المراقبة بالتوازي، تابع أول حادثة آلية، ثم اخرج من الـ Hypercare بعد أسبوعين.</p>
+<hr />
+<h3 id="1820-common-pitfalls-fixes">18.20 Common Pitfalls &amp; Fixes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Pitfall</th>
+<th>Symptom</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MID under-sized</td>
+<td>ecc_queue growing, missed schedules</td>
+<td>Add MID; cluster; tune thread_count</td>
+</tr>
+<tr>
+<td>Shared admin creds</td>
+<td>Audit finding; lateral movement risk</td>
+<td>Move to per-OS least-priv; vault</td>
+</tr>
+<tr>
+<td>Patterns not tested per OS variant</td>
+<td>Discovery misses some servers</td>
+<td>Test each pattern on RHEL/Ubuntu/Win</td>
+</tr>
+<tr>
+<td>IRE duplicates</td>
+<td>Same host = 2 CIs</td>
+<td>Run CMDB Health → Duplicate; fix identification rules in CMDB.md</td>
+</tr>
+<tr>
+<td>Alert flooding from one source</td>
+<td>NOC overwhelmed</td>
+<td>§17.7 script #5 flood suppressor</td>
+</tr>
+<tr>
+<td>No CI on alert</td>
+<td>Cannot route to assignment group</td>
+<td>Mapping rule from node → CI lookup</td>
+</tr>
+<tr>
+<td>Service Map missing nodes</td>
+<td>Greyed-out boxes</td>
+<td>§17.5 B reconciliation</td>
+</tr>
+<tr>
+<td>Cloud cost reports empty</td>
+<td>No monthly_cost field</td>
+<td>Enable Cost Management connector</td>
+</tr>
+<tr>
+<td>Self-heal runs but doesn&rsquo;t close alert</td>
+<td>Subflow forgot to set state</td>
+<td>Add explicit Update Record em_alert</td>
+</tr>
+<tr>
+<td>ATF flaky in pipeline</td>
+<td>Network jitter</td>
+<td>Add Wait-For-Condition before assertions</td>
+</tr>
+<tr>
+<td>Patch Mgmt change not approved</td>
+<td>CAB unaware</td>
+<td>Auto-create with cab_required=true</td>
+</tr>
+<tr>
+<td>Untagged cloud at scale</td>
+<td>No cost rollup</td>
+<td>Day 23 validator + owner notification</td>
+</tr>
+<tr>
+<td>Domain separation introduced late</td>
+<td>Data leakage between tenants</td>
+<td>Decide on Day 1 — never retro</td>
+</tr>
+</tbody>
+</table>
+<p>⚠️ <strong>Top one to avoid:</strong> Activating Service Mapping before Discovery is stable — you&rsquo;ll fix the same maps twice. — أخطاء شائعة — حلّها مرة واحدة عبر runbook قبل الإطلاق؛ أهمها: لا تربط الخرائط قبل استقرار الاكتشاف.</p>
+<hr />
+<h3 id="1821-master-sign-off">18.21 Master Sign-off</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<ul>
+<li>[ ] Network/security signed firewall + MID design</li>
+<li>[ ] Plugins activated and version-locked</li>
+<li>[ ] HA MID cluster validated</li>
+<li>[ ] Pilot then full discovery ≥95% classification</li>
+<li>[ ] Service Mapping ≥5 services with owners</li>
+<li>[ ] Event Management connectors live + correlation + suppression</li>
+<li>[ ] P1 alert → incident → auto-resolve loop verified</li>
+<li>[ ] Self-healing subflows tested</li>
+<li>[ ] Cloud AWS + Azure ingestion + cost report</li>
+<li>[ ] Patch/Vuln integration handshake</li>
+<li>[ ] Dashboards + KPIs published</li>
+<li>[ ] ATF suite green</li>
+<li>[ ] Training delivered + acknowledged</li>
+<li>[ ] Go-Live + hypercare plan executed — قائمة التوقيع النهائي — اعتمدها قبل إغلاق المشروع.</li>
+</ul>
+<hr />
+<h2 id="19-cis-discovery-event-mgmt-service-mapping-exam-z-to-hero-feature-labs-30-inline-q">§19 — CIS-Discovery / Event Mgmt / Service Mapping Exam &amp; Z-to-Hero Feature Labs (30 inline Q)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<h3 id="191-z-to-hero-feature-labs-12-labs">19.1 Z-to-Hero Feature Labs (12 labs)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Lab</th>
+<th>Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>MID Server install + credential vault</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>Discovery IP Range schedule</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>Discovery patterns review (Linux, Windows, AWS)</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>Pattern customization (add a new attribute)</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>Service Mapping top-down pattern</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>Event Connector (Splunk/Solarwinds mock)</td>
+</tr>
+<tr>
+<td>L7</td>
+<td>Alert correlation rule (5+ events → 1 alert)</td>
+</tr>
+<tr>
+<td>L8</td>
+<td>Alert → Incident auto-promotion</td>
+</tr>
+<tr>
+<td>L9</td>
+<td>Operational Intelligence anomaly baseline</td>
+</tr>
+<tr>
+<td>L10</td>
+<td>AIOps clustering for noise reduction</td>
+</tr>
+<tr>
+<td>L11</td>
+<td>Cloud Discovery (AWS / Azure / GCP)</td>
+</tr>
+<tr>
+<td>L12</td>
+<td>Service Graph Connector (Workday, Atlassian)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="192-30-itom-practice-questions">19.2 30 ITOM Practice Questions</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<ol>
+<li>MID Server architecture: A. On-prem agent connecting outbound to ServiceNow | B. Embedded | C. Cloud-only | D. None — <strong>Answer: A</strong></li>
+<li>MID min specs: A. 1GB RAM | B. 4GB RAM + 4 cores (production) | C. 64GB | D. Random — <strong>Answer: B</strong></li>
+<li>Discovery Phases: A. Shazzam → Classify → Identify → Explore | B. Just scan | C. Find | D. None — <strong>Answer: A</strong></li>
+<li>Shazzam = ? A. Port scan to find devices in IP range | B. SSH login | C. WMI | D. SNMP — <strong>Answer: A</strong></li>
+<li>Classify = ? A. Determine OS/device type via probes | B. Categorize tickets | C. Sort assets | D. None — <strong>Answer: A</strong></li>
+<li>Identify = ? A. Match against CMDB via IRE | B. Categorize | C. Tag | D. None — <strong>Answer: A</strong></li>
+<li>Explore = ? A. Gather detailed attributes via pattern | B. Initial scan | C. Final report | D. None — <strong>Answer: A</strong></li>
+<li>Pattern Designer language: A. ServiceNow Pattern Language (declarative) | B. JavaScript | C. Python | D. Bash — <strong>Answer: A</strong></li>
+<li>Probe vs Pattern: A. Probes = legacy/probe-sensor; Patterns = modern declarative | B. Same | C. Probes faster | D. Random — <strong>Answer: A</strong></li>
+<li>Credentials stored in: A. discovery_credentials table + encrypted | B. Plaintext | C. MID file | D. None — <strong>Answer: A</strong></li>
+<li>Discovery Status table: A. discovery_status (parent of devices found) | B. cmdb_ci | C. None | D. sysapproval_approver — <strong>Answer: A</strong></li>
+<li>Service Mapping is: A. Top-down pattern starting from entry point | B. Random | C. Bottom-up | D. Manual only — <strong>Answer: A</strong></li>
+<li>Application Service vs Business Service: A. Application = tech-focused; Business = customer-facing | B. Same | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Tag-based Service Mapping: A. Discover apps by tag (e.g., app=payroll) | B. None | C. Manual | D. Random — <strong>Answer: A</strong></li>
+<li>Operational Intelligence: A. ML-based anomaly + capacity forecasting | B. Just dashboard | C. None | D. Random — <strong>Answer: A</strong></li>
+<li>Event sources: A. SCOM, Splunk, Datadog, Nagios, SolarWinds, ELK, custom | B. Only Splunk | C. Email only | D. None — <strong>Answer: A</strong></li>
+<li>Event → Alert mapping: A. Field mapping in Event Rule | B. Manual | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Alert correlation types: A. Topology + Time + Sequence + Cluster | B. Random | C. Just time | D. None — <strong>Answer: A</strong></li>
+<li>Primary Alert = ? A. Root cause alert that secondary alerts roll up to | B. First alert | C. Loudest | D. Random — <strong>Answer: A</strong></li>
+<li>Self-heal action: A. Run remediation script on alert | B. Just log | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>AIOps: A. AI for IT Ops — clustering, prediction, recommendation | B. Just dashboards | C. None | D. Random — <strong>Answer: A</strong></li>
+<li>Health Log Analytics: A. Log ingestion + anomaly detection | B. Just store logs | C. None | D. Random — <strong>Answer: A</strong></li>
+<li>Cloud Insights: A. Cost + usage visibility for AWS/Azure/GCP | B. None | C. Just billing | D. Random — <strong>Answer: A</strong></li>
+<li>Tag CIs from cloud: A. Auto from cloud resource tags | B. Manual only | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Service Graph Connector destination: A. CMDB via IRE | B. staging_table | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Predictive Capacity: A. Forecast resource exhaustion based on trend | B. Random | C. Just current | D. None — <strong>Answer: A</strong></li>
+<li>Maintenance window: A. Suppress events during scheduled maintenance | B. Just calendar | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>CMDB Group: A. Manual group of CIs (vs class-based) | B. Same as CMDB Class | C. None | D. Random — <strong>Answer: A</strong></li>
+<li>ITOM workspace URL: A. /now/itom/workspace | B. /itom.do | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Service Watch (legacy) replaced by: A. Service Mapping + Operational Intelligence | B. Manual scripts | C. None | D. Random — <strong>Answer: A</strong></li>
+</ol>
+<h3 id="193-what-hero-looks-like-for-itom">19.3 What &ldquo;Hero&rdquo; looks like for ITOM</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Manages discovery + event mgmt + service mapping + AIOps end-to-end. Connects SCOM/Splunk/Datadog. Discovers cloud resources via SGC. Maintains service maps automatically. Drives alert noise down 70%+ via correlation. Self-healing on top alerts.</p>
+<hr />
+<h2 id="hands-on-labs">Hands-on Labs — مختبرات عملية</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<blockquote>
+<p>Step-by-step labs for PDI / Australia instance. Replace <code>{BASE}</code> with your instance URL.<br />
+مختبرات خطوة بخطوة — استبدل <code>{BASE}</code> برابط نسختك.</p>
+</blockquote>
+<ol>
+<li>
+<p><strong>Lab 1</strong> — <strong>MID Server install / تثبيت MID</strong> — Deploy MID; verify UP at <a href="{BASE}/ecc_agent_list.do">{BASE}/ecc_agent_list.do</a>.</p>
+</li>
+<li>
+<p><strong>Lab 2</strong> — <strong>Credentials / بيانات اعتماد</strong> — Add SSH/Windows creds at <a href="{BASE}/discovery_credentials_list.do">{BASE}/discovery_credentials_list.do</a>.</p>
+</li>
+<li>
+<p><strong>Lab 3</strong> — <strong>Discovery schedule / جدولة اكتشاف</strong> — Create schedule with IP range; run now.</p>
+</li>
+<li>
+<p><strong>Lab 4</strong> — <strong>Review results / مراجعة النتائج</strong> — Check <a href="{BASE}/discovery_status_list.do">{BASE}/discovery_status_list.do</a>; confirm CIs in CMDB.</p>
+</li>
+<li>
+<p><strong>Lab 5</strong> — <strong>Service Mapping / خرائط خدمة</strong> — Define entry point; run top-down map.</p>
+</li>
+<li>
+<p><strong>Lab 6</strong> — <strong>Event Management / إدارة أحداث</strong> — Ingest test alert; verify correlation.</p>
+</li>
+<li>
+<p><strong>Lab 7</strong> — <strong>Cloud account / حساب سحابي</strong> — Add AWS/Azure account for cloud discovery.</p>
+</li>
+</ol>
+<hr />
+<h2 id="best-practices">Best Practices — أفضل الممارسات</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Best practice (EN)</th>
+<th>أفضل ممارسة (AR)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MID</td>
+<td>Dedicated MID per network zone — not one for all</td>
+<td>MID لكل منطقة شبكة</td>
+</tr>
+<tr>
+<td>Credentials</td>
+<td>Least-privilege service accounts for probes</td>
+<td>حسابات أقل صلاحية</td>
+</tr>
+<tr>
+<td>Schedules</td>
+<td>Stagger heavy discoveries off-peak</td>
+<td>جدولة خارج الذروة</td>
+</tr>
+<tr>
+<td>CMDB</td>
+<td>Fix IRE before scaling Discovery</td>
+<td>أصلح IRE قبل توسيع Discovery</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="deployment-checklist">Deployment Checklist — قائمة النشر</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task (EN)</th>
+<th>المهمة (AR)</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>MID Server deployed &amp; validated</td>
+<td>MID يعمل</td>
+<td>Status UP</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Credentials for target OS</td>
+<td>Credentials</td>
+<td>Probe success</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Discovery schedules</td>
+<td>جداول Discovery</td>
+<td>CIs created</td>
+</tr>
+<tr>
+<td>4</td>
+<td>CMDB reconciliation</td>
+<td>Reconciliation</td>
+<td>No duplicates</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Service Mapping (if licensed)</td>
+<td>Service Mapping</td>
+<td>Maps built</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Event rules (if licensed)</td>
+<td>Event Management</td>
+<td>Alerts correlate</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Cloud discovery (if needed)</td>
+<td>Cloud Discovery</td>
+<td>Cloud CIs</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Operations runbook</td>
+<td>Runbook</td>
+<td>NOC trained</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="direct-urls-quick-reference">Direct URLs Quick Reference</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigation</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MID Servers</td>
+<td>All &gt; MID Server</td>
+<td><a href="{BASE}/ecc_agent_list.do">{BASE}/ecc_agent_list.do</a></td>
+</tr>
+<tr>
+<td>Discovery Schedules</td>
+<td>All &gt; Discovery</td>
+<td><a href="{BASE}/discovery_schedule_list.do">{BASE}/discovery_schedule_list.do</a></td>
+</tr>
+<tr>
+<td>Discovery Status</td>
+<td>All &gt; Discovery</td>
+<td><a href="{BASE}/discovery_status_list.do">{BASE}/discovery_status_list.do</a></td>
+</tr>
+<tr>
+<td>Credentials</td>
+<td>All &gt; Discovery</td>
+<td><a href="{BASE}/discovery_credentials_list.do">{BASE}/discovery_credentials_list.do</a></td>
+</tr>
+<tr>
+<td>Service Mapping</td>
+<td>All &gt; Service Mapping</td>
+<td><a href="{BASE}/sa_service_list.do">{BASE}/sa_service_list.do</a></td>
+</tr>
+<tr>
+<td>Events</td>
+<td>All &gt; Event Management</td>
+<td><a href="{BASE}/em_event_list.do">{BASE}/em_event_list.do</a></td>
+</tr>
+<tr>
+<td>Cloud Accounts</td>
+<td>All &gt; Cloud Management</td>
+<td><a href="{BASE}/cmdb_ci_cloud_service_account_list.do">{BASE}/cmdb_ci_cloud_service_account_list.do</a></td>
+</tr>
+<tr>
+<td>Operational Intelligence</td>
+<td>All &gt; OI</td>
+<td><a href="{BASE}/now/oi/home">{BASE}/now/oi/home</a></td>
+</tr>
+<tr>
+<td>Guided Setup</td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HR Leave — Application Identity (الهوية الحالية على المثيل) | HR Leave Australia</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="scripts/index.html">Scripts</a>
+      <a href="modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>HR Leave — Application Identity (الهوية الحالية على المثيل)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">e5f5bc9493a303507520703efaba104d</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="hr-leave-application-identity">HR Leave — Application Identity (الهوية الحالية على المثيل)</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً (ملخص سريع):</strong> <a href="MASTER_ALL_IN_ONE_SUMMARY.html">MASTER_ALL_IN_ONE_SUMMARY.md</a> · HTML: <a href="html/MASTER_ALL_IN_ONE_SUMMARY.html">html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل الواحد:</strong> <a href="MASTER_ALL_IN_ONE.html">MASTER_ALL_IN_ONE.md</a> · HTML: <a href="html/MASTER_ALL_IN_ONE.html">html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات (New/Open):</strong> <a href="MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">MASTER_PRACTICE_GUIDE_ALL_TOPICS.md</a> · <a href="html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Platform: ServiceNow <strong>Australia</strong> · Scope <code>x_786686_hr_leave</code> · sys_id <code>e5f5bc9493a303507520703efaba104d</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (current family, Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>App:</strong> Custom · Scope x_786686_hr_leave · sys_id e5f5bc9493a303507520703efaba104d<br />
+<strong>URLs:</strong> <a href="root/SERVICENOW_DIRECT_URLS_CATALOG.html">../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a></p>
+<p>حدّث هذا الملف عند إنشاء تطبيق جديد على PDI / المثيل.<br />
+كل الوثائق والسكربتات تحت <code>HR_Leave_App</code> تستخدم هذا الـ Scope.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Name</strong></td>
+<td>HR Leave (أو الاسم الظاهر في Application Navigator)</td>
+</tr>
+<tr>
+<td><strong>App type</strong></td>
+<td>Custom</td>
+</tr>
+<tr>
+<td><strong>Scope</strong></td>
+<td><code>x_786686_hr_leave</code></td>
+</tr>
+<tr>
+<td><strong>Date created</strong></td>
+<td><code>2026-09-09 20:20:55</code></td>
+</tr>
+<tr>
+<td><strong>sys_id</strong></td>
+<td><code>e5f5bc9493a303507520703efaba104d</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_1">ماذا يعني ذلك في الكود؟</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>نوع العنصر</th>
+<th>النمط بعد التحديث</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tables</td>
+<td><code>x_786686_hr_leave_req_v2</code>, <code>x_786686_hr_leave_employee_v2</code>, …</td>
+</tr>
+<tr>
+<td>Roles</td>
+<td><code>x_786686_hr_leave.employee</code>, <code>.manager</code>, <code>.hr_admin</code>, <code>.integration</code></td>
+</tr>
+<tr>
+<td>Events / Properties</td>
+<td><code>x_786686_hr_leave.…</code></td>
+</tr>
+<tr>
+<td>Script Include API</td>
+<td><code>x_786686_hr_leave.HRLX…</code> / <code>GlideAjax('x_786686_hr_leave.…')</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">روابط سريعة على المثيل</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li>Application: <code>/nav_to.do?uri=sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d</code></li>
+<li>Scope filter في Studio / Filter Navigator: <code>x_786686_hr_leave</code></li>
+</ul>
+<h2 id="_3">ملاحظة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>النطاق المعتمد الوحيد الآن: <strong><code>x_786686_hr_leave</code></strong> (sys_id <code>e5f5bc9493a303507520703efaba104d</code>).<br />النطاقات القديمة (<code>x_2065034_hr_leave</code>, <code>x_demo_hr_leave</code>, <code>x_pro_hrlx</code>) أُزيلت من السكربتات والدروس.</p>
+<h2 id="study-deploy-australia">Study / deploy (Australia)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Doc</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a></td>
+<td>أسبوع دراسة + نشر</td>
+</tr>
+<tr>
+<td><a href="root/SERVICENOW_DIRECT_URLS_CATALOG.html">../SERVICENOW_DIRECT_URLS_CATALOG.md</a></td>
+<td>كل الروابط المباشرة</td>
+</tr>
+<tr>
+<td><a href="root/SERVICENOW_REPORTS_DASHBOARDS_PA_COMPLETE_GUIDE.html">../SERVICENOW_REPORTS_DASHBOARDS_PA_COMPLETE_GUIDE.md</a></td>
+<td>تقارير ولوحات</td>
+</tr>
+<tr>
+<td><a href="SCRIPTS_INVENTORY.html">SCRIPTS_INVENTORY.md</a></td>
+<td>كل سكربتات التطبيق</td>
+</tr>
+</tbody>
+</table>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="assets/docs.js"></script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

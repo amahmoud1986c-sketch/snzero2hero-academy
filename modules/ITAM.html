@@ -1,0 +1,3680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ITAM — IT Asset Management (Zero → Pro) | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>ITAM — IT Asset Management (Zero → Pro)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="itam-it-asset-management-zero-pro">ITAM — IT Asset Management (Zero → Pro)</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً:</strong> <a href="../MASTER_ALL_IN_ONE_SUMMARY.html">../MASTER_ALL_IN_ONE_SUMMARY.md</a> · <a href="../html/MASTER_ALL_IN_ONE_SUMMARY.html">../html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل:</strong> <a href="../MASTER_ALL_IN_ONE.html">../MASTER_ALL_IN_ONE.md</a> · <a href="../html/MASTER_ALL_IN_ONE.html">../html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات:</strong> <a href="../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Australia · Scope <code>x_786686_hr_leave</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<h2 id="australia-instance">Australia Instance — نسخة أستراليا</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Region / Datacenter</strong></td>
+<td>ServiceNow <strong>Australia</strong></td>
+</tr>
+<tr>
+<td><strong>Release train</strong></td>
+<td>Zurich (Sep 2026 EA) · next EA: <strong>Brazil</strong></td>
+</tr>
+<tr>
+<td><strong>URL base</strong></td>
+<td><code>{BASE}</code></td>
+</tr>
+<tr>
+<td><strong>Scope note</strong></td>
+<td>HR Leave app: <code>x_786686_hr_leave</code></td>
+</tr>
+<tr>
+<td><strong>Guided Setup</strong></td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="direct-navigation-urls">Direct Navigation URLs — روابط التنقل المباشرة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page / Tool</th>
+<th>Navigation Path</th>
+<th>Direct URL</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hardware Assets</strong></td>
+<td>All &gt; Asset &gt; Hardware Assets</td>
+<td><a href="{BASE}/alm_hardware_list.do">{BASE}/alm_hardware_list.do</a></td>
+<td>HAM inventory</td>
+</tr>
+<tr>
+<td><strong>Asset Models</strong></td>
+<td>All &gt; Asset &gt; Models</td>
+<td><a href="{BASE}/cmdb_model_list.do">{BASE}/cmdb_model_list.do</a></td>
+<td>Product models</td>
+</tr>
+<tr>
+<td><strong>Stockrooms</strong></td>
+<td>All &gt; Inventory &gt; Stockrooms</td>
+<td><a href="{BASE}/alm_stockroom_list.do">{BASE}/alm_stockroom_list.do</a></td>
+<td>Warehouse locations</td>
+</tr>
+<tr>
+<td><strong>Consumables</strong></td>
+<td>All &gt; Inventory &gt; Consumables</td>
+<td><a href="{BASE}/alm_consumable_list.do">{BASE}/alm_consumable_list.do</a></td>
+<td>Consumable items</td>
+</tr>
+<tr>
+<td><strong>Software Licenses</strong></td>
+<td>All &gt; Software Asset &gt; Licenses</td>
+<td><a href="{BASE}/alm_license_list.do">{BASE}/alm_license_list.do</a></td>
+<td>SAM licenses</td>
+</tr>
+<tr>
+<td><strong>Entitlements</strong></td>
+<td>All &gt; Software Asset &gt; Entitlements</td>
+<td><a href="{BASE}/alm_entitlement_list.do">{BASE}/alm_entitlement_list.do</a></td>
+<td>License entitlements</td>
+</tr>
+<tr>
+<td><strong>Purchase Orders</strong></td>
+<td>All &gt; Procurement &gt; Purchase Orders</td>
+<td><a href="{BASE}/proc_po_list.do">{BASE}/proc_po_list.do</a></td>
+<td>Procurement</td>
+</tr>
+<tr>
+<td><strong>Asset Workspace</strong></td>
+<td>Now Experience &gt; Asset</td>
+<td><a href="{BASE}/now/asset/home">{BASE}/now/asset/home</a></td>
+<td>Asset agent workspace</td>
+</tr>
+<tr>
+<td><strong>Reclamation Rules</strong></td>
+<td>All &gt; Software Asset &gt; Reclamation</td>
+<td><a href="{BASE}/samp_sw_reclamation_rule_list.do">{BASE}/samp_sw_reclamation_rule_list.do</a></td>
+<td>Unused software</td>
+</tr>
+<tr>
+<td><strong>Guided Setup ITAM</strong></td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+<td>Initial configuration</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>URLs:</strong> <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">../../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a><br />
+<strong>HR Leave:</strong> Scope x_786686_hr_leave</p>
+<p>HAM · SAM · Procurement · Stockroom · Contracts · CMDB Integration<br />
+Professional Implementer, Practice Labs &amp; Consultant Guide<br />
+الأسلوب: عربية + إنجليزية تكمّلان بعضهما — بدون ترجمة حرفية لأسماء الشاشات.<br />
+Interview deep revision:<br />
+File: ../interview/MODULES_INTERVIEW_REVISION.md (§ ITAM)</p>
+<p>Related modules:<br />
+CMDB.md (CI &amp; relationships) · ITOM.md (Discovery feeds CIs) · ITSM.md (requests) · FSM.md (parts/stockroom) · HRSD.md (employee assets)</p>
+</blockquote>
+<hr />
+<h2 id="arabic-summary">ملخص ووصف بالعربية (Arabic Summary)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>البند</th>
+<th>الشرح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ما هو ITAM؟</strong></td>
+<td>إدارة أصول IT — عتاد (HAM)، تراخيص (SAM)، مستودعات، دورة حياة الأصل</td>
+</tr>
+<tr>
+<td><strong>لماذا مهم؟</strong></td>
+<td>يعرف المؤسسة ماذا تملك، أين الأجهزة، وهل البرمجيات مرخّصة</td>
+</tr>
+<tr>
+<td><strong>من يستخدمه؟</strong></td>
+<td>Asset manager، SAM analyst، IT procurement</td>
+</tr>
+<tr>
+<td><strong>ماذا يغطي الملف؟</strong></td>
+<td>Models، Stockroom، Catalog→Asset، SAM · §16 مختبر HAM</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ملخص في سطر:</strong> من الشراء والاستلام حتى النشر والتقاعد — مع امتثال التراخيص (SAM).</p>
+<p><strong>وصف مختصر:</strong> يغطي alm_asset، الكتالوج، المستودعات، ربط CMDB، واختياري Software Entitlements وreclamation. يتكامل مع ITSM وHRSD.</p>
+<hr />
+<h2 id="1-overview-business-value">1) Overview &amp; Business Value</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>ITAM manages the <strong>financial and operational lifecycle</strong> of IT assets from request → procure → receive → deploy → maintain → retire. — ITAM = إدارة أصول تقنية المعلومات (عتاد + برمجيات + مخزون + عقود). الهدف: معرفة <strong>ماذا تملك</strong>، <strong>أين هو</strong>، <strong>من يستخدمه</strong>، <strong>كم يكلف</strong>، و<strong>هل البرمجيات مرخّصة بشكل صحيح</strong>.</p>
+<h3 id="ham-vs-sam-vs-cmdb-interview-must-know">HAM vs SAM vs CMDB (interview must-know)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Focus</th>
+<th>Primary tables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HAM</strong> — Hardware Asset Management</td>
+<td>Laptops, servers, monitors — lifecycle, stockroom, assignment</td>
+<td>alm_hardware, alm_asset</td>
+</tr>
+<tr>
+<td><strong>SAM</strong> — Software Asset Management</td>
+<td>Licenses, entitlements, compliance, reclamation</td>
+<td>alm_license, entitlement tables</td>
+</tr>
+<tr>
+<td><strong>CMDB</strong></td>
+<td>Configuration &amp; service impact — relationships, Discovery</td>
+<td>cmdb_ci_*</td>
+</tr>
+<tr>
+<td><strong>Procurement</strong></td>
+<td>PO, receiving, vendor</td>
+<td>proc_po, proc_po_item</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>CMDB</strong> يجيب: &ldquo;ماذا يتعطل إذا سقط هذا الخادم؟&rdquo; (تأثير الخدمة).</li>
+<li><strong>ITAM</strong> يجيب: &ldquo;كم لابتوب عندنا؟ من يحمله؟ متى ينتهي العقد؟ هل لدينا تراخيص كافية؟&rdquo; (مالي + دورة حياة).</li>
+<li>غالبًا <strong>سجل الأصل</strong> (alm_hardware) <strong>يرتبط</strong> بـ <strong>CI</strong> (cmdb_ci_computer) عبر serial / asset tag / model.</li>
+</ul>
+<h3 id="business-outcomes-consultant-talking-points">Business outcomes (consultant talking points)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ul>
+<li>Reduce shadow IT and duplicate purchases.</li>
+<li>Audit-ready hardware/software inventory.</li>
+<li>Optimize license spend (reclamation, true-up).</li>
+<li>Faster onboarding (catalog → PO → asset → user).</li>
+<li>Accurate depreciation and contract renewal.</li>
+</ul>
+<hr />
+<h2 id="2-architecture-data-model">2) Architecture &amp; Data Model</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<pre><code class="language-text">Service Catalog / Request (ITSM)
+ ↓
+Procurement (PO → Receive)
+ ↓
+Asset created (alm_hardware) — state: in_stock
+ ↓
+Deploy / Assign to user or location
+ ↓
+In use → Maintain → Retire / Dispose
+ ↓
+(Optional) SAM: normalize installs → match entitlements → compliance
+ ↓
+Link to CMDB CI for service impact (cmdb_ci_computer)
+</code></pre>
+<h3 id="core-table-hierarchy">Core table hierarchy</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<pre><code class="language-text">alm_asset (base — all assets)
+├─ alm_hardware (physical IT hardware)
+├─ alm_consumable (consumables — toner, cables)
+└─ alm_license (software licenses / entitlements view)
+</code></pre>
+<p>Supporting:<br />
+├─ alm_model (product catalog / model)<br />
+├─ alm_stockroom (warehouse / depot)<br />
+├─ alm_transfer_order (move between stockrooms)<br />
+├─ proc_po / proc_po_item (purchase orders)<br />
+├─ ast_contract / contract (vendor contracts — SAM)<br />
+└─ cmdb_ci_* (configuration — linked, not owned by ITAM)</p>
+<h3 id="key-tables-know-for-cis-interviews">Key tables (know for CIS &amp; interviews)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>الغرض</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alm_asset</td>
+<td>Base asset record (tag, cost, stockroom, state)</td>
+</tr>
+<tr>
+<td>alm_hardware</td>
+<td>Hardware-specific (serial, assigned_to, CI link)</td>
+</tr>
+<tr>
+<td>alm_consumable</td>
+<td>Consumable quantity tracking</td>
+</tr>
+<tr>
+<td>alm_license</td>
+<td>Software license / entitlement records</td>
+</tr>
+<tr>
+<td>alm_model</td>
+<td>Model definition (manufacturer, category)</td>
+</tr>
+<tr>
+<td>alm_stockroom</td>
+<td>Stockroom / warehouse</td>
+</tr>
+<tr>
+<td>alm_m2m_stockroom_model</td>
+<td>Min/max stock per model per room</td>
+</tr>
+<tr>
+<td>alm_transfer_order</td>
+<td>Inter-stockroom transfer</td>
+</tr>
+<tr>
+<td>proc_po</td>
+<td>Purchase order header</td>
+</tr>
+<tr>
+<td>proc_po_item</td>
+<td>PO line items</td>
+</tr>
+<tr>
+<td>cmdb_ci_computer</td>
+<td>CI linked to laptop/server (CMDB)</td>
+</tr>
+<tr>
+<td>sc_req_item</td>
+<td>Catalog request line (procurement trigger)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="asset-lifecycle-states-hardware-typical">Asset lifecycle states (hardware — typical)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>State / substate</th>
+<th>المعنى</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>on_order</td>
+<td>Ordered, not received</td>
+</tr>
+<tr>
+<td>in_stock</td>
+<td>In stockroom, available</td>
+</tr>
+<tr>
+<td>in_use</td>
+<td>Deployed to user/location</td>
+</tr>
+<tr>
+<td>in_maintenance</td>
+<td>Repair / RMA</td>
+</tr>
+<tr>
+<td>retired / disposed</td>
+<td>End of life</td>
+</tr>
+</tbody>
+</table>
+<p>الحالات قابلة للتخصيص عبر <strong>Asset Lifecycle</strong> / workflows — راجع إعداد العميل قبل الامتحان.</p>
+<h3 id="itam-cmdb-relationship">ITAM ↔ CMDB relationship</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<pre><code class="language-text">Discovery (ITOM) → creates/updates cmdb_ci_computer
+HAM receive/deploy → creates alm_hardware
+Integration rule / BR / Asset-CI action → links serial + model
+Incident/Change on CI → impact visible; Asset shows financial owner
+</code></pre>
+<hr />
+<h2 id="3-plugins-activation">3) Plugins &amp; Activation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<h3 id="31-plugin-application-map">3.1 Plugin / application map</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Plugin / App (search name)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asset Management (core)</td>
+<td>com.snc.asset_management</td>
+<td>Base alm_*</td>
+</tr>
+<tr>
+<td>Hardware Asset Management</td>
+<td>com.snc.hardware_asset_management</td>
+<td>HAM</td>
+</tr>
+<tr>
+<td>Software Asset Management</td>
+<td>com.snc.software_asset_management</td>
+<td>SAM — often licensed</td>
+</tr>
+<tr>
+<td>Procurement</td>
+<td>com.snc.procurement</td>
+<td>PO / receiving</td>
+</tr>
+<tr>
+<td>Contract Management</td>
+<td>com.snc.contract_management</td>
+<td>Contracts for SAM</td>
+</tr>
+<tr>
+<td>ITAM Workspace / dashboards</td>
+<td>Store apps (version-dependent)</td>
+<td>Search &ldquo;Asset&rdquo; in Store</td>
+</tr>
+</tbody>
+</table>
+<p>أسماء البلجنز قد تظهر في الواجهة باسم <strong>Hardware Asset Management</strong> أو <strong>IT Asset Management</strong> — ابحث بالكلمات: asset, hardware, software, procurement.</p>
+<h3 id="32-how-to-activate-step-by-step-practice-on-pdi">3.2 How to activate (step-by-step — practice on PDI)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p><strong>Step 1 — Open Plugins</strong></p>
+<p>Navigate: All &gt; System Definition &gt; Plugins — <a href="{BASE}/v_plugin_list.do">Open direct</a></p>
+<p><strong>Step 2 — Activate in this order (recommended)</strong></p>
+<ol>
+<li>Asset Management (com.snc.asset_management) → Activate → wait for completion.</li>
+<li>Hardware Asset Management (com.snc.hardware_asset_management) → Activate.</li>
+<li>Procurement (com.snc.procurement) → Activate (if doing PO labs).</li>
+<li>Software Asset Management → from <strong>Store</strong> if not in Plugins (license on production).</li>
+</ol>
+<p><strong>Step 3 — Store apps (if needed)</strong></p>
+<p>Navigate: All &gt; System Applications &gt; All Available Applications &gt; All — <a href="{BASE}/v_plugin_list.do">Open direct</a><br />
+Search: Hardware Asset, Software Asset, IT Asset<br />
+Install / Request → wait for plugin dependency install.</p>
+<p><strong>Step 4 — Guided Setup</strong></p>
+<p>Navigate: All &gt; Guided Setup — <a href="{BASE}/now/guided-setup">Open direct</a><br />
+Search: IT Asset, Hardware Asset, Procurement<br />
+Complete: models, stockrooms, lifecycle, catalog linkage.</p>
+<p><strong>Step 5 — Validate menus exist</strong></p>
+<p>After activation you should see:</p>
+<pre><code class="language-text">All &gt; Asset
+All &gt; Procurement (or Asset &gt; Procurement)
+</code></pre>
+<p>If menus missing: check plugin state = Active, clear cache, verify asset / ham_admin role.</p>
+<h3 id="33-activation-checklist-consultant">3.3 Activation checklist (consultant)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Plugins Active (no errors in plugin log)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Guided Setup phases completed</td>
+</tr>
+<tr>
+<td>3</td>
+<td>At least one alm_stockroom</td>
+</tr>
+<tr>
+<td>4</td>
+<td>alm_model records for laptops/desktops you will order</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Catalog item linked to model + procurement flow</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Roles assigned to test users</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Sample PO receive → asset in stock → deploy</td>
+</tr>
+</tbody>
+</table>
+<p>تنبيه:<br />
+فعّل على <strong>Sub-Production</strong> أولًا. ITAM يغيّر جداول alm_<em> و proc_</em> — استخدم Update Set للنقل.</p>
+<hr />
+<h2 id="4-guided-setup-all-options">4) Guided Setup &amp; All Options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<h3 id="guided-setup-sections-typical">Guided Setup sections (typical)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>What you configure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Foundation</td>
+<td>Stockrooms, models, categories</td>
+</tr>
+<tr>
+<td>Lifecycle</td>
+<td>States, transitions, retire rules</td>
+</tr>
+<tr>
+<td>Procurement</td>
+<td>Vendors, PO templates, receiving</td>
+</tr>
+<tr>
+<td>Catalog</td>
+<td>Hardware request items → asset model</td>
+</tr>
+<tr>
+<td>SAM (if licensed)</td>
+<td>Publishers, products, entitlements, discovery sources</td>
+</tr>
+<tr>
+<td>CMDB integration</td>
+<td>Asset-CI linking rules</td>
+</tr>
+<tr>
+<td>Roles &amp; security</td>
+<td>asset, ham_admin, sam_admin</td>
+</tr>
+</tbody>
+</table>
+<h3 id="important-navigation-admin">Important navigation (admin)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assets (all)</td>
+<td>All &gt; Asset &gt; Portfolios &gt; All Assets or alm_asset.list · <a href="{BASE}/alm_asset_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Hardware assets</td>
+<td>All &gt; Asset &gt; Hardware Assets or alm_hardware.list · <a href="{BASE}/alm_hardware_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Models</td>
+<td>All &gt; Asset &gt; Model Library or alm_model.list · <a href="{BASE}/alm_model_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Stockrooms</td>
+<td>All &gt; Asset &gt; Stockrooms or alm_stockroom.list · <a href="{BASE}/alm_stockroom_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Transfer orders</td>
+<td>All &gt; Asset &gt; Transfer Orders · <a href="{BASE}/alm_transfer_order_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Purchase orders</td>
+<td>All &gt; Procurement &gt; Purchase Orders · <a href="{BASE}/proc_po_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Receive PO</td>
+<td>Open PO → Receive</td>
+</tr>
+<tr>
+<td>Software licenses</td>
+<td>All &gt; Asset &gt; Software Licenses (SAM) · <a href="{BASE}/alm_license_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Contracts</td>
+<td>All &gt; Contract Management &gt; Contracts · <a href="{BASE}/ast_contract_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Asset workspace</td>
+<td>Search Application Navigator: Asset workspace</td>
+</tr>
+<tr>
+<td>Properties</td>
+<td>All &gt; Asset &gt; Administration &gt; Properties (path may vary) · <a href="{BASE}/alm_asset_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="configuration-options-consultants-set-with-client">Configuration options consultants set with client</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asset tagging scheme</td>
+<td>Auto-number vs client prefix</td>
+</tr>
+<tr>
+<td>Stockroom per site</td>
+<td>One per country/DC vs central</td>
+</tr>
+<tr>
+<td>Who can deploy/retire</td>
+<td>Roles + ACLs</td>
+</tr>
+<tr>
+<td>Catalog vs direct PO</td>
+<td>Self-service laptop request?</td>
+</tr>
+<tr>
+<td>CI linking</td>
+<td>Auto on serial match vs manual</td>
+</tr>
+<tr>
+<td>SAM normalization</td>
+<td>Which discovery sources (SCCM, AD, etc.)</td>
+</tr>
+<tr>
+<td>Depreciation</td>
+<td>Financial integration (ERP)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-end-to-end-process-cycle">5) End-to-End Process Cycle</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<h3 id="cycle-a-hardware-ham-full-lifecycle">Cycle A — Hardware (HAM) full lifecycle</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<pre><code class="language-text">1. Request
+ Employee orders &quot;Laptop&quot; from Service Catalog (ITSM)
+ → sc_request / sc_req_item created
+</code></pre>
+<ol start="2">
+<li>
+<p>Procure<br />
+ Procurement generates proc_po from catalog flow<br />
+ → Vendor fulfills → PO line received</p>
+</li>
+<li>
+<p>Receive → Asset<br />
+ Receive PO → alm_hardware created (state: in_stock)<br />
+ → Stockroom populated</p>
+</li>
+<li>
+<p>Deploy<br />
+ Assign to user (assigned_to) → state: in_use<br />
+ → Optional: link cmdb_ci_computer (CMDB)</p>
+</li>
+<li>
+<p>Maintain<br />
+ Repair / loaner / transfer between stockrooms (alm_transfer_order)</p>
+</li>
+<li>
+<p>Retire<br />
+ Retire/dispose → compliance + audit trail<br />
+ → May update/remove CI per policy</p>
+</li>
+</ol>
+<h3 id="cycle-b-software-sam-high-level">Cycle B — Software (SAM) high level</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<pre><code class="language-text">Define software model + publisher
+ → Create contract + entitlements (seats/metrics)
+ → Discovery / integration imports installs (normalized)
+ → Reconciliation: installs vs entitlements
+ → Compliance dashboard (under/over licensed)
+ → Reclamation candidates (unused licenses)
+</code></pre>
+<h3 id="cycle-c-consumables-stockroom">Cycle C — Consumables (stockroom)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<pre><code class="language-text">Model (consumable) → stock in alm_stockroom
+ → FSM / manual issue reduces quantity
+ → Reorder when below min (alm_m2m_stockroom_model)
+</code></pre>
+<hr />
+<h2 id="6-development">6) Development</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3Dc84db0e8839f0b509f02b0d6feaad3c9">Application Files</a><a href="../scripts/index.html">Scripts portal</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<h3 id="61-when-to-customize">6.1 When to customize</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ul>
+<li>Auto-create asset on PO receive (often OOTB — verify before scripting).</li>
+<li>Link CI when serial number matches Discovery.</li>
+<li>Notify manager on deploy/retire.</li>
+<li>Integration to ERP (cost center, PO number).</li>
+</ul>
+<h3 id="62-business-rule-example-link-ci-by-serial-concept">6.2 Business Rule example — link CI by serial (concept)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a><a href="../scripts/index.html">Scripts portal</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<pre><code class="language-javascript">// alm_hardware after insert/update — pseudo pattern
+if (current.serial_number &amp;&amp; !current.ci) {
+ var ci = new GlideRecord('cmdb_ci_computer');
+ ci.addQuery('serial_number', current.serial_number);
+ ci.query();
+ if (ci.next()) {
+ current.ci = ci.sys_id;
+ current.update();
+ }
+}
+</code></pre>
+<p>استخدم <strong>Asset-CI association</strong> OOTB إن وُجد في إصدارك قبل كتابة BR.</p>
+<h3 id="63-flow-designer-use-cases">6.3 Flow Designer use cases</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ul>
+<li>Manager approval for expensive hardware catalog request.</li>
+<li>Retire approval before disposal.</li>
+<li>SAM reclamation workflow (notify owner → reclaim).</li>
+</ul>
+<h3 id="64-integration-patterns">6.4 Integration patterns</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ERP PO / asset sync</td>
+<td>IntegrationHub / Import Sets / ESB</td>
+</tr>
+<tr>
+<td>Discovery → CI</td>
+<td>ITOM Discovery (ITOM.md)</td>
+</tr>
+<tr>
+<td>CI → Asset</td>
+<td>Identification by serial, asset tag</td>
+</tr>
+<tr>
+<td>SCCM / Intune installs</td>
+<td>SAM content connectors</td>
+</tr>
+<tr>
+<td>HR joiner/leaver</td>
+<td>HRSD Lifecycle → revoke assets</td>
+</tr>
+</tbody>
+</table>
+<h3 id="65-script-includes-apis-awareness">6.5 Script includes &amp; APIs (awareness)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ul>
+<li>AssetandCI / asset APIs (version-specific — search instance).</li>
+<li>GlideRecord on alm_hardware, alm_asset — standard platform.</li>
+<li>REST: table API alm_hardware for integrations.</li>
+</ul>
+<hr />
+<h2 id="7-administration">7) Administration</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<h3 id="71-key-roles">7.1 Key roles</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>asset</td>
+<td>Basic asset user</td>
+</tr>
+<tr>
+<td>asset_manager / ham_admin</td>
+<td>HAM configuration</td>
+</tr>
+<tr>
+<td>sam_admin</td>
+<td>SAM configuration</td>
+</tr>
+<tr>
+<td>procurement_admin</td>
+<td>PO / vendors</td>
+</tr>
+<tr>
+<td>stockroom_admin</td>
+<td>Stockroom operations</td>
+</tr>
+<tr>
+<td>contract_manager</td>
+<td>Contracts (SAM)</td>
+</tr>
+<tr>
+<td>cmdb_admin</td>
+<td>CI side (with ITAM team)</td>
+</tr>
+<tr>
+<td>itil</td>
+<td>May consume assets in incidents (read)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72-role-hierarchy">7.2 Role hierarchy</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<pre><code class="language-text">admin
+└─ asset_manager / ham_admin / sam_admin
+ ├─ procurement_admin
+ ├─ stockroom_admin
+ └─ asset (operate assigned assets)
+</code></pre>
+<h3 id="73-admin-areas">7.3 Admin areas</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Roles</td>
+<td>All &gt; User Administration &gt; Roles · <a href="{BASE}/sys_user_role_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>ACLs</td>
+<td>sys_security_acl — alm_asset, alm_hardware</td>
+</tr>
+<tr>
+<td>Asset properties</td>
+<td>All &gt; Asset &gt; Administration · <a href="{BASE}/alm_asset_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Model categories</td>
+<td>Model library</td>
+</tr>
+<tr>
+<td>Lifecycle</td>
+<td>Asset lifecycle configuration</td>
+</tr>
+<tr>
+<td>Procurement settings</td>
+<td>All &gt; Procurement &gt; Administration · <a href="{BASE}/proc_po_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="74-security-notes">7.4 Security notes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ul>
+<li>Restrict <strong>retire</strong> and <strong>cost</strong> fields to asset managers.</li>
+<li>Separate <strong>stockroom</strong> ACLs by location (domain separation in enterprise).</li>
+<li>SAM compliance data may be sensitive — limit sam_admin.</li>
+</ul>
+<hr />
+<h2 id="8-hands-on-labs-complete-steps">8) Hands-on Labs — تدريب عملي (complete steps)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<blockquote>
+<p>نفّذ على PDI بعد تفعيل §3. اربط كل lab بملفات: CMDB.md, ITSM.md.</p>
+</blockquote>
+<h3 id="lab-0-prerequisites-15-min">Lab 0 — Prerequisites (15 min)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ol>
+<li>Activate plugins per <strong>§3.2</strong>.</li>
+<li>Navigate: All &gt; Guided Setup → complete <strong>Hardware Asset</strong> foundation. — <a href="{BASE}/now/guided-setup">Open direct</a></li>
+<li>Create stockroom:<br />
+ - Navigate: All &gt; Asset &gt; Stockrooms → New. — <a href="{BASE}/alm_stockroom_list.do">Open direct</a><br />
+ - Name: Riyadh IT Stock, Type: warehouse.</li>
+<li>Create model:<br />
+ - Navigate: All &gt; Asset &gt; Model Library → New. — <a href="{BASE}/alm_model_list.do">Open direct</a><br />
+ - Name: Laptop Standard 14&rdquo;, Category: Computer, Asset class: hardware.</li>
+</ol>
+<p><strong>Done when:</strong> stockroom + model exist.</p>
+<hr />
+<h3 id="lab-1-manual-hardware-asset-20-min">Lab 1 — Manual hardware asset (20 min)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ol>
+<li>Navigate: alm_hardware.list → New.</li>
+<li>Fill:<br />
+ - Model: Laptop Standard 14&rdquo;<br />
+ - Stockroom: Riyadh IT Stock<br />
+ - Serial number: SN-LAB-001<br />
+ - Asset tag: auto or AT-001</li>
+<li>Save → verify <strong>Substate</strong> = in_stock (or equivalent).</li>
+<li>Open record → <strong>Deploy</strong> (or action menu Deploy):<br />
+ - Assigned to: your test user.<br />
+ - Verify state → in_use.</li>
+</ol>
+<p><strong>Done when:</strong> asset assigned and in use.</p>
+<hr />
+<h3 id="lab-2-procurement-receive-asset-45-min">Lab 2 — Procurement receive → asset (45 min)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p><strong>A — Vendor (one-time)</strong></p>
+<ol>
+<li>Navigate: All &gt; Procurement &gt; Vendors → New vendor Lab Vendor. — <a href="{BASE}/core_company_list.do?sysparm_query=vendor%3Dtrue">Open direct</a></li>
+</ol>
+<p><strong>B — Purchase order</strong></p>
+<ol start="2">
+<li>Navigate: All &gt; Procurement &gt; Purchase Orders → New. — <a href="{BASE}/proc_po_list.do">Open direct</a></li>
+<li>Add line: Model Laptop Standard 14&rdquo;, Quantity 2.</li>
+<li>Submit / approve PO per your instance workflow.</li>
+</ol>
+<p><strong>C — Receive</strong></p>
+<ol start="5">
+<li>Open PO → <strong>Receive</strong> (or Receive Line).</li>
+<li>Navigate: alm_hardware.list → filter <strong>Created today</strong>.</li>
+<li>Confirm 2 assets, state in_stock, correct stockroom.</li>
+</ol>
+<p><strong>D — Deploy one</strong></p>
+<ol start="8">
+<li>Deploy one laptop to a user; leave one in stock.</li>
+</ol>
+<p><strong>Done when:</strong> PO received and assets visible in stockroom report.</p>
+<hr />
+<h3 id="lab-3-service-catalog-asset-60-min">Lab 3 — Service Catalog → asset (60 min)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ol>
+<li>In ITSM catalog (ITSM.md Lab 2 pattern):<br />
+ - Create catalog item <strong>Standard Laptop</strong> linked to model Laptop Standard 14&rdquo;.<br />
+ - Enable procurement / asset fulfillment per Guided Setup.</li>
+<li>Order from Service Portal as end user.</li>
+<li>Fulfill PO → Receive → verify asset created.</li>
+<li>Assign to requester.</li>
+</ol>
+<p><strong>Done when:</strong> end-to-end catalog → asset without manual PO entry.</p>
+<hr />
+<h3 id="lab-4-stockroom-transfer-20-min">Lab 4 — Stockroom transfer (20 min)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ol>
+<li>Create second stockroom Jeddah IT Stock.</li>
+<li>Navigate: All &gt; Asset &gt; Transfer Orders → New. — <a href="{BASE}/alm_transfer_order_list.do">Open direct</a></li>
+<li>From: Riyadh → To: Jeddah, select asset in stock.</li>
+<li>Complete transfer → verify asset stockroom updated.</li>
+</ol>
+<hr />
+<h3 id="lab-5-link-asset-to-ci-30-min">Lab 5 — Link asset to CI (30 min)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p><strong>Option A — Manual</strong></p>
+<ol>
+<li>Create or open cmdb_ci_computer with same <strong>serial</strong> as Lab 1 asset.</li>
+<li>On alm_hardware, set <strong>Configuration item</strong> field to that CI.</li>
+</ol>
+<p><strong>Option B — With Discovery</strong> (if ITOM active)</p>
+<ol>
+<li>Run Discovery on a VM with serial (ITOM.md Lab 2).</li>
+<li>Verify CI created → link or auto-link to asset.</li>
+</ol>
+<p><strong>Done when:</strong> CI visible on asset form and asset tag on CI (if configured).</p>
+<hr />
+<h3 id="lab-6-retire-asset-15-min">Lab 6 — Retire asset (15 min)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ol>
+<li>Open deployed asset → <strong>Retire</strong> / disposal workflow.</li>
+<li>Verify state retired / disposed.</li>
+<li>Confirm assigned_to cleared per policy.</li>
+</ol>
+<hr />
+<h3 id="lab-7-sam-awareness-30-min-if-licensed">Lab 7 — SAM awareness (30 min — if licensed)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ol>
+<li>Navigate: All &gt; Asset &gt; Software Licenses (or SAM menu). — <a href="{BASE}/alm_license_list.do">Open direct</a></li>
+<li>Create publisher + software model + license entitlement (e.g. 100 seats).</li>
+<li>Review compliance dashboard (demo data acceptable on PDI).</li>
+<li>Interview prep: explain <strong>reconciliation</strong> without building full connector.</li>
+</ol>
+<hr />
+<h3 id="lab-8-consultant-dry-run-interview">Lab 8 — Consultant dry-run (interview)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Explain in 5 minutes:</p>
+<ol>
+<li>HAM vs SAM vs CMDB.</li>
+<li>Catalog → PO → Receive → Deploy.</li>
+<li>Two stockrooms + transfer.</li>
+<li>Why retire matters for audit.</li>
+<li>One integration point (Discovery or ERP).</li>
+</ol>
+<hr />
+<h2 id="9-best-practices-common-mistakes">9) Best Practices &amp; Common Mistakes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<h3 id="best-practices">Best practices</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ul>
+<li>Define <strong>models</strong> before mass asset creation (avoid messy free-text).</li>
+<li>One <strong>authoritative</strong> stockroom per site; use transfers, not duplicate records.</li>
+<li>Link <strong>CI early</strong> for service management; keep <strong>asset</strong> as financial/lifecycle master.</li>
+<li>Use <strong>catalog + procurement</strong> for joiners — not ad-hoc POs.</li>
+<li>SAM: normalize software titles before entitlement matching.</li>
+<li>Align lifecycle states with <strong>HR offboarding</strong> (HRSD).</li>
+</ul>
+<h3 id="common-mistakes">Common mistakes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Mistake</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assets without models</td>
+<td>Enforce model on catalog/PO</td>
+</tr>
+<tr>
+<td>Duplicate assets same serial</td>
+<td>IRE-style rules / unique serial ACL</td>
+</tr>
+<tr>
+<td>CMDB and asset out of sync</td>
+<td>Link policy on serial; periodic audit job</td>
+</tr>
+<tr>
+<td>SAM without discovery source</td>
+<td>Installs unknown → false compliance</td>
+</tr>
+<tr>
+<td>Retiring asset but not reclaiming license</td>
+<td>SAM reclamation process</td>
+</tr>
+<tr>
+<td>Wrong role on stockroom</td>
+<td>ACL per stockroom/location</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-cis-interview-focus">10) CIS / Interview Focus</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<h3 id="high-yield-topics">High-yield topics</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ul>
+<li><strong>HAM vs SAM vs CMDB</strong> (three-way comparison).</li>
+<li>Tables: alm_asset, alm_hardware, alm_license, proc_po.</li>
+<li>Lifecycle: in_stock → in_use → retired.</li>
+<li>Catalog → REQ/RITM → PO → receive → asset.</li>
+<li>Stockroom, transfer order, model library.</li>
+<li>Contract + entitlement (SAM).</li>
+<li>Integration: Discovery/CI, ERP, HR joiner-leaver.</li>
+<li>Compliance / true-up / reclamation vocabulary.</li>
+</ul>
+<h3 id="sample-qa">Sample Q&amp;A</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p><strong>Q: What is the difference between HAM and SAM?</strong><br />
+A: HAM manages physical hardware lifecycle and stockrooms. SAM manages software licenses, entitlements, and compliance.</p>
+<p><strong>Q: ITAM vs CMDB?</strong><br />
+A: CMDB is configuration and service impact. ITAM is asset lifecycle, cost, stockroom, and licensing. They integrate via CI link.</p>
+<p><strong>Q: How does a laptop request become an asset?</strong><br />
+A: Catalog item → request → procurement PO → receive → alm_hardware in stock → deploy to user.</p>
+<p><strong>Q: What table stores the hardware record?</strong><br />
+A: alm_hardware (extends alm_asset).</p>
+<hr />
+<h2 id="11-portals-workspaces-role-hierarchy-feature-catalog">11) Portals, Workspaces, Role Hierarchy &amp; Feature Catalog</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<h3 id="111-portals-end-users">11.1 Portals (end users)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>URL / Navigate</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Service Portal</td>
+<td>/sp</td>
+<td>Request hardware via catalog</td>
+</tr>
+<tr>
+<td>Employee Center</td>
+<td>/esc</td>
+<td>Same catalog experience (modern)</td>
+</tr>
+</tbody>
+</table>
+<p>الموظف لا يدخل &ldquo;Asset Workspace&rdquo; — يطلب من الكتالوج.</p>
+<h3 id="112-workspaces-agent-ui">11.2 Workspaces &amp; agent UI</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Navigate</th>
+<th>لمن</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asset / ITAM Workspace</td>
+<td>Application Navigator → <strong>Asset</strong> / <strong>IT Asset Management</strong></td>
+<td>Asset managers</td>
+</tr>
+<tr>
+<td>Hardware Asset lists</td>
+<td>alm_hardware.list</td>
+<td>Agents</td>
+</tr>
+<tr>
+<td>Procurement</td>
+<td>All &gt; Procurement · <a href="{BASE}/proc_po_list.do">Open direct</a></td>
+<td>Buyers</td>
+</tr>
+<tr>
+<td>SAM workspace</td>
+<td>All &gt; Software Asset (if licensed) · <a href="{BASE}/alm_asset_list.do">Open direct</a></td>
+<td>SAM team</td>
+</tr>
+<tr>
+<td>CMDB Workspace</td>
+<td>/now/cmdb</td>
+<td>CI relationship view</td>
+</tr>
+<tr>
+<td>Service Operations Workspace</td>
+<td>/now/sow/home</td>
+<td>ITSM + CI context</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>روابط Workspace تختلف حسب الإصدار — تحقق من:<br />
+All &gt; Now Experience Framework &gt; UI Builder — <a href="{BASE}/now/ui-builder">Open direct</a></p>
+</blockquote>
+<h3 id="113-role-hierarchy">11.3 Role hierarchy</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<pre><code class="language-text">admin
+└─ ham_admin / sam_admin / asset_manager
+ ├─ procurement_admin
+ ├─ stockroom_admin
+ ├─ contract_manager (SAM)
+ └─ asset (user-level operations)
+</code></pre>
+<h3 id="114-full-business-cycle-consultant-view">11.4 Full business cycle (consultant view)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<pre><code class="language-text">Strategy: HAM scope, SAM scope, CMDB integration policy
+ → Models + categories + stockrooms
+ → Lifecycle + approvals
+ → Catalog + procurement templates
+ → PO/Receive/Deploy operations
+ → CI linking (Discovery + rules)
+ → SAM entitlements + compliance (if licensed)
+ → Retire/dispose + audit
+ → PA dashboards: stock levels, license position, aging hardware
+</code></pre>
+<h3 id="115-feature-catalog">11.5 Feature catalog</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p><strong>HAM features:</strong><br />
+- Model library, stockrooms, transfers.<br />
+- Asset lifecycle (deploy, retire, RMA).<br />
+- Procurement integration.<br />
+- Barcode / asset tag (if enabled).</p>
+<p><strong>SAM features:</strong><br />
+- Publishers, products, entitlements.<br />
+- Normalization, reconciliation, compliance.<br />
+- Reclamation, true-up preparation.</p>
+<p><strong>Platform integrations:</strong><br />
+- ITSM Service Catalog.<br />
+- CMDB / Discovery (ITOM).<br />
+- FSM parts inventory.<br />
+- HRSD onboarding/offboarding.<br />
+- GRC (policy attestation on asset data — optional).</p>
+<hr />
+<h2 id="12-end-to-end-implementation-post-activation">12) End-to-End Implementation (Post-Activation)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<blockquote>
+<p>نفّذ بعد §3 و §4 — مشروع عميل حقيقي أو PDI capstone.</p>
+</blockquote>
+<h3 id="121-application-menus-map">12.1 Application menus map</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<pre><code class="language-text">All &gt; Asset
+ ├─ Portfolios / All Assets / Hardware Assets
+ ├─ Model Library
+ ├─ Stockrooms
+ ├─ Transfer Orders
+ ├─ Software Licenses (SAM)
+ └─ Administration / Properties / Lifecycle
+All &gt; Procurement
+ ├─ Purchase Orders
+ ├─ Vendors
+ └─ Receive / Administration
+All &gt; Contract Management (SAM contracts)
+All &gt; Configuration (CMDB — CI link)
+ └─ Computers / CI Class Manager
+All &gt; Service Catalog (hardware items)
+All &gt; Guided Setup (IT Asset / HAM / SAM)
+</code></pre>
+<h3 id="122-core-tables-to-bookmark">12.2 Core tables to bookmark</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>List URL</th>
+<th>Table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alm_asset.list</td>
+<td>All assets</td>
+</tr>
+<tr>
+<td>alm_hardware.list</td>
+<td>Hardware</td>
+</tr>
+<tr>
+<td>alm_model.list</td>
+<td>Models</td>
+</tr>
+<tr>
+<td>alm_stockroom.list</td>
+<td>Stockrooms</td>
+</tr>
+<tr>
+<td>alm_transfer_order.list</td>
+<td>Transfers</td>
+</tr>
+<tr>
+<td>proc_po.list</td>
+<td>Purchase orders</td>
+</tr>
+<tr>
+<td>alm_license.list</td>
+<td>Licenses (SAM)</td>
+</tr>
+<tr>
+<td>cmdb_ci_computer.list</td>
+<td>Computers (CMDB)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="123-end-to-end-build-order-consultant-playbook">12.3 End-to-end build order (consultant playbook)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Activities</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 — Discover</td>
+<td>Process workshops: request, approve, buy, receive, deploy, retire</td>
+<td>BA / Consultant</td>
+</tr>
+<tr>
+<td>2 — Activate</td>
+<td>Plugins + Guided Setup (§3)</td>
+<td>Admin</td>
+</tr>
+<tr>
+<td>3 — Foundation</td>
+<td>Models, categories, stockrooms, vendors</td>
+<td>Asset manager</td>
+</tr>
+<tr>
+<td>4 — Lifecycle</td>
+<td>States, transitions, retire rules</td>
+<td>Admin + IT</td>
+</tr>
+<tr>
+<td>5 — Security</td>
+<td>Roles, ACLs, domains</td>
+<td>Admin</td>
+</tr>
+<tr>
+<td>6 — Catalog</td>
+<td>Hardware items, variables, approvals</td>
+<td>ITSM + ITAM</td>
+</tr>
+<tr>
+<td>7 — Procurement</td>
+<td>PO templates, receiving rules</td>
+<td>Procurement</td>
+</tr>
+<tr>
+<td>8 — CMDB</td>
+<td>CI class, link rules, Discovery scope (CMDB.md, ITOM.md)</td>
+<td>CMDB team</td>
+</tr>
+<tr>
+<td>9 — SAM</td>
+<td>Entitlements, connectors, compliance dashboards</td>
+<td>SAM team</td>
+</tr>
+<tr>
+<td>10 — Integrate</td>
+<td>HR joiner/leaver, ERP, FSM parts</td>
+<td>Integration</td>
+</tr>
+<tr>
+<td>11 — Test</td>
+<td>Labs §8 + UAT scripts</td>
+<td>QA</td>
+</tr>
+<tr>
+<td>12 — Train</td>
+<td>Agents, stockroom, end users (catalog only)</td>
+<td>Change mgmt</td>
+</tr>
+<tr>
+<td>13 — Go-live</td>
+<td>Hypercare, audit first stock take</td>
+<td>PM</td>
+</tr>
+</tbody>
+</table>
+<h3 id="124-uat-scenarios-minimum">12.4 UAT scenarios (minimum)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ol>
+<li>Catalog laptop request → PO → receive → deploy.</li>
+<li>Transfer between stockrooms.</li>
+<li>Retire with approval.</li>
+<li>CI appears on asset after deploy/Discovery.</li>
+<li>(SAM) Compliance report runs without error.</li>
+</ol>
+<h3 id="125-post-go-live-operations">12.5 Post-go-live operations</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ul>
+<li>Monthly stockroom reconciliation.</li>
+<li>Quarterly SAM true-up review.</li>
+<li>Annual model catalog cleanup.</li>
+<li>CMDB ↔ Asset reconciliation report.</li>
+</ul>
+<hr />
+<h2 id="quick-reference-module-relationships">Quick reference — module relationships</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<pre><code class="language-text"> ITSM (catalog/request)
+ ↓
+ Procurement (PO)
+ ↓
+ ITAM (alm_hardware)
+ ↙ ↘
+ HAM SAM
+ ↓ ↓
+ stockroom licenses
+ ↓
+ CMDB (cmdb_ci) ← ITOM Discovery
+ ↓
+ ITSM incident (CI impact)
+</code></pre>
+<p>Study path:<br />
+- Foundation: CMDB.md → ITAM.md (this file) → ITOM.md<br />
+- Service: ITSM.md → HRSD.md / FSM.md<br />
+- Interview: ../interview/MODULES_INTERVIEW_REVISION.md<br />
+- Plat4mation ITAM prep: ../interview/PLAT4MATION_INTERVIEW_PREP.md</p>
+<hr />
+<h2 id="13-options-instance-notes">13) Options &amp; Instance Notes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Instance gaps</td>
+<td>MODULE_OPTIONS_AND_INSTANCE_NOTES.md → <strong>ITAM</strong></td>
+</tr>
+<tr>
+<td><strong>Full implementation</strong></td>
+<td>MODULE_IMPLEMENTATION_PLAYBOOK.md → <strong>ITAM</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="14-implementation-scenarios-options-best-practices-customizations">14) Implementation Scenarios, Options, Best Practices &amp; Customizations</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<blockquote>
+<p>Playbook: MODULE_IMPLEMENTATION_PLAYBOOK.md → <strong>ITAM</strong> · Labs: §8</p>
+</blockquote>
+<h3 id="141-scenarios">14.1 Scenarios</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Scenario</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1</strong></td>
+<td>HAM manual</td>
+<td>Models + stockroom + deploy/retire</td>
+</tr>
+<tr>
+<td><strong>S2</strong></td>
+<td>HAM + Procurement</td>
+<td>Catalog → PO → receive</td>
+</tr>
+<tr>
+<td><strong>S3</strong></td>
+<td>+ SAM</td>
+<td>Entitlements + compliance</td>
+</tr>
+</tbody>
+</table>
+<h3 id="142-options-matrix">14.2 Options matrix</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Request</td>
+<td>Service Catalog item</td>
+<td>Direct PO</td>
+</tr>
+<tr>
+<td>CI link</td>
+<td>Serial auto-match</td>
+<td>Manual</td>
+</tr>
+<tr>
+<td>SAM data</td>
+<td>Discovery connector</td>
+<td>Import licenses</td>
+</tr>
+<tr>
+<td>Retire</td>
+<td>Flow approval</td>
+<td>Manual state</td>
+</tr>
+</tbody>
+</table>
+<h3 id="143-plugins-order">14.3 Plugins (order)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>com.snc.asset_management → com.snc.hardware_asset_management → com.snc.procurement → SAM (Store)</p>
+<h3 id="144-roles">14.4 Roles</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>ham_admin, sam_admin, procurement_admin, stockroom_admin, asset, contract_manager.</p>
+<h3 id="145-common-developments">14.5 Common developments</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Catalog fulfillment flows, transfer orders, ERP outbound REST, barcode scanning, HR joiner/leaver asset tasks, reclamation workflows (SAM), custom depreciation fields.</p>
+<h3 id="146-best-practices">14.6 Best practices</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Model library before bulk assets; never skip stockroom reconciliation; align retire with HR offboarding.</p>
+<h3 id="147-go-live">14.7 Go-live</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ul>
+<li>[ ] Catalog→PO→receive UAT</li>
+<li>[ ] CI link policy documented</li>
+<li>[ ] SAM true-up process (if S3)</li>
+</ul>
+<hr />
+<h2 id="15-zero-to-hero-end-to-end-implementation-scratch-go-live">15) Zero-to-Hero End-to-End Implementation (Scratch → Go-Live)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<blockquote>
+<p>Framework: MODULE_ZERO_TO_HERO_CONSULTING.md · Labs §8</p>
+</blockquote>
+<p>من <strong>مكتبة Models</strong> حتى <strong>Catalog → PO → Asset → Retire</strong>.</p>
+<h3 id="151-business-goals">15.1 Business goals</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>العربي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Know what you own</td>
+<td>معرفة الأصول وموقعها</td>
+</tr>
+<tr>
+<td>Lifecycle control</td>
+<td>من طلب حتى التخلص</td>
+</tr>
+<tr>
+<td>License compliance</td>
+<td>SAM — تراخيص كافية</td>
+</tr>
+<tr>
+<td>Cost / audit</td>
+<td>جاهزية التدقيق المالي</td>
+</tr>
+</tbody>
+</table>
+<h3 id="152-phase-0-discover">15.2 Phase 0 — Discover</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Asset types, stockrooms, procurement process, joiner/leaver, SAM scope.</p>
+<h3 id="153-phase-1-activate-order">15.3 Phase 1 — Activate (order)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Asset → HAM → Procurement → SAM (Store).</p>
+<h3 id="154-phase-2-foundation-week-24">15.4 Phase 2 — Foundation (Week 2–4)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Models, categories, stockrooms, vendors, lifecycle states.</p>
+<h3 id="155-phase-3-ham-process-week-48">15.5 Phase 3 — HAM process (Week 4–8)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Catalog item → PO → receive → deploy → transfer → retire (§8 labs).</p>
+<h3 id="156-phase-4-cmdb-link-week-68">15.6 Phase 4 — CMDB link (Week 6–8)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Serial match policy, Discovery optional (CMDB.md).</p>
+<h3 id="157-phase-5-sam-if-s3-week-812">15.7 Phase 5 — SAM (if S3) (Week 8–12)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Entitlements, discovery source, compliance dashboard, reclamation.</p>
+<h3 id="158-phase-6-uat-go-live">15.8 Phase 6 — UAT &amp; go-live</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>End-to-end laptop request, stockroom reconciliation, ERP mock.</p>
+<h3 id="159-phase-7-operate">15.9 Phase 7 — Operate</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Monthly stock take, SAM true-up quarterly, model catalog cleanup.</p>
+<h3 id="1510-master-checklist">15.10 Master checklist</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ul>
+<li>[ ] Plugins · [ ] Catalog→asset UAT · [ ] Roles · [ ] ERP integration optional</li>
+</ul>
+<hr />
+<h2 id="16-full-e2e-practice-pages-requirements-options-ar-en">16) Full E2E Practice · Pages · Requirements · Options (AR + EN)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<blockquote>
+<p>HAM + SAM Pro · Links to CMDB.md and catalog (ITSM.md).</p>
+</blockquote>
+<hr />
+<h3 id="161-business-goals">16.1 Business goals</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Goal (EN)</th>
+<th>الهدف (AR)</th>
+<th>KPI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asset lifecycle visibility</td>
+<td>رؤية دورة الأصل</td>
+<td>Time deploy→retire</td>
+</tr>
+<tr>
+<td>Stockroom accuracy</td>
+<td>دقة المستودع</td>
+<td>Inventory variance</td>
+</tr>
+<tr>
+<td>License compliance (SAM)</td>
+<td>امتثال تراخيص</td>
+<td>True-up cost avoided</td>
+</tr>
+<tr>
+<td>Cost allocation</td>
+<td>توزيع التكلفة</td>
+<td>Chargeback reports</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why buy ITAM:</strong> English: Know what you own, where it is, and whether software is licensed. — ITAM يربط <strong>شراء → مخزون → مستخدم → تقاعد</strong> ويمنع غرامات التراخيص.</p>
+<hr />
+<h3 id="162-requirements">16.2 Requirements</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>EN</th>
+<th>AR</th>
+<th>Track</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AM-R01</td>
+<td>Model/category catalog</td>
+<td>كatalog موديلات</td>
+<td>HAM</td>
+</tr>
+<tr>
+<td>AM-R02</td>
+<td>Stockrooms + transfer rules</td>
+<td>مستودعات ونقل</td>
+<td>HAM</td>
+</tr>
+<tr>
+<td>AM-R03</td>
+<td>Catalog request creates asset task</td>
+<td>طلب → أصل</td>
+<td>HAM</td>
+</tr>
+<tr>
+<td>AM-R04</td>
+<td>Asset CI sync</td>
+<td>مزامنة CI</td>
+<td>HAM+CMDB</td>
+</tr>
+<tr>
+<td>AM-R05</td>
+<td>Software entitlements</td>
+<td>استحقاقات</td>
+<td>SAM</td>
+</tr>
+<tr>
+<td>AM-R06</td>
+<td>Discovery/AD for installs</td>
+<td>اكتشاف تثبيتات</td>
+<td>SAM</td>
+</tr>
+<tr>
+<td>AM-R07</td>
+<td>Reclamation workflow</td>
+<td>استرداد تراخيص</td>
+<td>SAM</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="163-consultation-cycle">16.3 Consultation cycle</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>EN</th>
+<th>AR</th>
+<th>Deliverable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Asset types in scope (laptop, mobile, SW)</td>
+<td>أنواع الأصول</td>
+<td>Scope</td>
+</tr>
+<tr>
+<td>1</td>
+<td>As-is (ERP, spreadsheets)</td>
+<td>الوضع الحالي</td>
+<td>Gap</td>
+</tr>
+<tr>
+<td>2</td>
+<td>HAM process design</td>
+<td>عملية HAM</td>
+<td>Swimlane</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Stockrooms + catalog</td>
+<td>مستودعات</td>
+<td>Config</td>
+</tr>
+<tr>
+<td>4</td>
+<td>SAM (if licensed)</td>
+<td>SAM</td>
+<td>Entitlement model</td>
+</tr>
+<tr>
+<td>5</td>
+<td>UAT full lifecycle</td>
+<td>UAT</td>
+<td>Sign-off</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="164-options-a-b-c">16.4 Options (A / B / C)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Request intake</td>
+<td>Service Catalog</td>
+<td>HR case</td>
+<td>Email</td>
+</tr>
+<tr>
+<td>Asset record</td>
+<td>alm_asset native</td>
+<td>Custom table</td>
+<td>ERP only</td>
+</tr>
+<tr>
+<td>Deploy</td>
+<td>Fulfillment task + asset task</td>
+<td>Manual assign</td>
+<td>Third-party tool</td>
+</tr>
+<tr>
+<td>SAM discovery</td>
+<td>ServiceNow Discovery</td>
+<td>SCCM import</td>
+<td>Manual entitlements</td>
+</tr>
+<tr>
+<td>Retirement</td>
+<td>Dispose workflow + certificate</td>
+<td>Status only</td>
+<td>ERP drives</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="165-all-pages-navigate">16.5 All pages (Navigate)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asset Management</td>
+<td>All &gt; Asset &gt; Assets · <a href="{BASE}/alm_asset_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Models</td>
+<td>All &gt; Asset &gt; Model Categories / Models · <a href="{BASE}/alm_model_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Stockrooms</td>
+<td>All &gt; Asset &gt; Stockrooms · <a href="{BASE}/alm_stockroom_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Asset Tasks</td>
+<td>All &gt; Asset &gt; Tasks · <a href="{BASE}/alm_asset_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Hardware Inventory</td>
+<td>alm_hardware.list</td>
+</tr>
+<tr>
+<td>Consumables</td>
+<td>All &gt; Asset &gt; Consumables · <a href="{BASE}/alm_asset_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Contract Management</td>
+<td>All &gt; Contract &gt; Contracts · <a href="{BASE}/ast_contract_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Software Models</td>
+<td>All &gt; Software Asset &gt; Software Models · <a href="{BASE}/alm_model_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Entitlements</td>
+<td>All &gt; Software Asset &gt; Entitlements · <a href="{BASE}/alm_asset_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>License Workbench</td>
+<td>All &gt; Software Asset &gt; Licensing · <a href="{BASE}/alm_asset_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Reclamation</td>
+<td>All &gt; Software Asset &gt; Reclamation · <a href="{BASE}/alm_asset_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>HAM Workspace</td>
+<td>/now/asset/ (version varies)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="166-full-pdi-lab-ham-track-14-steps">16.6 Full PDI lab — HAM track (14 steps)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>EN</th>
+<th>AR</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Create Model Category + Model (laptop)</td>
+<td>موديل</td>
+<td>Model saved</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Create Stockroom HQ IT</td>
+<td>مستودع</td>
+<td>Stockroom active</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Receive 3 assets into stockroom</td>
+<td>استلام</td>
+<td>qty=3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Create catalog item linked to model</td>
+<td>كتالوج</td>
+<td>Order creates RITM</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Order as user — fulfill</td>
+<td>طلب</td>
+<td>Asset task</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Deploy asset to user</td>
+<td>نشر</td>
+<td>Assigned user</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Transfer asset between stockrooms</td>
+<td>نقل</td>
+<td>Location updated</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Retire one asset</td>
+<td>تقاعد</td>
+<td>State retired</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Link asset serial to CI (if CMDB)</td>
+<td>CI</td>
+<td>Relationship</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Run stockroom report</td>
+<td>تقرير</td>
+<td>qty matches</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Document Option A/B/C</td>
+<td>خيارات</td>
+<td>Doc</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Role test: asset user vs admin</td>
+<td>أمان</td>
+<td>ACL</td>
+</tr>
+<tr>
+<td>13</td>
+<td>UAT: new hire laptop E2E</td>
+<td>UAT</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Update Set ITAM Lab 16</td>
+<td>Export</td>
+<td>Done</td>
+</tr>
+</tbody>
+</table>
+<p><strong>SAM add-on (if licensed):</strong> Create software model → entitlement → run discovery → compliance dashboard → reclamation candidate.</p>
+<hr />
+<h3 id="167-sign-off">16.7 Sign-off</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ul>
+<li>[ ] Model catalog approved · [ ] Stockroom owners named · [ ] Catalog→deploy tested · [ ] SAM true-up process documented (if SAM)</li>
+</ul>
+<hr />
+<h2 id="17-power-user-playbook-itam">§17 — Power User Playbook (ITAM)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<blockquote>
+<p>Daily operating manual for HAM Pro, SAM Pro, Procurement &amp; Audit.<br />
+دليل التشغيل اليومي لإدارة العتاد، البرمجيات، الشراء، والتدقيق.</p>
+</blockquote>
+<hr />
+<h3 id="171-personas-daily-mission">17.1 Personas &amp; Daily Mission</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Primary Tables / Workspaces</th>
+<th>Daily Mission (EN)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asset Manager</td>
+<td>alm_asset, alm_hardware, dashboards</td>
+<td>Govern lifecycle states, reconcile stockrooms, sign off audits</td>
+</tr>
+<tr>
+<td>Procurement Officer</td>
+<td>proc_po, proc_po_item, vendors</td>
+<td>Issue POs, receive shipments, track vendor performance</td>
+</tr>
+<tr>
+<td>License Manager (SAM)</td>
+<td>alm_license, cmdb_sam_sw_install, License Workbench</td>
+<td>Maintain license positions, run true-ups, drive reclamation</td>
+</tr>
+<tr>
+<td>Hardware Lifecycle Coordinator</td>
+<td>alm_hardware, Asset Workspace</td>
+<td>Move assets through deploy → maintain → retire → dispose</td>
+</tr>
+<tr>
+<td>Auditor</td>
+<td>sys_audit, alm_asset_audit, evidence repo</td>
+<td>Sample assets, verify proof of ownership, compliance attestation</td>
+</tr>
+<tr>
+<td>End-user (requester)</td>
+<td>Service Portal / Employee Center</td>
+<td>Request laptops/software, return assets</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>الشخصية</th>
+<th>الجداول/مساحات العمل</th>
+<th>المهمة اليومية</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>مدير الأصول</td>
+<td>الأصول، عتاد، لوحات</td>
+<td>حوكمة دورة الحياة وتسوية المستودعات</td>
+</tr>
+<tr>
+<td>مسؤول الشراء</td>
+<td>أوامر الشراء، الموردون</td>
+<td>إصدار PO واستلام الشحنات</td>
+</tr>
+<tr>
+<td>مدير التراخيص</td>
+<td>تراخيص، تثبيتات</td>
+<td>إدارة الموقف التراخيصي والاسترداد</td>
+</tr>
+<tr>
+<td>منسق العتاد</td>
+<td>عتاد، مساحة عمل</td>
+<td>حركة الأصل في كل الحالات</td>
+</tr>
+<tr>
+<td>المدقق</td>
+<td>أدلة، عينات</td>
+<td>التحقق من الملكية والامتثال</td>
+</tr>
+<tr>
+<td>المستخدم النهائي</td>
+<td>بوابة الخدمة</td>
+<td>طلب الأصول والإرجاع</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="172-day-in-life-a-typical-monday">17.2 Day-in-Life — A Typical Monday</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<pre><code class="language-text">08:00 Open new-hire queue (HR Cases linked to assets)
+ → All &gt; User Administration &gt; Users (filter: created last 24h)
+ → For each: assign laptop, monitor, headset from stockroom.
+</code></pre>
+<p>09:00 Stockroom count check at HQ<br />
+ → All &gt; Asset &gt; Stockrooms → HQ IT → verify physical vs system. — <a href="{BASE}/alm_stockroom_list.do">Open direct</a></p>
+<p>10:00 Vendor reconciliation: open vendor portal export →<br />
+ diff against alm_asset → flag missing receipts.</p>
+<p>11:00 SAM Workbench — License Position<br />
+ → All &gt; Software Asset &gt; Licensing — <a href="{BASE}/alm_asset_list.do">Open direct</a><br />
+ Investigate any &ldquo;Non-compliant&rdquo; lines.</p>
+<p>13:00 EOL hardware retirement batch<br />
+ → alm_hardware.list filter: warranty &lt; today, in_use=false<br />
+ → Bulk Retire → schedule disposal.</p>
+<p>14:00 Procurement: receive PO #INV-3421 (2 laptops) → stockroom in_stock.</p>
+<p>15:00 Audit prep — pull random 25 hardware assets, verify physical tags.</p>
+<p>16:30 Refresh forecast (3-yr lifecycle): export to Power BI. — يوم الاثنين النموذجي: تعيينات الموظفين الجدد، جرد المستودع، تسوية المورد، الموقف التراخيصي، تقاعد العتاد، استلام PO، وعينة تدقيق.</p>
+<hr />
+<h3 id="173-hardware-asset-manager-ham-pro-recipes">17.3 Hardware Asset Manager (HAM Pro) Recipes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<h4 id="recipe-a-create-asset-model-product-model-linkage">Recipe A — Create asset model + product model linkage</h4>
+<ol>
+<li>Navigate: All &gt; Asset &gt; Model Categories → ensure category exists (Computer / Monitor / Peripheral). — <a href="{BASE}/alm_model_list.do">Open direct</a></li>
+<li>Navigate: All &gt; Asset &gt; Model Library → New: — <a href="{BASE}/alm_model_list.do">Open direct</a><br />
+ - Name: Dell Latitude 7450 — i7 — 16GB<br />
+ - Manufacturer: Dell<br />
+ - Asset class: hardware<br />
+ - Model categories: Computer<br />
+ - Hardware type: Laptop</li>
+<li>Optional product model (for SAM/Procurement linkage):<br />
+ - Navigate: All &gt; Product Catalog &gt; Product Models → link via Model field. — <a href="{BASE}/alm_model_list.do">Open direct</a></li>
+<li>Bind cost: Set acquisition cost, depreciation method (SL straight line, 36 months).</li>
+</ol>
+<pre><code class="language-javascript">// Bulk-create models from CSV (background script)
+var rows = [
+ { name: 'Dell Latitude 7450', mfr: 'Dell', type: 'Laptop', cost: 2200 },
+ { name: 'HP EliteBook 845', mfr: 'HP', type: 'Laptop', cost: 2050 },
+ { name: 'iPhone 15 Pro', mfr: 'Apple', type: 'Phone', cost: 1500 }
+];
+rows.forEach(function(r) {
+ var m = new GlideRecord('cmdb_model');
+ m.initialize();
+ m.name = r.name;
+ m.manufacturer.setDisplayValue(r.mfr);
+ m.hardware_type = r.type;
+ m.cost = r.cost;
+ m.asset_class = 'hardware';
+ m.insert();
+});
+</code></pre>
+<p>عرّف الفئة ثم الموديل، اربط الموديل بالكتالوج، حدد التكلفة وطريقة الإهلاك.</p>
+<h4 id="recipe-b-stockroom-inventory-adjustments">Recipe B — Stockroom inventory adjustments</h4>
+<ol>
+<li>Navigate: All &gt; Asset &gt; Stockrooms → open stockroom. — <a href="{BASE}/alm_stockroom_list.do">Open direct</a></li>
+<li>Related list <strong>Stockroom Items</strong> → counts per model.</li>
+<li>To adjust (audit corrections):</li>
+</ol>
+<pre><code class="language-javascript">// Adjust quantity for a consumable stockroom row
+var row = new GlideRecord('alm_consumable');
+row.addQuery('model.name', 'Cat6 Cable 2m');
+row.addQuery('stockroom.name', 'HQ IT');
+row.query();
+if (row.next()) {
+ var delta = 50;
+ row.quantity = parseInt(row.quantity, 10) + delta;
+ row.work_notes = 'Quarterly audit reconciliation +' + delta;
+ row.update();
+}
+</code></pre>
+<p>For hardware (serialized): use <strong>Transfer Order</strong> instead of mass-edit.</p>
+<h4 id="recipe-c-asset-assignment-to-user-via-portal">Recipe C — Asset assignment to user via portal</h4>
+<ol>
+<li>Navigate: /sp → catalog item <strong>Request a Laptop</strong>.</li>
+<li>End-user submits → RITM created → Procurement task fires.</li>
+<li>Fulfiller side: Navigate: All &gt; Asset &gt; Hardware Assets → state in_stock → click <strong>Deploy</strong>. — <a href="{BASE}/alm_hardware_list.do">Open direct</a></li>
+<li>Set assigned_to, location, deployment date → state moves to in_use.</li>
+</ol>
+<p>Auto-deploy on new hire (Business Rule on sys_user after insert):</p>
+<pre><code class="language-javascript">(function executeRule(current) {
+ if (!current.department || current.department.getDisplayValue() != 'Engineering') return;
+ var asset = new GlideRecord('alm_hardware');
+ asset.addQuery('model.short_description', 'CONTAINS', 'Laptop');
+ asset.addQuery('install_status', '6'); // In stock
+ asset.setLimit(1);
+ asset.query();
+ if (asset.next()) {
+ asset.assigned_to = current.sys_id;
+ asset.install_status = '1'; // Installed/In use
+ asset.update();
+ gs.eventQueue('asset.assigned', asset, current.email, '');
+ }
+})(current);
+</code></pre>
+<p>المستخدم يطلب من البوابة، الموظف ينفّذ النشر، أو BR ينفذها تلقائيًا للهندسة.</p>
+<h4 id="recipe-d-asset-incident-linkage">Recipe D — Asset → Incident linkage</h4>
+<ol>
+<li>On an Incident record → <strong>Affected CI</strong> = laptop&rsquo;s CI.</li>
+<li>Form auto-displays linked asset (alm_hardware) via Asset/CI relationship.</li>
+<li>To enforce link in BR:</li>
+</ol>
+<pre><code class="language-javascript">// Before BR on incident — copy asset from CI
+(function(current) {
+ if (!current.cmdb_ci || current.u_asset) return;
+ var asset = new GlideRecord('alm_hardware');
+ asset.addQuery('ci', current.cmdb_ci);
+ asset.setLimit(1);
+ asset.query();
+ if (asset.next()) current.u_asset = asset.sys_id;
+})(current);
+</code></pre>
+<h4 id="recipe-e-retirement-workflow-wipe-dispose-recycle">Recipe E — Retirement workflow (wipe, dispose, recycle)</h4>
+<p>State machine:</p>
+<pre><code class="language-text">in_use → retired (logical retirement, kept on record)
+retired → disposed (physically gone)
+Sub-states for tracking:
+- pending_wipe
+- pending_disposal_vendor
+- disposal_certificate_received
+</code></pre>
+<p>Steps:</p>
+<ol>
+<li>Open asset → action <strong>Retire</strong>.</li>
+<li>Trigger flow: ITAM Retire:<br />
+ - Create wipe task → assigned to Field Tech.<br />
+ - Field Tech uploads certificate (attachment).<br />
+ - Send to disposal vendor.<br />
+ - Vendor returns certificate of destruction (CoD).<br />
+ - Asset moved to disposed, retired_date stamped.</li>
+</ol>
+<pre><code class="language-javascript">// Validate disposal certificate uploaded
+(function executeRule(current) {
+ if (current.install_status != '7' /* Retired */) return;
+ var att = new GlideRecord('sys_attachment');
+ att.addQuery('table_name', 'alm_hardware');
+ att.addQuery('table_sys_id', current.sys_id);
+ att.addQuery('file_name', 'CONTAINS', 'CoD');
+ att.query();
+ if (!att.hasNext()) {
+ gs.addErrorMessage('Cannot fully retire without Certificate of Destruction attached.');
+ current.setAbortAction(true);
+ }
+})(current);
+</code></pre>
+<h4 id="recipe-f-rma-workflow">Recipe F — RMA workflow</h4>
+<ol>
+<li>Asset in in_use → Issue reported → set substate pending_repair.</li>
+<li>Open ticket with vendor (RMA number captured in u_rma_number).</li>
+<li>Track loaner (separate asset record) issued to user during RMA.</li>
+<li>On return: vendor sends replacement → swap serials in record, attach RMA doc, return loaner to stock.</li>
+</ol>
+<h4 id="recipe-g-disposal-certificate-upload">Recipe G — Disposal certificate upload</h4>
+<p>Add the Attachment UI Action with required-attachment validation (see Recipe E script). Store certs in dedicated table u_disposal_certificates for audit. — وصفات HAM: موديلات، مستودع، تخصيص، ربط حادثة، تقاعد، RMA، شهادات التخلص.</p>
+<hr />
+<h3 id="174-software-asset-manager-sam-pro-recipes">17.4 Software Asset Manager (SAM Pro) Recipes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<h4 id="recipe-a-publisher-onboarding-microsoft-adobe-oracle-sap">Recipe A — Publisher onboarding (Microsoft, Adobe, Oracle, SAP)</h4>
+<ol>
+<li>Navigate: All &gt; Software Asset &gt; Libraries &gt; Software Publishers. — <a href="{BASE}/alm_asset_list.do">Open direct</a></li>
+<li>Verify publisher exists (curated content normally pre-loaded).</li>
+<li>If missing → New (rare): include normalization rules and product mapping.</li>
+<li>Navigate: All &gt; Software Asset &gt; Libraries &gt; Software Models → assign content publisher. — <a href="{BASE}/alm_model_list.do">Open direct</a></li>
+<li>Activate <strong>Content Service</strong> subscription so SN keeps the library updated.</li>
+</ol>
+<p>Vendor-specific notes:</p>
+<table>
+<thead>
+<tr>
+<th>Vendor</th>
+<th>Watch out</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Microsoft</td>
+<td>M365 user-based vs device-based; ECM/EMS bundles</td>
+</tr>
+<tr>
+<td>Adobe</td>
+<td>Named-user only (Creative Cloud), no concurrent</td>
+</tr>
+<tr>
+<td>Oracle</td>
+<td>NUP, Processor, ULA; license metrics tightly defined</td>
+</tr>
+<tr>
+<td>SAP</td>
+<td>Indirect access; named users by classification</td>
+</tr>
+</tbody>
+</table>
+<h4 id="recipe-b-license-position-calculation">Recipe B — License Position calculation</h4>
+<ol>
+<li>Navigate: All &gt; Software Asset &gt; Licensing &gt; License Workbench. — <a href="{BASE}/alm_asset_list.do">Open direct</a></li>
+<li>Select software (e.g. Adobe Acrobat Pro).</li>
+<li>Workbench shows: Entitlements vs Installations vs Compliance Position.</li>
+<li>Click <strong>Recalculate</strong> to force engine run.</li>
+</ol>
+<pre><code class="language-javascript">// Recalc license positions programmatically
+var calc = new sn_sam.LicenseEngineAPI();
+var sw = new GlideRecord('cmdb_software_product_model');
+sw.addQuery('install_status', '1');
+sw.query();
+while (sw.next()) calc.scheduleReconciliation(sw.sys_id);
+</code></pre>
+<h4 id="recipe-c-true-up-true-down">Recipe C — True-up / true-down</h4>
+<p>True-up = buy more licenses to cover overage.<br />
+True-down = retire entitlements not needed (or harvest).</p>
+<p>Quarterly process:</p>
+<pre><code class="language-text">1. Export License Position to CSV.
+2. Highlight rows where Compliance &lt; 0 (over-deployed) → True-up purchase.
+3. Highlight rows where Compliance &gt; 25% buffer → True-down candidate.
+4. Approval via CHG → update entitlement quantity → re-run engine.
+</code></pre>
+<h4 id="recipe-d-reclamation-policy-idle-90d">Recipe D — Reclamation policy (idle 90d)</h4>
+<ol>
+<li>Navigate: All &gt; Software Asset &gt; Reclamation &gt; Reclamation Candidates. — <a href="{BASE}/alm_asset_list.do">Open direct</a></li>
+<li>Configure rule: &ldquo;Reclaim if last_used &gt; 90 days AND no exception&rdquo;.</li>
+<li>Reclamation rule script (custom):</li>
+</ol>
+<pre><code class="language-javascript">var sw = new GlideRecord('cmdb_sam_sw_install');
+sw.addQuery('publisher.name', 'Adobe');
+sw.addQuery('last_used', '&lt;', gs.daysAgoStart(90));
+sw.query();
+while (sw.next()) {
+ var rec = new GlideRecord('samp_sw_reclamation_candidate');
+ rec.initialize();
+ rec.installation = sw.sys_id;
+ rec.user = sw.installed_on.assigned_to;
+ rec.policy = 'Idle 90 days';
+ rec.insert();
+}
+</code></pre>
+<ol start="4">
+<li>Approval flow notifies user → 14 days to justify → else automated uninstall via SCCM/Intune spoke.</li>
+</ol>
+<h4 id="recipe-e-engineering-vs-standard-editions">Recipe E — Engineering vs Standard editions</h4>
+<p>Distinguish via Software Model <strong>Edition</strong> field; license metric tracked separately. Engineering edition often costlier — bind to Engineering AD group only.</p>
+<h4 id="recipe-f-subscription-vs-perpetual">Recipe F — Subscription vs Perpetual</h4>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Tracking</th>
+<th>True-up</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Perpetual + Maintenance</td>
+<td>Count + version coverage</td>
+<td>Yes if version uplift</td>
+</tr>
+<tr>
+<td>Subscription (named)</td>
+<td>Active named users by month</td>
+<td>Re-true at renewal</td>
+</tr>
+<tr>
+<td>Subscription (concurrent)</td>
+<td>Peak concurrent users</td>
+<td>Adjust upon renewal</td>
+</tr>
+<tr>
+<td>SaaS (Microsoft 365)</td>
+<td>API-pulled actual usage</td>
+<td>Right-size monthly</td>
+</tr>
+</tbody>
+</table>
+<h4 id="recipe-g-saas-license-discovery-m365-salesforce">Recipe G — SaaS license discovery (M365, Salesforce)</h4>
+<ol>
+<li>Navigate: All &gt; SaaS License Management &gt; SaaS Subscriptions. — <a href="{BASE}/samp_sw_subscription_list.do">Open direct</a></li>
+<li>New connector → Microsoft 365 (OAuth app reg) or Salesforce (OAuth + refresh token).</li>
+<li>Connector pulls: users, license SKUs, last login, usage.</li>
+<li>Reclamation rule: license = E5 AND last login &gt; 60d → propose downgrade to E3 or remove. — وصفات SAM: قواعد الموردين، حساب الموقف، true-up/down، الاسترداد، الإصدارات، SaaS.</li>
+</ol>
+<hr />
+<h3 id="175-procurement-recipes">17.5 Procurement Recipes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<h4 id="recipe-a-catalog-item-po-vendor-receipt-asset-creation">Recipe A — Catalog item → PO → vendor → receipt → asset creation</h4>
+<pre><code class="language-text">1. Catalog item &quot;Request Laptop&quot; → variables: model, justification.
+2. Manager approval (Flow Designer).
+3. Procurement task creates proc_po and proc_po_item.
+4. Send to vendor (manual or via EDI/spoke).
+5. Vendor confirms → expected delivery.
+6. Receive PO line → quantity → alm_hardware created with serial input.
+7. Stockroom set automatically; state in_stock.
+</code></pre>
+<p>UI Path: PO record → <strong>Receive Line</strong> button → enter received qty + serials → asset(s) auto-create.</p>
+<h4 id="recipe-b-vendor-scorecards">Recipe B — Vendor scorecards</h4>
+<pre><code class="language-javascript">// PA-style aggregate of vendor performance
+var agg = new GlideAggregate('proc_po');
+agg.addQuery('vendor', '!=', '');
+agg.addAggregate('COUNT');
+agg.addAggregate('AVG', 'u_days_to_deliver');
+agg.groupBy('vendor');
+agg.query();
+while (agg.next()) {
+ gs.info('Vendor ' + agg.getDisplayValue('vendor') +
+ ' POs=' + agg.getAggregate('COUNT') +
+ ' avgDays=' + agg.getAggregate('AVG', 'u_days_to_deliver'));
+}
+</code></pre>
+<p>Build PA indicator Vendor On-Time Delivery % to feed scorecard widget. — الكتالوج يبدأ بطلب → PO → استلام → أصل؛ ولوحات الموردين تقاس عبر مؤشرات PA.</p>
+<hr />
+<h3 id="176-audit-recipes">17.6 Audit Recipes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<h4 id="recipe-a-surprise-audit-playbook">Recipe A — Surprise audit playbook</h4>
+<pre><code class="language-text">1. Auditor pulls random 25 hardware assets across sites.
+2. Asset Manager retrieves physical asset (or photo evidence + signed user).
+3. Cross-check: serial, location, assignee.
+4. Mark audit results in alm_asset_audit table.
+5. Discrepancies → corrective action ticket.
+</code></pre>
+<pre><code class="language-javascript">// Random sample of 25 in_use assets
+var sample = new GlideRecord('alm_hardware');
+sample.addQuery('install_status', '1');
+sample.orderBy('sys_id'); // deterministic — auditor seeds another way for true random
+sample.setLimit(25);
+sample.query();
+while (sample.next()) gs.info(sample.asset_tag + ' | ' + sample.assigned_to.getDisplayValue());
+</code></pre>
+<h4 id="recipe-b-evidence-collection">Recipe B — Evidence collection</h4>
+<ul>
+<li>Hardware: photo of asset tag + serial + signed acknowledgement (PDF in attachments).</li>
+<li>Software: License purchase order + entitlement reference.</li>
+<li>Disposal: Certificate of Destruction.</li>
+</ul>
+<p>Standard naming: EVD-<asset_tag>-<YYYYMMDD>.pdf.</p>
+<h4 id="recipe-c-compliance-attestation">Recipe C — Compliance attestation</h4>
+<p>Quarterly: managers attest to assets in their cost center via Employee Center attestation campaign (HR Case if no SAM Audit module). — وصفات التدقيق: عينة عشوائية، أدلة مرفقة، شهادات تخلص، حملة شهادة الامتثال الفصلية.</p>
+<hr />
+<h3 id="177-top-20-itam-scripts-working-snippets">17.7 Top 20 ITAM Scripts (working snippets)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<h4 id="1-auto-assign-asset-on-user-creation">1. Auto-assign asset on user creation</h4>
+<pre><code class="language-javascript">(function executeRule(current) {
+ if (!current.department || current.employee_number == '') return;
+ var asset = new GlideRecord('alm_hardware');
+ asset.addQuery('model.short_description', 'CONTAINS', 'Laptop');
+ asset.addQuery('install_status', '6');
+ asset.setLimit(1);
+ asset.query();
+ if (asset.next()) {
+ asset.assigned_to = current.sys_id;
+ asset.install_status = '1';
+ asset.update();
+ gs.eventQueue('asset.assigned.new.hire', asset, current.email, '');
+ }
+})(current);
+</code></pre>
+<h4 id="2-license-position-recalculator-scheduled">2. License Position recalculator (scheduled)</h4>
+<pre><code class="language-javascript">var sw = new GlideRecord('cmdb_software_product_model');
+sw.addQuery('install_status', '1');
+sw.query();
+var engine = new sn_sam.LicenseEngineAPI();
+while (sw.next()) engine.scheduleReconciliation(sw.sys_id);
+gs.info('Triggered SAM reconciliation for ' + sw.getRowCount() + ' titles');
+</code></pre>
+<h4 id="3-idle-saas-license-reclaimer">3. Idle SaaS license reclaimer</h4>
+<pre><code class="language-javascript">var idle = new GlideRecord('cmdb_ci_spkg');
+idle.addQuery('publisher.name', 'Microsoft');
+idle.addQuery('last_used', '&lt;', gs.daysAgoStart(60));
+idle.query();
+while (idle.next()) {
+ var t = new GlideRecord('sam_reclamation_task');
+ t.initialize();
+ t.subject = 'Reclaim ' + idle.getDisplayValue('name');
+ t.user = idle.installed_on.assigned_to;
+ t.policy = 'Idle 60d SaaS';
+ t.due = gs.daysAgoStart(-14);
+ t.insert();
+}
+</code></pre>
+<h4 id="4-hardware-refresh-forecaster-3-yr-lifecycle">4. Hardware refresh forecaster (3-yr lifecycle)</h4>
+<pre><code class="language-javascript">var due = new GlideRecord('alm_hardware');
+due.addQuery('purchase_date', '&lt;', gs.daysAgoStart(3 * 365));
+due.addQuery('install_status', '1');
+due.query();
+gs.info('Assets eligible for refresh: ' + due.getRowCount());
+while (due.next()) {
+ gs.info(due.asset_tag + ' | ' + due.assigned_to.getDisplayValue() +
+ ' | bought ' + due.purchase_date);
+}
+</code></pre>
+<h4 id="5-stockroom-rebalance-recommender">5. Stockroom rebalance recommender</h4>
+<pre><code class="language-javascript">var sites = ['HQ IT', 'Branch JED', 'Branch DXB'];
+sites.forEach(function(s) {
+ var cnt = new GlideAggregate('alm_hardware');
+ cnt.addQuery('stockroom.name', s);
+ cnt.addQuery('install_status', '6'); // in_stock
+ cnt.addAggregate('COUNT');
+ cnt.query();
+ cnt.next();
+ gs.info(s + ' in-stock = ' + cnt.getAggregate('COUNT'));
+});
+</code></pre>
+<h4 id="6-asset-ci-sync-on-insertupdate">6. Asset → CI sync (on insert/update)</h4>
+<pre><code class="language-javascript">(function executeRule(current) {
+ if (!current.serial_number || current.ci) return;
+ var ci = new GlideRecord('cmdb_ci_computer');
+ ci.addQuery('serial_number', current.serial_number);
+ ci.setLimit(1);
+ ci.query();
+ if (ci.next()) {
+ current.ci = ci.sys_id;
+ ci.asset = current.sys_id;
+ ci.update();
+ }
+})(current);
+</code></pre>
+<h4 id="7-auto-create-asset-from-po-receipt">7. Auto-create asset from PO receipt</h4>
+<pre><code class="language-javascript">// Triggered after proc_po_item.received = quantity
+(function executeRule(current, previous) {
+ if (current.received != current.quantity) return;
+ var i;
+ for (i = 0; i &lt; current.quantity; i++) {
+ var a = new GlideRecord('alm_hardware');
+ a.initialize();
+ a.model = current.model;
+ a.stockroom = current.delivery_stockroom;
+ a.po = current.po.sys_id;
+ a.purchase_date = gs.nowDateTime();
+ a.install_status = '6';
+ a.insert();
+ }
+})(current, previous);
+</code></pre>
+<h4 id="8-eol-hardware-report">8. EOL hardware report</h4>
+<pre><code class="language-javascript">var eol = new GlideRecord('alm_hardware');
+eol.addQuery('end_of_life', '&lt;', gs.daysAgoStart(-90));
+eol.addQuery('install_status', '1');
+eol.query();
+while (eol.next()) {
+ gs.info('EOL within 90d: ' + eol.asset_tag + ' / ' + eol.model.getDisplayValue());
+}
+</code></pre>
+<h4 id="9-bulk-update-warranty-from-manufacturer-api">9. Bulk-update warranty from manufacturer API</h4>
+<pre><code class="language-javascript">var assets = new GlideRecord('alm_hardware');
+assets.addQuery('manufacturer.name', 'Dell');
+assets.addQuery('warranty_expiration', '');
+assets.query();
+while (assets.next()) {
+ var resp = new sn_ws.RESTMessageV2();
+ resp.setEndpoint('https://api.dell.com/asset/v1/asset-entitlements/' + assets.serial_number);
+ resp.setHttpMethod('GET');
+ resp.setRequestHeader('apikey', gs.getProperty('dell.api.key'));
+ var body = JSON.parse(resp.execute().getBody());
+ if (body &amp;&amp; body.endDate) {
+ assets.warranty_expiration = body.endDate;
+ assets.update();
+ }
+}
+</code></pre>
+<h4 id="10-license-compliance-dashboard-refresher">10. License compliance dashboard refresher</h4>
+<pre><code class="language-javascript">var refresh = new GlideRecord('pa_scores_history_recompute');
+refresh.initialize();
+refresh.indicator.setDisplayValue('License Compliance %');
+refresh.insert();
+gs.info('PA recompute triggered for License Compliance');
+</code></pre>
+<h4 id="11-vendor-reconciliation-diff">11. Vendor reconciliation diff</h4>
+<pre><code class="language-javascript">// Compare vendor export staging table vs alm_hardware
+var staging = new GlideRecord('u_vendor_export_stg');
+staging.query();
+while (staging.next()) {
+ var found = new GlideRecord('alm_hardware');
+ found.addQuery('serial_number', staging.serial);
+ if (!found.get(found.sys_id)) {
+ gs.info('Missing in SN: ' + staging.serial);
+ }
+}
+</code></pre>
+<h4 id="12-asset-lifecycle-state-machine">12. Asset lifecycle state machine</h4>
+<pre><code class="language-javascript">function setState(asset, newState) {
+ var allowed = {
+ '6': ['1', '7'], // in_stock → in_use | retired
+ '1': ['3', '7'], // in_use → in_maintenance | retired
+ '3': ['1', '7'], // in_maintenance → in_use | retired
+ '7': ['8'] // retired → disposed
+ };
+ var current = asset.install_status + '';
+ if (!allowed[current] || allowed[current].indexOf(newState + '') &lt; 0) {
+ gs.addErrorMessage('Illegal state transition ' + current + ' → ' + newState);
+ return false;
+ }
+ asset.install_status = newState;
+ asset.update();
+ return true;
+}
+</code></pre>
+<h4 id="13-auto-retire-on-offboarding">13. Auto-retire on offboarding</h4>
+<pre><code class="language-javascript">// BR on sys_user — active changes from true to false
+(function executeRule(current, previous) {
+ if (current.active || !previous.active) return;
+ var a = new GlideRecord('alm_hardware');
+ a.addQuery('assigned_to', current.sys_id);
+ a.addQuery('install_status', '1');
+ a.query();
+ while (a.next()) {
+ a.assigned_to = '';
+ a.install_status = '6'; // back to stock pending wipe
+ a.work_notes = 'Auto-returned to stock on user offboarding';
+ a.update();
+ }
+})(current, previous);
+</code></pre>
+<h4 id="14-cost-per-asset-by-department">14. Cost per asset by department</h4>
+<pre><code class="language-javascript">var agg = new GlideAggregate('alm_hardware');
+agg.addAggregate('SUM', 'cost');
+agg.addAggregate('COUNT');
+agg.groupBy('department');
+agg.query();
+while (agg.next()) {
+ gs.info(agg.getDisplayValue('department') +
+ ' assets=' + agg.getAggregate('COUNT') +
+ ' totalCost=' + agg.getAggregate('SUM', 'cost'));
+}
+</code></pre>
+<h4 id="15-saas-user-provisioner-via-api-salesforce-example">15. SaaS user provisioner via API (Salesforce example)</h4>
+<pre><code class="language-javascript">function provisionSF(email, profileId) {
+ var rm = new sn_ws.RESTMessageV2('Salesforce', 'createUser');
+ rm.setStringParameterNoEscape('email', email);
+ rm.setStringParameterNoEscape('profileId', profileId);
+ var resp = rm.execute();
+ return resp.getStatusCode() == 201;
+}
+</code></pre>
+<h4 id="16-mass-import-via-import-set">16. Mass-import via Import Set</h4>
+<pre><code class="language-text">1. All &gt; System Import Sets &gt; Load Data → upload CSV (alm_hardware_import).
+2. Create Transform Map → target alm_hardware → match on serial_number (coalesce).
+3. Schedule import to run nightly from FTP/SFTP.
+</code></pre>
+<p>Script step in transform:</p>
+<pre><code class="language-javascript">(function transformRow(source, target) {
+ if (!target.model &amp;&amp; source.model_name) {
+ var m = new GlideRecord('cmdb_model');
+ m.addQuery('name', source.model_name);
+ m.setLimit(1);
+ m.query();
+ if (m.next()) target.model = m.sys_id;
+ }
+ if (target.cost == '' &amp;&amp; source.cost) target.cost = source.cost;
+})(source, target);
+</code></pre>
+<h4 id="17-software-install-detector-via-cmdb">17. Software install detector via CMDB</h4>
+<pre><code class="language-javascript">var inst = new GlideAggregate('cmdb_sam_sw_install');
+inst.addAggregate('COUNT');
+inst.groupBy('publisher');
+inst.groupBy('display_name');
+inst.query();
+while (inst.next()) {
+ gs.info(inst.getDisplayValue('publisher') + ' | ' +
+ inst.getDisplayValue('display_name') + ' = ' +
+ inst.getAggregate('COUNT'));
+}
+</code></pre>
+<h4 id="18-license-borrowreturn-for-floating-licenses">18. License borrow/return for floating licenses</h4>
+<pre><code class="language-javascript">function borrow(license, user) {
+ var lic = new GlideRecord('alm_license');
+ if (!lic.get(license)) return false;
+ if (lic.available &lt;= 0) return false;
+ lic.available--;
+ lic.update();
+ var loan = new GlideRecord('u_license_loan');
+ loan.initialize();
+ loan.license = license;
+ loan.user = user;
+ loan.borrowed_at = gs.nowDateTime();
+ return loan.insert();
+}
+function returnLic(loanId) {
+ var loan = new GlideRecord('u_license_loan');
+ if (!loan.get(loanId)) return false;
+ var lic = new GlideRecord('alm_license');
+ lic.get(loan.license);
+ lic.available++;
+ lic.update();
+ loan.returned_at = gs.nowDateTime();
+ loan.update();
+ return true;
+}
+</code></pre>
+<h4 id="19-asset-tag-printer-integration-zebra-bridge">19. Asset tag printer integration (Zebra Bridge)</h4>
+<pre><code class="language-javascript">function printLabel(assetSysId, printerName) {
+ var a = new GlideRecord('alm_hardware');
+ if (!a.get(assetSysId)) return;
+ var zpl = '^XA^FO50,50^BCN,80,Y,N,N^FD' + a.asset_tag + '^FS^XZ';
+ var rm = new sn_ws.RESTMessageV2();
+ rm.setEndpoint(gs.getProperty('printer.bridge.url') + '/print');
+ rm.setHttpMethod('POST');
+ rm.setRequestBody(JSON.stringify({ printer: printerName, zpl: zpl }));
+ rm.execute();
+}
+</code></pre>
+<h4 id="20-auto-renew-warranty-reminder">20. Auto-renew warranty reminder</h4>
+<pre><code class="language-javascript">var warn = new GlideRecord('alm_hardware');
+warn.addQuery('warranty_expiration', '&gt;=', gs.daysAgoStart(-60));
+warn.addQuery('warranty_expiration', '&lt;=', gs.daysAgoStart(-30));
+warn.addQuery('install_status', '1');
+warn.query();
+while (warn.next()) {
+ gs.eventQueue('asset.warranty.expiring',
+ warn,
+ warn.assigned_to.getDisplayValue(),
+ warn.warranty_expiration + '');
+}
+</code></pre>
+<p>عشرون سكربتًا جاهزًا تغطي تخصيص الأصول، التراخيص، الاسترداد، الاستلام، التقاعد، الجرد، والتكاملات.</p>
+<hr />
+<h3 id="178-power-user-cheat-sheet">17.8 Power User Cheat Sheet</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<pre><code class="language-text">alm_asset.list → All assets
+alm_hardware.list → Hardware only
+alm_consumable.list → Consumables
+alm_license.list → Licenses
+alm_stockroom.list → Stockrooms
+alm_transfer_order.list → Transfers
+proc_po.list → Purchase orders
+proc_po_item.list → PO line items
+cmdb_software_product_model.list → Software models
+cmdb_sam_sw_install.list → Discovered installs
+samp_sw_reclamation_candidate.list → Reclamation queue
+alm_asset_audit.list → Audit history
+</code></pre>
+<p>الجداول الأكثر استخدامًا — احفظها كروابط مفضلة.</p>
+<hr />
+<h2 id="18-from-scratch-implementation-day-0-day-30">§18 — From-Scratch Implementation (Day 0 → Day 30)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<blockquote>
+<p>Calendar to take ITAM (HAM + SAM + Procurement) from blank instance to Go-Live in 30 working days.<br />
+خطة 30 يوم عمل لإطلاق ITAM من الصفر إلى الإنتاج.</p>
+<p>Sequence assumes Australia release. Combine with CMDB.md and ITOM.md Day 0 if discovery feeds installs.<br />
+الترتيب لإصدار أستراليا — اربطه بـ CMDB وITOM إذا الاكتشاف يغذي SAM.</p>
+</blockquote>
+<hr />
+<h3 id="180-overview-calendar">18.0 Overview Calendar</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<pre><code class="language-text">Week 1 → Day 0–5 Foundation (plugins, models, stockrooms)
+Week 2 → Day 6–11 Bulk import, Workspaces, Mobile
+Week 3 → Day 12–17 Software discovery, SAM engine first run
+Week 4 → Day 18–23 Reclamation, contracts, procurement integration
+Week 5 → Day 24–30 Catalog, ACLs, ATF, Training, Go-Live
+</code></pre>
+<p>خمسة أسابيع — أساس HAM، استيراد، SAM، عقود/شراء، إطلاق.</p>
+<hr />
+<h3 id="181-day-0-pre-flight-inventory-tool-sunsetting">18.1 Day 0 — Pre-flight (inventory + tool sunsetting)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p><strong>Outputs (must exist before Day 1):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>Owner</th>
+<th>Format</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asset inventory audit (Excel/CSV)</td>
+<td>Asset Manager</td>
+<td>Per site, with serials &amp; assignees</td>
+</tr>
+<tr>
+<td>License inventory (entitlements + contracts)</td>
+<td>SAM Manager</td>
+<td>PDF of agreements + Excel</td>
+</tr>
+<tr>
+<td>Vendor master list</td>
+<td>Procurement</td>
+<td>CSV (name, terms, contact)</td>
+</tr>
+<tr>
+<td>Current tool sunset plan (Snipe-IT, ServiceDesk legacy)</td>
+<td>PM</td>
+<td>Decommission schedule</td>
+</tr>
+<tr>
+<td>Asset class taxonomy</td>
+<td>Architect</td>
+<td>Mind-map → states mapping</td>
+</tr>
+<tr>
+<td>Cost center mapping</td>
+<td>Finance</td>
+<td>Department → cost center</td>
+</tr>
+<tr>
+<td>Joiner-mover-leaver process diagram</td>
+<td>HR Ops</td>
+<td>Swimlane</td>
+</tr>
+</tbody>
+</table>
+<p>⚠️ <strong>Warning:</strong> Garbage in = garbage out. Spend an extra Day 0 on inventory cleanup; you can&rsquo;t recover from this later. — يوم صفر هو الجرد والعقود وقائمة الموردين وخطة إخراج الأدوات القديمة. لا تختصره.</p>
+<hr />
+<h3 id="182-day-1-activate-plugins">18.2 Day 1 — Activate plugins</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<pre><code class="language-text">All &gt; System Definition &gt; Plugins → activate in this exact order:
+</code></pre>
+<ol>
+<li>com.snc.asset_management (base alm_*)</li>
+<li>com.snc.ham (HAM Pro)</li>
+<li>com.snc.sam_engine (SAM engine)</li>
+<li>com.snc.software_asset_management (SAM Pro)</li>
+<li>com.snc.procurement (PO + Receive)</li>
+<li>com.snc.contract_management (Contracts)</li>
+<li>com.snc.itam_workspace (HAM/SAM Workspace UI)</li>
+</ol>
+<p>Verify:</p>
+<pre><code class="language-javascript">['com.snc.ham','com.snc.sam_engine','com.snc.software_asset_management','com.snc.procurement']
+.forEach(function(p) {
+ var gr = new GlideRecord('sys_plugins');
+ gr.addQuery('source', p);
+ gr.query(); gr.next();
+ gs.info(p + ' active=' + gr.active);
+});
+</code></pre>
+<p>Set release-correct properties:</p>
+<pre><code class="language-text">All &gt; Asset &gt; Administration &gt; Properties:
+ glide.itam.asset_tag_prefix = HR-AT-
+ glide.itam.auto_generate_tag = true
+ glide.itam.lifecycle.allow_reuse = false
+</code></pre>
+<p>فعّل البلجنز بالترتيب: Asset → HAM → SAM Engine → SAM Pro → Procurement → Contracts → Workspace.</p>
+<hr />
+<h3 id="183-day-23-product-catalog-models">18.3 Day 2–3 — Product Catalog + Models</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Day 2 — Categories:</p>
+<ol>
+<li>Navigate: All &gt; Asset &gt; Model Categories → New per type (Laptop, Desktop, Monitor, Phone, Tablet, Headset, Server, Network Device). — <a href="{BASE}/alm_model_list.do">Open direct</a></li>
+<li>Map category to <strong>Asset class</strong> (hardware/consumable/license).</li>
+<li>Bind suggested lifecycle (3 yr laptop, 5 yr monitor).</li>
+</ol>
+<p>Day 3 — Models (bulk):</p>
+<pre><code class="language-javascript">// Seed 30 standard models — adjust to client catalog
+var standard = [
+ { name: 'Dell Latitude 7450', mfr: 'Dell', cat: 'Computer', life: 36, cost: 2200 },
+ { name: 'HP EliteBook 845', mfr: 'HP', cat: 'Computer', life: 36, cost: 2050 },
+ { name: 'Dell P2723QE Monitor',mfr: 'Dell', cat: 'Monitor', life: 60, cost: 650 },
+ { name: 'iPhone 15 Pro', mfr: 'Apple', cat: 'Phone', life: 24, cost: 1500 },
+ { name: 'Logitech MX Master 3',mfr: 'Logitech',cat: 'Peripheral',life: 36,cost: 130 }
+];
+standard.forEach(function(r) {
+ var m = new GlideRecord('cmdb_model');
+ m.initialize();
+ m.name = r.name;
+ m.manufacturer.setDisplayValue(r.mfr);
+ m.model_categories.setDisplayValue(r.cat);
+ m.asset_class = 'hardware';
+ m.cost = r.cost;
+ m.depreciation_schedule = 'SL ' + r.life + 'm';
+ m.insert();
+});
+gs.info('Seeded ' + standard.length + ' models');
+</code></pre>
+<p>Exit criteria: Asset Manager signs off model catalog. — عرّف الفئات ثم الموديلات؛ ادفعها كقالب ثم وسّع.</p>
+<hr />
+<h3 id="184-day-45-stockrooms-locations-cost-centers">18.4 Day 4–5 — Stockrooms + Locations + Cost Centers</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Day 4 — Locations:</p>
+<ol>
+<li>Navigate: All &gt; Configuration &gt; Locations → ensure each office/site exists. — <a href="{BASE}/now/cmdb">Open direct</a></li>
+<li>Hierarchy: Country → City → Building → Floor (optional).</li>
+</ol>
+<p>Day 5 — Stockrooms + Cost Centers:</p>
+<ol>
+<li>Navigate: All &gt; Asset &gt; Stockrooms → New per site: — <a href="{BASE}/alm_stockroom_list.do">Open direct</a><br />
+ - Name: HQ-IT-Stock-RUH<br />
+ - Type: warehouse<br />
+ - Location: HQ Building<br />
+ - Manager: stockroom owner</li>
+<li>Navigate: All &gt; Finance &gt; Cost Centers → seed 20–30 cost centers. — <a href="{BASE}/cmn_cost_center_list.do">Open direct</a></li>
+<li>Link each Department to a Cost Center.</li>
+</ol>
+<pre><code class="language-javascript">// Seed stockrooms
+var sites = [
+ { name: 'HQ-IT-Stock-RUH', loc: 'HQ Building' },
+ { name: 'JED-IT-Stock', loc: 'Jeddah Office' },
+ { name: 'DXB-IT-Stock', loc: 'Dubai Office' }
+];
+sites.forEach(function(s) {
+ var sr = new GlideRecord('alm_stockroom');
+ sr.initialize();
+ sr.name = s.name;
+ sr.type = 'warehouse';
+ sr.location.setDisplayValue(s.loc);
+ sr.insert();
+});
+</code></pre>
+<p>أنشئ المواقع، المستودعات، ومراكز التكلفة قبل أي استيراد.</p>
+<hr />
+<h3 id="185-day-67-asset-classes-lifecycle-states">18.5 Day 6–7 — Asset classes + lifecycle states</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Day 6 — Lifecycle states &amp; substates:</p>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Substate options</th>
+<th>Allowed transitions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>In Stock</td>
+<td>pending_install, available</td>
+<td>→ In Use, Retired</td>
+</tr>
+<tr>
+<td>In Use</td>
+<td>running, in_maintenance</td>
+<td>→ In Maintenance, Retired</td>
+</tr>
+<tr>
+<td>In Maintenance</td>
+<td>pending_repair, RMA, loaner_out</td>
+<td>→ In Use, Retired</td>
+</tr>
+<tr>
+<td>Retired</td>
+<td>pending_wipe, pending_disposal</td>
+<td>→ Disposed</td>
+</tr>
+<tr>
+<td>Disposed</td>
+<td>(terminal)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Configure via All &gt; Asset &gt; Administration &gt; Lifecycle Configuration. — <a href="{BASE}/alm_asset_list.do">Open direct</a></p>
+<p>Day 7 — Add state machine ACL (apply §17.7 script #12 as Before BR). — حدد الحالات والمراحل الفرعية، فعّل قواعد الانتقال عبر BR.</p>
+<hr />
+<h3 id="186-day-89-bulk-import-existing-hardware-from-excel">18.6 Day 8–9 — Bulk import existing hardware from Excel</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Day 8 — Prepare:</p>
+<ol>
+<li>Clean source CSV → required columns: asset_tag, serial_number, model_name, assigned_to_email, location, install_status, purchase_date, cost.</li>
+<li>Create Import Set table:<br />
+ - Navigate: All &gt; System Import Sets &gt; Load Data → new staging. — <a href="{BASE}/sys_data_source_list.do">Open direct</a></li>
+</ol>
+<p>Day 9 — Transform:</p>
+<ol>
+<li>Create Transform Map → target alm_hardware.</li>
+<li>Coalesce on serial_number.</li>
+<li>Add script step (see §17.7 script #16) for model lookup.</li>
+<li>Run import → validate counts vs source.</li>
+</ol>
+<p>Validation:</p>
+<pre><code class="language-javascript">var diff = new GlideRecord('u_hardware_import_stg');
+diff.addQuery('sys_import_state', '!=', 'inserted');
+diff.addQuery('sys_import_state', '!=', 'updated');
+diff.query();
+gs.info('Failed rows: ' + diff.getRowCount());
+while (diff.next()) gs.info(diff.serial_number + ' → ' + diff.sys_import_state_comment);
+</code></pre>
+<p>Exit criteria: ≥98% of records imported; failures triaged.</p>
+<p>⚠️ Pilot import on 100 rows first. Then full batch. Never run full import without rollback plan. — استورد عينة 100 صف، صحح الفشل، ثم الدفعة الكاملة. لا استيراد بدون خطة تراجع.</p>
+<hr />
+<h3 id="187-day-1011-asset-workspace-mobile-asset-receiver">18.7 Day 10–11 — Asset Workspace + Mobile (asset receiver)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Day 10 — Asset Workspace:</p>
+<ol>
+<li>Navigate: Application Navigator → search <strong>Hardware Asset Management</strong> workspace.</li>
+<li>Configure dashboards: by stockroom, by state, age distribution.</li>
+<li>Add <strong>Saved Filters</strong>: My Stockroom, My Sites, Pending Disposal.</li>
+</ol>
+<p>Day 11 — Mobile asset receiver:</p>
+<ol>
+<li>Navigate: All &gt; Mobile Apps &gt; Mobile App Builder → use <strong>Agent</strong> mobile app. — <a href="{BASE}/now/mobile-app-builder">Open direct</a></li>
+<li>Enable barcode scanning action: target alm_hardware, key field asset_tag.</li>
+<li>Stockroom staff workflow:</li>
+</ol>
+<pre><code class="language-text">1. Open Mobile Agent → Scan asset tag.
+2. App opens asset record.
+3. Quick action: Deploy → pick user → confirm.
+4. State auto-updates; receipt SMS to user.
+</code></pre>
+<p>فعّل Workspace ومسح الباركود على الجوال لتسهيل الاستلام والنشر.</p>
+<hr />
+<h3 id="188-day-1213-software-discovery-via-itom-cmdb_sam_sw_install">18.8 Day 12–13 — Software discovery via ITOM (cmdb_sam_sw_install)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Prerequisite: ITOM.md § Discovery is live.</p>
+<p>Day 12 — Connect normalization sources:</p>
+<ol>
+<li>Navigate: All &gt; Software Asset &gt; Libraries &gt; Discovery Sources. — <a href="{BASE}/now/discovery">Open direct</a></li>
+<li>Validate ServiceNow Discovery is active source (populates cmdb_sam_sw_install).</li>
+<li>Add SCCM/Intune connector if needed.</li>
+</ol>
+<pre><code class="language-javascript">// Trigger SAM normalization
+var n = new sn_sam.SAMEngineAPI();
+n.normalizeUnnormalizedInstalls();
+gs.info('Triggered SAM normalization');
+</code></pre>
+<p>Day 13 — Verify:</p>
+<pre><code class="language-javascript">var unnorm = new GlideRecord('cmdb_sam_sw_install');
+unnorm.addQuery('normalized', false);
+unnorm.query();
+gs.info('Unnormalized installs: ' + unnorm.getRowCount());
+</code></pre>
+<p>Target: &lt;5% unnormalized after Day 13. — اربط Discovery، شغّل التطبيع، وتأكد أن أقل من 5% من التثبيتات غير معرّفة.</p>
+<hr />
+<h3 id="189-day-1415-software-models-license-metrics">18.9 Day 14–15 — Software Models + License Metrics</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Day 14 — Software Models:</p>
+<ol>
+<li>Navigate: All &gt; Software Asset &gt; Libraries &gt; Software Models → ensure top 50 titles exist. — <a href="{BASE}/alm_model_list.do">Open direct</a></li>
+<li>For each: confirm publisher, license metric, edition.</li>
+</ol>
+<p>Day 15 — License Metrics:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Per Device</td>
+<td>Most desktop apps</td>
+</tr>
+<tr>
+<td>Per Named User</td>
+<td>Adobe CC, Salesforce</td>
+</tr>
+<tr>
+<td>Per Concurrent User</td>
+<td>Older client-server apps</td>
+</tr>
+<tr>
+<td>Per Processor / Core</td>
+<td>Oracle DB</td>
+</tr>
+<tr>
+<td>Per Installation</td>
+<td>Legacy perpetual</td>
+</tr>
+<tr>
+<td>Per MSU / CPU Cluster</td>
+<td>Mainframe</td>
+</tr>
+</tbody>
+</table>
+<p>Configure metric per Software Model. Avoid the trap of &ldquo;Per Installation&rdquo; when contract is &ldquo;Per Named User&rdquo;. — ضع المقاييس الصحيحة لكل برنامج. الخلط بين Installation و Named User أهم خطأ تراخيصي.</p>
+<hr />
+<h3 id="1810-day-1617-license-engine-first-reconciliation">18.10 Day 16–17 — License engine + first reconciliation</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Day 16 — Configure:</p>
+<ol>
+<li>Navigate: All &gt; Software Asset &gt; Administration &gt; Reconciliation Settings. — <a href="{BASE}/alm_asset_list.do">Open direct</a></li>
+<li>Schedule: nightly 02:00.</li>
+<li>Stagger heavy publishers in 4 batches.</li>
+</ol>
+<p>Day 17 — First run + review:</p>
+<pre><code class="language-javascript">// Quick license position dump
+var lic = new GlideRecord('alm_license');
+lic.query();
+while (lic.next()) {
+ gs.info(lic.getDisplayValue('software_model') +
+ ' entitled=' + lic.rights +
+ ' used=' + lic.rights_used +
+ ' compliance=' + (lic.rights - lic.rights_used));
+}
+</code></pre>
+<p>Investigate any <strong>non-compliant</strong> rows in License Workbench → either:<br />
+- Buy more (true-up CHG)<br />
+- Harvest unused (reclamation)<br />
+- Correct metric (often the real issue) — شغّل المحرك ليلًا، حقق في أي صفوف غير متوافقة قبل الانتقال للاسترداد.</p>
+<hr />
+<h3 id="1811-day-18-reclamation-rules-thresholds">18.11 Day 18 — Reclamation rules + thresholds</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Define reclamation:</p>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Idle days</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Adobe Creative Cloud</td>
+<td>90</td>
+<td>Notify → 14d → uninstall</td>
+</tr>
+<tr>
+<td>Visio</td>
+<td>60</td>
+<td>Notify → 7d → uninstall</td>
+</tr>
+<tr>
+<td>Microsoft Project</td>
+<td>60</td>
+<td>Notify → 7d → downgrade if Online</td>
+</tr>
+<tr>
+<td>Salesforce</td>
+<td>45</td>
+<td>Approval workflow</td>
+</tr>
+</tbody>
+</table>
+<p>Use §17.7 script #3 as base. Wire Flow Designer: trigger candidate → email user → wait 14d → if no justification → call SCCM/Intune spoke Uninstall Application. — سياسة الاسترداد: عتبات حسب البرنامج، إشعار → مهلة → إزالة آلية.</p>
+<hr />
+<h3 id="1812-day-19-vendor-contracts-agreements">18.12 Day 19 — Vendor contracts + agreements</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ol>
+<li>Navigate: All &gt; Contract Management &gt; Contracts → New per agreement: — <a href="{BASE}/ast_contract_list.do">Open direct</a><br />
+ - Type: Software/Maintenance/Service/Lease<br />
+ - Vendor, start/end dates<br />
+ - Auto-renew flag<br />
+ - Owner (business + procurement)</li>
+<li>Attach signed PDF.</li>
+<li>Bind contract to Software Model entitlements (related list).</li>
+</ol>
+<pre><code class="language-javascript">// Detect expiring contracts (90d)
+var c = new GlideRecord('ast_contract');
+c.addQuery('end_date', '&lt;=', gs.daysAgoStart(-90));
+c.addQuery('state', 'active');
+c.query();
+while (c.next()) {
+ gs.eventQueue('contract.expiring',
+ c,
+ c.contract_administrator.getDisplayValue(),
+ c.end_date + '');
+}
+</code></pre>
+<p>عرّف العقود واربطها بالاستحقاقات، وأطلق تنبيهات قبل 90 يومًا من الانتهاء.</p>
+<hr />
+<h3 id="1813-day-20-procurement-integration-coupa-ariba">18.13 Day 20 — Procurement integration (Coupa / Ariba)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Day 20:</p>
+<ol>
+<li>Navigate: All &gt; IntegrationHub &gt; Spokes → install Coupa/Ariba spoke. — <a href="{BASE}/sys_store_app_list.do">Open direct</a></li>
+<li>Configure OAuth + tenant.</li>
+<li>Outbound flow:<br />
+ - Catalog item → PO drafted in SN.<br />
+ - Submit → call spoke Create Requisition → wait for approved PR number.<br />
+ - On approval → SN proc_po updated with vendor PO number.</li>
+<li>Inbound webhook for receipt confirmation → triggers asset creation (§17.7 script #7).</li>
+</ol>
+<pre><code class="language-text">Test scenario:
+- Submit Laptop request → see Coupa requisition appear.
+- Approve in Coupa → SN updates with PO #.
+- Receive in Coupa → SN creates alm_hardware.
+</code></pre>
+<p>اربط Coupa/Ariba عبر Spoke، ادفع PO، استقبل التأكيد، أنشئ الأصل تلقائيًا.</p>
+<hr />
+<h3 id="1814-day-21-microsoft-365-connector">18.14 Day 21 — Microsoft 365 connector</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ol>
+<li>Navigate: All &gt; SaaS License Management &gt; Connectors &gt; Connector Instances → New. — <a href="{BASE}/samp_connector_definition_list.do">Open direct</a></li>
+<li>Type: <strong>Microsoft 365</strong>.</li>
+<li>Authentication: Azure App Registration with <strong>Reports.Read.All</strong> + <strong>User.Read.All</strong>.</li>
+<li>Schedule: hourly.</li>
+<li>Verify pull: navigate samp_saas_user_subscription.list populated.</li>
+</ol>
+<p>Build first M365 dashboard:</p>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E5 licenses assigned vs purchased</td>
+<td>M365 connector</td>
+</tr>
+<tr>
+<td>Inactive E5 users (&gt;60d)</td>
+<td>M365 connector + reclamation</td>
+</tr>
+<tr>
+<td>OneDrive idle users</td>
+<td>Connector + custom rule</td>
+</tr>
+</tbody>
+</table>
+<p>اربط Microsoft 365 لجلب الاستخدام الفعلي، ثم أنشئ مؤشرات إعادة التوزيع.</p>
+<hr />
+<h3 id="1815-day-22-sap-oracle-ula-tracking">18.15 Day 22 — SAP / Oracle ULA tracking</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>For SAP &amp; Oracle, often complex licensing. Special handling:</p>
+<ol>
+<li>Navigate: All &gt; Software Asset &gt; Libraries &gt; Publisher Packs → install SAP / Oracle pack. — <a href="{BASE}/sys_security_acl_list.do">Open direct</a></li>
+<li>For Oracle ULA: define ULA agreement record; track:<br />
+ - Effective dates<br />
+ - Certification deadlines<br />
+ - Eligible products<br />
+ - Annual deployment snapshots</li>
+</ol>
+<pre><code class="language-javascript">// Capture deployment snapshot end-of-month
+function snapshotOracle() {
+ var s = new GlideRecord('u_oracle_ula_snapshot');
+ s.initialize();
+ s.snapshot_date = gs.nowDateTime();
+ var inst = new GlideAggregate('cmdb_sam_sw_install');
+ inst.addQuery('publisher.name', 'Oracle');
+ inst.addAggregate('COUNT');
+ inst.groupBy('display_name');
+ inst.query();
+ var totals = {};
+ while (inst.next()) totals[inst.getDisplayValue('display_name')] = inst.getAggregate('COUNT');
+ s.payload = JSON.stringify(totals);
+ s.insert();
+}
+</code></pre>
+<p>⚠️ <strong>Warning:</strong> Oracle ULA certification timing missed = lose ULA position. Diary the date. — SAP وOracle ULA يحتاجان حقول إضافية واسناد تواريخ التحقق؛ لقطة شهرية واجبة.</p>
+<hr />
+<h3 id="1816-day-23-dashboards-compliance-cost-trend-refresh-forecast">18.16 Day 23 — Dashboards (compliance %, cost trend, refresh forecast)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>PA dashboards to build:</p>
+<table>
+<thead>
+<tr>
+<th>Dashboard</th>
+<th>Indicators</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HAM Operations</td>
+<td>Inventory count, deployments today, retirements, age distribution</td>
+</tr>
+<tr>
+<td>SAM Compliance</td>
+<td>Compliance %, top non-compliant titles, reclamation pipeline</td>
+</tr>
+<tr>
+<td>Procurement</td>
+<td>Open POs, on-time delivery %, vendor scorecards</td>
+</tr>
+<tr>
+<td>Lifecycle Forecast</td>
+<td>Refresh forecast (3-yr), EOL count, budget impact</td>
+</tr>
+<tr>
+<td>Cost &amp; Audit</td>
+<td>Cost per department, monthly OPEX trend, audit sample status</td>
+</tr>
+</tbody>
+</table>
+<p>Indicator example (Compliance %):</p>
+<pre><code class="language-text">Source: alm_license
+Aggregate: AVG of (rights - rights_used) / rights * 100
+Filter: state = active
+Frequency: daily
+Breakdown: publisher
+</code></pre>
+<p>خمس لوحات PA لقياس HAM وSAM والشراء؛ تابعها يوميًا.</p>
+<hr />
+<h3 id="1817-day-24-catalog-items-request-new-laptop-request-software-return-asset">18.17 Day 24 — Catalog items (request new laptop, request software, return asset)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Build 3 critical catalog items:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Variables</th>
+<th>Flow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Request Laptop</td>
+<td>model, justification, location</td>
+<td>Approval (manager + IT) → PO if needed → deploy</td>
+</tr>
+<tr>
+<td>Request Software</td>
+<td>software_title, user, license_type</td>
+<td>License check → assign / true-up → install via spoke</td>
+</tr>
+<tr>
+<td>Return Asset</td>
+<td>asset_tag, reason</td>
+<td>Schedule pickup → wipe → back to stock</td>
+</tr>
+</tbody>
+</table>
+<p>Catalog UX best practices:<br />
+- Variable visibility by user role/department.<br />
+- Manager approval threshold by cost ($1000+ requires director).<br />
+- Auto-fulfillment if stock available; PO if not. — ثلاثة عناصر كتالوج تكفي للبداية: طلب لابتوب، طلب برنامج، إرجاع أصل.</p>
+<hr />
+<h3 id="1818-day-25-asset-incident-change-linkage">18.18 Day 25 — Asset → Incident → Change linkage</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ol>
+<li>Ensure ITSM forms show <strong>Asset</strong> field on incident, problem, change.</li>
+<li>Add <strong>Related List</strong>: from cmdb_ci → tab &ldquo;Related Assets&rdquo;.</li>
+<li>Add Before BR on incident to auto-populate asset from CI (§17.3 D).</li>
+<li>Change record: track which assets touched (related list chg_alm_assets).</li>
+</ol>
+<p>Test scenarios:</p>
+<pre><code class="language-text">A. User's laptop crashes → incident → asset visible → swap loaner → record on RMA → restore.
+B. Server change → CIs listed → impacted assets pulled into CHG implementation plan.
+</code></pre>
+<p>اربط الأصول بالحوادث والتغييرات؛ سهّل تتبع الأثر والمسؤولية.</p>
+<hr />
+<h3 id="1819-day-26-acls-finance-vs-it-asset-roles">18.19 Day 26 — ACLs (finance vs IT asset roles)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Read</th>
+<th>Write</th>
+<th>Delete</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>asset</td>
+<td>Own assigned</td>
+<td>Own location</td>
+<td>No</td>
+</tr>
+<tr>
+<td>asset_manager</td>
+<td>All HAM</td>
+<td>All HAM</td>
+<td>No (audit retention)</td>
+</tr>
+<tr>
+<td>ham_admin</td>
+<td>All HAM</td>
+<td>All HAM</td>
+<td>Soft delete only</td>
+</tr>
+<tr>
+<td>sam_admin</td>
+<td>All SAM</td>
+<td>All SAM</td>
+<td>No</td>
+</tr>
+<tr>
+<td>procurement_admin</td>
+<td>proc_po + alm_asset</td>
+<td>proc_po + costs</td>
+<td>No</td>
+</tr>
+<tr>
+<td>finance_viewer</td>
+<td>alm_asset.cost, contracts</td>
+<td>None</td>
+<td>No</td>
+</tr>
+<tr>
+<td>auditor</td>
+<td>All (read)</td>
+<td>audit notes only</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>Critical ACLs to lock down:</p>
+<pre><code class="language-text">- alm_hardware.cost → read: finance_viewer + asset_manager
+- alm_hardware.purchase_date → read: same
+- alm_license.* → write: sam_admin only
+- proc_po.* → write: procurement_admin
+- alm_asset.install_status → write: asset_manager (state machine BR)
+</code></pre>
+<p>لكل دور صلاحيات محددة؛ احم حقول التكلفة والتاريخ والحالة من التعديل العشوائي.</p>
+<hr />
+<h3 id="1820-day-27-atf-tests-10-scenarios">18.20 Day 27 — ATF tests (10 scenarios)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>ATF Suite ITAM E2E:</p>
+<pre><code class="language-text">Test 1 — Create asset model → save → assert
+Test 2 — Create stockroom → assert
+Test 3 — Import 5 hardware rows → assert all imported
+Test 4 — Catalog Request Laptop → manager approves → asset assigned
+Test 5 — Asset transfer between stockrooms → location updated
+Test 6 — Asset retire with CoD → assert state=disposed
+Test 7 — License reconciliation runs → engine populates rights_used
+Test 8 — Reclamation candidate generated → user notified
+Test 9 — PO receive → 2 alm_hardware records auto-created
+Test 10 — Offboarding user → assets returned to stock
+</code></pre>
+<p>Run nightly via scheduled job. — عشرة سيناريوهات ATF تغطي كل المسار من النمذجة حتى الاسترداد.</p>
+<hr />
+<h3 id="1821-day-28-training">18.21 Day 28 — Training</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Audience</th>
+<th>Duration</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asset coordinators</td>
+<td>2× 3h</td>
+<td>Models, stockroom, deploy, retire, mobile receiver</td>
+</tr>
+<tr>
+<td>SAM analysts</td>
+<td>2× 3h</td>
+<td>License workbench, reconciliation, reclamation, contracts</td>
+</tr>
+<tr>
+<td>Procurement</td>
+<td>1× 3h</td>
+<td>PO, receive, vendor scorecards, integration to Coupa</td>
+</tr>
+<tr>
+<td>Finance</td>
+<td>1× 1h</td>
+<td>Cost reports, depreciation, contracts dashboard</td>
+</tr>
+<tr>
+<td>End-users</td>
+<td>1× 30 min</td>
+<td>Self-service via Employee Center; return asset process</td>
+</tr>
+<tr>
+<td>Auditors</td>
+<td>1× 1h</td>
+<td>Audit table, evidence storage, attestation campaign</td>
+</tr>
+</tbody>
+</table>
+<p>Provide runbook PDF + cheat sheet from §17.8. — جلسات تدريب مفصلة لكل فئة مع كتيب runbook عملي.</p>
+<hr />
+<h3 id="1822-day-29-audit-prep-go-live-readiness">18.22 Day 29 — Audit prep + Go-Live readiness</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Pre-Go-Live checklist:</p>
+<ul>
+<li>[ ] Model catalog signed off; ≥98% imported assets reconciled</li>
+<li>[ ] All sites have stockrooms + named owners</li>
+<li>[ ] State machine BR active; illegal transitions blocked</li>
+<li>[ ] Lifecycle states + substates configured</li>
+<li>[ ] Asset Workspace + Mobile receiver tested</li>
+<li>[ ] SAM engine reconciliation green for 7 nights</li>
+<li>[ ] License compliance &gt; 98% (or remediation plan)</li>
+<li>[ ] Reclamation rules approved and active</li>
+<li>[ ] Vendor contracts loaded with renewals diarized</li>
+<li>[ ] Coupa/Ariba integration handshake tested</li>
+<li>[ ] M365 connector pulling usage</li>
+<li>[ ] Oracle ULA snapshot job scheduled</li>
+<li>[ ] Dashboards published, owners assigned</li>
+<li>[ ] Three catalog items live (Laptop/Software/Return)</li>
+<li>[ ] ACLs reviewed and approved by Security</li>
+<li>[ ] ATF suite green for 3 consecutive runs</li>
+<li>[ ] Training delivered; sign-offs collected</li>
+<li>[ ] Disposal vendor contracts in place; CoD process documented</li>
+<li>[ ] Hypercare bridge schedule (24/5) for 2 weeks — قائمة جاهزية شاملة قبل الإطلاق — كل بند مطلوب.</li>
+</ul>
+<hr />
+<h3 id="1823-day-30-go-live-hypercare">18.23 Day 30 — Go-Live + Hypercare</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Sequence:</p>
+<pre><code class="language-text">T-2h Freeze prod config (Update Set capture)
+T-1h Final dry-run on UAT
+T-0 Cutover:
+ - Decommission legacy asset DB read-only
+ - Open SN HAM/SAM as system of record
+ - Asset coordinators online
+T+1h Smoke test:
+ - Receive 1 PO → asset created
+ - Deploy via mobile
+ - Compliance dashboard loads
+T+2h Communicate to all users (Employee Center banner)
+T+1d Daily Go-Live standup for 2 weeks
+T+7d Decommission legacy read-only
+T+14d Exit hypercare; assets ownership formally with ITAM Manager
+</code></pre>
+<p>Comms template:</p>
+<pre><code class="language-text">Subject: ServiceNow ITAM is live
+- Hardware requests: Employee Center → &quot;Request a Laptop&quot;
+- Software requests: Employee Center → &quot;Request Software&quot;
+- Returns: same portal → &quot;Return Asset&quot;
+- Asset Coordinator hotline: ext 3000
+</code></pre>
+<p>الإطلاق: تجميد، تشغيل بالتوازي قصير، تحويل كامل، تواصل مع الجميع، خروج بعد أسبوعين.</p>
+<hr />
+<h3 id="1824-license-engine-common-pitfalls-fixes">18.24 License Engine — Common Pitfalls &amp; Fixes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Pitfall</th>
+<th>Symptom</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wrong license metric</td>
+<td>Compliance % wrong</td>
+<td>Re-verify metric per agreement; correct on Software Model</td>
+</tr>
+<tr>
+<td>Discovery missing</td>
+<td>Few installs → false compliance</td>
+<td>Validate ITOM coverage; add SCCM/Intune connector</td>
+</tr>
+<tr>
+<td>Unnormalized installs &gt; 10%</td>
+<td>Engine ignores them</td>
+<td>Run normalization (§18.8); curate non-content publishers</td>
+</tr>
+<tr>
+<td>Entitlement not bound to title</td>
+<td>Compliance shows 0</td>
+<td>Bind contract → entitlement → Software Model</td>
+</tr>
+<tr>
+<td>Reclamation too aggressive</td>
+<td>User complaints</td>
+<td>Increase idle threshold; add VIP exclusion</td>
+</tr>
+<tr>
+<td>Oracle Processor metric mis-counted</td>
+<td>Core factor table outdated</td>
+<td>Update SN content + verify CFT per CPU</td>
+</tr>
+<tr>
+<td>Microsoft EA double-count</td>
+<td>E5 over E3 inflated</td>
+<td>Use entitlement hierarchy (E5 supersedes E3)</td>
+</tr>
+<tr>
+<td>ULA not certified on time</td>
+<td>Lose ULA rights</td>
+<td>Diary certification 90d ahead</td>
+</tr>
+<tr>
+<td>SAM dashboard empty</td>
+<td>PA recompute didn&rsquo;t run</td>
+<td>Trigger manual recompute (§17.7 #10)</td>
+</tr>
+</tbody>
+</table>
+<p>⚠️ <strong>Top one to avoid:</strong> Trusting day-1 compliance % before fixing metrics and normalization. Always sanity-check first 30 days. — الفخ الأكبر: تصديق نسبة الامتثال قبل ضبط المقاييس والتطبيع — لا تثق بالأرقام في أول شهر.</p>
+<hr />
+<h3 id="1825-asset-reconciliation-runbook">18.25 Asset Reconciliation Runbook</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Monthly stockroom reconciliation (must-have):</p>
+<pre><code class="language-text">Day 1 of month:
+1. Print &quot;Expected Stockroom&quot; report (alm_hardware filter: install_status=6 group by stockroom).
+2. Stockroom owner does physical count → enters in attestation form.
+3. Compare → generate variance list.
+4. For each variance:
+ a. Search recent transfers, deployments not stamped.
+ b. If missing &gt; 48h → open Incident (lost asset).
+ c. If found but not in SN → import or create record.
+5. Sign-off by Asset Manager → archive PDF report.
+</code></pre>
+<pre><code class="language-javascript">function expectedReport(stockroom) {
+ var gr = new GlideAggregate('alm_hardware');
+ gr.addQuery('stockroom.name', stockroom);
+ gr.addQuery('install_status', '6');
+ gr.addAggregate('COUNT');
+ gr.groupBy('model');
+ gr.query();
+ while (gr.next()) {
+ gs.info(stockroom + ' | ' + gr.getDisplayValue('model') +
+ ' expected=' + gr.getAggregate('COUNT'));
+ }
+}
+expectedReport('HQ-IT-Stock-RUH');
+</code></pre>
+<p>Quarterly SAM reconciliation:</p>
+<pre><code class="language-text">1. Pull License Position snapshot → PDF.
+2. Compare against contract documents.
+3. For each non-compliant title:
+ a. Reclamation pass first.
+ b. If still over → True-up CHG.
+4. Sign-off by SAM Manager + Procurement.
+</code></pre>
+<p>Annual asset audit:</p>
+<pre><code class="language-text">1. Random sample 5% of in_use assets.
+2. Physical verification via mobile barcode scan.
+3. Update last_audit_date on each verified asset.
+4. Report to Audit Committee with discrepancy %.
+</code></pre>
+<p>Runbook تسوية المستودع شهري، SAM فصلي، تدقيق سنوي شامل. وثّق التواريخ والمسؤولين.</p>
+<hr />
+<h3 id="1826-master-sign-off">18.26 Master Sign-off</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<ul>
+<li>[ ] Plugins activated + properties set</li>
+<li>[ ] Models + categories curated and approved</li>
+<li>[ ] Stockrooms + locations + cost centers seeded</li>
+<li>[ ] Lifecycle states + state-machine BR active</li>
+<li>[ ] Bulk import success ≥98%</li>
+<li>[ ] Workspaces + mobile receiver operational</li>
+<li>[ ] Software discovery + normalization &gt; 95%</li>
+<li>[ ] License engine reconciling nightly</li>
+<li>[ ] Reclamation policy + approvals live</li>
+<li>[ ] Vendor contracts loaded with renewal diaries</li>
+<li>[ ] Procurement integration (Coupa/Ariba) tested</li>
+<li>[ ] M365 + Oracle/SAP packs configured</li>
+<li>[ ] Dashboards published with owners</li>
+<li>[ ] Catalog items live (Laptop/Software/Return)</li>
+<li>[ ] ACLs reviewed by Security</li>
+<li>[ ] ATF suite green</li>
+<li>[ ] Training delivered + acknowledged</li>
+<li>[ ] Disposal process + CoD storage ready</li>
+<li>[ ] Go-Live + hypercare executed</li>
+<li>[ ] Monthly/quarterly/annual reconciliation runbook adopted — قائمة التوقيع النهائي — اعتمدها قبل إغلاق المشروع وتسليم العمليات.</li>
+</ul>
+<hr />
+<h2 id="19-cis-ham-cis-sam-exam-z-to-hero-feature-labs-40-inline-questions">§19 — CIS-HAM / CIS-SAM Exam &amp; Z-to-Hero Feature Labs (40 inline questions)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<blockquote>
+<p>No external bank exists — 40 CIS-style questions inline.</p>
+</blockquote>
+<h3 id="191-z-to-hero-feature-labs-15-labs">19.1 Z-to-Hero Feature Labs (15 labs)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Lab</th>
+<th>Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>Hardware Asset model class hierarchy</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>Stockroom + bin location structure</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>Receive Purchase Order → assets created</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>Deploy asset to user → CMDB CI linked</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>Asset transfer between stockrooms</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>Retire asset workflow (with disposal)</td>
+</tr>
+<tr>
+<td>L7</td>
+<td>Software Model + Publisher import</td>
+</tr>
+<tr>
+<td>L8</td>
+<td>License entitlement (PVU, per-user, per-device)</td>
+</tr>
+<tr>
+<td>L9</td>
+<td>Software install discovery + reconciliation</td>
+</tr>
+<tr>
+<td>L10</td>
+<td>Effective License Position (ELP) report</td>
+</tr>
+<tr>
+<td>L11</td>
+<td>True-up calculation for Microsoft/Oracle</td>
+</tr>
+<tr>
+<td>L12</td>
+<td>Procurement integration (Ariba/Coupa)</td>
+</tr>
+<tr>
+<td>L13</td>
+<td>Asset Custom Fields for chain of custody</td>
+</tr>
+<tr>
+<td>L14</td>
+<td>SAM Pro compliance dashboard</td>
+</tr>
+<tr>
+<td>L15</td>
+<td>Asset → Service Request (refresh) automation</td>
+</tr>
+</tbody>
+</table>
+<h3 id="192-40-itam-practice-questions">19.2 40 ITAM Practice Questions</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p><strong>HAM Core (Q1-Q15)</strong></p>
+<ol>
+<li>Hardware asset base table: A. cmdb_ci_hardware | B. alm_asset | C. alm_hardware | D. Both A and C — <strong>Answer: D (alm_hardware extends alm_asset)</strong></li>
+<li>State that means asset is owned but not yet deployed: A. In Stock | B. In Use | C. On Order | D. Retired — <strong>Answer: A</strong></li>
+<li>CMDB CI is created when HAM asset state = ? A. In Stock | B. In Use | C. Retired | D. Always — <strong>Answer: B (on deploy)</strong></li>
+<li>Stockroom hierarchy includes: A. Warehouse → Bin | B. Warehouse → Zone → Bin | C. Stockroom → Sub-stockroom → Bin | D. Flat — <strong>Answer: C</strong></li>
+<li>Transfer Order is on table: A. alm_transfer_order | B. proc_po | C. Custom | D. Email-based — <strong>Answer: A</strong></li>
+<li>Inventory adjustment via: A. Cycle count + variance adjustment | B. Manual delete | C. PO | D. None — <strong>Answer: A</strong></li>
+<li>Hardware Refresh trigger: A. Age threshold + scheduled scan | B. Manual only | C. End-user request | D. Random — <strong>Answer: A (with workflow)</strong></li>
+<li>Asset disposal compliance: A. Just delete | B. Disposal Method + Certificate of Destruction + audit trail | C. Stay In Stock | D. Email — <strong>Answer: B</strong></li>
+<li>Asset assignment to user uses field: A. assigned_to | B. owner | C. Both depending on context | D. managed_by — <strong>Answer: C</strong></li>
+<li>Cost basis for Asset: A. Just purchase cost | B. Purchase + depreciation + tax + total cost of ownership | C. None | D. List price only — <strong>Answer: B</strong></li>
+<li>PO line ↔ Asset link via: A. alm_asset.po_number + purchase_order_line | B. None | C. Custom field | D. Email — <strong>Answer: A</strong></li>
+<li>Warranty info stored on: A. alm_asset.warranty_expiration | B. Separate contract | C. CMDB | D. All of the above — <strong>Answer: D</strong></li>
+<li>Lease vs Owned tracking: A. acquisition_method | B. Separate table | C. Not tracked | D. Manual notes — <strong>Answer: A</strong></li>
+<li>Mobile device specific class: A. alm_mobile_device extending alm_hardware | B. cmdb_ci_mobile | C. Custom only | D. None — <strong>Answer: A or both</strong></li>
+<li>Asset audit: A. cmdb_audit | B. alm_audit_inventory (cycle counts) | C. None | D. SOC report — <strong>Answer: B</strong></li>
+</ol>
+<p><strong>SAM Core (Q16-Q30)</strong></p>
+<ol start="16">
+<li>Software model table: A. cmdb_software_product_model | B. alm_software | C. Both used — cmdb_software_product_model for catalog | D. None — <strong>Answer: C</strong></li>
+<li>Publisher table: A. cmdb_model_category | B. sam_sw_publisher | C. core_company (Vendor) | D. Both B and C — <strong>Answer: D</strong></li>
+<li>License Entitlement metric examples: A. Per-user, per-device, PVU, core, named-user | B. Just count | C. Just price | D. Random — <strong>Answer: A</strong></li>
+<li>Installation discovery via: A. Discovery + SCCM/Intune connector | B. Manual list | C. Email | D. None — <strong>Answer: A</strong></li>
+<li>Reconciliation = ? A. Match installs to entitlements per metric | B. Just count installs | C. Just count licenses | D. CMDB-only — <strong>Answer: A</strong></li>
+<li>ELP (Effective License Position) shows: A. Entitled - Consumed - Reservations - Allocations | B. Just installs | C. Just purchases | D. Random — <strong>Answer: A</strong></li>
+<li>Over-deployment risk = ? A. Consumed &gt; Entitled | B. &lt; | C. = | D. None — <strong>Answer: A</strong></li>
+<li>True-up: A. Buy more licenses to cover over-deployment, often annual | B. Sell back unused | C. Free | D. Random — <strong>Answer: A</strong></li>
+<li>Microsoft 365 connector source: A. M365 Tenant Admin API | B. Manual export | C. Sharepoint | D. None — <strong>Answer: A</strong></li>
+<li>Oracle DB metric typical: A. Per-user | B. Per-named-user + per-processor (depending on edition) | C. Per-device | D. Free — <strong>Answer: B</strong></li>
+<li>License Reservation: A. Pre-allocate license to user/department | B. Just count | C. Email | D. None — <strong>Answer: A</strong></li>
+<li>Software Asset retirement triggers: A. License release back to pool | B. Just delete | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>SaaS license counted by: A. Active user count (last 30/90 days) | B. Total users in account | C. Random | D. Email — <strong>Answer: A</strong></li>
+<li>Software Request workflow: A. Catalog item → entitlement check → assignment from pool | B. Manual only | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>License Optimization: A. Identify unused licenses + reclaim | B. Just buy more | C. Random | D. None — <strong>Answer: A</strong></li>
+</ol>
+<p><strong>ITAM Integration &amp; Process (Q31-Q40)</strong></p>
+<ol start="31">
+<li>Procurement integration via: A. IH spoke (Ariba, Coupa, SAP MM) | B. Email only | C. Manual entry | D. Spreadsheet — <strong>Answer: A</strong></li>
+<li>Asset audit cycle counts: A. Monthly/quarterly cycle count by location | B. Annual only | C. Never | D. Random — <strong>Answer: A</strong></li>
+<li>ITAM ↔ CMDB sync: A. On In Use state change | B. Manual | C. Daily batch | D. Never — <strong>Answer: A</strong></li>
+<li>Mobile device wipe on user offboarding: A. Trigger MDM via integration on HR offboard event | B. Email IT | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Asset Compliance metric: A. % assets with location + assigned_to + warranty | B. Random | C. Cost only | D. None — <strong>Answer: A</strong></li>
+<li>License Compliance metric: A. % software models with no over-deployment | B. Random | C. Cost only | D. None — <strong>Answer: A</strong></li>
+<li>ITAM Workspace URL: A. /now/itam/workspace | B. /itam.do | C. /alm_asset.list | D. /sp?id=itam — <strong>Answer: A</strong></li>
+<li>Recommended approach for SAM Pro: A. Out-of-the-box reconciliation engine | B. Custom code | C. External tool | D. None — <strong>Answer: A</strong></li>
+<li>Asset assignment via Catalog Request: A. Order Guide → Request → Asset assignment in Flow | B. Manual only | C. Email | D. None — <strong>Answer: A</strong></li>
+<li>End-of-life model retirement triggers: A. Refresh scheduled job + email vendor + create Demand for replacement | B. Just delete | C. Random | D. None — <strong>Answer: A</strong></li>
+</ol>
+<h3 id="193-what-hero-looks-like-for-itam">19.3 What &ldquo;Hero&rdquo; looks like for ITAM</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>Full asset lifecycle (HAM + SAM): purchase → receive → deploy → manage → retire/dispose; full software entitlement + reconciliation + ELP; procurement integration; mobile MDM hooks; refresh automation; SAM Pro dashboards.</p>
+<hr />
+<h2 id="hands-on-labs">Hands-on Labs — مختبرات عملية</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<blockquote>
+<p>Step-by-step labs for PDI / Australia instance. Replace <code>{BASE}</code> with your instance URL.<br />
+مختبرات خطوة بخطوة — استبدل <code>{BASE}</code> برابط نسختك.</p>
+</blockquote>
+<ol>
+<li>
+<p><strong>Lab 1</strong> — <strong>Asset model / نموذج أصل</strong> — Create model at <a href="{BASE}/cmdb_model_list.do">{BASE}/cmdb_model_list.do</a>.</p>
+</li>
+<li>
+<p><strong>Lab 2</strong> — <strong>Stockroom &amp; receive / مستودع واستلام</strong> — Receive PO into stockroom at <a href="{BASE}/alm_stockroom_list.do">{BASE}/alm_stockroom_list.do</a>.</p>
+</li>
+<li>
+<p><strong>Lab 3</strong> — <strong>Deploy asset / نشر أصل</strong> — Assign laptop to user; state = In use.</p>
+</li>
+<li>
+<p><strong>Lab 4</strong> — <strong>Catalog → Asset / كتالوج → أصل</strong> — Order hardware catalog item; verify asset created.</p>
+</li>
+<li>
+<p><strong>Lab 5</strong> — <strong>Retire asset / تقاعد</strong> — Retire asset; verify disposal workflow.</p>
+</li>
+<li>
+<p><strong>Lab 6</strong> — <strong>Software license / ترخيص</strong> — Create license at <a href="{BASE}/alm_license_list.do">{BASE}/alm_license_list.do</a>; map entitlements.</p>
+</li>
+<li>
+<p><strong>Lab 7</strong> — <strong>Reclamation / استرداد</strong> — Run reclamation rule for unused software.</p>
+</li>
+<li>
+<p><strong>Lab 8</strong> — <strong>Asset Workspace / مساحة الأصول</strong> — Manage queue at <a href="{BASE}/now/asset/home">{BASE}/now/asset/home</a>.</p>
+</li>
+</ol>
+<hr />
+<h2 id="best-practices_1">Best Practices — أفضل الممارسات</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Best practice (EN)</th>
+<th>أفضل ممارسة (AR)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HAM/SAM</td>
+<td>Link alm_hardware to cmdb_ci_computer via serial</td>
+<td>اربط HAM بـ CMDB عبر serial</td>
+</tr>
+<tr>
+<td>Stockroom</td>
+<td>Separate stockrooms per region</td>
+<td>مستودعات حسب المنطقة</td>
+</tr>
+<tr>
+<td>SAM</td>
+<td>Normalize software titles before compliance</td>
+<td>Normalize قبل الامتثال</td>
+</tr>
+<tr>
+<td>Lifecycle</td>
+<td>Automate retire on lease end date</td>
+<td>أتمتة التقاعد عند انتهاء العقد</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="deployment-checklist">Deployment Checklist — قائمة النشر</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task (EN)</th>
+<th>المهمة (AR)</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>HAM/SAM plugins active</td>
+<td>تفعيل HAM/SAM</td>
+<td>Licensed</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Models &amp; categories</td>
+<td>Models</td>
+<td>Catalog aligned</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Stockrooms &amp; subflows</td>
+<td>Stockrooms</td>
+<td>Receive works</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Catalog fulfillment → asset</td>
+<td>كتالوج → أصل</td>
+<td>Asset created</td>
+</tr>
+<tr>
+<td>5</td>
+<td>CMDB sync rules</td>
+<td>مزامنة CMDB</td>
+<td>CI linked</td>
+</tr>
+<tr>
+<td>6</td>
+<td>SAM entitlements</td>
+<td>Entitlements</td>
+<td>Compliance report</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Asset Workspace</td>
+<td>Asset Workspace</td>
+<td>Agents productive</td>
+</tr>
+<tr>
+<td>8</td>
+<td>UAT procurement cycle</td>
+<td>UAT دورة شراء</td>
+<td>Sign-off</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="direct-urls-quick-reference">Direct URLs Quick Reference</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigation</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hardware Assets</td>
+<td>All &gt; Asset &gt; Hardware</td>
+<td><a href="{BASE}/alm_hardware_list.do">{BASE}/alm_hardware_list.do</a></td>
+</tr>
+<tr>
+<td>Models</td>
+<td>All &gt; Asset &gt; Models</td>
+<td><a href="{BASE}/cmdb_model_list.do">{BASE}/cmdb_model_list.do</a></td>
+</tr>
+<tr>
+<td>Stockrooms</td>
+<td>All &gt; Inventory</td>
+<td><a href="{BASE}/alm_stockroom_list.do">{BASE}/alm_stockroom_list.do</a></td>
+</tr>
+<tr>
+<td>Consumables</td>
+<td>All &gt; Inventory</td>
+<td><a href="{BASE}/alm_consumable_list.do">{BASE}/alm_consumable_list.do</a></td>
+</tr>
+<tr>
+<td>Licenses</td>
+<td>All &gt; Software Asset</td>
+<td><a href="{BASE}/alm_license_list.do">{BASE}/alm_license_list.do</a></td>
+</tr>
+<tr>
+<td>Entitlements</td>
+<td>All &gt; Software Asset</td>
+<td><a href="{BASE}/alm_entitlement_list.do">{BASE}/alm_entitlement_list.do</a></td>
+</tr>
+<tr>
+<td>Purchase Orders</td>
+<td>All &gt; Procurement</td>
+<td><a href="{BASE}/proc_po_list.do">{BASE}/proc_po_list.do</a></td>
+</tr>
+<tr>
+<td>Asset Workspace</td>
+<td>Now &gt; Asset</td>
+<td><a href="{BASE}/now/asset/home">{BASE}/now/asset/home</a></td>
+</tr>
+<tr>
+<td>Reclamation</td>
+<td>All &gt; Software Asset</td>
+<td><a href="{BASE}/samp_sw_reclamation_rule_list.do">{BASE}/samp_sw_reclamation_rule_list.do</a></td>
+</tr>
+<tr>
+<td>Guided Setup</td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

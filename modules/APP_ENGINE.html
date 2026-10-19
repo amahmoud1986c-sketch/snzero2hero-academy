@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>App Engine — Creator Workflows / Low-Code | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>App Engine — Creator Workflows / Low-Code</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="app-engine-creator-workflows-low-code">App Engine — Creator Workflows / Low-Code</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً:</strong> <a href="../MASTER_ALL_IN_ONE_SUMMARY.html">../MASTER_ALL_IN_ONE_SUMMARY.md</a> · <a href="../html/MASTER_ALL_IN_ONE_SUMMARY.html">../html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل:</strong> <a href="../MASTER_ALL_IN_ONE.html">../MASTER_ALL_IN_ONE.md</a> · <a href="../html/MASTER_ALL_IN_ONE.html">../html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات:</strong> <a href="../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Australia · Scope <code>x_786686_hr_leave</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<h2 id="australia-instance">Australia Instance — نسخة أستراليا</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Region / Datacenter</strong></td>
+<td>ServiceNow <strong>Australia</strong></td>
+</tr>
+<tr>
+<td><strong>Release train</strong></td>
+<td>Zurich (Sep 2026 EA) · next EA: <strong>Brazil</strong></td>
+</tr>
+<tr>
+<td><strong>URL base</strong></td>
+<td><code>{BASE}</code></td>
+</tr>
+<tr>
+<td><strong>Scope note</strong></td>
+<td>HR Leave app: <code>x_786686_hr_leave</code></td>
+</tr>
+<tr>
+<td><strong>Guided Setup</strong></td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="direct-navigation-urls">Direct Navigation URLs — روابط التنقل المباشرة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page / Tool</th>
+<th>Navigation Path</th>
+<th>Direct URL</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>App Engine Studio</strong></td>
+<td>All &gt; App Engine &gt; App Engine Studio</td>
+<td><a href="{BASE}/now/app-engine-studio/home">{BASE}/now/app-engine-studio/home</a></td>
+<td>Low-code builder</td>
+</tr>
+<tr>
+<td><strong>Workflow Studio</strong></td>
+<td>All &gt; Process Automation &gt; Workflow Studio</td>
+<td><a href="{BASE}/now/workflow-studio/home">{BASE}/now/workflow-studio/home</a></td>
+<td>Visual workflows</td>
+</tr>
+<tr>
+<td><strong>Mobile Studio</strong></td>
+<td>All &gt; Mobile Studio</td>
+<td><a href="{BASE}/now/mobile-studio/home">{BASE}/now/mobile-studio/home</a></td>
+<td>Mobile applets</td>
+</tr>
+<tr>
+<td><strong>UI Builder</strong></td>
+<td>All &gt; Now Experience &gt; UI Builder</td>
+<td><a href="{BASE}/now/ui-builder">{BASE}/now/ui-builder</a></td>
+<td>Workspace pages</td>
+</tr>
+<tr>
+<td><strong>Application Repository</strong></td>
+<td>All &gt; System Applications &gt; Application Repository</td>
+<td><a href="{BASE}/sys_repo_application_list.do">{BASE}/sys_repo_application_list.do</a></td>
+<td>Internal app store</td>
+</tr>
+<tr>
+<td><strong>Tables</strong></td>
+<td>All &gt; System Definition &gt; Tables</td>
+<td><a href="{BASE}/sys_db_object_list.do">{BASE}/sys_db_object_list.do</a></td>
+<td>Data model</td>
+</tr>
+<tr>
+<td><strong>Service Portal Configurator</strong></td>
+<td>All &gt; Service Portal &gt; Configurator</td>
+<td><a href="{BASE}/now/sp-configurator/home">{BASE}/now/sp-configurator/home</a></td>
+<td>Portal builder</td>
+</tr>
+<tr>
+<td><strong>App Scan</strong></td>
+<td>All &gt; App Engine &gt; App Scan</td>
+<td><a href="{BASE}/now/app-scan/home">{BASE}/now/app-scan/home</a></td>
+<td>Quality &amp; security</td>
+</tr>
+<tr>
+<td><strong>Delegated Development</strong></td>
+<td>All &gt; System Applications &gt; Delegated Development</td>
+<td><a href="{BASE}/sys_delegated_development_list.do">{BASE}/sys_delegated_development_list.do</a></td>
+<td>Citizen dev roles</td>
+</tr>
+<tr>
+<td><strong>Guided Setup App Engine</strong></td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+<td>Initial configuration</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>URLs:</strong> <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">../../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a><br />
+<strong>HR Leave:</strong> Scope x_786686_hr_leave</p>
+</blockquote>
+<h2 id="app-engine">App Engine — تطوير منخفض الكود</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3Dc84db0e8839f0b509f02b0d6feaad3c9">Application Files</a><a href="../scripts/index.html">Scripts portal</a></nav>
+<blockquote>
+<p>Comprehensive guide for building custom apps with App Engine Studio, Mobile Studio, Workflow Studio, and Now Assist for Creators (Zurich 2025).</p>
+<p>دليل شامل لبناء تطبيقات مخصصة باستخدام App Engine Studio، Mobile Studio، Workflow Studio، و Now Assist للمطورين منخفضي الكود.</p>
+</blockquote>
+<hr />
+<h2 id="1-what-is-app-engine-app-engine">§1 — What is App Engine? / ما هو App Engine؟</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>App Engine</strong> is ServiceNow&rsquo;s low-code/no-code platform for citizen developers and pro developers to build custom applications quickly. It bundles:</p>
+<ul>
+<li><strong>App Engine Studio (AES)</strong> — visual app builder</li>
+<li><strong>Workflow Studio</strong> — drag-drop flow designer</li>
+<li><strong>Mobile Studio</strong> — native mobile app builder</li>
+<li><strong>Service Portal Configurator</strong> — quick portal building</li>
+<li><strong>UI Builder</strong> — Workspace pages</li>
+<li><strong>Now Assist for Creators</strong> — AI-assisted app generation — App Engine منصة تطوير منخفض/بدون كود من ServiceNow تتيح للمطورين بناء تطبيقات مخصصة بسرعة.</li>
+</ul>
+<h3 id="11-licensing-tiers">1.1 Licensing tiers</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Description</th>
+<th>Use cases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>App Engine Standard</td>
+<td>Base apps, no AI</td>
+<td>Internal tools, simple workflows</td>
+</tr>
+<tr>
+<td>App Engine Plus</td>
+<td>Adds Process Optimization, UI Builder advanced</td>
+<td>Department apps</td>
+</tr>
+<tr>
+<td>Pro Builders</td>
+<td>Pro dev + admins</td>
+<td>Cross-functional apps</td>
+</tr>
+<tr>
+<td>Creators (Citizen)</td>
+<td>Business users with template gallery</td>
+<td>Personal productivity, simple forms</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-plugin-activation">§2 — Plugin Activation / تفعيل الإضافات</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">- com.glide.app_engine_studio (AES)
+- com.glide.process_automation (PAD/Workflow Studio)
+- com.snc.app_engine_management (Admin)
+- com.glide.mobile_studio (Mobile Studio)
+- com.glide.ui_builder (UI Builder)
+- com.glide.now_assist_creator (AI assist)
+</code></pre>
+<hr />
+<h2 id="3-app-engine-studio-aes-walkthrough">§3 — App Engine Studio (AES) Walkthrough</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="31-launching-aes">3.1 Launching AES</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>All &gt; App Engine &gt; App Engine Studio (or /now/app-engine-studio). — <a href="{BASE}/now/app-engine-studio">Open direct</a></p>
+<h3 id="32-three-creation-paths">3.2 Three creation paths</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start from blank</td>
+<td>Maximum control</td>
+</tr>
+<tr>
+<td>Start from template</td>
+<td>Common patterns (Asset request, Approvals, Site visits)</td>
+</tr>
+<tr>
+<td>Start with AI (Now Assist)</td>
+<td>Describe in natural language → AI generates app skeleton</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-the-5-building-blocks">3.3 The 5 building blocks</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>┌─────────────────────────────────────────────────────────┐<br />
+│ 1. DATA ──▶ tables (master, transactional, lookup) │<br />
+│ 2. UI ──▶ forms, lists, mobile, portal │<br />
+│ 3. LOGIC ──▶ workflows, business rules, scripts │<br />
+│ 4. EXPERIENCES ──▶ workspaces, portals, mobile │<br />
+│ 5. CONNECTIONS ──▶ integrations to external systems │<br />
+└─────────────────────────────────────────────────────────┘</p>
+<h3 id="34-worked-example-visitor-management-app">3.4 Worked example: Visitor Management App</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Step 1 — Create app</strong></p>
+<pre><code class="language-text">AES &gt; Create App &gt; &quot;Visitor Management&quot; &gt; Scope: x_acme_visitor
+</code></pre>
+<p><strong>Step 2 — Add Data table</strong></p>
+<p>Table x_acme_visitor_visit:<br />
+- first_name (String)<br />
+- last_name (String)<br />
+- email (Email)<br />
+- host_employee (Reference → sys_user)<br />
+- visit_date (Date)<br />
+- visit_purpose (Choice: Meeting | Interview | Delivery | Tour | Other)<br />
+- badge_number (String, auto-numbered)<br />
+- check_in_time (Date/Time)<br />
+- check_out_time (Date/Time)<br />
+- state (Choice: Pending | Approved | Checked In | Checked Out | Cancelled)</p>
+<p><strong>Step 3 — Add UI (form layout)</strong></p>
+<p>Form sections: Visitor Info | Visit Details | Check-In/Out</p>
+<p><strong>Step 4 — Add Logic (Workflow Studio)</strong></p>
+<p>Flow: &ldquo;Visitor Approval&rdquo;</p>
+<p>Trigger: Visitor record created<br />
+Step 1: Send email to host with approve/reject link<br />
+Step 2: Wait for response (max 4 hours)<br />
+Step 3a (approve): Set state = Approved + generate QR badge<br />
+Step 3b (reject): Set state = Cancelled + notify visitor<br />
+Step 4: Day-of arrival reminder (email + SMS)</p>
+<p><strong>Step 5 — Add Experiences</strong></p>
+<ul>
+<li>Portal page /visitors for self-registration</li>
+<li>Workspace for reception desk</li>
+<li>Mobile app for host approvals</li>
+</ul>
+<p><strong>Step 6 — Add Connections</strong></p>
+<ul>
+<li>Active Directory (host validation)</li>
+<li>Door access system (badge activation)</li>
+<li>Twilio (SMS)</li>
+</ul>
+<p><strong>Step 7 — Publish + share</strong></p>
+<p>AES &gt; Publish &gt; Set roles &gt; Add to Application Repository</p>
+<hr />
+<h2 id="4-workflow-studio-deep-dive">§4 — Workflow Studio Deep Dive</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Workflow Studio = Flow Designer + Decision Builder + Process Automation Designer (PAD).</p>
+<h3 id="41-component-comparison">4.1 Component comparison</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Best for</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flow Designer</td>
+<td>Background automation, integration</td>
+<td>Auto-create user from HRIS</td>
+</tr>
+<tr>
+<td>Subflow</td>
+<td>Reusable logic</td>
+<td>&ldquo;Send branded email&rdquo;</td>
+</tr>
+<tr>
+<td>Action</td>
+<td>Atomic step</td>
+<td>&ldquo;Look up CMDB CI&rdquo;</td>
+</tr>
+<tr>
+<td>Decision Table</td>
+<td>Business rules in matrix</td>
+<td>Tax calculation per region</td>
+</tr>
+<tr>
+<td>Decision Builder</td>
+<td>Visual decision tree</td>
+<td>Routing per criteria</td>
+</tr>
+<tr>
+<td>Process Automation (PAD)</td>
+<td>User-facing playbooks</td>
+<td>Onboarding playbook</td>
+</tr>
+<tr>
+<td>Robotic Process Automation (RPA Hub)</td>
+<td>Legacy system automation</td>
+<td>Screen scrape</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-flow-with-error-handling">4.2 Flow with error handling</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<pre><code class="language-text">[Trigger: Record Created on x_acme_visitor_visit]
+ ↓
+[Action: Look Up Record — sys_user where email = visitor.email]
+ ↓
+[If Record Found]
+ ↓
+ [Action: Send Email — Welcome back]
+[Else]
+ ↓
+ [Action: Create Record on x_acme_guest_user]
+ ↓
+[Try/Catch]
+ ↓
+[Action: Door System REST — activate badge]
+ ↓
+[On Error → Notify Reception via Teams]
+</code></pre>
+<h3 id="43-subflow-example">4.3 Subflow example</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Subflow: NotifyHostMultiChannel<br />
+- Inputs: host (User), message (Text), priority (Choice)<br />
+- Step 1: Send email<br />
+- Step 2: If priority = High → also send Teams DM<br />
+- Step 3: If priority = Critical → also call host phone (Twilio)</p>
+<h3 id="44-custom-action-action-designer">4.4 Custom Action (Action Designer)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Action: Generate QR Badge<br />
+- Inputs: text (String)<br />
+- Step 1: Script</p>
+<pre><code class="language-javascript">(function execute(inputs, outputs) {
+ var text = inputs.text;
+ // Use QRickit API or generate inline
+ var qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?data=' +
+ encodeURIComponent(text) + '&amp;size=300x300';
+ outputs.qr_url = qrUrl;
+ outputs.encoded = text;
+})(inputs, outputs);
+</code></pre>
+<ul>
+<li>Outputs: qr_url (URL), encoded (String)</li>
+</ul>
+<h3 id="45-process-automation-designer-pad-playbook">4.5 Process Automation Designer (PAD) — Playbook</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>User-facing checklist with lanes for different roles.</p>
+<p>Playbook: New Hire Onboarding</p>
+<table>
+<thead>
+<tr>
+<th>Lane</th>
+<th>Step</th>
+<th>Trigger</th>
+<th>Assignee</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR</td>
+<td>Personal info</td>
+<td>Day 0</td>
+<td>HR Coordinator</td>
+</tr>
+<tr>
+<td>IT</td>
+<td>Provision laptop</td>
+<td>Day -3</td>
+<td>IT</td>
+</tr>
+<tr>
+<td>IT</td>
+<td>Provision accounts</td>
+<td>Day -1</td>
+<td>IT</td>
+</tr>
+<tr>
+<td>Manager</td>
+<td>Welcome meeting</td>
+<td>Day 1</td>
+<td>Manager</td>
+</tr>
+<tr>
+<td>Compliance</td>
+<td>Sign policies</td>
+<td>Day 1-7</td>
+<td>New Hire</td>
+</tr>
+<tr>
+<td>Training</td>
+<td>Orientation</td>
+<td>Day 1</td>
+<td>L&amp;D</td>
+</tr>
+<tr>
+<td>Manager</td>
+<td>30-day check-in</td>
+<td>Day 30</td>
+<td>Manager</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-mobile-studio">§5 — Mobile Studio</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="51-architecture">5.1 Architecture</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>ServiceNow Mobile = native iOS/Android shell + JSON-driven content. You design once, the app renders adaptively.</p>
+<h3 id="52-building-a-screen">5.2 Building a screen</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">Mobile Studio &gt; New App Configuration &gt; Add Applet
+- Applet type: List | Form | Map | Calendar | Carousel
+- Data source: table, with filters
+- Item template: title, subtitle, icon, badge color
+</code></pre>
+<h3 id="53-offline-capability">5.3 Offline capability</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Configuration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cache tables</td>
+<td>Mobile App Config → Offline tables list</td>
+</tr>
+<tr>
+<td>Sync schedule</td>
+<td>Every 15 min when online</td>
+</tr>
+<tr>
+<td>Conflict resolution</td>
+<td>Last-writer-wins or manual</td>
+</tr>
+<tr>
+<td>Max records</td>
+<td>1,000 per table per user</td>
+</tr>
+</tbody>
+</table>
+<h3 id="54-mobile-specific-features">5.4 Mobile-specific features</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li>Push notifications (FCM/APNS)</li>
+<li>Camera (capture → attach)</li>
+<li>GPS (geofence)</li>
+<li>Barcode/QR scan</li>
+<li>Signature capture (canvas)</li>
+<li>Voice-to-text</li>
+<li>Biometric login</li>
+</ul>
+<hr />
+<h2 id="6-ui-builder">§6 — UI Builder</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<h3 id="61-when-to-choose-ui-builder">6.1 When to choose UI Builder</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pixel-perfect employee/customer portal</td>
+<td>Service Portal Designer</td>
+</tr>
+<tr>
+<td>Native workspace experience for power users</td>
+<td>UI Builder</td>
+</tr>
+<tr>
+<td>Native mobile app</td>
+<td>Mobile Studio</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-ux-theme-tokens">6.2 UX Theme tokens</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-json">{
+ &quot;name&quot;: &quot;Acme Theme&quot;,
+ &quot;tokens&quot;: {
+ &quot;color&quot;: {
+ &quot;brand&quot;: { &quot;primary&quot;: &quot;#0066cc&quot;, &quot;secondary&quot;: &quot;#00a3a3&quot; },
+ &quot;neutral&quot;: { &quot;100&quot;: &quot;#ffffff&quot;, &quot;900&quot;: &quot;#1a1a1a&quot; }
+ },
+ &quot;typography&quot;: {
+ &quot;font_family_sans&quot;: &quot;Inter, system-ui, sans-serif&quot;,
+ &quot;scale&quot;: { &quot;xs&quot;: &quot;12px&quot;, &quot;sm&quot;: &quot;14px&quot;, &quot;md&quot;: &quot;16px&quot;, &quot;lg&quot;: &quot;20px&quot;, &quot;xl&quot;: &quot;28px&quot; }
+ },
+ &quot;spacing&quot;: { &quot;1&quot;: &quot;4px&quot;, &quot;2&quot;: &quot;8px&quot;, &quot;3&quot;: &quot;12px&quot;, &quot;4&quot;: &quot;16px&quot;, &quot;6&quot;: &quot;24px&quot;, &quot;8&quot;: &quot;32px&quot; }
+ }
+}
+</code></pre>
+<h3 id="63-custom-macroponent">6.3 Custom Macroponent</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>A Macroponent = a reusable UI component built in UI Builder with state, properties, and events.</p>
+<pre><code class="language-javascript">// Macroponent: AcmeStatCard
+// Properties: title (String), value (Number), trend (Number), trendUnit (String)
+// Slots: action (optional CTA button)
+</code></pre>
+<p>// Render template (JSX-like)</p>
+<div class="acme-stat-card">
+ <div class="card-title">{{title}}</div>
+ <div class="card-value">{{value | format:'number'}}</div>
+ <div class="card-trend trend-{{trend > 0 ? 'up' : 'down'}}">
+ {{trend}}{{trendUnit}}
+ </div>
+ <slot name="action"></slot>
+</div>
+
+<hr />
+<h2 id="7-service-portal-configurator">§7 — Service Portal Configurator</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<p>For lightweight portals (vs. full custom Service Portal):</p>
+<p>AES &gt; App &gt; Add Experience &gt; Portal &gt; Configure</p>
+<p>Features:<br />
+- Brand + logo + theme<br />
+- Pages: Home, Catalog, Forms, My Records, KB<br />
+- Widgets pre-built<br />
+- Branded URL</p>
+<hr />
+<h2 id="8-now-assist-for-creators-ai">§8 — Now Assist for Creators (AI)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="81-what-it-can-generate">8.1 What it can generate</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>AI capability</th>
+<th>Example prompt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Generate app</td>
+<td>&ldquo;Build a fleet vehicle reservation app&rdquo;</td>
+</tr>
+<tr>
+<td>Generate table + fields</td>
+<td>&ldquo;Add a table for fuel logs with date, gallons, cost&rdquo;</td>
+</tr>
+<tr>
+<td>Generate Flow</td>
+<td>&ldquo;When reservation approved, calendar invite host + driver&rdquo;</td>
+</tr>
+<tr>
+<td>Generate form layout</td>
+<td>&ldquo;Lay out the reservation form in 2 columns&rdquo;</td>
+</tr>
+<tr>
+<td>Generate ACL</td>
+<td>&ldquo;Drivers see only their reservations&rdquo;</td>
+</tr>
+<tr>
+<td>Generate dashboard</td>
+<td>&ldquo;Dashboard for fleet manager: utilization, cost, top drivers&rdquo;</td>
+</tr>
+<tr>
+<td>Suggest improvements</td>
+<td>&ldquo;Audit my app for best practices&rdquo;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="82-how-it-works">8.2 How it works</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Now Assist calls a fine-tuned LLM grounded with ServiceNow metadata (table schemas, role catalog, OOTB actions) to generate Update Set artifacts.</p>
+<pre><code class="language-javascript">// Example: programmatic generation via API
+var rm = new sn_ws.RESTMessageV2('NowAssistCreator', 'generateFlow');
+rm.setStringParameter('app_scope', 'x_acme_visitor');
+rm.setStringParameter('prompt',
+ 'When visitor created, email host with approval link; on approve, generate QR badge');
+var resp = JSON.parse(rm.execute().getBody() || '{}');
+gs.info(JSON.stringify(resp.flow_definition));
+</code></pre>
+<hr />
+<h2 id="9-application-repository-internal-marketplace">§9 — Application Repository (Internal Marketplace)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="91-what-it-is">9.1 What it is</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Your private marketplace where teams publish and share apps across the org.</p>
+<h3 id="92-lifecycle">9.2 Lifecycle</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Develop → Test in pre-prod → Publish to Repo → Version → Deploy to other instances</p>
+<h3 id="93-versioning-best-practice">9.3 Versioning best practice</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li>Semantic: MAJOR.MINOR.PATCH</li>
+<li>Pre-release: 1.0.0-beta.1</li>
+<li>Document breaking changes</li>
+<li>Maintain compatibility for 2 versions back</li>
+</ul>
+<hr />
+<h2 id="17-power-user-playbook-app-engine">§17 — Power User Playbook (App Engine)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<h3 id="171-personas">17.1 Personas</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Primary actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Citizen Developer</td>
+<td>Build personal/team apps from templates</td>
+</tr>
+<tr>
+<td>Department Power User</td>
+<td>Build dept apps with limited scope</td>
+</tr>
+<tr>
+<td>Pro Developer</td>
+<td>Build cross-functional apps with full code</td>
+</tr>
+<tr>
+<td>Platform Architect</td>
+<td>Govern scopes, review patterns, set guardrails</td>
+</tr>
+<tr>
+<td>App Owner (Business)</td>
+<td>Define requirements, validate, train users</td>
+</tr>
+<tr>
+<td>Center of Excellence (CoE)</td>
+<td>Curate templates, audit apps, publish patterns</td>
+</tr>
+</tbody>
+</table>
+<h3 id="172-day-in-life-citizen-developer">17.2 Day-in-Life — Citizen Developer</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ol>
+<li>Open AES → &ldquo;I want to build&rdquo; → describe in plain English.</li>
+<li>AI proposes table + form + flow.</li>
+<li>Adjust fields visually (drag-drop).</li>
+<li>Preview in mobile + portal.</li>
+<li>Share with 5 colleagues.</li>
+<li>Iterate based on feedback.</li>
+</ol>
+<h3 id="173-top-15-app-engine-scripts">17.3 Top 15 App Engine Scripts</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>1. AES app inventory + compliance scanner</strong></p>
+<pre><code class="language-javascript">var AESComplianceScanner = Class.create();
+AESComplianceScanner.prototype = {
+ initialize: function {},
+</code></pre>
+<p>/*<em> Scans all citizen-built apps and rates compliance </em>/<br />
+ scan: function {<br />
+ var apps = new GlideRecord(&lsquo;sys_app&rsquo;);<br />
+ apps.addQuery(&lsquo;source&rsquo;, &lsquo;app_engine_studio&rsquo;);<br />
+ apps.addActiveQuery();<br />
+ apps.query();<br />
+ var results = [];<br />
+ while (apps.next()) {<br />
+ var report = this._auditApp(apps.getUniqueValue());<br />
+ results.push({<br />
+ app: apps.getValue(&lsquo;name&rsquo;),<br />
+ scope: apps.getValue(&lsquo;scope&rsquo;),<br />
+ score: report.score,<br />
+ issues: report.issues<br />
+ });<br />
+ }<br />
+ return results;<br />
+ },</p>
+<p>_auditApp: function (appSysId) {<br />
+ var score = 100;<br />
+ var issues = [];</p>
+<p>// Check 1: explicit roles defined<br />
+ var roles = new GlideAggregate(&lsquo;sys_user_role&rsquo;);<br />
+ roles.addQuery(&lsquo;sys_scope&rsquo;, appSysId);<br />
+ roles.addAggregate(&lsquo;COUNT&rsquo;);<br />
+ roles.query();<br />
+ if (roles.next() &amp;&amp; parseInt(roles.getAggregate(&lsquo;COUNT&rsquo;), 10) === 0) {<br />
+ score -= 20;<br />
+ issues.push(&lsquo;no_explicit_roles&rsquo;);<br />
+ }</p>
+<p>// Check 2: ACLs defined<br />
+ var acls = new GlideAggregate(&lsquo;sys_security_acl&rsquo;);<br />
+ acls.addQuery(&lsquo;sys_scope&rsquo;, appSysId);<br />
+ acls.addAggregate(&lsquo;COUNT&rsquo;);<br />
+ acls.query();<br />
+ if (acls.next() &amp;&amp; parseInt(acls.getAggregate(&lsquo;COUNT&rsquo;), 10) &lt; 3) {<br />
+ score -= 15;<br />
+ issues.push(&lsquo;insufficient_acls&rsquo;);<br />
+ }</p>
+<p>// Check 3: ATF tests exist<br />
+ var atf = new GlideAggregate(&lsquo;sys_atf_test&rsquo;);<br />
+ atf.addQuery(&lsquo;sys_scope&rsquo;, appSysId);<br />
+ atf.addAggregate(&lsquo;COUNT&rsquo;);<br />
+ atf.query();<br />
+ if (atf.next() &amp;&amp; parseInt(atf.getAggregate(&lsquo;COUNT&rsquo;), 10) === 0) {<br />
+ score -= 25;<br />
+ issues.push(&lsquo;no_atf_tests&rsquo;);<br />
+ }</p>
+<p>return { score: Math.max(0, score), issues: issues };<br />
+ },</p>
+<p>type: &lsquo;AESComplianceScanner&rsquo;<br />
+};</p>
+<p><strong>2. App-level role provisioning</strong></p>
+<pre><code class="language-javascript">function provisionAppRoles(appScope, roleNames, userSysIds) {
+ roleNames.forEach(function (roleName) {
+ var roleId = _ensureRole(appScope, roleName);
+ userSysIds.forEach(function (userId) {
+ var has = new GlideRecord('sys_user_has_role');
+ has.addQuery('user', userId);
+ has.addQuery('role', roleId);
+ has.setLimit(1);
+ has.query();
+ if (!has.hasNext()) {
+ has.initialize();
+ has.setValue('user', userId);
+ has.setValue('role', roleId);
+ has.insert();
+ }
+ });
+ });
+</code></pre>
+<p>function _ensureRole(scope, name) {<br />
+ var r = new GlideRecord(&lsquo;sys_user_role&rsquo;);<br />
+ r.addQuery(&lsquo;name&rsquo;, scope + &lsquo;.&rsquo; + name);<br />
+ r.setLimit(1); r.query();<br />
+ if (r.next()) return r.getUniqueValue();<br />
+ r.initialize();<br />
+ r.setValue(&lsquo;name&rsquo;, scope + &lsquo;.&rsquo; + name);<br />
+ r.setValue(&lsquo;description&rsquo;, &lsquo;Auto-provisioned role for &rsquo; + scope);<br />
+ return r.insert();<br />
+ }<br />
+}</p>
+<p><strong>3. App migration between scopes</strong> — copy artifacts to new scope while remapping refs.</p>
+<p><strong>4. Mass-update App Properties</strong> — for env-specific properties (DEV/UAT/PROD).</p>
+<p><strong>5. App health check API</strong> — returns last-modified, ATF coverage, error count, performance.</p>
+<p><strong>6. Audit log: who edited what in AES</strong> — Read sys_metadata_versioning filtered by app scope.</p>
+<p><strong>7. Citizen dev sandbox provisioning</strong> — create sub-scope per citizen dev.</p>
+<p><strong>8. Template generator</strong> — convert existing app into a template.</p>
+<p><strong>9. App engagement analytics</strong> — track usage per app from PA.</p>
+<p><strong>10. Cross-app dependency mapping</strong> — find which apps depend on which scopes/tables.</p>
+<p><strong>11-15. Quick recipes</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11</td>
+<td>Auto-add scoped app to Application Repo after passing ATF</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Send weekly digest to CoE about new apps</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Deprecation notice (apps unused 90+ days)</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Component reusability tracker</td>
+</tr>
+<tr>
+<td>15</td>
+<td>License usage cost per app</td>
+</tr>
+</tbody>
+</table>
+<h3 id="174-common-templates">17.4 Common Templates</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Use case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asset Request</td>
+<td>Internal asset booking (laptops, parking, rooms)</td>
+</tr>
+<tr>
+<td>Approval Workflow</td>
+<td>Generic approvals with N levels</td>
+</tr>
+<tr>
+<td>Site Visit</td>
+<td>Visitor mgmt, escort, badges</td>
+</tr>
+<tr>
+<td>Inspection</td>
+<td>Field checklist with photos, signatures</td>
+</tr>
+<tr>
+<td>Survey</td>
+<td>Custom surveys w/ scoring</td>
+</tr>
+<tr>
+<td>Resource Booking</td>
+<td>Conference rooms, equipment</td>
+</tr>
+<tr>
+<td>Event Registration</td>
+<td>Internal events / training</td>
+</tr>
+<tr>
+<td>Project Tracker</td>
+<td>Lightweight project mgmt</td>
+</tr>
+<tr>
+<td>Issue Tracker</td>
+<td>Bug tracking</td>
+</tr>
+<tr>
+<td>Idea Box</td>
+<td>Suggestion box w/ voting</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="18-from-scratch-implementation-day-0-day-30">§18 — From-Scratch Implementation (Day 0 → Day 30)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<h3 id="181-strategy-day-0">18.1 Strategy (Day 0)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li>Identify backlog of small apps (target: 10-20 apps Year 1)</li>
+<li>Define citizen dev program (training, certification, sandbox)</li>
+<li>Establish CoE (3-5 members)</li>
+<li>Guardrails: scope naming, role naming, max table size, security review</li>
+<li>Choose initial wave (3-5 high-impact, low-complexity)</li>
+</ul>
+<h3 id="182-day-by-day">18.2 Day-by-day</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Day 1</strong> — Plugin activation + AES navigation tour</p>
+<p><strong>Day 2-3</strong> — CoE formation<br />
+- Charter<br />
+- Governance model (review board)<br />
+- Standards doc (naming, error handling, accessibility)<br />
+- Template library seed</p>
+<p><strong>Day 4-5</strong> — Sandbox per citizen dev<br />
+- Dev instance with app_creator role<br />
+- Sub-scope per user (or per team)<br />
+- Update Set discipline</p>
+<p><strong>Day 6-7</strong> — Curate templates (10 templates from §17.4)</p>
+<p><strong>Day 8-10</strong> — Citizen Dev Wave 1 training<br />
+- 2-day workshop<br />
+- Build sample app together<br />
+- Q&amp;A office hours</p>
+<p><strong>Day 11-15</strong> — Wave 1 app development (3 apps)<br />
+- Daily 30-min stand-up<br />
+- CoE mentor pairing<br />
+- Code review against guardrails</p>
+<p><strong>Day 16-18</strong> — Wave 1 deployment<br />
+- ATF coverage check (target ≥ 50% for citizen apps)<br />
+- Security review<br />
+- Move to UAT<br />
+- UAT scenarios</p>
+<p><strong>Day 19-20</strong> — Wave 1 go-live + retro</p>
+<p><strong>Day 21-24</strong> — Wave 2 starts (5 more apps)</p>
+<p><strong>Day 25</strong> — Application Repository launch<br />
+- Publish wave 1 apps<br />
+- Versioning<br />
+- Catalog page</p>
+<p><strong>Day 26</strong> — Mobile + Portal experiences for top apps</p>
+<p><strong>Day 27</strong> — Now Assist for Creators enabled<br />
+- Train citizen devs on AI-assisted creation</p>
+<p><strong>Day 28</strong> — Analytics dashboard for CoE<br />
+- App count, usage, error rate, engagement</p>
+<p><strong>Day 29</strong> — Comms + scale-out plan<br />
+- Internal newsletter<br />
+- Showcase wave 1 apps<br />
+- Open call for wave 2 nominations</p>
+<p><strong>Day 30</strong> — Operating cadence<br />
+- Monthly CoE board<br />
+- Quarterly hackathon<br />
+- Annual citizen dev awards</p>
+<h3 id="183-kpis-month-1">18.3 KPIs Month 1</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Citizen devs trained</td>
+<td>≥ 10</td>
+</tr>
+<tr>
+<td>Apps launched</td>
+<td>≥ 3</td>
+</tr>
+<tr>
+<td>Apps in pipeline</td>
+<td>≥ 5</td>
+</tr>
+<tr>
+<td>App engagement (DAU)</td>
+<td>≥ 50</td>
+</tr>
+<tr>
+<td>ATF coverage average</td>
+<td>≥ 50%</td>
+</tr>
+<tr>
+<td>CoE office hour attendance</td>
+<td>≥ 60% of citizens</td>
+</tr>
+<tr>
+<td>Time-to-first-app (per dev)</td>
+<td>≤ 5 days</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="19-sign-off-checklist">§19 — Sign-off Checklist</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li>[ ] AES enabled + tested in pre-prod</li>
+<li>[ ] Scope naming convention published</li>
+<li>[ ] Role catalog standardized</li>
+<li>[ ] Template gallery seeded (≥ 10 templates)</li>
+<li>[ ] Guardrails documented (max table size, ACL min count, ATF min %)</li>
+<li>[ ] CoE charter signed</li>
+<li>[ ] Citizen dev training material AR + EN</li>
+<li>[ ] Application Repo configured</li>
+<li>[ ] Now Assist for Creators license confirmed</li>
+<li>[ ] Quarterly review cadence scheduled</li>
+</ul>
+<hr />
+<h2 id="19-cad-app-engine-citizen-dev-exam-z-to-hero-feature-labs-20-inline-q">§19 — CAD / App Engine / Citizen Dev Exam &amp; Z-to-Hero Feature Labs (20 inline Q)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="191-z-to-hero-feature-labs-10-labs">19.1 Z-to-Hero Feature Labs (10 labs)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Lab</th>
+<th>Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>App Engine Studio (AES): create new app from scratch</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>Table + Forms designed in AES</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>Workflow Studio: build approval flow</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>Mobile Studio: applet for the new app</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>Service Portal Configurator widget</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>Now Assist for Creators: generate flow from prompt</td>
+</tr>
+<tr>
+<td>L7</td>
+<td>Application Repository publish</td>
+</tr>
+<tr>
+<td>L8</td>
+<td>Citizen Dev role assignment (Delegated Dev)</td>
+</tr>
+<tr>
+<td>L9</td>
+<td>App permissions + ACLs auto-generation</td>
+</tr>
+<tr>
+<td>L10</td>
+<td>App scan: best-practice + security check</td>
+</tr>
+</tbody>
+</table>
+<h3 id="192-20-app-engine-cad-practice-questions">19.2 20 App Engine / CAD Practice Questions</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ol>
+<li>AES URL: A. /now/app-engine-studio/home | B. /$studio.do | C. /aes.do | D. None — <strong>Answer: A</strong></li>
+<li>AES creates apps in scope: A. Scoped (auto x_<em>) | B. Global | C. Random | D. None — </em><em>Answer: A</em>*</li>
+<li>Workflow Studio is: A. Modern flow engine (Process Automation Designer) | B. Legacy Workflow | C. Flow Designer alone | D. None — <strong>Answer: A</strong></li>
+<li>Mobile Studio: A. Visual builder for Now Mobile applets | B. Native iOS/Android code | C. None | D. Random — <strong>Answer: A</strong></li>
+<li>Service Portal Configurator: A. Visual page builder w/o code | B. SCSS editor | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Now Assist for Creators: A. AI prompt → suggest flows/tables/widgets | B. None | C. Random | D. Manual — <strong>Answer: A</strong></li>
+<li>Citizen Dev role: A. x_<em>.user_dev or platform delegated_developer | B. admin | C. Random | D. None — </em><em>Answer: A</em>*</li>
+<li>App Repo location: A. ServiceNow Store + internal Application Repository | B. GitHub only | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>App template: A. Pre-built starter (Issue Tracker, Approval Request, etc.) | B. None | C. Random | D. Manual — <strong>Answer: A</strong></li>
+<li>App permissions: A. Roles auto-created on table create (e.g., x_<em>.user, x_</em>.admin) | B. Manual only | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>App scan results categories: A. Code quality, security, performance, best practice | B. Just errors | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>AES vs Classic Studio: A. AES is no-code/low-code first; Classic Studio for full dev | B. Same | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Decision Table in Workflow Studio: A. Data-driven rules as table rows | B. Just decision tree | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Subflow: A. Reusable flow called from another | B. Same as Flow | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Custom Action: A. Reusable action with inputs/outputs/script | B. Just script | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Spoke: A. Bundle of actions for a 3rd-party (Slack, Jira, etc.) | B. Random | C. Just one action | D. None — <strong>Answer: A</strong></li>
+<li>App publishing types: A. Internal (Application Repository) + Store (ServiceNow Marketplace) | B. One only | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>App version mgmt: A. Application versions tracked + dependency mgmt | B. Just one version | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>App testing: A. ATF + manual + app scan | B. Manual only | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>CAD certification scope: A. Tables, scripts, BR, CS, ACL, SP widgets, Catalog, Flow, ATF, Update Sets | B. Just tables | C. Random | D. None — <strong>Answer: A</strong></li>
+</ol>
+<h3 id="193-what-hero-looks-like-for-app-engine">19.3 What &ldquo;Hero&rdquo; looks like for App Engine</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Owns Citizen Dev CoE. Publishes templates. Trains business builders. Reviews app submissions for quality + security. Drives 50+ apps to production in first year via App Repository. Passes CAD with ≥85%.</p>
+<hr />
+<h2 id="hands-on-labs">Hands-on Labs — مختبرات عملية</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<blockquote>
+<p>Step-by-step labs for PDI / Australia instance. Replace <code>{BASE}</code> with your instance URL.<br />
+مختبرات خطوة بخطوة — استبدل <code>{BASE}</code> برابط نسختك.</p>
+</blockquote>
+<ol>
+<li>
+<p><strong>Lab 1</strong> — <strong>New scoped app / تطبيق scoped</strong> — Create app in <a href="{BASE}/now/app-engine-studio/home">{BASE}/now/app-engine-studio/home</a>.</p>
+</li>
+<li>
+<p><strong>Lab 2</strong> — <strong>Table &amp; form / جدول ونموذج</strong> — Add table with fields; generate roles automatically.</p>
+</li>
+<li>
+<p><strong>Lab 3</strong> — <strong>Workflow Studio flow / Flow</strong> — Build approval flow at <a href="{BASE}/now/workflow-studio/home">{BASE}/now/workflow-studio/home</a>.</p>
+</li>
+<li>
+<p><strong>Lab 4</strong> — <strong>UI Builder page / صفحة UI</strong> — Create workspace list page at <a href="{BASE}/now/ui-builder">{BASE}/now/ui-builder</a>.</p>
+</li>
+<li>
+<p><strong>Lab 5</strong> — <strong>Mobile applet / تطبيق جوال</strong> — Build applet in <a href="{BASE}/now/mobile-studio/home">{BASE}/now/mobile-studio/home</a>.</p>
+</li>
+<li>
+<p><strong>Lab 6</strong> — <strong>App Scan / فحص التطبيق</strong> — Run scan at <a href="{BASE}/now/app-scan/home">{BASE}/now/app-scan/home</a>; fix findings.</p>
+</li>
+<li>
+<p><strong>Lab 7</strong> — <strong>Publish to Repository / نشر</strong> — Publish version to <a href="{BASE}/sys_repo_application_list.do">{BASE}/sys_repo_application_list.do</a>.</p>
+</li>
+<li>
+<p><strong>Lab 8</strong> — <strong>Delegated dev / مطور موكل</strong> — Assign citizen dev role via <a href="{BASE}/sys_delegated_development_list.do">{BASE}/sys_delegated_development_list.do</a>.</p>
+</li>
+</ol>
+<hr />
+<h2 id="best-practices">Best Practices — أفضل الممارسات</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Best practice (EN)</th>
+<th>أفضل ممارسة (AR)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scope</td>
+<td>Always scoped apps (x_*) — avoid global tables</td>
+<td>تطبيقات scoped دائمًا</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>Run App Scan before every publish</td>
+<td>App Scan قبل كل نشر</td>
+</tr>
+<tr>
+<td>Citizen dev</td>
+<td>CoE governs templates and review</td>
+<td>CoE يحكم القوالب والمراجعة</td>
+</tr>
+<tr>
+<td>Upgrade</td>
+<td>Track app versions and dependencies</td>
+<td>تتبع الإصدارات والتبعيات</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="deployment-checklist">Deployment Checklist — قائمة النشر</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task (EN)</th>
+<th>المهمة (AR)</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>App Engine / AES licensed</td>
+<td>ترخيص AES</td>
+<td>Active</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Citizen Dev CoE &amp; roles</td>
+<td>CoE + أدوار</td>
+<td>Delegated dev set</td>
+</tr>
+<tr>
+<td>3</td>
+<td>App templates published</td>
+<td>قوالب</td>
+<td>Builders use templates</td>
+</tr>
+<tr>
+<td>4</td>
+<td>App Scan policy</td>
+<td>سياسة App Scan</td>
+<td>No critical findings</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Application Repository</td>
+<td>Repository</td>
+<td>Apps installable</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Workflow Studio standards</td>
+<td>معايير Flow</td>
+<td>Reusable subflows</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Mobile profiles (if needed)</td>
+<td>Mobile</td>
+<td>Applet works</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Production promotion process</td>
+<td>نشر إنتاج</td>
+<td>Update Set / pipeline</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="direct-urls-quick-reference">Direct URLs Quick Reference</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigation</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>App Engine Studio</td>
+<td>All &gt; App Engine</td>
+<td><a href="{BASE}/now/app-engine-studio/home">{BASE}/now/app-engine-studio/home</a></td>
+</tr>
+<tr>
+<td>Workflow Studio</td>
+<td>All &gt; Process Automation</td>
+<td><a href="{BASE}/now/workflow-studio/home">{BASE}/now/workflow-studio/home</a></td>
+</tr>
+<tr>
+<td>Mobile Studio</td>
+<td>All &gt; Mobile Studio</td>
+<td><a href="{BASE}/now/mobile-studio/home">{BASE}/now/mobile-studio/home</a></td>
+</tr>
+<tr>
+<td>UI Builder</td>
+<td>All &gt; UI Builder</td>
+<td><a href="{BASE}/now/ui-builder">{BASE}/now/ui-builder</a></td>
+</tr>
+<tr>
+<td>App Repository</td>
+<td>All &gt; Applications</td>
+<td><a href="{BASE}/sys_repo_application_list.do">{BASE}/sys_repo_application_list.do</a></td>
+</tr>
+<tr>
+<td>Tables</td>
+<td>All &gt; System Definition</td>
+<td><a href="{BASE}/sys_db_object_list.do">{BASE}/sys_db_object_list.do</a></td>
+</tr>
+<tr>
+<td>SP Configurator</td>
+<td>All &gt; Service Portal</td>
+<td><a href="{BASE}/now/sp-configurator/home">{BASE}/now/sp-configurator/home</a></td>
+</tr>
+<tr>
+<td>App Scan</td>
+<td>All &gt; App Engine</td>
+<td><a href="{BASE}/now/app-scan/home">{BASE}/now/app-scan/home</a></td>
+</tr>
+<tr>
+<td>Delegated Development</td>
+<td>All &gt; Applications</td>
+<td><a href="{BASE}/sys_delegated_development_list.do">{BASE}/sys_delegated_development_list.do</a></td>
+</tr>
+<tr>
+<td>Guided Setup</td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

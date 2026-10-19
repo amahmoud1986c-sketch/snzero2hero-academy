@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Events Registry — أحداث التطبيق | HR Leave Australia</title>
+  <link rel="stylesheet" href="../../../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../../../index.html">Portal</a>
+      <a href="../../../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../../../scripts/index.html">Scripts</a>
+      <a href="../../../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../../../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Events Registry — أحداث التطبيق</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="events-registry">Events Registry — أحداث التطبيق</h1>
+<blockquote>
+<p>سجّلها من:<br />
+All &gt; System Policy &gt; Events &gt; Registry — <a href="{BASE}/sysevent_register_list.do">Open direct</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Event name</th>
+<th>Table</th>
+<th>الوصف</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x_786686_hr_leave.leave_v2.submitted</td>
+<td>x_786686_hr_leave_req_v2</td>
+<td>الطلب أُرسل للاعتماد</td>
+</tr>
+<tr>
+<td>x_786686_hr_leave.leave_v2.approved</td>
+<td>x_786686_hr_leave_req_v2</td>
+<td>الطلب اعتُمد</td>
+</tr>
+<tr>
+<td>x_786686_hr_leave.leave_v2.rejected</td>
+<td>x_786686_hr_leave_req_v2</td>
+<td>الطلب رُفض</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_1">الإطلاق من السكربت</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<pre><code class="language-javascript">// submitted — يُطلق في BR2
+gs.eventQueue('x_786686_hr_leave.leave_v2.submitted', current,
+ current.getValue('u_approver_user'), current.getValue('u_number'));
+</code></pre>
+<p>// approved / rejected — BR4 (see BR4_on_approve_reject_event.js)<br />
+gs.eventQueue(&lsquo;x_786686_hr_leave.leave_v2.approved&rsquo;, current,<br />
+ current.getValue(&lsquo;u_requested_for_user&rsquo;), current.getValue(&lsquo;u_number&rsquo;));</p>
+<p>Business rules:</p>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Fires</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BR2</td>
+<td>leave_v2.submitted</td>
+</tr>
+<tr>
+<td>BR4</td>
+<td>leave_v2.approved, leave_v2.rejected</td>
+</tr>
+</tbody>
+</table>
+<p>Setup: ../notifications/notifications.md</p>
+<p>ملاحظة:<br />
+parm1 و parm2 نصّان فقط (مرّر sys_id أو رقم، لا كائنات).</p>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../../../assets/docs.js"></script>
+
+<script src="../../../assets/author-brand.js" defer></script>
+</body>
+</html>

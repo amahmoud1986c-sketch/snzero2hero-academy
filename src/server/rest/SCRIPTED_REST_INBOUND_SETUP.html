@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scripted REST Inbound — Complete Setup (Dev + Admin) | HR Leave Australia</title>
+  <link rel="stylesheet" href="../../../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../../../index.html">Portal</a>
+      <a href="../../../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../../../scripts/index.html">Scripts</a>
+      <a href="../../../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../../../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Scripted REST Inbound — Complete Setup (Dev + Admin)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/$studio.do">Studio</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/sys_script_client_list.do">Client Scripts</a>
+<a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a>
+</div>
+    <article class="content">
+<h1 id="scripted-rest-inbound-complete-setup-dev-admin">Scripted REST Inbound — Complete Setup (Dev + Admin)</h1>
+<blockquote>
+<p>Fixes common errors:<br />
+- The following mandatory fields are not filled in: Default ACLs<br />
+- <strong>Application = Global</strong> (wrong) → must be <strong>HR Leave</strong> scope<br />
+- <strong>API namespace</strong> shows 2065034 instead of x_786686_hr_leave</p>
+<p>الأسلوب: عربية + إنجليزية تكمّلان بعضهما — بدون ترجمة حرفية لأسماء الشاشات.<br />
+Test after setup: REST API Explorer ($restapi.do) — see rest_api_explorer.md</p>
+</blockquote>
+<hr />
+<h2 id="phase-0-switch-to-scoped-application-do-this-first">Phase 0 — Switch to scoped application (DO THIS FIRST)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>If <strong>Application</strong> shows Global on the form, you are in the wrong context. — إذا كان <strong>Application = Global</strong> فأنت خارج تطبيق الإجازات — هذا سبب namespace خاطئ.</p>
+<h3 id="steps">Steps</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<ol>
+<li>Top-right <strong>Application</strong> picker (or Studio).</li>
+<li>Select: <strong>HR Leave</strong> (scope x_786686_hr_leave).</li>
+<li>
+<p>Verify:<br />
+ Navigate: All &gt; System Applications &gt; Applications — <a href="{BASE}/sys_app_list.do">Open direct</a><br />
+ Open <strong>HR Leave</strong> → Scope = x_786686_hr_leave</p>
+</li>
+<li>
+<p>Optional — create from Studio (recommended):<br />
+ - URL: /now/studio<br />
+ - Open app <strong>HR Leave</strong><br />
+ - Create Application File → <strong>Scripted REST API</strong> — بعد التبديل، عند إنشاء Scripted REST يجب أن ترى <strong>Application = HR Leave</strong> وليس Global.</p>
+</li>
+</ol>
+<hr />
+<h2 id="phase-1-admin-role-integration-user-before-api-form">Phase 1 — Admin: Role + Integration user (before API form)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<h3 id="11-create-integration-role">1.1 Create integration role</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>Navigate:<br />
+All &gt; User Administration &gt; Roles → New — <a href="{BASE}/sys_user_role_list.do">Open direct</a></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value to enter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Name</strong></td>
+<td>x_786686_hr_leave.integration</td>
+</tr>
+<tr>
+<td><strong>Display name</strong></td>
+<td>HR Leave Integration</td>
+</tr>
+<tr>
+<td><strong>Application</strong></td>
+<td>HR Leave (scoped)</td>
+</tr>
+<tr>
+<td><strong>Elevated privilege</strong></td>
+<td>false</td>
+</tr>
+<tr>
+<td><strong>Assignable by</strong></td>
+<td>(default)</td>
+</tr>
+</tbody>
+</table>
+<p>Submit. — هذا الدور يُستخدم في <strong>Default ACLs</strong> ليسمح لنظام HR الخارجي بالاستدعاء.</p>
+<h3 id="12-create-integration-user">1.2 Create integration user</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>Navigate:<br />
+All &gt; User Administration &gt; Users → New — <a href="{BASE}/sys_user_list.do">Open direct</a></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value to enter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>User ID</strong></td>
+<td>hrlx.integration</td>
+</tr>
+<tr>
+<td><strong>First name</strong></td>
+<td>HRLX</td>
+</tr>
+<tr>
+<td><strong>Last name</strong></td>
+<td>Integration</td>
+</tr>
+<tr>
+<td><strong>Email</strong></td>
+<td>hrlx.integration@yourcompany.com (any valid format)</td>
+</tr>
+<tr>
+<td><strong>Active</strong></td>
+<td>true</td>
+</tr>
+<tr>
+<td><strong>Password</strong></td>
+<td>set strong password (lab)</td>
+</tr>
+<tr>
+<td><strong>Web service access only</strong></td>
+<td>false (lab: leave false so you can impersonate)</td>
+</tr>
+<tr>
+<td><strong>Internal integration user</strong></td>
+<td>false (lab) / true (prod optional)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Roles</strong> (Related list → Edit):</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rest_service</td>
+<td>Required to call REST APIs</td>
+</tr>
+<tr>
+<td>x_786686_hr_leave.integration</td>
+<td>Allowed by Default ACLs</td>
+</tr>
+<tr>
+<td>x_786686_hr_leave.employee</td>
+<td>Insert leave via table ACL (create) — lab</td>
+</tr>
+<tr>
+<td>OR x_786686_hr_leave.hr_admin</td>
+<td>Lab shortcut only — not for production</td>
+</tr>
+</tbody>
+</table>
+<p>Submit.</p>
+<h3 id="13-system-property-optional-but-professional">1.3 System property (optional but professional)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>Navigate:<br />
+All &gt; System Properties → New (scope <strong>HR Leave</strong>) — <a href="{BASE}/sys_properties_list.do">Open direct</a></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x_786686_hr_leave.config.integration_user</td>
+<td>string</td>
+<td>hrlx.integration</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="phase-2-admin-default-acls-fixes-your-red-error">Phase 2 — Admin: Default ACLs (fixes your red error)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p><strong>Default ACLs</strong> is <strong>mandatory</strong> on Scripted REST Service. You must attach at least one ACL <strong>before Submit</strong>. — حقل <strong>Default ACLs</strong> إلزامي — بدون ACL لن يقبل <strong>Submit</strong> (كما في صورتك).</p>
+<h3 id="method-a-create-acl-from-the-lock-icon-recommended-on-new-form">Method A — Create ACL from the lock icon (recommended on New form)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<ol>
+<li>Open Scripted REST <strong>New</strong> form (after Phase 0 — app = HR Leave).</li>
+<li>Fill <strong>Name</strong> and <strong>API ID</strong> first (see Phase 3 table).</li>
+<li>Go to tab <strong>Security</strong>.</li>
+<li>Find <strong>Default ACLs</strong> (red asterisk).</li>
+<li>Click the <strong>lock</strong> icon (or <strong>+</strong>) next to Default ACLs → <strong>New</strong> ACL record opens.</li>
+</ol>
+<p>Fill the new ACL:</p>
+<table>
+<thead>
+<tr>
+<th>ACL field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Active</strong></td>
+<td>true</td>
+</tr>
+<tr>
+<td><strong>Operation</strong></td>
+<td>execute</td>
+</tr>
+<tr>
+<td><strong>Type</strong></td>
+<td>scripted_rest_api (or <strong>Scripted REST API</strong> in UI)</td>
+</tr>
+<tr>
+<td><strong>Scripted REST API</strong></td>
+<td>(may auto-link after parent saves — if empty, save API first then edit ACL)</td>
+</tr>
+<tr>
+<td><strong>Requires role</strong></td>
+<td>x_786686_hr_leave.integration</td>
+</tr>
+<tr>
+<td><strong>Admin overrides</strong></td>
+<td>false (prod) / true (lab only)</td>
+</tr>
+<tr>
+<td><strong>Advanced</strong></td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<p>For <strong>lab testing</strong> add second ACL or add role admin on same ACL so your admin user can test in Explorer.</p>
+<ol start="6">
+<li>Save ACL → return to Scripted REST form.</li>
+<li><strong>Default ACLs</strong> list collector → add the ACL you created.</li>
+<li>Now <strong>Submit</strong> works.</li>
+</ol>
+<h3 id="method-b-create-acl-manually-first-then-attach">Method B — Create ACL manually first, then attach</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>Navigate:<br />
+All &gt; System Security &gt; Access Control (ACL) → New — <a href="{BASE}/sys_security_acl_list.do">Open direct</a></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td>scripted_rest_api</td>
+</tr>
+<tr>
+<td><strong>Operation</strong></td>
+<td>execute</td>
+</tr>
+<tr>
+<td><strong>Name</strong></td>
+<td>HRLX Leave API execute (label)</td>
+</tr>
+<tr>
+<td><strong>Active</strong></td>
+<td>true</td>
+</tr>
+<tr>
+<td><strong>Requires role</strong></td>
+<td>x_786686_hr_leave.integration</td>
+</tr>
+<tr>
+<td><strong>Application</strong></td>
+<td>HR Leave</td>
+</tr>
+</tbody>
+</table>
+<p>Submit.</p>
+<p>Then on Scripted REST New → Security → <strong>Default ACLs</strong> → magnifier → select this ACL.</p>
+<h3 id="method-c-path-based-acl-public-api-pattern">Method C — Path-based ACL (public API pattern)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>Use when you need per-method control (GET vs POST).</p>
+<p>Navigate:<br />
+All &gt; System Security &gt; Access Control (ACL) → New — <a href="{BASE}/sys_security_acl_list.do">Open direct</a></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td>rest_endpoint (if available on your instance)</td>
+</tr>
+<tr>
+<td><strong>REST API path</strong></td>
+<td>/api/x_786686_hr_leave/hrlx_api_v2/*</td>
+</tr>
+<tr>
+<td><strong>HTTP method</strong></td>
+<td>POST (or * for all)</td>
+</tr>
+<tr>
+<td><strong>Operation</strong></td>
+<td>execute</td>
+</tr>
+<tr>
+<td><strong>Requires role</strong></td>
+<td>x_786686_hr_leave.integration</td>
+</tr>
+</tbody>
+</table>
+<p>Attach to Default ACLs the same way.</p>
+<hr />
+<h2 id="phase-3-dev-scripted-rest-service-every-field">Phase 3 — Dev: Scripted REST Service (every field)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>Navigate (scoped app <strong>HR Leave</strong> selected):<br />
+All &gt; System Web Services &gt; Scripted REST APIs → New — <a href="{BASE}/sys_ws_definition_list.do">Open direct</a></p>
+<h3 id="tab-general-top-section">Tab: General / top section</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Name</strong></td>
+<td>Yes</td>
+<td>HRLX Leave API</td>
+<td>Display name</td>
+</tr>
+<tr>
+<td><strong>API ID</strong></td>
+<td>Yes</td>
+<td>hrlx_api_v2</td>
+<td>Lowercase, no spaces; used in URL</td>
+</tr>
+<tr>
+<td><strong>Protection policy</strong></td>
+<td>No</td>
+<td>&ndash; None &ndash;</td>
+<td>Lab default</td>
+</tr>
+<tr>
+<td><strong>Application</strong></td>
+<td>Yes</td>
+<td>HR Leave</td>
+<td><strong>NOT Global</strong></td>
+</tr>
+<tr>
+<td><strong>API namespace</strong></td>
+<td>Read-only</td>
+<td>x_786686_hr_leave</td>
+<td>Must match scope prefix</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>No</td>
+<td>Inbound API to create leave requests from HRIS</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><strong>Active</strong></td>
+<td>—</td>
+<td>true</td>
+<td>If field exists</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Wrong vs right (your screenshot issue):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Wrong</th>
+<th>Correct</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application</td>
+<td>Global</td>
+<td>HR Leave</td>
+</tr>
+<tr>
+<td>API namespace</td>
+<td>2065034</td>
+<td>x_786686_hr_leave</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tab-security">Tab: Security</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Default ACLs</strong></td>
+<td>Select ACL from Phase 2</td>
+<td><strong>Mandatory</strong> — fixes submit error</td>
+</tr>
+<tr>
+<td><strong>Requires authentication</strong></td>
+<td>true</td>
+<td>No anonymous calls</td>
+</tr>
+<tr>
+<td><strong>Requires ACL authorization</strong></td>
+<td>true</td>
+<td>Enforces Default ACLs</td>
+</tr>
+</tbody>
+</table>
+<p>Blue info boxes on form:<br />
+- Default ACLs apply to all resources unless resource has its own ACLs.<br />
+- For public APIs use path-based ACLs — we use role-based for HRIS.</p>
+<p>Submit the <strong>Scripted REST Service</strong> record.</p>
+<hr />
+<h2 id="phase-4-dev-resource-endpoint-every-field">Phase 4 — Dev: Resource (endpoint) — every field</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>Open saved API → Related list <strong>Resources</strong> → New</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Name</strong></td>
+<td>Yes</td>
+<td>Create Leave</td>
+</tr>
+<tr>
+<td><strong>HTTP method</strong></td>
+<td>Yes</td>
+<td>POST</td>
+</tr>
+<tr>
+<td><strong>Relative path</strong></td>
+<td>Yes</td>
+<td>/leave</td>
+</tr>
+<tr>
+<td><strong>Relative path</strong> format</td>
+<td>—</td>
+<td>Must start with /</td>
+</tr>
+<tr>
+<td><strong>Active</strong></td>
+<td>—</td>
+<td>true</td>
+</tr>
+<tr>
+<td><strong>Requires authentication</strong></td>
+<td>—</td>
+<td>inherit from API (true)</td>
+</tr>
+<tr>
+<td><strong>Requires ACL authorization</strong></td>
+<td>—</td>
+<td>inherit (true)</td>
+</tr>
+<tr>
+<td><strong>Default ACLs</strong></td>
+<td>No</td>
+<td>empty = use API Default ACLs</td>
+</tr>
+<tr>
+<td><strong>Request processor</strong></td>
+<td>—</td>
+<td>default</td>
+</tr>
+<tr>
+<td><strong>Script</strong></td>
+<td>Yes</td>
+<td>paste inbound_scripted_rest_leave.js</td>
+</tr>
+</tbody>
+</table>
+<h3 id="resource-script-prerequisites">Resource script prerequisites</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>Before testing, confirm these exist in scope <strong>HR Leave</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Script Include HRLXProIntegrationUtilsV2</td>
+<td>sys_script_include.list</td>
+</tr>
+<tr>
+<td>Table x_786686_hr_leave_employee_v2</td>
+<td>employee with u_employee_id = EMP001</td>
+</tr>
+<tr>
+<td>Table x_786686_hr_leave_req_v2</td>
+<td>target table</td>
+</tr>
+<tr>
+<td>ACL create on req table</td>
+<td>src/security/acls.md ACL 3 + integration role</td>
+</tr>
+</tbody>
+</table>
+<p>Submit Resource.</p>
+<p><strong>Final URL:</strong><br />
+https://<instance>.service-now.com/api/x_786686_hr_leave/hrlx_api_v2/leave</p>
+<hr />
+<h2 id="phase-5-admin-table-acl-for-integration-insert">Phase 5 — Admin: Table ACL for integration insert</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>REST ACL allows <strong>calling</strong> the API. Table ACL allows <strong>inserting</strong> the leave row. — ACL الـ REST ≠ ACL الجدول — تحتاج الاثنين.</p>
+<h3 id="update-acl-3-create-on-leave-request">Update ACL 3 (create on leave request)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>File: src/security/acls.md</p>
+<p>On ACL <strong>create</strong> for x_786686_hr_leave_req_v2, script should allow integration role:</p>
+<pre><code class="language-javascript">answer = gs.hasRole('x_786686_hr_leave.employee')
+ || gs.hasRole('x_786686_hr_leave.hr_admin')
+ || gs.hasRole('x_786686_hr_leave.integration');
+</code></pre>
+<p>Or add <strong>Requires role</strong> (multi):<br />
+x_786686_hr_leave.employee,x_786686_hr_leave.integration</p>
+<p>Test with Impersonate:<br />
+All &gt; User Administration &gt; Impersonate User → hrlx.integration → try create record on form. — <a href="{BASE}/impersonate_dialog.do">Open direct</a></p>
+<hr />
+<h2 id="phase-6-test-in-rest-api-explorer">Phase 6 — Test in REST API Explorer</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<p>Navigate:<br />
+All &gt; System Web Services &gt; REST API Explorer — <a href="{BASE}/$restapi.do">Open direct</a><br />
+URL: $restapi.do</p>
+<table>
+<thead>
+<tr>
+<th>Explorer field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Namespace</td>
+<td>x_786686_hr_leave</td>
+</tr>
+<tr>
+<td>API name</td>
+<td>hrlx_api_v2</td>
+</tr>
+<tr>
+<td>Resource</td>
+<td>leave</td>
+</tr>
+<tr>
+<td>Method</td>
+<td>POST</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Request body:</strong></p>
+<pre><code class="language-json">{
+ &quot;employee_id&quot;: &quot;EMP001&quot;,
+ &quot;leave_type&quot;: &quot;annual&quot;,
+ &quot;start_date&quot;: &quot;2026-06-01&quot;,
+ &quot;end_date&quot;: &quot;2026-06-05&quot;,
+ &quot;reason&quot;: &quot;Vacation&quot;
+}
+</code></pre>
+<p>Click <strong>Send</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Response</th>
+<th>Meaning</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>201 + sys_id</td>
+<td>Success</td>
+<td>—</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Not authenticated</td>
+<td>Login / Basic Auth</td>
+</tr>
+<tr>
+<td>403</td>
+<td>ACL denied</td>
+<td>Phase 2 Default ACLs + Phase 5 table ACL</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Wrong URL</td>
+<td>Application scope + API ID</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Business validation</td>
+<td>Create employee EMP001</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Script error</td>
+<td>Check Script Include + logs</td>
+</tr>
+</tbody>
+</table>
+<p>Verify record:<br />
+x_786686_hr_leave_req_v2.list</p>
+<p>Impersonate test:<br />
+1. Impersonate hrlx.integration<br />
+2. Repeat Send in Explorer (or Postman with Basic Auth)</p>
+<hr />
+<h2 id="phase-7-sample-data-for-professional-practice">Phase 7 — Sample data for professional practice</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<h3 id="71-employee-required-for-employee_id-lookup">7.1 Employee (required for employee_id lookup)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>Table: x_786686_hr_leave_employee_v2</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Sample value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>u_user</td>
+<td>link to test employee sys_user</td>
+</tr>
+<tr>
+<td>u_employee_id</td>
+<td>EMP001</td>
+</tr>
+<tr>
+<td>u_department</td>
+<td>IT</td>
+</tr>
+<tr>
+<td>u_manager</td>
+<td>manager sys_user</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72-leave-types-state-choices">7.2 Leave types / state (choices)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Allowed values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>u_leave_type</td>
+<td>annual, sick, unpaid</td>
+</tr>
+<tr>
+<td>u_state</td>
+<td>API usually creates then BR sets; script may set submitted</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="checklist-copy-before-go-live">Checklist — copy before go-live</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<ul>
+<li>[ ] Application picker = <strong>HR Leave</strong> (not Global)</li>
+<li>[ ] API namespace = x_786686_hr_leave</li>
+<li>[ ] Default ACLs populated (mandatory)</li>
+<li>[ ] Role x_786686_hr_leave.integration exists</li>
+<li>[ ] User hrlx.integration has rest_service + integration role</li>
+<li>[ ] Resource POST /leave + script pasted</li>
+<li>[ ] Script Include HRLXProIntegrationUtilsV2 active</li>
+<li>[ ] Employee EMP001 exists</li>
+<li>[ ] Table ACL allows integration insert</li>
+<li>[ ] Explorer Send returns 201</li>
+<li>[ ] Copy as cURL documented for HRIS team</li>
+</ul>
+<hr />
+<h2 id="related-files">Related files</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>inbound_scripted_rest_leave.js</td>
+<td>Resource script</td>
+</tr>
+<tr>
+<td>rest_api_explorer.md</td>
+<td>Explorer quick reference</td>
+</tr>
+<tr>
+<td>12_INTEGRATION_FULL_GUIDE.md</td>
+<td>Full integration map</td>
+</tr>
+<tr>
+<td>02_ADMINISTRATION.md § Integration</td>
+<td>Admin summary</td>
+</tr>
+<tr>
+<td>src/security/acls.md</td>
+<td>Table ACLs</td>
+</tr>
+</tbody>
+</table>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../../../assets/docs.js"></script>
+
+<script src="../../../assets/author-brand.js" defer></script>
+</body>
+</html>

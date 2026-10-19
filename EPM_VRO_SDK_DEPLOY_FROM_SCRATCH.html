@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EPM VRO — Doc Paths + Fluent SDK Deploy From Scratch</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">EPM VRO · Deploy</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="PRACTICAL_SECOPS_VRO_FROM_SCRATCH.html">SecOps lab</a>
+      <a href="SDK_WINDOWS_FULL_CYCLE_CAN_CANNOT.html">SDK Windows</a>
+      <span class="badge">x_786686_epm_vro</span>
+      <span class="badge">dev398980</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>EPM VRO System — Paths, Fluent App, Deploy Online</h1>
+      <p>Catalog of every related doc + the Fluent SDK package that models VRO (vuln → VI → campaign → deferral → close) and deploys to your instance with <code>now-sdk build</code> / <code>install</code>.</p>
+      <div class="meta-grid">
+        <div><strong>Fluent root</strong><code style="color:#fff">servicenow-ai-workspace/epm-vro-sdk</code></div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_epm_vro</code></div>
+        <div><strong>Instance</strong><code style="color:#fff">https://dev398980.service-now.com</code></div>
+        <div><strong>Auth alias</strong><code style="color:#fff">DEVELOPMENT</code></div>
+      </div>
+    </section>
+
+    <div class="url-box"><strong>After deploy — open on instance</strong>
+      <a href="{BASE}/sys_app_list.do?sysparm_query=scope=x_786686_epm_vro">Application</a>
+      <a href="{BASE}/x_786686_epm_vro_vi_list.do">Vulnerable Items</a>
+      <a href="{BASE}/x_786686_epm_vro_vuln_list.do">Vulnerabilities</a>
+      <a href="{BASE}/x_786686_epm_vro_defer_list.do">Deferrals</a>
+      <a href="{BASE}/sys_hub_flow_list.do?sysparm_query=nameLIKEEPM">EPM Flows</a>
+      <a href="{BASE}/now/flow-designer">Flow Designer</a>
+    </div>
+
+    <article class="content">
+      <div class="viz-banner">
+        <h2>Why scoped tables (not sn_vul_*)</h2>
+        <p>This PDI has <strong>no</strong> <code>sn_vul_vulnerable_item</code> (VR plugin not installed). Fluent <strong>cannot</strong> own OOB VR dictionary. EPM VRO deploys a complete scoped stand-in with the same lifecycle so SDK install works end-to-end. When VR is licensed later, wrap <code>sn_vul_*</code> with extra flows — do not redefine the plugin.</p>
+      </div>
+
+      <h2 id="docs">1 · All related documentation (paths + brief)</h2>
+      <table class="field-table">
+        <thead><tr><th>Path</th><th>What it is</th></tr></thead>
+        <tbody>
+          <tr><td><code>html/EPM_VRO_SDK_DEPLOY_FROM_SCRATCH.html</code></td><td><strong>This page</strong> — catalog + deploy cycle</td></tr>
+          <tr><td><code>html/PRACTICAL_SECOPS_VRO_FROM_SCRATCH.html</code></td><td>Practical SecOps/VRO lab (SIR+VR+TI+CTD, scanner→close)</td></tr>
+          <tr><td><code>html/modules/SECOPS.html</code></td><td>Deep SecOps module / CIS drills</td></tr>
+          <tr><td><code>modules/SECOPS.md</code></td><td>Markdown source for SecOps module</td></tr>
+          <tr><td><code>html/PRACTICAL_FLOW_DESIGNER_FROM_SCRATCH.html</code></td><td>Flow Designer labs incl. VR-style triage</td></tr>
+          <tr><td><code>html/PRACTICAL_AI_SERVICENOW_FROM_SCRATCH.html</code></td><td>AI agents path (read-only tools on SecOps/HR)</td></tr>
+          <tr><td><code>html/SDK_WINDOWS_FULL_CYCLE_CAN_CANNOT.html</code></td><td>Windows SDK install→auth→commands→CAN/CANNOT→VR objects</td></tr>
+          <tr><td><code>html/SDK_CURSOR_FULL_DOCUMENTATION.html</code></td><td>All 12 CLI commands + flags (4.12.2)</td></tr>
+          <tr><td><code>html/16_SDK_FULL_DEV_ADMIN_FROM_SCRATCH.html</code></td><td>SDK master study path</td></tr>
+          <tr><td><code>html/11_SDK_CURSOR_CLAUDE.html</code></td><td>Studio / Cursor companion</td></tr>
+          <tr><td><code>MadarTechAcademy/content/lessons/mod-secops.html</code></td><td>Academy SecOps lesson</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="fluent">2 · Fluent created for EPM VRO (paths)</h2>
+      <table class="field-table">
+        <thead><tr><th>Fluent file</th><th>Objects</th></tr></thead>
+        <tbody>
+          <tr><td><code>servicenow-ai-workspace/epm-vro-sdk/</code></td><td>SDK project root (scope <code>x_786686_epm_vro</code>)</td></tr>
+          <tr><td><code>…/src/fluent/tables.now.ts</code></td><td>5 tables: vuln, vi, campaign, defer, audit</td></tr>
+          <tr><td><code>…/src/fluent/roles.now.ts</code></td><td>analyst · manager · admin</td></tr>
+          <tr><td><code>…/src/fluent/acls.now.ts</code></td><td>CRUD ACLs per table</td></tr>
+          <tr><td><code>…/src/fluent/script-includes.now.ts</code></td><td><code>EpmVroUtils</code> numbering + audit</td></tr>
+          <tr><td><code>…/src/fluent/business-rules.now.ts</code></td><td>VI/defer number + audit BRs</td></tr>
+          <tr><td><code>…/src/fluent/properties.now.ts</code></td><td>auto_assign_high · default_risk_approver</td></tr>
+          <tr><td><code>…/src/fluent/menu.now.ts</code></td><td>App menu + 5 modules</td></tr>
+          <tr><td><code>…/src/fluent/flows/vi-high-priority-triage.now.ts</code></td><td>Flow: high/critical VI triage</td></tr>
+          <tr><td><code>…/src/fluent/flows/deferral-approval.now.ts</code></td><td>Flow: risk deferral Ask for Approval</td></tr>
+          <tr><td><code>…/src/fluent/flows/vi-remediation-verify.now.ts</code></td><td>Flow: awaiting_verify stamp</td></tr>
+          <tr><td><code>…/src/fluent/flows/campaign-activate.now.ts</code></td><td>Flow: campaign active → bulk VI remediate</td></tr>
+          <tr><td><code>servicenow-ai-workspace/hr-leave-sdk/</code></td><td>Separate Fluent app (HR Leave) — reference for Flow() style</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="cycle">3 · Description cycle (objects)</h2>
+      <div class="flow">
+        <div class="n"><b>1</b>vuln</div><span class="arrow">→</span>
+        <div class="n"><b>2</b>VI</div><span class="arrow">→</span>
+        <div class="n"><b>3</b>triage flow</div><span class="arrow">→</span>
+        <div class="n"><b>4</b>campaign</div><span class="arrow">→</span>
+        <div class="n"><b>5</b>verify</div><span class="arrow">→</span>
+        <div class="n"><b>6</b>close</div>
+        <span class="arrow">|</span>
+        <div class="n"><b>alt</b>deferral</div>
+      </div>
+
+      <h2 id="deploy">4 · Deploy process (Windows PowerShell) — from scratch to end</h2>
+      <div class="stepboard">
+        <div class="s"><b>0</b><span>Prereq: Node 20+, SDK auth alias <code>DEVELOPMENT</code></span></div>
+        <div class="s"><b>1</b><span><code>cd C:\SVCProject\HR_Leave_App\servicenow-ai-workspace\epm-vro-sdk</code></span></div>
+        <div class="s"><b>2</b><span><code>npm ci</code> (or <code>npm install</code>)</span></div>
+        <div class="s"><b>3</b><span><code>npx @servicenow/sdk auth --list</code> → DEVELOPMENT points at instance</span></div>
+        <div class="s"><b>4</b><span><code>npx @servicenow/sdk build</code></span></div>
+        <div class="s"><b>5</b><span><code>npx @servicenow/sdk install --auth DEVELOPMENT</code></span></div>
+        <div class="s"><b>6</b><span>Proof: query app + open VI list URLs above</span></div>
+      </div>
+
+      <div class="pre-wrap"><pre><code>cd C:\SVCProject\HR_Leave_App\servicenow-ai-workspace\epm-vro-sdk
+npx @servicenow/sdk auth --list
+npx @servicenow/sdk build
+if ($LASTEXITCODE -ne 0) { throw "build failed" }
+npx @servicenow/sdk install --auth DEVELOPMENT --async false
+npx @servicenow/sdk query sys_app -q "scope=x_786686_epm_vro" -f name,scope,version --auth DEVELOPMENT
+npx @servicenow/sdk query sys_hub_flow -q "nameLIKEEPM" -f name,active --auth DEVELOPMENT</code></pre></div>
+
+      <div class="ok">
+        <p><strong>Deployed on https://dev398980.service-now.com:</strong> app <code>EPM VRO</code> · scope <code>x_786686_epm_vro</code> ·
+        5 tables · <strong>4/4 flows activated</strong> (High Priority Triage, Deferral Approval, Awaiting Verify, Campaign Activate).
+        App form: <a href="{BASE}/sys_app.do?sys_id=9c48d38e276c4383be0d3a4ab77edf78">sys_app</a>.</p>
+      </div>
+
+      <div class="chips">
+        <span class="chip do">✓ Pin @servicenow/sdk@4.12.2 per project</span>
+        <span class="chip do">✓ Use TemplateValue({...}) on updateRecord values</span>
+        <span class="chip do">✓ Commit keys.ts after first successful build</span>
+        <span class="chip dont">✗ Recreate sn_vul_* dictionary in Fluent</span>
+        <span class="chip dont">✗ install -r on shared prod without change ticket</span>
+      </div>
+
+      <div class="modmap">
+        <a href="PRACTICAL_SECOPS_VRO_FROM_SCRATCH.html"><h4>SecOps + VRO lab</h4><p>Product VR when plugin exists</p><span class="go">Open →</span></a>
+        <a href="SDK_WINDOWS_FULL_CYCLE_CAN_CANNOT.html"><h4>SDK Windows</h4><p>Auth · commands · can/cannot</p><span class="go">Open →</span></a>
+        <a href="PRACTICAL_FLOW_DESIGNER_FROM_SCRATCH.html"><h4>Flow Designer</h4><p>UI flows + transform</p><span class="go">Open →</span></a>
+        <a href="index.html"><h4>Portal</h4><p>All docs</p><span class="go">Open →</span></a>
+      </div>
+
+      <p class="footer">EPM VRO SDK deploy guide · replace {BASE}</p>
+    </article>
+  </main>
+  <script src="assets/docs.js"></script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,2181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Studio Create All Objects — Docs 01–16 Practical | HR Leave</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+  <style>
+    .toc-grid { display:flex; flex-wrap:wrap; gap:.35rem; margin:1rem 0; }
+    .toc-grid a { display:inline-block; padding:.28rem .6rem; background:#fff; border:1px solid var(--line); border-radius:999px; font-size:.82rem; text-decoration:none; }
+    .step-num { font-weight:700; color:var(--accent,#0ea5a4); }
+    table.field-table th { white-space:nowrap; }
+    .demo-box { border-left:4px solid #0ea5a4; padding:.35rem 0 .35rem .85rem; margin:.75rem 0; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Studio Practical</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="SCHEMA_AND_DATA.html">Schema</a>
+      <a href="scripts/index.html">Scripts Portal</a>
+      <a href="01_DEVELOPMENT.html">01 Development</a>
+      <a href="02_ADMINISTRATION.html">02 Admin</a>
+      <span class="badge">x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Studio Create All Objects — Docs 01–16 practical</h1>
+      <p>Complete <strong>Studio-only</strong> walkthrough: create every HR Leave object from scratch on the instance using Studio, classic UI, Flow Designer, Service Catalog, Portal, UI Builder, Reports, ATF, and Scripted REST. No SDK, no Fluent, no CLI, no npx.</p>
+      <div class="meta-grid">
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>App sys_id</strong><code style="color:#fff;font-size:.72rem">e5f5bc9493a303507520703efaba104d</code></div>
+        <div><strong>Instance example</strong><code style="color:#fff">dev398980</code></div>
+        <div><strong>URL token</strong><code style="color:#fff">{BASE}</code></div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Quick open</strong>
+      <a href="{BASE}/$studio.do">Studio</a>
+      <a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a>
+      <a href="{BASE}/sys_update_set_list.do">Update Sets</a>
+      <a href="{BASE}/now/flow-designer">Flow Designer</a>
+      <a href="{BASE}/$sp.do">Service Portal</a>
+      <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html"><strong>All properties + direct links</strong></a>
+    </div>
+    <div class="ok">
+      <p><strong>From scratch:</strong> Create Application Setup through Scripted REST in order. Every section has Prerequisites, Form fields, Step-by-step, Full script (when needed), Verify, and Demo — do not skip.</p>
+      <p><strong>Professional values &amp; every property:</strong> Keep
+      <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html</a>
+      open beside this page — master direct links (list + New) and suggested values for Application, tables/columns/choices, SI, BR, CS, UI, roles, ACLs, <strong>all system properties</strong>, events, notifications, menu/modules, catalog, Flow, portal, reports, ATF, REST, and seed data.</p>
+      <p><strong>Studio-only rule:</strong> Every step uses ServiceNow UI only. Full paste-ready scripts are embedded on this page — copy each <code>&lt;pre&gt;</code> block into the matching Studio record after you create it.</p>
+    </div>
+    <article class="content">
+
+<h2 id="rule0">Rule 0 — Before any object (Application + Update Set + Studio)</h2>
+<p>Repeat these checks before creating or editing any application file. This section is also <strong>section 00 Update Set</strong> — create the capture set first.</p>
+<ol>
+  <li><span class="step-num">Application picker</span> — top-right globe / application menu → select <strong>HR Leave</strong> (<code>x_786686_hr_leave</code>). Never leave <em>Global</em> selected when creating scoped artifacts.</li>
+  <li><span class="step-num">Update Set</span> — All → <strong>System Update Sets → Local Update Sets</strong> → <strong>New</strong>:
+    <table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+    <tr><td>Name</td><td><code>HR Leave – Build</code></td></tr>
+    <tr><td>Application</td><td>HR Leave</td></tr>
+    <tr><td>State</td><td>In Progress</td></tr>
+    <tr><td>Description</td><td>Captures all HR Leave lab artifacts</td></tr></table>
+    After submit: open the record → click <strong>Make Current</strong>. Direct list: <a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a>
+  </li>
+  <li><span class="step-num">Open Studio</span> — <a href="{BASE}/$studio.do">{BASE}/$studio.do</a> → confirm header shows <strong>HR Leave</strong>.</li>
+</ol>
+<div class="warn"><p>If artifacts land in Global scope, delete them and recreate under HR Leave. ACLs and events created globally will not behave correctly for this app.</p></div>
+<div class="demo-box"><p><strong>Verify Update Set:</strong> Create a test Script Include in Studio → open <strong>HR Leave – Build</strong> → Related List <strong>Customer Updates</strong> shows the new file.</p></div>
+
+<h2 id="toc">Object catalog</h2>
+<p>Jump to any object. Complete Application Setup → Flow Leave Approval for a working core app; Service Portal+ are extended chapter objects (Portal, Workspace, Report, ATF, REST) with full create steps on this page.</p>
+<div class="toc-grid">
+  <a href="#rule0">Rule 0 / Update Set</a>
+  <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">★ Properties + Direct Links</a>
+  <a href="#part-1-application">Part 1: Application Setup</a>
+  <a href="#part-2-table-employee">Part 2: Table</a>
+  <a href="#part-3-table-req">Part 3: Table</a>
+  <a href="#part-4-table-bal">Part 4: Table</a>
+  <a href="#part-5-table-audit">Part 5: Table</a>
+  <a href="#part-6-script-include-leave">Part 6: Script Include</a>
+  <a href="#part-7-script-include-security">Part 7: Script Include</a>
+  <a href="#part-8-br1">Part 8: Business Rule BR1</a>
+  <a href="#part-9-br2">Part 9: Business Rule BR2</a>
+  <a href="#part-10-br3">Part 10: Business Rule BR3</a>
+  <a href="#part-11-br4">Part 11: Business Rule BR4</a>
+  <a href="#part-12-cs1">Part 12: Client Script CS1</a>
+  <a href="#part-13-cs2">Part 13: Client Script CS2</a>
+  <a href="#part-14-ui-policy">Part 14: UI Policy</a>
+  <a href="#part-15-ui-action">Part 15: UI Action</a>
+  <a href="#part-16-roles">Part 16: Roles</a>
+  <a href="#part-17-groups">Part 17: Groups</a>
+  <a href="#part-18-users">Part 18: Users (lab matrix)</a>
+  <a href="#part-19-acls">Part 19: ACLs</a>
+  <a href="#part-20-properties">Part 20: System Properties</a>
+  <a href="#part-21-events">Part 21: Event Registry</a>
+  <a href="#part-22-notifications">Part 22: Notifications</a>
+  <a href="#part-23-job">Part 23: Scheduled Job</a>
+  <a href="#part-24-menu">Part 24: Application Menu</a>
+  <a href="#part-25-modules">Part 25: Modules</a>
+  <a href="#part-26-catalog">Part 26: Catalog Record Producer</a>
+  <a href="#part-27-flow">Part 27: Flow Designer</a>
+  <a href="#part-28-portal">Part 28: Service Portal Widgets & Page</a>
+  <a href="#part-29-workspace">Part 29: UI Builder Workspace</a>
+  <a href="#part-30-report">Part 30: Reports & Dashboard</a>
+  <a href="#part-31-atf">Part 31: ATF Tests</a>
+  <a href="#part-32-rest">Part 32: Scripted REST API</a>
+  <a href="#chapter-map">Chapter map</a>
+  <a href="#e2e-checklist">E2E checklist</a>
+</div>
+
+<h2 id="part-1-application">Part 1: Application Setup</h2>
+<h3>Purpose</h3>
+<p>Creates the scoped HR Leave application container. All other OBJ artifacts belong to scope <code>x_786686_hr_leave</code> and app sys_id <code>e5f5bc9493a303507520703efaba104d</code> on the lab instance.</p>
+<h3>Navigation path</h3>
+<nav class="section-links" aria-label="Navigation for 01"><strong>All &gt;</strong> Studio → <strong>Create Application</strong> (first launch) OR <strong>System Applications → Applications</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d</a></div>
+<h3>Prerequisites</h3>
+<ul><li>PDI or dev instance with admin + app_creator roles.</li><li>Rule 0 Update Set can be created immediately after app exists.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody>
+<tr><td>Name</td><td><code>HR Leave</code></td></tr>
+<tr><td>Scope name</td><td><code>x_786686_hr_leave</code></td></tr>
+<tr><td>Version</td><td><code>1.0.0</code></td></tr>
+<tr><td>Short description</td><td><code>HR Leave management v2 lab app</code></td></tr>
+<tr><td>Package type</td><td>Custom application</td></tr>
+<tr><td>Create application menu</td><td><strong>Checked</strong></td></tr>
+<tr><td>Studio</td><td>Checked (default)</td></tr>
+</tbody></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Open <a href="{BASE}/$studio.do">Studio</a>.</li>
+<li>Click <strong>Create Application</strong>.</li>
+<li>Enter every field from the table. Scope must be <code>x_786686_hr_leave</code>.</li>
+<li>Click <strong>Create</strong>. Studio opens HR Leave workspace.</li>
+<li>Classic verify: <a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application record</a> → Scope = x_786686_hr_leave.</li>
+<li>Proceed to Rule 0 Update Set → <strong>HR Leave – Build</strong> → Make Current.</li>
+</ol>
+
+<h3>Verify checklist</h3>
+<ul>
+<li>Application picker lists <strong>HR Leave</strong>.</li>
+<li>Scope prefix on new tables is <code>x_786686_hr_leave_</code>.</li>
+<li>Application Menu stub exists (modules added in Modules).</li>
+</ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Switch picker Global ↔ HR Leave. New Update Set shows Application = HR Leave.</p></div>
+
+<hr />
+
+<h2 id="part-2-table-employee">Part 2: Table — HR Employee (employee_v2)</h2>
+<h3>Purpose</h3>
+<p>Stores HR employee profiles linked to platform users. BR1 reads <code>u_manager</code> to populate leave request approver.</p>
+<h3>Navigation path</h3>
+<nav class="section-links" aria-label="Navigation for 02"><strong>All &gt;</strong> Studio → <strong>Create Application File → Table</strong> OR <strong>System Definition → Tables</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">{BASE}/x_786686_hr_leave_employee_v2_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-1-application">Part 1: Application Setup</a> Application HR Leave.</li><li>Rule 0 Update Set current.</li></ul>
+
+<h3>Table form fields (create the table first)</h3>
+<table class="field-table">
+<thead><tr><th>Field on New Table form</th><th>Suggested professional value</th></tr></thead>
+<tbody>
+<tr><td><strong>Label</strong></td><td><code>HR Employee</code></td></tr>
+<tr><td><strong>Name</strong></td><td><code>employee_v2</code> → full name becomes <code>x_786686_hr_leave_employee_v2</code></td></tr>
+<tr><td>Extends table</td><td><em>(leave empty — do not extend Task)</em></td></tr>
+<tr><td>Create module</td><td>true (or add later in Modules)</td></tr>
+<tr><td>Create access controls</td><td>true (refine later in Administration)</td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr>
+</tbody>
+</table>
+<p><strong>Where:</strong> Studio → Create Application File → <strong>Table</strong> · Direct: <a href="{BASE}/sys_db_object.do">{BASE}/sys_db_object.do</a></p>
+
+<h3>Column form fields (each column New)</h3>
+<p>On Columns related list → <strong>New</strong>: set <strong>Column label</strong>, Type, Max length, Reference. Element name = code below.</p>
+<h3>Form fields</h3>
+<table class="field-table"><thead><tr><th>Column</th><th>Column label</th><th>Type</th><th>Max length</th><th>Reference</th><th>Choice values</th><th>Display</th><th>Mandatory</th></tr></thead><tbody><tr><td><code>u_user</code></td><td>User</td><td>Reference</td><td>—</td><td>sys_user</td><td>—</td><td>No</td><td>Yes</td></tr><tr><td><code>u_employee_id</code></td><td>Employee ID</td><td>String</td><td>40</td><td>—</td><td>—</td><td>No</td><td>Yes</td></tr><tr><td><code>u_department</code></td><td>Department</td><td>String</td><td>100</td><td>—</td><td>—</td><td>No</td><td>No</td></tr><tr><td><code>u_manager</code></td><td>Manager</td><td>Reference</td><td>—</td><td>sys_user</td><td>—</td><td>No</td><td>Yes</td></tr><tr><td><code>u_join_date</code></td><td>Join Date</td><td>Date</td><td>—</td><td>—</td><td>—</td><td>No</td><td>No</td></tr><tr><td><code>u_grade</code></td><td>Grade</td><td>String</td><td>20</td><td>—</td><td>—</td><td>No</td><td>No</td></tr></tbody></table>
+<h4>Form Layout — x_786686_hr_leave_employee_v2</h4>
+<ol>
+<li>All → <strong>System Definition → Tables</strong> → open <code>x_786686_hr_leave_employee_v2</code> (or Studio → Tables).</li>
+<li>Related link <strong>Form Layout</strong> → <strong>New</strong> or edit default.</li>
+<li>Drag fields into sections: <strong>Profile</strong> (u_user, u_employee_id, u_department, u_grade, u_join_date), <strong>Management</strong> (u_manager).</li>
+<li><strong>Save</strong>.</li>
+</ol>
+<h4>List Layout — x_786686_hr_leave_employee_v2</h4>
+<ol>
+<li>Same table record → related link <strong>List Layout</strong>.</li>
+<li>Add columns (left to right): User, Employee ID, Department, Manager, Join Date, Grade.</li>
+<li><strong>Save</strong> → open list URL and confirm columns appear.</li>
+</ol>
+
+<h3>Step-by-step create</h3>
+<ol>
+<li>Studio → <strong>Create Application File</strong> → <strong>Table</strong>.</li>
+<li><strong>Label:</strong> <code>HR Employee</code> · <strong>Name:</strong> <code>employee_v2</code> → full name <code>x_786686_hr_leave_employee_v2</code>.</li>
+<li><strong>Extends table:</strong> leave blank (standalone).</li>
+<li><strong>Submit</strong> table record.</li>
+<li>For each column in the table above: Table → <strong>Columns</strong> related list → <strong>New</strong>:
+  <ul><li>Element = column name · <strong>Column label</strong> = friendly name · Type = as listed · Max length · Reference · Application = HR Leave.</li></ul></li>
+<li>Complete Form Layout and List Layout steps above.</li>
+</ol>
+
+<h3>Verify checklist</h3>
+<ul>
+<li>List opens: <a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">employee_v2 list</a></li>
+<li>Dictionary: <code>{BASE}/sys_dictionary_list.do?sysparm_query=name=x_786686_hr_leave_employee_v2^elementSTARTSWITHu_</code></li>
+<li>Six u_* columns under HR Leave application.</li>
+</ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><ol>
+<li>New record → User = employee1, Employee ID = E-1001, Manager = manager1.</li>
+<li>Save — no mandatory errors.</li>
+</ol></div>
+
+<hr />
+
+<h2 id="part-3-table-req">Part 3: Table — Leave Request (req_v2)</h2>
+<h3>Purpose</h3>
+<p>Core leave request table. Business rules, Flow, catalog, portal, and REST all target this table.</p>
+<h3>Navigation path</h3>
+<nav class="section-links" aria-label="Navigation for 03"><strong>All &gt;</strong> Studio → <strong>Create Application File → Table</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">{BASE}/x_786686_hr_leave_req_v2_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-1-application">Part 1: Application Setup</a> Application.</li><li><a href="#part-2-table-employee">Part 2: Table</a> employee_v2 (for u_employee_ref reference).</li></ul>
+
+<h3>Table form fields (create the table first)</h3>
+<table class="field-table">
+<thead><tr><th>Field on New Table form</th><th>Suggested professional value</th></tr></thead>
+<tbody>
+<tr><td><strong>Label</strong></td><td><code>Leave Request</code></td></tr>
+<tr><td><strong>Name</strong></td><td><code>req_v2</code> → <code>x_786686_hr_leave_req_v2</code></td></tr>
+<tr><td>Extends table</td><td><em>(empty)</em></td></tr>
+<tr><td>Create module</td><td>true</td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr>
+</tbody>
+</table>
+<p><strong>Where:</strong> Studio → Create Application File → Table · <a href="{BASE}/sys_db_object.do">New table</a></p>
+
+<h3>Column form fields (each column New)</h3>
+<p>On Columns related list → <strong>New</strong>: set <strong>Column label</strong>, Type, Max length, Reference. Element name = code below.</p>
+<h3>Form fields</h3>
+<table class="field-table"><thead><tr><th>Column</th><th>Column label</th><th>Type</th><th>Max length</th><th>Reference</th><th>Choice values</th><th>Display</th><th>Mandatory</th></tr></thead><tbody><tr><td><code>u_number</code></td><td>Number</td><td>String</td><td>40</td><td>—</td><td>—</td><td>Yes (display)</td><td>No</td></tr><tr><td><code>u_requested_for_user</code></td><td>Requested For</td><td>Reference</td><td>—</td><td>sys_user</td><td>—</td><td>No</td><td>Yes</td></tr><tr><td><code>u_employee_ref</code></td><td>Employee</td><td>Reference</td><td>—</td><td>x_786686_hr_leave_employee_v2</td><td>—</td><td>No</td><td>Yes</td></tr><tr><td><code>u_leave_type</code></td><td>Leave Type</td><td>Choice</td><td>—</td><td>—</td><td>annual, sick, unpaid</td><td>No</td><td>Yes</td></tr><tr><td><code>u_start_date</code></td><td>Start Date</td><td>Date</td><td>—</td><td>—</td><td>—</td><td>No</td><td>Yes</td></tr><tr><td><code>u_end_date</code></td><td>End Date</td><td>Date</td><td>—</td><td>—</td><td>—</td><td>No</td><td>Yes</td></tr><tr><td><code>u_days_count</code></td><td>Days</td><td>Integer</td><td>—</td><td>—</td><td>—</td><td>No</td><td>No (read-only on form)</td></tr><tr><td><code>u_state</code></td><td>State</td><td>Choice</td><td>—</td><td>—</td><td>draft, submitted, approved, rejected, cancelled</td><td>No</td><td>Yes</td></tr><tr><td><code>u_approver_user</code></td><td>Approver</td><td>Reference</td><td>—</td><td>sys_user</td><td>—</td><td>No</td><td>No (set by BR1)</td></tr><tr><td><code>u_reason</code></td><td>Reason</td><td>String</td><td>1000</td><td>—</td><td>—</td><td>No</td><td>Conditional (UI Policy sick)</td></tr></tbody></table><h4>Choice values — u_leave_type</h4><table><tr><th>Value</th><th>Label</th></tr>
+<tr><td>annual</td><td>Annual</td></tr><tr><td>sick</td><td>Sick</td></tr><tr><td>unpaid</td><td>Unpaid</td></tr></table><h4>Choice values — u_state</h4><table><tr><th>Value</th><th>Label</th></tr>
+<tr><td>draft</td><td>Draft</td></tr><tr><td>submitted</td><td>Submitted</td></tr>
+<tr><td>approved</td><td>Approved</td></tr><tr><td>rejected</td><td>Rejected</td></tr>
+<tr><td>cancelled</td><td>Cancelled</td></tr></table>
+<h4>Form Layout — x_786686_hr_leave_req_v2</h4>
+<ol>
+<li>All → <strong>System Definition → Tables</strong> → open <code>x_786686_hr_leave_req_v2</code> (or Studio → Tables).</li>
+<li>Related link <strong>Form Layout</strong> → <strong>New</strong> or edit default.</li>
+<li>Drag fields into sections: <strong>Request</strong> (u_number, u_requested_for_user, u_employee_ref, u_leave_type), <strong>Dates</strong> (u_start_date, u_end_date, u_days_count), <strong>Approval</strong> (u_approver_user, u_reason), <strong>Status</strong> (u_state).</li>
+<li><strong>Save</strong>.</li>
+</ol>
+<h4>List Layout — x_786686_hr_leave_req_v2</h4>
+<ol>
+<li>Same table record → related link <strong>List Layout</strong>.</li>
+<li>Add columns (left to right): Number, Requested For, Leave Type, Start Date, End Date, Days, State, Approver.</li>
+<li><strong>Save</strong> → open list URL and confirm columns appear.</li>
+</ol>
+
+<h3>Step-by-step create</h3>
+<ol>
+<li>Studio → Create Application File → Table.</li>
+<li>Label: <code>Leave Request</code> · Name: <code>req_v2</code> → <code>x_786686_hr_leave_req_v2</code>.</li>
+<li>Create all columns per field table. For Choice columns add values in Choice List related list.</li>
+<li>Table record → <strong>Display field</strong> = <code>u_number</code>.</li>
+<li>Dictionary: mark <code>u_days_count</code> read-only on form (optional dictionary flag).</li>
+<li>Complete Form Layout and List Layout above.</li>
+</ol>
+
+<h3>Verify checklist</h3>
+<ul>
+<li>Ten u_* columns exist.</li>
+<li>Choice fields show five states and three leave types.</li>
+<li>Reference picker on u_employee_ref shows employee_v2 rows.</li>
+</ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>New req_v2 as admin: fill dates Mon–Fri, save — u_days_count fills after Business Rule BR1 BR1.</p></div>
+
+<hr />
+
+<h2 id="part-4-table-bal">Part 4: Table — Leave Balance (bal_v2)</h2>
+<h3>Purpose</h3>
+<p>Tracks per-employee leave entitlement and usage by year and leave type. BR3 recalculates on approval.</p>
+<h3>Navigation path</h3>
+<nav class="section-links" aria-label="Navigation for 04"><strong>All &gt;</strong> Studio → Create Application File → Table</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">{BASE}/x_786686_hr_leave_bal_v2_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-2-table-employee">Part 2: Table</a> employee_v2.</li><li><a href="#part-20-properties">Part 20: System Properties</a> property for default entitled days (can seed manually first).</li></ul>
+
+<h3>Table form fields (create the table first)</h3>
+<table class="field-table">
+<thead><tr><th>Field on New Table form</th><th>Suggested professional value</th></tr></thead>
+<tbody>
+<tr><td><strong>Label</strong></td><td><code>Leave Balance</code></td></tr>
+<tr><td><strong>Name</strong></td><td><code>bal_v2</code> → <code>x_786686_hr_leave_bal_v2</code></td></tr>
+<tr><td>Extends table</td><td><em>(empty)</em></td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr>
+</tbody>
+</table>
+
+<h3>Column form fields (each column New)</h3>
+<p>On Columns related list → <strong>New</strong>: set <strong>Column label</strong>, Type, Max length, Reference. Element name = code below.</p>
+<h3>Form fields</h3>
+<table class="field-table"><thead><tr><th>Column</th><th>Column label</th><th>Type</th><th>Max length</th><th>Reference</th><th>Choice values</th><th>Display</th><th>Mandatory</th></tr></thead><tbody><tr><td><code>u_employee_ref</code></td><td>Employee</td><td>Reference</td><td>—</td><td>x_786686_hr_leave_employee_v2</td><td>—</td><td>No</td><td>Yes</td></tr><tr><td><code>u_year</code></td><td>Year</td><td>Integer</td><td>—</td><td>—</td><td>—</td><td>No</td><td>Yes</td></tr><tr><td><code>u_leave_type</code></td><td>Leave Type</td><td>Choice</td><td>—</td><td>—</td><td>annual, sick, unpaid</td><td>No</td><td>Yes</td></tr><tr><td><code>u_entitled</code></td><td>Entitled</td><td>Integer</td><td>—</td><td>—</td><td>—</td><td>No</td><td>Yes</td></tr><tr><td><code>u_used</code></td><td>Used</td><td>Integer</td><td>—</td><td>—</td><td>—</td><td>No</td><td>No</td></tr><tr><td><code>u_remaining</code></td><td>Remaining</td><td>Integer</td><td>—</td><td>—</td><td>—</td><td>No</td><td>No</td></tr></tbody></table>
+<h4>Form Layout — x_786686_hr_leave_bal_v2</h4>
+<ol>
+<li>All → <strong>System Definition → Tables</strong> → open <code>x_786686_hr_leave_bal_v2</code> (or Studio → Tables).</li>
+<li>Related link <strong>Form Layout</strong> → <strong>New</strong> or edit default.</li>
+<li>Drag fields into sections: <strong>Employee</strong> (u_employee_ref, u_year, u_leave_type), <strong>Balance</strong> (u_entitled, u_used, u_remaining).</li>
+<li><strong>Save</strong>.</li>
+</ol>
+<h4>List Layout — x_786686_hr_leave_bal_v2</h4>
+<ol>
+<li>Same table record → related link <strong>List Layout</strong>.</li>
+<li>Add columns (left to right): Employee, Year, Leave Type, Entitled, Used, Remaining.</li>
+<li><strong>Save</strong> → open list URL and confirm columns appear.</li>
+</ol>
+
+<h3>Step-by-step create</h3>
+<ol>
+<li>Studio → Table → Name <code>bal_v2</code>.</li>
+<li>Add six columns per table.</li>
+<li>Reuse u_leave_type choice values from req_v2.</li>
+<li>Form/List layouts per steps above.</li>
+</ol>
+
+<h3>Verify checklist</h3>
+<ul><li>bal_v2 list opens.</li><li>Reference to employee_v2 works.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Seed: employee, year 2026, annual, entitled 20, used 0, remaining 20.</p></div>
+
+<hr />
+
+<h2 id="part-5-table-audit">Part 5: Table — Leave Audit (audit_v2)</h2>
+<h3>Purpose</h3>
+<p>Append-only audit trail for leave state changes. BR3 writes rows automatically.</p>
+<h3>Navigation path</h3>
+<nav class="section-links" aria-label="Navigation for 05"><strong>All &gt;</strong> Studio → Create Application File → Table</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">{BASE}/x_786686_hr_leave_audit_v2_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-3-table-req">Part 3: Table</a> req_v2.</li></ul>
+
+<h3>Table form fields (create the table first)</h3>
+<table class="field-table">
+<thead><tr><th>Field on New Table form</th><th>Suggested professional value</th></tr></thead>
+<tbody>
+<tr><td><strong>Label</strong></td><td><code>Leave Audit</code></td></tr>
+<tr><td><strong>Name</strong></td><td><code>audit_v2</code> → <code>x_786686_hr_leave_audit_v2</code></td></tr>
+<tr><td>Extends table</td><td><em>(empty)</em></td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr>
+</tbody>
+</table>
+
+<h3>Column form fields (each column New)</h3>
+<p>On Columns related list → <strong>New</strong>: set <strong>Column label</strong>, Type, Max length, Reference. Element name = code below.</p>
+<h3>Form fields</h3>
+<table class="field-table"><thead><tr><th>Column</th><th>Column label</th><th>Type</th><th>Max length</th><th>Reference</th><th>Choice values</th><th>Display</th><th>Mandatory</th></tr></thead><tbody><tr><td><code>u_leave_ref</code></td><td>Leave</td><td>Reference</td><td>—</td><td>x_786686_hr_leave_req_v2</td><td>—</td><td>No</td><td>Yes</td></tr><tr><td><code>u_old_state</code></td><td>Old State</td><td>String</td><td>40</td><td>—</td><td>—</td><td>No</td><td>No</td></tr><tr><td><code>u_new_state</code></td><td>New State</td><td>String</td><td>40</td><td>—</td><td>—</td><td>No</td><td>Yes</td></tr><tr><td><code>u_event_type</code></td><td>Event Type</td><td>String</td><td>60</td><td>—</td><td>—</td><td>No</td><td>No</td></tr><tr><td><code>u_actor</code></td><td>Actor</td><td>Reference</td><td>—</td><td>sys_user</td><td>—</td><td>No</td><td>No</td></tr></tbody></table>
+<h4>Form Layout — x_786686_hr_leave_audit_v2</h4>
+<ol>
+<li>All → <strong>System Definition → Tables</strong> → open <code>x_786686_hr_leave_audit_v2</code> (or Studio → Tables).</li>
+<li>Related link <strong>Form Layout</strong> → <strong>New</strong> or edit default.</li>
+<li>Drag fields into sections: <strong>Audit</strong> (u_leave_ref, u_event_type, u_old_state, u_new_state, u_actor).</li>
+<li><strong>Save</strong>.</li>
+</ol>
+<h4>List Layout — x_786686_hr_leave_audit_v2</h4>
+<ol>
+<li>Same table record → related link <strong>List Layout</strong>.</li>
+<li>Add columns (left to right): Leave Request, Old State, New State, Event Type, Actor, Created.</li>
+<li><strong>Save</strong> → open list URL and confirm columns appear.</li>
+</ol>
+
+<h3>Step-by-step create</h3>
+<ol>
+<li>Studio → Table → <code>audit_v2</code>.</li>
+<li>Add five columns.</li>
+<li>Layouts as above.</li>
+</ol>
+
+<h3>Verify checklist</h3>
+<ul><li>audit_v2 list opens.</li><li>Reference to req_v2 works.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>After Business Rule BR3 BR3: change req state → new audit row appears.</p></div>
+
+<hr />
+
+<h2 id="part-6-script-include-leave">Part 6: Script Include — HRLXProLeaveUtilsV2</h2>
+<h3>Purpose</h3>
+<p>Server-side utility for business-day calculation, approver resolution, audit writes, balance recalc, and GlideAjax for CS2.</p>
+<h3>Navigation path</h3>
+<nav class="section-links" aria-label="Navigation for 06"><strong>All &gt;</strong> Studio → <strong>Create Application File → Script Include</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_script_include_list.do?sysparm_query=api_name=x_786686_hr_leave.HRLXProLeaveUtilsV2">{BASE}/sys_script_include_list.do?sysparm_query=api_name=x_786686_hr_leave.HRLXProLeaveUtilsV2</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-1-application">Part 1: Application Setup</a>.</li><li>Tables Table HR Employee..05 exist.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td><code>HRLXProLeaveUtilsV2</code></td></tr>
+<tr><td>API Name</td><td><code>x_786686_hr_leave.HRLXProLeaveUtilsV2</code></td></tr>
+<tr><td>Client callable</td><td><strong>Checked</strong></td></tr>
+<tr><td>Active</td><td>Checked</td></tr>
+<tr><td>Accessible from</td><td>All application scopes</td></tr>
+<tr><td>Script</td><td>Paste block below</td></tr></table>
+<p>Extends <code>AbstractAjaxProcessor</code> for <code>ajaxGetBusinessDays</code>.</p>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Studio → Script Include → New.</li>
+<li>Fill form fields table.</li>
+<li>Paste full script below into Script field.</li>
+<li>Save — fix any syntax errors.</li>
+</ol>
+<h3>Full script (paste-ready)</h3>
+<pre><code>/**
+ * Script Include: HRLXProLeaveUtilsV2
+ * Scope: x_786686_hr_leave
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ * Client callable: true  (extends AbstractAjaxProcessor)
+ * Purpose: Leave calculations + helpers (business days, approver, balance, audit).
+ *
+ * Create in ServiceNow:
+ *   Studio > Create Application File > Script Include
+ *   Name: HRLXProLeaveUtilsV2
+ *   Client callable: checked
+ */
+var HRLXProLeaveUtilsV2 = Class.create();
+HRLXProLeaveUtilsV2.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+    /**
+     * Count business days (Mon-Fri) inclusive between two date strings.
+     * @param {string} startDate - 'yyyy-MM-dd'
+     * @param {string} endDate   - 'yyyy-MM-dd'
+     * @return {number}
+     */
+    calculateBusinessDays: function (startDate, endDate) {
+        if (!startDate || !endDate) return 0;
+        var start = new GlideDateTime(startDate + ' 00:00:00');
+        var end = new GlideDateTime(endDate + ' 00:00:00');
+        if (end.before(start)) return 0;
+
+        var days = 0;
+        var cursor = new GlideDateTime(start);
+        while (!cursor.after(end)) {
+            var dow = cursor.getDayOfWeekLocalTime(); // 1=Mon ... 7=Sun
+            if (dow >= 1 &amp;&amp; dow &lt;= 5) days++;
+            cursor.addDaysLocalTime(1);
+        }
+        return days;
+    },
+
+    /**
+     * Resolve the approver (employee's manager) and set it on the record.
+     * @param {GlideRecord} currentRecord - leave request record
+     */
+    setApproverFromEmployee: function (currentRecord) {
+        var empId = currentRecord.getValue('u_employee_ref');
+        if (!empId) return;
+        var emp = new GlideRecord('x_786686_hr_leave_employee_v2');
+        if (emp.get(empId) &amp;&amp; emp.u_manager) {
+            currentRecord.u_approver_user = emp.getValue('u_manager');
+        }
+    },
+
+    /**
+     * Write an audit row when the state changes.
+     */
+    auditStateChange: function (leaveSysId, oldState, newState, eventType) {
+        var a = new GlideRecord('x_786686_hr_leave_audit_v2');
+        a.initialize();
+        a.u_leave_ref = leaveSysId;
+        a.u_old_state = oldState || '';
+        a.u_new_state = newState || '';
+        a.u_event_type = eventType || 'state_change';
+        a.u_actor = gs.getUserID();
+        a.insert();
+    },
+
+    /**
+     * Recalculate remaining balance for an employee/year.
+     */
+    recalculateBalance: function (employeeSysId, year) {
+        var used = this._sumApprovedDays(employeeSysId, year);
+        var bal = new GlideRecord('x_786686_hr_leave_bal_v2');
+        bal.addQuery('u_employee_ref', employeeSysId);
+        bal.addQuery('u_year', year);
+        bal.query();
+        if (bal.next()) {
+            bal.u_used = used;
+            bal.u_remaining = parseInt(bal.getValue('u_entitled') || 0, 10) - used;
+            bal.update();
+        }
+    },
+
+    _sumApprovedDays: function (employeeSysId, year) {
+        var total = 0;
+        var gr = new GlideAggregate('x_786686_hr_leave_req_v2');
+        gr.addQuery('u_employee_ref', employeeSysId);
+        gr.addQuery('u_state', 'approved');
+        gr.addQuery('u_start_date', '>=', year + '-01-01');
+        gr.addQuery('u_start_date', '&lt;=', year + '-12-31');
+        gr.addAggregate('SUM', 'u_days_count');
+        gr.query();
+        if (gr.next()) total = parseInt(gr.getAggregate('SUM', 'u_days_count') || 0, 10);
+        return total;
+    },
+
+    /**
+     * GlideAjax entry point for client-side day calculation.
+     */
+    ajaxGetBusinessDays: function () {
+        return this.calculateBusinessDays(
+            this.getParameter('sysparm_start'),
+            this.getParameter('sysparm_end')
+        );
+    },
+
+    type: 'HRLXProLeaveUtilsV2'
+});</code></pre>
+<h3>Verify checklist</h3>
+<ul><li>Active record under HR Leave.</li><li>No compile error banner.</li><li>Background test returns 5 for Mon–Fri range.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><pre><code>var util = new x_786686_hr_leave.HRLXProLeaveUtilsV2();
+gs.info('Days: ' + util.calculateBusinessDays('2026-09-01', '2026-09-05'));</code></pre></div>
+
+<hr />
+
+<h2 id="part-7-script-include-security">Part 7: Script Include — HRLXProSecurityUtilsV2</h2>
+<h3>Purpose</h3>
+<p>Centralized read/write authorization logic consumed by table ACLs on req_v2.</p>
+<h3>Navigation path</h3>
+<nav class="section-links" aria-label="Navigation for 07"><strong>All &gt;</strong> Studio → Create Application File → Script Include</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_script_include_list.do?sysparm_query=api_name=x_786686_hr_leave.HRLXProSecurityUtilsV2">{BASE}/sys_script_include_list.do?sysparm_query=api_name=x_786686_hr_leave.HRLXProSecurityUtilsV2</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-6-script-include-leave">Part 6: Script Include</a> (same app scope).</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td><code>HRLXProSecurityUtilsV2</code></td></tr>
+<tr><td>Client callable</td><td>Unchecked</td></tr>
+<tr><td>Active</td><td>Checked</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Studio → Script Include → New.</li>
+<li>Name = HRLXProSecurityUtilsV2, Client callable = false.</li>
+<li>Paste script below. Save.</li>
+</ol>
+<h3>Full script (paste-ready)</h3>
+<pre><code>/**
+ * Script Include: HRLXProSecurityUtilsV2
+ * Scope: x_786686_hr_leave
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ * Client callable: false
+ * Purpose: Centralized security checks used by ACLs.
+ *
+ * Used by ACL scripts, e.g.:
+ *   answer = new x_786686_hr_leave.HRLXProSecurityUtilsV2().canReadLeave(current);
+ */
+var HRLXProSecurityUtilsV2 = Class.create();
+HRLXProSecurityUtilsV2.prototype = {
+
+    initialize: function () {
+        this.userId = gs.getUserID();
+    },
+
+    /** HR admin can do anything. */
+    isHrAdmin: function () {
+        return gs.hasRole('x_786686_hr_leave.hr_admin');
+    },
+
+    /** Can the current user READ this leave request? */
+    canReadLeave: function (current) {
+        if (this.isHrAdmin()) return true;
+        // owner
+        if (current.getValue('u_requested_for_user') === this.userId) return true;
+        // approver / manager
+        if (current.getValue('u_approver_user') === this.userId) return true;
+        // manager of the employee
+        return this._isManagerOfEmployee(current.getValue('u_employee_ref'));
+    },
+
+    /** Can the current user WRITE this leave request? */
+    canWriteLeave: function (current) {
+        if (this.isHrAdmin()) return true;
+        var state = current.getValue('u_state');
+        // owner can edit only while draft/submitted
+        if (current.getValue('u_requested_for_user') === this.userId) {
+            return (state === 'draft' || state === 'submitted');
+        }
+        // approver can act when submitted
+        if (current.getValue('u_approver_user') === this.userId) {
+            return (state === 'submitted');
+        }
+        return false;
+    },
+
+    _isManagerOfEmployee: function (employeeSysId) {
+        if (!employeeSysId) return false;
+        var emp = new GlideRecord('x_786686_hr_leave_employee_v2');
+        if (emp.get(employeeSysId)) {
+            return emp.getValue('u_manager') === this.userId;
+        }
+        return false;
+    },
+
+    type: 'HRLXProSecurityUtilsV2'
+};</code></pre>
+<h3>Verify checklist</h3>
+<ul><li>Record active under HR Leave.</li><li>Used by ACLs ACL scripts.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Background: instantiate and call canReadLeave on a sample req_v2 GlideRecord.</p></div>
+
+<hr />
+
+<h2 id="part-8-br1">Part 8: Business Rule BR1 — Calculate Days</h2>
+<h3>Purpose</h3>
+<p>Calculates u_days_count and sets u_approver_user from employee manager before save.</p>
+<h3>Navigation path</h3>
+<nav class="section-links" aria-label="Navigation for 08"><strong>All &gt;</strong> Studio → <strong>Create Application File → Business Rule</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_script_list.do?sysparm_query=nameLIKEHRLX%20BR1">{BASE}/sys_script_list.do?sysparm_query=nameLIKEHRLX%20BR1</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-3-table-req">Part 3: Table</a> req_v2.</li><li><a href="#part-6-script-include-leave">Part 6: Script Include</a> HRLXProLeaveUtilsV2.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td><code>HRLX BR1 Calculate Days</code></td></tr>
+<tr><td>Table</td><td><code>x_786686_hr_leave_req_v2</code></td></tr>
+<tr><td>Advanced</td><td>Checked</td></tr>
+<tr><td>When</td><td><code>before</code></td></tr>
+<tr><td>Insert</td><td>Checked</td></tr>
+<tr><td>Update</td><td>Checked</td></tr>
+<tr><td>Delete</td><td>Unchecked</td></tr>
+<tr><td>Order</td><td><code>100</code></td></tr>
+<tr><td>Active</td><td>Checked</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Studio → Business Rule → New.</li>
+<li>Fill every field from table. Check <strong>Advanced</strong>.</li>
+<li>Paste script below into Script field.</li>
+<li>Save. Confirm Active = true.</li>
+</ol>
+<h3>Full script (paste-ready)</h3>
+<pre><code>/**
+ * Business Rule: BR1 - Calculate Days + Approver
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ * Table:  x_786686_hr_leave_req_v2
+ * When:   before
+ * Insert: true   Update: true
+ * Order:  100
+ *
+ * Calculates u_days_count and resolves the approver before saving.
+ */
+(function executeRule(current, previous /*null when inserting*/) {
+
+    var util = new x_786686_hr_leave.HRLXProLeaveUtilsV2();
+
+    if (current.u_start_date.changes() || current.u_end_date.changes() || current.isNewRecord()) {
+        current.u_days_count = util.calculateBusinessDays(
+            current.getValue('u_start_date'),
+            current.getValue('u_end_date')
+        );
+    }
+
+    if (current.u_employee_ref.changes() || current.isNewRecord()) {
+        util.setApproverFromEmployee(current);
+    }
+
+})(current, previous);</code></pre>
+<h3>Verify checklist</h3>
+<ul><li>BR order: 100, 200, 250, 300.</li><li>All Active on req_v2 under HR Leave.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>See section demo after BR is active (days calc, events, audit, balance).</p></div>
+
+<hr />
+
+<h2 id="part-9-br2">Part 9: Business Rule BR2 — On Submit Event</h2>
+<h3>Purpose</h3>
+<p>Queues submitted event when u_state becomes submitted (notifications + Flow trigger).</p>
+<h3>Navigation path</h3>
+<nav class="section-links" aria-label="Navigation for 09"><strong>All &gt;</strong> Studio → <strong>Create Application File → Business Rule</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_script_list.do?sysparm_query=nameLIKEHRLX%20BR2">{BASE}/sys_script_list.do?sysparm_query=nameLIKEHRLX%20BR2</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-3-table-req">Part 3: Table</a> req_v2.</li><li><a href="#part-6-script-include-leave">Part 6: Script Include</a> HRLXProLeaveUtilsV2.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td><code>HRLX BR2 On Submit Event</code></td></tr>
+<tr><td>Table</td><td><code>x_786686_hr_leave_req_v2</code></td></tr>
+<tr><td>Advanced</td><td>Checked</td></tr>
+<tr><td>When</td><td><code>after</code></td></tr>
+<tr><td>Insert</td><td>Checked</td></tr>
+<tr><td>Update</td><td>Checked</td></tr>
+<tr><td>Delete</td><td>Unchecked</td></tr>
+<tr><td>Order</td><td><code>200</code></td></tr>
+<tr><td>Active</td><td>Checked</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Studio → Business Rule → New.</li>
+<li>Fill every field from table. Check <strong>Advanced</strong>.</li>
+<li>Paste script below into Script field.</li>
+<li>Save. Confirm Active = true.</li>
+</ol>
+<h3>Full script (paste-ready)</h3>
+<pre><code>/**
+ * Business Rule: BR2 - On Submit Fire Event
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ * Table:  x_786686_hr_leave_req_v2
+ * When:   after
+ * Update: true   Insert: true
+ * Order:  200
+ *
+ * Fires an event when state becomes 'submitted' (drives notification / flow).
+ */
+(function executeRule(current, previous) {
+
+    if (current.u_state.changesTo('submitted')) {
+        gs.eventQueue(
+            'x_786686_hr_leave.leave_v2.submitted',
+            current,
+            current.getValue('u_approver_user'),
+            current.getValue('u_number')
+        );
+    }
+
+})(current, previous);</code></pre>
+<h3>Verify checklist</h3>
+<ul><li>BR order: 100, 200, 250, 300.</li><li>All Active on req_v2 under HR Leave.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>See section demo after BR is active (days calc, events, audit, balance).</p></div>
+
+<hr />
+
+<h2 id="part-10-br3">Part 10: Business Rule BR3 — Audit State Change</h2>
+<h3>Purpose</h3>
+<p>Writes audit_v2 row on state change; recalculates balance on approval.</p>
+<h3>Navigation path</h3>
+<nav class="section-links" aria-label="Navigation for 10"><strong>All &gt;</strong> Studio → <strong>Create Application File → Business Rule</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_script_list.do?sysparm_query=nameLIKEHRLX%20BR3">{BASE}/sys_script_list.do?sysparm_query=nameLIKEHRLX%20BR3</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-3-table-req">Part 3: Table</a> req_v2.</li><li><a href="#part-6-script-include-leave">Part 6: Script Include</a> HRLXProLeaveUtilsV2.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td><code>HRLX BR3 Audit State Change</code></td></tr>
+<tr><td>Table</td><td><code>x_786686_hr_leave_req_v2</code></td></tr>
+<tr><td>Advanced</td><td>Checked</td></tr>
+<tr><td>When</td><td><code>after</code></td></tr>
+<tr><td>Insert</td><td>Unchecked</td></tr>
+<tr><td>Update</td><td>Checked</td></tr>
+<tr><td>Delete</td><td>Unchecked</td></tr>
+<tr><td>Order</td><td><code>300</code></td></tr>
+<tr><td>Active</td><td>Checked</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Studio → Business Rule → New.</li>
+<li>Fill every field from table. Check <strong>Advanced</strong>.</li>
+<li>Paste script below into Script field.</li>
+<li>Save. Confirm Active = true.</li>
+</ol>
+<h3>Full script (paste-ready)</h3>
+<pre><code>/**
+ * Business Rule: BR3 - Audit State Change + Balance
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ * Table:  x_786686_hr_leave_req_v2
+ * When:   after
+ * Update: true
+ * Order:  300
+ *
+ * Writes an audit row on any state change and recalculates balance on approval.
+ */
+(function executeRule(current, previous) {
+
+    if (!current.u_state.changes()) return;
+
+    var util = new x_786686_hr_leave.HRLXProLeaveUtilsV2();
+    util.auditStateChange(
+        current.getUniqueValue(),
+        previous ? previous.getValue('u_state') : '',
+        current.getValue('u_state'),
+        'state_change'
+    );
+
+    if (current.u_state.changesTo('approved') &amp;&amp; current.u_employee_ref) {
+        var year = new GlideDateTime(current.getValue('u_start_date')).getYearLocalTime();
+        util.recalculateBalance(current.getValue('u_employee_ref'), year);
+    }
+
+})(current, previous);</code></pre>
+<h3>Verify checklist</h3>
+<ul><li>BR order: 100, 200, 250, 300.</li><li>All Active on req_v2 under HR Leave.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>See section demo after BR is active (days calc, events, audit, balance).</p></div>
+
+<hr />
+
+<h2 id="part-11-br4">Part 11: Business Rule BR4 — Approve / Reject Event</h2>
+<h3>Purpose</h3>
+<p>Queues approved/rejected events for notifications.</p>
+<h3>Navigation path</h3>
+<nav class="section-links" aria-label="Navigation for 11"><strong>All &gt;</strong> Studio → <strong>Create Application File → Business Rule</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_script_list.do?sysparm_query=nameLIKEHRLX%20BR4">{BASE}/sys_script_list.do?sysparm_query=nameLIKEHRLX%20BR4</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-3-table-req">Part 3: Table</a> req_v2.</li><li><a href="#part-6-script-include-leave">Part 6: Script Include</a> HRLXProLeaveUtilsV2.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td><code>HRLX BR4 Approve Reject Event</code></td></tr>
+<tr><td>Table</td><td><code>x_786686_hr_leave_req_v2</code></td></tr>
+<tr><td>Advanced</td><td>Checked</td></tr>
+<tr><td>When</td><td><code>after</code></td></tr>
+<tr><td>Insert</td><td>Unchecked</td></tr>
+<tr><td>Update</td><td>Checked</td></tr>
+<tr><td>Delete</td><td>Unchecked</td></tr>
+<tr><td>Order</td><td><code>250</code></td></tr>
+<tr><td>Active</td><td>Checked</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Studio → Business Rule → New.</li>
+<li>Fill every field from table. Check <strong>Advanced</strong>.</li>
+<li>Paste script below into Script field.</li>
+<li>Save. Confirm Active = true.</li>
+</ol>
+<h3>Full script (paste-ready)</h3>
+<pre><code>/**
+ * Business Rule: BR4 - Fire Approved / Rejected Events
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ * Table:  x_786686_hr_leave_req_v2
+ * When:   after
+ * Update: true
+ * Insert: false
+ * Order:  250
+ *
+ * Drives notifications for approved and rejected leave requests.
+ * Requires events registered in Event Registry (see events.md).
+ */
+(function executeRule(current, previous) {
+
+    if (current.u_state.changesTo('approved')) {
+        gs.eventQueue(
+            'x_786686_hr_leave.leave_v2.approved',
+            current,
+            current.getValue('u_requested_for_user'),
+            current.getValue('u_number')
+        );
+    }
+
+    if (current.u_state.changesTo('rejected')) {
+        gs.eventQueue(
+            'x_786686_hr_leave.leave_v2.rejected',
+            current,
+            current.getValue('u_requested_for_user'),
+            current.getValue('u_number')
+        );
+    }
+
+})(current, previous);</code></pre>
+<h3>Verify checklist</h3>
+<ul><li>BR order: 100, 200, 250, 300.</li><li>All Active on req_v2 under HR Leave.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>See section demo after BR is active (days calc, events, audit, balance).</p></div>
+
+<hr />
+
+<h2 id="part-12-cs1">Part 12: Client Script CS1 — Validate Dates</h2>
+<h3>Purpose</h3>
+<p>Client-side validation: end date cannot precede start date on req_v2 form.</p>
+<h3>Navigation path</h3>
+<nav class="section-links" aria-label="Navigation for 12"><strong>All &gt;</strong> Studio → <strong>Create Application File → Client Script</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_script_client_list.do?sysparm_query=nameLIKEHRLX%20CS1">{BASE}/sys_script_client_list.do?sysparm_query=nameLIKEHRLX%20CS1</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-3-table-req">Part 3: Table</a> req_v2 table/form.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td><code>HRLX CS1 Validate Dates</code></td></tr>
+<tr><td>Table</td><td><code>x_786686_hr_leave_req_v2</code></td></tr>
+<tr><td>Type</td><td><code>onChange</code></td></tr>
+<tr><td>Field name</td><td><code>u_end_date</code></td></tr>
+<tr><td>UI Type</td><td>Desktop + All checked</td></tr>
+<tr><td>Active</td><td>Checked</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Studio → Client Script → New.</li>
+<li>Fill fields. Type = onChange, Field = u_end_date.</li>
+<li>Paste script. Save.</li>
+</ol>
+<h3>Full script (paste-ready)</h3>
+<pre><code>/**
+ * Client Script: CS1 - Validate Dates
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ * Table:  x_786686_hr_leave_req_v2
+ * Type:   onChange
+ * Field:  u_end_date
+ *
+ * Shows an error if end date is before start date.
+ */
+function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+    if (isLoading || newValue === '') return;
+
+    var start = g_form.getValue('u_start_date');
+    var end = g_form.getValue('u_end_date');
+    if (!start || !end) return;
+
+    if (end &lt; start) {
+        g_form.showFieldMsg('u_end_date', getMessage('End date cannot be before start date'), 'error');
+        g_form.clearValue('u_end_date');
+    } else {
+        g_form.hideFieldMsg('u_end_date', true);
+    }
+}</code></pre>
+<h3>Verify checklist</h3>
+<ul><li>Client script list shows Active on req_v2.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Start 2026-09-10, End 2026-09-01 → error, end cleared.</p></div>
+
+<hr />
+
+<h2 id="part-13-cs2">Part 13: Client Script CS2 — Calc Days (GlideAjax)</h2>
+<h3>Purpose</h3>
+<p>Calls HRLXProLeaveUtilsV2.ajaxGetBusinessDays to preview u_days_count before save.</p>
+<h3>Navigation path</h3>
+<nav class="section-links" aria-label="Navigation for 13"><strong>All &gt;</strong> Studio → Create Application File → Client Script</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_script_client_list.do?sysparm_query=nameLIKEHRLX%20CS2">{BASE}/sys_script_client_list.do?sysparm_query=nameLIKEHRLX%20CS2</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-6-script-include-leave">Part 6: Script Include</a> client-callable Script Include.</li><li><a href="#part-12-cs1">Part 12: Client Script CS1</a> can share u_end_date onChange.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td><code>HRLX CS2 Calc Days GlideAjax</code></td></tr>
+<tr><td>Table</td><td><code>x_786686_hr_leave_req_v2</code></td></tr>
+<tr><td>Type</td><td><code>onChange</code></td></tr>
+<tr><td>Field name</td><td><code>u_end_date</code> (duplicate CS for u_start_date if desired)</td></tr>
+<tr><td>UI Type</td><td>Desktop + All</td></tr>
+<tr><td>Active</td><td>Checked</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Create Client Script after Script Include HRLXProLeaveUtilsV2.</li>
+<li>onChange on u_end_date — same field as CS1 (both execute).</li>
+<li>Paste script. Save.</li>
+</ol>
+<h3>Full script (paste-ready)</h3>
+<pre><code>/**
+ * Client Script: CS2 - Calculate Days (GlideAjax)
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ * Table:  x_786686_hr_leave_req_v2
+ * Type:   onChange
+ * Field:  u_end_date
+ *
+ * Calls HRLXProLeaveUtilsV2.ajaxGetBusinessDays asynchronously to fill u_days_count.
+ */
+function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+    if (isLoading || newValue === '') return;
+
+    var start = g_form.getValue('u_start_date');
+    var end = g_form.getValue('u_end_date');
+    if (!start || !end || end &lt; start) return;
+
+    var ga = new GlideAjax('x_786686_hr_leave.HRLXProLeaveUtilsV2');
+    ga.addParam('sysparm_name', 'ajaxGetBusinessDays');
+    ga.addParam('sysparm_start', start);
+    ga.addParam('sysparm_end', end);
+    ga.getXMLAnswer(function (answer) {
+        if (answer !== null &amp;&amp; answer !== '') {
+            g_form.setValue('u_days_count', answer);
+        }
+    });
+}</code></pre>
+<h3>Verify checklist</h3>
+<ul><li>Browser dev tools → Network → GlideAjax to HRLXProLeaveUtilsV2.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Valid Mon–Fri range → u_days_count populates before save.</p></div>
+
+<hr />
+
+<h2 id="part-14-ui-policy">Part 14: UI Policy — Sick Requires Reason</h2>
+<h3>Purpose</h3>
+<p>When leave type is sick, makes u_reason mandatory on the req_v2 form.</p>
+<h3>Navigation path</h3>
+<nav class="section-links" aria-label="Navigation for 14"><strong>All &gt;</strong> <strong>System UI → UI Policies</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_ui_policy_list.do?sysparm_query=table=x_786686_hr_leave_req_v2">{BASE}/sys_ui_policy_list.do?sysparm_query=table=x_786686_hr_leave_req_v2</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-3-table-req">Part 3: Table</a> req_v2 with u_leave_type and u_reason.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Table</td><td><code>x_786686_hr_leave_req_v2</code></td></tr>
+<tr><td>Short description</td><td><code>Sick leave requires reason</code></td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr>
+<tr><td>Active</td><td>Checked</td></tr>
+<tr><td>Reverse if false</td><td>Checked</td></tr>
+<tr><td>On load</td><td>Checked</td></tr>
+<tr><td>Condition</td><td><code>u_leave_type</code> is <code>sick</code></td></tr></table>
+<h4>UI Policy Action (related list New)</h4>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Field</td><td><code>u_reason</code></td></tr>
+<tr><td>Mandatory</td><td>true</td></tr>
+<tr><td>Visible</td><td>true</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Application = HR Leave.</li>
+<li>All → System UI → UI Policies → <strong>New</strong>.</li>
+<li>Fill policy fields. Condition builder: Leave Type is sick.</li>
+<li>Submit policy.</li>
+<li>Related list <strong>UI Policy Actions</strong> → New → u_reason mandatory true.</li>
+<li>Save action. Verify policy Active.</li>
+</ol>
+
+<h3>Verify checklist</h3>
+<ul><li>Leave type Sick → red asterisk on Reason.</li><li>Annual → Reason not mandatory.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Select Sick, leave Reason empty, try Save → client mandatory warning.</p></div>
+
+<hr />
+
+<h2 id="part-15-ui-action">Part 15: UI Action — Submit</h2>
+<h3>Purpose</h3>
+<p>Form button that moves draft leave requests to submitted state (triggers BR2 and Flow).</p>
+<h3>Navigation path</h3>
+<nav class="section-links" aria-label="Navigation for 15"><strong>All &gt;</strong> Studio → <strong>Create Application File → UI Action</strong> OR req_v2 form → UI Actions related list</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_ui_action_list.do?sysparm_query=table=x_786686_hr_leave_req_v2">{BASE}/sys_ui_action_list.do?sysparm_query=table=x_786686_hr_leave_req_v2</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-3-table-req">Part 3: Table</a> req_v2.</li><li><a href="#part-9-br2">Part 9: Business Rule BR2</a> BR2 for event.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td><code>Submit</code></td></tr>
+<tr><td>Table</td><td><code>x_786686_hr_leave_req_v2</code></td></tr>
+<tr><td>Action name</td><td><code>submit_leave</code></td></tr>
+<tr><td>Form button</td><td>Checked</td></tr>
+<tr><td>Form style</td><td>Primary (optional)</td></tr>
+<tr><td>Order</td><td><code>100</code></td></tr>
+<tr><td>Condition</td><td><code>current.u_state == 'draft'</code></td></tr>
+<tr><td>Client</td><td>Unchecked (server script)</td></tr>
+<tr><td>Active</td><td>Checked</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Studio → UI Action → New on req_v2.</li>
+<li>Fill fields. Uncheck Client checkbox.</li>
+<li>Paste server script below in Script field.</li>
+<li>Save. Open draft req_v2 → Submit button visible.</li>
+</ol>
+<h3>Full script (paste-ready)</h3>
+<pre><code>current.u_state = 'submitted';
+current.update();
+action.setRedirectURL(current);</code></pre>
+<h3>Verify checklist</h3>
+<ul><li>Button only on draft records.</li><li>After click state = submitted.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Draft → Submit → BR2 event + Flow Flow Leave Approval starts.</p></div>
+
+<hr />
+
+<h2 id="part-16-roles">Part 16: Roles</h2>
+<h3>Purpose</h3>
+<p>Defines four scoped roles for employee self-service, manager approval, HR admin, and integration REST access.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> Studio → <strong>Create Application File → Role</strong> OR <strong>System Security → Roles</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">{BASE}/sys_user_role_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-1-application">Part 1: Application Setup</a> Application HR Leave.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><thead><tr><th>Name</th><th>Description</th><th>Assignable by</th></tr></thead>
+<tbody>
+<tr><td><code>x_786686_hr_leave.employee</code></td><td>Submit and view own leave</td><td>hr_admin</td></tr>
+<tr><td><code>x_786686_hr_leave.manager</code></td><td>Approve team leave</td><td>hr_admin</td></tr>
+<tr><td><code>x_786686_hr_leave.hr_admin</code></td><td>Full HR Leave admin</td><td>admin</td></tr>
+<tr><td><code>x_786686_hr_leave.integration</code></td><td>REST / integration user</td><td>admin</td></tr>
+</tbody></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>For each row: Studio → Role → New.</li>
+<li>Name = scoped role name (prefix auto). Description as table. Application = HR Leave.</li>
+<li>Submit. Repeat four times.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Four roles filtered by x_786686_hr_leave.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Assign employee role to test user → effective after group assignment Groups.</p></div>
+<hr />
+
+<h2 id="part-17-groups">Part 17: Groups</h2>
+<h3>Purpose</h3>
+<p>Assignment groups that grant scoped roles to lab users (employees, managers, HR admins, integration bot).</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>User Administration → Groups</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_user_group_list.do">{BASE}/sys_user_group_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-16-roles">Part 16: Roles</a> roles exist.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><thead><tr><th>Group name</th><th>Group Roles</th><th>Members</th></tr></thead>
+<tbody>
+<tr><td>HRLX Employees</td><td>x_786686_hr_leave.employee</td><td>employee1</td></tr>
+<tr><td>HRLX Managers</td><td>x_786686_hr_leave.manager, employee</td><td>manager1</td></tr>
+<tr><td>HRLX HR Admins</td><td>x_786686_hr_leave.hr_admin</td><td>hradmin</td></tr>
+<tr><td>HRLX Integration</td><td>x_786686_hr_leave.integration, rest_service</td><td>hrlx.integration</td></tr>
+</tbody></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Groups → New → Name from table.</li>
+<li>Related list <strong>Group Roles</strong> → Edit → add scoped roles.</li>
+<li>Related list <strong>Users</strong> → add members (create users in Users if missing).</li>
+<li>Repeat for all four groups.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>User record → Roles related list shows inherited group roles.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Impersonate employee1 → roles include employee.</p></div>
+<hr />
+
+<h2 id="part-18-users">Part 18: Users (lab matrix)</h2>
+<h3>Purpose</h3>
+<p>Four lab users for E2E testing: employee, manager, HR admin, integration service account.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>User Administration → Users</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_user_list.do">{BASE}/sys_user_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-17-groups">Part 17: Groups</a> groups ready.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><thead><tr><th>User ID</th><th>Name</th><th>Email</th><th>Group</th></tr></thead>
+<tbody>
+<tr><td>employee1</td><td>Lab Employee</td><td>employee1@lab.local</td><td>HRLX Employees</td></tr>
+<tr><td>manager1</td><td>Lab Manager</td><td>manager1@lab.local</td><td>HRLX Managers</td></tr>
+<tr><td>hradmin</td><td>Lab HR Admin</td><td>hradmin@lab.local</td><td>HRLX HR Admins</td></tr>
+<tr><td>hrlx.integration</td><td>Integration Bot</td><td>hrlx.integration@lab.local</td><td>HRLX Integration</td></tr>
+</tbody></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Users → New for each row. Set password per instance policy.</li>
+<li>Active = true. Email required for notifications Notifications.</li>
+<li>Add to group via Groups related list or group Members list.</li>
+<li>Seed <a href="#part-2-table-employee">employee_v2</a>: employee1 user, manager = manager1, Employee ID E-1001.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Impersonate each user successfully.</li><li>employee_v2 links employee1 → manager1.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>employee1 creates req_v2 → u_approver_user = manager1 after save (BR1).</p></div>
+<hr />
+
+<h2 id="part-19-acls">Part 19: ACLs</h2>
+<h3>Purpose</h3>
+<p>Record and field ACLs enforce who can read, write, and create leave requests using HRLXProSecurityUtilsV2.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>System Security → Access Control (ACL)</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">{BASE}/sys_security_acl_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-7-script-include-security">Part 7: Script Include</a> HRLXProSecurityUtilsV2.</li><li><a href="#part-16-roles">Part 16: Roles</a> roles.</li><li>Elevate <strong>security_admin</strong> before creating ACLs.</li></ul>
+<h3>Form fields</h3>
+<h4>ACL 1 — read</h4>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Type</td><td>record</td></tr><tr><td>Operation</td><td>read</td></tr>
+<tr><td>Name</td><td><code>x_786686_hr_leave_req_v2</code></td></tr>
+<tr><td>Advanced</td><td>Checked</td></tr>
+<tr><td>Script</td><td><code>answer = new x_786686_hr_leave.HRLXProSecurityUtilsV2().canReadLeave(current);</code></td></tr></table>
+<h4>ACL 2 — write</h4>
+<table class="field-table"><tr><td>Operation</td><td>write</td></tr>
+<tr><td>Script</td><td><code>answer = new x_786686_hr_leave.HRLXProSecurityUtilsV2().canWriteLeave(current);</code></td></tr></table>
+<h4>ACL 3 — create</h4>
+<table class="field-table"><tr><td>Operation</td><td>create</td></tr>
+<tr><td>Requires role</td><td>x_786686_hr_leave.employee</td></tr>
+<tr><td>Script</td><td><code>answer = gs.hasRole('x_786686_hr_leave.employee') || gs.hasRole('x_786686_hr_leave.hr_admin') || gs.hasRole('x_786686_hr_leave.integration');</code></td></tr></table>
+<h4>ACL 4 — field write u_approver_user</h4>
+<table class="field-table"><tr><td>Name</td><td><code>x_786686_hr_leave_req_v2.u_approver_user</code></td></tr>
+<tr><td>Operation</td><td>write</td></tr>
+<tr><td>Script</td><td><code>answer = gs.hasRole('x_786686_hr_leave.hr_admin');</code></td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Elevate security_admin. Application = HR Leave.</li>
+<li>ACL → New for each table above. Active = true.</li>
+<li>Paste scripts. Save all four.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul>
+<li>employee1 sees own requests only.</li>
+<li>manager1 sees direct reports.</li>
+<li>hradmin sees all.</li>
+<li>employee1 direct URL to another user's record → denied.</li>
+</ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Impersonate employee1 → open coworker sys_id → Access denied.</p></div>
+<hr />
+
+<h2 id="part-20-properties">Part 20: System Properties</h2>
+<h3>Purpose</h3>
+<p>Scoped configuration for entitlement, notifications, notice rules, ERP endpoint, and integration user. Create <strong>all</strong> properties below (not only annual_days) for a professional HR app.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>System Properties</strong> (Application picker = HR Leave)</nav>
+<h3>Direct URL</h3>
+<div class="url-box">
+  <a href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">All HR Leave properties</a>
+  <a href="{BASE}/sys_properties.do">New property</a>
+  <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html#props">Full property catalog</a>
+</div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-1-application">Part 1: Application Setup</a> Application selected in picker.</li></ul>
+<h3>Form fields — create each row (Name / Type / Value / Description)</h3>
+<table class="field-table">
+<thead><tr><th>Name</th><th>Type</th><th>Value</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>x_786686_hr_leave.config.annual_days</code></td><td>integer</td><td><strong>20</strong></td><td>Default annual entitlement</td></tr>
+<tr><td><code>x_786686_hr_leave.config.sick_days</code></td><td>integer</td><td><strong>10</strong></td><td>Default sick entitlement</td></tr>
+<tr><td><code>x_786686_hr_leave.config.notify_enabled</code></td><td>true|false</td><td><strong>true</strong></td><td>Master email switch</td></tr>
+<tr><td><code>x_786686_hr_leave.config.min_notice_days</code></td><td>integer</td><td><strong>3</strong></td><td>Min days before start (optional BR)</td></tr>
+<tr><td><code>x_786686_hr_leave.config.max_days_per_request</code></td><td>integer</td><td><strong>30</strong></td><td>Max days per request</td></tr>
+<tr><td><code>x_786686_hr_leave.config.erp_endpoint</code></td><td>string</td><td><strong>https://webhook.site/…</strong></td><td>Outbound ERP URL (no secrets)</td></tr>
+<tr><td><code>x_786686_hr_leave.config.integration_user</code></td><td>string</td><td><strong>hrlx.integration</strong></td><td>Inbound API user id</td></tr>
+<tr><td><code>x_786686_hr_leave.config.number_prefix</code></td><td>string</td><td><strong>HRLX</strong></td><td>u_number prefix</td></tr>
+<tr><td><code>x_786686_hr_leave.config.portal_page_id</code></td><td>string</td><td><strong>hrlx_home</strong></td><td>Service Portal page id</td></tr>
+</tbody>
+</table>
+<p>On every property form also set: <strong>Application</strong> = HR Leave · <strong>Ignore cache</strong> = false · <strong>Private</strong> = false.</p>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Application picker = HR Leave.</li>
+<li>Open <a href="{BASE}/sys_properties.do">New property</a>.</li>
+<li>Fill Name, Type, Value, Description from one row → Submit.</li>
+<li>Repeat for all 9 rows. Confirm list: <a href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">filter list</a>.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul>
+<li>Background: <code>gs.info(gs.getProperty('x_786686_hr_leave.config.annual_days'));</code> → 20.</li>
+<li>Nine properties visible in scoped list.</li>
+</ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Run Scheduled Job accrual job → new balances use <code>annual_days</code> for <code>u_entitled</code>. Change value to 25 → new rows use 25.</p></div>
+<hr />
+
+<h2 id="part-21-events">Part 21: Event Registry</h2>
+<h3>Purpose</h3>
+<p>Registers three scoped events queued by BR2/BR4 for notifications and monitoring.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>System Policy → Events → Registry</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">{BASE}/sysevent_register_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-3-table-req">Part 3: Table</a> req_v2 table.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><thead><tr><th>Event name</th><th>Table</th><th>Active</th></tr></thead>
+<tbody>
+<tr><td><code>x_786686_hr_leave.leave_v2.submitted</code></td><td>x_786686_hr_leave_req_v2</td><td>true</td></tr>
+<tr><td><code>x_786686_hr_leave.leave_v2.approved</code></td><td>x_786686_hr_leave_req_v2</td><td>true</td></tr>
+<tr><td><code>x_786686_hr_leave.leave_v2.rejected</code></td><td>x_786686_hr_leave_req_v2</td><td>true</td></tr>
+</tbody></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Registry → New (three times).</li>
+<li>Event name exactly as table. Table = Leave Request. Application = HR Leave. Active.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Submit req → System Logs → Events shows leave_v2.submitted.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Event parm1 = approver sys_id, parm2 = u_number.</p></div>
+<hr />
+
+<h2 id="part-22-notifications">Part 22: Notifications</h2>
+<h3>Purpose</h3>
+<p>Three email notifications: submitted (to approver), approved/rejected (to requester).</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>System Notification → Email → Notifications</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">{BASE}/sysevent_email_action_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-21-events">Part 21: Event Registry</a> events.</li><li><a href="#part-9-br2">Part 9: Business Rule BR2</a> BR2, <a href="#part-11-br4">Part 11: Business Rule BR4</a> BR4.</li><li>Users have email addresses.</li></ul>
+<h3>Form fields</h3>
+<h4>Notification 1 — Submitted</h4>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td>HRLX Leave Submitted</td></tr>
+<tr><td>Table</td><td><strong>x_786686_hr_leave_req_v2</strong></td></tr>
+<tr><td>Active</td><td>true</td></tr>
+<tr><td>When to send</td><td>Event is fired</td></tr>
+<tr><td>Event name</td><td>x_786686_hr_leave.leave_v2.submitted</td></tr>
+<tr><td>Users/Groups in fields</td><td>u_approver_user</td></tr>
+<tr><td>Subject</td><td><code>Leave ${u_number} needs your approval</code></td></tr></table>
+<h4>Notification 2 — Approved</h4>
+<table class="field-table"><tr><td>Event</td><td>leave_v2.approved</td></tr>
+<tr><td>Users/Groups in fields</td><td>u_requested_for_user</td></tr>
+<tr><td>Subject</td><td><code>Your leave ${u_number} was approved</code></td></tr></table>
+<h4>Notification 3 — Rejected</h4>
+<table class="field-table"><tr><td>Event</td><td>leave_v2.rejected</td></tr>
+<tr><td>Users/Groups in fields</td><td>u_requested_for_user</td></tr>
+<tr><td>Subject</td><td><code>Your leave ${u_number} was rejected</code></td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Application = HR Leave. Notifications → New for each.</li>
+<li>Tab <strong>When to send</strong>: Event is fired + event name.</li>
+<li>Tab <strong>Who will receive</strong>: Users/Groups in fields → pick u_approver_user or u_requested_for_user.</li>
+<li>Tab <strong>What it will contain</strong>: Subject + Message HTML with ${u_number}, ${u_start_date}, ${URI_REF}.</li>
+<li>Submit each notification. Active = true.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Three active notifications on Leave Request table.</li><li>Email log entry after submit/approve.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Submit as employee1 → manager1 receives email or sys_email row.</p></div>
+<hr />
+
+<h2 id="part-23-job">Part 23: Scheduled Job — Annual Accrual</h2>
+<h3>Purpose</h3>
+<p>Creates missing bal_v2 rows for current year for every employee using property annual_days.</p>
+<h3>Navigation path</h3>
+<nav class="section-links" aria-label="Navigation for 23"><strong>All &gt;</strong> <strong>System Definition → Scripts (Scheduled Script Execution)</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sysauto_script_list.do">{BASE}/sysauto_script_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-2-table-employee">Part 2: Table</a> employee_v2, <a href="#part-4-table-bal">Part 4: Table</a> bal_v2, <a href="#part-20-properties">Part 20: System Properties</a> property.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td><code>HRLX Annual Accrual</code></td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr>
+<tr><td>Active</td><td>Checked</td></tr>
+<tr><td>Run</td><td>Daily 02:00 or Yearly Jan 1</td></tr>
+<tr><td>Run as</td><td>System (default)</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Scheduled Script Execution → New.</li>
+<li>Fill fields. Paste script below.</li>
+<li>Save. Click <strong>Execute Now</strong> to test.</li>
+</ol>
+<h3>Full script (paste-ready)</h3>
+<pre><code>/**
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ * Scheduled Job: Annual Leave Accrual
+ * Run: yearly (e.g. Jan 1)
+ *
+ * Creates a fresh balance row per employee for the new year if missing.
+ * Default entitlement is read from a property (fallback 21 annual days).
+ */
+(function annualAccrual() {
+
+    var year = new GlideDateTime().getYearLocalTime();
+    var annualEntitlement = parseInt(gs.getProperty('x_786686_hr_leave.config.annual_days', '21'), 10);
+
+    var emp = new GlideRecord('x_786686_hr_leave_employee_v2');
+    emp.query();
+
+    var created = 0;
+    while (emp.next()) {
+        // skip if a balance for this year/type already exists
+        var existing = new GlideRecord('x_786686_hr_leave_bal_v2');
+        existing.addQuery('u_employee_ref', emp.getUniqueValue());
+        existing.addQuery('u_year', year);
+        existing.addQuery('u_leave_type', 'annual');
+        existing.query();
+        if (existing.hasNext()) continue;
+
+        var bal = new GlideRecord('x_786686_hr_leave_bal_v2');
+        bal.initialize();
+        bal.u_employee_ref = emp.getUniqueValue();
+        bal.u_year = year;
+        bal.u_leave_type = 'annual';
+        bal.u_entitled = annualEntitlement;
+        bal.u_used = 0;
+        bal.u_remaining = annualEntitlement;
+        bal.insert();
+        created++;
+    }
+
+    gs.info('[HRLX] Annual accrual ' + year + ' created ' + created + ' balance rows.');
+})();</code></pre>
+<h3>Verify checklist</h3>
+<ul><li>Execute Now creates bal_v2 per employee without duplicate year row.</li><li>System log: [HRLX] Annual accrual message.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>New employee → run job → u_entitled=20, u_remaining=20.</p></div>
+
+<hr />
+
+<h2 id="part-24-menu">Part 24: Application Menu</h2>
+<h3>Purpose</h3>
+<p>Top-level Application Navigator entry for HR Leave modules.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>System Definition → Application Menus</strong> OR created with Application Setup</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_app_application_list.do?sysparm_query=name=HR Leave">{BASE}/sys_app_application_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-1-application">Part 1: Application Setup</a> with Create application menu checked.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Title</td><td>HR Leave</td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr>
+<tr><td>Order</td><td>100</td></tr>
+<tr><td>Roles</td><td>x_786686_hr_leave.employee (minimum)</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>If missing: Studio → Application Menu → New → fill fields.</li>
+<li>Save. Confirm appears in Application Navigator.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Navigator shows HR Leave heading.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>employee1 login → sees HR Leave menu after modules Modules.</p></div>
+<hr />
+
+<h2 id="part-25-modules">Part 25: Modules</h2>
+<h3>Purpose</h3>
+<p>Four list modules linking to req_v2, employee_v2, bal_v2, audit_v2 tables.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> Studio → <strong>Create Application File → Module</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_app_module_list.do?sysparm_query=application.name=HR Leave">{BASE}/sys_app_module_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-24-menu">Part 24: Application Menu</a> menu. Tables Table HR Employee..05.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><thead><tr><th>Title</th><th>Type</th><th>Table</th><th>Order</th><th>Roles</th></tr></thead>
+<tbody>
+<tr><td>Leave Requests</td><td>List</td><td>x_786686_hr_leave_req_v2</td><td>10</td><td>employee, manager, hr_admin</td></tr>
+<tr><td>Employees</td><td>List</td><td>x_786686_hr_leave_employee_v2</td><td>20</td><td>hr_admin</td></tr>
+<tr><td>Balances</td><td>List</td><td>x_786686_hr_leave_bal_v2</td><td>30</td><td>hr_admin</td></tr>
+<tr><td>Audit Trail</td><td>List</td><td>x_786686_hr_leave_audit_v2</td><td>40</td><td>hr_admin</td></tr>
+</tbody></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Module → New for each row. Application Menu = HR Leave.</li>
+<li>Type = List → Table = as listed. Order as table.</li>
+<li>Roles: restrict Employees/Balances/Audit to hr_admin; Requests to all three roles.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Four modules under HR Leave menu.</li><li>URLs x_786686_hr_leave_*_list.do open.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>employee1 → only Leave Requests visible.</p></div>
+<hr />
+
+<h2 id="part-26-catalog">Part 26: Catalog Record Producer</h2>
+<h3>Purpose</h3>
+<p>Service Catalog item that inserts submitted req_v2 from catalog variables.</p>
+<h3>Navigation path</h3>
+<nav class="section-links" aria-label="Navigation for 26"><strong>All &gt;</strong> <strong>Service Catalog → Record Producers</strong> OR Studio → Record Producer</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sc_cat_item_producer_list.do?sysparm_query=nameLIKESubmit Leave">{BASE}/sc_cat_item_producer_list.do?sysparm_query=nameLIKESubmit Leave</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-3-table-req">Part 3: Table</a> req_v2.</li><li><a href="#part-16-roles">Part 16: Roles</a> employee role.</li><li>Catalog category HR Leave (create under Service Catalog → Categories).</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td>Submit Leave Request</td></tr>
+<tr><td>Table</td><td>x_786686_hr_leave_req_v2</td></tr>
+<tr><td>Category</td><td>HR Leave</td></tr>
+<tr><td>Roles</td><td>x_786686_hr_leave.employee</td></tr>
+<tr><td>Active</td><td>true</td></tr></table>
+<h4>Variables (related list)</h4>
+<table class="field-table"><thead><tr><th>Name</th><th>Type</th><th>Question</th><th>Mandatory</th></tr></thead>
+<tbody>
+<tr><td>leave_type</td><td>Choice</td><td>Leave Type</td><td>Yes</td></tr>
+<tr><td>start_date</td><td>Date</td><td>Start Date</td><td>Yes</td></tr>
+<tr><td>end_date</td><td>Date</td><td>End Date</td><td>Yes</td></tr>
+<tr><td>reason</td><td>Multi Line Text</td><td>Reason</td><td>No</td></tr>
+</tbody></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Record Producers → New. Fill header fields.</li>
+<li>Variables related list → New for each variable (names must match producer.* in script).</li>
+<li>Script tab → paste producer script below.</li>
+<li>Catalog → Publish. Test on Service Portal catalog.</li>
+</ol>
+<h3>Full script (paste-ready)</h3>
+<pre><code>/**
+ * Record Producer Script: Submit Leave Request
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ * Target table: x_786686_hr_leave_req_v2
+ *
+ * Maps producer variables to record fields. Runs server-side when submitted.
+ * Variables expected: leave_type, start_date, end_date, reason
+ */
+(function () {
+
+    current.u_requested_for_user = gs.getUserID();
+    current.u_leave_type = producer.leave_type;
+    current.u_start_date = producer.start_date;
+    current.u_end_date = producer.end_date;
+    current.u_reason = producer.reason;
+    current.u_state = 'submitted';
+
+    // Link to employee profile of the current user (if exists)
+    var emp = new GlideRecord('x_786686_hr_leave_employee_v2');
+    emp.addQuery('u_user', gs.getUserID());
+    emp.query();
+    if (emp.next()) {
+        current.u_employee_ref = emp.getUniqueValue();
+    }
+
+    // BR1 will calculate days and set the approver on insert.
+
+})();</code></pre>
+<h3>Verify checklist</h3>
+<ul><li>Catalog item visible to employee role.</li><li>Submit creates req_v2 in submitted state.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>employee1 submits → req_v2 row, BR1 sets days + approver, Flow starts.</p></div>
+
+<hr />
+
+<h2 id="part-27-flow">Part 27: Flow Designer — Leave Approval</h2>
+<h3>Purpose</h3>
+<p>When leave state becomes submitted, sends approval to u_approver_user; on approve/reject updates u_state.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>Flow Designer</strong> (application HR Leave)</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a> · <a href="{BASE}/sys_hub_flow_list.do">{BASE}/sys_hub_flow_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul>
+<li><a href="#part-3-table-req">Part 3: Table</a> req_v2 with u_state, u_approver_user.</li>
+<li><a href="#part-8-br1">Part 8: Business Rule BR1</a> BR1 fills approver.</li>
+<li>manager1 user for approval tests.</li>
+</ul>
+<h3>Form fields — Create Flow wizard</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td>HRLX Leave Approval</td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr>
+<tr><td>Description</td><td>Approval flow for submitted leave requests</td></tr></table>
+<h4>Trigger — Record Updated</h4>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Trigger type</td><td>Record Updated</td></tr>
+<tr><td>Table</td><td>x_786686_hr_leave_req_v2</td></tr>
+<tr><td>Condition</td><td>State [u_state] <strong>is</strong> submitted AND State <strong>changes</strong></td></tr>
+<tr><td>Run flow</td><td>Once per record (recommended)</td></tr></table>
+<h4>Action 1 — Ask For Approval</h4>
+<table class="field-table"><tr><th>Input</th><th>Value</th></tr>
+<tr><td>Record</td><td>Trigger → Leave Request Record (data pill)</td></tr>
+<tr><td>Table</td><td>x_786686_hr_leave_req_v2</td></tr>
+<tr><td>Approval field</td><td>u_approver_user</td></tr>
+<tr><td>Approval reason</td><td>Leave approval required</td></tr>
+<tr><td>Rules → Approve</td><td><strong>Anyone approves</strong> (required — do not leave empty)</td></tr></table>
+<h4>If Approved → Update Record</h4>
+<table class="field-table"><tr><td>Record</td><td>Trigger record pill</td></tr>
+<tr><td>Field map</td><td>u_state = approved</td></tr></table>
+<h4>Else → Update Record</h4>
+<table class="field-table"><tr><td>Field map</td><td>u_state = rejected</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Flow Designer → <strong>Create Flow</strong> → Name HRLX Leave Approval, Application HR Leave.</li>
+<li><strong>Add trigger</strong> → Record Updated → table req_v2 → condition u_state is submitted + changes.</li>
+<li><strong>+</strong> → Ask for Approval → fill Action 1 table → Rules: Anyone approves → Done.</li>
+<li><strong>+</strong> → Flow Logic → If → condition "approval was Approved".</li>
+<li>Yes branch → Update Record → u_state = approved.</li>
+<li>Else branch → Update Record → u_state = rejected.</li>
+<li><strong>Save</strong> → fix any red errors (missing approval rule is common).</li>
+<li><strong>Test</strong> → pick sample submitted req_v2 → Run test.</li>
+<li><strong>Publish</strong> → Publish new version → wait for Published status.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul>
+<li>Submitted req creates sysapproval_approver for manager.</li>
+<li>Approve → u_state approved → BR3 audit + BR4 event.</li>
+<li>Reject → u_state rejected.</li>
+</ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><ol>
+<li>employee1 submits leave (UI Action or catalog).</li>
+<li>manager1 → <a href="{BASE}/sysapproval_approver_list.do">My Approvals</a> → Approve.</li>
+<li>Verify state, audit_v2, bal_v2 updated.</li>
+</ol></div>
+<hr />
+
+<h2 id="part-28-portal">Part 28: Service Portal Widgets & Page</h2>
+<h3>Purpose</h3>
+<p>HR Leave portal page with two widgets: my leave requests list and current-year balance cards.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>Service Portal → Portals / Widgets / Pages</strong> OR Studio → Widget</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/$sp.do">{BASE}/$sp.do</a> · <a href="{BASE}/sp_widget_list.do">{BASE}/sp_widget_list.do</a> · Page: <a href="{BASE}/hrlx?id=hrlx_home">{BASE}/hrlx?id=hrlx_home</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-3-table-req">Part 3: Table</a> req_v2, <a href="#part-4-table-bal">Part 4: Table</a> bal_v2, <a href="#part-16-roles">Part 16: Roles</a> employee role.</li></ul>
+<h3>Form fields — Portal (sp_portal) if creating new</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Title</td><td>HR Leave Portal</td></tr>
+<tr><td>URL suffix</td><td>hrlx</td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr></table>
+<h4>Page (sp_page)</h4>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>ID</td><td>hrlx_home</td></tr>
+<tr><td>Title</td><td>HR Leave Home</td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr></table>
+<h4>Widget 1 — hrlx_my_leaves</h4>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>ID</td><td>hrlx_my_leaves</td></tr>
+<tr><td>Name</td><td>HRLX My Leaves</td></tr>
+<tr><td>Client controller</td><td>HrlxMyLeavesCtrl (as in client script)</td></tr></table>
+<h4>Widget 2 — hrlx_balance</h4>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>ID</td><td>hrlx_balance</td></tr>
+<tr><td>Name</td><td>HRLX Balance</td></tr>
+<tr><td>Client controller</td><td>HrlxBalanceCtrl</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li><strong>Portal:</strong> Service Portal → Portals → New OR use existing Service Portal → set url_suffix <code>hrlx</code> on dedicated portal record scoped to HR Leave.</li>
+<li><strong>Widget hrlx_my_leaves:</strong> SP → Widgets → New → ID hrlx_my_leaves → paste HTML, CSS, Client, Server from sections below.</li>
+<li><strong>Widget hrlx_balance:</strong> Repeat for hrlx_balance.</li>
+<li><strong>Page:</strong> SP → Pages → New → ID hrlx_home → drag both widgets onto 12-column layout (balance top, my leaves below).</li>
+<li><strong>Container/page access:</strong> Page → security / roles → x_786686_hr_leave.employee.</li>
+<li><strong>Menu (optional):</strong> SP → Menus → add link to ?id=hrlx_home.</li>
+<li>Save all. Open <code>{BASE}/hrlx?id=hrlx_home</code> as employee1.</li>
+</ol>
+<h3>Full script — hrlx_my_leaves HTML template</h3>
+<pre><code>&lt;div class="hrlx-my-leaves">
+  &lt;h3>My Leave Requests&lt;/h3>
+
+  &lt;table class="table table-striped" ng-if="data.leaves.length">
+    &lt;thead>
+      &lt;tr>
+        &lt;th>Number&lt;/th>
+        &lt;th>Type&lt;/th>
+        &lt;th>Start&lt;/th>
+        &lt;th>End&lt;/th>
+        &lt;th>Days&lt;/th>
+        &lt;th>State&lt;/th>
+        &lt;th>&lt;/th>
+      &lt;/tr>
+    &lt;/thead>
+    &lt;tbody>
+      &lt;tr ng-repeat="item in data.leaves">
+        &lt;td>{{item.number}}&lt;/td>
+        &lt;td>{{item.type}}&lt;/td>
+        &lt;td>{{item.start}}&lt;/td>
+        &lt;td>{{item.end}}&lt;/td>
+        &lt;td>{{item.days}}&lt;/td>
+        &lt;td>&lt;span class="label label-default">{{item.state}}&lt;/span>&lt;/td>
+        &lt;td>
+          &lt;button class="btn btn-xs btn-danger"
+                  ng-if="item.state === 'submitted' || item.state === 'draft'"
+                  ng-click="c.cancelLeave(item)">Cancel&lt;/button>
+        &lt;/td>
+      &lt;/tr>
+    &lt;/tbody>
+  &lt;/table>
+
+  &lt;p ng-if="!data.leaves.length" class="text-muted">No leave requests yet.&lt;/p>
+&lt;/div></code></pre>
+<h3>Full script — hrlx_my_leaves CSS</h3>
+<pre><code>.hrlx-my-leaves {
+  padding: 16px;
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+
+  .label {
+    text-transform: capitalize;
+  }
+}</code></pre>
+<h3>Full script — hrlx_my_leaves Client script</h3>
+<pre><code>/**
+ * Widget: hrlx_my_leaves — Client Controller
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ */
+function HrlxMyLeavesCtrl() {
+    var c = this;
+
+    c.cancelLeave = function (item) {
+        if (!confirm('Cancel leave ' + item.number + '?')) return;
+        c.data.action = 'cancel';
+        c.data.sys_id = item.sys_id;
+        c.server.update().then(function () {
+            c.data.action = '';
+            c.data.sys_id = '';
+        });
+    };
+}</code></pre>
+<h3>Full script — hrlx_my_leaves Server script</h3>
+<pre><code>/**
+ * Widget: hrlx_my_leaves — Server Script
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ * Shows the current user's leave requests (secure).
+ */
+(function () {
+    data.leaves = [];
+
+    var gr = new GlideRecordSecure('x_786686_hr_leave_req_v2');
+    gr.addQuery('u_requested_for_user', gs.getUserID());
+    gr.orderByDesc('sys_created_on');
+    gr.setLimit(50);
+    gr.query();
+
+    while (gr.next()) {
+        data.leaves.push({
+            sys_id: gr.getUniqueValue(),
+            number: gr.getValue('u_number'),
+            type: gr.getDisplayValue('u_leave_type'),
+            start: gr.getValue('u_start_date'),
+            end: gr.getValue('u_end_date'),
+            days: gr.getValue('u_days_count'),
+            state: gr.getValue('u_state')
+        });
+    }
+
+    // Cancel action from client
+    if (input &amp;&amp; input.action === 'cancel' &amp;&amp; input.sys_id) {
+        var c = new GlideRecord('x_786686_hr_leave_req_v2');
+        if (c.get(input.sys_id) &amp;&amp; c.getValue('u_requested_for_user') === gs.getUserID()) {
+            c.u_state = 'cancelled';
+            c.update();
+        }
+    }
+})();</code></pre>
+<h3>Full script — hrlx_balance HTML template</h3>
+<pre><code>&lt;div class="hrlx-balance">
+  &lt;h3>Leave Balance {{data.year}}&lt;/h3>
+
+  &lt;div class="hrlx-cards" ng-if="data.balances.length">
+    &lt;div class="hrlx-card" ng-repeat="b in data.balances">
+      &lt;div class="hrlx-card-type">{{b.type}}&lt;/div>
+      &lt;div class="hrlx-card-remaining">{{b.remaining}}&lt;/div>
+      &lt;div class="hrlx-card-meta">used {{b.used}} / {{b.entitled}}&lt;/div>
+    &lt;/div>
+  &lt;/div>
+
+  &lt;p ng-if="!data.balances.length" class="text-muted">No balance records found.&lt;/p>
+&lt;/div></code></pre>
+<h3>Full script — hrlx_balance CSS</h3>
+<pre><code>.hrlx-balance {
+  padding: 16px;
+
+  h3 { margin-top: 0; font-weight: 600; }
+
+  .hrlx-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hrlx-card {
+    flex: 1 1 120px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .hrlx-card-type { text-transform: capitalize; color: #707070; }
+  .hrlx-card-remaining { font-size: 28px; font-weight: 700; }
+  .hrlx-card-meta { font-size: 12px; color: #909090; }
+}</code></pre>
+<h3>Full script — hrlx_balance Client script</h3>
+<pre><code>/**
+ * Widget: hrlx_balance — Client Controller
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ */
+function HrlxBalanceCtrl() {
+    var c = this;
+    // No client actions needed; data is read-only.
+}</code></pre>
+<h3>Full script — hrlx_balance Server script</h3>
+<pre><code>/**
+ * Widget: hrlx_balance — Server Script
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ * Shows the current user's remaining leave balance for the current year.
+ */
+(function () {
+    data.balances = [];
+    data.year = new GlideDateTime().getYearLocalTime();
+
+    // find employee record of current user
+    var emp = new GlideRecord('x_786686_hr_leave_employee_v2');
+    emp.addQuery('u_user', gs.getUserID());
+    emp.query();
+    if (!emp.next()) return;
+
+    var bal = new GlideRecordSecure('x_786686_hr_leave_bal_v2');
+    bal.addQuery('u_employee_ref', emp.getUniqueValue());
+    bal.addQuery('u_year', data.year);
+    bal.query();
+    while (bal.next()) {
+        data.balances.push({
+            type: bal.getDisplayValue('u_leave_type'),
+            entitled: parseInt(bal.getValue('u_entitled') || 0, 10),
+            used: parseInt(bal.getValue('u_used') || 0, 10),
+            remaining: parseInt(bal.getValue('u_remaining') || 0, 10)
+        });
+    }
+})();</code></pre>
+<h3>Verify checklist</h3>
+<ul>
+<li>employee1 sees own requests in widget table.</li>
+<li>Balance cards show entitled/used/remaining for current year.</li>
+<li>Cancel button works on draft/submitted (server update).</li>
+</ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Login employee1 → {BASE}/hrlx?id=hrlx_home → requests + balance visible.</p></div>
+<hr />
+
+<h2 id="part-29-workspace">Part 29: UI Builder Workspace</h2>
+<h3>Purpose</h3>
+<p>Now Experience workspace with list page bound to req_v2 for employees and managers.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>Now Experience → UI Builder</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/now/build/ui">{BASE}/now/build/ui</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-3-table-req">Part 3: Table</a> req_v2.</li><li>Roles Roles.</li></ul>
+<h3>Form fields — Create workspace</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td>HR Leave Workspace</td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr>
+<tr><td>Experience type</td><td>Workspace / Custom</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>UI Builder → <strong>Create experience</strong> → HR Leave Workspace, scoped app HR Leave.</li>
+<li><strong>Page 1 — My Requests:</strong> Add page → Name My Requests → Route my-requests.</li>
+<li>Drag <strong>List</strong> component → Data resource = new Table data broker.</li>
+<li>Data broker fields: Table = x_786686_hr_leave_req_v2, Condition = <code>u_requested_for_user=javascript:gs.getUserID()</code> (or UX filter for current user).</li>
+<li>Columns: Number, Leave Type, Start, End, Days, State.</li>
+<li><strong>Page 2 — Team Approvals (manager):</strong> List on req_v2, filter u_state=submitted AND u_approver_user=current user.</li>
+<li><strong>Page 3 — Admin:</strong> Lists for employee_v2 and bal_v2 — role hr_admin only.</li>
+<li><strong>Navigation:</strong> Add menu items linking pages. Role restrictions per page.</li>
+<li><strong>Publish</strong> workspace → assign to roles employee, manager, hr_admin.</li>
+<li>Open workspace URL from UI Builder preview as each test user.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul>
+<li>employee sees only own requests on My Requests page.</li>
+<li>manager sees submitted items awaiting approval.</li>
+<li>hr_admin sees admin lists.</li>
+</ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Impersonate each role → open workspace → list data matches ACL expectations.</p></div>
+<hr />
+
+<h2 id="part-30-report">Part 30: Reports & Dashboard</h2>
+<h3>Purpose</h3>
+<p>Visual report grouping leave requests by state; add to HR Leave dashboard.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>Reports → Create New</strong> OR <strong>Self-Service → Dashboards</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_report_list.do">{BASE}/sys_report_list.do</a> · <a href="{BASE}/$pa_dashboard.do">{BASE}/$pa_dashboard.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-3-table-req">Part 3: Table</a> req_v2 with seeded mixed states.</li></ul>
+<h3>Form fields — Report wizard (each screen)</h3>
+<table class="field-table"><tr><th>Wizard step</th><th>Selection</th></tr>
+<tr><td>1 Source type</td><td>Table</td></tr>
+<tr><td>2 Table</td><td>Leave Request [x_786686_hr_leave_req_v2]</td></tr>
+<tr><td>3 Report type</td><td>Bar chart or Pie chart</td></tr>
+<tr><td>4 Configure</td><td>Group by: State (u_state), Aggregate: Count</td></tr>
+<tr><td>5 Title</td><td>Leave Requests by State</td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Reports → Create New → Table → req_v2.</li>
+<li>Choose Bar or Pie → Group by u_state → Count.</li>
+<li>Title: Leave Requests by State. Application HR Leave.</li>
+<li>Run report → verify segments for draft/submitted/approved.</li>
+<li><strong>Dashboard:</strong> Dashboards → New → Name HR Leave Dashboard.</li>
+<li>Add widget → Report → select report created above.</li>
+<li>Share with roles hr_admin, manager. Save dashboard.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Report renders with correct counts.</li><li>Dashboard widget displays report.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Seed 2 draft, 3 submitted, 1 approved → chart reflects counts.</p></div>
+<hr />
+
+<h2 id="part-31-atf">Part 31: ATF Tests</h2>
+<h3>Purpose</h3>
+<p>Automated Test Framework suite validating BR1 days calc, submit event, audit on approve, and ACL isolation.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>Automated Test Framework → Tests</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_atf_test_list.do">{BASE}/sys_atf_test_list.do</a> · <a href="{BASE}/sys_atf_test_suite_list.do">{BASE}/sys_atf_test_suite_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li>Part 1: Application Setup</li><li>ATF plugin active.</li></ul>
+<h3>Form fields — Test Suite</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td>HRLX Leave Core</td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr>
+<tr><td>Active</td><td>true</td></tr></table>
+<h3>Step-by-step create</h3>
+<h4>Test 1 — BR1 business days (Server)</h4>
+<ol>
+<li>ATF → Tests → New → Name: HRLX BR1 Days Calculation.</li>
+<li>Step 1: <strong>Create a Record</strong> → Table req_v2 → set u_start_date=2026-06-01, u_end_date=2026-06-05, u_state=draft, required refs.</li>
+<li>Step 2: <strong>Run Server Side Script</strong> → assertion:</li>
+</ol>
+<pre><code>(function(outputs, steps, stepResult, assertEqual) {
+  var gr = new GlideRecord('x_786686_hr_leave_req_v2');
+  gr.get(steps('Create a Record').record_id);
+  assertEqual({ name: 'days', expected: '5', actual: gr.getValue('u_days_count') });
+})(outputs, steps, stepResult, assertEqual);</code></pre>
+<h4>Test 2 — Client CS2 (Client)</h4>
+<ol>
+<li>New test: HRLX CS2 Form Days.</li>
+<li>Step: <strong>Open an Existing Record</strong> or New Record form on req_v2.</li>
+<li>Step: <strong>Set Field Values</strong> u_start_date, u_end_date.</li>
+<li>Step: <strong>Assert Field Value</strong> u_days_count equals 5.</li>
+</ol>
+<h4>Test 3 — ACL read isolation (Server)</h4>
+<ol>
+<li>Test: HRLX ACL Employee Isolation.</li>
+<li>Step: Impersonate user employee1 → Record Query req_v2 → assert count matches only own records.</li>
+</ol>
+<h4>Suite assembly</h4>
+<ol>
+<li>Test Suite → New → HRLX Leave Core.</li>
+<li>Related list Tests → Add all three tests.</li>
+<li>Run Suite → all green.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Suite runs without failure on clean seed data.</li><li>Failed steps show actionable BR/ACL errors.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Run HRLX Leave Core suite after E2E seed → 3/3 pass.</p></div>
+<hr />
+
+<h2 id="part-32-rest">Part 32: Scripted REST API</h2>
+<h3>Purpose</h3>
+<p>Inbound REST POST /leave creates submitted req_v2 from JSON for integration user role.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>System Web Services → Scripted REST APIs</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_ws_definition_list.do">{BASE}/sys_ws_definition_list.do</a> · Explorer: <a href="{BASE}/$restapi.do">{BASE}/$restapi.do</a> · Endpoint: <code>/api/x_786686_hr_leave/hrlx_api_v2/leave</code></div>
+<h3>Prerequisites</h3>
+<ul>
+<li><a href="#part-16-roles">Part 16: Roles</a> integration role + user hrlx.integration with rest_service.</li>
+<li><a href="#part-19-acls">Part 19: ACLs</a> ACL create allows integration role.</li>
+<li>Script Include HRLXProIntegrationUtilsV2 (create below).</li>
+<li>employee_v2 with u_employee_id = EMP001.</li>
+</ul>
+<h3>Form fields — Script Include HRLXProIntegrationUtilsV2</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td>HRLXProIntegrationUtilsV2</td></tr>
+<tr><td>Client callable</td><td>false</td></tr>
+<tr><td>Active</td><td>true</td></tr></table>
+<h3>Full script — HRLXProIntegrationUtilsV2</h3>
+<pre><code>/**
+ * Script Include: HRLXProIntegrationUtilsV2
+ * Scope: x_786686_hr_leave
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ * Client callable: false
+ * Purpose: Inbound create + Outbound push for leave integration.
+ */
+var HRLXProIntegrationUtilsV2 = Class.create();
+HRLXProIntegrationUtilsV2.prototype = {
+
+    initialize: function () {},
+
+    /**
+     * Inbound: create a leave request from a JSON payload (string).
+     * @return {string} sys_id of created record
+     */
+    inboundCreateLeave: function (jsonString) {
+        var data = {};
+        try { data = JSON.parse(jsonString); } catch (e) { return ''; }
+
+        var gr = new GlideRecord('x_786686_hr_leave_req_v2');
+        gr.initialize();
+        gr.u_employee_ref = this._findEmployeeByExternalId(data.employee_id);
+        gr.u_requested_for_user = this._findUserByEmployee(data.employee_id);
+        gr.u_leave_type = data.leave_type || 'annual';
+        gr.u_start_date = data.start_date || '';
+        gr.u_end_date = data.end_date || '';
+        gr.u_reason = data.reason || '';
+        gr.u_state = 'submitted';
+        return gr.insert();
+    },
+
+    /**
+     * Outbound: push an approved leave decision to ERP/Payroll.
+     * Endpoint + auth come from system properties (no secrets in code).
+     */
+    outboundPushDecision: function (leaveSysId) {
+        var gr = new GlideRecord('x_786686_hr_leave_req_v2');
+        if (!gr.get(leaveSysId)) return false;
+
+        var endpoint = gs.getProperty('x_786686_hr_leave.config.erp_endpoint');
+        if (!endpoint) {
+            gs.error('[HRLX] Missing property x_786686_hr_leave.config.erp_endpoint');
+            return false;
+        }
+
+        try {
+            var r = new sn_ws.RESTMessageV2();
+            r.setEndpoint(endpoint);
+            r.setHttpMethod('POST');
+            r.setRequestHeader('Content-Type', 'application/json');
+            r.setRequestBody(JSON.stringify({
+                number: gr.getValue('u_number'),
+                employee: gr.getDisplayValue('u_employee_ref'),
+                type: gr.getValue('u_leave_type'),
+                days: gr.getValue('u_days_count'),
+                state: gr.getValue('u_state')
+            }));
+            var resp = r.execute();
+            var code = resp.getStatusCode();
+            gs.info('[HRLX] Outbound status ' + code);
+            return (code >= 200 &amp;&amp; code &lt; 300);
+        } catch (ex) {
+            gs.error('[HRLX] Outbound error: ' + ex.message);
+            return false;
+        }
+    },
+
+    _findEmployeeByExternalId: function (employeeId) {
+        var e = new GlideRecord('x_786686_hr_leave_employee_v2');
+        e.addQuery('u_employee_id', employeeId);
+        e.query();
+        return e.next() ? e.getUniqueValue() : '';
+    },
+
+    _findUserByEmployee: function (employeeId) {
+        var e = new GlideRecord('x_786686_hr_leave_employee_v2');
+        e.addQuery('u_employee_id', employeeId);
+        e.query();
+        return e.next() ? e.getValue('u_user') : '';
+    },
+
+    type: 'HRLXProIntegrationUtilsV2'
+};</code></pre>
+<h3>Form fields — Scripted REST API (sys_ws_definition)</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td>HRLX Leave API</td></tr>
+<tr><td>API ID</td><td>hrlx_api_v2</td></tr>
+<tr><td>Application</td><td>HR Leave (NOT Global)</td></tr>
+<tr><td>API namespace</td><td>x_786686_hr_leave (read-only)</td></tr>
+<tr><td>Requires authentication</td><td>true</td></tr>
+<tr><td>Default ACLs</td><td>ACL execute requiring x_786686_hr_leave.integration</td></tr></table>
+<h3>Form fields — Resource POST /leave</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td>Create Leave</td></tr>
+<tr><td>HTTP method</td><td>POST</td></tr>
+<tr><td>Relative path</td><td>/leave</td></tr>
+<tr><td>Active</td><td>true</td></tr></table>
+<h3>Full script — Resource (POST /leave)</h3>
+<pre><code>/**
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ * Scripted REST API Resource: Create Leave (Inbound)
+ * API ID:        hrlx_api_v2
+ * Resource:      POST /leave
+ * Full path:     /api/x_786686_hr_leave/hrlx_api_v2/leave
+ *
+ * TEST FIRST (no Postman until this works):
+ *   All > System Web Services > REST API Explorer  ($restapi.do)
+ *   Namespace: x_786686_hr_leave | API: hrlx_api_v2 | Resource: leave | POST
+ *   Request body: { "employee_id":"EMP001", "leave_type":"annual", ... }
+ *   Click Send → expect 201 → Copy as cURL
+ *
+ * Simpler alternative (Table API, no script):
+ *   Explorer → namespace now → Table API → x_786686_hr_leave_req_v2 → POST
+ *   See: src/server/rest/rest_api_explorer.md
+ *
+ * Create API record:
+ *   All > System Web Services > Scripted REST APIs > New + Resource POST /leave
+ */
+(function process(request, response) {
+
+    var data = request.body &amp;&amp; request.body.data ? request.body.data : {};
+
+    // Validate
+    if (!data.employee_id) {
+        response.setStatus(400);
+        return response.setBody({ error: 'employee_id is required' });
+    }
+    if (!data.start_date || !data.end_date) {
+        response.setStatus(400);
+        return response.setBody({ error: 'start_date and end_date are required' });
+    }
+
+    // Create via integration utility
+    var sysId = new x_786686_hr_leave.HRLXProIntegrationUtilsV2().inboundCreateLeave(JSON.stringify(data));
+
+    if (!sysId) {
+        response.setStatus(422);
+        return response.setBody({ error: 'Could not create leave request (employee not found?)' });
+    }
+
+    response.setStatus(201);
+    response.setBody({ sys_id: sysId, message: 'Leave request created' });
+
+})(request, response);</code></pre>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Application = HR Leave.</li>
+<li>Studio → Script Include → HRLXProIntegrationUtilsV2 → paste script → Save.</li>
+<li>System Security → ACL → New: Type scripted_rest_api, Operation execute, Requires role integration → Save.</li>
+<li>Scripted REST APIs → New → fill API fields → Security tab → Default ACLs → add ACL → Submit.</li>
+<li>Related Resources → New → POST /leave → paste resource script → Submit.</li>
+<li>REST API Explorer → Namespace x_786686_hr_leave → API hrlx_api_v2 → Resource leave → POST.</li>
+<li>Body: {"employee_id":"EMP001","leave_type":"annual","start_date":"2026-06-01","end_date":"2026-06-05","reason":"Vacation"}</li>
+<li>Run as hrlx.integration (Impersonate) → Send → expect 201 + sys_id.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul>
+<li>201 response with sys_id.</li>
+<li>req_v2 row exists in submitted state.</li>
+<li>403 without integration role; 422 if EMP001 missing.</li>
+</ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Explorer Send → copy cURL → verify record in req_v2 list.</p></div>
+<hr />
+
+<h2 id="chapter-map">Chapter map 01–16</h2>
+<table>
+<thead><tr><th>Chapter</th><th>Doc HTML</th><th>What you create (Studio)</th><th>OBJ sections</th></tr></thead>
+<tbody>
+<tr><td>01 Development</td><td><a href="01_DEVELOPMENT.html">01_DEVELOPMENT</a></td><td>App, tables, Script Includes, Business Rules, Client Scripts</td><td><a href="#part-1-application">01</a>–<a href="#part-13-cs2">13</a></td></tr>
+<tr><td>02 Administration</td><td><a href="02_ADMINISTRATION.html">02_ADMIN</a></td><td>Roles, groups, users, ACLs, system property</td><td><a href="#part-16-roles">16</a>–<a href="#part-20-properties">20</a></td></tr>
+<tr><td>03 Service Catalog</td><td><a href="03_SERVICE_CATALOG.html">03_CATALOG</a></td><td>Record Producer + variables</td><td><a href="#part-26-catalog">26</a></td></tr>
+<tr><td>04 Service Portal</td><td><a href="04_SERVICE_PORTAL.html">04_PORTAL</a></td><td>Portal page + two widgets (HTML/CSS/client/server)</td><td><a href="#part-28-portal">28</a></td></tr>
+<tr><td>05 Workspace / UI Builder</td><td><a href="05_WORKSPACE_UIBUILDER.html">05_UIB</a></td><td>Experience, pages, data resources, list on req_v2</td><td><a href="#part-29-workspace">29</a></td></tr>
+<tr><td>06 Notifications &amp; Jobs</td><td><a href="06_NOTIFICATIONS_EVENTS_JOBS.html">06_NOTIF</a></td><td>Events, email notifications, scheduled accrual job</td><td><a href="#part-21-events">21</a>–<a href="#part-23-job">23</a></td></tr>
+<tr><td>07 Reports &amp; Dashboards</td><td><a href="07_REPORTS_DASHBOARDS_PA.html">07_REPORTS</a></td><td>Report wizard + dashboard widget</td><td><a href="#part-30-report">30</a></td></tr>
+<tr><td>08 ATF Testing</td><td><a href="08_ATF_TESTING.html">08_ATF</a></td><td>Test suite + server/client/security steps</td><td><a href="#part-31-atf">31</a></td></tr>
+<tr><td>09 Modules &amp; Flow</td><td><a href="09_MODULES_AND_INTEGRATION.html">09_MODULES</a></td><td>Application menu, modules, approval flow</td><td><a href="#part-24-menu">24</a>–<a href="#part-27-flow">27</a></td></tr>
+<tr><td>10 Implementation</td><td><a href="10_IMPLEMENTATION_AND_CONFIG.html">10_IMPL</a></td><td>Seed data, E2E demo, update set completion</td><td><a href="#e2e-checklist">E2E</a></td></tr>
+<tr><td>11 Studio practice</td><td><a href="11_SDK_CURSOR_CLAUDE.html">11 practice</a></td><td><strong>Practice:</strong> create every section on this page from scratch in order</td><td><a href="#toc">All sections</a></td></tr>
+<tr><td>12 Integration</td><td><a href="12_INTEGRATION_FULL_GUIDE.html">12_INT</a></td><td>Scripted REST API + integration Script Include</td><td><a href="#part-32-rest">32</a></td></tr>
+<tr><td>13 Summary</td><td><a href="13_2HOUR_MASTER_SUMMARY.html">13_SUMMARY</a></td><td>Review OBJ checklist + E2E</td><td><a href="#e2e-checklist">E2E</a></td></tr>
+<tr><td>14 AI Agents</td><td><a href="14_AI_SERVICENOW_AGENTS.html">14_AI</a></td><td>Conceptual — artifacts still created via Studio OBJ list</td><td><a href="#toc">OBJ catalog</a></td></tr>
+<tr><td>15 Scripts reference</td><td><a href="15_CLAUDE_CLI_CODE_SERVICENOW.html">15_SCRIPTS</a></td><td><strong>Paste scripts:</strong> copy embedded <code>&lt;pre&gt;</code> blocks from Script Include HRLXProLeaveUtilsV2..13, 23, 26, 28, 32</td><td><a href="#part-6-script-include-leave">06</a>+</td></tr>
+<tr><td>16 Full guide</td><td><strong>This page</strong></td><td>Complete Studio-only create guide for the entire app</td><td><a href="#toc">Part 1: Application Setup</a></td></tr>
+</tbody></table>
+
+<h2 id="e2e-checklist">End-to-end demo checklist</h2>
+<div class="ok"><p>Complete after Application Setup through Flow Leave Approval (extended: Service Portal–32) to prove the full leave lifecycle.</p></div>
+<ol>
+<li><strong>Update Set current</strong> — HR Leave – Build captures all changes (<a href="#rule0">Rule 0</a>).</li>
+<li><strong>Seed employee</strong> — employee_v2 for employee1, manager = manager1 (<a href="#part-2-table-employee">Part 2: Table</a>, <a href="#part-18-users">Part 18: Users (lab matrix)</a>).</li>
+<li><strong>Seed balance</strong> — bal_v2 year=2026, annual, entitled=20, used=0, remaining=20 (<a href="#part-4-table-bal">Part 4: Table</a>).</li>
+<li><strong>Create request</strong> — req_v2 draft OR catalog Record Producer (<a href="#part-3-table-req">Part 3: Table</a>, <a href="#part-26-catalog">Part 26: Catalog Record Producer</a>).</li>
+<li><strong>Submit</strong> — UI Action or state=submitted → BR2 event (<a href="#part-15-ui-action">Part 15: UI Action</a>, <a href="#part-9-br2">Part 9: Business Rule BR2</a>).</li>
+<li><strong>Flow approval</strong> — manager1 approves → u_state=approved (<a href="#part-27-flow">Part 27: Flow Designer</a>).</li>
+<li><strong>Audit</strong> — audit_v2 row submitted→approved (<a href="#part-10-br3">Part 10: Business Rule BR3</a>).</li>
+<li><strong>Balance</strong> — bal_v2 u_used up, u_remaining down (<a href="#part-10-br3">Part 10: Business Rule BR3</a>).</li>
+<li><strong>Notification</strong> — email/log for approved event (<a href="#part-22-notifications">Part 22: Notifications</a>).</li>
+<li><strong>Security</strong> — employee1 cannot read another user's request (<a href="#part-19-acls">Part 19: ACLs</a>).</li>
+<li><strong>Portal</strong> — employee sees my leaves + balance widgets (<a href="#part-28-portal">Part 28: Service Portal Widgets & Page</a>).</li>
+<li><strong>REST</strong> — POST /leave returns 201 as integration user (<a href="#part-32-rest">Part 32: Scripted REST API</a>).</li>
+</ol>
+
+<h3>Background seed script</h3>
+<p>Run in <strong>Scripts – Background</strong> as admin with HR Leave selected. Replace user sys_ids.</p>
+<pre><code>(function () {
+  var empUser = 'PASTE_EMPLOYEE1_SYS_ID';
+  var mgrUser = 'PASTE_MANAGER1_SYS_ID';
+  var emp = new GlideRecord('x_786686_hr_leave_employee_v2');
+  emp.initialize();
+  emp.u_user = empUser;
+  emp.u_employee_id = 'E-1001';
+  emp.u_department = 'People Ops';
+  emp.u_manager = mgrUser;
+  emp.u_join_date = '2024-01-15';
+  emp.u_grade = 'G5';
+  var empId = emp.insert();
+  var bal = new GlideRecord('x_786686_hr_leave_bal_v2');
+  bal.initialize();
+  bal.u_employee_ref = empId;
+  bal.u_year = 2026;
+  bal.u_leave_type = 'annual';
+  bal.u_entitled = parseInt(gs.getProperty('x_786686_hr_leave.config.annual_days', 20), 10);
+  bal.u_used = 0;
+  bal.u_remaining = bal.u_entitled;
+  bal.insert();
+  gs.info('Seeded employee=' + empId);
+})();</code></pre>
+
+<h3>Quick reference — table names</h3>
+<table>
+<tr><td>employee_v2</td><td><code>x_786686_hr_leave_employee_v2</code></td></tr>
+<tr><td>req_v2</td><td><code>x_786686_hr_leave_req_v2</code></td></tr>
+<tr><td>bal_v2</td><td><code>x_786686_hr_leave_bal_v2</code></td></tr>
+<tr><td>audit_v2</td><td><code>x_786686_hr_leave_audit_v2</code></td></tr>
+</table>
+
+    </article>
+    <p class="footer">HR Leave · Studio Create All Objects 01–16 · scope x_786686_hr_leave · replace {BASE} with your instance URL ·
+    <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Direct Links</a></p>
+  </main>
+  <script src="assets/docs.js"></script>
+  <script>
+    (function () {
+      var BASE = 'https://dev398980.service-now.com';
+      document.querySelectorAll('a[href*="{BASE}"]').forEach(function (a) {
+        a.href = a.href.split('{BASE}').join(BASE);
+      });
+    })();
+  </script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Workspace Setup — مرجع سريع (UI Builder) | HR Leave Australia</title>
+  <link rel="stylesheet" href="../../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../../index.html">Portal</a>
+      <a href="../../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../../scripts/index.html">Scripts</a>
+      <a href="../../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Workspace Setup — مرجع سريع (UI Builder)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="workspace-setup-ui-builder">Workspace Setup — مرجع سريع (UI Builder)</h1>
+<h2 id="_1">السجلات</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<table>
+<thead>
+<tr>
+<th>النوع</th>
+<th>الجدول</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Experience</td>
+<td>sys_ux_experience</td>
+</tr>
+<tr>
+<td>App Config</td>
+<td>sys_ux_app_config</td>
+</tr>
+<tr>
+<td>Pages</td>
+<td>sys_ux_page</td>
+</tr>
+<tr>
+<td>Components</td>
+<td>sys_ux_macroponent</td>
+</tr>
+<tr>
+<td>Data Resource</td>
+<td>sys_ux_data_broker</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">الصفحات الثلاث</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<ul>
+<li>Home: مؤشرات (Single Score + Chart).</li>
+<li>List: Data Table على x_786686_hr_leave_req_v2 filter u_state=submitted.</li>
+<li>Record: Form + Tabs + أزرار Approve/Reject.</li>
+</ul>
+<h2 id="data-resource">Data Resource مثال</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<ul>
+<li>Type: Look up multiple records.</li>
+<li>Table: x_786686_hr_leave_req_v2.</li>
+<li>Condition: u_state=submitted.</li>
+</ul>
+<h2 id="event-handler-approve">Event handler — Approve</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<ul>
+<li>On click → Update record → u_state = approved.</li>
+<li>مرّر sys_id عبر Client State.</li>
+</ul>
+<h2 id="_3">الأدوار</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<ul>
+<li>x_786686_hr_leave.hr_admin</li>
+<li>x_786686_hr_leave.manager</li>
+</ul>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../../assets/docs.js"></script>
+
+<script src="../../assets/author-brand.js" defer></script>
+</body>
+</html>

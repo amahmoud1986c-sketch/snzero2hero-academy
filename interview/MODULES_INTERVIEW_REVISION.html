@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Modules Interview Revision — ITSM · CSM · FSM · CMDB · SPM · GRC · ITOM · ITAM · HRSD | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Modules Interview Revision — ITSM · CSM · FSM · CMDB · SPM · GRC · ITOM · ITAM · HRSD</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="modules-interview-revision-itsm-csm-fsm-cmdb-spm-grc-itom-itam-hrsd">Modules Interview Revision — ITSM · CSM · FSM · CMDB · SPM · GRC · ITOM · ITAM · HRSD</h1>
+<blockquote>
+<p>مراجعة شاملة لكل الموديولات للمقابلة والاستشارة.<br />
+من تفعيل البلجن → كل الصفحات → الدورة الكاملة → Tables/Roles/ACLs → Portals/Workspaces.<br />
+الأسلوب: عربية + إنجليزية تكمّلان بعضهما — بدون ترجمة حرفية لأسماء الشاشات.<br />
+موسوعة أعمق (12 قسم):<br />
+Folder: ../modules/</p>
+</blockquote>
+<hr />
+<h1 id="itsm-it-service-management">ITSM — IT Service Management</h1>
+<h2 id="activation">Activation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Plugins: Incident (default), com.snc.change_management, com.snc.problem, ITSM Best Practice packs.<br />
+Navigate: All &gt; System Definition &gt; Plugins or Store. — <a href="{BASE}/v_plugin_list.do">Open direct</a><br />
+Guided Setup: All &gt; Guided Setup &gt; ITSM — <a href="{BASE}/now/guided-setup">Open direct</a></p>
+<h2 id="all-application-menus-tour">All Application Menus (tour)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">All &gt; Incident → Create, Open, Unassigned, Major Incidents
+All &gt; Problem → Problems, Known Errors, Tasks
+All &gt; Change → Normal/Standard/Emergency, Calendar, CAB
+All &gt; Service Catalog → Items, Order Guides, Record Producers
+All &gt; Knowledge → Articles, Bases, Categories
+All &gt; Service Level Management → SLA Definitions, task_sla
+</code></pre>
+<h2 id="key-tables">Key Tables</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Extends</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>task</td>
+<td>—</td>
+<td>Base</td>
+</tr>
+<tr>
+<td>incident</td>
+<td>task</td>
+<td>Break/fix</td>
+</tr>
+<tr>
+<td>problem</td>
+<td>task</td>
+<td>Root cause</td>
+</tr>
+<tr>
+<td>change_request</td>
+<td>task</td>
+<td>Change</td>
+</tr>
+<tr>
+<td>sc_request</td>
+<td>—</td>
+<td>REQ</td>
+</tr>
+<tr>
+<td>sc_req_item</td>
+<td>task</td>
+<td>RITM</td>
+</tr>
+<tr>
+<td>sc_task</td>
+<td>task</td>
+<td>Catalog task</td>
+</tr>
+<tr>
+<td>task_sla</td>
+<td>—</td>
+<td>SLA timer</td>
+</tr>
+<tr>
+<td>kb_knowledge</td>
+<td>—</td>
+<td>Knowledge</td>
+</tr>
+</tbody>
+</table>
+<h2 id="roles-hierarchy">Roles (hierarchy)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<pre><code class="language-text">admin → itil_admin → itil → sn_change_write / problem_admin / knowledge
+ess (employee self-service — no itil)
+</code></pre>
+<h2 id="acls-security">ACLs &amp; Security</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<ul>
+<li>Table/field ACLs on incident, change, etc.</li>
+<li>itil role for agents; incident_manager for managers.</li>
+<li>Domain separation (optional enterprise).</li>
+</ul>
+<h2 id="lookups-assignment">Lookups &amp; Assignment</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li><strong>Priority Lookup:</strong> Impact × Urgency → Priority (dl_matcher).</li>
+<li><strong>Assignment Rules:</strong> All &gt; System Policy &gt; Assignment. — <a href="{BASE}/sysrule_assignment_list.do">Open direct</a></li>
+<li><strong>Data Lookup:</strong> auto-fill fields from conditions.</li>
+</ul>
+<h2 id="business-rules-typical">Business Rules (typical)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a><a href="../scripts/index.html">Scripts portal</a></nav>
+<ul>
+<li>Auto-priority, auto-assignment (prefer Assignment Rules).</li>
+<li>P1 notification, Major Incident flag.</li>
+</ul>
+<h2 id="portals-workspaces">Portals &amp; Workspaces</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Service Portal</td>
+<td>/sp</td>
+</tr>
+<tr>
+<td>Employee Center</td>
+<td>/esc</td>
+</tr>
+<tr>
+<td>Service Operations Workspace</td>
+<td>/now/sow/home</td>
+</tr>
+<tr>
+<td>Knowledge</td>
+<td>/kb</td>
+</tr>
+</tbody>
+</table>
+<h2 id="full-implementation-cycle">Full Implementation Cycle</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<pre><code class="language-text">Foundation (users/groups/roles) → CMDB baseline → Assignment + Priority
+→ SLA → Catalog + KB → Change models → Portal/EC → SOW → Reports/PA → ATF
+</code></pre>
+<h2 id="interview-qa">Interview Q&amp;A</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Q: REQ vs RITM?</strong><br />
+A: One REQ (order); each catalog item = one RITM; fulfillment = sc_task(s).</p>
+<p><strong>Q: Normal vs Standard Change?</strong><br />
+A: Standard = pre-approved catalog; Normal = CAB; Emergency = fast track.</p>
+<p><strong>Q: SLA pause?</strong><br />
+A: When incident On Hold — pause condition on task_sla.</p>
+<p><strong>Deep file:</strong> ../modules/ITSM.md</p>
+<hr />
+<h1 id="cmdb-configuration-management-database">CMDB — Configuration Management Database</h1>
+<h2 id="activation_1">Activation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Core active; Discovery com.snc.discovery, Service Mapping com.snc.service-mapping (licensed).<br />
+Guided Setup: All &gt; Guided Setup &gt; CMDB — <a href="{BASE}/now/guided-setup">Open direct</a></p>
+<h2 id="menus-tour">Menus Tour</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">All &gt; Configuration → CI Class Manager, Servers, Apps, Services
+All &gt; Configuration → CI Identifiers, Reconciliation, CMDB Health
+All &gt; CMDB Data Manager
+All &gt; Discovery → Schedules, Credentials, Status
+All &gt; Service Mapping
+</code></pre>
+<h2 id="key-tables_1">Key Tables</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<p>cmdb_ci, cmdb_ci_server, cmdb_rel_ci, cmdb_rel_type, IRE metadata tables.</p>
+<h2 id="roles">Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>cmdb_admin, discovery_admin, itil (read/use CI).</p>
+<h2 id="acls">ACLs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>CI read often broad for itil; write restricted to cmdb_admin/discovery.</p>
+<h2 id="ire-identification-reconciliation">IRE (Identification &amp; Reconciliation)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li><strong>Identification:</strong> Is this a new CI or existing?</li>
+<li><strong>Reconciliation:</strong> Which source wins for each field?</li>
+<li><strong>Coalesce</strong> on Import Sets — same concept for imports.</li>
+</ul>
+<h2 id="csdm-domains">CSDM Domains</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>Foundation → Design → Manage Technical Services → Sell/Consume.</p>
+<h2 id="portals-workspaces_1">Portals &amp; Workspaces</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<p>CMDB Workspace /now/cmdb, SOW /now/sow/home, Dependency View on CI form.</p>
+<h2 id="implementation-cycle">Implementation Cycle</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<pre><code class="language-text">CSDM scope → CI classes → IRE rules → populate (Discovery/Import/Mapping)
+→ relationships → CMDB Health → consume in ITSM/Change
+</code></pre>
+<h2 id="interview-qa_1">Interview Q&amp;A</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Q: table per class?</strong><br />
+A: Each CI class = table extending cmdb_ci; sys_class_name identifies class.</p>
+<p><strong>Q: Discovery vs Service Mapping?</strong><br />
+A: Discovery = bottom-up infra; Service Mapping = top-down app services.</p>
+<p><strong>Deep file:</strong> ../modules/CMDB.md</p>
+<hr />
+<h1 id="itom-it-operations-management">ITOM — IT Operations Management</h1>
+<h2 id="activation_2">Activation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Discovery, Service Mapping, Event Management (com.snc.sa.server), Cloud plugins.<br />
+Guided Setup: ITOM / Discovery.</p>
+<h2 id="menus-tour_1">Menus Tour</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">All &gt; Discovery → Home, Schedules, Credentials, Networks, Probes
+All &gt; MID Server &gt; Servers
+All &gt; Service Mapping
+All &gt; Event Management → Connectors, Rules, Alerts
+All &gt; Pattern Designer
+</code></pre>
+<h2 id="key-tables_2">Key Tables</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<p>discovery_status, ecc_queue, em_event, em_alert, em_connector_instance.</p>
+<h2 id="roles_1">Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>discovery_admin, evt_mgmt_admin, service_mapping_admin.</p>
+<h2 id="mid-server">MID Server</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>On-prem agent; talks to instance via ecc_queue; required for Discovery behind firewall.</p>
+<h2 id="portals-workspaces_2">Portals &amp; Workspaces</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<p>Discovery Home, Service Mapping UI, Event Management workspace, CMDB/SOW.</p>
+<h2 id="implementation-cycle_1">Implementation Cycle</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<pre><code class="language-text">MID install → credentials → IP ranges → schedules → CIs via IRE
+→ Service Mapping → Event connectors → alert→incident → CMDB Health
+</code></pre>
+<h2 id="interview-qa_2">Interview Q&amp;A</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Q: em_event vs em_alert?</strong><br />
+A: Event = raw; Alert = correlated/grouped actionable signal.</p>
+<p><strong>Q: Why MID?</strong><br />
+A: Secure bridge — instance doesn&rsquo;t scan customer network directly.</p>
+<p><strong>Deep file:</strong> ../modules/ITOM.md</p>
+<hr />
+<h1 id="csm-customer-service-management">CSM — Customer Service Management</h1>
+<h2 id="activation_3">Activation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Store: com.sn_customerservice. Guided Setup: CSM.</p>
+<h2 id="menus-tour_2">Menus Tour</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">All &gt; Customer Service → Cases, Accounts, Contacts, Consumers
+All &gt; Customer Service → Entitlements, Contracts, Products
+All &gt; Advanced Work Assignment
+All &gt; Playbooks
+Service Portal → Customer Portal /csm
+</code></pre>
+<h2 id="key-tables_3">Key Tables</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<p>sn_customerservice_case, customer_account, customer_contact, sn_customerservice_consumer, sn_entitlement, service_contract.</p>
+<h2 id="roles_2">Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>sn_customerservice_agent, sn_customerservice_manager, sn_customerservice.customer, consumer.</p>
+<h2 id="acls-entitlements">ACLs &amp; Entitlements</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Entitlement = eligibility for support; contract SLA attached.</p>
+<h2 id="assignment">Assignment</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>AWA</strong> (Advanced Work Assignment) — skills, capacity, queues.<br />
+Not classic Assignment Rules for cases.</p>
+<h2 id="portals-workspaces_3">Portals &amp; Workspaces</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer Portal</td>
+<td>/csm</td>
+</tr>
+<tr>
+<td>Consumer Portal</td>
+<td>/csp</td>
+</tr>
+<tr>
+<td>Agent Workspace</td>
+<td>/now/cwf/agent</td>
+</tr>
+</tbody>
+</table>
+<h2 id="implementation-cycle_2">Implementation Cycle</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<pre><code class="language-text">Accounts/Contacts → Products → Entitlements/Contracts → Channels
+→ Case config → AWA → Playbooks → Portal → CSM↔FSM/ITSM integration
+</code></pre>
+<h2 id="interview-qa_3">Interview Q&amp;A</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Q: B2B vs B2C?</strong><br />
+A: B2B = account+contact; B2C = consumer record.</p>
+<p><strong>Q: AWA vs Assignment Rule?</strong><br />
+A: AWA = skills/capacity routing for cases; preferred in CSM.</p>
+<p><strong>Deep file:</strong> ../modules/CSM.md</p>
+<hr />
+<h1 id="fsm-field-service-management">FSM — Field Service Management</h1>
+<h2 id="activation_4">Activation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Store: com.snc.work_management. Guided Setup: FSM.</p>
+<h2 id="menus-tour_3">Menus Tour</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">All &gt; Field Service → Work Orders, Tasks, Dispatch, Territories, Skills
+All &gt; Inventory → Stockrooms, Parts
+Dispatcher Workspace /now/fsm/dispatcher
+Now Mobile / Mobile Agent app
+</code></pre>
+<h2 id="key-tables_4">Key Tables</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<p>wm_order, wm_task, dispatch_group, cmn_location, inventory inv_*.</p>
+<h2 id="roles_3">Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>field_service_dispatcher, field_service_agent, field_service_admin.</p>
+<h2 id="assignment-scheduling">Assignment / Scheduling</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Manual dispatch board, Auto Dispatch, Dynamic Scheduling, Appointment Booking.</p>
+<h2 id="portals-workspaces_4">Portals &amp; Workspaces</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<p>Dispatcher Workspace, CSM portal for customer, Mobile for technicians.</p>
+<h2 id="implementation-cycle_3">Implementation Cycle</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<pre><code class="language-text">Locations/Territories → Skills → Technicians → Dispatch groups
+→ Inventory → WO config → Mobile → CSM integration
+</code></pre>
+<h2 id="interview-qa_4">Interview Q&amp;A</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Q: WO vs WO Task?</strong><br />
+A: Order = container; Task = unit of work for one technician visit.</p>
+<p><strong>Deep file:</strong> ../modules/FSM.md</p>
+<hr />
+<h1 id="spm-strategic-portfolio-management">SPM — Strategic Portfolio Management</h1>
+<h2 id="activation_5">Activation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>PPM, Demand, Resource, Agile plugins from Store/Plugins.<br />
+Guided Setup: SPM/PPM.</p>
+<h2 id="menus-tour_4">Menus Tour</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">All &gt; Innovation → Ideas
+All &gt; Demand → Workbench
+All &gt; Project → Planning Console, WBS
+All &gt; Resource → Workbench
+All &gt; Agile Development → Board, Sprints
+All &gt; Strategic Planning / Roadmaps
+All &gt; Financial Management
+</code></pre>
+<h2 id="key-tables_5">Key Tables</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<p>idea, dmn_demand, pm_project, pm_project_task, pm_portfolio, pm_program, resource_plan, rm_story, rm_sprint.</p>
+<h2 id="roles_4">Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>it_project_manager, resource_manager, it_demand_manager, scrum_master.</p>
+<h2 id="implementation-cycle_4">Implementation Cycle</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<pre><code class="language-text">Fiscal calendar → Idea/Demand intake → Assessment → Project templates
+→ Resource plans → Agile/Waterfall execution → Financials → Portfolio dashboards
+</code></pre>
+<h2 id="portals-workspaces_5">Portals &amp; Workspaces</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<p>Idea portal /sp, Demand/Resource Workbenches, Planning Console (not classic portal).</p>
+<h2 id="interview-qa_5">Interview Q&amp;A</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Q: Portfolio vs Program vs Project?</strong><br />
+A: Portfolio = strategic bucket; Program = related projects; Project = deliverable.</p>
+<p><strong>Deep file:</strong> ../modules/SPM.md</p>
+<hr />
+<h1 id="grc-irm-governance-risk-compliance">GRC / IRM — Governance, Risk, Compliance</h1>
+<h2 id="activation_6">Activation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>com.sn_compliance, com.sn_risk, com.sn_audit, VRM plugins.<br />
+Guided Setup: GRC/IRM.</p>
+<h2 id="menus-tour_5">Menus Tour</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">All &gt; Policy and Compliance → Authority Docs, Policies, Controls, Indicators
+All &gt; Risk → Register, Assessments
+All &gt; Audit → Engagements
+All &gt; GRC → Issues, Remediation
+All &gt; Vendor Risk Management
+</code></pre>
+<h2 id="key-tables_6">Key Tables</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<p>sn_compliance_policy, sn_compliance_control, sn_risk_risk, sn_grc_item (profiles), sn_grc_issue.</p>
+<h2 id="roles_5">Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>sn_compliance.admin, sn_risk.manager, sn_audit.admin, sn_grc.reader.</p>
+<h2 id="grc-engine">GRC Engine</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<pre><code class="language-text">Authority Document → Citation → Policy → Control → Indicator → Issue
+Profiles scope entities (apps, depts, vendors)
+</code></pre>
+<h2 id="portals-workspaces_6">Portals &amp; Workspaces</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<p>Attestations via /sp//esc; IRM Workspace /now/grc.</p>
+<h2 id="implementation-cycle_5">Implementation Cycle</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<pre><code class="language-text">Profiles → Authority docs → Policies/Controls → Risk framework
+→ Indicators/monitoring → Issues/remediation → Audit engagements
+</code></pre>
+<h2 id="interview-qa_6">Interview Q&amp;A</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Q: Profile purpose?</strong><br />
+A: Scoping entity — links controls and risks to what you&rsquo;re governing.</p>
+<p><strong>Q: Inherent vs residual risk?</strong><br />
+A: Inherent before controls; residual after treatment.</p>
+<p><strong>Deep file:</strong> ../modules/GRC.md</p>
+<hr />
+<h1 id="hrsd-hr-service-delivery">HRSD — HR Service Delivery</h1>
+<h2 id="activation_7">Activation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>com.sn_hr_core, com.sn_hr_case_management, Lifecycle Events, COE plugins.<br />
+Guided Setup: HRSD.</p>
+<h2 id="menus-tour_6">Menus Tour</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">All &gt; HR Administration → Profiles, Services, COE, HR Criteria
+All &gt; HR Case Management → Cases, Tasks, Knowledge
+All &gt; HR Lifecycle Events → Onboarding/Offboarding
+All &gt; Employee Center → Topics, Taxonomy, Content
+</code></pre>
+<h2 id="key-tables_7">Key Tables</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<p>sn_hr_core_case, sn_hr_core_profile, sn_hr_le_case, COE tables sn_hr_core_case_*.</p>
+<h2 id="roles_6">Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>sn_hr_core.basic, sn_hr_core.case_writer, sn_hr_core.manager, sn_hr_core.admin, COE-specific roles.</p>
+<h2 id="hr-criteria-critical">HR Criteria (critical)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Security engine — who sees which HR case/data — <strong>most tested in CIS-HR</strong>.</p>
+<h2 id="portals-workspaces_7">Portals &amp; Workspaces</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Employee Center</td>
+<td>/esc</td>
+</tr>
+<tr>
+<td>HR Agent Workspace</td>
+<td>/now/hr/agent</td>
+</tr>
+<tr>
+<td>Legacy HR portal</td>
+<td>/hr</td>
+</tr>
+</tbody>
+</table>
+<h2 id="implementation-cycle_6">Implementation Cycle</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<pre><code class="language-text">HR Profiles → HR Criteria (first!) → COEs → HR Services
+→ Cases/Knowledge → Lifecycle Events → Employee Center → Integrations (Workday)
+</code></pre>
+<h2 id="link-to-our-app">Link to our app</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Scope x_786686_hr_leave publishes leave request to Employee Center.<br />
+File: ../09_MODULES_AND_INTEGRATION.md</p>
+<h2 id="interview-qa_7">Interview Q&amp;A</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Q: HR Case vs ITSM Incident for employee?</strong><br />
+A: HR Case in HRSD with HR Criteria — not ITSM incident.</p>
+<p><strong>Q: Lifecycle Event?</strong><br />
+A: Multi-team journey (onboarding) with Activity Sets fan-out tasks.</p>
+<p><strong>Deep file:</strong> ../modules/HRSD.md</p>
+<hr />
+<h1 id="itam-it-asset-management-ham-sam">ITAM — IT Asset Management (HAM / SAM)</h1>
+<h2 id="activation_8">Activation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Plugins (order): com.snc.asset_management → com.snc.hardware_asset_management → com.snc.procurement → SAM from Store if needed.<br />
+Navigate: All &gt; System Definition &gt; Plugins or Store. — <a href="{BASE}/v_plugin_list.do">Open direct</a><br />
+Guided Setup: All &gt; Guided Setup → IT Asset / Hardware Asset / Procurement. — <a href="{BASE}/now/guided-setup">Open direct</a></p>
+<h2 id="menus-tour_7">Menus Tour</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">All &gt; Asset
+ ├─ Hardware Assets / Model Library / Stockrooms
+ ├─ Transfer Orders / Software Licenses (SAM)
+ └─ Administration / Lifecycle
+All &gt; Procurement
+ ├─ Purchase Orders / Vendors / Receive
+All &gt; Contract Management (SAM entitlements)
+All &gt; Service Catalog (hardware catalog items)
+</code></pre>
+<h2 id="key-tables_8">Key Tables</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alm_asset</td>
+<td>Base asset</td>
+</tr>
+<tr>
+<td>alm_hardware</td>
+<td>Physical hardware</td>
+</tr>
+<tr>
+<td>alm_model</td>
+<td>Product model</td>
+</tr>
+<tr>
+<td>alm_stockroom</td>
+<td>Warehouse</td>
+</tr>
+<tr>
+<td>alm_license</td>
+<td>Software license (SAM)</td>
+</tr>
+<tr>
+<td>proc_po / proc_po_item</td>
+<td>Purchase orders</td>
+</tr>
+<tr>
+<td>cmdb_ci_computer</td>
+<td>Linked CI (CMDB)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="roles_7">Roles</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>asset, ham_admin, sam_admin, procurement_admin, stockroom_admin, asset_manager.</p>
+<h2 id="ham-vs-sam-vs-cmdb">HAM vs SAM vs CMDB</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Question answered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HAM</td>
+<td>Where is the laptop? Who has it? Stockroom?</td>
+</tr>
+<tr>
+<td>SAM</td>
+<td>Do we have enough licenses? Compliance?</td>
+</tr>
+<tr>
+<td>CMDB</td>
+<td>What service breaks if this server fails?</td>
+</tr>
+</tbody>
+</table>
+<h2 id="portals-workspaces_8">Portals &amp; Workspaces</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Service Portal / Employee Center</td>
+<td>/sp, /esc (request hardware)</td>
+</tr>
+<tr>
+<td>Asset workspace</td>
+<td>App Navigator → Asset / ITAM</td>
+</tr>
+<tr>
+<td>Lists</td>
+<td>alm_hardware.list, proc_po.list</td>
+</tr>
+</tbody>
+</table>
+<h2 id="implementation-cycle_7">Implementation Cycle</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<pre><code class="language-text">Models + stockrooms → lifecycle → catalog item
+→ Request → PO → Receive → alm_hardware (in_stock)
+→ Deploy (in_use) → link CI → maintain → retire
+(SAM) entitlements → discovery installs → reconciliation → compliance
+</code></pre>
+<h2 id="interview-qa_8">Interview Q&amp;A</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Q: HAM vs SAM?</strong><br />
+A: HAM = physical assets, stockroom, deploy/retire. SAM = licenses, entitlements, compliance, reclamation.</p>
+<p><strong>Q: ITAM vs CMDB?</strong><br />
+A: ITAM = lifecycle/cost/stockroom/licensing. CMDB = configuration &amp; service impact. Link via CI on asset.</p>
+<p><strong>Q: How does catalog request become an asset?</strong><br />
+A: sc_req_item → procurement PO → receive → creates alm_hardware → deploy to user.</p>
+<p><strong>Deep file:</strong> ../modules/ITAM.md (§3 activation, §8 labs, §12 consultant playbook)</p>
+<hr />
+<h1 id="cross-module-comparison-interview-table">Cross-Module Comparison (Interview Table)</h1>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>End User Portal</th>
+<th>Agent Workspace</th>
+<th>Key Security</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ITSM</td>
+<td>/sp, /esc</td>
+<td>SOW /now/sow/home</td>
+<td>Roles + ACL</td>
+</tr>
+<tr>
+<td>CSM</td>
+<td>/csm</td>
+<td>/now/cwf/agent</td>
+<td>Entitlements + AWA</td>
+</tr>
+<tr>
+<td>FSM</td>
+<td>/csm + Mobile</td>
+<td>/now/fsm/dispatcher</td>
+<td>Skills/territories</td>
+</tr>
+<tr>
+<td>HRSD</td>
+<td>/esc</td>
+<td>/now/hr/agent</td>
+<td><strong>HR Criteria</strong></td>
+</tr>
+<tr>
+<td>CMDB/ITOM</td>
+<td>—</td>
+<td>/now/cmdb</td>
+<td>cmdb_admin</td>
+</tr>
+<tr>
+<td>ITAM</td>
+<td>/sp, /esc</td>
+<td>Asset workspace</td>
+<td>asset / ham_admin / sam_admin</td>
+</tr>
+<tr>
+<td>SPM</td>
+<td>/sp ideas</td>
+<td>Workbenches</td>
+<td>Portfolio roles</td>
+</tr>
+<tr>
+<td>GRC</td>
+<td>/sp attest</td>
+<td>/now/grc</td>
+<td>Profiles + COE</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="module-study-order-for-interview">Module Study Order for Interview</h1>
+<ol>
+<li>CMDB + ITOM (foundation)</li>
+<li>ITAM (assets — after CMDB)</li>
+<li>ITSM (processes)</li>
+<li>HRSD or CSM (service apps)</li>
+<li>FSM (if CSM path)</li>
+<li>SPM + GRC (governance)</li>
+</ol>
+<p>Master platform guide:<br />
+File: 00_MASTER_DEV_ADMIN_INTERVIEW.md</p>
+<p>Scripts/API:<br />
+File: 01_SCRIPTS_FUNCTIONS_DEEP_DIVE.md</p>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

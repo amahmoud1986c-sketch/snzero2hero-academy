@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Module From-Scratch 30-Day Implementation Sprint | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Module From-Scratch 30-Day Implementation Sprint</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="module-from-scratch-30-day-implementation-sprint">Module From-Scratch 30-Day Implementation Sprint</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً:</strong> <a href="../MASTER_ALL_IN_ONE_SUMMARY.html">../MASTER_ALL_IN_ONE_SUMMARY.md</a> · <a href="../html/MASTER_ALL_IN_ONE_SUMMARY.html">../html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل:</strong> <a href="../MASTER_ALL_IN_ONE.html">../MASTER_ALL_IN_ONE.md</a> · <a href="../html/MASTER_ALL_IN_ONE.html">../html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات:</strong> <a href="../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Australia · Scope <code>x_786686_hr_leave</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>URLs:</strong> <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">../../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a><br />
+<strong>HR Leave:</strong> Scope x_786686_hr_leave</p>
+</blockquote>
+<h2 id="30">التطبيق من الصفر — رحلة 30 يومًا</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<blockquote>
+<p>Universal 30-day playbook for any ServiceNow module. Customize the lane per module.</p>
+<p>دليل تنفيذ 30 يومًا قابل للتطبيق على أي موديول. لكل موديول مسار خاص في ملف §18.</p>
+</blockquote>
+<hr />
+<h2 id="1-purpose">§1 — Purpose / الغرض</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>This is the <strong>master 30-day plan</strong>. Each module file (ITSM.md, CMDB.md, etc.) has its own <strong>§18 From-Scratch Implementation</strong> with module-specific day-by-day steps. This document standardizes the <strong>methodology, phases, gates, and templates</strong>.</p>
+<p>هذا الملف يوحّد منهجية الـ 30 يومًا. أما تفاصيل كل موديول، فهي في §18 الخاص بكل ملف.</p>
+<hr />
+<h2 id="2-sprint-phases">§2 — Sprint phases / مراحل التطبيق</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>┌─────────────┬─────────────┬──────────────┬──────────────┐<br />
+│ Foundation │ Build │ Integrate │ Launch │<br />
+│ (Days 0-7) │ (Days 8-18) │ (Days 19-24) │ (Days 25-30) │<br />
+└─────────────┴─────────────┴──────────────┴──────────────┘</p>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Days</th>
+<th>Key gate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0. Strategy &amp; Charter</td>
+<td>-7 to 0</td>
+<td>Sponsor sign-off</td>
+</tr>
+<tr>
+<td>1. Foundation</td>
+<td>0-7</td>
+<td>Plugins active, data model agreed</td>
+</tr>
+<tr>
+<td>2. Build</td>
+<td>8-18</td>
+<td>Configuration complete + ATF passing</td>
+</tr>
+<tr>
+<td>3. Integrate</td>
+<td>19-24</td>
+<td>Integrations tested end-to-end</td>
+</tr>
+<tr>
+<td>4. Launch</td>
+<td>25-30</td>
+<td>UAT signed, training done, go-live</td>
+</tr>
+<tr>
+<td>5. Stabilize</td>
+<td>30-60</td>
+<td>Hypercare + defect resolution</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-day-0-strategy-charter">§3 — Day 0 — Strategy &amp; Charter</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="31-charter-document-outline">3.1 Charter document outline</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h1 id="project-module-name-implementation">Project: [Module Name] Implementation</h1>
+<h2 id="sponsor">Sponsor</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>[Executive name + title]</p>
+<h2 id="business-case">Business case</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<ul>
+<li>Problem: [pain point]</li>
+<li>Outcome: [measurable target]</li>
+<li>Value: [dollars saved / risk reduced / time freed]</li>
+</ul>
+<h2 id="scope-in">Scope (in)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li>[bullet]</li>
+</ul>
+<h2 id="scope-out">Scope (out)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li>[bullet]</li>
+</ul>
+<h2 id="success-criteria">Success criteria</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li>[KPI 1 with target]</li>
+<li>[KPI 2 with target]</li>
+</ul>
+<h2 id="timeline">Timeline</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li>Kick-off: [date]</li>
+<li>Go-live: [date]</li>
+<li>Hypercare end: [date]</li>
+</ul>
+<h2 id="raci">RACI</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>[table]</p>
+<h2 id="risks">Risks</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p>[top 5]</p>
+<h2 id="budget">Budget</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>[licenses + services + internal hours]</p>
+<h3 id="32-stakeholder-map-raci">3.2 Stakeholder map (RACI)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Stakeholder</th>
+<th>R</th>
+<th>A</th>
+<th>C</th>
+<th>I</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sponsor (Exec)</td>
+<td></td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Process Owner</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>SN Architect</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>BA</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td>End-user reps</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>IT Sec</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td>Audit</td>
+<td></td>
+<td></td>
+<td></td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-days-0-7-foundation">§4 — Days 0-7 — Foundation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Day</th>
+<th>Activity</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Charter signed; kickoff meeting</td>
+<td>Approved charter</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Plugin activation; sub-prod ready</td>
+<td>Active modules</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Data model workshop</td>
+<td>Draft tables/fields</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Role catalog design</td>
+<td>Role list with descriptions</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Profile / Account / CI structure decisions</td>
+<td>Data dictionary</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Initial data load (sample)</td>
+<td>100 sample records</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Security model (ACLs, criteria, scopes)</td>
+<td>Security matrix</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Gate 1</strong>: Foundation review</td>
+<td>Approval to build</td>
+</tr>
+</tbody>
+</table>
+<h3 id="41-day-1-plugin-activation-template">4.1 Day 1 — Plugin activation template</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-text">Navigate: All &gt; System Applications &gt; All Available Applications
+Search: &lt;module&gt;
+Click: Activate (and dependencies)
+Wait for completion
+Refresh and verify navigation
+Run: Guided Setup &gt; &lt;module&gt;
+</code></pre>
+<h3 id="42-day-2-data-model-workshop-facilitation">4.2 Day 2 — Data model workshop facilitation</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<p>Ask:<br />
+1. What is the <strong>transaction</strong> record? (incident, case, asset, project)<br />
+2. What is the <strong>master</strong> record? (account, person, CI, profile)<br />
+3. What <strong>lookup</strong> records do you need? (categories, types, priorities)<br />
+4. What <strong>relationships</strong> matter? (parent-child, M:N)<br />
+5. What <strong>lifecycle states</strong> does each record have?</p>
+<p>Output: 1-page ER diagram per table.</p>
+<h3 id="43-day-3-role-catalog-template">4.3 Day 3 — Role catalog template</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a></nav>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Purpose</th>
+<th>Granted to</th>
+<th>Includes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x_<scope>.user</td>
+<td>Basic user</td>
+<td>All employees</td>
+<td>(no parent)</td>
+</tr>
+<tr>
+<td>x_<scope>.requester</td>
+<td>Open requests</td>
+<td>Self-service</td>
+<td>x_<scope>.user</td>
+</tr>
+<tr>
+<td>x_<scope>.agent</td>
+<td>Work tickets</td>
+<td>Service desk</td>
+<td>x_<scope>.requester</td>
+</tr>
+<tr>
+<td>x_<scope>.manager</td>
+<td>Approve + reports</td>
+<td>Managers</td>
+<td>x_<scope>.agent</td>
+</tr>
+<tr>
+<td>x_<scope>.admin</td>
+<td>Full admin</td>
+<td>Sys admin team</td>
+<td>x_<scope>.manager</td>
+</tr>
+</tbody>
+</table>
+<h3 id="44-day-6-security-model">4.4 Day 6 — Security model</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Plan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACLs</td>
+<td>Record + Field level per role</td>
+</tr>
+<tr>
+<td>Encryption</td>
+<td>Sensitive fields (SSN, salary)</td>
+</tr>
+<tr>
+<td>Audit</td>
+<td>Field audit on PII fields</td>
+</tr>
+<tr>
+<td>Cross-scope</td>
+<td>Explicit Cross-Scope rules</td>
+</tr>
+<tr>
+<td>Login</td>
+<td>SSO via SAML/OIDC</td>
+</tr>
+<tr>
+<td>MFA</td>
+<td>Enforced for elevated roles</td>
+</tr>
+<tr>
+<td>Session timeout</td>
+<td>30 min idle</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-days-8-18-build">§5 — Days 8-18 — Build</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Day</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8</td>
+<td>Forms + views configuration</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Lists + filters</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Notifications + templates</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Workflows + Flow Designer</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Service Catalog (if applicable)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Service Portal page customization</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Workspace UI configuration</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Reports + Dashboards</td>
+</tr>
+<tr>
+<td>16</td>
+<td>PA Indicators (3-5 core)</td>
+</tr>
+<tr>
+<td>17</td>
+<td>ATF tests (10+ scenarios)</td>
+</tr>
+<tr>
+<td>18</td>
+<td><strong>Gate 2</strong>: Build review (peer + sponsor)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="51-atf-coverage-targets">5.1 ATF coverage targets</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Coverage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Critical business rules</td>
+<td>90%+</td>
+</tr>
+<tr>
+<td>Script Includes</td>
+<td>80%+</td>
+</tr>
+<tr>
+<td>UI flows (Portal/Workspace)</td>
+<td>70%+</td>
+</tr>
+<tr>
+<td>Integrations</td>
+<td>100% mocked</td>
+</tr>
+<tr>
+<td>ACLs</td>
+<td>50%+ (positive + negative)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-update-set-discipline">5.2 Update Set discipline</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<ul>
+<li>Naming: [YYYYMMDD]<em><module></em><wave>_<descriptor></li>
+<li>Example: 20260601_HRSD_W1_HRCriteria</li>
+<li>Commit daily; never accumulate &gt;100 changes per set</li>
+<li>Pre-commit review by tech lead</li>
+</ul>
+<hr />
+<h2 id="6-days-19-24-integrate">§6 — Days 19-24 — Integrate</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Day</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>19</td>
+<td>Inbound REST tested</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Outbound REST + MID Server tested</td>
+</tr>
+<tr>
+<td>21</td>
+<td>IntegrationHub spokes</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Email integration (inbound + outbound)</td>
+</tr>
+<tr>
+<td>23</td>
+<td>SSO + AD provisioning</td>
+</tr>
+<tr>
+<td>24</td>
+<td><strong>Gate 3</strong>: Integration sign-off</td>
+</tr>
+</tbody>
+</table>
+<h3 id="61-integration-testing-matrix">6.1 Integration testing matrix</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Test cases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inbound API</td>
+<td>Happy path, auth fail, validation fail, idempotency</td>
+</tr>
+<tr>
+<td>Outbound</td>
+<td>Success, timeout (3s, 10s, 30s), retry, circuit-breaker</td>
+</tr>
+<tr>
+<td>Webhook</td>
+<td>HMAC valid, HMAC invalid, replay protection</td>
+</tr>
+<tr>
+<td>MID Server</td>
+<td>Discovery, credentials, secure transfer</td>
+</tr>
+<tr>
+<td>Schedule</td>
+<td>Cron accuracy, missed run recovery</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-days-25-30-launch">§7 — Days 25-30 — Launch</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Day</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>25</td>
+<td>Final training delivery</td>
+</tr>
+<tr>
+<td>26</td>
+<td>UAT (full E2E scenarios)</td>
+</tr>
+<tr>
+<td>27</td>
+<td>UAT defect triage + fixes</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Production cutover dry-run</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Go-live (off-hours or staged)</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Day-1 hypercare standup</td>
+</tr>
+</tbody>
+</table>
+<h3 id="71-uat-scenario-template">7.1 UAT scenario template</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">**Scenario ID**: UAT-&lt;module&gt;-01
+**Title**: &lt;title&gt;
+**Persona**: &lt;Employee | Agent | Manager&gt;
+**Pre-conditions**: &lt;state&gt;
+**Steps**:
+ 1. &lt;action&gt;
+ 2. &lt;action&gt;
+**Expected**: &lt;result&gt;
+**Actual**: &lt;fill during test&gt;
+**Pass/Fail**:
+**Defect ref**: &lt;if any&gt;
+**Sign-off (BA + sponsor)**:
+</code></pre>
+<h3 id="72-cutover-plan-template">7.2 Cutover plan template</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Activity</th>
+<th>Owner</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T-72h</td>
+<td>Final pre-prod test</td>
+<td>QA</td>
+<td></td>
+</tr>
+<tr>
+<td>T-48h</td>
+<td>Sponsor go/no-go</td>
+<td>PM</td>
+<td></td>
+</tr>
+<tr>
+<td>T-24h</td>
+<td>Freeze code</td>
+<td>Tech Lead</td>
+<td></td>
+</tr>
+<tr>
+<td>T-8h</td>
+<td>Backup snapshot</td>
+<td>Admin</td>
+<td></td>
+</tr>
+<tr>
+<td>T-4h</td>
+<td>Comms to users</td>
+<td>PM</td>
+<td></td>
+</tr>
+<tr>
+<td>T-2h</td>
+<td>Final smoke test in prod</td>
+<td>QA</td>
+<td></td>
+</tr>
+<tr>
+<td>T-0</td>
+<td>Go-live</td>
+<td>Tech Lead</td>
+<td></td>
+</tr>
+<tr>
+<td>T+1h</td>
+<td>Smoke validation</td>
+<td>QA</td>
+<td></td>
+</tr>
+<tr>
+<td>T+4h</td>
+<td>Watchtower checks</td>
+<td>Ops</td>
+<td></td>
+</tr>
+<tr>
+<td>T+24h</td>
+<td>Day-1 standup</td>
+<td>PM</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-days-30-60-stabilize-hypercare">§8 — Days 30-60 — Stabilize (Hypercare)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>Cadence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Daily standup (defects + adoption)</td>
+<td>Day 30-44</td>
+</tr>
+<tr>
+<td>Weekly steering committee</td>
+<td>Weekly through 60</td>
+</tr>
+<tr>
+<td>Performance monitoring</td>
+<td>Continuous</td>
+</tr>
+<tr>
+<td>Defect triage (P1 ≤ 4h, P2 ≤ 24h)</td>
+<td>Continuous</td>
+</tr>
+<tr>
+<td>User feedback survey</td>
+<td>Day 14 + Day 30 + Day 60</td>
+</tr>
+<tr>
+<td>KPI baseline measurement</td>
+<td>Day 30</td>
+</tr>
+<tr>
+<td>Retrospective</td>
+<td>Day 60</td>
+</tr>
+</tbody>
+</table>
+<h3 id="81-hypercare-metrics">8.1 Hypercare metrics</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open P1 defects</td>
+<td>0 by Day 14</td>
+</tr>
+<tr>
+<td>Open P2 defects</td>
+<td>≤ 3 by Day 30</td>
+</tr>
+<tr>
+<td>User adoption (DAU/MAU)</td>
+<td>≥ 70% by Day 30</td>
+</tr>
+<tr>
+<td>Help desk tickets re: tool</td>
+<td>Trending down by 50% Day 14 → 30</td>
+</tr>
+<tr>
+<td>Sponsor confidence</td>
+<td>&ldquo;green&rdquo; by Day 21</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9-per-module-30-day-quick-reference">§9 — Per-module 30-day quick reference</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Each module&rsquo;s §18 has the day-by-day specifics. Quick reference:</p>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Distinct Day-1 plugin</th>
+<th>Key Day-7 milestone</th>
+<th>Day-15 milestone</th>
+<th>Day-30</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ITSM</td>
+<td>(core)</td>
+<td>Incident + change configured</td>
+<td>Catalog launched</td>
+<td>P1-P4 SLA enforced</td>
+</tr>
+<tr>
+<td>CMDB</td>
+<td>com.snc.discovery</td>
+<td>CI Class hierarchy + IRE</td>
+<td>Discovery running</td>
+<td>CMDB Health green</td>
+</tr>
+<tr>
+<td>ITOM</td>
+<td>com.snc.service-mapping</td>
+<td>MID Servers</td>
+<td>Discovery sched</td>
+<td>Service maps for top 20</td>
+</tr>
+<tr>
+<td>ITAM</td>
+<td>com.snc.alm.asset</td>
+<td>Stockrooms</td>
+<td>Catalog→PO live</td>
+<td>SAM compliance baseline</td>
+</tr>
+<tr>
+<td>HRSD</td>
+<td>com.sn_hr_core</td>
+<td>Profiles + Criteria</td>
+<td>EC topics live</td>
+<td>Onboarding LCE go-live</td>
+</tr>
+<tr>
+<td>CSM</td>
+<td>com.sn_customerservice</td>
+<td>Accounts + contacts</td>
+<td>Portal branded</td>
+<td>NPS baseline</td>
+</tr>
+<tr>
+<td>FSM</td>
+<td>com.snc.work_management</td>
+<td>Territories + skills</td>
+<td>Dispatcher live</td>
+<td>First-Time-Fix ≥ 80%</td>
+</tr>
+<tr>
+<td>SPM</td>
+<td>com.snc.demand_management</td>
+<td>Portfolios + scorecard</td>
+<td>Demand → Project</td>
+<td>Exec dashboard</td>
+</tr>
+<tr>
+<td>GRC</td>
+<td>com.sn_grc</td>
+<td>Profiles</td>
+<td>Controls + indicators</td>
+<td>Attestation Wave 1</td>
+</tr>
+<tr>
+<td>SecOps</td>
+<td>com.snc.security_incident</td>
+<td>SIR playbooks</td>
+<td>VR scanner integrated</td>
+<td>SOC operational 24/7</td>
+</tr>
+<tr>
+<td>DevOps</td>
+<td>com.snc.devops_change</td>
+<td>Git/CI connectors</td>
+<td>Auto-CR live</td>
+<td>DORA dashboard</td>
+</tr>
+<tr>
+<td>App Engine</td>
+<td>com.glide.app_engine_studio</td>
+<td>Citizen sandbox + templates</td>
+<td>Wave 1 apps in build</td>
+<td>Wave 1 apps launched</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-templates-library">§10 — Templates library</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="101-daily-standup-script-days-8-30">10.1 Daily standup script (Days 8-30)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ol>
+<li>Yesterday: what was completed</li>
+<li>Today: what we&rsquo;re working on</li>
+<li>Blockers: what we need help with</li>
+<li>Risks emerging: new or escalated</li>
+<li>Metrics: progress % vs plan</li>
+</ol>
+<h3 id="102-weekly-status-report-1-pager">10.2 Weekly status report (1-pager)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<h1 id="week-implementation">Week <N>: <Module> Implementation</h1>
+<h2 id="status-green-amber-red">Status: 🟢 GREEN | 🟡 AMBER | 🔴 RED</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h2 id="key-accomplishments">Key accomplishments</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li>&hellip;</li>
+</ul>
+<h2 id="upcoming-next-week">Upcoming next week</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li>&hellip;</li>
+</ul>
+<h2 id="risks-issues">Risks &amp; issues</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<ul>
+<li>&hellip;</li>
+</ul>
+<h2 id="asks-sponsor-steering">Asks (sponsor / steering)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li>&hellip;</li>
+</ul>
+<h2 id="kpis-this-week-vs-plan">KPIs (this week vs plan)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Target</th>
+<th>Actual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="103-defect-triage-template">10.3 Defect triage template</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">**Defect ID**: D-&lt;n&gt;
+**Severity**: P1 | P2 | P3 | P4
+**Component**: &lt;table | flow | widget | API&gt;
+**Description**:
+**Repro steps**:
+**Expected**:
+**Actual**:
+**Workaround**:
+**Owner**:
+**ETA fix**:
+**Tested by**:
+**Closed**:
+</code></pre>
+<hr />
+<h2 id="11-resource-plan-template-30-day-sprint">§11 — Resource plan template (30-day sprint)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>FTE %</th>
+<th>Days</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Project Manager</td>
+<td>50%</td>
+<td>30</td>
+</tr>
+<tr>
+<td>SN Architect</td>
+<td>100%</td>
+<td>30</td>
+</tr>
+<tr>
+<td>BA</td>
+<td>75%</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Tech Lead</td>
+<td>100%</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Developer</td>
+<td>100%</td>
+<td>18 (build phase)</td>
+</tr>
+<tr>
+<td>Integration Engineer</td>
+<td>50%</td>
+<td>12</td>
+</tr>
+<tr>
+<td>ATF Engineer</td>
+<td>50%</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Trainer</td>
+<td>25%</td>
+<td>8</td>
+</tr>
+<tr>
+<td>UAT Coordinator</td>
+<td>50%</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Change Manager</td>
+<td>25%</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Sponsor</td>
+<td>5%</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12-risk-catalog-typical-30-day-project">§12 — Risk catalog (typical 30-day project)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Probability</th>
+<th>Impact</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plugin license missing</td>
+<td>Low</td>
+<td>High</td>
+<td>Verify Day -7</td>
+</tr>
+<tr>
+<td>Data quality issues (HRIS)</td>
+<td>High</td>
+<td>Medium</td>
+<td>Sample on Day 5; cleanse</td>
+</tr>
+<tr>
+<td>Integration partner not ready</td>
+<td>Medium</td>
+<td>High</td>
+<td>Lock interface Day 0; mock if late</td>
+</tr>
+<tr>
+<td>Scope creep</td>
+<td>High</td>
+<td>Medium</td>
+<td>Strict change control; &ldquo;later wave&rdquo; parking lot</td>
+</tr>
+<tr>
+<td>Insufficient training</td>
+<td>Medium</td>
+<td>High</td>
+<td>Start training material Day 1</td>
+</tr>
+<tr>
+<td>Performance issues at scale</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Load test Day 24</td>
+</tr>
+<tr>
+<td>Resistance to change</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Comms plan T-30; champions network</td>
+</tr>
+<tr>
+<td>Sponsor disengagement</td>
+<td>Low</td>
+<td>High</td>
+<td>Bi-weekly sponsor 1:1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="13-go-live-rocket-launch-checklist-day-28-29">§13 — Go-live &ldquo;rocket-launch&rdquo; checklist (Day 28-29)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li>[ ] Final smoke test passing</li>
+<li>[ ] Backup snapshot taken</li>
+<li>[ ] Code freeze in effect</li>
+<li>[ ] Comms sent (T-1 day)</li>
+<li>[ ] War-room booked (1st 72h post-launch)</li>
+<li>[ ] On-call rotation confirmed</li>
+<li>[ ] Support team briefed</li>
+<li>[ ] Rollback plan reviewed</li>
+<li>[ ] Monitoring dashboards open</li>
+<li>[ ] KPI baseline captured</li>
+<li>[ ] Day-1 sponsor message drafted</li>
+<li>[ ] Hypercare schedule shared</li>
+<li>[ ] Survey for Day-7 prepared</li>
+</ul>
+<hr />
+<h2 id="14-common-30-day-sprint-outcomes">§14 — Common 30-day sprint outcomes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>&ldquo;Day 30 has been delivered&rdquo; looks like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ITSM</td>
+<td>Incident + Change + Catalog + Portal + SLA + KB; CSAT baselined; 90%+ tickets in tool</td>
+</tr>
+<tr>
+<td>CMDB</td>
+<td>CSDM compliant; Health ≥ 80%; 90%+ CIs from authoritative source</td>
+</tr>
+<tr>
+<td>HRSD</td>
+<td>HR Cases live; EC homepage personalized; onboarding LCE running</td>
+</tr>
+<tr>
+<td>CSM</td>
+<td>Customer portal branded; cases in tool; CSR using Workspace 100%</td>
+</tr>
+<tr>
+<td>FSM</td>
+<td>Dispatcher console live; technicians on Now Mobile; WO lifecycle clean</td>
+</tr>
+<tr>
+<td>SPM</td>
+<td>Idea/Demand/Project flow operational; Exec dashboard live</td>
+</tr>
+<tr>
+<td>GRC</td>
+<td>Attestation Wave 1 running; Top 10 risks visualized; 3-5 indicators monitoring</td>
+</tr>
+<tr>
+<td>SecOps</td>
+<td>SOC running with SIR; VR ingesting scans; MTTR baseline established</td>
+</tr>
+<tr>
+<td>DevOps</td>
+<td>Pipeline → CR auto-create live; DORA visible</td>
+</tr>
+<tr>
+<td>App Engine</td>
+<td>Citizen CoE launched; 3 apps in production; template library ready</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="15-post-30-day-roadmap-wave-2">§15 — Post-30-day roadmap (Wave 2)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>After successful Wave 1 (Days 0-30), plan Wave 2 (Days 31-90):</p>
+<ul>
+<li>Expand to more business units</li>
+<li>Add advanced features (AI, automation, advanced workflows)</li>
+<li>Integrate with more external systems</li>
+<li>Build cross-module experiences</li>
+<li>Maturity: from &ldquo;running&rdquo; to &ldquo;optimized&rdquo;</li>
+</ul>
+<p>Use MODULE_ZERO_TO_HERO_CONSULTING.md Phase 8 (Run &amp; Improve) for ongoing operations.</p>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

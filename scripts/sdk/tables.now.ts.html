@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>tables.now.ts | HR Leave Fluent</title>
+  <link rel="stylesheet" href="../../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../../index.html">Portal</a>
+      <a href="../../01_DEVELOPMENT.html">01 Development</a>
+      <a href="../../16_SDK_FULL_DEV_ADMIN_FROM_SCRATCH.html">16 SDK Full</a>
+      <span class="badge">tables.now.ts</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Fluent — tables.now.ts</h1>
+      <p>Live source of truth for all 4 HR Leave tables + columns (SDK 4.12.2)</p>
+    </section>
+    <article class="content">
+      <p>Path: <code>servicenow-ai-workspace/hr-leave-sdk/src/fluent/tables.now.ts</code> · Use <code>referenceTable</code>.</p>
+      <p><a href="../../01_DEVELOPMENT.html#part-2-tables">Back to 01 Development Part 2</a></p>
+      <pre><code class="language-typescript">import {
+  Table,
+  StringColumn,
+  IntegerColumn,
+  ReferenceColumn,
+  DateColumn,
+  ChoiceColumn,
+} from '@servicenow/sdk/core'
+
+const leaveTypeChoices = {
+  annual: { label: 'Annual', sequence: 1 },
+  sick: { label: 'Sick', sequence: 2 },
+  unpaid: { label: 'Unpaid', sequence: 3 },
+}
+
+export const x_786686_hr_leave_employee_v2 = Table({
+  name: 'x_786686_hr_leave_employee_v2',
+  label: 'HR Employee',
+  schema: {
+    u_user: ReferenceColumn({ label: 'User', referenceTable: 'sys_user' }),
+    u_employee_id: StringColumn({ label: 'Employee ID', maxLength: 40 }),
+    u_department: StringColumn({ label: 'Department', maxLength: 100 }),
+    u_manager: ReferenceColumn({ label: 'Manager', referenceTable: 'sys_user' }),
+    u_join_date: DateColumn({ label: 'Join Date' }),
+    u_grade: StringColumn({ label: 'Grade', maxLength: 20 }),
+  },
+})
+
+export const x_786686_hr_leave_req_v2 = Table({
+  name: 'x_786686_hr_leave_req_v2',
+  label: 'Leave Request',
+  schema: {
+    u_number: StringColumn({ label: 'Number', maxLength: 40 }),
+    u_requested_for_user: ReferenceColumn({ label: 'Requested For', referenceTable: 'sys_user' }),
+    u_employee_ref: ReferenceColumn({
+      label: 'Employee',
+      referenceTable: 'x_786686_hr_leave_employee_v2',
+    }),
+    u_leave_type: ChoiceColumn({ label: 'Leave Type', choices: leaveTypeChoices }),
+    u_start_date: DateColumn({ label: 'Start Date' }),
+    u_end_date: DateColumn({ label: 'End Date' }),
+    u_days_count: IntegerColumn({ label: 'Days' }),
+    u_state: ChoiceColumn({
+      label: 'State',
+      choices: {
+        draft: { label: 'Draft', sequence: 1 },
+        submitted: { label: 'Submitted', sequence: 2 },
+        approved: { label: 'Approved', sequence: 3 },
+        rejected: { label: 'Rejected', sequence: 4 },
+        cancelled: { label: 'Cancelled', sequence: 5 },
+      },
+    }),
+    u_approver_user: ReferenceColumn({ label: 'Approver', referenceTable: 'sys_user' }),
+    u_reason: StringColumn({ label: 'Reason', maxLength: 1000 }),
+  },
+})
+
+export const x_786686_hr_leave_bal_v2 = Table({
+  name: 'x_786686_hr_leave_bal_v2',
+  label: 'Leave Balance',
+  schema: {
+    u_employee_ref: ReferenceColumn({
+      label: 'Employee',
+      referenceTable: 'x_786686_hr_leave_employee_v2',
+    }),
+    u_year: IntegerColumn({ label: 'Year' }),
+    u_leave_type: ChoiceColumn({ label: 'Leave Type', choices: leaveTypeChoices }),
+    u_entitled: IntegerColumn({ label: 'Entitled' }),
+    u_used: IntegerColumn({ label: 'Used' }),
+    u_remaining: IntegerColumn({ label: 'Remaining' }),
+  },
+})
+
+export const x_786686_hr_leave_audit_v2 = Table({
+  name: 'x_786686_hr_leave_audit_v2',
+  label: 'Leave Audit',
+  schema: {
+    u_leave_ref: ReferenceColumn({
+      label: 'Leave',
+      referenceTable: 'x_786686_hr_leave_req_v2',
+    }),
+    u_old_state: StringColumn({ label: 'Old State', maxLength: 40 }),
+    u_new_state: StringColumn({ label: 'New State', maxLength: 40 }),
+    u_event_type: StringColumn({ label: 'Event Type', maxLength: 60 }),
+    u_actor: ReferenceColumn({ label: 'Actor', referenceTable: 'sys_user' }),
+  },
+})
+</code></pre>
+    </article>
+  </main>
+  <script src="../../assets/docs.js"></script>
+
+<script src="../../assets/author-brand.js" defer></script>
+</body>
+</html>

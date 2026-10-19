@@ -1,0 +1,2937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SPM — Strategic Portfolio Management (Zero → Pro) | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>SPM — Strategic Portfolio Management (Zero → Pro)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/dmn_demand_list.do">Demand</a>
+<a href="{BASE}/pm_project_list.do">Project</a>
+</div>
+    <article class="content">
+<h1 id="spm-strategic-portfolio-management-zero-pro">SPM — Strategic Portfolio Management (Zero → Pro)</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً:</strong> <a href="../MASTER_ALL_IN_ONE_SUMMARY.html">../MASTER_ALL_IN_ONE_SUMMARY.md</a> · <a href="../html/MASTER_ALL_IN_ONE_SUMMARY.html">../html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل:</strong> <a href="../MASTER_ALL_IN_ONE.html">../MASTER_ALL_IN_ONE.md</a> · <a href="../html/MASTER_ALL_IN_ONE.html">../html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات:</strong> <a href="../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Australia · Scope <code>x_786686_hr_leave</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<h2 id="australia-instance">Australia Instance — نسخة أستراليا</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Region / Datacenter</strong></td>
+<td>ServiceNow <strong>Australia</strong></td>
+</tr>
+<tr>
+<td><strong>Release train</strong></td>
+<td>Zurich (Sep 2026 EA) · next EA: <strong>Brazil</strong></td>
+</tr>
+<tr>
+<td><strong>URL base</strong></td>
+<td><code>{BASE}</code></td>
+</tr>
+<tr>
+<td><strong>Scope note</strong></td>
+<td>HR Leave app: <code>x_786686_hr_leave</code></td>
+</tr>
+<tr>
+<td><strong>Guided Setup</strong></td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="direct-navigation-urls">Direct Navigation URLs — روابط التنقل المباشرة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page / Tool</th>
+<th>Navigation Path</th>
+<th>Direct URL</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Strategic Planning</strong></td>
+<td>All &gt; Strategic Planning</td>
+<td><a href="{BASE}/now/strategic-planning/home">{BASE}/now/strategic-planning/home</a></td>
+<td>Goals &amp; initiatives</td>
+</tr>
+<tr>
+<td><strong>Innovation / Ideas</strong></td>
+<td>All &gt; Innovation Management</td>
+<td><a href="{BASE}/idea_list.do">{BASE}/idea_list.do</a></td>
+<td>Idea intake</td>
+</tr>
+<tr>
+<td><strong>Demands</strong></td>
+<td>All &gt; Demand Management &gt; Demands</td>
+<td><a href="{BASE}/dmn_demand_list.do">{BASE}/dmn_demand_list.do</a></td>
+<td>Demand workbench</td>
+</tr>
+<tr>
+<td><strong>Projects</strong></td>
+<td>All &gt; Project &gt; All</td>
+<td><a href="{BASE}/pm_project_list.do">{BASE}/pm_project_list.do</a></td>
+<td>PPM projects</td>
+</tr>
+<tr>
+<td><strong>Portfolios</strong></td>
+<td>All &gt; Project &gt; Portfolios</td>
+<td><a href="{BASE}/pm_portfolio_list.do">{BASE}/pm_portfolio_list.do</a></td>
+<td>Portfolio view</td>
+</tr>
+<tr>
+<td><strong>Resource Plans</strong></td>
+<td>All &gt; Resource Management &gt; Resource Plans</td>
+<td><a href="{BASE}/resource_plan_list.do">{BASE}/resource_plan_list.do</a></td>
+<td>Capacity planning</td>
+</tr>
+<tr>
+<td><strong>Planning Console</strong></td>
+<td>All &gt; Resource Management &gt; Planning Console</td>
+<td><a href="{BASE}/resource_management.do">{BASE}/resource_management.do</a></td>
+<td>Resource workbench</td>
+</tr>
+<tr>
+<td><strong>Agile Boards</strong></td>
+<td>All &gt; Agile Development &gt; Boards</td>
+<td><a href="{BASE}/rm_story_board.do">{BASE}/rm_story_board.do</a></td>
+<td>Sprint boards</td>
+</tr>
+<tr>
+<td><strong>Roadmaps</strong></td>
+<td>All &gt; Roadmap Planning</td>
+<td><a href="{BASE}/now/roadmap/home">{BASE}/now/roadmap/home</a></td>
+<td>Timeline planning</td>
+</tr>
+<tr>
+<td><strong>Guided Setup SPM</strong></td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+<td>Initial configuration</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>URLs:</strong> <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">../../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a><br />
+<strong>HR Leave:</strong> Scope x_786686_hr_leave</p>
+<p>CIS-SPM / CIS-PPM Professional Implementer Guide<br />
+الأسلوب: عربية + إنجليزية تكمّلان بعضهما — بدون ترجمة حرفية لأسماء الشاشات.</p>
+</blockquote>
+<hr />
+<h2 id="arabic-summary">ملخص ووصف بالعربية (Arabic Summary)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>البند</th>
+<th>الشرح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ما هو SPM؟</strong></td>
+<td>إدارة المحفظة الاستراتيجية — أهداف → فكرة → طلب (Demand) → مشروع → موارد → ميزانية</td>
+</tr>
+<tr>
+<td><strong>لماذا مهم؟</strong></td>
+<td>يربط استراتيجية الإدارة بالمشاريع الممولة — ليس Excel منفصل</td>
+</tr>
+<tr>
+<td><strong>من يستخدمه؟</strong></td>
+<td>PMO، مدير محفظة، مدير مشروع، مدير موارد، تنفيذيون</td>
+</tr>
+<tr>
+<td><strong>ماذا يغطي الملف؟</strong></td>
+<td>§1B ست طبقات · Strategy·Idea·Demand·PPM·Resource·Agile · §16</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ملخص في سطر:</strong> <strong>SPM</strong> مظلة · <strong>PPM</strong> مشاريع داخلها · مسار: هدف استراتيجي → فكرة → Demand → مشروع → منفعة.</p>
+<p><strong>وصف مختصر:</strong> يشرح الفرق SPM/PPM/ITBM، Innovation، Demand Workbench، Planning Console، Resource Workbench، Agile، Cost/Benefit. CIS-SPM/PPM.</p>
+<hr />
+<h2 id="1-overview-business-value">1) Overview &amp; Business Value</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p><strong>SPM</strong> (Strategic Portfolio Management) is ServiceNow’s <strong>suite</strong> for turning <strong>strategy into funded, resourced, delivered work</strong>.<br />
+<strong>PPM</strong> (Project Portfolio Management) is the <strong>project/delivery</strong> app inside that suite — not a rival to SPM. — <strong>SPM</strong> = مجموعة تطبيقات (استراتيجية → فكرة → طلب → مشروع → موارد → ميزانية). <strong>PPM</strong> = جزء من SPM يُدير <strong>المشاريع والتسليم</strong> — ليس بديلًا لـ SPM.</p>
+<blockquote>
+<p><strong>Read first:</strong> <a href="#1b-strategy--goals--innovation--demand--project--full-map">§1B Strategy → Goals → Innovation → Demand → Project — Full Map</a></p>
+</blockquote>
+<p>Executives set <strong>strategy &amp; goals</strong>; the organization submits <strong>ideas</strong>; PMO governs <strong>demands</strong>; approved work becomes <strong>projects</strong> with <strong>resources</strong> and <strong>financials</strong> — all visible on <strong>portfolios</strong> and <strong>roadmaps</strong>.</p>
+<p>الإدارة تضع <strong>الاستراتيجية والأهداف</strong> → الموظفون يقدّمون <strong>أفكارًا</strong> → PMO يقيّم <strong>الطلبات</strong> → المعتمد يصبح <strong>مشروعًا</strong> → <strong>موارد وميزانية</strong> → <strong>منافع</strong> تُغذّي الاستراتيجية مجددًا.</p>
+<p>Core applications (SPM suite — separate licenses on Store):</p>
+<table>
+<thead>
+<tr>
+<th>App (module)</th>
+<th>Short name</th>
+<th>One-line purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strategic Planning / Enterprise Strategy</td>
+<td><strong>Strategy</strong></td>
+<td>Goals, initiatives, roadmaps, alignment</td>
+</tr>
+<tr>
+<td>Innovation Management</td>
+<td><strong>Innovation / Ideas</strong></td>
+<td>Capture ideas from employees</td>
+</tr>
+<tr>
+<td>Demand Management</td>
+<td><strong>Demand</strong></td>
+<td>Intake governance, scoring, approval</td>
+</tr>
+<tr>
+<td>Project Portfolio Management (PPM)</td>
+<td><strong>PPM / Projects</strong></td>
+<td>Projects, programs, portfolios, WBS</td>
+</tr>
+<tr>
+<td>Resource Management</td>
+<td><strong>Resource</strong></td>
+<td>Capacity, plans, allocations</td>
+</tr>
+<tr>
+<td>Agile Development 2.0</td>
+<td><strong>Agile</strong></td>
+<td>Stories, sprints, boards, SAFe</td>
+</tr>
+<tr>
+<td>Financial Management</td>
+<td><strong>Financials</strong></td>
+<td>Cost plans, benefit plans, budgets</td>
+</tr>
+<tr>
+<td>Roadmap Planning</td>
+<td><strong>Roadmap</strong></td>
+<td>Timeline view of strategic work</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1b-strategy-goals-innovation-demand-project-full-map">1B) Strategy → Goals → Innovation → Demand → Project — Full Map</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<blockquote>
+<p>Use in workshops when the client asks: <em>“Where do strategy goals live?”</em> or <em>“What is Demand vs Project?”</em><br />
+الأسلوب: عربية + إنجليزية تكمّلان بعضهما في نفس السياق.</p>
+</blockquote>
+<h3 id="1b1-spm-vs-ppm-vs-itbm-naming-not-eitheror">1B.1 SPM vs PPM vs ITBM — naming (not “either/or”)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>What it is</th>
+<th>Who uses it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ITBM</strong></td>
+<td>Legacy name (IT Business Management)</td>
+<td>Old docs, long-time customers</td>
+</tr>
+<tr>
+<td><strong>PPM</strong></td>
+<td>Project Portfolio Management — <strong>projects, programs, portfolios</strong></td>
+<td>PMO, project managers</td>
+</tr>
+<tr>
+<td><strong>SPM</strong></td>
+<td><strong>Current suite name</strong> — strategy + innovation + demand + PPM + resource + agile + financials</td>
+<td>ServiceNow Store, Guided Setup <strong>SPM</strong>, CIS-SPM</td>
+</tr>
+<tr>
+<td><strong>Strategy</strong></td>
+<td>Top of stack — goals, initiatives, enterprise planning</td>
+<td>Executives, strategy office</td>
+</tr>
+</tbody>
+</table>
+<p><strong>SPM is the umbrella.</strong> PPM is one app inside it. You implement <strong>strategy execution</strong> with the <strong>whole SPM stack</strong>, not “PPM only” if the client cares about goals and demand governance.</p>
+<p><strong>SPM</strong> = المظلة · <strong>PPM</strong> = المشاريع داخلها · <strong>Demand</strong> = البوابة قبل المشروع · <strong>Strategy</strong> = القمة.</p>
+<pre><code class="language-text">┌──────────────────────────────────────────────────────────────┐
+│ BUSINESS OUTCOME — execute strategy, fund the right work │
+└────────────────────────────┬─────────────────────────────────┘
+ │ implemented on ServiceNow as
+ ▼
+┌──────────────────────────────────────────────────────────────┐
+│ SPM (Strategic Portfolio Management — product suite) │
+│ Strategy · Innovation · Demand · PPM · Resource · Agile · $ │
+└──────────────────────────────────────────────────────────────┘
+</code></pre>
+<hr />
+<h3 id="1b2-the-full-stack-top-to-bottom-strategy-to-value">1B.2 The full stack — top to bottom (strategy to value)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<pre><code class="language-text">LAYER 1 — STRATEGY (Why are we investing?)
+ Enterprise Strategy / Strategic Goals / Initiatives
+ Roadmap Planning (when on timeline)
+ │
+ │ alignment score / portfolio link
+ ▼
+LAYER 2 — PORTFOLIO GOVERNANCE (What buckets of work?)
+ Portfolio (pm_portfolio) → Program (pm_program)
+ │
+ ▼
+LAYER 3 — INTAKE (What should we consider?)
+ Idea (Innovation Management) — employee / partner suggestions
+ │ promote
+ ▼
+LAYER 4 — DEMAND (Should we fund it?)
+ Demand (dmn_demand) — assess, score, stage gates, approve/reject
+ │ convert
+ ▼
+LAYER 5 — DELIVERY (How do we build it?)
+ Project (pm_project) — Waterfall WBS OR Agile stories/sprints
+ Resource plans + allocations
+ Cost plan + benefit plan
+ │
+ ▼
+LAYER 6 — VALUE (Did it work?)
+ Close project → benefit realization → portfolio review
+ │
+ └──────► feeds Layer 1 (next planning cycle)
+</code></pre>
+<p>العربي — طبقة بطبقة:</p>
+<table>
+<thead>
+<tr>
+<th>الطبقة</th>
+<th>السؤال</th>
+<th>التطبيق</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 Strategy</td>
+<td>لماذا نستثمر؟</td>
+<td>Strategic Planning / Goals</td>
+</tr>
+<tr>
+<td>2 Portfolio</td>
+<td>في أي سلة عمل؟</td>
+<td>Portfolio / Program</td>
+</tr>
+<tr>
+<td>3 Innovation</td>
+<td>ماذا يقترح الناس؟</td>
+<td>Ideas</td>
+</tr>
+<tr>
+<td>4 Demand</td>
+<td>هل نموله؟</td>
+<td>Demand Management</td>
+</tr>
+<tr>
+<td>5 Delivery</td>
+<td>كيف ننفّذ؟</td>
+<td>PPM + Resource + Agile</td>
+</tr>
+<tr>
+<td>6 Value</td>
+<td>هل حققنا المنفعة؟</td>
+<td>Benefits + dashboards</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="1b3-each-spm-module-different-question-not-the-same-app">1B.3 Each SPM module — different question (not the same app)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Module (app)</th>
+<th>Core business question</th>
+<th>Main records</th>
+<th><strong>Not the same as…</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Strategic Planning / Goals</strong></td>
+<td><em>Where do we want to go?</em></td>
+<td>Strategic goals, initiatives, targets</td>
+<td><strong>Demand</strong> (intake) · <strong>Project</strong> (delivery)</td>
+</tr>
+<tr>
+<td><strong>Innovation (Ideas)</strong></td>
+<td><em>What ideas does the org have?</em></td>
+<td>idea</td>
+<td><strong>Demand</strong> (governed intake) · raw ideas ≠ approved work</td>
+</tr>
+<tr>
+<td><strong>Demand Management</strong></td>
+<td><em>Should we fund this?</em></td>
+<td>dmn_demand, assessments, scorecards</td>
+<td><strong>Project</strong> (execution) · <strong>ITSM request</strong> (operations)</td>
+</tr>
+<tr>
+<td><strong>PPM (Projects)</strong></td>
+<td><em>How do we deliver?</em></td>
+<td>pm_project, tasks, templates</td>
+<td><strong>Demand</strong> (pre-funding) · <strong>Agile</strong> (method within project)</td>
+</tr>
+<tr>
+<td><strong>Portfolio / Program</strong></td>
+<td><em>How does work group strategically?</em></td>
+<td>pm_portfolio, pm_program</td>
+<td><strong>Project</strong> (single delivery) · <strong>Strategy goal</strong> (outcome)</td>
+</tr>
+<tr>
+<td><strong>Resource Management</strong></td>
+<td><em>Who is available to do the work?</em></td>
+<td>resource_plan, resource_allocation</td>
+<td><strong>Project tasks</strong> (what) · <strong>HR</strong> (hiring)</td>
+</tr>
+<tr>
+<td><strong>Agile Development</strong></td>
+<td><em>How do teams iterate?</em></td>
+<td>rm_story, rm_sprint, boards</td>
+<td><strong>Waterfall WBS</strong> (alternative method on same project)</td>
+</tr>
+<tr>
+<td><strong>Financial Management</strong></td>
+<td><em>What does it cost / return?</em></td>
+<td>Cost plan, benefit plan, fiscal periods</td>
+<td><strong>ERP GL</strong> (system of record may stay external)</td>
+</tr>
+<tr>
+<td><strong>Roadmap Planning</strong></td>
+<td><em>When does it happen on timeline?</em></td>
+<td>Roadmap items linked to goals/projects</td>
+<td><strong>Project schedule</strong> (detailed WBS dates)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="1b4-strategy-goals-portfolio-project-alignment-chain">1B.4 Strategy goals → portfolio → project (alignment chain)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p><strong>Strategic goals</strong> express outcomes (e.g. “Increase digital revenue 20%”). <strong>Portfolios</strong> collect funded work that supports those goals. <strong>Projects</strong> are how goals become reality.</p>
+<p><strong>الهدف الاستراتيجي</strong> = نتيجة · <strong>المحفظة</strong> = مجموعة مشاريع تخدم الهدف · <strong>المشروع</strong> = التنفيذ.</p>
+<pre><code class="language-text">Strategic Goal: &quot;Improve customer self-service&quot;
+ │
+ ├─ Initiative: &quot;Launch mobile portal&quot;
+ │ │
+ │ └─ linked Portfolio: &quot;Digital Customer Experience&quot;
+ │ │
+ │ └─ Program: &quot;Mobile 2026&quot;
+ │ │
+ │ ├─ Project: &quot;Mobile app phase 1&quot;
+ │ └─ Project: &quot;API modernization&quot;
+ │
+ └─ Roadmap: shows goals + projects on timeline (executive view)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Owner typical</th>
+<th>ServiceNow table / app</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strategic goal</td>
+<td>Strategy office / exec</td>
+<td>Strategic Planning</td>
+</tr>
+<tr>
+<td>Initiative</td>
+<td>VP / director</td>
+<td>Strategic Planning</td>
+</tr>
+<tr>
+<td>Portfolio</td>
+<td>Portfolio manager</td>
+<td>pm_portfolio</td>
+</tr>
+<tr>
+<td>Program</td>
+<td>Program manager</td>
+<td>pm_program</td>
+</tr>
+<tr>
+<td>Project</td>
+<td>Project manager</td>
+<td>pm_project</td>
+</tr>
+<tr>
+<td>Task / Story</td>
+<td>Team</td>
+<td>pm_project_task / rm_story</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Alignment score / strategic fit</strong> (Demand &amp; Project):<br />
+Demand and project records often carry fields linking to <strong>goal</strong> or <strong>portfolio</strong> — used in prioritization dashboards.</p>
+<hr />
+<h3 id="1b5-innovation-demand-project-intake-pipeline">1B.5 Innovation → Demand → Project (intake pipeline)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>This is the <strong>most common CIS-SPM exam path</strong> and the <strong>PMO governance</strong> story.</p>
+<pre><code class="language-text">Employee / stakeholder
+ │
+ ▼
+IDEA (Innovation Management)
+ • Low barrier — anyone submits via /sp or Idea portal
+ • Categories, voting, comments (optional)
+ │
+ │ PMO / demand manager: &quot;promote to demand&quot;
+ ▼
+DEMAND (Demand Management)
+ • Stages: Draft → Submitted → Screening → Qualified → Approved/Rejected
+ • Assessment / scorecard (value, risk, cost, strategic alignment)
+ • Flow Designer approvals (stage gates)
+ │
+ │ Approved + convert
+ ▼
+PROJECT (or Enhancement / Defect — other conversion types)
+ • Methodology: Waterfall | Agile | Hybrid
+ • Planning Console (WBS) OR Agile board
+ • Resource plan + cost/benefit plan
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Transition</th>
+<th>Who decides</th>
+<th>ServiceNow action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Idea → Demand</td>
+<td>Demand manager / innovation lead</td>
+<td><strong>Promote</strong> idea to demand</td>
+</tr>
+<tr>
+<td>Demand → Project</td>
+<td>Governance board / PMO</td>
+<td><strong>Convert</strong> demand (approved state)</td>
+</tr>
+<tr>
+<td>Demand → Enhancement</td>
+<td>Product owner (Agile)</td>
+<td>Convert to enhancement record</td>
+</tr>
+<tr>
+<td>Demand → Reject</td>
+<td>Board</td>
+<td>State = rejected, no project</td>
+</tr>
+</tbody>
+</table>
+<p><strong>لا تنشئ مشروعًا مباشرة</strong> إذا العميل يريد حوكمة — مرّ عبر <strong>Demand</strong> (أو على الأقل Idea → Demand).</p>
+<hr />
+<h3 id="1b6-how-modules-share-data-integration-not-silos">1B.6 How modules share data (integration — not silos)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Shared link</th>
+<th>Connects</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Portfolio / Program</strong> on project</td>
+<td>Project rolls up to portfolio dashboards</td>
+</tr>
+<tr>
+<td><strong>Strategic goal</strong> on demand/project</td>
+<td>Prioritization &amp; PA reports</td>
+</tr>
+<tr>
+<td><strong>Demand → Project</strong> reference</td>
+<td>Traceability: why was this project funded?</td>
+</tr>
+<tr>
+<td><strong>Resource plan</strong> on project</td>
+<td>Same people on tasks/timecards/agile</td>
+</tr>
+<tr>
+<td><strong>Cost / benefit plan</strong> on project</td>
+<td>Financial roll-up to program/portfolio</td>
+</tr>
+<tr>
+<td><strong>Roadmap</strong></td>
+<td>Visual layer on goals + projects</td>
+</tr>
+<tr>
+<td><strong>Assessment metrics</strong></td>
+<td>Same scorecard pattern for demand prioritization</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-text"> Strategic Goals
+ │
+ ┌─────────┴─────────┐
+ ▼ ▼
+ Portfolio Roadmap
+ │
+ ├─ Program
+ │ └─ Project ◄──── converted from Demand ◄──── Idea
+ │ ├─ Resource plan / allocations
+ │ ├─ Cost plan / benefit plan
+ │ └─ Tasks (WBS) OR Stories (Agile)
+ └─ Executive dashboard (PA / portfolio workbench)
+</code></pre>
+<hr />
+<h3 id="1b7-spm-vs-other-servicenow-modules-boundaries">1B.7 SPM vs other ServiceNow modules (boundaries)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Focus</th>
+<th>vs SPM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ITSM</strong></td>
+<td>Run IT (incidents, changes, catalog)</td>
+<td>ITSM = <strong>operate</strong> · SPM = <strong>invest &amp; deliver</strong> projects. Link: project tasks may spawn changes.</td>
+</tr>
+<tr>
+<td><strong>HRSD</strong></td>
+<td>HR services</td>
+<td>HR <strong>projects</strong> (onboarding programs) rare in SPM; HR <strong>demands</strong> possible via portal.</td>
+</tr>
+<tr>
+<td><strong>CSM</strong></td>
+<td>External customers</td>
+<td>Product <strong>ideas</strong> may feed SPM demand for product IT.</td>
+</tr>
+<tr>
+<td><strong>GRC/IRM</strong></td>
+<td>Risk &amp; compliance</td>
+<td>Project <strong>risk</strong> in PPM; enterprise <strong>risk register</strong> in GRC — different tables.</td>
+</tr>
+<tr>
+<td><strong>Agile / Jira</strong></td>
+<td>Dev execution</td>
+<td>ServiceNow Agile <strong>inside</strong> SPM project OR integrate Jira via spoke.</td>
+</tr>
+<tr>
+<td><strong>ERP (SAP)</strong></td>
+<td>Finance system of record</td>
+<td>SPM <strong>cost plans</strong> may sync budgets; ERP stays authoritative for GL.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ITSM</strong> = يومي · <strong>SPM</strong> = استثمار وتسليم مشاريع · قد يتقاطعان عند <strong>Change</strong> مرتبط بمشروع.</p>
+<hr />
+<h3 id="1b8-which-apps-to-license-first-consultant-phasing">1B.8 Which apps to license first (consultant phasing)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Client situation</th>
+<th>Start with</th>
+<th>Add later</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“We need project management only”</td>
+<td><strong>PPM</strong> + templates</td>
+<td>Demand, Resource</td>
+</tr>
+<tr>
+<td>“Ideas flooding email”</td>
+<td><strong>Innovation</strong> + <strong>Demand</strong></td>
+<td>PPM when governance ready</td>
+</tr>
+<tr>
+<td>“Board wants strategy dashboard”</td>
+<td><strong>Strategic Planning</strong> + <strong>Portfolio</strong></td>
+<td>Roadmap, full demand</td>
+</tr>
+<tr>
+<td>“Resource conflicts everywhere”</td>
+<td><strong>PPM</strong> + <strong>Resource Management</strong></td>
+<td>Agile</td>
+</tr>
+<tr>
+<td>“SAFe / scrum teams”</td>
+<td><strong>PPM (Hybrid)</strong> + <strong>Agile 2.0</strong></td>
+<td>SAFe PI planning</td>
+</tr>
+<tr>
+<td>“Full SPM transformation”</td>
+<td>Phase: Strategy/Portfolio → Demand → PPM → Resource → Financials → Agile</td>
+<td>Never skip demand if PMO exists</td>
+</tr>
+</tbody>
+</table>
+<p>Most mature path: <strong>Portfolio + Demand first</strong>, then <strong>PPM + Resource</strong>, then <strong>Strategy/Roadmap</strong> when exec reporting is ready. — مسار ناضج: <strong>محفظة + طلب (Demand)</strong> أولًا → ثم <strong>مشاريع + موارد</strong> → ثم <strong>استراتيجية وخارطة طريق</strong>.</p>
+<hr />
+<h3 id="1b9-demand-lifecycle-vs-project-lifecycle-do-not-confuse">1B.9 Demand lifecycle vs Project lifecycle (do not confuse)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p><strong>Demand states</strong> (governance — <em>should we?</em>):</p>
+<pre><code class="language-text">Draft → Submitted → Screening → Qualified → Approved / Rejected
+</code></pre>
+<p><strong>Project states</strong> (delivery — <em>are we done?</em>):</p>
+<pre><code class="language-text">Pending → Open / Work in Progress → Closed Complete / Closed Incomplete
+(+ % complete, schedule, status reports)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Demand</th>
+<th>Project</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>Prioritize &amp; approve funding</td>
+<td>Plan &amp; execute work</td>
+</tr>
+<tr>
+<td><strong>Ends with</strong></td>
+<td>Convert or reject</td>
+<td>Close + benefits</td>
+</tr>
+<tr>
+<td><strong>Typical owner</strong></td>
+<td>Demand manager / PMO</td>
+<td>Project manager</td>
+</tr>
+<tr>
+<td><strong>Table</strong></td>
+<td>dmn_demand</td>
+<td>pm_project</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="1b10-quick-interview-workshop-answers">1B.10 Quick interview / workshop answers</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Short answer (EN)</th>
+<th>العربي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPM vs PPM?</td>
+<td>SPM = full suite; PPM = project delivery app inside it</td>
+<td>SPM مظلة · PPM مشاريع</td>
+</tr>
+<tr>
+<td>Strategy vs Demand?</td>
+<td>Strategy = goals; Demand = gated intake to fund work</td>
+<td>استراتيجية = أهداف · Demand = بوابة تمويل</td>
+</tr>
+<tr>
+<td>Idea vs Demand?</td>
+<td>Idea = open suggestion; Demand = governed assessment</td>
+<td>فكرة = اقتراح · Demand = تقييم رسمي</td>
+</tr>
+<tr>
+<td>Portfolio vs Program vs Project?</td>
+<td>Portfolio &gt; Program &gt; Project hierarchy</td>
+<td>محفظة &gt; برنامج &gt; مشروع</td>
+</tr>
+<tr>
+<td>Waterfall vs Agile in SPM?</td>
+<td>Same project — methodology field; WBS vs stories</td>
+<td>نفس المشروع — منهجية مختلفة</td>
+</tr>
+<tr>
+<td>Resource plan vs allocation?</td>
+<td>Plan = request capacity; Allocation = assigned hours/people</td>
+<td>خطة = طلب · تخصيص = إسناد</td>
+</tr>
+<tr>
+<td>Cost plan vs benefit plan?</td>
+<td>Cost = spend; Benefit = expected value return</td>
+<td>تكلفة vs منفعة</td>
+</tr>
+<tr>
+<td>Roadmap vs project schedule?</td>
+<td>Roadmap = exec timeline; WBS = detailed tasks</td>
+<td>خارطة تنفيذية vs جدول تفصيلي</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-architecture-data-model">2) Architecture &amp; Data Model</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>Key tables:</p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>الغرض</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>idea</td>
+<td>الأفكار</td>
+</tr>
+<tr>
+<td>dmn_demand</td>
+<td>الطلب (Demand)</td>
+</tr>
+<tr>
+<td>pm_project</td>
+<td>المشروع</td>
+</tr>
+<tr>
+<td>pm_project_task</td>
+<td>مهام المشروع (WBS)</td>
+</tr>
+<tr>
+<td>pm_portfolio</td>
+<td>المحفظة</td>
+</tr>
+<tr>
+<td>pm_program</td>
+<td>البرنامج</td>
+</tr>
+<tr>
+<td>resource_plan / resource_allocation</td>
+<td>تخطيط/تخصيص الموارد</td>
+</tr>
+<tr>
+<td>rm_story</td>
+<td>قصص Agile</td>
+</tr>
+<tr>
+<td>rm_sprint</td>
+<td>السبرنت</td>
+</tr>
+<tr>
+<td>cost_plan / benefit_plan</td>
+<td>التكاليف والمنافع</td>
+</tr>
+</tbody>
+</table>
+<p>Hierarchy (detail in <a href="#1b-strategy--goals--innovation--demand--project--full-map">§1B</a>):</p>
+<pre><code class="language-text">Strategic Goals / Initiatives (Strategic Planning)
+ └─ Portfolio (pm_portfolio)
+ └─ Program (pm_program)
+ └─ Project (pm_project)
+ ├─ Project Task / WBS (pm_project_task) ← Waterfall
+ └─ Story / Sprint (rm_story / rm_sprint) ← Agile
+Idea (idea) → promote → Demand (dmn_demand) → convert → Project
+Resource plan + allocation · Cost plan + benefit plan · Roadmap overlay
+</code></pre>
+<hr />
+<h2 id="3-plugins-activation">3) Plugins &amp; Activation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>App / Plugin</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Project Portfolio Management</td>
+<td>com.snc.financial_planning_pmo / SPM suite</td>
+</tr>
+<tr>
+<td>Demand Management</td>
+<td>com.snc.demand_management</td>
+</tr>
+<tr>
+<td>Resource Management</td>
+<td>com.snc.resource_management</td>
+</tr>
+<tr>
+<td>Agile Development 2.0</td>
+<td>com.snc.sdlc.agile.2.0</td>
+</tr>
+<tr>
+<td>Innovation Management</td>
+<td>from Store</td>
+</tr>
+<tr>
+<td>Strategic Planning / Roadmap</td>
+<td>SPM suite</td>
+</tr>
+<tr>
+<td>Financial Planning (Cost)</td>
+<td>com.snc.financial_planning</td>
+</tr>
+</tbody>
+</table>
+<p>How to activate:</p>
+<ol>
+<li>Navigate: All &gt; System Applications &gt; All Available Applications &gt; All. — <a href="{BASE}/v_plugin_list.do">Open direct</a></li>
+<li>Activate the SPM apps you need (PPM, Demand, Resource, Agile).</li>
+<li>Guided Setup:<br />
+ Navigate: All &gt; Guided Setup &gt; SPM (or PPM). — <a href="{BASE}/now/guided-setup">Open direct</a></li>
+</ol>
+<hr />
+<h2 id="4-guided-setup-all-options">4) Guided Setup &amp; All Options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>Sections:<br />
+- Foundation — fiscal calendar, cost centers.<br />
+- Demand — stages, scoring, assessment.<br />
+- Project — methodology (Waterfall/Agile/Hybrid), templates, WBS.<br />
+- Resource — resource plans, allocation, availability.<br />
+- Agile — scrum/SAFe, story points, sprints.<br />
+- Financials — cost plans, benefit plans, budgets.<br />
+- Portfolios &amp; Roadmaps — planning.</p>
+<p>Important options:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Project methodology</td>
+<td>project record (Waterfall/Agile)</td>
+</tr>
+<tr>
+<td>Planning Console / WBS</td>
+<td>open project → Planning Console</td>
+</tr>
+<tr>
+<td>Resource Workbench</td>
+<td>All &gt; Resource &gt; Resource Workbench · <a href="{BASE}/resource_plan_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Demand Workbench</td>
+<td>All &gt; Demand &gt; Demand Workbench · <a href="{BASE}/dmn_demand_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Agile Board</td>
+<td>All &gt; Agile Development &gt; Agile Board · <a href="{BASE}/rm_story_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Roadmap Planning</td>
+<td>All &gt; Strategic Planning · <a href="{BASE}/now/spw">Open direct</a></td>
+</tr>
+<tr>
+<td>Fiscal periods</td>
+<td>All &gt; Financial Management · <a href="{BASE}/fiscal_period_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-end-to-end-process-cycle">5) End-to-End Process Cycle</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>Idea → value flow (see <a href="#1b5-innovation--demand--project-intake-pipeline">§1B.5</a>):</p>
+<pre><code class="language-text">Strategic Goal / Initiative (why)
+ → Idea (Innovation — anyone submits)
+ → Demand (assess, score, align to goal/portfolio, approve)
+ → Project / Enhancement (convert when approved)
+ → Plan: WBS or Agile, resources, cost/benefit
+ → Execute: tasks / sprints, track % complete
+ → Monitor: status reports, financials, portfolio RAG
+ → Close → benefit realization → portfolio &amp; strategy review
+</code></pre>
+<p>Demand lifecycle:</p>
+<pre><code class="language-text">Draft → Submitted → Screening → Qualified → Demand → Approved/Rejected
+</code></pre>
+<p>Project lifecycle:</p>
+<pre><code class="language-text">Pending → Open/Work in Progress → Closed Complete
+(states tracked + % complete + schedule)
+</code></pre>
+<hr />
+<h2 id="6-development">6) Development</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3Dc84db0e8839f0b509f02b0d6feaad3c9">Application Files</a><a href="../scripts/index.html">Scripts portal</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<h3 id="business-rule-roll-up-project-status-note">Business Rule — roll up project status note</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a><a href="../scripts/index.html">Scripts portal</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<pre><code class="language-javascript">(function executeRule(current, previous) {
+ if (current.percent_complete &gt;= 100 &amp;&amp; current.state != 'closed_complete') {
+ current.work_notes = 'All tasks complete — consider closing the project.';
+ }
+})(current, previous);
+</code></pre>
+<p>Development topics:<br />
+- Demand assessment &amp; scoring (Assessment Designer).<br />
+- Project templates &amp; WBS automation.<br />
+- Resource allocation rules.<br />
+- Agile: stories, sprints, story points, velocity.<br />
+- Cost/Benefit plans + roll-ups.<br />
+- Portfolio dashboards &amp; roadmaps.</p>
+<hr />
+<h2 id="7-administration">7) Administration</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Roles</td>
+<td>it_project_manager, resource_manager, scrum_master, it_demand_manager</td>
+</tr>
+<tr>
+<td>Fiscal calendar</td>
+<td>All &gt; Financial Management · <a href="{BASE}/fiscal_period_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Resource setup</td>
+<td>All &gt; Resource · <a href="{BASE}/resource_plan_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Assessment metrics</td>
+<td>All &gt; Assessments · <a href="{BASE}/asmt_metric_definition_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<p>Key roles:<br />
+- it_project_manager / project_manager — مدير المشروع.<br />
+- resource_manager — مدير الموارد.<br />
+- it_demand_manager — مدير الطلب.<br />
+- scrum_master, it_agile_developer — أدوار Agile.<br />
+- it_pps_user / portfolio roles.</p>
+<hr />
+<h2 id="8-hands-on-labs">8) Hands-on Labs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>Lab 1 — Idea → Demand:<br />
+1. Navigate: All &gt; Innovation Management &gt; Ideas → create an idea. — <a href="{BASE}/idea_list.do">Open direct</a><br />
+2. Promote to Demand; score it in the Demand Workbench.</p>
+<p>Lab 2 — Project + WBS:<br />
+1. Create a Project from the approved demand.<br />
+2. Open Planning Console; build WBS tasks with dependencies.</p>
+<p>Lab 3 — Resource Management:<br />
+1. Create a resource plan, request resources.<br />
+2. Allocate in the Resource Workbench.</p>
+<p>Lab 4 — Agile:<br />
+1. Create stories, assign points, plan a sprint.<br />
+2. Track on the Agile Board.</p>
+<p>Lab 5 — Financials &amp; Portfolio:<br />
+1. Add a cost plan + benefit plan to the project.<br />
+2. Review the portfolio dashboard.</p>
+<hr />
+<h2 id="9-best-practices-common-mistakes">9) Best Practices &amp; Common Mistakes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>Best practices:<br />
+- Start with Demand to enforce intake governance.<br />
+- Use Planning Console for scheduling (not manual dates).<br />
+- Keep resource plans realistic (capacity vs allocation).<br />
+- Tie projects to portfolios for strategic visibility.</p>
+<p>Common mistakes:<br />
+- إنشاء مشاريع بلا Demand (لا حوكمة دخول).<br />
+- تجاهل Resource capacity فتتعارض التخصيصات.<br />
+- خلط Program و Portfolio.</p>
+<hr />
+<h2 id="10-cis-spm-exam-focus">10) CIS-SPM Exam Focus</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>High-yield:<br />
+- <strong>Strategy → Idea → Demand → Project</strong> — see <a href="#1b-strategy--goals--innovation--demand--project--full-map">§1B</a> (exam favorite).<br />
+- <strong>SPM vs PPM</strong> — suite vs project app (§1B.1).<br />
+- Portfolio → Program → Project → Task hierarchy.<br />
+- Demand lifecycle vs project lifecycle (§1B.9).<br />
+- Demand conversion (to project/enhancement/defect).<br />
+- Strategic alignment / goal linkage on demand &amp; project.<br />
+- Resource Management (plan, allocation, capacity, workbench).<br />
+- Project methodologies (Waterfall/Agile/Hybrid) + Planning Console/WBS.<br />
+- Agile 2.0: stories, sprints, points, SAFe.<br />
+- Cost plan vs benefit plan; fiscal periods.<br />
+- Roadmaps &amp; strategic planning vs project schedule.<br />
+Exam tip: — احفظ مسار الفكرة → الطلب → المشروع والفرق بين Portfolio/Program/Project.</p>
+<hr />
+<h2 id="11-portals-workspaces-role-hierarchy-feature-catalog">11) Portals, Workspaces, Role Hierarchy &amp; Feature Catalog</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<blockquote>
+<p>ملاحظة عن الروابط:<br />
+الكثير من SPM يُدار عبر Workbenches وPlanning Console وليس Portal تقليدي.</p>
+</blockquote>
+<h3 id="111-portals-self-service">11.1 Portals &amp; Self-service</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>URL</th>
+<th>لمن</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Service Portal (ideas/demand intake)</td>
+<td>/sp</td>
+<td>الموظفون (تقديم أفكار/طلبات)</td>
+</tr>
+<tr>
+<td>Employee Center</td>
+<td>/esc</td>
+<td>الموظفون</td>
+</tr>
+<tr>
+<td>Idea Portal</td>
+<td>/sp?id=idea</td>
+<td>الجميع</td>
+</tr>
+</tbody>
+</table>
+<h3 id="112-workspaces-consoles-pmomanagers">11.2 Workspaces &amp; Consoles (PMO/managers)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>URL</th>
+<th>لمن</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Demand Workbench</td>
+<td>All &gt; Demand &gt; Demand Workbench · <a href="{BASE}/dmn_demand_list.do">Open direct</a></td>
+<td>مديرو الطلب</td>
+</tr>
+<tr>
+<td>Resource Workbench</td>
+<td>All &gt; Resource &gt; Resource Workbench · <a href="{BASE}/resource_plan_list.do">Open direct</a></td>
+<td>مديرو الموارد</td>
+</tr>
+<tr>
+<td>Project Workspace</td>
+<td>/now/ppm or PPM workspace</td>
+<td>مديرو المشاريع</td>
+</tr>
+<tr>
+<td>Planning Console (WBS)</td>
+<td>افتح مشروعًا → Planning Console</td>
+<td>PM</td>
+</tr>
+<tr>
+<td>Agile Board</td>
+<td>All &gt; Agile Development &gt; Agile Board · <a href="{BASE}/rm_story_list.do">Open direct</a></td>
+<td>فرق Agile</td>
+</tr>
+<tr>
+<td>Roadmap / Strategic Planning</td>
+<td>All &gt; Strategic Planning · <a href="{BASE}/now/spw">Open direct</a></td>
+<td>القيادة</td>
+</tr>
+<tr>
+<td>Portfolio Workbench</td>
+<td>All &gt; Project Portfolio · <a href="{BASE}/pm_project_list.do">Open direct</a></td>
+<td>مديرو المحافظ</td>
+</tr>
+</tbody>
+</table>
+<h3 id="113-role-hierarchy">11.3 Role Hierarchy</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<pre><code class="language-text">admin
+└─ it_pps_admin / spm_admin
+ ├─ it_portfolio_manager
+ │ └─ it_program_manager
+ │ └─ it_project_manager / project_manager
+ │ └─ it_project_user (team member)
+ ├─ it_demand_manager → it_demand_user
+ ├─ resource_manager → resource_user
+ └─ scrum_master / it_agile_developer / product_owner
+</code></pre>
+<h3 id="114-full-business-cycle">11.4 Full Business Cycle</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<pre><code class="language-text">Strategy / Goals (Strategic Planning)
+ → Idea (Innovation) → Idea Portal
+ → Demand (assess, score, prioritize) — Demand Workbench
+ → Approve → Project / Enhancement / Defect
+ → Plan (Planning Console): WBS, schedule, dependencies
+ → Resource Plan + Allocation (Resource Workbench)
+ → Execute: Waterfall tasks OR Agile stories/sprints
+ → Financials: cost plan vs benefit plan, budgets
+ → Monitor: status reports, % complete, risk
+ → Close → realize benefits → Portfolio review → feed strategy
+</code></pre>
+<h3 id="115-feature-catalog">11.5 Feature Catalog</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>Process features:<br />
+- Innovation/Idea Management.<br />
+- Demand Management (intake, scoring, assessment).<br />
+- Project Portfolio Management (Waterfall/Agile/Hybrid).<br />
+- Planning Console &amp; WBS.<br />
+- Resource Management (plans, allocations, capacity).<br />
+- Agile Development 2.0 (SAFe, stories, sprints, velocity).<br />
+- Test Management 2.0.<br />
+- Financial Management (cost/benefit plans, budgets, fiscal periods).<br />
+- Strategic Planning &amp; Roadmaps.<br />
+- Program &amp; Portfolio management.</p>
+<p>Platform features used:<br />
+- Workbenches &amp; Planning Console (drag-drop scheduling).<br />
+- Assessment Designer (demand scoring).<br />
+- Flow Designer (approvals/stage gates).<br />
+- Performance Analytics (portfolio dashboards).<br />
+- Now Assist for SPM.<br />
+- Reporting on roll-ups (program/portfolio).</p>
+<hr />
+<h2 id="12-end-to-end-implementation-post-activation">12) End-to-End Implementation (Post-Activation)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<blockquote>
+<p>اقرأ هذا بعد تفعيل تطبيقات SPM (PPM, Demand, Resource, Agile).</p>
+</blockquote>
+<h3 id="121-application-menus-map">12.1 Application Menus map</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<pre><code class="language-text">All &gt; Innovation Management &gt; Ideas
+All &gt; Demand
+ ├─ Demands / Demand Workbench / Assessments
+ └─ Administration (stages, scoring)
+All &gt; Project
+ ├─ Projects / My Projects / Planning Console
+ ├─ Project Tasks (WBS) / Templates
+ └─ Status Reports
+All &gt; Resource
+ ├─ Resource Plans / Allocations / Resource Workbench
+ └─ Availability / Capacity
+All &gt; Agile Development
+ ├─ Stories / Sprints / Agile Board / Backlog
+ └─ Scrum / SAFe config
+All &gt; Financial Management (Cost/Benefit Plans, Fiscal periods)
+All &gt; Strategic Planning / Roadmaps
+All &gt; Project Portfolio (Portfolios / Programs / Workbench)
+</code></pre>
+<h3 id="122-core-tables-to-know">12.2 Core tables to know</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>List</th>
+<th>Table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>idea.list</td>
+<td>ideas</td>
+</tr>
+<tr>
+<td>dmn_demand.list</td>
+<td>demands</td>
+</tr>
+<tr>
+<td>pm_project.list</td>
+<td>projects</td>
+</tr>
+<tr>
+<td>pm_project_task.list</td>
+<td>WBS tasks</td>
+</tr>
+<tr>
+<td>pm_portfolio.list</td>
+<td>portfolios</td>
+</tr>
+<tr>
+<td>pm_program.list</td>
+<td>programs</td>
+</tr>
+<tr>
+<td>resource_plan.list</td>
+<td>resource plans</td>
+</tr>
+<tr>
+<td>rm_story.list</td>
+<td>agile stories</td>
+</tr>
+<tr>
+<td>rm_sprint.list</td>
+<td>sprints</td>
+</tr>
+</tbody>
+</table>
+<h3 id="123-end-to-end-build-order">12.3 End-to-end build order</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<ol>
+<li><strong>Strategy &amp; portfolio foundation</strong> (see §1B):<br />
+ - Strategic goals / initiatives (if licensed).<br />
+ - Portfolios, programs, link to goals.<br />
+ - Roadmap (optional exec view).</li>
+<li>Platform foundation:<br />
+ - Fiscal calendar/periods, cost centers, companies.<br />
+ - Roles (portfolio mgr, PM, demand mgr, resource mgr, scrum master).</li>
+<li><strong>Intake pipeline:</strong><br />
+ - Innovation/Idea Management + Idea Portal /sp.<br />
+ - Demand Management: stages, assessment/scoring, alignment to goals.</li>
+<li>Project setup:<br />
+ - Methodologies (Waterfall/Agile/Hybrid), project templates, WBS.</li>
+<li>Resource Management:<br />
+ - Resource plans, allocation, capacity in Resource Workbench.</li>
+<li>Agile:<br />
+ - Scrum/SAFe config, stories, sprints, story points.</li>
+<li>Financials:<br />
+ - Cost plans, benefit plans, budgets, roll-ups to portfolio.</li>
+<li>Flows:<br />
+ - Demand approval stage gates, project approvals.</li>
+<li>Dashboards:<br />
+ - Portfolio + strategic alignment dashboards + PA.</li>
+<li>Self-service:<br />
+ - Service Portal intake /sp, Employee Center /esc.</li>
+<li>Test full path: goal → idea → demand → project → benefit.</li>
+<li>Deploy Update Set.</li>
+</ol>
+<h3 id="124-all-configuration-pages">12.4 All configuration pages</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Config</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPM/PPM properties</td>
+<td>All &gt; Project Administration &gt; Properties · <a href="{BASE}/pm_project_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Demand config</td>
+<td>All &gt; Demand &gt; Administration · <a href="{BASE}/dmn_demand_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Resource config</td>
+<td>All &gt; Resource &gt; Administration · <a href="{BASE}/resource_plan_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Agile config</td>
+<td>All &gt; Agile Development &gt; Administration · <a href="{BASE}/rm_story_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Fiscal periods</td>
+<td>All &gt; Financial Management &gt; Administration · <a href="{BASE}/fiscal_period_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Assessment metrics</td>
+<td>All &gt; Assessments &gt; Metric Definitions · <a href="{BASE}/asmt_metric_definition_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<p>Study path note: — للدراسة من الصفر اتبع: STUDY_ROADMAP.md</p>
+<hr />
+<h2 id="13-options-instance-notes">13) Options &amp; Instance Notes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Instance gaps</td>
+<td>MODULE_OPTIONS_AND_INSTANCE_NOTES.md → <strong>SPM</strong></td>
+</tr>
+<tr>
+<td><strong>Full implementation</strong></td>
+<td>MODULE_IMPLEMENTATION_PLAYBOOK.md → <strong>SPM</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="14-implementation-scenarios-options-best-practices-customizations">14) Implementation Scenarios, Options, Best Practices &amp; Customizations</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<blockquote>
+<p>Playbook: MODULE_IMPLEMENTATION_PLAYBOOK.md → <strong>SPM</strong></p>
+</blockquote>
+<h3 id="141-scenarios">14.1 Scenarios</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Scenario</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1</strong></td>
+<td>Demand intake</td>
+<td>Ideas → demands</td>
+</tr>
+<tr>
+<td><strong>S2</strong></td>
+<td>PPM</td>
+<td>Projects + resources + financials</td>
+</tr>
+<tr>
+<td><strong>S3</strong></td>
+<td>Enterprise agile</td>
+<td>SAFe / PI planning</td>
+</tr>
+</tbody>
+</table>
+<h3 id="142-options-matrix">14.2 Options matrix</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intake</td>
+<td>SP idea portal</td>
+<td>Email demands</td>
+</tr>
+<tr>
+<td>Execution</td>
+<td>Waterfall projects</td>
+<td>Agile boards</td>
+</tr>
+<tr>
+<td>Resources</td>
+<td>Resource Management plugin</td>
+<td>Spreadsheets</td>
+</tr>
+<tr>
+<td>Financials</td>
+<td>Portfolio financials</td>
+<td>External ERP only</td>
+</tr>
+</tbody>
+</table>
+<h3 id="143-plugins">14.3 Plugins</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>SPM/PPM (Store), Agile Development, Resource Management, Demand Management — Guided Setup <strong>SPM</strong></p>
+<h3 id="144-roles">14.4 Roles</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>Portfolio manager, project manager, resource manager, team member, executive viewer.</p>
+<h3 id="145-common-developments">14.5 Common developments</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>Demand workflow, project templates, resource plans, timecards, Jira integration, custom dashboards, strategic alignment scoring.</p>
+<h3 id="146-best-practices">14.6 Best practices</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>Governance board before opening idea flood; one demand evaluation model; align project method to org (agile vs waterfall).</p>
+<h3 id="147-go-live">14.7 Go-live</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<ul>
+<li>[ ] Demand→project conversion tested</li>
+<li>[ ] Resource allocation conflicts handled</li>
+<li>[ ] Financial baseline approved</li>
+</ul>
+<hr />
+<h2 id="15-zero-to-hero-end-to-end-implementation-scratch-go-live">15) Zero-to-Hero End-to-End Implementation (Scratch → Go-Live)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<blockquote>
+<p>Framework: MODULE_ZERO_TO_HERO_CONSULTING.md</p>
+</blockquote>
+<p>من <strong>الاستراتيجية والأهداف</strong> → <strong>فكرة</strong> → <strong>طلب (Demand)</strong> → <strong>مشروع</strong> → <strong>موارد وميزانية</strong> → <strong>منافع</strong> — راجع §1B.</p>
+<h3 id="151-business-goals">15.1 Business goals</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<blockquote>
+<p>Full strategy stack: <a href="#1b-strategy--goals--innovation--demand--project--full-map">§1B</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>English detail</th>
+<th>العربي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Strategy execution</strong></td>
+<td>Goals on platform → funded projects → measured benefits</td>
+<td>تنفيذ الاستراتيجية من هدف إلى مشروع</td>
+</tr>
+<tr>
+<td><strong>Governed intake</strong></td>
+<td>Ideas &amp; demands scored before projects exist</td>
+<td>حوكمة: فكرة → طلب قبل المشروع</td>
+</tr>
+<tr>
+<td><strong>Portfolio visibility</strong></td>
+<td>Exec sees what is funded and aligned to goals</td>
+<td>ماذا نمول ولماذا</td>
+</tr>
+<tr>
+<td><strong>Resource optimization</strong></td>
+<td>Capacity vs allocation across portfolio</td>
+<td>من يعمل على ماذا</td>
+</tr>
+<tr>
+<td><strong>Financial tracking</strong></td>
+<td>Cost vs benefit vs budget</td>
+<td>ميزانية vs فعلي vs منفعة</td>
+</tr>
+<tr>
+<td><strong>Roadmap clarity</strong></td>
+<td>When strategic work lands on timeline</td>
+<td>متى على خارطة الطريق</td>
+</tr>
+</tbody>
+</table>
+<h3 id="152-phase-0-discover-strategy-pmo">15.2 Phase 0 — Discover (strategy &amp; PMO)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Workshop topic</th>
+<th>English</th>
+<th>العربي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strategy process</td>
+<td>Where are goals today? (Excel, OKR tool?)</td>
+<td>أين الأهداف اليوم؟</td>
+</tr>
+<tr>
+<td>Intake chaos</td>
+<td>Email vs formal demand</td>
+<td>كيف تدخل الطلبات؟</td>
+</tr>
+<tr>
+<td>PMO maturity</td>
+<td>Demand board exists?</td>
+<td>هل يوجد مجلس prioritization؟</td>
+</tr>
+<tr>
+<td>Method mix</td>
+<td>% waterfall vs agile</td>
+<td>نسبة المنهجيات</td>
+</tr>
+<tr>
+<td>Financials</td>
+<td>ERP vs SPM cost plans</td>
+<td>أين الميزانية؟</td>
+</tr>
+</tbody>
+</table>
+<p>Deliverable: strategy-to-delivery target model referencing §1B layers 1–6.</p>
+<h3 id="153-phase-1-activate">15.3 Phase 1 — Activate</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>SPM suite apps (as licensed): Strategic Planning, Innovation, Demand, PPM, Resource, Agile, Financials — Store + Guided Setup <strong>SPM</strong>.</p>
+<h3 id="154-phase-2-strategy-portfolio-week-13">15.4 Phase 2 — Strategy &amp; portfolio (Week 1–3)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>English</th>
+<th>Navigate / object</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Define 2–3 <strong>strategic goals</strong> for pilot</td>
+<td>Strategic Planning</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Create <strong>Portfolio</strong> aligned to goal</td>
+<td>pm_portfolio</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Create <strong>Program</strong> under portfolio</td>
+<td>pm_program</td>
+</tr>
+<tr>
+<td>4</td>
+<td>(Optional) <strong>Roadmap</strong> view for exec</td>
+<td>Strategic Planning / Roadmap</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Link scoring criteria to <strong>strategic alignment</strong> on demand</td>
+<td>Assessment metrics</td>
+</tr>
+</tbody>
+</table>
+<p>لا تبدأ بمشاريع عشوائية — اربط <strong>محفظة</strong> بـ <strong>هدف استراتيجي</strong> أولًا (§1B.4).</p>
+<h3 id="155-phase-3-innovation-demand-week-25">15.5 Phase 3 — Innovation &amp; demand (Week 2–5)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>Idea portal /sp, categories, promote idea → demand, evaluation scorecard, demand stages, approval Flow, demand→project conversion rules.</p>
+<h3 id="156-phase-4-project-delivery-week-410">15.6 Phase 4 — Project delivery (Week 4–10)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>Templates, methodologies (waterfall/agile/hybrid), Planning Console WBS, milestones, status reports, link project to portfolio/program/goal.</p>
+<h3 id="157-phase-5-resources-financials-week-612">15.7 Phase 5 — Resources &amp; financials (Week 6–12)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>Resource plans, Resource Workbench allocations, capacity conflicts, cost plan + benefit plan, fiscal periods.</p>
+<h3 id="158-phase-6-uat-go-live">15.8 Phase 6 — UAT &amp; go-live</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>End-to-end: <strong>goal → idea → demand → approve → project → resource → close → benefit field</strong>.</p>
+<h3 id="159-phase-7-operate">15.9 Phase 7 — Operate</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>Portfolio dashboards, strategic alignment reports, benefit realization reviews, feed next planning cycle.</p>
+<h3 id="1510-master-checklist">15.10 Master checklist</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<ul>
+<li>[ ] Strategic goals + portfolio linked (§1B.4)</li>
+<li>[ ] Idea → Demand → Project path tested</li>
+<li>[ ] Demand governance board signed off</li>
+<li>[ ] Resource UAT · Financial baseline · Executive dashboard</li>
+</ul>
+<hr />
+<h2 id="16-full-e2e-practice-pages-requirements-options-ar-en">16) Full E2E Practice · Pages · Requirements · Options (AR + EN)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<blockquote>
+<p>Portfolio · Demand · Project · Resource · (Agile) · Financials.</p>
+</blockquote>
+<hr />
+<h3 id="161-business-goals">16.1 Business goals</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<blockquote>
+<p>Strategy-to-value stack: <a href="#1b-strategy--goals--innovation--demand--project--full-map">§1B</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Goal (EN)</th>
+<th>الهدف (AR)</th>
+<th>KPI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strategic goals on platform</td>
+<td>أهداف استراتيجية على المنصة</td>
+<td># goals with linked projects</td>
+</tr>
+<tr>
+<td>Idea → approved demand</td>
+<td>فكرة → طلب معتمد</td>
+<td>Demand cycle time</td>
+</tr>
+<tr>
+<td>Demand aligned to strategy</td>
+<td>طلب مربوط بالهدف</td>
+<td>Alignment score avg</td>
+</tr>
+<tr>
+<td>Portfolio prioritization</td>
+<td>أولوية المحفظة</td>
+<td>RAG by portfolio</td>
+</tr>
+<tr>
+<td>Project delivery</td>
+<td>تسليم المشروع</td>
+<td>On-time / on-budget</td>
+</tr>
+<tr>
+<td>Resource capacity</td>
+<td>سعة الموارد</td>
+<td>Over-allocation %</td>
+</tr>
+<tr>
+<td>Budget vs actual vs benefit</td>
+<td>ميزانية vs فعلي vs منفعة</td>
+<td>Variance · benefits realized</td>
+</tr>
+<tr>
+<td>Roadmap visibility</td>
+<td>رؤية خارطة الطريق</td>
+<td>Exec roadmap adoption</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why buy SPM:</strong> English: Spreadsheets cannot connect <strong>strategy goals → governed intake → funded projects → resources → benefits</strong> at enterprise scale. — SPM يربط <strong>هدف استراتيجي → فكرة → طلب → مشروع → موارد → ميزانية → منفعة</strong> في منصة واحدة.</p>
+<hr />
+<h3 id="162-requirements">16.2 Requirements</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>EN</th>
+<th>AR</th>
+<th>Layer (§1B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SP-R00</td>
+<td>Strategic goals + portfolio link</td>
+<td>أهداف + محفظة</td>
+<td>1–2 Strategy</td>
+</tr>
+<tr>
+<td>SP-R01</td>
+<td>Idea intake (portal)</td>
+<td>أفكار من البوابة</td>
+<td>3 Innovation</td>
+</tr>
+<tr>
+<td>SP-R02</td>
+<td>Demand evaluation + alignment score</td>
+<td>تقييم + مواءمة استراتيجية</td>
+<td>4 Demand</td>
+</tr>
+<tr>
+<td>SP-R03</td>
+<td>Demand → Project conversion</td>
+<td>تحويل لمشروع</td>
+<td>4→5</td>
+</tr>
+<tr>
+<td>SP-R04</td>
+<td>Project templates + methodology</td>
+<td>قوالب ومنهجية</td>
+<td>5 Delivery</td>
+</tr>
+<tr>
+<td>SP-R05</td>
+<td>Portfolio / program hierarchy</td>
+<td>محفظة / برنامج</td>
+<td>2 Governance</td>
+</tr>
+<tr>
+<td>SP-R06</td>
+<td>Resource plans + allocations</td>
+<td>خطط موارد</td>
+<td>5 Delivery</td>
+</tr>
+<tr>
+<td>SP-R07</td>
+<td>Cost + benefit plans</td>
+<td>تكلفة + منفعة</td>
+<td>5–6 Value</td>
+</tr>
+<tr>
+<td>SP-R08</td>
+<td>Executive portfolio dashboard</td>
+<td>لوحة محفظة</td>
+<td>6 Value</td>
+</tr>
+<tr>
+<td>SP-R09</td>
+<td>(Optional) Roadmap</td>
+<td>خارطة طريق</td>
+<td>1 Strategy</td>
+</tr>
+<tr>
+<td>SP-R10</td>
+<td>(Optional) Agile boards</td>
+<td>Agile</td>
+<td>5 Delivery</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="163-consultation-cycle">16.3 Consultation cycle</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>EN</th>
+<th>AR</th>
+<th>Deliverable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>PMO maturity, governance board</td>
+<td>نضج PMO</td>
+<td>Charter</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Current demand intake</td>
+<td>طلبات حالية</td>
+<td>Gap</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Evaluation model (scorecard)</td>
+<td>تقييم</td>
+<td>Model</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Project methodology (agile/waterfall)</td>
+<td>منهجية</td>
+<td>Template set</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Resource pools</td>
+<td>pools</td>
+<td>Org chart</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Financial baseline</td>
+<td>مالي</td>
+<td>Cost plan</td>
+</tr>
+<tr>
+<td>6</td>
+<td>UAT demand→project</td>
+<td>UAT</td>
+<td>Sign-off</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Questions:</strong> Who approves demand? Who owns resource conflicts?<br />
+من يعتمد الطلب؟ من يحل تعارض الموارد؟</p>
+<hr />
+<h3 id="164-options-a-b-c">16.4 Options (A / B / C)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intake</td>
+<td>SP Portal ideas</td>
+<td>Demand form only</td>
+<td>Email</td>
+</tr>
+<tr>
+<td>Method</td>
+<td>Hybrid PPM + Agile</td>
+<td>Waterfall only</td>
+<td>Agile only</td>
+</tr>
+<tr>
+<td>Resources</td>
+<td>Resource Management app</td>
+<td>Spreadsheet sync</td>
+<td>PM assigns manually</td>
+</tr>
+<tr>
+<td>Financials</td>
+<td>Full cost plans</td>
+<td>High-level budget</td>
+<td>External ERP only</td>
+</tr>
+<tr>
+<td>Planning</td>
+<td>Planning Console</td>
+<td>Classic lists</td>
+<td>External PPM</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="165-all-pages-navigate">16.5 All pages (Navigate)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPM / PPM Administration</td>
+<td>All &gt; Project &gt; Administration · <a href="{BASE}/pm_project_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Demands</td>
+<td>All &gt; Demand &gt; Demands · <a href="{BASE}/dmn_demand_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Demand Management</td>
+<td>All &gt; Demand &gt; Demand Management · <a href="{BASE}/dmn_demand_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Projects</td>
+<td>All &gt; Project &gt; Projects · <a href="{BASE}/pm_project_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Project templates</td>
+<td>All &gt; Project &gt; Templates · <a href="{BASE}/pm_project_template_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Tasks / milestones</td>
+<td>All &gt; Project &gt; Tasks · <a href="{BASE}/pm_project_task_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Resource Management</td>
+<td>All &gt; Resource Management &gt; Resource Plans · <a href="{BASE}/resource_plan_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Allocations</td>
+<td>All &gt; Resource Management &gt; Allocations · <a href="{BASE}/resource_allocation_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Timecards</td>
+<td>All &gt; Time Sheet &gt; Timecards · <a href="{BASE}/time_card_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Portfolios</td>
+<td>All &gt; Portfolio &gt; Portfolios · <a href="{BASE}/pm_portfolio_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Programs</td>
+<td>All &gt; Program &gt; Programs · <a href="{BASE}/pm_program_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Planning Console</td>
+<td>All &gt; Planning Console · <a href="{BASE}/now/spw">Open direct</a></td>
+</tr>
+<tr>
+<td>Agile boards</td>
+<td>All &gt; Agile &gt; Boards (if licensed) · <a href="{BASE}/rm_story_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Ideas (portal)</td>
+<td>/sp idea submission</td>
+</tr>
+<tr>
+<td>Strategic Planning / Goals</td>
+<td>All &gt; Strategic Planning · <a href="{BASE}/now/spw">Open direct</a></td>
+</tr>
+<tr>
+<td>Enterprise Strategy</td>
+<td>All &gt; Enterprise Strategy (version varies) · <a href="{BASE}/now/spw">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="166-full-pdi-lab-20-steps">16.6 Full PDI lab (20 steps)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>EN</th>
+<th>AR</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>(If licensed) Create strategic goal + link portfolio</td>
+<td>هدف + محفظة</td>
+<td>§1B.4 alignment</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Activate SPM/PPM/Demand/Resource plugins</td>
+<td>تفعيل</td>
+<td>Guided Setup done</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Create Portfolio Digital Initiatives</td>
+<td>محفظة</td>
+<td>Portfolio saved</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Configure idea category on /sp</td>
+<td>فكرة</td>
+<td>Idea submitted</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Promote idea → Demand</td>
+<td>طلب</td>
+<td>Demand record</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Set evaluation scorecard fields</td>
+<td>تقييم</td>
+<td>Score calculated</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Demand approval Flow</td>
+<td>موافقة</td>
+<td>Approved state</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Convert Demand → Project</td>
+<td>مشروع</td>
+<td>Project linked</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Apply project template (waterfall)</td>
+<td>قالب</td>
+<td>Tasks/milestones</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Create resource plan for project</td>
+<td>خطة موارد</td>
+<td>Plan open</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Add team members + allocations</td>
+<td>تخصيص</td>
+<td>Hours allocated</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Conflict: over-allocate user — resolve</td>
+<td>تعارض</td>
+<td>Conflict visible</td>
+</tr>
+<tr>
+<td>12</td>
+<td>PM updates task % complete</td>
+<td>تقدم</td>
+<td>Status green/yellow</td>
+</tr>
+<tr>
+<td>13</td>
+<td>(Optional) Timecard entry</td>
+<td>وقت</td>
+<td>Hours logged</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Cost plan vs actual (simple)</td>
+<td>مالي</td>
+<td>Variance report</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Executive dashboard — portfolio view</td>
+<td>لوحة</td>
+<td>Exec sees RAG</td>
+</tr>
+<tr>
+<td>16</td>
+<td>(Optional) Agile story on board</td>
+<td>Agile</td>
+<td>Story moved</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Close project — benefits field</td>
+<td>إغلاق</td>
+<td>Benefits captured</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Options A/B/C documented</td>
+<td>خيارات</td>
+<td>Doc</td>
+</tr>
+<tr>
+<td>19</td>
+<td>UAT SP-R01–07</td>
+<td>UAT</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Update Set SPM Lab 16</td>
+<td>Export</td>
+<td>Done</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="167-sign-off">16.7 Sign-off</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<ul>
+<li>[ ] Governance board sign-off on evaluation model · [ ] Resource managers trained · [ ] Portfolio dashboard reviewed by exec sponsor · [ ] Demand→project path documented AR+EN</li>
+</ul>
+<hr />
+<h2 id="17-power-user-playbook-spm">§17 — Power User Playbook (SPM)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<h3 id="171-personas">17.1 Personas</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Primary actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Idea Submitter</td>
+<td>/sp?id=ideas create + vote</td>
+</tr>
+<tr>
+<td>Demand Manager</td>
+<td>Evaluate, score, approve/reject demands</td>
+</tr>
+<tr>
+<td>Portfolio Manager</td>
+<td>Compose portfolios, set strategic goals, review RAG</td>
+</tr>
+<tr>
+<td>Program Manager</td>
+<td>Multi-project orchestration</td>
+</tr>
+<tr>
+<td>Project Manager (PM)</td>
+<td>Waterfall plans, milestones, %complete, risks/issues</td>
+</tr>
+<tr>
+<td>Scrum Master / PO</td>
+<td>Agile sprints, backlog, boards</td>
+</tr>
+<tr>
+<td>Resource Manager</td>
+<td>Capacity, allocations, conflict resolution</td>
+</tr>
+<tr>
+<td>Team Member</td>
+<td>Update tasks, log time, complete stories</td>
+</tr>
+<tr>
+<td>Executive Sponsor</td>
+<td>Strategic alignment view, RAG dashboard</td>
+</tr>
+<tr>
+<td>Finance / PMO</td>
+<td>Cost plans, actuals, variance, benefits</td>
+</tr>
+</tbody>
+</table>
+<h3 id="172-day-in-life-pm-hybrid-waterfall-agile">17.2 Day-in-Life — PM (Hybrid Waterfall + Agile)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<ol>
+<li>Morning: open Planning Console → review portfolio dependencies, milestones.</li>
+<li>Update task % complete; risks raised by team; mitigate or escalate.</li>
+<li>Switch to Agile board → review sprint burn-down; reassign stories.</li>
+<li>Timecard review at lunch — approve team timecards.</li>
+<li>Cost plan check — actuals vs plan; flag if variance &gt; 10%.</li>
+<li>End of day: status report (auto from PA).</li>
+</ol>
+<h3 id="173-day-in-life-resource-manager">17.3 Day-in-Life — Resource Manager</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<ol>
+<li>Open /now/rm workspace — see heat-map of allocations.</li>
+<li>Identify over-allocated user (&gt;100% in week 30).</li>
+<li>Re-allocate or hire freelancer; negotiate with PM.</li>
+<li>Run capacity report by skill.</li>
+</ol>
+<h3 id="174-top-20-spm-scripts">17.4 Top 20 SPM Scripts</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p><strong>1. Idea → Demand auto-promotion when votes ≥ 50</strong></p>
+<pre><code class="language-javascript">// Scheduled Job — every hour
+(function {
+ var idea = new GlideRecord('idea');
+ idea.addQuery('state', 'submitted');
+ idea.addQuery('votes', '&gt;=', 50);
+ idea.query();
+ while (idea.next()) {
+ var demand = new GlideRecord('dmn_demand');
+ demand.initialize();
+ demand.setValue('short_description', idea.getValue('short_description'));
+ demand.setValue('description', idea.getValue('description'));
+ demand.setValue('idea', idea.getUniqueValue());
+ demand.setValue('stage', 'screen');
+ demand.setValue('submitted_by', idea.getValue('opened_by'));
+ var demandId = demand.insert();
+</code></pre>
+<p>idea.setValue(&lsquo;state&rsquo;, &lsquo;promoted_to_demand&rsquo;);<br />
+ idea.setValue(&lsquo;demand&rsquo;, demandId);<br />
+ idea.update();<br />
+ gs.eventQueue(&lsquo;spm.idea.promoted&rsquo;, idea, demandId);<br />
+ }<br />
+})();</p>
+<p><strong>2. Demand scoring formula</strong></p>
+<pre><code class="language-javascript">var SPMDemandScorer = Class.create();
+SPMDemandScorer.prototype = {
+ initialize: function {},
+</code></pre>
+<p>/*<em> Computes weighted score: strategic 40%, financial 30%, risk 20%, effort 10% </em>/<br />
+ score: function (demandSysId) {<br />
+ var d = new GlideRecord(&lsquo;dmn_demand&rsquo;);<br />
+ if (!d.get(demandSysId)) return 0;</p>
+<p>var strategic = this._n(d.getValue(&lsquo;strategic_alignment&rsquo;));<br />
+ var financial = this._npv(d);<br />
+ var risk = 100 - this._n(d.getValue(&lsquo;risk_score&rsquo;));<br />
+ var effort = 100 - this._n(d.getValue(&lsquo;effort_score&rsquo;));</p>
+<p>var weighted = (strategic * 0.4) + (financial * 0.3) +<br />
+ (risk * 0.2) + (effort * 0.1);<br />
+ var rounded = Math.round(weighted);</p>
+<p>d.setValue(&lsquo;overall_score&rsquo;, rounded);<br />
+ d.update();<br />
+ return rounded;<br />
+ },</p>
+<p>_n: function (v) { return parseFloat(v || 0); },</p>
+<p>_npv: function (d) {<br />
+ var benefit = parseFloat(d.getValue(&lsquo;expected_benefit&rsquo;) || 0);<br />
+ var cost = parseFloat(d.getValue(&lsquo;expected_cost&rsquo;) || 0);<br />
+ if (cost &lt;= 0) return 0;<br />
+ return Math.min(100, Math.round((benefit - cost) / cost * 100));<br />
+ },</p>
+<p>type: &lsquo;SPMDemandScorer&rsquo;<br />
+};</p>
+<p><strong>3. Resource over-allocation detector</strong></p>
+<pre><code class="language-javascript">function detectOverAllocations(periodStart, periodEnd) {
+ var conflicts = [];
+ var resources = new GlideRecord('sys_user');
+ resources.addActiveQuery();
+ resources.addQuery('u_resource', true);
+ resources.query();
+ while (resources.next()) {
+ var capacity = parseFloat(resources.getValue('u_weekly_capacity') || 40);
+ var alloc = new GlideAggregate('resource_allocation');
+ alloc.addQuery('resource', resources.getUniqueValue());
+ alloc.addQuery('start_date', '&lt;=', periodEnd);
+ alloc.addQuery('end_date', '&gt;=', periodStart);
+ alloc.addAggregate('SUM', 'hours');
+ alloc.query();
+ if (alloc.next()) {
+ var totalH = parseFloat(alloc.getAggregate('SUM', 'hours'));
+ if (totalH &gt; capacity) {
+ conflicts.push({
+ user: resources.getDisplayValue(),
+ capacity: capacity,
+ allocated: totalH,
+ over: totalH - capacity
+ });
+ }
+ }
+ }
+ return conflicts;
+}
+</code></pre>
+<p><strong>4. Project → Cost plan auto-create</strong></p>
+<pre><code class="language-javascript">// Business Rule on pm_project (after, insert)
+(function (current) {
+ var cp = new GlideRecord('cost_plan');
+ cp.initialize();
+ cp.setValue('task', current.getUniqueValue());
+ cp.setValue('type', 'planned');
+ cp.setValue('cost', current.getValue('budget_cost'));
+ cp.insert();
+})(current);
+</code></pre>
+<p><strong>5. Burn-down chart data API</strong></p>
+<pre><code class="language-javascript">function burnDown(sprintSysId) {
+ var s = new GlideRecord('rm_sprint');
+ if (!s.get(sprintSysId)) return null;
+ var start = new GlideDateTime(s.getValue('start_date'));
+ var end = new GlideDateTime(s.getValue('end_date'));
+ var totalPoints = 0;
+</code></pre>
+<p>var st = new GlideRecord(&lsquo;rm_story&rsquo;);<br />
+ st.addQuery(&lsquo;sprint&rsquo;, sprintSysId);<br />
+ st.query();<br />
+ while (st.next()) {<br />
+ totalPoints += parseInt(st.getValue(&lsquo;story_points&rsquo;), 10) || 0;<br />
+ }</p>
+<p>var days = [];<br />
+ var d = new GlideDateTime(start);<br />
+ while (d.compareTo(end) &lt;= 0) {<br />
+ var done = new GlideAggregate(&lsquo;rm_story&rsquo;);<br />
+ done.addQuery(&lsquo;sprint&rsquo;, sprintSysId);<br />
+ done.addQuery(&lsquo;state&rsquo;, &lsquo;done&rsquo;);<br />
+ done.addQuery(&lsquo;sys_updated_on&rsquo;, &lsquo;&lt;=&rsquo;, d);<br />
+ done.addAggregate(&lsquo;SUM&rsquo;, &lsquo;story_points&rsquo;);<br />
+ done.query();<br />
+ var burned = done.next() ? parseInt(done.getAggregate(&lsquo;SUM&rsquo;, &lsquo;story_points&rsquo;), 10) : 0;<br />
+ days.push({ date: d.getDate().getValue(), remaining: totalPoints - burned });<br />
+ d.addDaysLocalTime(1);<br />
+ }<br />
+ return { total: totalPoints, days: days };<br />
+}</p>
+<p><strong>6. Status RAG calculator</strong></p>
+<pre><code class="language-javascript">var SPMRAGCalculator = Class.create();
+SPMRAGCalculator.prototype = {
+ initialize: function {},
+</code></pre>
+<p>/*<em> Returns &lsquo;green&rsquo; | &lsquo;amber&rsquo; | &lsquo;red&rsquo; </em>/<br />
+ calc: function (projectSysId) {<br />
+ var p = new GlideRecord(&lsquo;pm_project&rsquo;);<br />
+ if (!p.get(projectSysId)) return &lsquo;unknown&rsquo;;<br />
+ var schedule = this._schedule(p);<br />
+ var cost = this._cost(p);<br />
+ var risk = this._risk(p);</p>
+<p>var worst = Math.max(schedule, cost, risk);<br />
+ if (worst &gt;= 2) return &lsquo;red&rsquo;;<br />
+ if (worst &gt;= 1) return &lsquo;amber&rsquo;;<br />
+ return &lsquo;green&rsquo;;<br />
+ },</p>
+<p>_schedule: function (p) {<br />
+ var planned = new GlideDateTime(p.getValue(&lsquo;planned_end_date&rsquo;));<br />
+ var current = new GlideDateTime(p.getValue(&lsquo;end_date&rsquo;));<br />
+ var diffDays = (current.getNumericValue() - planned.getNumericValue()) /<br />
+ (1000 * 60 * 60 * 24);<br />
+ if (diffDays &gt; 14) return 2;<br />
+ if (diffDays &gt; 0) return 1;<br />
+ return 0;<br />
+ },</p>
+<p>_cost: function (p) {<br />
+ var plan = parseFloat(p.getValue(&lsquo;budget_cost&rsquo;) || 0);<br />
+ var act = parseFloat(p.getValue(&lsquo;actual_cost&rsquo;) || 0);<br />
+ if (plan &lt;= 0) return 0;<br />
+ var over = (act - plan) / plan;<br />
+ if (over &gt; 0.1) return 2;<br />
+ if (over &gt; 0) return 1;<br />
+ return 0;<br />
+ },</p>
+<p>_risk: function (p) {<br />
+ var r = new GlideAggregate(&lsquo;pm_project_risk&rsquo;);<br />
+ r.addQuery(&lsquo;project&rsquo;, p.getUniqueValue());<br />
+ r.addQuery(&lsquo;state&rsquo;, &lsquo;!=&rsquo;, &lsquo;closed&rsquo;);<br />
+ r.addQuery(&lsquo;severity&rsquo;, &lsquo;IN&rsquo;, &lsquo;4,5&rsquo;); // high/critical<br />
+ r.addAggregate(&lsquo;COUNT&rsquo;);<br />
+ r.query();<br />
+ var critRisks = r.next() ? parseInt(r.getAggregate(&lsquo;COUNT&rsquo;), 10) : 0;<br />
+ if (critRisks &gt; 3) return 2;<br />
+ if (critRisks &gt; 0) return 1;<br />
+ return 0;<br />
+ },</p>
+<p>type: &lsquo;SPMRAGCalculator&rsquo;<br />
+};</p>
+<p><strong>7. Milestone slip alert</strong></p>
+<pre><code class="language-javascript">// Scheduled Job — daily
+(function {
+ var ms = new GlideRecord('pm_project_task');
+ ms.addQuery('is_milestone', true);
+ ms.addQuery('state', '!=', 'complete');
+ ms.addQuery('planned_end_date', '&lt;', new GlideDateTime());
+ ms.query();
+ while (ms.next()) {
+ gs.eventQueue('spm.milestone.slipped', ms,
+ ms.getValue('project'), ms.getValue('number'));
+ }
+})();
+</code></pre>
+<p><strong>8. Capacity vs demand chart data</strong> — GlideAggregate on resource_plan.requested_hours grouped by month.</p>
+<p><strong>9. Strategic goal alignment scorer</strong> — sum of weighted demand scores per goal.</p>
+<p><strong>10. Project Cloning</strong> — Use Project Template + clone via new sn_pm.ProjectCloneUtil().clone(srcId).</p>
+<p><strong>11-20. Quick recipes</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11</td>
+<td>Demand → Story breakdown (1 demand → N stories)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Timecard reminder (Friday email)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Auto-close completed projects after 30 days</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Risk register heat-map (probability × impact)</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Benefit realization tracker (planned vs actual)</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Resource backfill suggestion (Now Assist)</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Multi-currency cost normalization</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Approval batching (sponsor approves multiple per click)</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Portfolio simulation (what-if analysis)</td>
+</tr>
+<tr>
+<td>20</td>
+<td>OKR scoring (objectives + key results)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="18-from-scratch-implementation-day-0-day-30">§18 — From-Scratch Implementation (Day 0 → Day 30)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Days</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strategy + Foundation</td>
+<td>0–6</td>
+<td>Goals, hierarchy, plugins</td>
+</tr>
+<tr>
+<td>Demand + Project</td>
+<td>7–15</td>
+<td>Workflows, templates, governance</td>
+</tr>
+<tr>
+<td>Resource + Cost</td>
+<td>16–22</td>
+<td>Allocations, plans, timecards</td>
+</tr>
+<tr>
+<td>Agile + Analytics</td>
+<td>23–27</td>
+<td>Boards, dashboards, AI</td>
+</tr>
+<tr>
+<td>UAT + Launch</td>
+<td>28–30</td>
+<td>Pilot, training, go-live</td>
+</tr>
+</tbody>
+</table>
+<h3 id="181-day-by-day">18.1 Day-by-day</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p><strong>Day 0</strong> — Strategy &amp; governance model<br />
+- Strategic goals (3-5 enterprise level)<br />
+- Portfolio structure<br />
+- Decision rights (RACI for stage-gate decisions)<br />
+- Demand types (Project, Enhancement, Operational)</p>
+<p><strong>Day 1</strong> — Plugins</p>
+<pre><code class="language-text">- com.snc.sdlc.scrum.pp
+- com.snc.financial_planning_workspace
+- com.sn_planning_console_workspace
+- com.snc.demand_management
+- com.snc.resource_management
+- com.snc.cost_plan_v2
+</code></pre>
+<p><strong>Day 2-3</strong> — Portfolio + Program hierarchy<br />
+- 3-5 portfolios (Digital, Modernization, Compliance, etc.)<br />
+- Programs under each<br />
+- Strategic alignment to enterprise goals</p>
+<p><strong>Day 4</strong> — Idea Portal config — /sp?id=ideas<br />
+- Categories<br />
+- Voting enabled<br />
+- Auto-promotion threshold</p>
+<p><strong>Day 5-6</strong> — Demand stage gates<br />
+- Screen → Qualify → Approve → Reject/Backlog<br />
+- Scoring criteria (strategic, financial, risk, effort)<br />
+- Sponsor approval flow</p>
+<p><strong>Day 7-8</strong> — Project templates<br />
+- Waterfall (Initiation → Planning → Execution → Closure)<br />
+- Agile (Sprint 0 → Sprint N)<br />
+- Hybrid</p>
+<p><strong>Day 9</strong> — Task hierarchy + dependencies<br />
+- Phase → Task → Sub-task<br />
+- FS, SS, FF, SF dependencies<br />
+- Critical path</p>
+<p><strong>Day 10</strong> — Planning Console<br />
+- Multi-project Gantt<br />
+- Dependencies visualization<br />
+- Resource conflict overlay</p>
+<p><strong>Day 11</strong> — Project status reporting<br />
+- Weekly status template<br />
+- Auto-RAG calculator (script #6)</p>
+<p><strong>Day 12-13</strong> — Resource pool<br />
+- Capacity per user<br />
+- Skill catalog<br />
+- Cost rates (by role)</p>
+<p><strong>Day 14</strong> — Resource Plans<br />
+- Project requests resources by role + skill<br />
+- Resource manager approves/assigns<br />
+- Conflict resolution UX</p>
+<p><strong>Day 15</strong> — Allocations + conflict detection (script #3)</p>
+<p><strong>Day 16-17</strong> — Timecards<br />
+- Bi-weekly cycles<br />
+- Approval workflow (PM + manager)<br />
+- Categories: project, vacation, training, admin</p>
+<p><strong>Day 18-19</strong> — Cost plans<br />
+- Labor (rates × hours)<br />
+- Vendor / contract costs<br />
+- Capex vs Opex<br />
+- Variance reports</p>
+<p><strong>Day 20</strong> — Benefits tracking<br />
+- Planned benefit per project<br />
+- Actual measurement post-go-live<br />
+- Realization waterfall report</p>
+<p><strong>Day 21</strong> — Risks + Issues register<br />
+- Risks: pre-occurrence, probability × impact<br />
+- Issues: occurred, mitigation, owner</p>
+<p><strong>Day 22</strong> — Change requests on projects (scope changes)</p>
+<p><strong>Day 23-24</strong> — Agile setup<br />
+- Scrum / Kanban / SAFe<br />
+- Boards<br />
+- Backlog grooming<br />
+- Sprint planning<br />
+- Story points + velocity</p>
+<p><strong>Day 25</strong> — Dashboards<br />
+- Executive (RAG, ROI, alignment)<br />
+- Resource (utilization, conflicts)<br />
+- Project (Gantt, burn, cost)<br />
+- PA: Demand throughput, project health trend</p>
+<p><strong>Day 26</strong> — Now Assist<br />
+- Project status auto-summary<br />
+- Risk identification<br />
+- Resource recommendation</p>
+<p><strong>Day 27</strong> — ATF — 10 scenarios across demand, project, resource</p>
+<p><strong>Day 28</strong> — Training<br />
+- PMs (2 days)<br />
+- Resource managers (1 day)<br />
+- Team members (½ day)<br />
+- Executives (1h dashboard tour)</p>
+<p><strong>Day 29</strong> — Pilot with 5 projects across 2 portfolios</p>
+<p><strong>Day 30</strong> — Full launch + Hypercare</p>
+<h3 id="182-kpis-month-1">18.2 KPIs Month 1</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Demand cycle time (submit → approve)</td>
+<td>≤ 14 days</td>
+</tr>
+<tr>
+<td>Resource utilization</td>
+<td>75-85%</td>
+</tr>
+<tr>
+<td>Project on-time delivery</td>
+<td>≥ 80%</td>
+</tr>
+<tr>
+<td>Project on-budget</td>
+<td>≥ 85%</td>
+</tr>
+<tr>
+<td>Timecard submission %</td>
+<td>≥ 95%</td>
+</tr>
+<tr>
+<td>Strategic alignment %</td>
+<td>≥ 90%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="19-cis-ppm-spm-exam-z-to-hero-feature-labs-with-40-inline-questions">§19 — CIS-PPM / SPM Exam &amp; Z-to-Hero Feature Labs (with 40 inline questions)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<blockquote>
+<p>No external exam bank exists — this section provides 40 CIS-style questions inline.</p>
+</blockquote>
+<h3 id="191-z-to-hero-feature-labs-12-labs">19.1 Z-to-Hero Feature Labs (12 labs)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Lab</th>
+<th>Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>Portfolio + Program hierarchy</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>Idea Portal with voting threshold</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>Idea → Demand auto-promotion at 50 votes</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>Demand scoring (strategic + financial + risk + effort)</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>Demand stage gates with sponsor approval Flow</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>Project from waterfall template + tasks</td>
+</tr>
+<tr>
+<td>L7</td>
+<td>Project from agile template + sprints + backlog</td>
+</tr>
+<tr>
+<td>L8</td>
+<td>Resource Plan + Allocations</td>
+</tr>
+<tr>
+<td>L9</td>
+<td>Over-allocation conflict resolution</td>
+</tr>
+<tr>
+<td>L10</td>
+<td>Cost Plan + Variance vs Actuals</td>
+</tr>
+<tr>
+<td>L11</td>
+<td>RAG calculator script (Schedule × Cost × Risk)</td>
+</tr>
+<tr>
+<td>L12</td>
+<td>Benefits realization tracking (planned vs actual)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="192-40-spmcis-ppm-practice-questions">19.2 40 SPM/CIS-PPM Practice Questions</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p><strong>Demand &amp; Strategy (Q1-Q10)</strong></p>
+<ol>
+<li>
+<p>Where does Idea promotion to Demand happen?<br />
+ A. Service Portal | B. Demand Workbench | C. Idea record action | D. Both A and C — <strong>Answer: D</strong></p>
+</li>
+<li>
+<p>Demand scoring formula uses what default weights (strategic / financial / risk / effort)?<br />
+ A. 25/25/25/25 | B. 40/30/20/10 | C. 50/30/10/10 | D. Custom always — <strong>Answer: B (default in SPMDemandScorer)</strong></p>
+</li>
+<li>
+<p>Strategic alignment links Demand to:<br />
+ A. Project | B. Goal | C. Initiative | D. B and C — <strong>Answer: D</strong></p>
+</li>
+<li>
+<p>Portfolio vs Program difference?<br />
+ A. Same | B. Portfolio = collection of programs; Program = collection of related projects | C. Reversed | D. Random — <strong>Answer: B</strong></p>
+</li>
+<li>
+<p>Idea state for &ldquo;approved to become Demand&rdquo;:<br />
+ A. promoted_to_demand | B. approved | C. qualified | D. closed — <strong>Answer: A</strong></p>
+</li>
+<li>
+<p>Who approves Demand by default?<br />
+ A. Anyone | B. Sponsor (defined on Demand) | C. PMO | D. Resource Manager — <strong>Answer: B</strong></p>
+</li>
+<li>
+<p>Demand stage screen means:<br />
+ A. Approved | B. Initial validation before scoring | C. Rejected | D. In-flight — <strong>Answer: B</strong></p>
+</li>
+<li>
+<p>Strategic goal table:<br />
+ A. pm_project | B. strategy_goal | C. dmn_demand | D. pm_initiative — <strong>Answer: B</strong></p>
+</li>
+<li>
+<p>Demand → Project conversion preserves:<br />
+ A. Score | B. Sponsor | C. Cost estimates | D. All of the above — <strong>Answer: D</strong></p>
+</li>
+<li>
+<p>Demand fiscal year is set:<br />
+ A. Automatically from expected_start | B. By sponsor | C. By PMO config | D. Manual only — <strong>Answer: A (when configured)</strong></p>
+</li>
+</ol>
+<p><strong>Project Management (Q11-Q20)</strong></p>
+<ol start="11">
+<li>
+<p>Project task hierarchy is limited to:<br />
+ A. 3 levels | B. 10 levels | C. No limit (recommended ≤ 5) | D. 1 level — <strong>Answer: C</strong></p>
+</li>
+<li>
+<p>Critical path is:<br />
+ A. Longest sequence of dependent tasks determining min project duration | B. Most expensive | C. Highest risk | D. First sequence — <strong>Answer: A</strong></p>
+</li>
+<li>
+<p>Milestone is identified by:<br />
+ A. is_milestone = true | B. Task type = milestone | C. Both | D. None | <strong>Answer: C</strong></p>
+</li>
+<li>
+<p>RAG status comes from:<br />
+ A. PM judgment | B. Schedule + Cost + Risk auto-calculator | C. Sponsor | D. Random — <strong>Answer: B (when SPMRAGCalculator is configured)</strong></p>
+</li>
+<li>
+<p>Project template includes:<br />
+ A. Tasks only | B. Tasks + Milestones + Roles + Cost Plan template | C. Just dates | D. Resources only — <strong>Answer: B</strong></p>
+</li>
+<li>
+<p>Dependency types in Planning Console:<br />
+ A. FS only | B. FS, SS, FF, SF | C. AND/OR | D. Hard/soft — <strong>Answer: B</strong></p>
+</li>
+<li>
+<p>Project state &ldquo;open&rdquo; means:<br />
+ A. In execution | B. Not yet started | C. Both A and B (depending on sub-state) | D. Closed — <strong>Answer: C</strong></p>
+</li>
+<li>
+<p>Closing a project requires:<br />
+ A. All tasks complete | B. Benefits captured | C. Final cost actuals | D. All above — <strong>Answer: D (best practice)</strong></p>
+</li>
+<li>
+<p>Project Risks differ from Issues:<br />
+ A. Risk = future, may occur; Issue = already occurred | B. Same | C. Risk is higher priority | D. Issue is higher — <strong>Answer: A</strong></p>
+</li>
+<li>
+<p>Earned Value (EV) calculations require:<br />
+ A. Cost actuals + % complete | B. Budget only | C. Just schedule | D. None — <strong>Answer: A</strong></p>
+</li>
+</ol>
+<p><strong>Resource Management (Q21-Q30)</strong></p>
+<ol start="21">
+<li>
+<p>Resource Plan request states include:<br />
+ A. Requested → Confirmed → Allocated | B. Just one state | C. Pending only | D. Random — <strong>Answer: A</strong></p>
+</li>
+<li>
+<p>Over-allocation is when:<br />
+ A. User assigned &gt; 40h/week | B. User assigned &gt; capacity field | C. User booked on &gt; 5 projects | D. Random — <strong>Answer: B</strong></p>
+</li>
+<li>
+<p>Capacity field is on:<br />
+ A. Project | B. User (sys_user.u_weekly_capacity) | C. Role | D. Department — <strong>Answer: B</strong></p>
+</li>
+<li>
+<p>Allocation conflicts can be resolved via:<br />
+ A. Hire freelancer | B. Reschedule projects | C. Reduce scope | D. All — <strong>Answer: D</strong></p>
+</li>
+<li>
+<p>Timecards default cycle:<br />
+ A. Daily | B. Weekly | C. Bi-weekly | D. Monthly — <strong>Answer: B (most common, but configurable)</strong></p>
+</li>
+<li>
+<p>Time category examples:<br />
+ A. Project, vacation, training, admin | B. Just project | C. Random | D. Hourly only — <strong>Answer: A</strong></p>
+</li>
+<li>
+<p>Resource manager view URL:<br />
+ A. /now/rm | B. /now/sow/home | C. /sp?id=rm | D. /rm.do — <strong>Answer: A</strong></p>
+</li>
+<li>
+<p>Skill match for resource request:<br />
+ A. Exact only | B. Hierarchical (e.g., Senior includes Mid) + Exact | C. Manual only | D. Random — <strong>Answer: B</strong></p>
+</li>
+<li>
+<p>Resource Bench reports:<br />
+ A. Users not assigned to anything | B. Just contractors | C. Just managers | D. Random — <strong>Answer: A</strong></p>
+</li>
+<li>
+<p>Cross-project resource scheduling uses:<br />
+ A. Manual coordination | B. Planning Console + Resource Workbench | C. Email | D. Spreadsheets — <strong>Answer: B</strong></p>
+</li>
+</ol>
+<p><strong>Financials &amp; Agile (Q31-Q40)</strong></p>
+<ol start="31">
+<li>
+<p>Cost Plan vs Actuals tracking field:<br />
+ A. planned_cost vs actual_cost | B. budget vs spend | C. Same | D. No tracking — <strong>Answer: A</strong></p>
+</li>
+<li>
+<p>Benefit realization tracking starts:<br />
+ A. At project end | B. At demand approval | C. Throughout project + post-go-live | D. At cost plan creation — <strong>Answer: C</strong></p>
+</li>
+<li>
+<p>Variance threshold for &ldquo;Amber&rdquo; RAG cost:<br />
+ A. 5% | B. 10% | C. 20% | D. Configurable — <strong>Answer: D (10% common default)</strong></p>
+</li>
+<li>
+<p>Multi-currency cost normalization uses:<br />
+ A. Manual conversion | B. ServiceNow fx_rate table + scheduled refresh | C. External tool | D. None — <strong>Answer: B</strong></p>
+</li>
+<li>
+<p>Agile board types:<br />
+ A. Scrum only | B. Kanban only | C. Scrum + Kanban + Custom | D. None — <strong>Answer: C</strong></p>
+</li>
+<li>
+<p>Story states (typical):<br />
+ A. To Do → In Progress → Done | B. New → Active → Closed | C. Both depending on board | D. Random — <strong>Answer: C</strong></p>
+</li>
+<li>
+<p>Sprint burn-down measures:<br />
+ A. Story points remaining over time | B. Cost burn | C. Velocity | D. Quality — <strong>Answer: A</strong></p>
+</li>
+<li>
+<p>SAFe Program Increment (PI) duration default:<br />
+ A. 1 week | B. 2 weeks | C. 8-12 weeks (5 iterations) | D. 1 year — <strong>Answer: C</strong></p>
+</li>
+<li>
+<p>Velocity = ?<br />
+ A. Story points completed per sprint (rolling avg) | B. Bugs fixed | C. Cost | D. Schedule slip — <strong>Answer: A</strong></p>
+</li>
+<li>
+<p>OKR scoring:<br />
+ A. Always 0 or 1 | B. 0.0 to 1.0 per Key Result, then average | C. % alone | D. Hard targets — <strong>Answer: B</strong></p>
+</li>
+</ol>
+<h3 id="193-what-hero-looks-like-for-spm">19.3 What &ldquo;Hero&rdquo; looks like for SPM</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>Implements full strategy-to-delivery: portfolio + programs, demand intake with scoring, project templates (waterfall + agile), resource capacity + conflict resolution, cost + variance, benefits realization, RAG dashboards, Now Assist for project status summary.</p>
+<hr />
+<h2 id="hands-on-labs">Hands-on Labs — مختبرات عملية</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<blockquote>
+<p>Step-by-step labs for PDI / Australia instance. Replace <code>{BASE}</code> with your instance URL.<br />
+مختبرات خطوة بخطوة — استبدل <code>{BASE}</code> برابط نسختك.</p>
+</blockquote>
+<ol>
+<li>
+<p><strong>Lab 1</strong> — <strong>Strategic goal / هدف استراتيجي</strong> — Create goal in <a href="{BASE}/now/strategic-planning/home">{BASE}/now/strategic-planning/home</a>; link to initiative.</p>
+</li>
+<li>
+<p><strong>Lab 2</strong> — <strong>Idea → Demand / فكرة → طلب</strong> — Submit idea at <a href="{BASE}/idea_list.do">{BASE}/idea_list.do</a>; promote to Demand.</p>
+</li>
+<li>
+<p><strong>Lab 3</strong> — <strong>Demand scoring / تقييم الطلب</strong> — Score demand in Demand Workbench; approve or reject.</p>
+</li>
+<li>
+<p><strong>Lab 4</strong> — <strong>Project from Demand / مشروع من طلب</strong> — Convert approved demand to project at <a href="{BASE}/pm_project_list.do">{BASE}/pm_project_list.do</a>.</p>
+</li>
+<li>
+<p><strong>Lab 5</strong> — <strong>WBS &amp; tasks / هيكل العمل</strong> — Build project plan with phases, tasks, dependencies.</p>
+</li>
+<li>
+<p><strong>Lab 6</strong> — <strong>Resource plan / خطة موارد</strong> — Create resource plan; allocate hours to project tasks.</p>
+</li>
+<li>
+<p><strong>Lab 7</strong> — <strong>Agile story / قصة Agile</strong> — Create story on board <a href="{BASE}/rm_story_board.do">{BASE}/rm_story_board.do</a>; complete sprint.</p>
+</li>
+<li>
+<p><strong>Lab 8</strong> — <strong>Roadmap view / خارطة طريق</strong> — Visualize initiatives on <a href="{BASE}/now/roadmap/home">{BASE}/now/roadmap/home</a>.</p>
+</li>
+</ol>
+<hr />
+<h2 id="best-practices">Best Practices — أفضل الممارسات</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Best practice (EN)</th>
+<th>أفضل ممارسة (AR)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Naming</td>
+<td>SPM = suite; PPM = projects inside — explain to stakeholders</td>
+<td>SPM = المظلة؛ PPM = المشاريع</td>
+</tr>
+<tr>
+<td>Demand</td>
+<td>Govern intake before projects — avoid shadow IT</td>
+<td>حكم الطلبات قبل المشاريع</td>
+</tr>
+<tr>
+<td>Resources</td>
+<td>Plan capacity before committing dates</td>
+<td>خطط السعة قبل الالتزام بالتواريخ</td>
+</tr>
+<tr>
+<td>Financials</td>
+<td>Link cost/benefit plans to strategic goals</td>
+<td>اربط التكاليف/المنافع بالأهداف</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="deployment-checklist">Deployment Checklist — قائمة النشر</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task (EN)</th>
+<th>المهمة (AR)</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Install SPM apps from Store</td>
+<td>تثبيت تطبيقات SPM</td>
+<td>Licensed</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Strategy &amp; goal hierarchy</td>
+<td>هرمية الأهداف</td>
+<td>Goals visible</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Demand workflow &amp; scoring</td>
+<td>سير Demand</td>
+<td>Intake governed</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Project templates</td>
+<td>قوالب المشاريع</td>
+<td>New project fast</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Resource groups &amp; plans</td>
+<td>مجموعات الموارد</td>
+<td>Capacity shown</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Agile boards (if used)</td>
+<td>لوحات Agile</td>
+<td>Stories tracked</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Executive dashboards</td>
+<td>لوحات تنفيذية</td>
+<td>Roadmap live</td>
+</tr>
+<tr>
+<td>8</td>
+<td>UAT with PMO</td>
+<td>UAT مع PMO</td>
+<td>Sign-off</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="direct-urls-quick-reference">Direct URLs Quick Reference</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigation</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strategic Planning</td>
+<td>All &gt; Strategic Planning</td>
+<td><a href="{BASE}/now/strategic-planning/home">{BASE}/now/strategic-planning/home</a></td>
+</tr>
+<tr>
+<td>Ideas</td>
+<td>All &gt; Innovation</td>
+<td><a href="{BASE}/idea_list.do">{BASE}/idea_list.do</a></td>
+</tr>
+<tr>
+<td>Demands</td>
+<td>All &gt; Demand Management</td>
+<td><a href="{BASE}/dmn_demand_list.do">{BASE}/dmn_demand_list.do</a></td>
+</tr>
+<tr>
+<td>Projects</td>
+<td>All &gt; Project &gt; All</td>
+<td><a href="{BASE}/pm_project_list.do">{BASE}/pm_project_list.do</a></td>
+</tr>
+<tr>
+<td>Portfolios</td>
+<td>All &gt; Project &gt; Portfolios</td>
+<td><a href="{BASE}/pm_portfolio_list.do">{BASE}/pm_portfolio_list.do</a></td>
+</tr>
+<tr>
+<td>Resource Plans</td>
+<td>All &gt; Resource Management</td>
+<td><a href="{BASE}/resource_plan_list.do">{BASE}/resource_plan_list.do</a></td>
+</tr>
+<tr>
+<td>Planning Console</td>
+<td>All &gt; Resource Management</td>
+<td><a href="{BASE}/resource_management.do">{BASE}/resource_management.do</a></td>
+</tr>
+<tr>
+<td>Agile Boards</td>
+<td>All &gt; Agile Development</td>
+<td><a href="{BASE}/rm_story_board.do">{BASE}/rm_story_board.do</a></td>
+</tr>
+<tr>
+<td>Roadmaps</td>
+<td>All &gt; Roadmap Planning</td>
+<td><a href="{BASE}/now/roadmap/home">{BASE}/now/roadmap/home</a></td>
+</tr>
+<tr>
+<td>Guided Setup</td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

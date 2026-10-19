@@ -1,0 +1,3225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSM — Customer Service Management (Zero → Pro) | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>CSM — Customer Service Management (Zero → Pro)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/customer_account_list.do">Account</a>
+<a href="{BASE}/sn_customerservice_case_list.do">Case</a>
+</div>
+    <article class="content">
+<h1 id="csm-customer-service-management-zero-pro">CSM — Customer Service Management (Zero → Pro)</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً:</strong> <a href="../MASTER_ALL_IN_ONE_SUMMARY.html">../MASTER_ALL_IN_ONE_SUMMARY.md</a> · <a href="../html/MASTER_ALL_IN_ONE_SUMMARY.html">../html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل:</strong> <a href="../MASTER_ALL_IN_ONE.html">../MASTER_ALL_IN_ONE.md</a> · <a href="../html/MASTER_ALL_IN_ONE.html">../html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات:</strong> <a href="../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Australia · Scope <code>x_786686_hr_leave</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<h2 id="australia-instance">Australia Instance — نسخة أستراليا</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Region / Datacenter</strong></td>
+<td>ServiceNow <strong>Australia</strong></td>
+</tr>
+<tr>
+<td><strong>Release train</strong></td>
+<td>Zurich (Sep 2026 EA) · next EA: <strong>Brazil</strong></td>
+</tr>
+<tr>
+<td><strong>URL base</strong></td>
+<td><code>{BASE}</code></td>
+</tr>
+<tr>
+<td><strong>Scope note</strong></td>
+<td>HR Leave app: <code>x_786686_hr_leave</code></td>
+</tr>
+<tr>
+<td><strong>Guided Setup</strong></td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="direct-navigation-urls">Direct Navigation URLs — روابط التنقل المباشرة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page / Tool</th>
+<th>Navigation Path</th>
+<th>Direct URL</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cases</strong></td>
+<td>All &gt; Customer Service &gt; Cases</td>
+<td><a href="{BASE}/sn_customerservice_case_list.do">{BASE}/sn_customerservice_case_list.do</a></td>
+<td>Customer cases</td>
+</tr>
+<tr>
+<td><strong>Accounts</strong></td>
+<td>All &gt; Customer Service &gt; Accounts</td>
+<td><a href="{BASE}/customer_account_list.do">{BASE}/customer_account_list.do</a></td>
+<td>B2B accounts</td>
+</tr>
+<tr>
+<td><strong>Contacts</strong></td>
+<td>All &gt; Customer Service &gt; Contacts</td>
+<td><a href="{BASE}/customer_contact_list.do">{BASE}/customer_contact_list.do</a></td>
+<td>Account contacts</td>
+</tr>
+<tr>
+<td><strong>Entitlements</strong></td>
+<td>All &gt; Customer Service &gt; Entitlements</td>
+<td><a href="{BASE}/sn_entitlement_list.do">{BASE}/sn_entitlement_list.do</a></td>
+<td>Service entitlements</td>
+</tr>
+<tr>
+<td><strong>Products</strong></td>
+<td>All &gt; Customer Service &gt; Products</td>
+<td><a href="{BASE}/sn_customerservice_product_list.do">{BASE}/sn_customerservice_product_list.do</a></td>
+<td>Registered products</td>
+</tr>
+<tr>
+<td><strong>CSM Workspace</strong></td>
+<td>Now Experience &gt; CSM</td>
+<td><a href="{BASE}/now/csm/workspace">{BASE}/now/csm/workspace</a></td>
+<td>Agent workspace</td>
+</tr>
+<tr>
+<td><strong>Customer Portal</strong></td>
+<td>Service Portal</td>
+<td><a href="{BASE}/csm">{BASE}/csm</a></td>
+<td>Customer self-service</td>
+</tr>
+<tr>
+<td><strong>AWA Config</strong></td>
+<td>All &gt; Advanced Work Assignment</td>
+<td><a href="{BASE}/awa_configuration_list.do">{BASE}/awa_configuration_list.do</a></td>
+<td>Work routing</td>
+</tr>
+<tr>
+<td><strong>Flow Designer</strong></td>
+<td>All &gt; Process Automation &gt; Flow Designer</td>
+<td><a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a></td>
+<td>Case automation</td>
+</tr>
+<tr>
+<td><strong>Guided Setup CSM</strong></td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+<td>Initial configuration</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>URLs:</strong> <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">../../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a><br />
+<strong>HR Leave:</strong> Scope x_786686_hr_leave</p>
+<p>CIS-CSM Professional Implementer Guide<br />
+الأسلوب: عربية + إنجليزية تكمّلان بعضهما — بدون ترجمة حرفية لأسماء الشاشات.</p>
+</blockquote>
+<hr />
+<h2 id="arabic-summary">ملخص ووصف بالعربية (Arabic Summary)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>البند</th>
+<th>الشرح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ما هو CSM؟</strong></td>
+<td>خدمة العملاء الخارجيين (B2B/B2C) — حسابات، عقود، استحقاقات، قضايا</td>
+</tr>
+<tr>
+<td><strong>لماذا مهم؟</strong></td>
+<td>ITSM للموظفين الداخليين؛ CSM للعملاء والشركاء مع SLA حسب العقد</td>
+</tr>
+<tr>
+<td><strong>من يستخدمه؟</strong></td>
+<td>وكيل خدمة عملاء، مدير حساب، شريك قناة</td>
+</tr>
+<tr>
+<td><strong>ماذا يغطي الملف؟</strong></td>
+<td>Account، Entitlement، /csm، AWA · §16 مختبر Gold/Bronze</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ملخص في سطر:</strong> قضايا العملاء مع مستويات خدمة حسب المنتج/العقد — ليس Incident داخلي.</p>
+<p><strong>وصف مختصر:</strong> يشرح الحساب وجهة الاتصال، Entitlement، Case، بوابة العميل، AWA للتوجيه، وربط اختياري بـ FSM.</p>
+<hr />
+<h2 id="1-overview-business-value">1) Overview &amp; Business Value</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>CSM manages service for EXTERNAL customers (B2B / B2C). — الفرق الجوهري عن ITSM: العميل خارجي (شركة أو مستهلك)، وليس موظفًا داخليًا.</p>
+<p>Core value:<br />
+- Case management end-to-end.<br />
+- Self-service via Customer Service Portal.<br />
+- Connect ITSM/FSM/Field for fulfillment.<br />
+- Proactive customer service (outages, notifications).</p>
+<hr />
+<h2 id="2-architecture-data-model">2) Architecture &amp; Data Model</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>Key tables:</p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>الغرض</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sn_customerservice_case</td>
+<td>الحالة (Case) — القلب</td>
+</tr>
+<tr>
+<td>customer_account</td>
+<td>حساب العميل (شركة)</td>
+</tr>
+<tr>
+<td>customer_contact</td>
+<td>جهة الاتصال (شخص)</td>
+</tr>
+<tr>
+<td>sn_customerservice_consumer</td>
+<td>المستهلك (B2C)</td>
+</tr>
+<tr>
+<td>sn_customerservice_product</td>
+<td>المنتجات/الأصول المسجّلة</td>
+</tr>
+<tr>
+<td>sn_entitlement</td>
+<td>الاستحقاقات (Entitlements)</td>
+</tr>
+<tr>
+<td>service_contract</td>
+<td>عقود الخدمة</td>
+</tr>
+<tr>
+<td>sla / contract_sla</td>
+<td>اتفاقيات الخدمة</td>
+</tr>
+</tbody>
+</table>
+<p>Relationship model (B2B):</p>
+<pre><code class="language-text">customer_account (الشركة)
+ └─ customer_contact (الأشخاص)
+ └─ case (الحالة)
+ ├─ entitlement (هل مستحق للدعم؟)
+ ├─ contract / SLA
+ └─ tasks / FSM work order
+</code></pre>
+<p>في B2C يُستبدل account/contact بـ consumer.</p>
+<hr />
+<h2 id="3-plugins-activation">3) Plugins &amp; Activation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>App / Plugin</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer Service Management</td>
+<td>com.sn_customerservice (from Store)</td>
+</tr>
+<tr>
+<td>CSM Demo Data</td>
+<td>optional</td>
+</tr>
+<tr>
+<td>Customer Service Portal</td>
+<td>included</td>
+</tr>
+<tr>
+<td>Field Service (للتكامل)</td>
+<td>com.snc.work_management</td>
+</tr>
+<tr>
+<td>Special Handling Notes</td>
+<td>optional</td>
+</tr>
+<tr>
+<td>Proactive Customer Service Ops</td>
+<td>from Store</td>
+</tr>
+<tr>
+<td>Now Assist for CSM</td>
+<td>subscription</td>
+</tr>
+</tbody>
+</table>
+<p>How to activate:</p>
+<ol>
+<li>Navigate: All &gt; System Applications &gt; All Available Applications &gt; All. — <a href="{BASE}/v_plugin_list.do">Open direct</a></li>
+<li>Search &ldquo;Customer Service Management&rdquo;.</li>
+<li>Install (request if needed).</li>
+<li>Then run Guided Setup:<br />
+ Navigate: All &gt; Guided Setup &gt; CSM (or CSM Configurable Setup). — <a href="{BASE}/now/guided-setup">Open direct</a></li>
+</ol>
+<hr />
+<h2 id="4-guided-setup-all-options">4) Guided Setup &amp; All Options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>CSM setup sections:<br />
+- Foundation — accounts, contacts, products.<br />
+- Channels — portal, email, chat, phone, social.<br />
+- Case Management — types, states, assignment.<br />
+- Entitlements &amp; Contracts — استحقاقات وعقود.<br />
+- SLAs — اتفاقيات الخدمة.<br />
+- Knowledge &amp; Communities — معرفة ومجتمعات.<br />
+- Agent Workspace — مساحة الوكيل.<br />
+- Special Handling Notes — تنبيهات خاصة للحساب.</p>
+<p>Important options:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assignment / Advanced Work Assignment</td>
+<td>All &gt; Advanced Work Assignment · <a href="{BASE}/awa_queue_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Case types &amp; states</td>
+<td>All &gt; Customer Service &gt; Administration · <a href="{BASE}/sn_customerservice_case_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Entitlements</td>
+<td>All &gt; Customer Service &gt; Entitlements · <a href="{BASE}/service_entitlement_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Service Contracts</td>
+<td>All &gt; Customer Service &gt; Contracts · <a href="{BASE}/ast_contract_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Customer Service Portal</td>
+<td>All &gt; Service Portal &gt; Portals (csm) · <a href="{BASE}/sp_portal_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Agent Workspace</td>
+<td>/now/cwf or Configurable Workspace</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-end-to-end-process-cycle">5) End-to-End Process Cycle</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>Case lifecycle:</p>
+<pre><code class="language-text">New → Open → Work in Progress → Awaiting Info → Resolved → Closed
+</code></pre>
+<p>Full flow:</p>
+<pre><code class="language-text">Customer (portal/email/chat)
+ → Case created
+ → Auto-assign (AWA) to agent/team
+ → Verify entitlement + SLA starts
+ → Investigate (may spawn FSM Work Order or ITSM Incident)
+ → Resolve → Customer confirms → Close
+</code></pre>
+<p>Major Issue Management يربط حالات كثيرة بمشكلة واحدة (انقطاع خدمة).</p>
+<hr />
+<h2 id="6-development">6) Development</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3Dc84db0e8839f0b509f02b0d6feaad3c9">Application Files</a><a href="../scripts/index.html">Scripts portal</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<h3 id="business-rule-verify-entitlement-on-case-open">Business Rule — verify entitlement on case open</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a><a href="../scripts/index.html">Scripts portal</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<pre><code class="language-javascript">(function executeRule(current, previous) {
+ if (current.account.nil()) return;
+ var ent = new GlideRecord('sn_entitlement');
+ ent.addQuery('account', current.account);
+ ent.addActiveQuery();
+ ent.query();
+ if (!ent.hasNext()) {
+ gs.addInfoMessage('No active entitlement for this account.');
+ }
+})(current, previous);
+</code></pre>
+<h3 id="advanced-work-assignment-awa">Advanced Work Assignment (AWA)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>AWA يوزّع الحالات بناءً على المهارات والسعة (capacity) بدل الإسناد اليدوي.<br />
+Navigate: All &gt; Advanced Work Assignment &gt; Service Channels. — <a href="{BASE}/awa_service_channel_list.do">Open direct</a></p>
+<p>Development topics:<br />
+- Case form &amp; UI policies.<br />
+- Email-to-case (inbound actions).<br />
+- Flow Designer for case approvals/escalations.<br />
+- Playbooks (guided process for agents).<br />
+- Integration to FSM (create Work Order from case).</p>
+<hr />
+<h2 id="7-administration">7) Administration</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Roles</td>
+<td>sn_customerservice_agent, sn_customerservice_manager</td>
+</tr>
+<tr>
+<td>Accounts/Contacts</td>
+<td>All &gt; Customer Service &gt; Customers · <a href="{BASE}/customer_account_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>AWA setup</td>
+<td>All &gt; Advanced Work Assignment · <a href="{BASE}/awa_queue_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Portal</td>
+<td>All &gt; Service Portal &gt; Portals · <a href="{BASE}/sp_portal_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>SLAs</td>
+<td>All &gt; Service Level Management · <a href="{BASE}/task_sla_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<p>Key roles:<br />
+- sn_customerservice_agent — وكيل خدمة العملاء.<br />
+- sn_customerservice_manager — المدير.<br />
+- sn_customerservice.customer / consumer — العميل الخارجي.<br />
+- sn_customerservice.partner — الشريك.</p>
+<hr />
+<h2 id="8-hands-on-labs">8) Hands-on Labs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>Lab 1 — Foundation:<br />
+1. Create an Account, then a Contact under it.<br />
+2. Register a Product/Asset for the account.</p>
+<p>Lab 2 — Case end-to-end:<br />
+1. Navigate: All &gt; Customer Service &gt; Cases &gt; Create New. — <a href="{BASE}/sn_customerservice_case_list.do">Open direct</a><br />
+2. Set account/contact, type, priority.<br />
+3. Use Agent Workspace to work and resolve it.</p>
+<p>Lab 3 — Entitlement + SLA:<br />
+1. Create an entitlement for the account.<br />
+2. Open a case → confirm SLA timer.</p>
+<p>Lab 4 — Portal self-service:<br />
+1. Open the Customer Service Portal.<br />
+2. Submit a case as a customer (impersonate).</p>
+<p>Lab 5 — AWA:<br />
+1. Configure a Service Channel + queue.<br />
+2. Route a new case automatically to an agent.</p>
+<hr />
+<h2 id="9-best-practices-common-mistakes">9) Best Practices &amp; Common Mistakes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>Best practices:<br />
+- Use Configurable Workspace, not legacy forms, for agents.<br />
+- Drive routing with AWA (skills + capacity).<br />
+- Model accounts/contacts cleanly before go-live.<br />
+- Use Playbooks for complex case types.</p>
+<p>Common mistakes:<br />
+- الخلط بين ITSM (داخلي) و CSM (خارجي).<br />
+- تجاهل Entitlements فيُخدم عميل غير مستحق.<br />
+- بناء الإسناد يدويًا بدل AWA.</p>
+<hr />
+<h2 id="10-cis-csm-exam-focus">10) CIS-CSM Exam Focus</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>High-yield:<br />
+- Account / Contact / Consumer model (B2B vs B2C).<br />
+- Case lifecycle &amp; states.<br />
+- Entitlements &amp; service contracts (who can get support).<br />
+- Advanced Work Assignment (skills, capacity, queues).<br />
+- Special Handling Notes.<br />
+- Major Issue Management.<br />
+- CSM ↔ FSM ↔ ITSM integration points.<br />
+- Customer Service Portal &amp; Communities.</p>
+<p>Exam tip: — احفظ من يستطيع فتح حالة، وكيف يُتحقق من الاستحقاق، وكيف يُوزَّع العمل (AWA).</p>
+<hr />
+<h2 id="11-portals-workspaces-role-hierarchy-feature-catalog">11) Portals, Workspaces, Role Hierarchy &amp; Feature Catalog</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<blockquote>
+<p>ملاحظة عن الروابط:<br />
+URLs الـ Workspaces قد تختلف حسب الإصدار والـ App Config.</p>
+</blockquote>
+<h3 id="111-service-portals-customers">11.1 Service Portals (customers)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Portal</th>
+<th>URL</th>
+<th>لمن</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer Service Portal</td>
+<td>/csm</td>
+<td>العملاء الخارجيون</td>
+</tr>
+<tr>
+<td>Consumer Service Portal (B2C)</td>
+<td>/csp</td>
+<td>المستهلكون</td>
+</tr>
+<tr>
+<td>Communities</td>
+<td>/community</td>
+<td>المجتمعات</td>
+</tr>
+<tr>
+<td>Knowledge</td>
+<td>/kb</td>
+<td>الجميع</td>
+</tr>
+<tr>
+<td>Customer Account/Self-service</td>
+<td>/csm?id=&hellip;</td>
+<td>جهات الاتصال</td>
+</tr>
+</tbody>
+</table>
+<h3 id="112-workspaces-agentsmanagers">11.2 Workspaces (agents/managers)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Workspace</th>
+<th>URL</th>
+<th>لمن</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSM Configurable Workspace</td>
+<td>/now/cwf/agent</td>
+<td>وكلاء خدمة العملاء</td>
+</tr>
+<tr>
+<td>CSM/FSM Workspace</td>
+<td>/now/sow (CSM view)</td>
+<td>الوكلاء</td>
+</tr>
+<tr>
+<td>Manager / Dispatcher views</td>
+<td>configurable</td>
+<td>المديرون</td>
+</tr>
+<tr>
+<td>Admin (classic)</td>
+<td>/nav_to.do</td>
+<td>admins</td>
+</tr>
+</tbody>
+</table>
+<p>الوكلاء يعملون في Configurable Workspace (يدعم Playbooks وAWA وTimeline).</p>
+<h3 id="113-role-hierarchy">11.3 Role Hierarchy</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<pre><code class="language-text">admin
+└─ sn_customerservice_manager
+ └─ sn_customerservice_agent (يعمل على الحالات)
+ └─ sn_customerservice_agent (skills/queues)
+External:
+</code></pre>
+<p>sn_customerservice.customer_admin (مسؤول حساب العميل)<br />
+ └─ sn_customerservice.customer (جهة اتصال B2B)<br />
+sn_customerservice.consumer (B2C)<br />
+sn_customerservice.partner / partner_admin (الشركاء)</p>
+<h3 id="114-full-business-cycle">11.4 Full Business Cycle</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<pre><code class="language-text">Customer (/csm, email, chat, phone, social)
+ → Case created (sn_customerservice_case)
+ → Verify Account/Contact + Entitlement + Contract/SLA
+ → AWA routes to agent (skills + capacity)
+ → Agent (Workspace) uses Playbook
+ ↳ needs field visit → FSM Work Order
+ ↳ needs IT fix → ITSM Incident
+ ↳ many customers affected → Major Issue Management
+ → Resolve → customer confirmation → Close → CSAT
+</code></pre>
+<h3 id="115-feature-catalog">11.5 Feature Catalog</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>Process features:<br />
+- Case Management (B2B/B2C), Major Issue Management.<br />
+- Entitlements, Service Contracts, SLAs.<br />
+- Advanced Work Assignment (AWA).<br />
+- Playbooks (guided agent process).<br />
+- Special Handling Notes.<br />
+- Proactive Customer Service Operations (CMDB/service-aware).<br />
+- Communities &amp; Knowledge.<br />
+- Customer/Consumer portals + self-service.<br />
+- Outsourced/Partner management.</p>
+<p>Platform features used:<br />
+- Configurable Agent Workspace + Timeline.<br />
+- Omni-channel (chat, email-to-case, phone, messaging).<br />
+- Flow Designer (escalations/approvals).<br />
+- Predictive Intelligence (case categorization).<br />
+- Now Assist for CSM (summaries, replies).<br />
+- Virtual Agent (deflection).<br />
+- Performance Analytics + CSAT surveys.</p>
+<hr />
+<h2 id="12-end-to-end-implementation-post-activation">12) End-to-End Implementation (Post-Activation)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<blockquote>
+<p>اقرأ هذا بعد تثبيت CSM وتشغيل Guided Setup.</p>
+</blockquote>
+<h3 id="121-application-menus-map">12.1 Application Menus map</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<pre><code class="language-text">All &gt; Customer Service
+ ├─ Cases (Create New / Open / My / All / Escalated)
+ ├─ Customers (Accounts / Contacts / Consumers / Partners)
+ ├─ Products (Products / Assets / Install Base)
+ ├─ Entitlements / Contracts / SLAs
+ ├─ Major Issues
+ ├─ Special Handling Notes
+ └─ Administration (Case types, States, Channels)
+All &gt; Advanced Work Assignment
+ ├─ Service Channels / Queues / Assignment Rules
+ └─ Agent Presence / Capacity
+All &gt; Service Portal (Customer Service Portal /csm)
+All &gt; Knowledge / Communities
+All &gt; Playbooks (Process Definitions)
+</code></pre>
+<h3 id="122-core-tables-to-know">12.2 Core tables to know</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>List</th>
+<th>Table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sn_customerservice_case.list</td>
+<td>cases</td>
+</tr>
+<tr>
+<td>customer_account.list</td>
+<td>accounts</td>
+</tr>
+<tr>
+<td>customer_contact.list</td>
+<td>contacts</td>
+</tr>
+<tr>
+<td>sn_customerservice_consumer.list</td>
+<td>consumers (B2C)</td>
+</tr>
+<tr>
+<td>sn_entitlement.list</td>
+<td>entitlements</td>
+</tr>
+<tr>
+<td>service_contract.list</td>
+<td>contracts</td>
+</tr>
+<tr>
+<td>sn_customerservice_product.list</td>
+<td>products</td>
+</tr>
+</tbody>
+</table>
+<h3 id="123-end-to-end-build-order">12.3 End-to-end build order</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<ol>
+<li>Foundation:<br />
+ - Accounts → Contacts (B2B) or Consumers (B2C).<br />
+ - Products / Install Base.</li>
+<li>Entitlements &amp; Contracts:<br />
+ - Define who is eligible for support + SLAs.</li>
+<li>Channels:<br />
+ - Email-to-case, Chat, Phone, Messaging, Portal.<br />
+ All &gt; Customer Service &gt; Administration &gt; Channels. — <a href="{BASE}/sn_customerservice_channel_list.do">Open direct</a></li>
+<li>Case configuration:<br />
+ - Case types, states, categories, assignment.</li>
+<li>Advanced Work Assignment (AWA):<br />
+ - Service Channels → Queues → routing by skills/capacity.<br />
+ All &gt; Advanced Work Assignment. — <a href="{BASE}/awa_queue_list.do">Open direct</a></li>
+<li>Playbooks:<br />
+ - Guided steps for complex case types.</li>
+<li>SLAs:<br />
+ - Contract SLAs + escalations.</li>
+<li>Knowledge &amp; Communities:<br />
+ - KB with customer criteria; community setup.</li>
+<li>Portal:<br />
+ - Customer Service Portal /csm (pages, widgets, branding).</li>
+<li>Workspace:<br />
+ - CSM Configurable Workspace /now/cwf/agent.</li>
+<li>Integrations:<br />
+ - CSM → FSM (work order), CSM → ITSM (incident).</li>
+<li>Reporting + Test + Deploy.</li>
+</ol>
+<h3 id="124-all-configuration-pages">12.4 All configuration pages</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Config</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSM properties</td>
+<td>All &gt; Customer Service &gt; Administration &gt; Properties · <a href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHsn_customerservice">Open direct</a></td>
+</tr>
+<tr>
+<td>Channels</td>
+<td>All &gt; Customer Service &gt; Administration &gt; Channels · <a href="{BASE}/sn_customerservice_channel_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>AWA setup</td>
+<td>All &gt; Advanced Work Assignment · <a href="{BASE}/awa_queue_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Entitlements config</td>
+<td>All &gt; Customer Service &gt; Entitlements · <a href="{BASE}/service_entitlement_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Portal config</td>
+<td>/sp_config?id=designer (csm)</td>
+</tr>
+<tr>
+<td>Workspace (UI Builder)</td>
+<td>All &gt; Now Experience Framework &gt; UI Builder · <a href="{BASE}/now/ui-builder">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<p>Study path note: — للدراسة من الصفر اتبع: STUDY_ROADMAP.md</p>
+<hr />
+<h2 id="13-options-instance-notes">13) Options &amp; Instance Notes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Instance gaps</td>
+<td>MODULE_OPTIONS_AND_INSTANCE_NOTES.md → <strong>CSM</strong></td>
+</tr>
+<tr>
+<td><strong>Full implementation</strong></td>
+<td>MODULE_IMPLEMENTATION_PLAYBOOK.md → <strong>CSM</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="14-implementation-scenarios-options-best-practices-customizations">14) Implementation Scenarios, Options, Best Practices &amp; Customizations</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<blockquote>
+<p>Playbook: MODULE_IMPLEMENTATION_PLAYBOOK.md → <strong>CSM</strong></p>
+</blockquote>
+<h3 id="141-scenarios">14.1 Scenarios</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Scenario</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1</strong></td>
+<td>B2C cases</td>
+<td>Consumer accounts + portal</td>
+</tr>
+<tr>
+<td><strong>S2</strong></td>
+<td>B2B</td>
+<td>Accounts + <strong>Entitlements</strong> + contracts</td>
+</tr>
+<tr>
+<td><strong>S3</strong></td>
+<td>+ FSM</td>
+<td>Case → Work Order</td>
+</tr>
+</tbody>
+</table>
+<h3 id="142-options-matrix">14.2 Options matrix</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Routing</td>
+<td>AWA skills</td>
+<td>Manual queues</td>
+</tr>
+<tr>
+<td>Access</td>
+<td>Entitlements</td>
+<td>Role-only</td>
+</tr>
+<tr>
+<td>Portal</td>
+<td>/csm / CSP</td>
+<td>Email-only</td>
+</tr>
+<tr>
+<td>SLA</td>
+<td>Contract-based</td>
+<td>Global SLA</td>
+</tr>
+</tbody>
+</table>
+<h3 id="143-plugins">14.3 Plugins</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>CSM core, Advanced Fulfillment, Entitlement Management — Store + Guided Setup <strong>CSM</strong></p>
+<h3 id="144-roles">14.4 Roles</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>sn_customerservice.agent, manager, entitlement administrators, partner roles (if B2B2C).</p>
+<h3 id="145-common-developments">14.5 Common developments</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>Account hierarchy, entitlement scripts, case types per product, portal branding, chat/virtual agent, integration to CRM (Salesforce spoke).</p>
+<h3 id="146-best-practices">14.6 Best practices</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>Entitlements before go-live for B2B; separate consumer vs business account models; AWA pilot with small team.</p>
+<h3 id="147-go-live">14.7 Go-live</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<ul>
+<li>[ ] Entitlement tests per contract tier</li>
+<li>[ ] Portal UAT on mobile</li>
+<li>[ ] Case→WO if FSM in scope</li>
+</ul>
+<hr />
+<h2 id="15-zero-to-hero-end-to-end-implementation-scratch-go-live">15) Zero-to-Hero End-to-End Implementation (Scratch → Go-Live)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<blockquote>
+<p>Framework: MODULE_ZERO_TO_HERO_CONSULTING.md</p>
+</blockquote>
+<p>من <strong>Accounts/Entitlements</strong> حتى <strong>Portal + Agent Workspace + SLA</strong>.</p>
+<h3 id="151-business-goals">15.1 Business goals</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>العربي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer satisfaction</td>
+<td>حل سريع وشفاف</td>
+</tr>
+<tr>
+<td>B2B contracts</td>
+<td>Entitlements حسب العقد</td>
+</tr>
+<tr>
+<td>Agent efficiency</td>
+<td>AWA + workspace</td>
+</tr>
+<tr>
+<td>Omni-channel</td>
+<td>بريد، portal، chat</td>
+</tr>
+</tbody>
+</table>
+<h3 id="152-phase-0-discover">15.2 Phase 0 — Discover</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>B2C vs B2B, account model, SLAs per contract, partner access?</p>
+<h3 id="153-phase-1-activate">15.3 Phase 1 — Activate</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>CSM apps, Entitlements, AWA — Guided Setup CSM.</p>
+<h3 id="154-phase-2-foundation-week-24">15.4 Phase 2 — Foundation (Week 2–4)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>Accounts, contacts, entitlements, case types, roles.</p>
+<h3 id="155-phase-3-routing-sla-week-46">15.5 Phase 3 — Routing &amp; SLA (Week 4–6)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>AWA skills, queues, contract SLAs, case lifecycle.</p>
+<h3 id="156-phase-4-portal-week-68">15.6 Phase 4 — Portal (Week 6–8)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>/csm branding, knowledge, logged-in case creation.</p>
+<h3 id="157-phase-5-fsm-link-optional">15.7 Phase 5 — FSM link (optional)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>Case→Work Order integration (FSM.md).</p>
+<h3 id="158-phase-6-uat-go-live">15.8 Phase 6 — UAT &amp; go-live</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>Entitlement tier test, mobile portal, escalation path.</p>
+<h3 id="159-phase-7-operate">15.9 Phase 7 — Operate</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>CSAT, case aging, entitlement audit.</p>
+<h3 id="1510-master-checklist">15.10 Master checklist</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<ul>
+<li>[ ] Entitlements · [ ] Portal UAT · [ ] AWA pilot · [ ] Prod</li>
+</ul>
+<hr />
+<h2 id="16-full-e2e-practice-pages-requirements-options-ar-en">16) Full E2E Practice · Pages · Requirements · Options (AR + EN)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<blockquote>
+<p>B2B customer service · Entitlements drive what customers can open.</p>
+</blockquote>
+<hr />
+<h3 id="161-business-goals">16.1 Business goals</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Goal (EN)</th>
+<th>الهدف (AR)</th>
+<th>KPI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tiered customer support</td>
+<td>دعم حسب العقد</td>
+<td>SLA by tier</td>
+</tr>
+<tr>
+<td>Account/contact 360</td>
+<td>رؤية 360 للعميل</td>
+<td>Case history on account</td>
+</tr>
+<tr>
+<td>Partner/channel cases</td>
+<td>قضايا شركاء</td>
+<td>Partner visibility</td>
+</tr>
+<tr>
+<td>Deflection via knowledge</td>
+<td>KB</td>
+<td>Portal deflection %</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why buy CSM:</strong> English: B2C ITSM is wrong tool — CSM has accounts, entitlements, and partner models. — CSM للعملاء الخارجيين — حسابات، عقود، مستويات خدمة — ليس incident للموظف الداخلي.</p>
+<hr />
+<h3 id="162-requirements">16.2 Requirements</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>EN</th>
+<th>AR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CS-R01</td>
+<td>Account + Contact model</td>
+<td>حساب + جهة اتصال</td>
+</tr>
+<tr>
+<td>CS-R02</td>
+<td>Entitlement by product/tier</td>
+<td>استحقاق حسب المنتج</td>
+</tr>
+<tr>
+<td>CS-R03</td>
+<td>Case types + state model</td>
+<td>أنواع قضايا</td>
+</tr>
+<tr>
+<td>CS-R04</td>
+<td>Customer portal /csm</td>
+<td>بوابة عميل</td>
+</tr>
+<tr>
+<td>CS-R05</td>
+<td>Agent workspace AWA</td>
+<td>workspace</td>
+</tr>
+<tr>
+<td>CS-R06</td>
+<td>Contract SLAs</td>
+<td>SLA عقود</td>
+</tr>
+<tr>
+<td>CS-R07</td>
+<td>(Optional) Work Order handoff</td>
+<td>تسليم FSM</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="163-consultation-cycle">16.3 Consultation cycle</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>EN</th>
+<th>AR</th>
+<th>Deliverable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>B2B model (direct vs partner)</td>
+<td>نموذج B2B</td>
+<td>Channel map</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Entitlement matrix</td>
+<td>مصفوفة استحقاق</td>
+<td>Tier doc</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Case categorization</td>
+<td>تصنيف</td>
+<td>Catalog</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Portal branding + KB</td>
+<td>بوابة</td>
+<td>EC/CSM config</td>
+</tr>
+<tr>
+<td>4</td>
+<td>AWA routing</td>
+<td>توجيه</td>
+<td>Skills/queues</td>
+</tr>
+<tr>
+<td>5</td>
+<td>UAT per tier</td>
+<td>UAT</td>
+<td>Sign-off</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="164-options-a-b-c">16.4 Options (A / B / C)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agent UI</td>
+<td>CSM Configurable Workspace</td>
+<td>Classic</td>
+<td>SOW (limited)</td>
+</tr>
+<tr>
+<td>Portal</td>
+<td>/csm</td>
+<td>/csp</td>
+<td>Email-only</td>
+</tr>
+<tr>
+<td>Entitlement</td>
+<td>Product + Contract</td>
+<td>Account flag</td>
+<td>Manual</td>
+</tr>
+<tr>
+<td>Routing</td>
+<td>AWA skills</td>
+<td>Assignment rules</td>
+<td>Round-robin</td>
+</tr>
+<tr>
+<td>Field service</td>
+<td>CSM → FSM WO</td>
+<td>Case tasks only</td>
+<td>External</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="165-all-pages-navigate">16.5 All pages (Navigate)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSM Administration</td>
+<td>All &gt; Customer Service &gt; Administration · <a href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHsn_customerservice">Open direct</a></td>
+</tr>
+<tr>
+<td>Accounts</td>
+<td>All &gt; Customer Service &gt; Accounts · <a href="{BASE}/customer_account_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Contacts</td>
+<td>All &gt; Customer Service &gt; Contacts · <a href="{BASE}/customer_contact_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Entitlements</td>
+<td>All &gt; Customer Service &gt; Entitlements · <a href="{BASE}/service_entitlement_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Products</td>
+<td>All &gt; Customer Service &gt; Products · <a href="{BASE}/cmdb_model_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Contracts</td>
+<td>All &gt; Customer Service &gt; Contracts · <a href="{BASE}/ast_contract_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Cases</td>
+<td>All &gt; Customer Service &gt; Cases · <a href="{BASE}/sn_customerservice_case_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Case Types</td>
+<td>All &gt; Customer Service &gt; Case Types · <a href="{BASE}/sn_customerservice_case_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>AWA Configuration</td>
+<td>All &gt; Advanced Work Assignment &gt; Configuration · <a href="{BASE}/awa_queue_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Skills / Queues</td>
+<td>All &gt; Advanced Work Assignment · <a href="{BASE}/awa_queue_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>CSM Portal</td>
+<td>/csm</td>
+</tr>
+<tr>
+<td>Agent Workspace</td>
+<td>/now/cwf/agent or CSM workspace</td>
+</tr>
+<tr>
+<td>Consumer Portal</td>
+<td>/csp</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="166-full-pdi-lab-17-steps">16.6 Full PDI lab (17 steps)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>EN</th>
+<th>AR</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Create Product Support Gold</td>
+<td>منتج</td>
+<td>Product saved</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Create Account + primary Contact</td>
+<td>حساب</td>
+<td>360 view</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Create Contract linking entitlement</td>
+<td>عقد</td>
+<td>Entitlement active</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Set tier SLA (response 4h)</td>
+<td>SLA</td>
+<td>Contract SLA</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Configure Case Type Technical</td>
+<td>نوع</td>
+<td>Type on form</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Customer logs in /csm — create case</td>
+<td>قضية</td>
+<td>Case on account</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Agent workspace — accept case</td>
+<td>وكيل</td>
+<td>Assigned</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Test Gold vs Bronze entitlement</td>
+<td>مستويات</td>
+<td>Different SLA</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Escalate case — manager queue</td>
+<td>تصعيد</td>
+<td>State/path</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Link KB — resolve with article</td>
+<td>KB</td>
+<td>Deflection</td>
+</tr>
+<tr>
+<td>11</td>
+<td>AWA skill route by product</td>
+<td>AWA</td>
+<td>Correct queue</td>
+</tr>
+<tr>
+<td>12</td>
+<td>(Optional) Create WO from case (FSM.md)</td>
+<td>WO</td>
+<td>Handoff</td>
+</tr>
+<tr>
+<td>13</td>
+<td>CSAT survey on close</td>
+<td>رضا</td>
+<td>Response</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Partner account visibility test</td>
+<td>شريك</td>
+<td>ACL</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Options doc</td>
+<td>خيارات</td>
+<td>A/B/C</td>
+</tr>
+<tr>
+<td>16</td>
+<td>UAT CS-R01–07</td>
+<td>UAT</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Update Set CSM Lab 16</td>
+<td>Export</td>
+<td>Done</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="167-sign-off">16.7 Sign-off</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<ul>
+<li>[ ] Entitlement matrix signed by Sales · [ ] Portal branded · [ ] Tier SLA UAT · [ ] AWA pilot group trained</li>
+</ul>
+<hr />
+<h2 id="17-power-user-playbook-csm">§17 — Power User Playbook (CSM)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<h3 id="171-personas">17.1 Personas</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Primary actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer (External)</td>
+<td>Self-service via /csm or /csp, open case, view contracts, chat with bot, CSAT</td>
+</tr>
+<tr>
+<td>CSR Tier-1</td>
+<td>Triage queue, identify account/contact, check entitlements, link KB, send reply</td>
+</tr>
+<tr>
+<td>Tier-2 Engineer</td>
+<td>Technical investigation, root cause, link Problem/CMDB</td>
+</tr>
+<tr>
+<td>Account Manager</td>
+<td>Account 360, opportunities, contract renewals, advocacy</td>
+</tr>
+<tr>
+<td>Customer Success Manager</td>
+<td>Adoption tracking, QBRs, expansion plays</td>
+</tr>
+<tr>
+<td>Contract Specialist</td>
+<td>SLA/entitlement setup, renewals, contract amendments</td>
+</tr>
+<tr>
+<td>Partner</td>
+<td>Multi-tier case routing, partner portal /partner</td>
+</tr>
+</tbody>
+</table>
+<p>كل دور له Workspace مختلف. CSR يستخدم /now/cwf/agent بينما العميل يستخدم /csm.</p>
+<h3 id="172-day-in-life-customer">17.2 Day-in-Life — Customer</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<ol>
+<li>Log into /csm (or SSO via partner federation).</li>
+<li>Browse KB → search &ldquo;API rate limit&rdquo;.</li>
+<li>Click &ldquo;Open a case&rdquo; — submit form (subject, description, severity, product).</li>
+<li>Get instant case number; live chat with Virtual Agent.</li>
+<li>Track case in /csm?id=my_cases.</li>
+<li>Leave CSAT on close.</li>
+</ol>
+<h3 id="173-day-in-life-csr">17.3 Day-in-Life — CSR</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<ol>
+<li>Workspace /now/cwf/agent — incoming queue (skill-based routing via AWA).</li>
+<li>Pick case; identify Account via email domain.</li>
+<li>Check entitlement (contract → service offering → SLA).</li>
+<li>Use Now Assist to summarize past 3 cases for this account.</li>
+<li>Link to KB; if known issue → resolve. Otherwise escalate or schedule callback.</li>
+<li>Send branded email reply via template.</li>
+</ol>
+<h3 id="174-top-20-csm-scripts-full-code">17.4 Top 20 CSM Scripts (full code)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p><strong>1. Auto-link case to Account by email domain</strong></p>
+<pre><code class="language-javascript">// Business Rule on sn_customerservice_case (before, insert)
+(function (current, previous) {
+ if (current.account.nil() &amp;&amp; !current.contact.nil()) {
+ var contact = new GlideRecord('customer_contact');
+ if (contact.get(current.getValue('contact'))) {
+ if (!contact.account.nil()) {
+ current.setValue('account', contact.getValue('account'));
+ return;
+ }
+ }
+ }
+ // Fallback: parse email
+ var email = (current.getValue('contact_email') || '').toLowerCase();
+ var domain = email.split('@')[1];
+ if (!domain) return;
+ var acct = new GlideRecord('customer_account');
+ acct.addQuery('u_email_domain', domain);
+ acct.setLimit(1);
+ acct.query();
+ if (acct.next()) {
+ current.setValue('account', acct.getUniqueValue());
+ }
+})(current, previous);
+</code></pre>
+<p><strong>2. Entitlement check before service delivery</strong></p>
+<pre><code class="language-javascript">var CSMEntitlementChecker = Class.create();
+CSMEntitlementChecker.prototype = {
+ initialize: function {},
+</code></pre>
+<p>/*<em> Returns { entitled: true|false, contract, sla, reason } </em>/<br />
+ check: function (caseSysId) {<br />
+ var gr = new GlideRecord(&lsquo;sn_customerservice_case&rsquo;);<br />
+ if (!gr.get(caseSysId)) {<br />
+ return { entitled: false, reason: &lsquo;case_not_found&rsquo; };<br />
+ }<br />
+ var acctId = gr.getValue(&lsquo;account&rsquo;);<br />
+ var prodId = gr.getValue(&lsquo;product&rsquo;);</p>
+<p>// Active service contract?<br />
+ var c = new GlideRecord(&lsquo;ast_service_contract&rsquo;);<br />
+ c.addQuery(&lsquo;account&rsquo;, acctId);<br />
+ c.addQuery(&lsquo;active&rsquo;, true);<br />
+ c.addQuery(&lsquo;starts&rsquo;, &lsquo;&lt;=&rsquo;, new GlideDateTime());<br />
+ c.addQuery(&lsquo;ends&rsquo;, &lsquo;&gt;=&rsquo;, new GlideDateTime());<br />
+ c.setLimit(1);<br />
+ c.query();<br />
+ if (!c.next()) {<br />
+ return { entitled: false, reason: &lsquo;no_active_contract&rsquo; };<br />
+ }</p>
+<p>// Service offering covered?<br />
+ var so = new GlideRecord(&lsquo;ast_contract_offering&rsquo;);<br />
+ so.addQuery(&lsquo;contract&rsquo;, c.getUniqueValue());<br />
+ so.addQuery(&lsquo;service_offering.product&rsquo;, prodId);<br />
+ so.setLimit(1);<br />
+ so.query();<br />
+ if (!so.next()) {<br />
+ return { entitled: false, reason: &lsquo;product_not_in_contract&rsquo;,<br />
+ contract: c.getUniqueValue() };<br />
+ }</p>
+<p>return {<br />
+ entitled: true,<br />
+ contract: c.getUniqueValue(),<br />
+ sla: so.getValue(&lsquo;sla&rsquo;)<br />
+ };<br />
+ },</p>
+<p>type: &lsquo;CSMEntitlementChecker&rsquo;<br />
+};</p>
+<p><strong>3. Contract expiration alert (90/60/30 days)</strong></p>
+<pre><code class="language-javascript">// Scheduled Job — daily 09:00
+(function {
+ var thresholds = [90, 60, 30];
+ thresholds.forEach(function (days) {
+ var target = new GlideDateTime();
+ target.addDaysLocalTime(days);
+</code></pre>
+<p>var c = new GlideRecord(&lsquo;ast_service_contract&rsquo;);<br />
+ c.addQuery(&lsquo;ends&rsquo;, &lsquo;=&rsquo;, target.getDate());<br />
+ c.addQuery(&lsquo;active&rsquo;, true);<br />
+ c.query();</p>
+<p>while (c.next()) {<br />
+ gs.eventQueue(&lsquo;x_csm.contract.expiring&rsquo;,<br />
+ c, c.getValue(&lsquo;account&rsquo;), days);<br />
+ }<br />
+ });<br />
+})();</p>
+<p><strong>4. Account 360 KPI rollup</strong></p>
+<pre><code class="language-javascript">var CSMAccount360 = Class.create();
+CSMAccount360.prototype = {
+ initialize: function {},
+</code></pre>
+<p>/*<em> Returns full health snapshot </em>/<br />
+ snapshot: function (accountSysId) {<br />
+ var snap = { account: accountSysId };</p>
+<p>// Open cases<br />
+ var open = new GlideAggregate(&lsquo;sn_customerservice_case&rsquo;);<br />
+ open.addQuery(&lsquo;account&rsquo;, accountSysId);<br />
+ open.addActiveQuery();<br />
+ open.addAggregate(&lsquo;COUNT&rsquo;);<br />
+ open.groupBy(&lsquo;priority&rsquo;);<br />
+ open.query();<br />
+ snap.open_cases = {};<br />
+ while (open.next()) {<br />
+ snap.open_cases[open.getValue(&lsquo;priority&rsquo;)] =<br />
+ parseInt(open.getAggregate(&lsquo;COUNT&rsquo;), 10);<br />
+ }</p>
+<p>// CSAT last 90 days<br />
+ var csat = new GlideAggregate(&lsquo;asmt_assessment_instance&rsquo;);<br />
+ csat.addQuery(&lsquo;table_name&rsquo;, &lsquo;sn_customerservice_case&rsquo;);<br />
+ csat.addQuery(&lsquo;account&rsquo;, accountSysId);<br />
+ var since = new GlideDateTime();<br />
+ since.addDaysLocalTime(-90);<br />
+ csat.addQuery(&lsquo;sys_created_on&rsquo;, &lsquo;&gt;=&rsquo;, since);<br />
+ csat.addAggregate(&lsquo;AVG&rsquo;, &lsquo;metric_results.normalized_value&rsquo;);<br />
+ csat.query();<br />
+ snap.csat_90d = csat.next() ?<br />
+ parseFloat(csat.getAggregate(&lsquo;AVG&rsquo;, &lsquo;metric_results.normalized_value&rsquo;)) : null;</p>
+<p>// Contract status<br />
+ var c = new GlideRecord(&lsquo;ast_service_contract&rsquo;);<br />
+ c.addQuery(&lsquo;account&rsquo;, accountSysId);<br />
+ c.addActiveQuery();<br />
+ c.query();<br />
+ snap.active_contracts = c.getRowCount();</p>
+<p>// Opportunities (if Salesforce sync)<br />
+ // &hellip; etc</p>
+<p>return snap;<br />
+ },</p>
+<p>type: &lsquo;CSMAccount360&rsquo;<br />
+};</p>
+<p><strong>5. Auto-create opportunity from &ldquo;buying signal&rdquo;</strong></p>
+<pre><code class="language-javascript">// Trigger when case keywords match
+(function (current, previous) {
+ var keywords = ['add seats', 'upgrade plan', 'enterprise', 'multi-year', 'rfp'];
+ var desc = (current.getValue('description') || '').toLowerCase();
+ var hit = keywords.some(function (k) { return desc.indexOf(k) &gt; -1; });
+ if (hit &amp;&amp; current.opened_at.changes()) {
+ var opp = new GlideRecord('sn_sales_opportunity');
+ opp.initialize();
+ opp.setValue('account', current.getValue('account'));
+ opp.setValue('source_case', current.getUniqueValue());
+ opp.setValue('stage', 'qualification');
+ opp.setValue('short_description', 'Lead from case ' + current.getValue('number'));
+ opp.insert();
+ }
+})(current, previous);
+</code></pre>
+<p><strong>6. CSAT trigger on case close</strong></p>
+<pre><code class="language-javascript">// Business Rule on close
+(function (current, previous) {
+ if (current.state.changes() &amp;&amp; current.getValue('state') === 'closed') {
+ var inst = new GlideRecord('asmt_assessment_instance');
+ inst.initialize();
+ inst.setValue('metric_type', 'csm_csat_v1'); // pre-defined Metric Type
+ inst.setValue('user', current.getValue('contact'));
+ inst.setValue('table_name', 'sn_customerservice_case');
+ inst.setValue('document_id', current.getUniqueValue());
+ inst.setValue('state', 'ready');
+ inst.insert();
+ }
+})(current, previous);
+</code></pre>
+<p><strong>7. NPS calculator with breakdowns</strong></p>
+<pre><code class="language-javascript">var CSMNPSCalculator = Class.create();
+CSMNPSCalculator.prototype = {
+ initialize: function {},
+</code></pre>
+<p>calculate: function (periodDays, accountFilter) {<br />
+ periodDays = parseInt(periodDays, 10) || 90;<br />
+ var since = new GlideDateTime();<br />
+ since.addDaysLocalTime(-periodDays);</p>
+<p>var agg = new GlideAggregate(&lsquo;asmt_metric_result&rsquo;);<br />
+ agg.addQuery(&lsquo;instance.metric_type.name&rsquo;, &lsquo;NPS Survey&rsquo;);<br />
+ agg.addQuery(&lsquo;instance.sys_created_on&rsquo;, &lsquo;&gt;=&rsquo;, since);<br />
+ if (accountFilter) {<br />
+ agg.addQuery(&lsquo;instance.account&rsquo;, accountFilter);<br />
+ }<br />
+ agg.addAggregate(&lsquo;COUNT&rsquo;, &lsquo;value&rsquo;);<br />
+ agg.groupBy(&lsquo;value&rsquo;);<br />
+ agg.query();</p>
+<p>var p = 0, d = 0, total = 0;<br />
+ while (agg.next()) {<br />
+ var v = parseInt(agg.getValue(&lsquo;value&rsquo;), 10);<br />
+ var n = parseInt(agg.getAggregate(&lsquo;COUNT&rsquo;, &lsquo;value&rsquo;), 10);<br />
+ total += n;<br />
+ if (v &gt;= 9) p += n;<br />
+ else if (v &lt;= 6) d += n;<br />
+ }<br />
+ if (total === 0) return null;<br />
+ return { promoters: p, detractors: d, total: total,<br />
+ nps: Math.round((p - d) / total * 100) };<br />
+ },</p>
+<p>type: &lsquo;CSMNPSCalculator&rsquo;<br />
+};</p>
+<p><strong>8. Multi-tier escalation timer</strong></p>
+<pre><code class="language-javascript">// Scheduled Job — every 15 min
+(function {
+ var gr = new GlideRecord('sn_customerservice_case');
+ gr.addQuery('active', true);
+ gr.addQuery('escalation', '&lt;', 3);
+ gr.query();
+</code></pre>
+<p>while (gr.next()) {<br />
+ var sla = _slaForCase(gr);<br />
+ if (!sla) continue;<br />
+ var ageMin = _ageMin(gr.getValue(&lsquo;sys_created_on&rsquo;));<br />
+ var newLevel = gr.getValue(&lsquo;escalation&rsquo;);</p>
+<p>if (ageMin &gt;= sla.tier3_min) newLevel = 3;<br />
+ else if (ageMin &gt;= sla.tier2_min) newLevel = 2;<br />
+ else if (ageMin &gt;= sla.tier1_min) newLevel = 1;</p>
+<p>if (newLevel != gr.getValue(&lsquo;escalation&rsquo;)) {<br />
+ gr.setValue(&lsquo;escalation&rsquo;, newLevel);<br />
+ gr.update();<br />
+ gs.eventQueue(&lsquo;x_csm.case.escalated&rsquo;, gr, gr.getValue(&lsquo;number&rsquo;), newLevel);<br />
+ }<br />
+ }</p>
+<p>function _ageMin(created) {<br />
+ var c = new GlideDateTime(created);<br />
+ return Math.round((new GlideDateTime().getNumericValue() -<br />
+ c.getNumericValue()) / 60000);<br />
+ }<br />
+ function _slaForCase(gr) {<br />
+ // simplified<br />
+ return { tier1_min: 30, tier2_min: 120, tier3_min: 480 };<br />
+ }<br />
+})();</p>
+<p><strong>9. Partner case routing</strong></p>
+<pre><code class="language-javascript">// On case create — if account.type=partner, route to partner support queue
+(function (current, previous) {
+ if (current.account.nil()) return;
+ var acct = new GlideRecord('customer_account');
+ if (!acct.get(current.getValue('account'))) return;
+ if (acct.getValue('type') === 'partner') {
+ var partnerGroup = gs.getProperty('x_csm.partner_support_group');
+ current.setValue('assignment_group', partnerGroup);
+ }
+})(current, previous);
+</code></pre>
+<p><strong>10. Connected Customer login provisioning</strong></p>
+<pre><code class="language-javascript">// Triggered when first case opened for an unknown contact
+(function provision(contactSysId, email) {
+ var u = new GlideRecord('sys_user');
+ u.addQuery('email', email);
+ u.setLimit(1);
+ u.query();
+ if (u.hasNext()) return;
+</code></pre>
+<p>var contact = new GlideRecord(&lsquo;customer_contact&rsquo;);<br />
+ if (!contact.get(contactSysId)) return;</p>
+<p>// Create sys_user<br />
+ u.initialize();<br />
+ u.setValue(&lsquo;first_name&rsquo;, contact.getValue(&lsquo;first_name&rsquo;));<br />
+ u.setValue(&lsquo;last_name&rsquo;, contact.getValue(&lsquo;last_name&rsquo;));<br />
+ u.setValue(&lsquo;email&rsquo;, contact.getValue(&lsquo;email&rsquo;));<br />
+ u.setValue(&lsquo;user_name&rsquo;, contact.getValue(&lsquo;email&rsquo;));<br />
+ u.setValue(&lsquo;active&rsquo;, true);<br />
+ u.setValue(&lsquo;source&rsquo;, &lsquo;csm_self_provisioned&rsquo;);<br />
+ var userId = u.insert();</p>
+<p>// Add to customer role<br />
+ var grp = new GlideRecord(&lsquo;sys_user_grmember&rsquo;);<br />
+ grp.initialize();<br />
+ grp.setValue(&lsquo;user&rsquo;, userId);<br />
+ var role = new GlideRecord(&lsquo;sys_user_group&rsquo;);<br />
+ if (role.get(&lsquo;name&rsquo;, &lsquo;Customer Portal Users&rsquo;)) {<br />
+ grp.setValue(&lsquo;group&rsquo;, role.getUniqueValue());<br />
+ grp.insert();<br />
+ }</p>
+<p>// Send welcome email with password reset link<br />
+ gs.eventQueue(&lsquo;x_csm.contact.welcome&rsquo;, u, userId, email);<br />
+})(&lsquo;CONTACT_SYS_ID&rsquo;, &lsquo;user@example.com&rsquo;);</p>
+<p><strong>11–20. Quick recipes</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Pattern</th>
+<th>Key call</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11</td>
+<td>Case → KB feedback loop</td>
+<td>OnAfter close: log resolved-by-KB metric</td>
+</tr>
+<tr>
+<td>12</td>
+<td>CSM Workspace KPI refresher</td>
+<td>scheduled job runs PA collectors hourly</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Major Outage notification</td>
+<td>bulk email + portal banner for impacted CIs</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Mass-update on incident resolve</td>
+<td>Find all cases linked to incident → resolve</td>
+</tr>
+<tr>
+<td>15</td>
+<td>AI Search across customer KB</td>
+<td>new sn_ais.SearchService().search(&lsquo;public_kb&rsquo;, q)</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Sentiment analyzer</td>
+<td>Now Assist skill on case description</td>
+</tr>
+<tr>
+<td>17</td>
+<td>SLA pause on waiting customer</td>
+<td>task_sla.stage = &lsquo;paused&rsquo;</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Asset → Install Base sync</td>
+<td>nightly job aligns alm_asset to cmdb_ci_install_base</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Cross-sell recommender</td>
+<td>analyze case → recommend products via collaborative filter</td>
+</tr>
+<tr>
+<td>20</td>
+<td>VIP customer flag</td>
+<td>account.vip = true → skip queue priority</td>
+</tr>
+</tbody>
+</table>
+<h3 id="175-csm-workspace-customization">17.5 CSM Workspace Customization</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inbox</td>
+<td>Skill-routed queue</td>
+</tr>
+<tr>
+<td>Account 360</td>
+<td>Full customer view</td>
+</tr>
+<tr>
+<td>Composer</td>
+<td>Branded email + reply templates</td>
+</tr>
+<tr>
+<td>AI Search panel</td>
+<td>Suggest KB / similar cases</td>
+</tr>
+<tr>
+<td>Playbooks</td>
+<td>Run guided steps (PAD)</td>
+</tr>
+<tr>
+<td>Bulk actions</td>
+<td>Update many cases at once</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="18-from-scratch-implementation-day-0-day-30">§18 — From-Scratch Implementation (Day 0 → Day 30)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<h3 id="181-roadmap">18.1 Roadmap</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Days</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Foundation</td>
+<td>0–7</td>
+<td>Account/Contact/Contract data + plugins</td>
+</tr>
+<tr>
+<td>Service</td>
+<td>8–15</td>
+<td>Case mgmt, portal, workspace</td>
+</tr>
+<tr>
+<td>Channels</td>
+<td>16–20</td>
+<td>Email, chat, voice, partner</td>
+</tr>
+<tr>
+<td>AI &amp; analytics</td>
+<td>21–24</td>
+<td>Now Assist, dashboards, PA</td>
+</tr>
+<tr>
+<td>Go-Live</td>
+<td>25–30</td>
+<td>UAT, training, launch</td>
+</tr>
+</tbody>
+</table>
+<h3 id="182-day-by-day">18.2 Day-by-day</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p><strong>Day 0 — Preparation</strong><br />
+- Customer journey map (touchpoints)<br />
+- SLA model (severity vs response/resolution)<br />
+- Entitlement model (which products covered per contract tier)<br />
+- Current tool: Salesforce Service Cloud? Zendesk? Internal? Migration plan<br />
+- Personas + escalation chain</p>
+<p><strong>Day 1 — Plugin activation</strong></p>
+<pre><code class="language-text">Navigate: All &gt; System Applications
+Activate:
+- com.sn_customerservice (CSM Core)
+- com.sn_cs_workspace (Configurable Workspace)
+- com.snc.advanced_work_assignment (AWA)
+- com.snc.service_management.case (if Multi-Channel)
+- com.snc.iva (Virtual Agent)
+Then: All &gt; Guided Setup &gt; Customer Service Management
+</code></pre>
+<p><strong>Day 2-3 — Account/Contact model</strong><br />
+- Salesforce bi-directional sync via IntegrationHub<br />
+- Bulk import (50K accounts, 500K contacts) using Import Set + IRE rules<br />
+- Partners + Consumers split</p>
+<p><strong>Day 4 — Multi-tier hierarchy</strong><br />
+- Account parent/child (3 levels)<br />
+- Partners managed by Master account<br />
+- Consumer accounts (B2C)</p>
+<p><strong>Day 5 — Install Base / Assets / Products</strong><br />
+- cmdb_ci_install_base for each install<br />
+- Asset → IB link<br />
+- Products from PIM (Product Information Management)</p>
+<p><strong>Day 6-7 — Entitlements + Service Contracts</strong></p>
+<table>
+<thead>
+<tr>
+<th>Contract Tier</th>
+<th>SLA (Response/Resolution)</th>
+<th>Channels</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Premium</td>
+<td>1h / 4h</td>
+<td>Phone, Email, Chat</td>
+</tr>
+<tr>
+<td>Standard</td>
+<td>4h / 24h</td>
+<td>Email, Chat</td>
+</tr>
+<tr>
+<td>Basic</td>
+<td>8h / 72h</td>
+<td>Email only</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Day 8 — Case types, states, categories</strong></p>
+<p>States: New → Open → Awaiting Info → Resolved → Closed</p>
+<p><strong>Day 9-10 — Customer Portal /csm branding</strong><br />
+- Theme (CSS variables)<br />
+- Logo, fonts, colors<br />
+- Custom widgets (announcement, account dashboard, KB browser)<br />
+- Service Portal Designer</p>
+<p><strong>Day 11 — Customer Catalog</strong><br />
+- &ldquo;Request service&rdquo; item<br />
+- &ldquo;Schedule installation&rdquo;<br />
+- &ldquo;Schedule callback&rdquo;</p>
+<p><strong>Day 12 — Customer KB</strong><br />
+- Public KB<br />
+- Customer-only KB (auth required)<br />
+- AI Search enabled</p>
+<p><strong>Day 13-14 — CSR Workspace (CSM CWS)</strong><br />
+- Inbox configuration<br />
+- Composer + reply templates<br />
+- Account 360 page</p>
+<p><strong>Day 15 — Skill-based routing (AWA)</strong><br />
+- Skills: Product A, Product B, Spanish, Tier-2<br />
+- Routing rules: severity × product × language</p>
+<p><strong>Day 16 — Channels</strong><br />
+- Email inbound (with watermark for replies)<br />
+- Chat (Service Portal widget + Virtual Agent fallback)<br />
+- Voice (Genesys/Cisco integration)<br />
+- WhatsApp Business via Twilio<br />
+- Social (Twitter)</p>
+<p><strong>Day 17 — Virtual Agent</strong><br />
+- Top 10 topics (Order status, Account update, Password reset, Billing inquiry, Cancel service, etc.)<br />
+- Handoff to live agent</p>
+<p><strong>Day 18 — Contract SLAs</strong><br />
+- Definition per entitlement<br />
+- Pause conditions: awaiting customer, weekend, holiday</p>
+<p><strong>Day 19-20 — Reports + Dashboards</strong></p>
+<p>4-tile Executive Dashboard:<br />
+| Tile | Metric |<br />
+|&mdash;|&mdash;|<br />
+| Cases by Severity | Stacked Bar |<br />
+| CSAT trend | Line, 90-day |<br />
+| SLA breach % | Single Score |<br />
+| Top Accounts by Volume | Bar list |</p>
+<p><strong>Day 21 — Salesforce bi-directional</strong></p>
+<p>Sync table:<br />
+| SFDC Object | SN Table |<br />
+|&mdash;|&mdash;|<br />
+| Account | customer_account |<br />
+| Contact | customer_contact |<br />
+| Case | sn_customerservice_case |<br />
+| Opportunity | sn_sales_opportunity |<br />
+| Contract | ast_service_contract |</p>
+<p>Frequency: real-time via webhook + nightly reconciliation.</p>
+<p><strong>Day 22 — Stripe / Billing</strong><br />
+- Sync subscriptions, invoices, dunning state<br />
+- Auto-create case for failed payments</p>
+<p><strong>Day 23 — Now Assist for CSM</strong><br />
+- Case summary<br />
+- Reply draft<br />
+- Sentiment<br />
+- Similar cases<br />
+- Customer journey suggestion</p>
+<p><strong>Day 24 — ATF</strong><br />
+- 15 scenarios covering portal, workspace, integration, escalation</p>
+<p><strong>Day 25 — Training</strong><br />
+- CSR (1 day)<br />
+- Account Manager (½ day)<br />
+- Partner portal demo<br />
+- Customer-facing portal demo (recorded video)</p>
+<p><strong>Day 26-27 — UAT + Load Test</strong><br />
+- 30 scenarios<br />
+- Load test: 1000 concurrent customers, 50 CSRs</p>
+<p><strong>Day 28 — Go-Live readiness</strong><br />
+- Final cutover plan<br />
+- Comms to customers (T-7, T-1, Day 1)</p>
+<p><strong>Day 29 — Soft launch</strong><br />
+- 10% customer cohort<br />
+- Monitor + iterate</p>
+<p><strong>Day 30 — Full Go-Live + Hypercare</strong><br />
+- 24/7 war-room first 72h<br />
+- Daily review</p>
+<h3 id="183-kpis-month-1">18.3 KPIs Month 1</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSAT</td>
+<td>≥ 4.2 / 5</td>
+</tr>
+<tr>
+<td>FCR (First Call Resolution)</td>
+<td>≥ 65%</td>
+</tr>
+<tr>
+<td>Avg Handle Time</td>
+<td>≤ 12 min</td>
+</tr>
+<tr>
+<td>SLA %</td>
+<td>≥ 95%</td>
+</tr>
+<tr>
+<td>NPS</td>
+<td>&gt; 30</td>
+</tr>
+<tr>
+<td>Self-service deflection</td>
+<td>≥ 35%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="19-cis-csm-exam-z-to-hero-feature-labs">§19 — CIS-CSM Exam &amp; Z-to-Hero Feature Labs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<h3 id="191-exam-bank">19.1 Exam bank</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p><strong>Primary</strong>: C:\SVCProject\EXAM_BANK_CSM_360.md (~120 Q, 95 KB).</p>
+<h3 id="192-z-to-hero-feature-labs-12-labs">19.2 Z-to-Hero Feature Labs (12 labs)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Lab</th>
+<th>Feature</th>
+<th>Bank topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>Account + Contact bulk import (CSV)</td>
+<td>Account mgmt</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>Account hierarchy (parent/child 3 levels)</td>
+<td>B2B model</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>Install Base + Asset link</td>
+<td>CMDB integration</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>Service Contract + Entitlement matrix (Gold/Silver/Bronze)</td>
+<td>Entitlements</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>Case opens → entitlement check via script</td>
+<td>Case lifecycle</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>AWA skill-based routing</td>
+<td>AWA</td>
+</tr>
+<tr>
+<td>L7</td>
+<td>CSM Workspace /now/cwf/agent customization</td>
+<td>Workspace</td>
+</tr>
+<tr>
+<td>L8</td>
+<td>Customer Portal /csm brand + landing page</td>
+<td>Portal</td>
+</tr>
+<tr>
+<td>L9</td>
+<td>Major Outage flow → impacted CIs banner</td>
+<td>Outage</td>
+</tr>
+<tr>
+<td>L10</td>
+<td>Virtual Agent customer journey</td>
+<td>Self-service</td>
+</tr>
+<tr>
+<td>L11</td>
+<td>Outbound channel: SMS + WhatsApp via Twilio</td>
+<td>Channels</td>
+</tr>
+<tr>
+<td>L12</td>
+<td>Salesforce bi-directional Account sync</td>
+<td>Integration</td>
+</tr>
+</tbody>
+</table>
+<h3 id="193-top-15-csm-must-know-concepts">19.3 Top 15 CSM must-know concepts</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<ol>
+<li>Account vs Contact vs Consumer (different tables)</li>
+<li>Entitlement: B2B contractual access</li>
+<li>Service Contract: contains entitlements + SLAs per tier</li>
+<li>AWA (Advanced Work Assignment): skill + capacity routing</li>
+<li>CSM Workspace components (Inbox, Composer, AC360)</li>
+<li>Customer Portal /csm vs /csp (consumer)</li>
+<li>Major Outage: bulk-link cases, impacted CIs</li>
+<li>Case relationships (parent, child, related)</li>
+<li>Install Base (cmdb_ci_install_base) vs Asset</li>
+<li>Knowledge for customers (public vs auth-only)</li>
+<li>CSAT trigger on case close</li>
+<li>Partner portal for resellers</li>
+<li>Multi-channel ingestion (email, chat, phone, social, WhatsApp)</li>
+<li>Engagement → Opportunity (sales handoff)</li>
+<li>Now Assist for CSM (summarize, reply draft, sentiment)</li>
+</ol>
+<h3 id="194-5-sample-cis-csm-questions">19.4 5 sample CIS-CSM questions</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<blockquote>
+<p><strong>Q1.</strong> AWA differs from Assignment Rules because:<br />
+A. AWA considers skill + capacity + service hours; Assignment Rules are static condition-based<br />
+B. They&rsquo;re identical<br />
+C. AWA is only for incidents<br />
+D. AWA requires Now Assist</p>
+<p><strong>Answer</strong>: A</p>
+<p><strong>Q2.</strong> Where does the entitlement check happen on case creation?<br />
+A. Business Rule on sn_customerservice_case (before-insert)<br />
+B. ACL<br />
+C. UI Policy<br />
+D. Service Portal client-side</p>
+<p><strong>Answer</strong>: A</p>
+<p><strong>Q3.</strong> Major Outage flag triggers:<br />
+A. Banner on Customer Portal<br />
+B. Bulk-link of impacted cases<br />
+C. Notifications to subscribed customers<br />
+D. All of the above</p>
+<p><strong>Answer</strong>: D</p>
+<p><strong>Q4.</strong> Install Base table is:<br />
+A. alm_asset<br />
+B. cmdb_ci_install_base<br />
+C. sn_customerservice_contract<br />
+D. customer_account</p>
+<p><strong>Answer</strong>: B</p>
+<p><strong>Q5.</strong> CSR Workspace URL is:<br />
+A. /csm<br />
+B. /now/cwf/agent<br />
+C. /now/sow/home<br />
+D. /csp</p>
+<p><strong>Answer</strong>: B</p>
+</blockquote>
+<p>Use EXAM_BANK_CSM_360.md for remaining 115+ questions.</p>
+<h3 id="195-what-hero-looks-like-for-csm">19.5 What &ldquo;Hero&rdquo; looks like for CSM</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p>Builds customer service operation: hierarchical accounts + entitlements, AWA routing, branded portal, major outage automation, multi-channel ingestion, Now Assist on every case, Salesforce sync. Passes CIS-CSM with ≥85%.</p>
+<hr />
+<h2 id="hands-on-labs">Hands-on Labs — مختبرات عملية</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<ol>
+<li>
+<p><strong>Lab 1 — B2B account &amp; contact / حساب وجهة اتصال</strong><br />
+   - Create account at <a href="{BASE}/customer_account.do?sys_id=-1">{BASE}/customer_account.do?sys_id=-1</a>.<br />
+   - Add contact; link contact to account.</p>
+</li>
+<li>
+<p><strong>Lab 2 — Entitlement &amp; contract / استحقاق وعقد</strong><br />
+   - Create entitlement at <a href="{BASE}/sn_entitlement_list.do">{BASE}/sn_entitlement_list.do</a>.<br />
+   - Link to account and product; set SLA tier.</p>
+</li>
+<li>
+<p><strong>Lab 3 — Case lifecycle / دورة حياة القضية</strong><br />
+   - Open case at <a href="{BASE}/sn_customerservice_case.do?sys_id=-1">{BASE}/sn_customerservice_case.do?sys_id=-1</a>.<br />
+   - Verify entitlement auto-populates; resolve and close.</p>
+</li>
+<li>
+<p><strong>Lab 4 — Customer Portal / بوابة العميل</strong><br />
+   - Log in to <a href="{BASE}/csm">{BASE}/csm</a> as customer contact.<br />
+   - Submit case; track status.</p>
+</li>
+<li>
+<p><strong>Lab 5 — AWA routing / توجيه AWA</strong><br />
+   - Configure AWA at <a href="{BASE}/awa_configuration_list.do">{BASE}/awa_configuration_list.do</a>.<br />
+   - Route cases by product line or priority.</p>
+</li>
+<li>
+<p><strong>Lab 6 — CSM → FSM handoff / تسليم إلى FSM</strong><br />
+   - From case, create linked Work Order (if FSM licensed).<br />
+   - Track fulfillment end-to-end.</p>
+</li>
+<li>
+<p><strong>Lab 7 — CSM Workspace / مساحة عمل CSM</strong><br />
+   - Work queue at <a href="{BASE}/now/csm/workspace">{BASE}/now/csm/workspace</a>.<br />
+   - Use macros and templates for responses.</p>
+</li>
+</ol>
+<hr />
+<h2 id="best-practices">Best Practices — أفضل الممارسات</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>EN</th>
+<th>AR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data model</strong></td>
+<td>Separate B2B (account/contact) from B2C (consumer) early</td>
+<td>افصل B2B عن B2C مبكرًا</td>
+</tr>
+<tr>
+<td><strong>Entitlements</strong></td>
+<td>Always validate entitlement before SLA starts</td>
+<td>تحقق من الاستحقاق قبل بدء SLA</td>
+</tr>
+<tr>
+<td><strong>SLA</strong></td>
+<td>Contract SLA per product tier, not one-size-fits-all</td>
+<td>SLA حسب مستوى المنتج/العقد</td>
+</tr>
+<tr>
+<td><strong>Portal</strong></td>
+<td>Branded portal per major account (multi-portal)</td>
+<td>بوابة مخصصة للحسابات الكبرى</td>
+</tr>
+<tr>
+<td><strong>Integration</strong></td>
+<td>Case → WO for field; Case → Incident for internal IT</td>
+<td>Case → WO ميداني؛ Case → Incident داخلي</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="deployment-checklist">Deployment Checklist — قائمة النشر</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task (EN)</th>
+<th>المهمة (AR)</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Install CSM from Store</td>
+<td>تثبيت CSM من Store</td>
+<td>Plugin active</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Account/contact model (B2B vs B2C)</td>
+<td>نموذج الحساب</td>
+<td>Test records</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Products &amp; entitlements</td>
+<td>المنتجات والاستحقاقات</td>
+<td>Entitlement on case</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Contract SLAs</td>
+<td>SLAs العقود</td>
+<td>SLA attaches</td>
+</tr>
+<tr>
+<td>5</td>
+<td>CSM Workspace for agents</td>
+<td>مساحة CSM</td>
+<td>Agent works queue</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Customer Portal</td>
+<td>بوابة العميل</td>
+<td>Customer submits case</td>
+</tr>
+<tr>
+<td>7</td>
+<td>AWA routing rules</td>
+<td>قواعد AWA</td>
+<td>Cases route correctly</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Email-to-case (if used)</td>
+<td>بريد → قضية</td>
+<td>Email creates case</td>
+</tr>
+<tr>
+<td>9</td>
+<td>UAT with pilot accounts</td>
+<td>UAT مع حسابات تجريبية</td>
+<td>Sign-off</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Update Set + production cutover</td>
+<td>Update Set + نشر</td>
+<td>Hypercare ready</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="direct-urls-quick-reference">Direct URLs Quick Reference</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigation</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cases</td>
+<td>All &gt; Customer Service &gt; Cases</td>
+<td><a href="{BASE}/sn_customerservice_case_list.do">{BASE}/sn_customerservice_case_list.do</a></td>
+</tr>
+<tr>
+<td>Case (new)</td>
+<td>Create New</td>
+<td><a href="{BASE}/sn_customerservice_case.do?sys_id=-1">{BASE}/sn_customerservice_case.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Accounts</td>
+<td>All &gt; Customer Service &gt; Accounts</td>
+<td><a href="{BASE}/customer_account_list.do">{BASE}/customer_account_list.do</a></td>
+</tr>
+<tr>
+<td>Contacts</td>
+<td>All &gt; Customer Service &gt; Contacts</td>
+<td><a href="{BASE}/customer_contact_list.do">{BASE}/customer_contact_list.do</a></td>
+</tr>
+<tr>
+<td>Consumers</td>
+<td>All &gt; Customer Service &gt; Consumers</td>
+<td><a href="{BASE}/sn_customerservice_consumer_list.do">{BASE}/sn_customerservice_consumer_list.do</a></td>
+</tr>
+<tr>
+<td>Entitlements</td>
+<td>All &gt; Customer Service &gt; Entitlements</td>
+<td><a href="{BASE}/sn_entitlement_list.do">{BASE}/sn_entitlement_list.do</a></td>
+</tr>
+<tr>
+<td>Products</td>
+<td>All &gt; Customer Service &gt; Products</td>
+<td><a href="{BASE}/sn_customerservice_product_list.do">{BASE}/sn_customerservice_product_list.do</a></td>
+</tr>
+<tr>
+<td>Contracts</td>
+<td>All &gt; Contract Management</td>
+<td><a href="{BASE}/service_contract_list.do">{BASE}/service_contract_list.do</a></td>
+</tr>
+<tr>
+<td>CSM Workspace</td>
+<td>Now Experience &gt; CSM</td>
+<td><a href="{BASE}/now/csm/workspace">{BASE}/now/csm/workspace</a></td>
+</tr>
+<tr>
+<td>Customer Portal</td>
+<td>Portal</td>
+<td><a href="{BASE}/csm">{BASE}/csm</a></td>
+</tr>
+<tr>
+<td>AWA</td>
+<td>All &gt; Advanced Work Assignment</td>
+<td><a href="{BASE}/awa_configuration_list.do">{BASE}/awa_configuration_list.do</a></td>
+</tr>
+<tr>
+<td>Flow Designer</td>
+<td>All &gt; Flow Designer</td>
+<td><a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a></td>
+</tr>
+<tr>
+<td>Guided Setup</td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="20-deep-implementation-labs-scripts-deploy-runbook">§20 — Deep Implementation Labs, Scripts &amp; Deploy Runbook</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<blockquote>
+<p><strong>Appendix:</strong> Professional create → configure → deploy sequence for CSM on Australia instances.<br />
+<strong>Token:</strong> Replace <code>{BASE}</code> with <code>https://YOUR_INSTANCE.service-now.com</code> (e.g. PDI or sub-prod).<br />
+<strong>Scope:</strong> HR Leave project reference scope <code>x_786686_hr_leave</code> — CSM is adjacent module for customer-facing ops.<br />
+<strong>Related:</strong> <a href="implementation/CSM_IMPLEMENTATION_FROM_SCRATCH_TO_PRO.html">implementation/CSM_IMPLEMENTATION_FROM_SCRATCH_TO_PRO.md</a></p>
+</blockquote>
+<h3 id="201-three-phase-implementation-model">20.1 Three-Phase Implementation Model</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Days</th>
+<th>Goal</th>
+<th>Exit criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CREATE</strong></td>
+<td>0–3</td>
+<td>Install plugins, roles, Update Set, pilot data</td>
+<td>CSM menus visible; Guided Setup complete</td>
+</tr>
+<tr>
+<td><strong>CONFIGURE</strong></td>
+<td>4–18</td>
+<td>Accounts, entitlements, AWA, portal, SLAs</td>
+<td>Happy-path case E2E in sub-prod</td>
+</tr>
+<tr>
+<td><strong>DEPLOY</strong></td>
+<td>19–30</td>
+<td>ATF, UAT, transport, hypercare</td>
+<td>Prod smoke pass; CSAT live</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="202-create-phase-install-foundation">20.2 CREATE Phase — Install &amp; Foundation</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<h4 id="step-c1-verify-instance-entitlement">Step C1 — Verify instance &amp; entitlement</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Confirm Australia build</td>
+<td>All &gt; System Diagnostics &gt; Stats</td>
+<td><a href="{BASE}/stats.do">{BASE}/stats.do</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Open Plugins list</td>
+<td>Filter Navigator: type <strong>Plugins</strong> → click <strong>Plugins</strong></td>
+<td><a href="{BASE}/v_plugin_list.do">{BASE}/v_plugin_list.do</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Search <strong>Customer Service Management</strong></td>
+<td>In list filter: <code>nameCONTAINScustomerservice</code></td>
+<td><a href="{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINScustomerservice">{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINScustomerservice</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Activate if <strong>Inactive</strong></td>
+<td>Open record → <strong>Activate/Upgrade</strong> → confirm dependencies</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Activate AWA plugin</td>
+<td>Search <strong>Advanced Work Assignment</strong> → Activate</td>
+<td><a href="{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINSwork_assignment">{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINSwork_assignment</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-c2-guided-setup-wizard">Step C2 — Guided Setup wizard</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Open Guided Setup</td>
+<td>All &gt; <strong>Guided Setup</strong></td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Select <strong>Customer Service Management</strong> tile</td>
+<td>Click tile → <strong>Get Started</strong></td>
+<td><a href="{BASE}/now/guided-setup/csm">{BASE}/now/guided-setup/csm</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Complete Foundation section</td>
+<td>Accounts → Contacts → Products checkboxes → <strong>Mark Complete</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Complete Channels section</td>
+<td>Enable Portal <code>/csm</code>, Email-to-case stub</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Complete Case Management</td>
+<td>Accept default states; note case table <code>sn_customerservice_case</code></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-c3-roles-groups-update-set">Step C3 — Roles, groups, Update Set</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Create config Update Set</td>
+<td>All &gt; <strong>System Update Sets</strong> &gt; <strong>Local Update Sets</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/sys_update_set.do?sys_id=-1">{BASE}/sys_update_set.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Name: <code>CSM_AU_Implement_2026</code></td>
+<td>State = <strong>In progress</strong> → Submit</td>
+<td><a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Create agent group</td>
+<td>All &gt; <strong>User Administration</strong> &gt; <strong>Groups</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/sys_user_group.do?sys_id=-1">{BASE}/sys_user_group.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Name: <code>CSM Tier-1 Agents</code></td>
+<td>Add roles: <code>sn_customerservice_agent</code></td>
+<td><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHsn_customerservice">{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHsn_customerservice</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Create test users</td>
+<td>All &gt; <strong>Users</strong> &gt; <strong>New</strong> (csr.agent1, csr.manager1)</td>
+<td><a href="{BASE}/sys_user_list.do">{BASE}/sys_user_list.do</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="203-configure-phase-build-customer-service-operation">20.3 CONFIGURE Phase — Build Customer Service Operation</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<h4 id="step-f1-account-contact-product-foundation">Step F1 — Account / Contact / Product foundation</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>New Account</td>
+<td>All &gt; <strong>Customer Service</strong> &gt; <strong>Accounts</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/customer_account.do?sys_id=-1">{BASE}/customer_account.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Fill: Name=<code>LAB-AU-Gold Corp</code>, Type=Customer, Industry=Technology</td>
+<td><strong>Submit</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Related List <strong>Contacts</strong> &gt; <strong>New</strong></td>
+<td>First name, email <code>@goldcorp.example</code></td>
+<td><a href="{BASE}/customer_contact.do?sys_id=-1">{BASE}/customer_contact.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Register Product</td>
+<td>All &gt; <strong>Customer Service</strong> &gt; <strong>Products</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/sn_customerservice_product.do?sys_id=-1">{BASE}/sn_customerservice_product.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Name=<code>Enterprise SaaS Platform</code>, link to account Install Base</td>
+<td>Submit</td>
+<td><a href="{BASE}/cmdb_ci_install_base_list.do">{BASE}/cmdb_ci_install_base_list.do</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-f2-contract-entitlement-sla">Step F2 — Contract, Entitlement, SLA</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Service Contract</td>
+<td>All &gt; <strong>Customer Service</strong> &gt; <strong>Contracts</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/ast_contract.do?sys_id=-1">{BASE}/ast_contract.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Link Account, dates, Active=true</td>
+<td>Submit</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Entitlement</td>
+<td>All &gt; <strong>Customer Service</strong> &gt; <strong>Entitlements</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/sn_entitlement.do?sys_id=-1">{BASE}/sn_entitlement.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Tier <strong>Gold</strong>: Response 4h, Resolution 24h</td>
+<td>Link contract + product</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SLA Definition</td>
+<td>All &gt; <strong>SLA</strong> &gt; <strong>SLA Definitions</strong> &gt; filter <code>collection=sn_customerservice_case</code></td>
+<td><a href="{BASE}/contract_sla_list.do?sysparm_query=collection%3Dsn_customerservice_case">{BASE}/contract_sla_list.do?sysparm_query=collection%3Dsn_customerservice_case</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Create <strong>CSM Gold Response 4h</strong></td>
+<td>Start=Created; Stop=Resolved/Closed</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-f3-awa-routing-skills-capacity">Step F3 — AWA routing (skills + capacity)</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Service Channel</td>
+<td>All &gt; <strong>Advanced Work Assignment</strong> &gt; <strong>Service Channels</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/awa_service_channel.do?sys_id=-1">{BASE}/awa_service_channel.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Table=<code>sn_customerservice_case</code>, Channel=Case</td>
+<td>Submit</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Queue</td>
+<td>All &gt; <strong>Advanced Work Assignment</strong> &gt; <strong>Queues</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/awa_queue.do?sys_id=-1">{BASE}/awa_queue.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Name=<code>CSM Gold Queue</code>, link channel, group <strong>CSM Tier-1 Agents</strong></td>
+<td>—</td>
+<td><a href="{BASE}/awa_queue_list.do">{BASE}/awa_queue_list.do</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Agent Presence</td>
+<td>All &gt; <strong>Advanced Work Assignment</strong> &gt; <strong>Agent Presence</strong></td>
+<td><a href="{BASE}/awa_agent_presence_list.do">{BASE}/awa_agent_presence_list.do</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Set csr.agent1 Available, max capacity=5</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-f4-portal-workspace">Step F4 — Portal &amp; Workspace</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Portal list</td>
+<td>All &gt; <strong>Service Portal</strong> &gt; <strong>Portals</strong></td>
+<td><a href="{BASE}/sp_portal_list.do">{BASE}/sp_portal_list.do</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Open <strong>Customer Service Portal</strong> (id=csm)</td>
+<td><strong>Open Portal</strong> preview</td>
+<td><a href="{BASE}/csm">{BASE}/csm</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Branding</td>
+<td>Portal record → Theme, logo upload</td>
+<td><a href="{BASE}/sp_theme_list.do">{BASE}/sp_theme_list.do</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>CSM Workspace</td>
+<td>Now Experience &gt; <strong>CSM</strong> or direct</td>
+<td><a href="{BASE}/now/csm/workspace">{BASE}/now/csm/workspace</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>UI Builder (optional)</td>
+<td>All &gt; <strong>Now Experience Framework</strong> &gt; <strong>UI Builder</strong></td>
+<td><a href="{BASE}/now/ui-builder">{BASE}/now/ui-builder</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-f5-flow-designer-escalation">Step F5 — Flow Designer escalation</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>New Flow</td>
+<td>All &gt; <strong>Process Automation</strong> &gt; <strong>Flow Designer</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Trigger: <strong>Record Updated</strong> on <code>sn_customerservice_case</code></td>
+<td>Condition: Priority changes to <strong>1 - Critical</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Action: <strong>Ask for Approval</strong> → group CSM Managers</td>
+<td>—</td>
+<td><a href="{BASE}/sysapproval_group_list.do">{BASE}/sysapproval_group_list.do</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Activate flow</td>
+<td>Test with LAB case</td>
+<td><a href="{BASE}/sys_hub_flow_list.do">{BASE}/sys_hub_flow_list.do</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="204-deploy-phase-test-transport-go-live">20.4 DEPLOY Phase — Test, Transport, Go-Live</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<h4 id="step-d1-atf-smoke-tests">Step D1 — ATF smoke tests</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>ATF Test list</td>
+<td>All &gt; <strong>Automated Test Framework</strong> &gt; <strong>Tests</strong></td>
+<td><a href="{BASE}/sys_atf_test_list.do">{BASE}/sys_atf_test_list.do</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Create test: <strong>CSM Case Create Resolve</strong></td>
+<td>Steps: impersonate agent → open case form → save → resolve</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Create test: <strong>CSM Portal Submit</strong></td>
+<td>Service Portal test step → <code>/csm</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Run suite</td>
+<td>Confirm all green before export</td>
+<td><a href="{BASE}/sys_atf_test_suite_list.do">{BASE}/sys_atf_test_suite_list.do</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-d2-update-set-export-prod-deploy">Step D2 — Update Set export &amp; prod deploy</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Complete Update Set</td>
+<td>All &gt; <strong>Local Update Sets</strong> → <strong>Complete</strong></td>
+<td><a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Retrieve in target</td>
+<td>All &gt; <strong>Retrieved Update Sets</strong> &gt; <strong>Import</strong></td>
+<td><a href="{BASE}/sys_remote_update_set_list.do">{BASE}/sys_remote_update_set_list.do</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Preview conflicts</td>
+<td><strong>Preview Update Set</strong> → resolve collisions</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Commit</td>
+<td><strong>Commit Update Set</strong> → post-commit smoke</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Verify plugins in prod</td>
+<td><a href="{BASE}/v_plugin_list.do">{BASE}/v_plugin_list.do</a> same version as sub-prod</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-d3-hypercare-runbook-first-72h">Step D3 — Hypercare runbook (first 72h)</h4>
+<table>
+<thead>
+<tr>
+<th>Hour</th>
+<th>Check</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Portal <code>/csm</code> loads; test case submit</td>
+<td><a href="{BASE}/csm">{BASE}/csm</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>AWA queue depth &lt; threshold</td>
+<td><a href="{BASE}/awa_queue_list.do">{BASE}/awa_queue_list.do</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td>SLA breach count</td>
+<td><a href="{BASE}/task_sla_list.do?sysparm_query=has_breached%3Dtrue">{BASE}/task_sla_list.do?sysparm_query=has_breached%3Dtrue</a></td>
+</tr>
+<tr>
+<td>24</td>
+<td>CSAT responses</td>
+<td><a href="{BASE}/asmt_assessment_instance_list.do">{BASE}/asmt_assessment_instance_list.do</a></td>
+</tr>
+<tr>
+<td>72</td>
+<td>Executive dashboard</td>
+<td><a href="{BASE}/pa_dashboards_list.do">{BASE}/pa_dashboards_list.do</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="205-full-component-url-catalog-csm">20.5 Full Component URL Catalog (CSM)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Filter Navigator path</th>
+<th>Direct URL</th>
+<th>Create URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plugins</td>
+<td>All &gt; System Definition &gt; Plugins</td>
+<td><a href="{BASE}/v_plugin_list.do">{BASE}/v_plugin_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Update Sets</td>
+<td>All &gt; System Update Sets &gt; Local</td>
+<td><a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a></td>
+<td><a href="{BASE}/sys_update_set.do?sys_id=-1">{BASE}/sys_update_set.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Users</td>
+<td>All &gt; User Administration &gt; Users</td>
+<td><a href="{BASE}/sys_user_list.do">{BASE}/sys_user_list.do</a></td>
+<td><a href="{BASE}/sys_user.do?sys_id=-1">{BASE}/sys_user.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Groups</td>
+<td>All &gt; User Administration &gt; Groups</td>
+<td><a href="{BASE}/sys_user_group_list.do">{BASE}/sys_user_group_list.do</a></td>
+<td><a href="{BASE}/sys_user_group.do?sys_id=-1">{BASE}/sys_user_group.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Roles</td>
+<td>All &gt; User Administration &gt; Roles</td>
+<td><a href="{BASE}/sys_user_role_list.do">{BASE}/sys_user_role_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Accounts</td>
+<td>All &gt; Customer Service &gt; Accounts</td>
+<td><a href="{BASE}/customer_account_list.do">{BASE}/customer_account_list.do</a></td>
+<td><a href="{BASE}/customer_account.do?sys_id=-1">{BASE}/customer_account.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Contacts</td>
+<td>All &gt; Customer Service &gt; Contacts</td>
+<td><a href="{BASE}/customer_contact_list.do">{BASE}/customer_contact_list.do</a></td>
+<td><a href="{BASE}/customer_contact.do?sys_id=-1">{BASE}/customer_contact.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Consumers</td>
+<td>All &gt; Customer Service &gt; Consumers</td>
+<td><a href="{BASE}/sn_customerservice_consumer_list.do">{BASE}/sn_customerservice_consumer_list.do</a></td>
+<td><a href="{BASE}/sn_customerservice_consumer.do?sys_id=-1">{BASE}/sn_customerservice_consumer.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Cases</td>
+<td>All &gt; Customer Service &gt; Cases</td>
+<td><a href="{BASE}/sn_customerservice_case_list.do">{BASE}/sn_customerservice_case_list.do</a></td>
+<td><a href="{BASE}/sn_customerservice_case.do?sys_id=-1">{BASE}/sn_customerservice_case.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Case Types</td>
+<td>All &gt; Customer Service &gt; Administration &gt; Case Types</td>
+<td><a href="{BASE}/sn_customerservice_case_type_list.do">{BASE}/sn_customerservice_case_type_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Entitlements</td>
+<td>All &gt; Customer Service &gt; Entitlements</td>
+<td><a href="{BASE}/sn_entitlement_list.do">{BASE}/sn_entitlement_list.do</a></td>
+<td><a href="{BASE}/sn_entitlement.do?sys_id=-1">{BASE}/sn_entitlement.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Service Contracts</td>
+<td>All &gt; Customer Service &gt; Contracts</td>
+<td><a href="{BASE}/service_contract_list.do">{BASE}/service_contract_list.do</a></td>
+<td><a href="{BASE}/ast_contract.do?sys_id=-1">{BASE}/ast_contract.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Products</td>
+<td>All &gt; Customer Service &gt; Products</td>
+<td><a href="{BASE}/sn_customerservice_product_list.do">{BASE}/sn_customerservice_product_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Install Base</td>
+<td>All &gt; Customer Service &gt; Install Base</td>
+<td><a href="{BASE}/cmdb_ci_install_base_list.do">{BASE}/cmdb_ci_install_base_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>AWA Config</td>
+<td>All &gt; Advanced Work Assignment &gt; Configuration</td>
+<td><a href="{BASE}/awa_configuration_list.do">{BASE}/awa_configuration_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>AWA Queues</td>
+<td>All &gt; Advanced Work Assignment &gt; Queues</td>
+<td><a href="{BASE}/awa_queue_list.do">{BASE}/awa_queue_list.do</a></td>
+<td><a href="{BASE}/awa_queue.do?sys_id=-1">{BASE}/awa_queue.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>AWA Service Channels</td>
+<td>All &gt; Advanced Work Assignment &gt; Service Channels</td>
+<td><a href="{BASE}/awa_service_channel_list.do">{BASE}/awa_service_channel_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>AWA Agent Presence</td>
+<td>All &gt; Advanced Work Assignment &gt; Agent Presence</td>
+<td><a href="{BASE}/awa_agent_presence_list.do">{BASE}/awa_agent_presence_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>CSM Properties</td>
+<td>All &gt; Customer Service &gt; Administration &gt; Properties</td>
+<td><a href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHsn_customerservice">{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHsn_customerservice</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Channels</td>
+<td>All &gt; Customer Service &gt; Administration &gt; Channels</td>
+<td><a href="{BASE}/sn_customerservice_channel_list.do">{BASE}/sn_customerservice_channel_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>SLA Definitions</td>
+<td>All &gt; SLA &gt; SLA Definitions</td>
+<td><a href="{BASE}/contract_sla_list.do?sysparm_query=collection%3Dsn_customerservice_case">{BASE}/contract_sla_list.do?sysparm_query=collection%3Dsn_customerservice_case</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Task SLAs (runtime)</td>
+<td>All &gt; SLA &gt; SLA</td>
+<td><a href="{BASE}/task_sla_list.do">{BASE}/task_sla_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>CSM Workspace</td>
+<td>Now Experience &gt; CSM</td>
+<td><a href="{BASE}/now/csm/workspace">{BASE}/now/csm/workspace</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>CWF Agent</td>
+<td>Configurable Workspace</td>
+<td><a href="{BASE}/now/cwf/agent">{BASE}/now/cwf/agent</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Customer Portal</td>
+<td>Service Portal</td>
+<td><a href="{BASE}/csm">{BASE}/csm</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Portal Designer</td>
+<td>Service Portal &gt; Designer</td>
+<td><a href="{BASE}/sp_config?id=designer">{BASE}/sp_config?id=designer</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Knowledge</td>
+<td>All &gt; Knowledge &gt; Articles</td>
+<td><a href="{BASE}/kb_knowledge_list.do">{BASE}/kb_knowledge_list.do</a></td>
+<td><a href="{BASE}/kb_knowledge.do?sys_id=-1">{BASE}/kb_knowledge.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Flow Designer</td>
+<td>All &gt; Process Automation &gt; Flow Designer</td>
+<td><a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Business Rules</td>
+<td>All &gt; System Definition &gt; Business Rules</td>
+<td><a href="{BASE}/sys_script_list.do?sysparm_query=collection%3Dsn_customerservice_case">{BASE}/sys_script_list.do?sysparm_query=collection%3Dsn_customerservice_case</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Notifications</td>
+<td>All &gt; System Notification &gt; Email &gt; Notifications</td>
+<td><a href="{BASE}/sysevent_email_action_list.do">{BASE}/sysevent_email_action_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>REST API Explorer</td>
+<td>All &gt; System Web Services &gt; REST API Explorer</td>
+<td><a href="{BASE}/$restapi.do">{BASE}/$restapi.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Table API (Cases)</td>
+<td>REST GET</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/sn_customerservice_case"><code>{BASE}/api/now/table/sn_customerservice_case</code></a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Guided Setup</td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Impersonation</td>
+<td>avatar menu &gt; <strong>Impersonate</strong></td>
+<td><a href="{BASE}/impersonate_user.do">{BASE}/impersonate_user.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Access Debugger</td>
+<td>All &gt; System Security &gt; Access Control Debugger</td>
+<td><a href="{BASE}/$access_control_debugger.do">{BASE}/$access_control_debugger.do</a></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="206-deep-hands-on-labs-8-labs-exact-clicks">20.6 Deep Hands-On Labs (8 labs — exact clicks)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<blockquote>
+<p>Prefix all pilot records with <code>LAB-CSM-</code> for easy cleanup.<br />
+<strong>Duration:</strong> ~45 min each · <strong>Instance:</strong> PDI or AU sub-prod.</p>
+</blockquote>
+<h4 id="lab-1-plugin-activation-guided-setup-create">Lab 1 — Plugin activation &amp; Guided Setup (CREATE)</h4>
+<p><strong>Goal:</strong> CSM application menus visible with baseline config captured in Update Set.</p>
+<ol>
+<li>Log in as <strong>admin</strong> → open <a href="{BASE}/stats.do">{BASE}/stats.do</a> → note <strong>Build name</strong> and <strong>Instance ID</strong>.</li>
+<li>Filter Navigator: type <strong>Update Sets</strong> → <strong>Local Update Sets</strong> → <strong>New</strong>.</li>
+<li>Name <code>CSM_LAB01_CREATE</code>, State <strong>In progress</strong> → <strong>Submit</strong>.</li>
+<li>Navigate <a href="{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINScustomerservice">{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINScustomerservice</a>.</li>
+<li>If <strong>Customer Service Management</strong> shows <strong>Inactive</strong> → open record → <strong>Activate/Upgrade</strong> → wait for completion banner.</li>
+<li>Open <a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a> → select <strong>Customer Service Management</strong> → complete <strong>Foundation</strong> and <strong>Case Management</strong> sections.</li>
+<li>Verify: Filter Navigator → type <strong>Customer Service</strong> → confirm <strong>Cases</strong>, <strong>Accounts</strong>, <strong>Entitlements</strong> appear.</li>
+<li><strong>Verify:</strong> <a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a> shows captured plugin/config rows in <code>CSM_LAB01_CREATE</code>.</li>
+</ol>
+<h4 id="lab-2-b2b-account-hierarchy-contact-configure">Lab 2 — B2B Account hierarchy + Contact (CONFIGURE)</h4>
+<p><strong>Goal:</strong> Three-level account tree with primary contact and email domain for auto-link.</p>
+<ol>
+<li>Open <a href="{BASE}/customer_account.do?sys_id=-1">{BASE}/customer_account.do?sys_id=-1</a>.</li>
+<li>Create parent: Name=<code>LAB-CSM-Parent AU</code>, Account code=<code>LCP-AU</code> → <strong>Submit</strong>.</li>
+<li><strong>New</strong> again: Name=<code>LAB-CSM-Child Sydney</code>, Parent account=<code>LAB-CSM-Parent AU</code> → <strong>Submit</strong>.</li>
+<li>Open parent record → Related List <strong>Contacts</strong> → <strong>New</strong>.</li>
+<li>Contact: Name=<code>Alex Chen</code>, Email=<code>alex.chen@labcsm.example</code>, Primary=true → <strong>Submit</strong>.</li>
+<li>Optional: field <strong>Email domain</strong> on account = <code>labcsm.example</code> (if custom field exists).</li>
+<li>Open <a href="{BASE}/customer_account_list.do?sysparm_query=nameSTARTSWITHLAB-CSM">{BASE}/customer_account_list.do?sysparm_query=nameSTARTSWITHLAB-CSM</a> → confirm 2 rows.</li>
+<li><strong>Verify:</strong> Account 360 shows contact on parent; child inherits visibility per config.</li>
+</ol>
+<h4 id="lab-3-gold-entitlement-contract-sla-configure">Lab 3 — Gold Entitlement + Contract SLA (CONFIGURE)</h4>
+<p><strong>Goal:</strong> Entitlement drives 4h response SLA on new case.</p>
+<ol>
+<li>Create product at <a href="{BASE}/sn_customerservice_product.do?sys_id=-1">{BASE}/sn_customerservice_product.do?sys_id=-1</a>: Name=<code>LAB-CSM-Product Gold</code>.</li>
+<li>Create contract <a href="{BASE}/ast_contract.do?sys_id=-1">{BASE}/ast_contract.do?sys_id=-1</a>: Account=<code>LAB-CSM-Parent AU</code>, Active=true, Start=today, End=+1 year.</li>
+<li>Create entitlement <a href="{BASE}/sn_entitlement.do?sys_id=-1">{BASE}/sn_entitlement.do?sys_id=-1</a>: Account, Contract, Product, Tier=Gold.</li>
+<li>Open <a href="{BASE}/contract_sla_list.do?sysparm_query=collection%3Dsn_customerservice_case">{BASE}/contract_sla_list.do?sysparm_query=collection%3Dsn_customerservice_case</a> → <strong>New</strong> SLA: Name=<code>LAB Gold 4h Response</code>, Duration=4 hours, Schedule=8x5.</li>
+<li>Link SLA to entitlement tier (contract offering or entitlement SLA field per your version).</li>
+<li>Create case <a href="{BASE}/sn_customerservice_case.do?sys_id=-1">{BASE}/sn_customerservice_case.do?sys_id=-1</a>: Account=<code>LAB-CSM-Parent AU</code>, Contact=<code>Alex Chen</code>, Product=<code>LAB-CSM-Product Gold</code>.</li>
+<li><strong>Submit</strong> → Related Lists → <strong>Task SLAs</strong> → confirm SLA timer started with 4h target.</li>
+<li><strong>Verify:</strong> <a href="{BASE}/task_sla_list.do?sysparm_query=task.account.nameSTARTSWITHLAB-CSM">{BASE}/task_sla_list.do?sysparm_query=task.account.nameSTARTSWITHLAB-CSM</a>.</li>
+</ol>
+<h4 id="lab-4-awa-skill-routing-end-to-end-configure">Lab 4 — AWA skill routing end-to-end (CONFIGURE)</h4>
+<p><strong>Goal:</strong> New case auto-routes to Gold queue when agent is Available.</p>
+<ol>
+<li>Create skill: All &gt; <strong>Advanced Work Assignment</strong> &gt; <strong>Skills</strong> &gt; <strong>New</strong> → Name=<code>LAB Product Gold</code> → <a href="{BASE}/cmn_skill.do?sys_id=-1">{BASE}/cmn_skill.do?sys_id=-1</a>.</li>
+<li>Assign skill to user <strong>csr.agent1</strong>: User record → <strong>Skills</strong> related list → <strong>Edit</strong>.</li>
+<li>Service Channel <a href="{BASE}/awa_service_channel_list.do">{BASE}/awa_service_channel_list.do</a> → confirm Case channel active.</li>
+<li>Queue <a href="{BASE}/awa_queue.do?sys_id=-1">{BASE}/awa_queue.do?sys_id=-1</a>: Name=<code>LAB Gold Queue</code>, Channel=Case, Assignment group=CSM Tier-1 Agents, Skill=<code>LAB Product Gold</code>.</li>
+<li>AWA Configuration <a href="{BASE}/awa_configuration_list.do">{BASE}/awa_configuration_list.do</a> → enable routing for <code>sn_customerservice_case</code>.</li>
+<li>Set agent presence <a href="{BASE}/awa_agent_presence_list.do">{BASE}/awa_agent_presence_list.do</a>: csr.agent1 = <strong>Available</strong>, Capacity=5.</li>
+<li>Impersonate <strong>csr.agent1</strong> <a href="{BASE}/impersonate_user.do">{BASE}/impersonate_user.do</a> → set Available in workspace header if prompted.</li>
+<li>As admin, create new case with Product Gold → confirm assignment lands on csr.agent1 or Gold queue within 60s.</li>
+<li><strong>Verify:</strong> Case <strong>Assigned to</strong> field populated; AWA work item visible in <a href="{BASE}/now/csm/workspace">{BASE}/now/csm/workspace</a>.</li>
+</ol>
+<h4 id="lab-5-customer-portal-self-service-case-configure">Lab 5 — Customer Portal self-service case (CONFIGURE)</h4>
+<p><strong>Goal:</strong> External contact submits case via <code>/csm</code> and tracks status.</p>
+<ol>
+<li>Ensure contact <strong>Alex Chen</strong> has portal role <code>sn_customerservice.customer</code> (or consumer equivalent).</li>
+<li>Open <a href="{BASE}/sp_portal_list.do">{BASE}/sp_portal_list.do</a> → open <strong>Customer Service Portal</strong> → confirm <strong>Active</strong>.</li>
+<li>Impersonate Alex Chen <a href="{BASE}/impersonate_user.do">{BASE}/impersonate_user.do</a>.</li>
+<li>Browse <a href="{BASE}/csm">{BASE}/csm</a> → <strong>Get Help</strong> or <strong>Open a Case</strong> (widget name varies by theme).</li>
+<li>Fill: Subject=<code>LAB Portal outage</code>, Description=<code>Cannot login since 09:00 AEST</code>, Priority=3 → <strong>Submit</strong>.</li>
+<li>Note case number on confirmation screen → open <strong>My Cases</strong> widget <a href="{BASE}/csm?id=my_cases">{BASE}/csm?id=my_cases</a>.</li>
+<li>End impersonation → as <strong>csr.agent1</strong> open case in workspace → add work note → set <strong>Awaiting Info</strong> → <strong>Resolve</strong>.</li>
+<li>Re-impersonate contact → refresh My Cases → status <strong>Resolved</strong>.</li>
+<li><strong>Verify:</strong> Case appears on account related list <a href="{BASE}/customer_account_list.do?sysparm_query=name%3DLAB-CSM-Parent%20AU">{BASE}/customer_account_list.do?sysparm_query=name%3DLAB-CSM-Parent%20AU</a>.</li>
+</ol>
+<h4 id="lab-6-email-to-case-channel-configure">Lab 6 — Email-to-Case channel (CONFIGURE)</h4>
+<p><strong>Goal:</strong> Inbound email creates case linked to account.</p>
+<ol>
+<li>All &gt; <strong>Customer Service</strong> &gt; <strong>Administration</strong> &gt; <strong>Channels</strong> → <a href="{BASE}/sn_customerservice_channel_list.do">{BASE}/sn_customerservice_channel_list.do</a>.</li>
+<li>Open <strong>Email</strong> channel → note inbound address e.g. <code>support@YOUR_INSTANCE.service-now.com</code>.</li>
+<li>All &gt; <strong>System Policy</strong> &gt; <strong>Inbound Actions</strong> → <a href="{BASE}/sysevent_in_email_action_list.do">{BASE}/sysevent_in_email_action_list.do</a> → confirm CSM email action active on <code>sn_customerservice_case</code>.</li>
+<li>Send test email from <code>alex.chen@labcsm.example</code> with subject <code>LAB Email Case</code> to inbound address.</li>
+<li>Wait 2–5 min → open <a href="{BASE}/sn_customerservice_case_list.do?sysparm_query=short_descriptionLIKElab%20email">{BASE}/sn_customerservice_case_list.do?sysparm_query=short_descriptionLIKElab%20email</a>.</li>
+<li>Confirm Account auto-linked if domain rule configured (see §17 script #1).</li>
+<li><strong>Verify:</strong> Case source/channel = Email; contact populated.</li>
+</ol>
+<h4 id="lab-7-csm-fsm-work-order-handoff-integration">Lab 7 — CSM → FSM Work Order handoff (INTEGRATION)</h4>
+<p><strong>Goal:</strong> Case spawns field work order when onsite visit required.</p>
+<ol>
+<li>Prerequisite: FSM plugin active <a href="{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINSwork_management">{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINSwork_management</a>.</li>
+<li>Open existing LAB case → UI Action <strong>Create Work Order</strong> (or Flow) → if missing, enable OOTB UI action in <a href="{BASE}/sys_ui_action_list.do?sysparm_query=nameLIKEwork%20order">{BASE}/sys_ui_action_list.do?sysparm_query=nameLIKEwork%20order</a>.</li>
+<li>Click <strong>Create Work Order</strong> → confirm redirect to new WO <a href="{BASE}/wm_order.do?sys_id=-1">{BASE}/wm_order.do?sys_id=-1</a>.</li>
+<li>Set Location, Short description=<code>LAB onsite repair</code>, link Case field → <strong>Submit</strong>.</li>
+<li>Open WO → confirm <strong>Case</strong> reference points to CSM case.</li>
+<li>Complete WO lifecycle (see FSM.md §20) → close WO.</li>
+<li>Return to case → confirm state/note reflects WO completion.</li>
+<li><strong>Verify:</strong> Related list <strong>Work Orders</strong> on case record.</li>
+</ol>
+<h4 id="lab-8-deploy-update-set-to-target-deploy">Lab 8 — Deploy Update Set to target (DEPLOY)</h4>
+<p><strong>Goal:</strong> Transport CSM config safely with smoke test.</p>
+<ol>
+<li>Complete Update Set <code>CSM_AU_Implement_2026</code> <a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a>.</li>
+<li><strong>Export</strong> XML or use <strong>Batch Install</strong> per your release process.</li>
+<li>In target instance: <strong>Retrieved Update Sets</strong> → <strong>Import Update Set from XML</strong> <a href="{BASE}/sys_remote_update_set_list.do">{BASE}/sys_remote_update_set_list.do</a>.</li>
+<li><strong>Preview</strong> → resolve any <code>Customer Service</code> table collisions → <strong>Commit</strong>.</li>
+<li>Run ATF suite <a href="{BASE}/sys_atf_test_suite_list.do">{BASE}/sys_atf_test_suite_list.do</a> → all pass.</li>
+<li>Smoke: create case <a href="{BASE}/sn_customerservice_case.do?sys_id=-1">{BASE}/sn_customerservice_case.do?sys_id=-1</a> → verify SLA + AWA.</li>
+<li>Smoke: portal <a href="{BASE}/csm">{BASE}/csm</a> loads without 404.</li>
+<li><strong>Verify:</strong> <a href="{BASE}/stats.do">{BASE}/stats.do</a> build matches source; hypercare checklist §20.4 complete.</li>
+</ol>
+<hr />
+<h3 id="207-implementation-scripts-rest-urls">20.7 Implementation Scripts &amp; REST URLs</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<h4 id="script-a-table-api-create-case-from-external-system">Script A — Table API: create case from external system</h4>
+<pre><code class="language-javascript">// Run in Scripts - Background or Postman
+// POST {BASE}/api/now/table/sn_customerservice_case
+// Headers: Authorization: Basic / OAuth, Content-Type: application/json
+var requestBody = {
+  short_description: 'API Lab - integration test',
+  account: 'ACCOUNT_SYS_ID',
+  contact: 'CONTACT_SYS_ID',
+  priority: '3',
+  u_source: 'rest_lab'
+};
+// Expected: 201 Created → check {BASE}/sn_customerservice_case_list.do?sysparm_query=u_source=rest_lab
+</code></pre>
+<h4 id="script-b-scheduled-entitlement-expiry-alert">Script B — Scheduled entitlement expiry alert</h4>
+<pre><code class="language-javascript">// Scheduled Script Execution — daily 08:00 Australia/Sydney
+(function () {
+  var warnDays = 30;
+  var cutoff = new GlideDateTime();
+  cutoff.addDaysLocalTime(warnDays);
+  var ent = new GlideRecord('sn_entitlement');
+  ent.addQuery('active', true);
+  ent.addQuery('end_date', '&lt;=', cutoff.getDate());
+  ent.addQuery('end_date', '&gt;=', new GlideDateTime().getDate());
+  ent.query();
+  while (ent.next()) {
+    gs.eventQueue('x_csm.entitlement.expiring', ent,
+      ent.getValue('account'), warnDays + '');
+  }
+})();
+// Configure notification: {BASE}/sysevent_email_action_list.do
+</code></pre>
+<h4 id="script-c-awa-queue-depth-monitor-hypercare">Script C — AWA queue depth monitor (hypercare)</h4>
+<pre><code class="language-javascript">// Background script — paste in {BASE}/sys.scripts.do
+var q = new GlideAggregate('awa_work_item');
+q.addQuery('queue.name', 'LAB Gold Queue');
+q.addQuery('state', 'pending');
+q.addAggregate('COUNT');
+q.query();
+var depth = q.next() ? parseInt(q.getAggregate('COUNT'), 10) : 0;
+gs.info('CSM LAB Gold Queue depth: ' + depth);
+if (depth &gt; 10) {
+  gs.eventQueue('x_csm.queue.threshold', q, 'LAB Gold Queue', depth + '');
+}
+</code></pre>
+<h4 id="script-d-portal-health-check-curl">Script D — Portal health check (curl)</h4>
+<pre><code class="language-bash"># Run from jump host — replace {BASE}
+curl -s -o /dev/null -w &quot;%{http_code}&quot; &quot;{BASE}/csm&quot;
+# Expect: 200
+curl -s &quot;{BASE}/api/now/table/sn_customerservice_case?sysparm_limit=1&quot; \
+  -H &quot;Authorization: Bearer TOKEN&quot;
+# Expect: 200 with result array
+</code></pre>
+<h4 id="rest-endpoint-quick-reference">REST endpoint quick reference</h4>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Method</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List cases</td>
+<td>GET</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/sn_customerservice_case"><code>{BASE}/api/now/table/sn_customerservice_case</code></a></td>
+</tr>
+<tr>
+<td>Get case</td>
+<td>GET</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/sn_customerservice_case/{sys_id}"><code>{BASE}/api/now/table/sn_customerservice_case/{sys_id}</code></a></td>
+</tr>
+<tr>
+<td>Create case</td>
+<td>POST</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/sn_customerservice_case"><code>{BASE}/api/now/table/sn_customerservice_case</code></a></td>
+</tr>
+<tr>
+<td>Update case</td>
+<td>PATCH</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/sn_customerservice_case/{sys_id}"><code>{BASE}/api/now/table/sn_customerservice_case/{sys_id}</code></a></td>
+</tr>
+<tr>
+<td>List accounts</td>
+<td>GET</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/customer_account"><code>{BASE}/api/now/table/customer_account</code></a></td>
+</tr>
+<tr>
+<td>List entitlements</td>
+<td>GET</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/sn_entitlement"><code>{BASE}/api/now/table/sn_entitlement</code></a></td>
+</tr>
+<tr>
+<td>AWA work items</td>
+<td>GET</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/awa_work_item"><code>{BASE}/api/now/table/awa_work_item</code></a></td>
+</tr>
+<tr>
+<td>Import Set load</td>
+<td>POST</td>
+<td><a class="direct-url" href="{BASE}/api/now/import/{staging_table}"><code>{BASE}/api/now/import/{staging_table}</code></a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="208-configuration-decision-log-template">20.8 Configuration Decision Log (template)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>OOTB default</th>
+<th>Approved value</th>
+<th>Owner</th>
+<th>Update Set</th>
+<th>Test case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Case default state</td>
+<td>New</td>
+<td>New</td>
+<td>CSM Admin</td>
+<td>CSM_AU_Implement_2026</td>
+<td>Lab 3 step 6</td>
+</tr>
+<tr>
+<td>AWA capacity model</td>
+<td>Skills only</td>
+<td>Skills + capacity</td>
+<td>Ops Lead</td>
+<td>CSM_AU_Implement_2026</td>
+<td>Lab 4 step 8</td>
+</tr>
+<tr>
+<td>Portal URL</td>
+<td>/csm</td>
+<td>/csm (branded)</td>
+<td>UX Lead</td>
+<td>CSM_AU_Implement_2026</td>
+<td>Lab 5 step 4</td>
+</tr>
+<tr>
+<td>SLA schedule</td>
+<td>24x7</td>
+<td>8x5 AEST</td>
+<td>Service Mgr</td>
+<td>CSM_AU_Implement_2026</td>
+<td>Lab 3 step 7</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="209-sign-off-checklist-create-configure-deploy">20.9 Sign-off checklist (CREATE → CONFIGURE → DEPLOY)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<ul>
+<li>[ ] <strong>CREATE:</strong> Plugins active · Guided Setup complete · Update Set started · Test users exist</li>
+<li>[ ] <strong>CONFIGURE:</strong> Account/Entitlement matrix · AWA pilot · Portal branded · SLA attaches · Flow active</li>
+<li>[ ] <strong>DEPLOY:</strong> ATF green · Update Set committed · Portal/Workspace smoke · Hypercare roster · CSAT enabled</li>
+<li>[ ] <strong>Evidence pack:</strong> Screenshots + sys_ids stored · Decision log signed · Rollback XML exported from <a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a></li>
+</ul>
+<blockquote>
+<p><strong>Next module:</strong> FSM handoff — see <a href="FSM.html">FSM.md §20</a> Lab 7 cross-reference and <a href="{BASE}/wm_order_list.do">{BASE}/wm_order_list.do</a>.</p>
+</blockquote>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

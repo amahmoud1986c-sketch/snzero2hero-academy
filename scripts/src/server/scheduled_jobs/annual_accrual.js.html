@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Script — annual_accrual.js | HR Leave Australia</title>
+  <link rel="stylesheet" href="../../../../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../../../../index.html">Portal</a>
+      <a href="../../../../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../../../../scripts/index.html">Scripts</a>
+      <a href="../../../../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../../../../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Script — annual_accrual.js</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+
+<p class="side-note">Copy this script into ServiceNow under application <code>x_786686_hr_leave</code> (Australia). Table/API names already use the current scope.</p>
+<div class="url-box">
+  <strong>Open on instance</strong>
+  <a href="{BASE}/$studio.do">Studio</a>
+  <a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+  <a href="{BASE}/sys_script_client_list.do">Client Scripts</a>
+  <a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a>
+</div>
+<p><strong>Source:</strong> <code>src/server/scheduled_jobs/annual_accrual.js</code></p>
+<pre><code class="language-javascript">/**
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: c84db0e8839f0b509f02b0d6feaad3c9
+ * Scheduled Job: Annual Leave Accrual
+ * Run: yearly (e.g. Jan 1)
+ *
+ * Creates a fresh balance row per employee for the new year if missing.
+ * Default entitlement is read from a property (fallback 21 annual days).
+ */
+(function annualAccrual() {
+
+    var year = new GlideDateTime().getYearLocalTime();
+    var annualEntitlement = parseInt(gs.getProperty(&#x27;x_786686_hr_leave.config.annual_days&#x27;, &#x27;21&#x27;), 10);
+
+    var emp = new GlideRecord(&#x27;x_786686_hr_leave_employee_v2&#x27;);
+    emp.query();
+
+    var created = 0;
+    while (emp.next()) {
+        // skip if a balance for this year/type already exists
+        var existing = new GlideRecord(&#x27;x_786686_hr_leave_bal_v2&#x27;);
+        existing.addQuery(&#x27;u_employee_ref&#x27;, emp.getUniqueValue());
+        existing.addQuery(&#x27;u_year&#x27;, year);
+        existing.addQuery(&#x27;u_leave_type&#x27;, &#x27;annual&#x27;);
+        existing.query();
+        if (existing.hasNext()) continue;
+
+        var bal = new GlideRecord(&#x27;x_786686_hr_leave_bal_v2&#x27;);
+        bal.initialize();
+        bal.u_employee_ref = emp.getUniqueValue();
+        bal.u_year = year;
+        bal.u_leave_type = &#x27;annual&#x27;;
+        bal.u_entitled = annualEntitlement;
+        bal.u_used = 0;
+        bal.u_remaining = annualEntitlement;
+        bal.insert();
+        created++;
+    }
+
+    gs.info(&#x27;[HRLX] Annual accrual &#x27; + year + &#x27; created &#x27; + created + &#x27; balance rows.&#x27;);
+})();
+</code></pre>
+
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../../../../assets/docs.js"></script>
+
+<script src="../../../../assets/author-brand.js" defer></script>
+</body>
+</html>

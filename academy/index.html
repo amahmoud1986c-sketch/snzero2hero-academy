@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zero²Hero Academy — تعلّم كل شيء في ServiceNow من الصفر للاحتراف | snzero2hero.com</title>
+  <meta name="description" content="Zero²Hero Academy: Learn everything in ServiceNow from Zero to Hero — chapters 00–16, all modules ITSM CMDB ITOM ITAM HRSD CSM FSM SPM GRC/IRM — Arabic + English · Practical PDI labs · snzero2hero.com" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+  <style>
+    :root {
+      --z2h: #062a4a;
+      --z2h-mid: #0f4c81;
+      --z2h-accent: #0ea5a4;
+      --z2h-green: #047857;
+    }
+    .mega-header {
+      min-height: 0;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background:
+        radial-gradient(520px 220px at 90% 0%, rgba(14, 165, 164, .4), transparent 55%),
+        linear-gradient(135deg, #041c30 0%, #0f4c81 58%, #0ea5a4 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 1.15rem 1.35rem 1.25rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 12px 32px rgba(4, 28, 48, .28);
+      position: relative;
+      overflow: hidden;
+    }
+    .mega-header .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.28);
+      padding: .22rem .65rem;
+      border-radius: 999px;
+      margin-bottom: .55rem;
+      width: fit-content;
+    }
+    .mega-header .brand-name {
+      margin: 0 0 .25rem;
+      font-size: clamp(1.55rem, 4vw, 2.15rem);
+      line-height: 1.15;
+      font-weight: 900;
+      letter-spacing: -.02em;
+    }
+    .mega-header .brand-name .accent { color: #99f6e4; }
+    .mega-header .tagline-ar {
+      margin: 0 0 .3rem;
+      font-size: clamp(.92rem, 1.8vw, 1.05rem);
+      font-weight: 600;
+      max-width: 46rem;
+      line-height: 1.45;
+      opacity: .96;
+    }
+    .mega-header .tagline-en {
+      margin: 0;
+      font-size: clamp(.85rem, 1.6vw, .95rem);
+      opacity: .88;
+      max-width: 46rem;
+      line-height: 1.4;
+      direction: ltr;
+      text-align: left;
+    }
+    .mega-header .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: .85rem;
+      position: relative;
+      z-index: 1;
+    }
+    .mega-header .cta a {
+      background: #fff;
+      color: #062a4a;
+      font-weight: 800;
+      padding: .48rem .95rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: .88rem;
+    }
+    .mega-header .cta a.ghost {
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,.75);
+    }
+    .bilingual-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    @media (max-width: 800px) {
+      .bilingual-box { grid-template-columns: 1fr; }
+    }
+    .bilingual-box article {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 1.15rem 1.25rem;
+    }
+    .bilingual-box h2 {
+      margin: 0 0 .55rem;
+      font-size: 1.15rem;
+      color: var(--z2h-mid);
+    }
+    .bilingual-box p { margin: 0; color: #334155; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 1.5rem; }
+    .pill {
+      background: #e0f2fe; color: #0c4a6e; font-size: .8rem; font-weight: 800;
+      padding: .32rem .72rem; border-radius: 999px;
+    }
+    .track-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: .85rem;
+      margin: 1rem 0 2rem;
+    }
+    .track-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 1rem 1.05rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .track-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, .08);
+    }
+    .track-card .num {
+      font-size: .72rem; font-weight: 900; color: var(--z2h-accent); letter-spacing: .04em;
+    }
+    .track-card h3 { margin: .35rem 0 .35rem; font-size: 1.02rem; color: var(--z2h-mid); }
+    .track-card p { margin: 0; font-size: .86rem; color: #475569; }
+    .section-title {
+      margin: 0 0 .35rem;
+      font-size: 1.45rem;
+      color: var(--z2h);
+    }
+    .section-sub {
+      margin: 0 0 1rem;
+      color: #64748b;
+      font-size: .95rem;
+    }
+    .foot-note {
+      margin-top: 2rem;
+      padding: 1rem;
+      border-top: 1px solid #e2e8f0;
+      font-size: .85rem;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Zero²Hero Academy · snzero2hero.com</div>
+    <nav>
+      <a href="index.html">Academy</a>
+      <a href="../index.html">Full Portal</a>
+      <a href="../VISUAL_FROM_SCRATCH_00_16.html">00–16</a>
+      <a href="../modules/00_MODULES_INDEX.html">Modules</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <span class="badge">AR + EN</span>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <!-- MEGA HEADER — bilingual Zero to Hero -->
+    <section class="mega-header" aria-label="Zero2Hero Academy hero">
+      <div class="eyebrow">snzero2hero.com · Full ServiceNow Platform</div>
+      <h1 class="brand-name">
+        Zero<span class="accent">²</span>Hero Academy
+      </h1>
+      <p class="tagline-ar">
+        تعلّم <strong>كل شيء في ServiceNow</strong> من الصفر للاحتراف · فصول 00→16 · كل الموديولات · معامل PDI
+      </p>
+      <p class="tagline-en">
+        Learn <strong>everything in ServiceNow</strong> — Zero to Hero · Chapters 00→16 · all modules · bilingual AR + EN.
+      </p>
+      <div class="cta">
+        <a href="../VISUAL_FROM_SCRATCH_00_16.html">ابدأ الآن · Start 00–16</a>
+        <a class="ghost" href="../modules/00_MODULES_INDEX.html">كل الموديولات · Modules</a>
+        <a class="ghost" href="../modules/STUDY_ROADMAP.html">خطة الدراسة · Roadmap</a>
+      </div>
+    </section>
+
+    <div class="bilingual-box">
+      <article>
+        <h2>ماذا تتعلم؟ (عربي)</h2>
+        <p>
+          من أول إنشاء تطبيق مخصص (HR Leave) حتى احتراف الموديولات:
+          ITSM، CMDB، ITOM، ITAM، HRSD، CSM، FSM، SPM، GRC/IRM —
+          مع Playbooks تنفيذ، مختبرات E2E، ومسارات CIS.
+          الهدف: تصبح Implementer قادر تنفّذ من الصفر للإنتاج.
+        </p>
+      </article>
+      <article dir="ltr" style="text-align:left">
+        <h2>What you learn (English)</h2>
+        <p>
+          From building a scoped app (HR Leave) to mastering platform modules:
+          ITSM, CMDB, ITOM, ITAM, HRSD, CSM, FSM, SPM, GRC/IRM —
+          plus implementation playbooks, E2E labs, and CIS exam paths.
+          Goal: become an Implementer who can deliver scratch → production.
+        </p>
+      </article>
+    </div>
+
+    <div class="pill-row">
+      <span class="pill">Zero → Hero</span>
+      <span class="pill">00 → 16 Chapters</span>
+      <span class="pill">All Modules</span>
+      <span class="pill">ITSM · CMDB · GRC · SPM</span>
+      <span class="pill">HR Leave Labs</span>
+      <span class="pill">CIS Ready</span>
+      <span class="pill">AR + EN</span>
+    </div>
+
+    <h2 class="section-title">مسار الفصول · Chapters 00–16</h2>
+    <p class="section-sub" dir="ltr">Studio · Admin · Catalog · Portal · Workspace · Notifications · Reports · ATF · Integration · AI · SDK</p>
+    <div class="track-grid">
+      <a class="track-card" href="../VISUAL_FROM_SCRATCH_00_16.html"><div class="num">START</div><h3>Visual From Scratch</h3><p>خرائط · تدفقات · روابط · Diagrams &amp; URLs</p></a>
+      <a class="track-card" href="../00_MASTER_STUDY_PLAN_2WEEKS.html"><div class="num">00</div><h3>Study Plan</h3><p>خطة أسبوعين · 2-week map</p></a>
+      <a class="track-card" href="../01_DEVELOPMENT.html"><div class="num">01</div><h3>Development</h3><p>Tables · BR · Flow · Scripts</p></a>
+      <a class="track-card" href="../02_ADMINISTRATION.html"><div class="num">02</div><h3>Administration</h3><p>Roles · ACL · Properties</p></a>
+      <a class="track-card" href="../03_SERVICE_CATALOG.html"><div class="num">03</div><h3>Service Catalog</h3><p>Record Producer</p></a>
+      <a class="track-card" href="../04_SERVICE_PORTAL.html"><div class="num">04</div><h3>Service Portal</h3><p>Widgets · Pages</p></a>
+      <a class="track-card" href="../05_WORKSPACE_UIBUILDER.html"><div class="num">05</div><h3>UI Builder</h3><p>Workspace</p></a>
+      <a class="track-card" href="../06_NOTIFICATIONS_EVENTS_JOBS.html"><div class="num">06</div><h3>Notifications</h3><p>Events · Email · Jobs</p></a>
+      <a class="track-card" href="../07_REPORTS_DASHBOARDS_PA.html"><div class="num">07</div><h3>Reports &amp; PA</h3><p>Dashboards · Indicators</p></a>
+      <a class="track-card" href="../08_ATF_TESTING.html"><div class="num">08</div><h3>ATF Testing</h3><p>Automated tests</p></a>
+      <a class="track-card" href="../09_MODULES_AND_INTEGRATION.html"><div class="num">09</div><h3>Modules &amp; Flow</h3><p>Menus · Approvals</p></a>
+      <a class="track-card" href="../10_IMPLEMENTATION_AND_CONFIG.html"><div class="num">10</div><h3>Implementation</h3><p>E2E · Update Set</p></a>
+      <a class="track-card" href="../11_SDK_CURSOR_CLAUDE.html"><div class="num">11</div><h3>SDK / Studio</h3><p>Cursor · Fluent</p></a>
+      <a class="track-card" href="../12_INTEGRATION_FULL_GUIDE.html"><div class="num">12</div><h3>Integration</h3><p>REST In / Out</p></a>
+      <a class="track-card" href="../13_2HOUR_MASTER_SUMMARY.html"><div class="num">13</div><h3>2h Summary</h3><p>Quick revision</p></a>
+      <a class="track-card" href="../14_AI_SERVICENOW_AGENTS.html"><div class="num">14</div><h3>AI Agents</h3><p>Now Assist · VA</p></a>
+      <a class="track-card" href="../15_CLAUDE_CLI_CODE_SERVICENOW.html"><div class="num">15</div><h3>Scripts Pack</h3><p>Copy / Paste</p></a>
+      <a class="track-card" href="../16_SDK_FULL_DEV_ADMIN_FROM_SCRATCH.html"><div class="num">16</div><h3>Master Path</h3><p>E2E gate · الإغلاق</p></a>
+    </div>
+
+    <h2 class="section-title">كل الموديولات · All Modules Encyclopedia</h2>
+    <p class="section-sub">ITSM · CMDB · ITOM · ITAM · HRSD · CSM · FSM · SPM · GRC/IRM — من الصفر للتنفيذ الاحترافي</p>
+    <div class="track-grid">
+      <a class="track-card" href="../modules/ITSM.html"><div class="num">CIS-ITSM</div><h3>ITSM</h3><p>Incidents · Catalog · SLA · Change</p></a>
+      <a class="track-card" href="../modules/CMDB.html"><div class="num">CSDM</div><h3>CMDB</h3><p>CI · IRE · Health</p></a>
+      <a class="track-card" href="../modules/ITOM.html"><div class="num">Discovery</div><h3>ITOM</h3><p>MID · Events · Mapping</p></a>
+      <a class="track-card" href="../modules/ITAM.html"><div class="num">HAM/SAM</div><h3>ITAM</h3><p>Assets · Licenses</p></a>
+      <a class="track-card" href="../modules/HRSD.html"><div class="num">CIS-HR</div><h3>HRSD</h3><p>Employee Center · Cases</p></a>
+      <a class="track-card" href="../modules/CSM.html"><div class="num">CIS-CSM</div><h3>CSM</h3><p>Accounts · Entitlements</p></a>
+      <a class="track-card" href="../modules/FSM.html"><div class="num">CIS-FSM</div><h3>FSM</h3><p>Field · Work Orders</p></a>
+      <a class="track-card" href="../modules/SPM.html"><div class="num">CIS-SPM</div><h3>SPM</h3><p>Strategy → Demand → Project</p></a>
+      <a class="track-card" href="../modules/GRC.html"><div class="num">CIS-RC</div><h3>GRC / IRM</h3><p>Compliance · Risk · Audit · BCM</p></a>
+      <a class="track-card" href="../modules/implementation/INDEX.html"><div class="num">PRO</div><h3>Implementation Runbooks</h3><p>Scratch → Production</p></a>
+      <a class="track-card" href="../modules/MODULE_FULL_E2E_PRACTICE.html"><div class="num">LAB</div><h3>E2E Practice</h3><p>Full cycle labs</p></a>
+      <a class="track-card" href="../modules/MODULE_ZERO_TO_HERO_CONSULTING.html"><div class="num">CONSULT</div><h3>Consulting Cycle</h3><p>8-phase delivery</p></a>
+    </div>
+
+    <h2 class="section-title">تطبيق عملي · Practical HR Leave App</h2>
+    <div class="cards">
+      <a class="card" href="../01_DEVELOPMENT.html"><h3>Build the app</h3><p>Tables · Script Includes · BR · Flow</p></a>
+      <a class="card" href="../12_INTEGRATION_FULL_GUIDE.html"><h3>REST Integration</h3><p>Explorer · Inbound · Outbound</p></a>
+      <a class="card" href="../scripts/index.html"><h3>All Scripts</h3><p>Copy/paste ready</p></a>
+      <a class="card" href="../index.html"><h3>Full Docs Portal</h3><p>كل الملفات في مكان واحد</p></a>
+    </div>
+
+    <h2 class="section-title">شهادات ومقابلة · CIS &amp; Interview</h2>
+    <div class="cards">
+      <a class="card" href="../00_CIS_EXAM_INDEX.html"><h3>CIS Exam Index</h3><p>خريطة الشهادات</p></a>
+      <a class="card" href="../interview/00_MASTER_DEV_ADMIN_INTERVIEW.html"><h3>Interview Master</h3><p>Dev + Admin deep dive</p></a>
+      <a class="card" href="../MASTER_PRACTICE_GUIDE_ALL_TOPICS.html"><h3>Practice Screens</h3><p>Hands-on screens</p></a>
+    </div>
+
+    <div class="foot-note">
+      <strong>Zero²Hero Academy</strong> · <code>snzero2hero.com</code><br />
+      Built by <strong>Ahmed Mahmoud Abdelmaksoud</strong> (أحمد محمود عبدالمقصود) ·
+      <a href="https://www.linkedin.com/in/ahmed-abdelmaksoud-44917a89/" target="_blank" rel="noopener">LinkedIn</a><br />
+      Unofficial educational content. Not affiliated with ServiceNow, Inc.<br />
+      محتوى تعليمي غير رسمي — غير تابع لشركة ServiceNow.<br />
+      تعلّم كل شيء في ServiceNow من الصفر للاحتراف · Learn everything ServiceNow from Zero to Hero.
+    </div>
+  </main>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

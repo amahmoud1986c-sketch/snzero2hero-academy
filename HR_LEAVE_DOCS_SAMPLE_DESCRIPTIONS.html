@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HR Leave + Modules — Sample Descriptions (أوصاف نموذجية) | HR Leave Australia</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="scripts/index.html">Scripts</a>
+      <a href="modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>HR Leave + Modules — Sample Descriptions (أوصاف نموذجية)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/$studio.do">Studio</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/sys_script_client_list.do">Client Scripts</a>
+<a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a>
+</div>
+    <article class="content">
+<h1 id="hr-leave-modules-sample-descriptions">HR Leave + Modules — Sample Descriptions (أوصاف نموذجية)</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً (ملخص سريع):</strong> <a href="MASTER_ALL_IN_ONE_SUMMARY.html">MASTER_ALL_IN_ONE_SUMMARY.md</a> · HTML: <a href="html/MASTER_ALL_IN_ONE_SUMMARY.html">html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل الواحد:</strong> <a href="MASTER_ALL_IN_ONE.html">MASTER_ALL_IN_ONE.md</a> · HTML: <a href="html/MASTER_ALL_IN_ONE.html">html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات (New/Open):</strong> <a href="MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">MASTER_PRACTICE_GUIDE_ALL_TOPICS.md</a> · <a href="html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Platform: ServiceNow <strong>Australia</strong> · Scope <code>x_786686_hr_leave</code> · sys_id <code>c84db0e8839f0b509f02b0d6feaad3c9</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<blockquote>
+<p><strong>الغرض:</strong> وصف قصير لكل مستند تحت <code>HR_Leave_App</code> (الجذر + <code>modules</code> + <code>interview</code>).<br />
+<strong>العرض:</strong> الصفحة LTR — لا تغليف <code>dir="rtl"</code> — المسارات والسكربتات داخل <code>`backticks`</code>.<br />
+<strong>الأسلوب:</strong> عربية توضّح + إنجليزية لأسماء ServiceNow.</p>
+</blockquote>
+<p><strong>آخر تحديث:</strong> 2026-09-08<br />
+<strong>معاينة:</strong> <code>Ctrl+Shift+V</code> · CSS: <code>docs/rtl-bilingual.css</code> + <code>HR_Leave_App/markdown-bidi-preview.css</code></p>
+<hr />
+<h2 id="_1">كيف تقرأ الجدول؟</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<table>
+<thead>
+<tr>
+<th>عمود</th>
+<th>معناه</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>الملف</td>
+<td>المسار النسبي من <code>C:\SVCProject</code></td>
+</tr>
+<tr>
+<td>لمن؟</td>
+<td>جمهور مقترح</td>
+</tr>
+<tr>
+<td>الوصف النموذجي</td>
+<td>جملة أو جملتان تكمّلان بعضهما (AR + EN)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1">1) نقطة البداية</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>الملف</th>
+<th>لمن؟</th>
+<th>الوصف النموذجي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HR_Leave_App/APPLICATION.md</code></td>
+<td>All</td>
+<td>هوية التطبيق على المثيل: Custom · Scope <code>x_786686_hr_leave</code> · sys_id.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/README.md</code></td>
+<td>All</td>
+<td>نقطة الدخول لتطبيق الإجازات وفهارس الملفات. ابدأ هنا قبل أي دليل تفصيلي.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/ROADMAP.md</code></td>
+<td>All</td>
+<td>خريطة الطريق الكاملة من الصفر للإنتاج — ترتيب القراءة والتنفيذ.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/ARABIC_ENGLISH_COMPLEMENTARY_NOTE.md</code></td>
+<td>Editors</td>
+<td>قواعد السطر المختلط (عربي يشرح، إنجليزي للمصطلحات) بدون RTL على الصفحة كلها.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/00_PLAN.md</code></td>
+<td>Impl</td>
+<td>خطة بناء التطبيق وربط كل مرحلة بملف الدليل المناسب.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/00_MASTER_STUDY_PLAN_2WEEKS.md</code></td>
+<td>Exam+Impl</td>
+<td>خطة مذاكرة أسبوعين Zero→Hero: إدارة + تطوير + موديولات + CIS.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/00_CIS_EXAM_INDEX.md</code></td>
+<td>Exam</td>
+<td>فهرس بنوك أسئلة CIS وربطها بملفات الموديولات.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/00_TUTORIAL_OPTIONS_REFERENCE.md</code></td>
+<td>All</td>
+<td>مرجع خيارات/بدائل داخل الـ tutorials حتى لا تُنسى مسارات Catalog/Flow البديلة.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-hr-leave-01-15">2) أدلة HR Leave الأساسية (01 → 15)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>الملف</th>
+<th>لمن؟</th>
+<th>الوصف النموذجي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HR_Leave_App/01_DEVELOPMENT.md</code></td>
+<td>Dev</td>
+<td>تطوير scoped app: Tables، Business Rules، Script Includes، Client Scripts لتطبيق الإجازات.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/01_DEVELOPMENT_OPTIONS.md</code></td>
+<td>Dev</td>
+<td>كل الحقول والبدائل في Studio لنطاق <code>x_786686_hr_leave</code>.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/02_ADMINISTRATION.md</code></td>
+<td>Admin</td>
+<td>Roles، Groups، ACL، خصائص النظام وحوكمة التطبيق.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/03_SERVICE_CATALOG.md</code></td>
+<td>Dev+Impl</td>
+<td>Service Catalog عملي: Catalog Item vs Record Producer لطلب الإجازة + ربط ITSM.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/04_SERVICE_PORTAL.md</code></td>
+<td>Dev+Impl</td>
+<td>Service Portal / Employee Center: Theme، Widgets، صفحات الموظف.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/05_WORKSPACE_UIBUILDER.md</code></td>
+<td>Dev</td>
+<td>Workspace + UI Builder لواجهة الوكيل (HR/Manager) مقابل Portal للموظف.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/06_NOTIFICATIONS_EVENTS_JOBS.md</code></td>
+<td>Dev+Admin</td>
+<td>Events، Notifications، و Scheduled Jobs لدورة الإجازة.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/07_REPORTS_DASHBOARDS_PA.md</code></td>
+<td>Admin</td>
+<td>Reports، Dashboards، و Performance Analytics لطلبات الإجازة.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/08_ATF_TESTING.md</code></td>
+<td>QA+Dev</td>
+<td>Automated Test Framework — اختبار آلي على غير الإنتاج.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/09_MODULES_AND_INTEGRATION.md</code></td>
+<td>Impl</td>
+<td>ربط التطبيق مع HRSD / Employee Center / ITSM دون كسر OOTB.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/10_IMPLEMENTATION_AND_CONFIG.md</code></td>
+<td>Impl</td>
+<td>تنفيذ وإعداد كامل على PDI (Australia / Zurich).</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/11_SDK_CURSOR_CLAUDE.md</code></td>
+<td>Dev</td>
+<td>ServiceNow SDK + Cursor + Claude لبناء تطبيقات Fluent محليًا.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/12_INTEGRATION_FULL_GUIDE.md</code></td>
+<td>Dev</td>
+<td>تكامل كامل: REST وارد/صادر، Integration Hub، وأنماط الربط.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/13_2HOUR_MASTER_SUMMARY.md</code></td>
+<td>All</td>
+<td>ملخص مكثّف (~ساعتين) لكل محاور HR Leave — مراجعة قبل مقابلة أو ديمو.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/14_AI_SERVICENOW_AGENTS.md</code></td>
+<td>Dev+Impl</td>
+<td>AI و Agents على ServiceNow (Now Assist وغيرها) وحالات الاستخدام.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/15_CLAUDE_CLI_CODE_SERVICENOW.md</code></td>
+<td>—</td>
+<td>Stub — المحتوى دُمج في الدليل الرئيسي SDK/Claude.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3">3) أدلة دورة كاملة (قديمة / مُحوَّلة)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>الملف</th>
+<th>لمن؟</th>
+<th>الوصف النموذجي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HR_Leave_App/SERVICENOW_HR_LEAVE_4HOUR_ONE_DAY_COMPLETE_GUIDE.md</code></td>
+<td>—</td>
+<td>Deprecated — يوجّه للدليل الأحدث؛ لا تستخدمه كمصدر تعلّم جديد.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/SERVICENOW_HR_LEAVE_FULL_CYCLE_COMPLETE_GUIDE.md</code></td>
+<td>—</td>
+<td>Deprecated — يوجّه لدليل CRM full-cycle في جذر المشروع.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>بديل يومي في الجذر:</strong> <code>SERVICENOW_ONE_DAY_HR_LEAVE_APP_PRACTICAL_GUIDE.md</code> — بناء HR Leave + Employee Service Hub في يوم واحد (URLs عملية).</p>
+<hr />
+<h2 id="4-hr_leave_appmodules">4) الموديولات — <code>HR_Leave_App/modules</code></h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="41">4.1 فهارس ومسارات</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>الملف</th>
+<th>لمن؟</th>
+<th>الوصف النموذجي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HR_Leave_App/modules/00_MODULES_INDEX.md</code></td>
+<td>All</td>
+<td>موسوعة الموديولات Zero→Pro — نقطة الدخول قبل أي ملف موديول.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/modules/STUDY_ROADMAP.md</code></td>
+<td>All</td>
+<td>خريطة دراسة الموديولات من الصفر للاحتراف وترتيب الأولويات.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-zero-pro">4.2 موديولات المنتج (Zero → Pro)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>الملف</th>
+<th>لمن؟</th>
+<th>الوصف النموذجي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HR_Leave_App/modules/ITSM.md</code></td>
+<td>Admin+Exam</td>
+<td>IT Service Management: Incident / Problem / Change من صفر لمستوى احترافي + CIS-ITSM.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/modules/CMDB.md</code></td>
+<td>Impl+Exam</td>
+<td>Configuration Management Database: CI، علاقات، CSDM — أساس Data Foundations.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/modules/ITOM.md</code></td>
+<td>Impl</td>
+<td>IT Operations Management: Discovery، Event Management، وعمليات التشغيل.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/modules/ITAM.md</code></td>
+<td>Impl</td>
+<td>IT Asset Management: دورة الأصل من الطلب للتخريد.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/modules/HRSD.md</code></td>
+<td>Impl+Exam</td>
+<td>HR Service Delivery: Cases، COE، Employee Center — أقرب موديول لـ HR Leave.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/modules/CSM.md</code></td>
+<td>Impl+Exam</td>
+<td>Customer Service Management: Case، Account، عمليات خدمة العملاء.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/modules/FSM.md</code></td>
+<td>Impl</td>
+<td>Field Service Management: جدولة وعمل ميداني ووكلاء FSM.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/modules/GRC.md</code></td>
+<td>Impl+Exam</td>
+<td>GRC / IRM: سياسة، مخاطر، امتثال.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/modules/SPM.md</code></td>
+<td>Impl+Exam</td>
+<td>Strategic Portfolio Management: محافظ ومشاريع وطلب الطلبات.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/modules/DEVOPS.md</code></td>
+<td>Dev+Impl</td>
+<td>DevOps: Change Velocity وربط CI/CD مع المنصة.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/modules/SECOPS.md</code></td>
+<td>Impl</td>
+<td>Security Operations: SIR و SecOps (playbooks / MITRE).</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/modules/APP_ENGINE.md</code></td>
+<td>Dev</td>
+<td>App Engine / Creator Workflows — بناء Low-Code.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43">4.3 ملفات مساعدة عبر الموديولات</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>الملف</th>
+<th>لمن؟</th>
+<th>الوصف النموذجي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HR_Leave_App/modules/MODULE_END_USER_PLAYBOOKS.md</code></td>
+<td>Trainers+UAT</td>
+<td>سيناريوهات المستخدم النهائي لكل موديول ودور.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/modules/MODULE_FROM_SCRATCH_30DAY.md</code></td>
+<td>Impl Leads</td>
+<td>Sprint موحّد 30 يومًا من الصفر لكل موديول.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/modules/MODULE_FULL_E2E_PRACTICE.md</code></td>
+<td>All</td>
+<td>تمارين End-to-End عملية عبر الموديولات على المثيل.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/modules/MODULE_IMPLEMENTATION_PLAYBOOK.md</code></td>
+<td>Consultants</td>
+<td>سيناريوهات تنفيذ: plugins، أدوار، وما يُطوَّر عادة قبل kickoff.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/modules/MODULE_OPTIONS_AND_INSTANCE_NOTES.md</code></td>
+<td>All</td>
+<td>خيارات قد تختلف حسب الـ plugins/المثيل (PDI ≠ عميل).</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/modules/MODULE_ZERO_TO_HERO_CONSULTING.md</code></td>
+<td>Consultants</td>
+<td>دورة استشارية كاملة من الاكتشاف للتسليم.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-hr_leave_appinterview">5) المقابلات — <code>HR_Leave_App/interview</code></h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>الملف</th>
+<th>لمن؟</th>
+<th>الوصف النموذجي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HR_Leave_App/interview/README.md</code></td>
+<td>Candidates</td>
+<td>فهرس مواد المقابلة وكيفية استخدامها.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/interview/00_MASTER_DEV_ADMIN_INTERVIEW.md</code></td>
+<td>Dev+Admin</td>
+<td>دليل مقابلة يغطي Development + Administration.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/interview/01_SCRIPTS_FUNCTIONS_DEEP_DIVE.md</code></td>
+<td>Dev</td>
+<td>مرجع دوال وسكربتات (Script Includes وغيرها) لأسئلة تقنية دقيقة.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/interview/MODULES_INTERVIEW_REVISION.md</code></td>
+<td>Candidates</td>
+<td>مراجعة سريعة: ITSM · CSM · FSM · CMDB · SPM · GRC · ITOM · ITAM · HRSD.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/interview/PLAT4MATION_INTERVIEW_PREP.md</code></td>
+<td>Candidates</td>
+<td>تحضير مقابلة Senior Technical Consultant لـ Plat4mation.</td>
+</tr>
+<tr>
+<td><code>HR_Leave_App/interview/PLAT4MATION_HR_REPLY_TEMPLATE.md</code></td>
+<td>Candidates</td>
+<td>قالب رد بريدي لـ HR (معلومات المرشح).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-sample-learning-path">6) ترتيب قراءة مقترح (Sample learning path)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ol>
+<li><code>README.md</code> → <code>ROADMAP.md</code> أو <code>00_MASTER_STUDY_PLAN_2WEEKS.md</code></li>
+<li>بناء التطبيق: <code>01_DEVELOPMENT</code> → <code>02_ADMINISTRATION</code> → <code>03_SERVICE_CATALOG</code> → <code>04_SERVICE_PORTAL</code></li>
+<li>أتمتة وجودة: <code>06</code> → <code>08</code> → <code>07</code></li>
+<li>موديولات: <code>modules/00_MODULES_INDEX</code> → <code>STUDY_ROADMAP</code> → ابدأ بـ <code>ITSM</code> ثم <code>HRSD</code> ثم <code>CMDB</code></li>
+<li>مقابلة: <code>interview/README</code> → <code>00_MASTER…</code> → <code>MODULES_INTERVIEW_REVISION</code></li>
+</ol>
+<hr />
+<h2 id="7-rtl">7) حالة RTL على مستوى المشروع كله</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>البند</th>
+<th>الحالة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ملفات <code>.md</code> تحت <code>C:\SVCProject</code></td>
+<td>لا أغلفة <code>&lt;div dir="rtl"&gt;</code> حيّة على الصفحة</td>
+</tr>
+<tr>
+<td>CSS المعاينة</td>
+<td><code>docs/rtl-bilingual.css</code> + <code>HR_Leave_App/markdown-bidi-preview.css</code> عبر <code>.vscode/settings.json</code></td>
+</tr>
+<tr>
+<td>إزالة الأغلفة إن رجعت</td>
+<td><code>python tools\remove_fullpage_rtl_wrappers.py</code></td>
+</tr>
+<tr>
+<td>فهرس أوسع لكل المشروع</td>
+<td><code>PROJECT_FILES_MASTER_INDEX_AR.md</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-one-liners">8) أوصاف قصيرة جاهزة للنسخ (One-liners)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code>README — نقطة دخول تطبيق الإجازات.
+ROADMAP — ترتيب التنفيذ من الصفر للإنتاج.
+00_PLAN — خطة البناء مربوطة بالملفات.
+00_MASTER_STUDY_PLAN_2WEEKS — مذاكرة أسبوعين Zero→Hero.
+00_CIS_EXAM_INDEX — فهرس امتحانات CIS.
+01_DEVELOPMENT — تطوير الجداول والسكربتات.
+01_DEVELOPMENT_OPTIONS — حقول وبدائل Studio.
+02_ADMINISTRATION — Roles / ACL / حوكمة.
+03_SERVICE_CATALOG — Catalog Item و Record Producer.
+04_SERVICE_PORTAL — Portal و Employee Center.
+05_WORKSPACE_UIBUILDER — Workspace للوكيل عبر UI Builder.
+06_NOTIFICATIONS_EVENTS_JOBS — أحداث وإشعارات وجداول.
+07_REPORTS_DASHBOARDS_PA — تقارير ولوحات و PA.
+08_ATF_TESTING — اختبار آلي ATF.
+09_MODULES_AND_INTEGRATION — ربط HRSD/ITSM.
+10_IMPLEMENTATION_AND_CONFIG — تنفيذ على PDI.
+11_SDK_CURSOR_CLAUDE — SDK + Cursor + Claude.
+12_INTEGRATION_FULL_GUIDE — REST و Integration Hub.
+13_2HOUR_MASTER_SUMMARY — مراجعة مكثّفة ساعتين.
+14_AI_SERVICENOW_AGENTS — AI و Agents.
+ITSM — Incident/Problem/Change Zero→Pro.
+CMDB — CI و CSDM Zero→Pro.
+ITOM — Discovery و Events Zero→Pro.
+ITAM — دورة الأصول Zero→Pro.
+HRSD — HR Cases و Employee Center Zero→Pro.
+CSM — Customer Case Zero→Pro.
+FSM — Field Service Zero→Pro.
+GRC — Governance/Risk/Compliance Zero→Pro.
+SPM — Portfolio و Projects Zero→Pro.
+DEVOPS — Change Velocity و CI/CD.
+SECOPS — Security Operations / SIR.
+APP_ENGINE — App Engine Low-Code.
+</code></pre>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="assets/docs.js"></script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

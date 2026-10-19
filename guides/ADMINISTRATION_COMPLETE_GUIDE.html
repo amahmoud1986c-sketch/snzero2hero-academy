@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ServiceNow Administration Complete Guide — دليل الإدارة الشامل | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>ServiceNow Administration Complete Guide — دليل الإدارة الشامل</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_user_list.do">Users</a>
+<a href="{BASE}/sys_user_role_list.do">Roles</a>
+<a href="{BASE}/sys_security_acl_list.do">ACL</a>
+<a href="{BASE}/sys_update_set_list.do">Update Sets</a>
+</div>
+    <article class="content">
+<h1 id="servicenow-administration-complete-guide">ServiceNow Administration Complete Guide — دليل الإدارة الشامل</h1>
+<blockquote>
+<p><strong>Platform:</strong> ServiceNow Australia (Sep 2026)<br />
+دليل شامل لإدارة النظام والمستخدمين والأمان</p>
+</blockquote>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<ol>
+<li><a href="#1-user-administration">User Administration</a></li>
+<li><a href="#2-group-management">Group Management</a></li>
+<li><a href="#3-role-management">Role Management</a></li>
+<li><a href="#4-security-and-acls">Security and ACLs</a></li>
+<li><a href="#5-system-properties">System Properties</a></li>
+<li><a href="#6-email-and-notifications">Email and Notifications</a></li>
+<li><a href="#7-scheduled-jobs">Scheduled Jobs</a></li>
+<li><a href="#8-import-and-transform">Import and Transform</a></li>
+<li><a href="#9-instance-management">Instance Management</a></li>
+<li><a href="#10-audit-and-compliance">Audit and Compliance</a></li>
+</ol>
+<hr />
+<h2 id="1-user-administration">1. User Administration</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/sys_user_list.do">{BASE}/sys_user_list.do</a></p>
+<h3 id="create-user">Create User</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<pre><code class="language-javascript">var gr = new GlideRecord('sys_user');
+gr.initialize();
+gr.user_name = 'ahmed.hassan';
+gr.first_name = 'Ahmed';
+gr.last_name = 'Hassan';
+gr.email = 'ahmed@company.com';
+gr.active = true;
+gr.insert();
+</code></pre>
+<h3 id="bulk-user-import">Bulk User Import</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<pre><code class="language-javascript">var users = [
+    { user_name: 'user1', first_name: 'User', last_name: 'One', email: 'user1@co.com' },
+    { user_name: 'user2', first_name: 'User', last_name: 'Two', email: 'user2@co.com' }
+];
+
+for (var i = 0; i &lt; users.length; i++) {
+    var data = users[i];
+    var gr = new GlideRecord('sys_user');
+    if (!gr.get('user_name', data.user_name)) {
+        gr.initialize();
+        gr.user_name = data.user_name;
+        gr.first_name = data.first_name;
+        gr.last_name = data.last_name;
+        gr.email = data.email;
+        gr.active = true;
+        gr.insert();
+        gs.info('Created: ' + data.user_name);
+    }
+}
+</code></pre>
+<hr />
+<h2 id="2-group-management">2. Group Management</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/sys_user_group_list.do">{BASE}/sys_user_group_list.do</a></p>
+<h3 id="create-groups">Create Groups</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<pre><code class="language-javascript">var groups = [
+    { name: 'HR Leave Approvers', roles: ['x_786686_hr_leave.manager'] },
+    { name: 'HR Leave Admins', roles: ['x_786686_hr_leave.hr_admin'] }
+];
+
+for (var i = 0; i &lt; groups.length; i++) {
+    var data = groups[i];
+    var gr = new GlideRecord('sys_user_group');
+    if (!gr.get('name', data.name)) {
+        gr.initialize();
+        gr.name = data.name;
+        gr.active = true;
+        var groupId = gr.insert();
+
+        // Add roles
+        for (var j = 0; j &lt; data.roles.length; j++) {
+            var role = new GlideRecord('sys_user_role');
+            if (role.get('name', data.roles[j])) {
+                var grRole = new GlideRecord('sys_group_has_role');
+                grRole.initialize();
+                grRole.group = groupId;
+                grRole.role = role.sys_id;
+                grRole.insert();
+            }
+        }
+    }
+}
+</code></pre>
+<h3 id="add-user-to-group">Add User to Group</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<pre><code class="language-javascript">function addUserToGroup(username, groupName) {
+    var user = new GlideRecord('sys_user');
+    var group = new GlideRecord('sys_user_group');
+
+    if (!user.get('user_name', username) || !group.get('name', groupName)) {
+        return false;
+    }
+
+    var member = new GlideRecord('sys_user_grmember');
+    member.addQuery('user', user.sys_id);
+    member.addQuery('group', group.sys_id);
+    member.query();
+
+    if (!member.hasNext()) {
+        member.initialize();
+        member.user = user.sys_id;
+        member.group = group.sys_id;
+        member.insert();
+        return true;
+    }
+    return false;
+}
+</code></pre>
+<hr />
+<h2 id="3-role-management">3. Role Management</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/sys_user_role_list.do">{BASE}/sys_user_role_list.do</a></p>
+<h3 id="create-application-roles">Create Application Roles</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<pre><code class="language-javascript">var roles = [
+    { name: 'x_786686_hr_leave.employee', desc: 'Base employee role' },
+    { name: 'x_786686_hr_leave.manager', desc: 'Manager approval role', contains: ['x_786686_hr_leave.employee'] },
+    { name: 'x_786686_hr_leave.hr_admin', desc: 'Full admin', contains: ['x_786686_hr_leave.manager'] }
+];
+
+for (var i = 0; i &lt; roles.length; i++) {
+    var data = roles[i];
+    var role = new GlideRecord('sys_user_role');
+    if (!role.get('name', data.name)) {
+        role.initialize();
+        role.name = data.name;
+        role.description = data.desc;
+        var roleId = role.insert();
+
+        if (data.contains) {
+            for (var j = 0; j &lt; data.contains.length; j++) {
+                var child = new GlideRecord('sys_user_role');
+                if (child.get('name', data.contains[j])) {
+                    var contain = new GlideRecord('sys_user_role_contains');
+                    contain.initialize();
+                    contain.role = roleId;
+                    contain.contains = child.sys_id;
+                    contain.insert();
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<h3 id="role-audit">Role Audit</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<pre><code class="language-javascript">function auditRoles(rolePrefix) {
+    var report = [];
+
+    var roles = new GlideRecord('sys_user_role');
+    roles.addQuery('name', 'STARTSWITH', rolePrefix);
+    roles.query();
+
+    while (roles.next()) {
+        var info = {
+            name: roles.name.toString(),
+            direct_users: 0,
+            groups: []
+        };
+
+        // Count direct assignments
+        var ur = new GlideAggregate('sys_user_has_role');
+        ur.addQuery('role', roles.sys_id);
+        ur.addAggregate('COUNT');
+        ur.query();
+        if (ur.next()) info.direct_users = parseInt(ur.getAggregate('COUNT'));
+
+        // Get groups
+        var gr = new GlideRecord('sys_group_has_role');
+        gr.addQuery('role', roles.sys_id);
+        gr.query();
+        while (gr.next()) {
+            info.groups.push(gr.group.getDisplayValue());
+        }
+
+        report.push(info);
+    }
+    return report;
+}
+
+gs.info(JSON.stringify(auditRoles('x_786686_hr_leave'), null, 2));
+</code></pre>
+<hr />
+<h2 id="4-security-and-acls">4. Security and ACLs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/sys_security_acl_list.do">{BASE}/sys_security_acl_list.do</a></p>
+<h3 id="acl-examples">ACL Examples</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<pre><code class="language-javascript">// Read own records only
+// Table: x_786686_hr_leave_request
+// Operation: read
+// Role: x_786686_hr_leave.employee
+
+(function executeACL() {
+    if (gs.hasRole('x_786686_hr_leave.hr_admin')) return true;
+
+    if (gs.hasRole('x_786686_hr_leave.manager')) {
+        return current.employee.manager == gs.getUserID() ||
+               current.employee == gs.getUserID();
+    }
+
+    return current.employee == gs.getUserID();
+})()
+
+// Write only draft records
+// Operation: write
+(function executeACL() {
+    if (gs.hasRole('x_786686_hr_leave.hr_admin')) return true;
+
+    return current.employee == gs.getUserID() &amp;&amp; current.state == 1;
+})()
+</code></pre>
+<h3 id="data-policy">Data Policy</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_ui_policy_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">UI Policies</a><a href="{BASE}/sys_ui_policy_action_list.do">UI Policy Actions</a><a href="{BASE}/sys_data_policy2_list.do?sysparm_query=model_tableSTARTSWITHx_786686_hr_leave">Data Policies</a></nav>
+<pre><code class="language-yaml">Table: x_786686_hr_leave_request
+Condition: state != 1  # Not draft
+Apply to: All
+
+Actions:
+  - leave_type: Read only
+  - start_date: Read only
+  - end_date: Read only
+  - employee: Read only
+</code></pre>
+<hr />
+<h2 id="5-system-properties">5. System Properties</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/sys_properties_list.do">{BASE}/sys_properties_list.do</a></p>
+<h3 id="create-properties">Create Properties</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">var props = [
+    { name: 'x_786686_hr_leave.max_days', value: '30', type: 'integer' },
+    { name: 'x_786686_hr_leave.carryover', value: '5', type: 'integer' },
+    { name: 'x_786686_hr_leave.notifications', value: 'true', type: 'true_false' },
+    { name: 'x_786686_hr_leave.hr_email', value: 'hr@company.com', type: 'string' }
+];
+
+for (var i = 0; i &lt; props.length; i++) {
+    var p = props[i];
+    var gr = new GlideRecord('sys_properties');
+    if (!gr.get('name', p.name)) {
+        gr.initialize();
+        gr.name = p.name;
+        gr.value = p.value;
+        gr.type = p.type;
+        gr.insert();
+    }
+}
+</code></pre>
+<h3 id="use-properties">Use Properties</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">var maxDays = parseInt(gs.getProperty('x_786686_hr_leave.max_days', '30'));
+var enabled = gs.getProperty('x_786686_hr_leave.notifications') == 'true';
+</code></pre>
+<hr />
+<h2 id="6-email-and-notifications">6. Email and Notifications</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/sysevent_email_action_list.do">{BASE}/sysevent_email_action_list.do</a></p>
+<h3 id="create-notification">Create Notification</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<pre><code class="language-yaml">Name: HR Leave - Request Submitted
+Table: x_786686_hr_leave_request
+When: Record inserted or updated
+Condition: State changes to 2
+
+Recipients: manager field
+
+Subject: Leave Request ${number} - ${employee.name}
+
+Body:
+Dear ${manager.first_name},
+
+A leave request needs your approval:
+
+Employee: ${employee.name}
+Type: ${leave_type}
+Dates: ${start_date} to ${end_date}
+Duration: ${duration_days} days
+
+Click here to review: ${URI_REF}
+
+HR System
+</code></pre>
+<h3 id="register-events">Register Events</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<pre><code class="language-javascript">var events = [
+    'x_786686_hr_leave.submitted',
+    'x_786686_hr_leave.approved',
+    'x_786686_hr_leave.rejected'
+];
+
+for (var i = 0; i &lt; events.length; i++) {
+    var gr = new GlideRecord('sysevent_register');
+    if (!gr.get('event_name', events[i])) {
+        gr.initialize();
+        gr.event_name = events[i];
+        gr.table = 'x_786686_hr_leave_request';
+        gr.insert();
+    }
+}
+
+// Queue event
+gs.eventQueue('x_786686_hr_leave.submitted', current,
+    current.employee.email, current.manager.email);
+</code></pre>
+<hr />
+<h2 id="7-scheduled-jobs">7. Scheduled Jobs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/sysauto_script_list.do">{BASE}/sysauto_script_list.do</a></p>
+<h3 id="daily-balance-check">Daily Balance Check</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// Run: Daily at 06:00
+
+(function() {
+    var threshold = 3;
+    var year = new GlideDateTime().getYearLocalTime();
+
+    var alloc = new GlideRecord('x_786686_hr_leave_allocation');
+    alloc.addQuery('year', year);
+    alloc.query();
+
+    while (alloc.next()) {
+        var remaining = (parseInt(alloc.days_allocated) || 0) - 
+                       (parseInt(alloc.days_used) || 0);
+
+        if (remaining &gt; 0 &amp;&amp; remaining &lt;= threshold) {
+            gs.eventQueue('x_786686_hr_leave.balance.low', alloc,
+                alloc.employee.email.toString(), remaining.toString());
+        }
+    }
+})();
+</code></pre>
+<h3 id="approval-reminder">Approval Reminder</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<pre><code class="language-javascript">// Run: Daily at 09:00
+
+(function() {
+    var twoDaysAgo = new GlideDateTime();
+    twoDaysAgo.addDays(-2);
+
+    var gr = new GlideRecord('x_786686_hr_leave_request');
+    gr.addQuery('state', 2);  // Awaiting approval
+    gr.addQuery('sys_updated_on', '&lt;', twoDaysAgo);
+    gr.query();
+
+    while (gr.next()) {
+        gs.eventQueue('x_786686_hr_leave.reminder', gr,
+            gr.manager.email.toString(), gr.number.toString());
+        gr.work_notes = 'Reminder sent to manager';
+        gr.update();
+    }
+})();
+</code></pre>
+<hr />
+<h2 id="8-import-and-transform">8. Import and Transform</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/sys_import_set_table_list.do">{BASE}/sys_import_set_table_list.do</a></p>
+<h3 id="transform-map-script">Transform Map Script</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// onBefore
+(function runTransformScript(source, map, log, target) {
+
+    if (!source.u_employee_id || !source.u_start_date) {
+        ignore = true;
+        return;
+    }
+
+    var emp = new GlideRecord('sys_user');
+    emp.addQuery('employee_number', source.u_employee_id);
+    emp.query();
+
+    if (emp.next()) {
+        source.u_employee_sys_id = emp.sys_id.toString();
+    } else {
+        log.error('Employee not found: ' + source.u_employee_id);
+        ignore = true;
+    }
+
+})(source, map, log, target);
+
+// Field Map: employee
+answer = source.u_employee_sys_id;
+
+// Field Map: leave_type
+answer = (function() {
+    var map = { 'AL': 'annual', 'SL': 'sick', 'EL': 'emergency' };
+    return map[source.u_leave_type] || 'annual';
+})();
+</code></pre>
+<hr />
+<h2 id="9-instance-management">9. Instance Management</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="health-check-script">Health Check Script</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">function instanceHealthCheck() {
+    var report = {
+        timestamp: new GlideDateTime().getDisplayValue(),
+        stats: {},
+        warnings: []
+    };
+
+    // Active users
+    var users = new GlideAggregate('sys_user');
+    users.addQuery('active', true);
+    users.addAggregate('COUNT');
+    users.query();
+    if (users.next()) {
+        report.stats.active_users = parseInt(users.getAggregate('COUNT'));
+    }
+
+    // Open incidents
+    var inc = new GlideAggregate('incident');
+    inc.addQuery('state', 'NOT IN', '6,7');
+    inc.addAggregate('COUNT');
+    inc.query();
+    if (inc.next()) {
+        report.stats.open_incidents = parseInt(inc.getAggregate('COUNT'));
+    }
+
+    // Pending leave requests
+    var leave = new GlideAggregate('x_786686_hr_leave_request');
+    leave.addQuery('state', 2);
+    leave.addAggregate('COUNT');
+    leave.query();
+    if (leave.next()) {
+        var pending = parseInt(leave.getAggregate('COUNT'));
+        report.stats.pending_leave = pending;
+        if (pending &gt; 50) {
+            report.warnings.push('High pending leave requests: ' + pending);
+        }
+    }
+
+    return report;
+}
+
+gs.info(JSON.stringify(instanceHealthCheck(), null, 2));
+</code></pre>
+<hr />
+<h2 id="10-audit-and-compliance">10. Audit and Compliance</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/sys_audit_list.do">{BASE}/sys_audit_list.do</a></p>
+<h3 id="audit-log-query">Audit Log Query</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<pre><code class="language-javascript">function getAuditTrail(table, recordId, days) {
+    var trail = [];
+    var since = new GlideDateTime();
+    since.addDays(-days);
+
+    var audit = new GlideRecord('sys_audit');
+    audit.addQuery('tablename', table);
+    audit.addQuery('documentkey', recordId);
+    audit.addQuery('sys_created_on', '&gt;=', since);
+    audit.orderByDesc('sys_created_on');
+    audit.query();
+
+    while (audit.next()) {
+        trail.push({
+            field: audit.fieldname.toString(),
+            old_value: audit.oldvalue.toString(),
+            new_value: audit.newvalue.toString(),
+            user: audit.user.getDisplayValue(),
+            time: audit.sys_created_on.getDisplayValue()
+        });
+    }
+    return trail;
+}
+</code></pre>
+<hr />
+<h2 id="direct-urls-reference">Direct URLs Reference</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Users</td>
+<td><a href="{BASE}/sys_user_list.do">{BASE}/sys_user_list.do</a></td>
+</tr>
+<tr>
+<td>Groups</td>
+<td><a href="{BASE}/sys_user_group_list.do">{BASE}/sys_user_group_list.do</a></td>
+</tr>
+<tr>
+<td>Roles</td>
+<td><a href="{BASE}/sys_user_role_list.do">{BASE}/sys_user_role_list.do</a></td>
+</tr>
+<tr>
+<td>ACLs</td>
+<td><a href="{BASE}/sys_security_acl_list.do">{BASE}/sys_security_acl_list.do</a></td>
+</tr>
+<tr>
+<td>Properties</td>
+<td><a href="{BASE}/sys_properties_list.do">{BASE}/sys_properties_list.do</a></td>
+</tr>
+<tr>
+<td>Notifications</td>
+<td><a href="{BASE}/sysevent_email_action_list.do">{BASE}/sysevent_email_action_list.do</a></td>
+</tr>
+<tr>
+<td>Scheduled Jobs</td>
+<td><a href="{BASE}/sysauto_script_list.do">{BASE}/sysauto_script_list.do</a></td>
+</tr>
+<tr>
+<td>Import Sets</td>
+<td><a href="{BASE}/sys_import_set_table_list.do">{BASE}/sys_import_set_table_list.do</a></td>
+</tr>
+<tr>
+<td>Audit</td>
+<td><a href="{BASE}/sys_audit_list.do">{BASE}/sys_audit_list.do</a></td>
+</tr>
+<tr>
+<td>Plugins</td>
+<td><a href="{BASE}/v_plugin_list.do">{BASE}/v_plugin_list.do</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Next:</strong> <a href="DEVELOPMENT_COMPLETE_GUIDE.html">Development Guide</a> | <a href="SERVICE_PORTALS_COMPLETE_GUIDE.html">Portals Guide</a></p>
+</blockquote>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

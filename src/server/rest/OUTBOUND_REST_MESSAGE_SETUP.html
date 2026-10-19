@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Outbound REST Message — Complete Setup (Dev + Admin) | HR Leave Australia</title>
+  <link rel="stylesheet" href="../../../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../../../index.html">Portal</a>
+      <a href="../../../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../../../scripts/index.html">Scripts</a>
+      <a href="../../../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../../../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Outbound REST Message — Complete Setup (Dev + Admin)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="outbound-rest-message-complete-setup-dev-admin">Outbound REST Message — Complete Setup (Dev + Admin)</h1>
+<blockquote>
+<p>Matches Studio screenshot: <strong>HR Leave</strong> → Outbound Integrations → <strong>REST Messages</strong> → HRLX ERP Push Decision<br />
+Fixes common issues: <strong>Default GET</strong> only, empty headers, endpoint not set, 401 on test.</p>
+<p>الأسلوب: عربية + إنجليزية تكمّلان بعضهما — بدون ترجمة حرفية لأسماء الشاشات.<br />
+Inbound test tool: REST API Explorer ($restapi.do)<br />
+Outbound test tool: <strong>REST Message → HTTP Method → Send</strong> (not Explorer)</p>
+</blockquote>
+<p>Related: 12_INTEGRATION_FULL_GUIDE.md §5 · outbound_rest_message.js · HRLXProIntegrationUtilsV2.js</p>
+<hr />
+<h2 id="phase-0-prerequisites-before-rest-message-form">Phase 0 — Prerequisites (before REST Message form)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<h3 id="01-application-scope">0.1 Application scope</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/$studio.do">Studio</a></nav>
+<p>Create everything inside <strong>HR Leave</strong> — same as inbound. — اختر <strong>HR Leave</strong> من App picker أو Studio قبل New.</p>
+<h3 id="02-system-property-erp-endpoint-mandatory">0.2 System property — ERP endpoint (mandatory)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>Navigate:<br />
+All &gt; System Properties → New (scope <strong>HR Leave</strong>) — <a href="{BASE}/sys_properties_list.do">Open direct</a></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Name</strong></td>
+<td>x_786686_hr_leave.config.erp_endpoint</td>
+</tr>
+<tr>
+<td><strong>Type</strong></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Value (lab)</strong></td>
+<td>https://webhook.site/your-unique-id or mock ERP URL</td>
+</tr>
+<tr>
+<td><strong>Value (prod)</strong></td>
+<td>Real ERP REST URL</td>
+</tr>
+<tr>
+<td><strong>Application</strong></td>
+<td>HR Leave</td>
+</tr>
+</tbody>
+</table>
+<p>في حقل <strong>Endpoint</strong> على REST Message تضع <strong>اسم الخاصية</strong> (كما في صورتك) — ليس URL ثابتًا في الكود.</p>
+<p>Verify:</p>
+<pre><code class="language-javascript">gs.info(gs.getProperty('x_786686_hr_leave.config.erp_endpoint'));
+</code></pre>
+<h3 id="03-sample-leave-record-for-test">0.3 Sample leave record for test</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>One record in x_786686_hr_leave_req_v2 with:<br />
+- u_state = approved or rejected<br />
+- u_number populated<br />
+- u_employee_ref linked to employee with u_employee_id = EMP001</p>
+<hr />
+<h2 id="phase-1-create-rest-message-container-every-field">Phase 1 — Create REST Message (container) — every field</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<h3 id="option-a-studio-matches-your-screenshot">Option A — Studio (matches your screenshot)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<ol>
+<li>URL: /now/studio</li>
+<li>Open app <strong>HR Leave</strong></li>
+<li>Left tree: <strong>Outbound Integrations</strong> → <strong>REST Messages</strong> → <strong>Create</strong> (or +)</li>
+</ol>
+<h3 id="option-b-classic-ui">Option B — Classic UI</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>Navigate:<br />
+All &gt; System Web Services &gt; Outbound &gt; REST Message → New — <a href="{BASE}/sys_rest_message_list.do">Open direct</a></p>
+<h3 id="rest-message-form-fill-exactly">REST Message form — fill exactly</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Name</strong></td>
+<td>Yes</td>
+<td>HRLX ERP Push Decision</td>
+<td>Unique; used in RESTMessageV2(&lsquo;Name&rsquo;, &lsquo;Method&rsquo;)</td>
+</tr>
+<tr>
+<td><strong>Application</strong></td>
+<td>Yes</td>
+<td>HR Leave</td>
+<td><strong>NOT Global</strong></td>
+</tr>
+<tr>
+<td><strong>Accessible from</strong></td>
+<td>Yes</td>
+<td>This application scope only</td>
+<td>Professional default</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>No</td>
+<td>Push leave approval/rejection to ERP/Payroll</td>
+<td>Handover doc</td>
+</tr>
+<tr>
+<td><strong>Endpoint</strong></td>
+<td>Yes</td>
+<td>x_786686_hr_leave.config.erp_endpoint</td>
+<td>Property <strong>name</strong> (see screenshot)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Screenshot check:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Your screen</th>
+<th>Correct?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name = HRLX ERP Push Decision</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Application = HR Leave</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Accessible from = scope only</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Endpoint = property name</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<p>Submit / Save the REST Message record. — هذا السجل = <strong>حاوية</strong> فقط. الـ POST والـ Body في <strong>HTTP Methods</strong> (الخطوة التالية).</p>
+<hr />
+<h2 id="phase-2-http-request-tab-message-level-headers">Phase 2 — HTTP Request tab (message-level headers)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>Open REST Message → tab <strong>HTTP Request</strong></p>
+<h3 id="http-headers-related-list-on-message">HTTP Headers (related list on message)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>Click <strong>Insert a new row</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+</tr>
+<tr>
+<td>Accept</td>
+<td>application/json (optional)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Option A:</strong> Headers here (apply to all methods)<br />
+<strong>Option B:</strong> Headers on HTTP Method only (POST method) — either works</p>
+<p>Submit.</p>
+<hr />
+<h2 id="phase-3-http-method-post-fix-default-get">Phase 3 — HTTP Method POST (fix “Default GET”)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>New REST Messages often create <strong>Default GET</strong> automatically. You need <strong>POST</strong> for ERP push. — في صورتك يظهر <strong>Default GET</strong> — أنشئ <strong>POST</strong> جديد (يمكنك حذف GET أو تجاهله).</p>
+<p>Related list: <strong>HTTP Methods</strong> → <strong>New</strong></p>
+<h3 id="http-method-every-field">HTTP Method — every field</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Name</strong></td>
+<td>Yes</td>
+<td>Push Decision</td>
+</tr>
+<tr>
+<td><strong>HTTP method</strong></td>
+<td>Yes</td>
+<td>POST</td>
+</tr>
+<tr>
+<td><strong>Endpoint override</strong></td>
+<td>No</td>
+<td>(empty)</td>
+</tr>
+<tr>
+<td><strong>HTTP method URL</strong></td>
+<td>No</td>
+<td>(empty)</td>
+</tr>
+<tr>
+<td><strong>Active</strong></td>
+<td>Yes</td>
+<td>true</td>
+</tr>
+<tr>
+<td><strong>Authentication type</strong></td>
+<td>Lab</td>
+<td>Basic or Inherit from parent</td>
+</tr>
+</tbody>
+</table>
+<p>Submit.</p>
+<h3 id="tab-http-request-on-method">Tab: HTTP Request (on method)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>Add header if not on parent:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tab-http-query-parameters-optional">Tab: HTTP Query Parameters (optional)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>Leave empty unless ERP needs query string.</p>
+<h3 id="tab-variables-for-non-table-fields">Tab: Variables (for non-table fields)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a></nav>
+<p>employee_id is on <strong>employee</strong> table, not leave req — define a <strong>variable</strong>:</p>
+<p>Related list <strong>Variables</strong> → New:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Name</strong></td>
+<td>employee_id</td>
+</tr>
+<tr>
+<td><strong>Value</strong></td>
+<td>(empty — set at runtime or test)</td>
+</tr>
+</tbody>
+</table>
+<p>Used in body as ${employee_id}.</p>
+<h3 id="tab-content-http-body-body-template">Tab: Content (HTTP Body) — body template</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>Paste:</p>
+<pre><code class="language-json">{
+ &quot;leave_number&quot;: &quot;${u_number}&quot;,
+ &quot;employee_id&quot;: &quot;${employee_id}&quot;,
+ &quot;state&quot;: &quot;${u_state}&quot;,
+ &quot;start_date&quot;: &quot;${u_start_date}&quot;,
+ &quot;end_date&quot;: &quot;${u_end_date}&quot;,
+ &quot;decision_time&quot;: &quot;${sys_updated_on}&quot;
+}
+</code></pre>
+<p><strong>Field mapping note:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>${u_number}</td>
+<td>Field on x_786686_hr_leave_req_v2</td>
+</tr>
+<tr>
+<td>${u_state}</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>${u_start_date} / ${u_end_date}</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>${sys_updated_on}</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>${employee_id}</td>
+<td><strong>Variable</strong> — set in Test or script from u_employee_ref.u_employee_id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Option B — script-only payload (no template variables):</strong><br />
+Use HRLXProIntegrationUtilsV2.outboundPushDecision() — builds JSON in script.</p>
+<p>Save HTTP Method.</p>
+<hr />
+<h2 id="phase-4-connection-credential-alias-auth">Phase 4 — Connection &amp; Credential Alias (auth)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>Navigate:<br />
+All &gt; System Web Services &gt; Connection &amp; Credential Aliases — <a href="{BASE}/sys_alias_list.do">Open direct</a></p>
+<h3 id="option-a-lab-basic">Option A — Lab (Basic)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>New <strong>Connection</strong> alias: x_786686_hr_leave_erp</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Type: HTTP(s)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>New <strong>Credential</strong> (Basic auth): ERP username/password</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Link credential to connection alias</td>
+</tr>
+<tr>
+<td>5</td>
+<td>On REST Message or HTTP Method → Authentication → select alias</td>
+</tr>
+</tbody>
+</table>
+<h3 id="option-b-production-oauth-20">Option B — Production (OAuth 2.0)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>OAuth profile for ERP token URL</td>
+</tr>
+<tr>
+<td>2</td>
+<td>OAuth credential on alias</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Attach to REST Message HTTP Method</td>
+</tr>
+</tbody>
+</table>
+<p>لا تضع كلمة المرور في System Property — فقط في Credential.</p>
+<hr />
+<h2 id="phase-5-test-outbound-rest-message-send-outbound-explorer">Phase 5 — Test outbound (REST Message “Send” = outbound Explorer)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<p>This is the outbound equivalent of REST API Explorer <strong>Send</strong>. — اختبار الصادر = من <strong>HTTP Method</strong> وليس من $restapi.do.</p>
+<h3 id="steps">Steps</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<ol>
+<li>Open <strong>REST Message</strong> HRLX ERP Push Decision</li>
+<li>Related list <strong>HTTP Methods</strong> → open <strong>Push Decision</strong> (POST)</li>
+<li>Click <strong>Send</strong> / <strong>Test</strong> / <strong>Preview</strong> (label varies by release)</li>
+<li>When prompted for test values:<br />
+ - <strong>Record:</strong> pick a leave request sys_id (approved/rejected)<br />
+ - <strong>Variable employee_id:</strong> enter EMP001 (or value from linked employee)</li>
+<li>Review <strong>Response</strong> panel:<br />
+ - 200 / 201 / 204 = success<br />
+ - 401 / 403 = fix Connection &amp; Credential Alias<br />
+ - 404 = wrong endpoint property URL<br />
+ - 400 = ERP rejected JSON — fix body template</li>
+<li>If using webhook.site — open webhook URL and confirm JSON received</li>
+</ol>
+<h3 id="troubleshooting">Troubleshooting</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Only <strong>Default GET</strong> exists</td>
+<td>Create POST method §3</td>
+</tr>
+<tr>
+<td>Test sends GET</td>
+<td>Open POST method, not GET</td>
+</tr>
+<tr>
+<td>Empty endpoint</td>
+<td>Set property erp_endpoint</td>
+</tr>
+<tr>
+<td>401 Unauthorized</td>
+<td>Credential alias + auth on method</td>
+</tr>
+<tr>
+<td>Variables empty in body</td>
+<td>Set employee_id in Variables or Test form</td>
+</tr>
+<tr>
+<td>Works in Test, fails in Flow</td>
+<td>Flow runs as different user — use system/alias</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="phase-6-call-from-flow-after-test-ok">Phase 6 — Call from Flow (after test OK)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<p>Navigate:<br />
+All &gt; Flow Designer → Flow on x_786686_hr_leave_req_v2 — <a href="{BASE}/now/flow-designer">Open direct</a></p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trigger</td>
+<td>Record Updated</td>
+</tr>
+<tr>
+<td>Condition</td>
+<td>u_state changes to approved OR rejected</td>
+</tr>
+<tr>
+<td>Action</td>
+<td>Run Script <strong>or</strong> IntegrationHub HTTP (if available)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Run Script example:</strong></p>
+<pre><code class="language-javascript">new x_786686_hr_leave.HRLXProIntegrationUtilsV2().outboundPushDecision(current.sys_id);
+</code></pre>
+<p><strong>RESTMessageV2 by name (uses your REST Message config):</strong></p>
+<pre><code class="language-javascript">var gr = current; // leave record
+var empId = '';
+if (gr.u_employee_ref) {
+ var e = gr.u_employee_ref.getRefRecord();
+ empId = e.getValue('u_employee_id');
+}
+var rm = new sn_ws.RESTMessageV2('HRLX ERP Push Decision', 'Push Decision');
+rm.setStringParameter('employee_id', empId);
+// optional: rm.setEccParameter('skip_sensor', 'true');
+var resp = rm.execute();
+</code></pre>
+<p>Publish Flow.</p>
+<p><strong>Option B — Async Business Rule:</strong> see outbound_rest_message.js comment block.</p>
+<hr />
+<h2 id="phase-7-outbound-contract-document-handover">Phase 7 — Outbound contract document (handover)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>Save for HRIS/ERP team:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direction</td>
+<td>ServiceNow → ERP</td>
+</tr>
+<tr>
+<td>Method</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>Value of x_786686_hr_leave.config.erp_endpoint</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>Basic (lab) / OAuth (prod) — alias x_786686_hr_leave_erp</td>
+</tr>
+<tr>
+<td>Body sample</td>
+<td>See §3 Content tab</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why not REST API Explorer for outbound?</strong><br />
+Explorer calls <strong>into</strong> ServiceNow. Outbound calls <strong>external</strong> URL — use REST Message Test or Postman against ERP directly.</p>
+<hr />
+<h2 id="studio-tree-your-screenshot">Studio tree (your screenshot)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<pre><code class="language-text">HR Leave (Studio)
+├─ System Properties
+│ └─ x_786686_hr_leave.config.erp_endpoint
+├─ Inbound Integrations
+│ └─ Scripted REST APIs → HRLX Leave API → Create Leave (POST)
+└─ Outbound Integrations
+ └─ REST Messages → HRLX ERP Push Decision
+ ├─ HTTP Request (headers)
+ └─ HTTP Methods → Push Decision (POST) → Content (JSON)
+</code></pre>
+<hr />
+<h2 id="checklist-professional-practice">Checklist — professional practice</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<ul>
+<li>[ ] Property x_786686_hr_leave.config.erp_endpoint set (lab URL works)</li>
+<li>[ ] REST Message in <strong>HR Leave</strong> scope, accessible scope only</li>
+<li>[ ] Endpoint field = property name (not hardcoded URL in record)</li>
+<li>[ ] <strong>POST</strong> method Push Decision exists (not only Default GET)</li>
+<li>[ ] Content-Type: application/json header</li>
+<li>[ ] Body template saved on POST method</li>
+<li>[ ] Variable employee_id defined OR script sets it</li>
+<li>[ ] Connection alias x_786686_hr_leave_erp + credential</li>
+<li>[ ] <strong>Send/Test</strong> returns 2xx on sample leave record</li>
+<li>[ ] Flow or BR calls push on approved/rejected</li>
+<li>[ ] Contract documented for ERP team</li>
+</ul>
+<hr />
+<h2 id="related-files">Related files</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>outbound_rest_message.js</td>
+<td>Script patterns + async BR sample</td>
+</tr>
+<tr>
+<td>HRLXProIntegrationUtilsV2.js</td>
+<td>outboundPushDecision()</td>
+</tr>
+<tr>
+<td>system_properties.md</td>
+<td>Property definitions</td>
+</tr>
+<tr>
+<td>SCRIPTED_REST_INBOUND_SETUP.md</td>
+<td>Inbound counterpart</td>
+</tr>
+<tr>
+<td>rest_api_explorer.md</td>
+<td>Inbound Explorer only</td>
+</tr>
+</tbody>
+</table>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../../../assets/docs.js"></script>
+
+<script src="../../../assets/author-brand.js" defer></script>
+</body>
+</html>

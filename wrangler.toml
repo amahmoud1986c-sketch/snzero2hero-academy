@@ -1,0 +1,4 @@
+# Cloudflare Pages project config (optional helper)
+name = "snzero2hero"
+compatibility_date = "2026-10-19"
+pages_build_output_dir = "."

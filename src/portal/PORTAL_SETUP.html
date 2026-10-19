@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portal Setup — مرجع سريع | HR Leave Australia</title>
+  <link rel="stylesheet" href="../../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../../index.html">Portal</a>
+      <a href="../../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../../scripts/index.html">Scripts</a>
+      <a href="../../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Portal Setup — مرجع سريع</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sp">Service Portal</a>
+<a href="{BASE}/sp_widget_list.do">Widgets</a>
+<a href="{BASE}/esc">Employee Center</a>
+</div>
+    <article class="content">
+<h1 id="portal-setup">Portal Setup — مرجع سريع</h1>
+<h2 id="_1">السجلات المطلوبة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<table>
+<thead>
+<tr>
+<th>النوع</th>
+<th>الجدول</th>
+<th>القيمة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Portal</td>
+<td>sp_portal</td>
+<td>url_suffix = hrlx</td>
+</tr>
+<tr>
+<td>Theme</td>
+<td>sp_theme</td>
+<td>HR theme</td>
+</tr>
+<tr>
+<td>Page (home)</td>
+<td>sp_page</td>
+<td>id = hrlx_home</td>
+</tr>
+<tr>
+<td>Page (requests)</td>
+<td>sp_page</td>
+<td>id = hrlx_my_requests</td>
+</tr>
+<tr>
+<td>Widget</td>
+<td>sp_widget</td>
+<td>hrlx_my_leaves, hrlx_balance</td>
+</tr>
+<tr>
+<td>Menu</td>
+<td>sp_rectangle_menu</td>
+<td>Home / My Requests / Submit</td>
+</tr>
+</tbody>
+</table>
+<h2 id="widgets">الـ Widgets المتوفرة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<ul>
+<li>widgets/hrlx_my_leaves/ — جدول الطلبات.</li>
+<li>widgets/hrlx_balance/ — الرصيد المتبقي.</li>
+</ul>
+<h2 id="_2">اختبار سريع</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<p>URL: /hrlx</p>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../../assets/docs.js"></script>
+
+<script src="../../assets/author-brand.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>REST API Explorer — HR Leave App (quick reference) | HR Leave Australia</title>
+  <link rel="stylesheet" href="../../../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../../../index.html">Portal</a>
+      <a href="../../../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../../../scripts/index.html">Scripts</a>
+      <a href="../../../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../../../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>REST API Explorer — HR Leave App (quick reference)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="rest-api-explorer-hr-leave-app-quick-reference">REST API Explorer — HR Leave App (quick reference)</h1>
+<blockquote>
+<p>Use this <strong>before</strong> Postman and <strong>before</strong> writing integration scripts.<br />
+الأسلوب: عربية + إنجليزية تكمّلان بعضهما — بدون ترجمة حرفية لأسماء الشاشات.</p>
+</blockquote>
+<h2 id="open-explorer">Open Explorer</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>Navigate:<br />
+All &gt; System Web Services &gt; REST API Explorer — <a href="{BASE}/$restapi.do">Open direct</a></p>
+<p>Direct URL:<br />
+https://<your-instance>.service-now.com/$restapi.do — افتح الـ Explorer من القائمة أو من الرابط أعلاه (استبدل اسم المثيل).</p>
+<hr />
+<h2 id="path-a-table-api-recommended-first-no-custom-script">Path A — Table API (recommended first — no custom script)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>Use when external system only needs to <strong>create/read/update</strong> leave records.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Namespace</td>
+<td>now</td>
+</tr>
+<tr>
+<td>API name</td>
+<td>Table</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>x_786686_hr_leave_req_v2</td>
+</tr>
+<tr>
+<td>Method</td>
+<td>POST (create) / GET (read) / PATCH (update)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Request URL (shown by Explorer):</strong><br />
+/api/now/table/x_786686_hr_leave_req_v2</p>
+<p><strong>POST body example (Request Body tab):</strong></p>
+<pre><code class="language-json">{
+ &quot;u_requested_for_user&quot;: &quot;&lt;sys_user sys_id&gt;&quot;,
+ &quot;u_employee_ref&quot;: &quot;&lt;employee_v2 sys_id&gt;&quot;,
+ &quot;u_leave_type&quot;: &quot;annual&quot;,
+ &quot;u_start_date&quot;: &quot;2026-06-01&quot;,
+ &quot;u_end_date&quot;: &quot;2026-06-05&quot;,
+ &quot;u_state&quot;: &quot;submitted&quot;,
+ &quot;u_reason&quot;: &quot;API test from REST API Explorer&quot;
+}
+</code></pre>
+<p>Steps in Explorer:<br />
+1. Select namespace <strong>now</strong> → API <strong>Table</strong>.<br />
+2. Choose table x_786686_hr_leave_req_v2.<br />
+3. Method <strong>POST</strong> → paste JSON in <strong>Request body</strong>.<br />
+4. Click <strong>Send</strong>.<br />
+5. Check <strong>Response</strong> (201 + result object) and verify list x_786686_hr_leave_req_v2.list.</p>
+<p>Copy for external team:<br />
+- <strong>Copy as cURL</strong> (button in Explorer) → gives exact URL + headers for HRIS team.</p>
+<hr />
+<h2 id="path-b-scripted-rest-custom-logic-our-app-api">Path B — Scripted REST (custom logic — our app API)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<blockquote>
+<p><strong>Setup first:</strong> SCRIPTED_REST_INBOUND_SETUP.md</p>
+</blockquote>
+<p>Use when you need validation, employee lookup by employee_id, and HRLXProIntegrationUtilsV2.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Namespace</td>
+<td>x_786686_hr_leave</td>
+</tr>
+<tr>
+<td>API name</td>
+<td>hrlx_api_v2</td>
+</tr>
+<tr>
+<td>Resource</td>
+<td>leave</td>
+</tr>
+<tr>
+<td>Method</td>
+<td>POST</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Request URL:</strong><br />
+/api/x_786686_hr_leave/hrlx_api_v2/leave</p>
+<p><strong>POST body:</strong></p>
+<pre><code class="language-json">{
+ &quot;employee_id&quot;: &quot;EMP001&quot;,
+ &quot;leave_type&quot;: &quot;annual&quot;,
+ &quot;start_date&quot;: &quot;2026-06-01&quot;,
+ &quot;end_date&quot;: &quot;2026-06-05&quot;,
+ &quot;reason&quot;: &quot;Vacation&quot;
+}
+</code></pre>
+<p>Script file:<br />
+inbound_scripted_rest_leave.js</p>
+<hr />
+<h2 id="outbound-rest-message-not-explorer">Outbound — REST Message (NOT Explorer)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<blockquote>
+<p><strong>Full setup:</strong> OUTBOUND_REST_MESSAGE_SETUP.md</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>REST Message field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>HRLX ERP Push Decision</td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td>x_786686_hr_leave.config.erp_endpoint</td>
+</tr>
+<tr>
+<td>HTTP Method</td>
+<td>Push Decision <strong>POST</strong> (not Default GET)</td>
+</tr>
+<tr>
+<td>Test</td>
+<td>HTTP Method → <strong>Send</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Explorer = inbound only. Outbound = REST Message Send.</p>
+<hr />
+<h2 id="authentication-in-explorer">Authentication in Explorer</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Logged-in session</strong></td>
+<td>You are admin/dev testing in browser — Explorer uses your session cookie</td>
+</tr>
+<tr>
+<td><strong>Basic Auth</strong></td>
+<td>Impersonate integration user or use Basic in cURL copy</td>
+</tr>
+<tr>
+<td><strong>OAuth</strong></td>
+<td>Production; register client → token → Authorization header</td>
+</tr>
+</tbody>
+</table>
+<p>Integration user (lab):<br />
+hrlx.integration + role rest_service + app insert ACL on x_786686_hr_leave_req_v2.</p>
+<hr />
+<h2 id="response-codes-practice">Response codes (practice)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>201</td>
+<td>Created (POST success)</td>
+</tr>
+<tr>
+<td>200</td>
+<td>OK (GET/PATCH success)</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad JSON / validation</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Not authenticated</td>
+</tr>
+<tr>
+<td>403</td>
+<td>ACL / role denied</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Wrong table or API path</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="full-guide">Full guide</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>File: ../../12_INTEGRATION_FULL_GUIDE.md</p>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../../../assets/docs.js"></script>
+
+<script src="../../../assets/author-brand.js" defer></script>
+</body>
+</html>

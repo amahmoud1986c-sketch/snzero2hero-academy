@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scripts &amp; Functions — Deep Dive (Interview Reference) | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Scripts &amp; Functions — Deep Dive (Interview Reference)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/$studio.do">Studio</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/sys_script_client_list.do">Client Scripts</a>
+<a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a>
+</div>
+    <article class="content">
+<h1 id="scripts-functions-deep-dive-interview-reference">Scripts &amp; Functions — Deep Dive (Interview Reference)</h1>
+<blockquote>
+<p>شرح كل الدوال في تطبيقنا + أهم APIs في ServiceNow للمقابلة.<br />
+الأسلوب: عربية + إنجليزية تكمّلان بعضهما — بدون ترجمة حرفية لأسماء الشاشات.</p>
+</blockquote>
+<hr />
+<h2 id="part-1-our-script-includes-line-by-line-purpose">Part 1 — Our Script Includes (line-by-line purpose)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a><a href="{BASE}/$studio.do">Studio</a></nav>
+<h3 id="hrlxproleaveutilsv2">HRLXProLeaveUtilsV2</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>File: src/server/script_includes/HRLXProLeaveUtilsV2.js</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Parameters</th>
+<th>Returns</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>calculateBusinessDays</td>
+<td>startDate, endDate (yyyy-MM-dd)</td>
+<td>number</td>
+<td>Counts Mon–Fri inclusive</td>
+</tr>
+<tr>
+<td>setApproverFromEmployee</td>
+<td>currentRecord (GlideRecord)</td>
+<td>void</td>
+<td>Sets u_approver_user from employee.u_manager</td>
+</tr>
+<tr>
+<td>auditStateChange</td>
+<td>leaveSysId, oldState, newState, eventType</td>
+<td>void</td>
+<td>Inserts audit row</td>
+</tr>
+<tr>
+<td>recalculateBalance</td>
+<td>employeeSysId, year</td>
+<td>void</td>
+<td>Updates u_used, u_remaining on balance</td>
+</tr>
+<tr>
+<td>_sumApprovedDays</td>
+<td>employeeSysId, year</td>
+<td>number</td>
+<td>Private — SUM u_days_count via GlideAggregate</td>
+</tr>
+<tr>
+<td>ajaxGetBusinessDays</td>
+<td>(from GlideAjax params)</td>
+<td>string</td>
+<td>Client-callable wrapper</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interview:</strong> Why GlideAggregate for _sumApprovedDays? — أفضل أداء من loop على GlideRecord — يجمع على الخادم.</p>
+<hr />
+<h3 id="hrlxprosecurityutilsv2">HRLXProSecurityUtilsV2</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>File: src/server/script_includes/HRLXProSecurityUtilsV2.js</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>isHrAdmin</td>
+<td>gs.hasRole(&lsquo;x_786686_hr_leave.hr_admin&rsquo;)</td>
+</tr>
+<tr>
+<td>canReadLeave</td>
+<td>Owner, manager, or HR admin</td>
+</tr>
+<tr>
+<td>canWriteLeave</td>
+<td>draft only for owner; HR admin always</td>
+</tr>
+<tr>
+<td>_isManagerOfEmployee</td>
+<td>Checks employee.u_manager == current user</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Used in:</strong> ACL scripts (src/security/acls.md).</p>
+<hr />
+<h3 id="hrlxprointegrationutilsv2">HRLXProIntegrationUtilsV2</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>File: src/server/script_includes/HRLXProIntegrationUtilsV2.js</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>inboundCreateLeave</td>
+<td>Parse JSON → find employee → insert leave req</td>
+</tr>
+<tr>
+<td>outboundPushDecision</td>
+<td>POST approve/reject to ERP via RESTMessageV2</td>
+</tr>
+<tr>
+<td>_findEmployeeByExternalId</td>
+<td>Lookup by u_employee_id</td>
+</tr>
+<tr>
+<td>_findUserByEmployee</td>
+<td>Map employee → sys_user</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="part-2-our-business-rules">Part 2 — Our Business Rules</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a><a href="../scripts/index.html">Scripts portal</a></nav>
+<table>
+<thead>
+<tr>
+<th>BR</th>
+<th>When</th>
+<th>Trigger logic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BR1</td>
+<td>before insert/update</td>
+<td>Days + approver</td>
+</tr>
+<tr>
+<td>BR2</td>
+<td>after insert/update</td>
+<td>if state→submitted: gs.eventQueue</td>
+</tr>
+<tr>
+<td>BR3</td>
+<td>after update</td>
+<td>if state changed: audit + recalculateBalance</td>
+</tr>
+</tbody>
+</table>
+<p><strong>BR2 event example:</strong></p>
+<pre><code class="language-javascript">gs.eventQueue('x_786686_hr_leave.leave_v2.submitted', current,
+ current.getValue('u_approver_user'), current.getValue('u_number'));
+</code></pre>
+<p><strong>Interview:</strong> Why after for BR2 not before? — لأننا نريد التأكد أن السجل حُفظ بحالة submitted قبل إطلاق الإشعار.</p>
+<hr />
+<h2 id="part-3-server-side-api-gs-interview-must-know">Part 3 — Server-Side API (gs.*) — Interview Must-Know</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a><a href="../scripts/index.html">Scripts portal</a><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gs.getUserID()</td>
+<td>Current user sys_id</td>
+<td>audit actor</td>
+</tr>
+<tr>
+<td>gs.getUserName()</td>
+<td>Username</td>
+<td>logging</td>
+</tr>
+<tr>
+<td>gs.hasRole(&lsquo;role&rsquo;)</td>
+<td>Role check</td>
+<td>security</td>
+</tr>
+<tr>
+<td>gs.info() / gs.error()</td>
+<td>Logs</td>
+<td>debugging</td>
+</tr>
+<tr>
+<td>gs.addErrorMessage()</td>
+<td>Block + message</td>
+<td>BR abort</td>
+</tr>
+<tr>
+<td>gs.eventQueue()</td>
+<td>Fire event</td>
+<td>notifications</td>
+</tr>
+<tr>
+<td>gs.getProperty()</td>
+<td>System property</td>
+<td>config</td>
+</tr>
+<tr>
+<td>gs.nil()</td>
+<td>Null/empty check</td>
+<td>validation</td>
+</tr>
+<tr>
+<td>current.setAbortAction(true)</td>
+<td>Stop BR save</td>
+<td>validation fail</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="part-4-gliderecord-patterns">Part 4 — GlideRecord patterns</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">var gr = new GlideRecord('table');
+gr.addQuery('field', 'value');
+gr.addActiveQuery(); // active=true
+gr.orderByDesc('sys_created_on');
+gr.setLimit(1);
+gr.query();
+if (gr.next()) {
+ gr.field = 'newValue';
+ gr.update();
+}
+</code></pre>
+<p>// Insert<br />
+gr.initialize();<br />
+gr.field = &lsquo;x&rsquo;;<br />
+var sysId = gr.insert();</p>
+<p>// Secure (respects ACL)<br />
+var grs = new GlideRecordSecure(&lsquo;table&rsquo;);</p>
+<p><strong>Interview:</strong> When use GlideRecordSecure? — Service Portal، multi-tenant، أي سياق المستخدم النهائي.</p>
+<hr />
+<h2 id="part-5-glideaggregate">Part 5 — GlideAggregate</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">var ga = new GlideAggregate('x_786686_hr_leave_req_v2');
+ga.addQuery('u_state', 'approved');
+ga.addAggregate('SUM', 'u_days_count');
+ga.query();
+if (ga.next()) {
+ var sum = ga.getAggregate('SUM', 'u_days_count');
+}
+</code></pre>
+<hr />
+<h2 id="part-6-client-side-api-g_form">Part 6 — Client-Side API (g_form.*)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_client_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">Client Scripts</a><a href="../scripts/index.html">Scripts portal</a><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>g_form.getValue(&lsquo;field&rsquo;)</td>
+<td>Read field</td>
+</tr>
+<tr>
+<td>g_form.setValue(&lsquo;field&rsquo;, val)</td>
+<td>Write field</td>
+</tr>
+<tr>
+<td>g_form.setMandatory(&lsquo;field&rsquo;, true)</td>
+<td>Mandatory UI</td>
+</tr>
+<tr>
+<td>g_form.setVisible(&lsquo;field&rsquo;, false)</td>
+<td>Hide</td>
+</tr>
+<tr>
+<td>g_form.setReadOnly(&lsquo;field&rsquo;, true)</td>
+<td>Read only</td>
+</tr>
+<tr>
+<td>g_form.addErrorMessage(&lsquo;msg&rsquo;)</td>
+<td>Show error</td>
+</tr>
+<tr>
+<td>g_form.clearValue(&lsquo;field&rsquo;)</td>
+<td>Clear</td>
+</tr>
+</tbody>
+</table>
+<p><strong>onSubmit:</strong></p>
+<pre><code class="language-javascript">function onSubmit() {
+ if (invalid) {
+ g_form.addErrorMessage('Fix dates');
+ return false; // blocks save
+ }
+}
+</code></pre>
+<hr />
+<h2 id="part-7-glideajax-client-server">Part 7 — GlideAjax (client → server)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">var ga = new GlideAjax('ScriptIncludeName');
+ga.addParam('sysparm_name', 'methodName');
+ga.addParam('sysparm_custom', value);
+ga.getXMLAnswer(function(response) {
+ // response is string return value
+});
+</code></pre>
+<p><strong>Requirements:</strong> Script Include must be Client callable + extend AbstractAjaxProcessor (or have sysparm_name handler).</p>
+<hr />
+<h2 id="part-8-rest-inboundoutbound">Part 8 — REST (inbound/outbound)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p><strong>Inbound (Scripted REST):</strong></p>
+<pre><code class="language-javascript">(function process(request, response) {
+ var body = request.body.data;
+ response.setStatus(201);
+ response.setBody({ sys_id: '...' });
+})(request, response);
+</code></pre>
+<p><strong>Outbound (RESTMessageV2):</strong></p>
+<pre><code class="language-javascript">var rm = new sn_ws.RESTMessageV2('REST Message Name', 'POST method');
+rm.setRequestBody(JSON.stringify(payload));
+var res = rm.execute();
+var status = res.getStatusCode();
+</code></pre>
+<hr />
+<h2 id="part-9-portal-widget-serverjs-pattern">Part 9 — Portal Widget server.js pattern</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<pre><code class="language-javascript">(function() {
+ data.items = [];
+ var gr = new GlideRecordSecure('x_786686_hr_leave_req_v2');
+ gr.addQuery('u_requested_for_user', gs.getUserID());
+ gr.query();
+ while (gr.next()) {
+ data.items.push({
+ number: gr.getDisplayValue('u_number'),
+ state: gr.getDisplayValue('u_state')
+ });
+ }
+})();
+</code></pre>
+<hr />
+<h2 id="part-10-common-interview-write-this-script-scenarios">Part 10 — Common interview &ldquo;write this script&rdquo; scenarios</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>1. Set assignment group by category:</strong></p>
+<pre><code class="language-javascript">if (current.category == 'network')
+ current.assignment_group.setDisplayValue('Network');
+</code></pre>
+<p><strong>2. Prevent save if field empty:</strong></p>
+<pre><code class="language-javascript">if (!current.u_reason) {
+ gs.addErrorMessage('Reason required');
+ current.setAbortAction(true);
+}
+</code></pre>
+<p><strong>3. Copy manager to approver:</strong></p>
+<p>Same as setApproverFromEmployee in our app.</p>
+<p><strong>4. Query related records:</strong></p>
+<pre><code class="language-javascript">var child = new GlideRecord('child_table');
+child.addQuery('parent', current.sys_id);
+child.query();
+</code></pre>
+<hr />
+<h2 id="part-11-where-each-script-type-lives-navigation">Part 11 — Where each script type lives (navigation)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Script Include</td>
+<td>Studio or sys_script_include.list</td>
+</tr>
+<tr>
+<td>Business Rule</td>
+<td>Studio or sys_script.list</td>
+</tr>
+<tr>
+<td>Client Script</td>
+<td>Studio or sys_script_client.list</td>
+</tr>
+<tr>
+<td>UI Policy</td>
+<td>All &gt; System UI &gt; UI Policies · <a href="{BASE}/sys_ui_policy_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Flow</td>
+<td>$flow-designer.do</td>
+</tr>
+<tr>
+<td>Scripted REST</td>
+<td>All &gt; System Web Services &gt; Scripted REST APIs · <a href="{BASE}/sys_ws_definition_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="part-12-link-to-full-development-guide">Part 12 — Link to full development guide</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>File: ../01_DEVELOPMENT.md — every artifact explained with options.</p>
+<p>File: 00_MASTER_DEV_ADMIN_INTERVIEW.md — platform + admin tour.</p>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

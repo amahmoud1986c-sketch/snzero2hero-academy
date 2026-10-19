@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Service Portals &amp; Employee Center Complete Guide — دليل البورتالات الشامل | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Service Portals &amp; Employee Center Complete Guide — دليل البورتالات الشامل</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sp">Service Portal</a>
+<a href="{BASE}/sp_widget_list.do">Widgets</a>
+<a href="{BASE}/esc">Employee Center</a>
+</div>
+    <article class="content">
+<h1 id="service-portals-employee-center-complete-guide">Service Portals &amp; Employee Center Complete Guide — دليل البورتالات الشامل</h1>
+<blockquote>
+<p><strong>Platform:</strong> ServiceNow Australia (Sep 2026)<br />
+دليل شامل لبناء وتخصيص Service Portal و Employee Center</p>
+</blockquote>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<ol>
+<li><a href="#1-service-portal-overview">Service Portal Overview</a></li>
+<li><a href="#2-portal-configuration">Portal Configuration</a></li>
+<li><a href="#3-pages-and-layouts">Pages and Layouts</a></li>
+<li><a href="#4-widgets-development">Widgets Development</a></li>
+<li><a href="#5-angular-providers">Angular Providers</a></li>
+<li><a href="#6-css-and-theming">CSS and Theming</a></li>
+<li><a href="#7-employee-center">Employee Center</a></li>
+<li><a href="#8-hr-leave-portal-widget">HR Leave Portal Widget</a></li>
+<li><a href="#9-mobile-responsiveness">Mobile Responsiveness</a></li>
+<li><a href="#10-security-and-performance">Security and Performance</a></li>
+</ol>
+<hr />
+<h2 id="1-service-portal-overview">1. Service Portal Overview</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<h3 id="direct-urls">Direct URLs</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Portal List</td>
+<td><a href="{BASE}/sp_portal_list.do">{BASE}/sp_portal_list.do</a></td>
+</tr>
+<tr>
+<td>Pages</td>
+<td><a href="{BASE}/sp_page_list.do">{BASE}/sp_page_list.do</a></td>
+</tr>
+<tr>
+<td>Widgets</td>
+<td><a href="{BASE}/sp_widget_list.do">{BASE}/sp_widget_list.do</a></td>
+</tr>
+<tr>
+<td>Themes</td>
+<td><a href="{BASE}/sp_theme_list.do">{BASE}/sp_theme_list.do</a></td>
+</tr>
+<tr>
+<td>Designer</td>
+<td><a href="{BASE}/sp_config">{BASE}/sp_config</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="portal-architecture">Portal Architecture</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<pre><code>Portal
+├── Theme (CSS, Colors, Fonts)
+├── Header/Footer Widgets
+├── Pages
+│   ├── Containers
+│   │   ├── Rows
+│   │   │   └── Columns
+│   │   │       └── Widgets
+└── Angular Application
+    ├── Providers (Services)
+    └── Dependencies (Libraries)
+</code></pre>
+<hr />
+<h2 id="2-portal-configuration">2. Portal Configuration</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<h3 id="create-portal">Create Portal</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<pre><code class="language-markdown">1. Navigate: All &gt; Service Portal &gt; Portals
+2. Click New
+3. Fill in:
+   - Title: HR Leave Portal
+   - URL suffix: hr_leave
+   - Homepage: Leave Request Home (sp_page)
+   - Theme: HR Leave Theme
+   - Logo: Upload logo
+4. Save
+</code></pre>
+<h3 id="portal-properties">Portal Properties</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<pre><code class="language-javascript">// Key portal properties
+glide.sp.portal_id = 'hr_leave';
+glide.sp.enable_service_catalog = 'true';
+glide.sp.enable_knowledge = 'true';
+</code></pre>
+<hr />
+<h2 id="3-pages-and-layouts">3. Pages and Layouts</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<h3 id="create-page">Create Page</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/sp_page_list.do">{BASE}/sp_page_list.do</a></p>
+<pre><code class="language-markdown">1. Navigate: Service Portal &gt; Pages &gt; New
+2. Fill in:
+   - Title: Leave Request Home
+   - ID: hr_leave_home
+   - Layout: 12 columns
+3. Save and open in Designer
+</code></pre>
+<h3 id="page-layout-json">Page Layout JSON</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<pre><code class="language-json">{
+  &quot;rows&quot;: [
+    {
+      &quot;columns&quot;: [
+        {
+          &quot;size&quot;: 12,
+          &quot;widgets&quot;: [
+            { &quot;name&quot;: &quot;HR Leave Banner&quot;, &quot;options&quot;: {} }
+          ]
+        }
+      ]
+    },
+    {
+      &quot;columns&quot;: [
+        {
+          &quot;size&quot;: 8,
+          &quot;widgets&quot;: [
+            { &quot;name&quot;: &quot;HR Leave Request Form&quot;, &quot;options&quot;: {} }
+          ]
+        },
+        {
+          &quot;size&quot;: 4,
+          &quot;widgets&quot;: [
+            { &quot;name&quot;: &quot;HR Leave Balance&quot;, &quot;options&quot;: {} }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<hr />
+<h2 id="4-widgets-development">4. Widgets Development</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/sp_widget_list.do">{BASE}/sp_widget_list.do</a></p>
+<h3 id="widget-structure">Widget Structure</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<pre><code>Widget
+├── Name / ID
+├── HTML Template (AngularJS)
+├── CSS (SCSS)
+├── Client Controller (JS)
+├── Server Script (JS)
+├── Link Function (optional)
+└── Options Schema (JSON)
+</code></pre>
+<h3 id="complete-widget-leave-request-form">Complete Widget: Leave Request Form</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<p><strong>HTML Template:</strong></p>
+<pre><code class="language-html">&lt;div class=&quot;hr-leave-form&quot;&gt;
+  &lt;h2&gt;{{::options.title}}&lt;/h2&gt;
+
+  &lt;div ng-if=&quot;c.data.success&quot; class=&quot;alert alert-success&quot;&gt;
+    &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt; Request submitted successfully!
+    &lt;a href=&quot;?id=leave_detail&amp;sys_id={{c.data.newRequest.sys_id}}&quot;&gt;
+      View Request {{c.data.newRequest.number}}
+    &lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;form ng-if=&quot;!c.data.success&quot; ng-submit=&quot;c.submitRequest()&quot;&gt;
+    &lt;!-- Employee Display --&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+      &lt;label&gt;Employee - الموظف&lt;/label&gt;
+      &lt;p class=&quot;form-control-static&quot;&gt;{{c.data.employee.name}}&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Leave Type --&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+      &lt;label for=&quot;leaveType&quot;&gt;Leave Type - نوع الإجازة *&lt;/label&gt;
+      &lt;select id=&quot;leaveType&quot; class=&quot;form-control&quot; 
+              ng-model=&quot;c.request.leave_type&quot; required&gt;
+        &lt;option value=&quot;&quot;&gt;-- Select --&lt;/option&gt;
+        &lt;option ng-repeat=&quot;type in c.data.leaveTypes&quot; 
+                value=&quot;{{type.value}}&quot;&gt;{{type.label}}&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Date Range --&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col-md-6&quot;&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+          &lt;label for=&quot;startDate&quot;&gt;Start Date - تاريخ البدء *&lt;/label&gt;
+          &lt;input type=&quot;date&quot; id=&quot;startDate&quot; class=&quot;form-control&quot;
+                 ng-model=&quot;c.request.start_date&quot; 
+                 ng-change=&quot;c.calculateDuration()&quot; required&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;col-md-6&quot;&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+          &lt;label for=&quot;endDate&quot;&gt;End Date - تاريخ النهاية *&lt;/label&gt;
+          &lt;input type=&quot;date&quot; id=&quot;endDate&quot; class=&quot;form-control&quot;
+                 ng-model=&quot;c.request.end_date&quot;
+                 ng-change=&quot;c.calculateDuration()&quot; required&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Duration Display --&gt;
+    &lt;div class=&quot;alert alert-info&quot; ng-if=&quot;c.request.duration &gt; 0&quot;&gt;
+      &lt;strong&gt;Duration - المدة:&lt;/strong&gt; {{c.request.duration}} days
+      &lt;span ng-if=&quot;c.request.duration &gt; c.data.balance&quot; class=&quot;text-danger&quot;&gt;
+        &lt;br&gt;&lt;i class=&quot;fa fa-warning&quot;&gt;&lt;/i&gt; Exceeds available balance ({{c.data.balance}} days)
+      &lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Reason --&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+      &lt;label for=&quot;reason&quot;&gt;Reason - السبب&lt;/label&gt;
+      &lt;textarea id=&quot;reason&quot; class=&quot;form-control&quot; rows=&quot;3&quot;
+                ng-model=&quot;c.request.reason&quot;
+                placeholder=&quot;Optional reason for leave request&quot;&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Submit --&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+      &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary btn-lg&quot;
+              ng-disabled=&quot;c.submitting || c.request.duration &gt; c.data.balance&quot;&gt;
+        &lt;i class=&quot;fa fa-paper-plane&quot;&gt;&lt;/i&gt; Submit Request - إرسال الطلب
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+
+  &lt;!-- Loading --&gt;
+  &lt;div ng-if=&quot;c.submitting&quot; class=&quot;text-center&quot;&gt;
+    &lt;i class=&quot;fa fa-spinner fa-spin fa-3x&quot;&gt;&lt;/i&gt;
+    &lt;p&gt;Submitting request...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p><strong>CSS (SCSS):</strong></p>
+<pre><code class="language-scss">.hr-leave-form {
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+  h2 {
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+
+    label {
+      font-weight: 600;
+      color: #555;
+    }
+  }
+
+  .alert {
+    border-radius: 4px;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border: none;
+    padding: 12px 30px;
+
+    &amp;:hover {
+      background: linear-gradient(135deg, #0056b3, #003d80);
+    }
+  }
+}
+
+/* RTL Support */
+[dir=&quot;rtl&quot;] .hr-leave-form {
+  text-align: right;
+
+  label {
+    text-align: right;
+  }
+}
+</code></pre>
+<p><strong>Client Controller:</strong></p>
+<pre><code class="language-javascript">api.controller = function($scope, spUtil, spModal) {
+  var c = this;
+
+  c.request = {
+    leave_type: '',
+    start_date: null,
+    end_date: null,
+    reason: '',
+    duration: 0
+  };
+
+  c.submitting = false;
+
+  // Calculate duration when dates change
+  c.calculateDuration = function() {
+    if (c.request.start_date &amp;&amp; c.request.end_date) {
+      var start = new Date(c.request.start_date);
+      var end = new Date(c.request.end_date);
+
+      if (end &gt;= start) {
+        var diff = Math.ceil((end - start) / (1000 * 60 * 60 * 24)) + 1;
+        c.request.duration = diff;
+      } else {
+        c.request.duration = 0;
+        spUtil.addErrorMessage('End date must be after start date');
+      }
+    }
+  };
+
+  // Submit request
+  c.submitRequest = function() {
+    if (!c.request.leave_type || !c.request.start_date || !c.request.end_date) {
+      spUtil.addErrorMessage('Please fill all required fields');
+      return;
+    }
+
+    if (c.request.duration &gt; c.data.balance) {
+      spUtil.addErrorMessage('Request exceeds available balance');
+      return;
+    }
+
+    c.submitting = true;
+
+    c.server.get({
+      action: 'submitRequest',
+      request: c.request
+    }).then(function(response) {
+      c.submitting = false;
+      if (response.data.success) {
+        c.data.success = true;
+        c.data.newRequest = response.data.newRequest;
+        spUtil.addInfoMessage('Leave request submitted successfully!');
+      } else {
+        spUtil.addErrorMessage(response.data.error || 'Failed to submit');
+      }
+    });
+  };
+
+  // Refresh balance when leave type changes
+  $scope.$watch('c.request.leave_type', function(newVal) {
+    if (newVal) {
+      c.server.get({
+        action: 'getBalance',
+        leave_type: newVal
+      }).then(function(response) {
+        c.data.balance = response.data.balance;
+      });
+    }
+  });
+};
+</code></pre>
+<p><strong>Server Script:</strong></p>
+<pre><code class="language-javascript">(function() {
+
+  // Get current user info
+  data.employee = {
+    sys_id: gs.getUserID(),
+    name: gs.getUserDisplayName(),
+    email: gs.getUser().getEmail()
+  };
+
+  // Get leave types
+  data.leaveTypes = [
+    { value: 'annual', label: 'Annual Leave - إجازة سنوية' },
+    { value: 'sick', label: 'Sick Leave - إجازة مرضية' },
+    { value: 'emergency', label: 'Emergency Leave - إجازة طارئة' },
+    { value: 'unpaid', label: 'Unpaid Leave - إجازة بدون راتب' }
+  ];
+
+  // Get initial balance
+  data.balance = getBalance(gs.getUserID(), 'annual');
+
+  // Handle actions
+  if (input &amp;&amp; input.action) {
+
+    if (input.action === 'getBalance') {
+      data.balance = getBalance(gs.getUserID(), input.leave_type);
+    }
+
+    if (input.action === 'submitRequest') {
+      var result = submitLeaveRequest(input.request);
+      data.success = result.success;
+      data.newRequest = result.record;
+      data.error = result.error;
+    }
+  }
+
+  function getBalance(employeeId, leaveType) {
+    var util = new x_786686_hr_leave.LeaveBalanceUtil();
+    return util.getBalance(employeeId, leaveType);
+  }
+
+  function submitLeaveRequest(req) {
+    try {
+      var gr = new GlideRecord('x_786686_hr_leave_request');
+      gr.initialize();
+      gr.employee = gs.getUserID();
+      gr.leave_type = req.leave_type;
+      gr.start_date = req.start_date;
+      gr.end_date = req.end_date;
+      gr.reason = req.reason || '';
+
+      var sysId = gr.insert();
+
+      if (sysId) {
+        gr.get(sysId);
+        return {
+          success: true,
+          record: {
+            sys_id: sysId,
+            number: gr.number.toString()
+          }
+        };
+      }
+      return { success: false, error: 'Insert failed' };
+    } catch (e) {
+      return { success: false, error: e.message };
+    }
+  }
+
+})();
+</code></pre>
+<p><strong>Options Schema:</strong></p>
+<pre><code class="language-json">{
+  &quot;title&quot;: {
+    &quot;label&quot;: &quot;Widget Title&quot;,
+    &quot;type&quot;: &quot;string&quot;,
+    &quot;default&quot;: &quot;Submit Leave Request&quot;
+  },
+  &quot;show_balance&quot;: {
+    &quot;label&quot;: &quot;Show Balance&quot;,
+    &quot;type&quot;: &quot;boolean&quot;,
+    &quot;default&quot;: true
+  }
+}
+</code></pre>
+<hr />
+<h2 id="5-angular-providers">5. Angular Providers</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/sp_angular_provider_list.do">{BASE}/sp_angular_provider_list.do</a></p>
+<h3 id="create-service-provider">Create Service Provider</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<pre><code class="language-javascript">// Name: hrLeaveService
+// Type: factory
+
+function hrLeaveService($http, $q, spUtil) {
+
+  var API_BASE = '/api/x_786686_hr_leave/hr_leave';
+
+  return {
+
+    getRequests: function(filters) {
+      return $http.get(API_BASE + '/requests', { params: filters })
+        .then(function(response) {
+          return response.data.result;
+        });
+    },
+
+    getRequest: function(sysId) {
+      return $http.get(API_BASE + '/requests/' + sysId)
+        .then(function(response) {
+          return response.data.result;
+        });
+    },
+
+    createRequest: function(request) {
+      return $http.post(API_BASE + '/requests', request)
+        .then(function(response) {
+          return response.data.result;
+        });
+    },
+
+    getBalance: function(leaveType) {
+      return $http.get(API_BASE + '/balance', {
+        params: { leave_type: leaveType }
+      }).then(function(response) {
+        return response.data.result.balance;
+      });
+    },
+
+    getCalendar: function(month, year) {
+      return $http.get(API_BASE + '/calendar', {
+        params: { month: month, year: year }
+      }).then(function(response) {
+        return response.data.result;
+      });
+    }
+
+  };
+
+}
+</code></pre>
+<h3 id="use-in-widget">Use in Widget</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<pre><code class="language-javascript">// Client Controller
+api.controller = function($scope, hrLeaveService, spUtil) {
+  var c = this;
+
+  c.loading = true;
+
+  hrLeaveService.getRequests().then(function(requests) {
+    c.data.requests = requests;
+    c.loading = false;
+  }).catch(function(error) {
+    spUtil.addErrorMessage('Failed to load requests');
+    c.loading = false;
+  });
+
+  c.submitRequest = function() {
+    hrLeaveService.createRequest(c.request).then(function(result) {
+      spUtil.addInfoMessage('Request ' + result.number + ' created');
+      c.data.requests.unshift(result);
+    });
+  };
+};
+</code></pre>
+<hr />
+<h2 id="6-css-and-theming">6. CSS and Theming</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/sp_theme_list.do">{BASE}/sp_theme_list.do</a></p>
+<h3 id="theme-variables">Theme Variables</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a></nav>
+<pre><code class="language-scss">// Theme CSS Variables
+$theme-color-primary: #007bff;
+$theme-color-secondary: #6c757d;
+$theme-color-success: #28a745;
+$theme-color-danger: #dc3545;
+$theme-color-warning: #ffc107;
+$theme-color-info: #17a2b8;
+
+$navbar-bg: #2c3e50;
+$navbar-color: #ffffff;
+$footer-bg: #f8f9fa;
+
+$font-family-base: 'Segoe UI', Tahoma, Arial, sans-serif;
+$font-family-arabic: 'Cairo', 'Amiri', sans-serif;
+
+// Apply
+body {
+  font-family: $font-family-base;
+}
+
+[lang=&quot;ar&quot;], .arabic {
+  font-family: $font-family-arabic;
+}
+
+.navbar {
+  background: $navbar-bg;
+
+  .navbar-brand {
+    color: $navbar-color;
+  }
+}
+
+// Buttons
+.btn-primary {
+  background: $theme-color-primary;
+  border-color: darken($theme-color-primary, 5%);
+
+  &amp;:hover {
+    background: darken($theme-color-primary, 10%);
+  }
+}
+
+// Cards
+.card {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &amp;:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+}
+</code></pre>
+<hr />
+<h2 id="7-employee-center">7. Employee Center</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/sn_hr_core_menu_item_list.do">{BASE}/sn_hr_core_menu_item_list.do</a></p>
+<h3 id="employee-center-configuration">Employee Center Configuration</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<pre><code class="language-markdown">**Setup Steps:**
+
+1. Navigate: Employee Center &gt; Administration &gt; Setup
+2. Configure:
+   - Portal: Employee Center
+   - Homepage: esc_dashboard
+   - Theme: Employee Center Default
+
+**Add HR Leave Topic:**
+
+1. Navigate: Employee Center &gt; Taxonomy &gt; Topics
+2. Create Topic:
+   - Name: Leave Management
+   - Description: Request and manage your leave
+   - Icon: fa-calendar
+   - Category: HR Services
+3. Add Content Items:
+   - Submit Leave Request (link to widget)
+   - View My Requests (link to list)
+   - Leave Balance (link to widget)
+   - Leave Policies (knowledge article)
+</code></pre>
+<h3 id="content-block-widget">Content Block Widget</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<pre><code class="language-javascript">// Server Script for Employee Center Content
+(function() {
+
+  var userId = gs.getUserID();
+
+  // Quick stats for dashboard
+  data.stats = {
+    pending: getCount('state=2'),
+    approved: getCount('state=3^start_date&gt;=' + getToday()),
+    balance: getBalance(userId, 'annual')
+  };
+
+  // Recent requests
+  var gr = new GlideRecord('x_786686_hr_leave_request');
+  gr.addQuery('employee', userId);
+  gr.orderByDesc('sys_created_on');
+  gr.setLimit(5);
+  gr.query();
+
+  data.recent = [];
+  while (gr.next()) {
+    data.recent.push({
+      sys_id: gr.getUniqueValue(),
+      number: gr.number.toString(),
+      type: gr.leave_type.getDisplayValue(),
+      dates: gr.start_date.getDisplayValue() + ' - ' + gr.end_date.getDisplayValue(),
+      state: gr.state.getDisplayValue(),
+      state_class: getStateClass(gr.state.toString())
+    });
+  }
+
+  function getCount(query) {
+    var ga = new GlideAggregate('x_786686_hr_leave_request');
+    ga.addQuery('employee', userId);
+    ga.addEncodedQuery(query);
+    ga.addAggregate('COUNT');
+    ga.query();
+    return ga.next() ? parseInt(ga.getAggregate('COUNT')) : 0;
+  }
+
+  function getBalance(empId, type) {
+    return new x_786686_hr_leave.LeaveBalanceUtil().getBalance(empId, type);
+  }
+
+  function getToday() {
+    return new GlideDateTime().getDate().toString();
+  }
+
+  function getStateClass(state) {
+    var classes = {'1': 'default', '2': 'warning', '3': 'success', '6': 'danger', '7': 'info'};
+    return 'label-' + (classes[state] || 'default');
+  }
+
+})();
+</code></pre>
+<hr />
+<h2 id="8-hr-leave-portal-widget">8. HR Leave Portal Widget</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<h3 id="leave-balance-widget">Leave Balance Widget</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<p><strong>HTML:</strong></p>
+<pre><code class="language-html">&lt;div class=&quot;leave-balance-widget&quot;&gt;
+  &lt;div class=&quot;balance-header&quot;&gt;
+    &lt;i class=&quot;fa fa-calendar-check-o fa-2x&quot;&gt;&lt;/i&gt;
+    &lt;h3&gt;Leave Balance - رصيد الإجازات&lt;/h3&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;balance-grid&quot;&gt;
+    &lt;div class=&quot;balance-card&quot; ng-repeat=&quot;item in c.data.balances&quot;&gt;
+      &lt;div class=&quot;balance-type&quot;&gt;{{item.label}}&lt;/div&gt;
+      &lt;div class=&quot;balance-value&quot;&gt;
+        &lt;span class=&quot;available&quot;&gt;{{item.available}}&lt;/span&gt;
+        &lt;span class=&quot;total&quot;&gt;/ {{item.total}}&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;balance-bar&quot;&gt;
+        &lt;div class=&quot;bar-fill&quot; ng-style=&quot;{'width': item.percentage + '%'}&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;balance-footer&quot;&gt;
+    &lt;a href=&quot;?id=leave_request&quot; class=&quot;btn btn-primary btn-block&quot;&gt;
+      &lt;i class=&quot;fa fa-plus&quot;&gt;&lt;/i&gt; Request Leave - طلب إجازة
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p><strong>Server Script:</strong></p>
+<pre><code class="language-javascript">(function() {
+  var userId = gs.getUserID();
+  var util = new x_786686_hr_leave.LeaveBalanceUtil();
+  var year = new GlideDateTime().getYearLocalTime();
+
+  data.balances = [
+    { 
+      type: 'annual',
+      label: 'Annual - سنوية',
+      available: util.getBalance(userId, 'annual'),
+      total: getAllocation(userId, 'annual'),
+      percentage: 0
+    },
+    {
+      type: 'sick',
+      label: 'Sick - مرضية',
+      available: util.getBalance(userId, 'sick'),
+      total: getAllocation(userId, 'sick'),
+      percentage: 0
+    },
+    {
+      type: 'emergency',
+      label: 'Emergency - طارئة',
+      available: util.getBalance(userId, 'emergency'),
+      total: getAllocation(userId, 'emergency'),
+      percentage: 0
+    }
+  ];
+
+  // Calculate percentages
+  for (var i = 0; i &lt; data.balances.length; i++) {
+    var b = data.balances[i];
+    b.percentage = b.total &gt; 0 ? Math.round((b.available / b.total) * 100) : 0;
+  }
+
+  function getAllocation(empId, type) {
+    var gr = new GlideRecord('x_786686_hr_leave_allocation');
+    gr.addQuery('employee', empId);
+    gr.addQuery('leave_type', type);
+    gr.addQuery('year', year);
+    gr.query();
+    return gr.next() ? parseInt(gr.days_allocated) || 0 : 0;
+  }
+})();
+</code></pre>
+<h3 id="team-calendar-widget">Team Calendar Widget</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<p><strong>HTML:</strong></p>
+<pre><code class="language-html">&lt;div class=&quot;team-calendar&quot;&gt;
+  &lt;div class=&quot;calendar-header&quot;&gt;
+    &lt;button ng-click=&quot;c.prevMonth()&quot; class=&quot;btn btn-sm&quot;&gt;
+      &lt;i class=&quot;fa fa-chevron-left&quot;&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;h4&gt;{{c.currentMonth}} {{c.currentYear}}&lt;/h4&gt;
+    &lt;button ng-click=&quot;c.nextMonth()&quot; class=&quot;btn btn-sm&quot;&gt;
+      &lt;i class=&quot;fa fa-chevron-right&quot;&gt;&lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;calendar-grid&quot;&gt;
+    &lt;div class=&quot;day-header&quot; ng-repeat=&quot;day in c.dayNames&quot;&gt;{{day}}&lt;/div&gt;
+    &lt;div class=&quot;day-cell&quot; ng-repeat=&quot;day in c.calendarDays&quot;
+         ng-class=&quot;{'today': day.isToday, 'other-month': !day.currentMonth}&quot;&gt;
+      &lt;span class=&quot;day-number&quot;&gt;{{day.number}}&lt;/span&gt;
+      &lt;div class=&quot;events&quot;&gt;
+        &lt;div class=&quot;event&quot; ng-repeat=&quot;event in day.events&quot;
+             ng-style=&quot;{'background': event.color}&quot;
+             title=&quot;{{event.title}}&quot;&gt;
+          {{event.short}}
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<hr />
+<h2 id="9-mobile-responsiveness">9. Mobile Responsiveness</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<h3 id="responsive-css">Responsive CSS</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<pre><code class="language-scss">// Breakpoints
+$mobile: 576px;
+$tablet: 768px;
+$desktop: 992px;
+
+// Mobile-first styles
+.hr-leave-form {
+  padding: 15px;
+
+  @media (min-width: $tablet) {
+    padding: 25px;
+  }
+
+  @media (min-width: $desktop) {
+    padding: 35px;
+  }
+}
+
+// Stack columns on mobile
+.balance-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+
+  @media (min-width: $tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $desktop) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Touch-friendly buttons
+.btn {
+  min-height: 44px;
+  padding: 12px 20px;
+
+  @media (min-width: $tablet) {
+    min-height: auto;
+    padding: 8px 16px;
+  }
+}
+
+// Hide on mobile
+.desktop-only {
+  display: none;
+
+  @media (min-width: $tablet) {
+    display: block;
+  }
+}
+
+// Show on mobile only
+.mobile-only {
+  display: block;
+
+  @media (min-width: $tablet) {
+    display: none;
+  }
+}
+</code></pre>
+<hr />
+<h2 id="10-security-and-performance">10. Security and Performance</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<h3 id="security-best-practices">Security Best Practices</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<pre><code class="language-javascript">// Server Script - Always validate user access
+(function() {
+
+  // Check user is authenticated
+  if (!gs.isLoggedIn()) {
+    data.error = 'Not authenticated';
+    return;
+  }
+
+  // Only return user's own data (unless admin)
+  var userId = gs.getUserID();
+  var isAdmin = gs.hasRole('x_786686_hr_leave.hr_admin');
+
+  if (input &amp;&amp; input.employee_id) {
+    if (input.employee_id !== userId &amp;&amp; !isAdmin) {
+      data.error = 'Access denied';
+      return;
+    }
+  }
+
+  // Validate input
+  if (input &amp;&amp; input.sys_id) {
+    if (!/^[a-f0-9]{32}$/i.test(input.sys_id)) {
+      data.error = 'Invalid ID format';
+      return;
+    }
+  }
+
+})();
+</code></pre>
+<h3 id="performance-optimization">Performance Optimization</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<pre><code class="language-javascript">// Server Script - Efficient queries
+(function() {
+
+  // Use setLimit for lists
+  var gr = new GlideRecord('x_786686_hr_leave_request');
+  gr.addQuery('employee', gs.getUserID());
+  gr.setLimit(data.options.limit || 10);
+  gr.setFields('sys_id,number,leave_type,start_date,end_date,state');
+  gr.orderByDesc('sys_created_on');
+  gr.query();
+
+  data.requests = [];
+  while (gr.next()) {
+    data.requests.push({
+      sys_id: gr.getUniqueValue(),
+      number: gr.number.toString(),
+      type: gr.leave_type.getDisplayValue(),
+      dates: gr.start_date.getDisplayValue() + ' - ' + gr.end_date.getDisplayValue(),
+      state: gr.state.toString()
+    });
+  }
+
+  // Use GlideAggregate for counts
+  var ga = new GlideAggregate('x_786686_hr_leave_request');
+  ga.addQuery('employee', gs.getUserID());
+  ga.addAggregate('COUNT');
+  ga.groupBy('state');
+  ga.query();
+
+  data.counts = {};
+  while (ga.next()) {
+    data.counts[ga.state.toString()] = parseInt(ga.getAggregate('COUNT'));
+  }
+
+})();
+</code></pre>
+<hr />
+<h2 id="direct-urls-reference">Direct URLs Reference</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Portals</td>
+<td><a href="{BASE}/sp_portal_list.do">{BASE}/sp_portal_list.do</a></td>
+</tr>
+<tr>
+<td>Pages</td>
+<td><a href="{BASE}/sp_page_list.do">{BASE}/sp_page_list.do</a></td>
+</tr>
+<tr>
+<td>Widgets</td>
+<td><a href="{BASE}/sp_widget_list.do">{BASE}/sp_widget_list.do</a></td>
+</tr>
+<tr>
+<td>Themes</td>
+<td><a href="{BASE}/sp_theme_list.do">{BASE}/sp_theme_list.do</a></td>
+</tr>
+<tr>
+<td>CSS</td>
+<td><a href="{BASE}/sp_css_list.do">{BASE}/sp_css_list.do</a></td>
+</tr>
+<tr>
+<td>Angular Providers</td>
+<td><a href="{BASE}/sp_angular_provider_list.do">{BASE}/sp_angular_provider_list.do</a></td>
+</tr>
+<tr>
+<td>Designer</td>
+<td><a href="{BASE}/sp_config">{BASE}/sp_config</a></td>
+</tr>
+<tr>
+<td>Employee Center</td>
+<td><a href="{BASE}/$esc.do">{BASE}/$esc.do</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Next:</strong> <a href="WORKSPACES_COMPLETE_GUIDE.html">Workspaces Guide</a> | <a href="AI_ML_COMPLETE_GUIDE.html">AI Guide</a></p>
+</blockquote>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

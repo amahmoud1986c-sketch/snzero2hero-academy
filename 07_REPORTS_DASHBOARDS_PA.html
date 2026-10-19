@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>07 — Reports & Dashboards (Studio From Scratch) | HR Leave Australia</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+  <style>
+    .field-table th { white-space: nowrap; }
+    .step-num { font-weight: 700; color: var(--brand-2); }
+    .demo-box { border-left: 4px solid var(--brand-2); padding: .35rem 0 .35rem .85rem; margin: .75rem 0; }
+    .chapter-nav { display: flex; justify-content: space-between; gap: 1rem; margin: 2rem 0 1rem; padding: 1rem; background: #f8fafc; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All</a>
+      <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Links</a>
+      <a href="SCHEMA_AND_DATA.html">Schema</a>
+      <a href="scripts/index.html">Scripts</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+      <span class="badge">Chapter 07</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>07 — Reports & Dashboards (Studio From Scratch)</h1>
+      <p>Report Leave Requests by State + dashboard widget — every wizard property</p>
+      <div class="meta-grid">
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.72rem">e5f5bc9493a303507520703efaba104d</code></div>
+        <div><strong>Instance lab</strong><code style="color:#fff;font-size:.72rem">dev398980</code></div>
+        <div><strong>URL token</strong><code style="color:#fff">{BASE}</code></div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Quick open</strong>
+<a href="#viz07">Visual map</a>
+<a href="{BASE}/sys_report_list.do">Reports</a>
+<a href="{BASE}/$pa_dashboard.do">Dashboards</a>
+    </div>
+    <article class="content">
+
+<div class="glance" id="viz07">
+  <h3>Visual map — Ch.07 · Reports & dashboards</h3>
+  <div class="grid3">
+    <div class="box"><strong>See in 10 seconds</strong><p>Leave by State report → dashboard widget</p></div>
+    <div class="box"><strong>You build</strong><p>Scoped report + dashboard</p></div>
+    <div class="box"><strong>Track</strong><p>Administration</p></div>
+  </div>
+  <div class="flow"><div class="n"><b>RPT</b>By state</div><span class="arrow">→</span><div class="n"><b>ACL</b>Viewer rows</div><span class="arrow">→</span><div class="n"><b>DASH</b>Widget</div><span class="arrow">→</span><div class="n"><b>SHARE</b>Roles</div></div>
+  <div class="chips"><a class="chip url" href="{BASE}/$report.do">↗ $report.do</a><a class="chip url" href="{BASE}/$pa_dashboard.do">↗ $pa_dashboard.do</a></div>
+  <div class="chips"><span class="chip do">✓ No names on leadership slides</span><span class="chip do">✓ Report in app scope</span><span class="chip dont">✗ Run-as admin on dashboards</span></div>
+  <p class="note-sm">Full visual path (all chapters): <a href="VISUAL_FROM_SCRATCH_00_16.html">VISUAL_FROM_SCRATCH_00_16.html</a></p>
+</div>
+<div class="ok">
+<p><strong>Studio-only from scratch:</strong> Build reports in the Reports module wizard — no external tooling.</p>
+<p>Also open: <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Direct Links</a> · <a href="SCHEMA_AND_DATA.html">Schema</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All Objects</a> · Previous: <a href="06_NOTIFICATIONS_EVENTS_JOBS.html">06 Notifications</a></p>
+</div>
+<h2 id="how-objects-relate">How reports and dashboards relate</h2>
+<div class="ok"><p>Part 1 Report groups req_v2 by u_state → Part 2 Dashboard embeds report as widget for hr_admin/manager.</p></div>
+<hr />
+<h2 id="rule0">Rule 0 — Before any object (Application + Update Set + Studio)</h2>
+<p>Repeat these checks before creating or editing any application file. This section is also <strong>section 00 Update Set</strong> — create the capture set first.</p>
+<ol>
+  <li><span class="step-num">Application picker</span> — top-right globe / application menu → select <strong>HR Leave</strong> (<code>x_786686_hr_leave</code>). Never leave <em>Global</em> selected when creating scoped artifacts.</li>
+  <li><span class="step-num">Update Set</span> — All → <strong>System Update Sets → Local Update Sets</strong> → <strong>New</strong>:
+    <table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+    <tr><td>Name</td><td><code>HR Leave – Build</code></td></tr>
+    <tr><td>Application</td><td>HR Leave</td></tr>
+    <tr><td>State</td><td>In Progress</td></tr>
+    <tr><td>Description</td><td>Captures all HR Leave lab artifacts</td></tr></table>
+    After submit: open the record → click <strong>Make Current</strong>. Direct list: <a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a>
+  </li>
+  <li><span class="step-num">Open Studio</span> — <a href="{BASE}/$studio.do">{BASE}/$studio.do</a> → confirm header shows <strong>HR Leave</strong>.</li>
+</ol>
+<div class="warn"><p>If artifacts land in Global scope, delete them and recreate under HR Leave. ACLs and events created globally will not behave correctly for this app.</p></div>
+<div class="demo-box"><p><strong>Verify Update Set:</strong> Create a test Script Include in Studio → open <strong>HR Leave – Build</strong> → Related List <strong>Customer Updates</strong> shows the new file.</p></div>
+<hr />
+<h2 id="part-1-report">Part 1: Report Wizard — Leave Requests by State</h2>
+<h3>Purpose</h3>
+<p>Visual report grouping leave requests by state.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> Reports → Create New</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_report_list.do">{BASE}/sys_report_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="01_DEVELOPMENT.html#part-3-table-req">Part 3: Table — Leave Request</a> with seeded mixed states.</li></ul>
+<h3>Form fields — Report wizard</h3>
+<table class="field-table"><thead><tr><th>Wizard step</th><th>Selection</th></tr></thead><tbody>
+<tr><td>1 Source type</td><td>Table</td></tr>
+<tr><td>2 Table</td><td>Leave Request [x_786686_hr_leave_req_v2]</td></tr>
+<tr><td>3 Report type</td><td>Bar chart or Pie chart</td></tr>
+<tr><td>4 Configure</td><td>Group by: State (u_state), Aggregate: Count</td></tr>
+<tr><td>5 Title</td><td>Leave Requests by State</td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr>
+</tbody></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Reports → Create New → Table → req_v2.</li>
+<li>Choose Bar or Pie → Group by u_state → Count.</li>
+<li>Title: Leave Requests by State. Application HR Leave.</li>
+<li>Run report → verify segments for draft/submitted/approved.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Report renders with correct counts.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Seed 2 draft, 3 submitted, 1 approved → chart reflects counts.</p></div>
+<hr />
+<h2 id="part-2-dashboard">Part 2: Dashboard + Widget</h2>
+<h3>Purpose</h3>
+<p>HR Leave dashboard with embedded report widget.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> Self-Service → Dashboards</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/$pa_dashboard.do">{BASE}/$pa_dashboard.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-1-report">Part 1: Report Wizard</a>.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody>
+<tr><td><strong>Name</strong></td><td>HR Leave Dashboard</td></tr>
+<tr><td>Widget type</td><td>Report</td></tr>
+<tr><td>Report</td><td>Leave Requests by State</td></tr>
+<tr><td>Roles</td><td>hr_admin, manager</td></tr>
+</tbody></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Dashboards → New → Name HR Leave Dashboard.</li>
+<li>Add widget → Report → select report from Part 1.</li>
+<li>Share with roles hr_admin, manager. Save dashboard.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Dashboard widget displays report.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>manager1 opens dashboard → chart visible.</p></div>
+<h2 id="reports-verify">Reports verify checklist</h2>
+<ol><li>Report scoped to HR Leave.</li><li>Dashboard shared with manager/hr_admin.</li></ol>
+
+</article>
+    <nav class="chapter-nav"><a href="06_NOTIFICATIONS_EVENTS_JOBS.html">← Chapter 06</a><span>Chapter 07</span><a href="08_ATF_TESTING.html">Chapter 08 →</a></nav>
+    <p class="footer">HR Leave · Studio from scratch · scope x_786686_hr_leave · replace {BASE} with your instance URL</p>
+  </main>
+
+  <script src="assets/docs.js"></script>
+  <script>
+    (function () {
+      var BASE = 'https://dev398980.service-now.com';
+      document.querySelectorAll('a[href*="{BASE}"]').forEach(function (a) {
+        a.href = a.href.split('{BASE}').join(BASE);
+      });
+    })();
+  </script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

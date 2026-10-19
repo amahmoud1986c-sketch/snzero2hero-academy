@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Visual From Scratch 00–16 · Dev · Admin · Implementation | HR Leave</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="01_DEVELOPMENT.html">01 Dev</a>
+      <a href="02_ADMINISTRATION.html">02 Admin</a>
+      <a href="10_IMPLEMENTATION_AND_CONFIG.html">10 Impl</a>
+      <a href="16_SDK_FULL_DEV_ADMIN_FROM_SCRATCH.html">16 Path</a>
+      <span class="badge">Visual 00–16</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Visual From Scratch — Development · Administration · Implementation</h1>
+      <p>Diagrams · flows · screen maps · direct URLs · best-practice chips. Read the pictures; open the URL; then do the step.</p>
+      <div class="meta-grid">
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>Chapters</strong><code style="color:#fff">00 → 16</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code></div>
+        <div><strong>Style</strong><code style="color:#fff">Visual-first</code></div>
+      </div>
+    </section>
+
+    <div class="url-box"><strong>Start here</strong>
+      <a href="{BASE}/$studio.do">Studio</a>
+      <a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a>
+      <a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a>
+      <a href="{BASE}/sys_update_set_list.do">Update Sets</a>
+      <a href="{BASE}/esc">Employee Center</a>
+      <a href="{BASE}/now/flow-designer">Flow Designer</a>
+      <a href="{BASE}/$restapi.do">REST Explorer</a>
+    </div>
+
+    <article class="content">
+      <div class="viz-banner">
+        <h2>How to use this page (no long reading)</h2>
+        <p>1) Follow the blue path chips 00→16 · 2) Read each flow arrow · 3) Click green ✓ / red ✗ chips · 4) Click URL chips to open the instance · 5) Open the chapter link only when you need field-level detail.</p>
+      </div>
+
+      <h2 id="path">Path 00 → 16</h2>
+      <div class="pathline"><a href="#ch00">00</a><span class="sep">→</span><a href="#ch01">01</a><span class="sep">→</span><a href="#ch02">02</a><span class="sep">→</span><a href="#ch03">03</a><span class="sep">→</span><a href="#ch04">04</a><span class="sep">→</span><a href="#ch05">05</a><span class="sep">→</span><a href="#ch06">06</a><span class="sep">→</span><a href="#ch07">07</a><span class="sep">→</span><a href="#ch08">08</a><span class="sep">→</span><a href="#ch09">09</a><span class="sep">→</span><a href="#ch10">10</a><span class="sep">→</span><a href="#ch11">11</a><span class="sep">→</span><a href="#ch12">12</a><span class="sep">→</span><a href="#ch13">13</a><span class="sep">→</span><a href="#ch14">14</a><span class="sep">→</span><a href="#ch15">15</a><span class="sep">→</span><a href="#ch16">16</a></div>
+
+      <h2 id="tracks">Three tracks</h2>
+      <div class="track">
+        <div class="lane dev">
+          <h3>Development</h3>
+          <ul>
+            <li>01 Tables · SI · BR · CS · UI</li>
+            <li>03 Catalog · 04 Portal · 05 Workspace</li>
+            <li>08 ATF · 09 Flow · 12 REST · 15 Scripts</li>
+          </ul>
+          <a href="01_DEVELOPMENT.html">Start → 01</a>
+        </div>
+        <div class="lane adm">
+          <h3>Administration</h3>
+          <ul>
+            <li>02 Roles · Groups · ACLs · Properties</li>
+            <li>06 Events · Notifications · Jobs</li>
+            <li>07 Reports · Dashboards</li>
+          </ul>
+          <a href="02_ADMINISTRATION.html">Start → 02</a>
+        </div>
+        <div class="lane impl">
+          <h3>Implementation</h3>
+          <ul>
+            <li>00 Plan · 10 Cutover · UAT</li>
+            <li>13 Summary · 16 Master path</li>
+            <li>Modules access map below</li>
+          </ul>
+          <a href="10_IMPLEMENTATION_AND_CONFIG.html">Start → 10</a>
+        </div>
+      </div>
+
+      <h2 id="lifecycle">End-to-end leave lifecycle</h2>
+      <div class="flow"><div class="n"><b>EMP</b>Catalog / Form</div><span class="arrow">→</span><div class="n"><b>BR1</b>Days+Approver</div><span class="arrow">→</span><div class="n"><b>SUB</b>State=submitted</div><span class="arrow">→</span><div class="n"><b>EVT</b>eventQueue</div><span class="arrow">→</span><div class="n"><b>FLOW</b>Ask Approval</div><span class="arrow">→</span><div class="n"><b>APR</b>approved</div><span class="arrow">→</span><div class="n"><b>BR3</b>Audit+Balance</div><span class="arrow">→</span><div class="n"><b>MAIL</b>Notify</div></div>
+      
+<div class="screen">
+  <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+    <span class="ttl">Leave Request · req_v2</span><span class="path">x_786686_hr_leave_req_v2.do</span></div>
+  <div class="body">
+    <div class="side"><div class="on">Form</div><div class="">Related · Audit</div><div class="">Related · Balance</div><div class="">UI Action Submit</div></div>
+    <div class="main"><div class="row"><span>Number</span><span>HRL0001001</span></div><div class="row"><span>Requested for</span><span>employee1</span></div><div class="row"><span>Type</span><span>annual</span></div><div class="row"><span>Start / End</span><span>2026-06-01 → 2026-06-05</span></div><div class="row"><span>Days</span><span>5  ← BR1 before</span></div><div class="row"><span>Approver</span><span>manager1  ← from employee.u_manager</span></div><div class="row"><span>State</span><span>submitted</span></div></div>
+  </div>
+  <div class="cap"><strong>Screen </strong> — core form after Submit. Days and Approver must already be filled by BR1.</div>
+</div>
+
+      <h2 id="modules">Module access map — who opens what</h2>
+      <div class="modmap">
+        <a href="{BASE}/$studio.do"><h4>Studio</h4><p>Developers create artefacts</p><span class="go">Open Studio →</span></a>
+        <a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave"><h4>Roles</h4><p>Admin grants via groups</p><span class="go">Open roles →</span></a>
+        <a href="{BASE}/sys_security_acl_list.do"><h4>ACLs</h4><p>Elevate security_admin</p><span class="go">Open ACLs →</span></a>
+        <a href="{BASE}/esc"><h4>Employee Center</h4><p>Catalog intake for employees</p><span class="go">Open ESC →</span></a>
+        <a href="{BASE}/hrlx?id=hrlx_home"><h4>Portal hrlx_home</h4><p>My leaves + balance</p><span class="go">Open portal →</span></a>
+        <a href="{BASE}/now/flow-designer"><h4>Flow Designer</h4><p>Ask For Approval</p><span class="go">Open flows →</span></a>
+        <a href="{BASE}/sysapproval_approver_list.do"><h4>My Approvals</h4><p>Manager queue</p><span class="go">Open approvals →</span></a>
+        <a href="{BASE}/$report.do"><h4>Reports</h4><p>Leave by state</p><span class="go">Open reports →</span></a>
+        <a href="{BASE}/$restapi.do"><h4>REST Explorer</h4><p>POST /leave test</p><span class="go">Open API →</span></a>
+        <a href="{BASE}/sys_update_set_list.do"><h4>Update Sets</h4><p>Capture + promote</p><span class="go">Open sets →</span></a>
+        <a href="{BASE}/sys_atf_test_suite_list.do"><h4>ATF</h4><p>Automated proof</p><span class="go">Open ATF →</span></a>
+        <a href="{BASE}/now/agent-studio"><h4>AI Agent Studio</h4><p>Only after E2E green</p><span class="go">Open AI →</span></a>
+      </div>
+
+      <h2 id="best">Best practices wall (whole programme)</h2>
+      <div class="chips">
+        <span class="chip do">✓ Application picker = HR Leave</span>
+        <span class="chip do">✓ Update Set current before New</span>
+        <span class="chip do">✓ u_* on *_v2 tables</span>
+        <span class="chip do">✓ BR1 before · order 100/200/250/300</span>
+        <span class="chip do">✓ Roles via groups only</span>
+        <span class="chip do">✓ Test as employee1 real login</span>
+        <span class="chip do">✓ Groups exported separately</span>
+        <span class="chip do">✓ ATF on target before UAT</span>
+        <span class="chip dont">✗ Global scope for app files</span>
+        <span class="chip dont">✗ Admin-only testing</span>
+        <span class="chip dont">✗ current.update() in BR</span>
+        <span class="chip dont">✗ Portal before ACLs</span>
+        <span class="chip dont">✗ AI before E2E</span>
+        <span class="chip dont">✗ Integration Table API</span>
+      </div>
+
+      <h2 id="architecture">Architecture at a glance</h2>
+      
+<div class="screen">
+  <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+    <span class="ttl">HR Leave architecture</span><span class="path">scope x_786686_hr_leave</span></div>
+  <div class="body">
+    <div class="side"><div class="on">Development</div><div class="">Administration</div><div class="">Implementation</div><div class="">Runtime</div></div>
+    <div class="main"><div class="row"><span>Tables</span><span>employee_v2 · req_v2 · bal_v2 · audit_v2</span></div><div class="row"><span>Logic</span><span>HRLXProLeaveUtilsV2 · SecurityUtilsV2 · IntegrationUtilsV2</span></div><div class="row"><span>Rules</span><span>BR1 days · BR2 submit evt · BR3 audit · BR4 approve evt</span></div><div class="row"><span>Security</span><span>4 roles · ACLs · properties</span></div><div class="row"><span>Intake</span><span>Catalog RP · Portal · Workspace · REST</span></div><div class="row"><span>Async</span><span>Events · Notifications · Accrual job · Flow</span></div><div class="row"><span>Prove</span><span>ATF · UAT matrix · Update Set</span></div></div>
+  </div>
+  <div class="cap"><strong>Screen </strong> — whole application on one board. Build left-to-right: Dev → Admin → Impl.</div>
+</div>
+
+      <h2 id="chapters">Chapters 00–16 — visual boards</h2>
+      
+<section id="ch00" class="ch-viz">
+  <div class="viz-banner">
+    <h2>Chapter 00 — Study Plan — 14 days</h2>
+    <p>Programme map: study PDI vs implement target · Track: <strong>IMPL</strong> · Detail: <a href="00_MASTER_STUDY_PLAN_2WEEKS.html" style="color:#fff;text-decoration:underline">00_MASTER_STUDY_PLAN_2WEEKS.html</a></p>
+  </div>
+  <div class="stepboard">
+    <div class="s"><b>PLAN</b><span>Pick track</span></div><div class="s"><b>PDI</b><span>Study only</span></div><div class="s"><b>TARGET</b><span>Implement</span></div><div class="s"><b>GATE</b><span>Ch.10 UAT</span></div>
+  </div>
+  <div class="flow"><div class="n"><b>PLAN</b>Pick track</div><span class="arrow">→</span><div class="n"><b>PDI</b>Study only</div><span class="arrow">→</span><div class="n"><b>TARGET</b>Implement</div><span class="arrow">→</span><div class="n"><b>GATE</b>Ch.10 UAT</div></div>
+  
+<div class="screen">
+  <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+    <span class="ttl">Study programme</span><span class="path">00 plan</span></div>
+  <div class="body">
+    <div class="side"><div class="on">Study</div><div class="">Implement</div><div class="">Gate</div></div>
+    <div class="main"><div class="row"><span>Track</span><span>Study on PDI</span></div><div class="row"><span>Target</span><span>Named instance</span></div><div class="row"><span>Owner</span><span>Named person</span></div><div class="row"><span>Day 13</span><span>Ch.10 on target</span></div></div>
+  </div>
+  <div class="cap"><strong>Screen </strong> — do not treat PDI study as go-live.</div>
+</div>
+  <div class="chips"><a class="chip url" href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">↗ sys_app.do</a></div>
+  <div class="chips"><span class="chip do">✓ Study ≠ go-live</span><span class="chip do">✓ One update set per person</span><span class="chip dont">✗ Share current update set</span><span class="chip dont">✗ Exam banks before E2E</span></div>
+  <p><a class="chip url" href="00_MASTER_STUDY_PLAN_2WEEKS.html">Open full chapter 00 →</a></p>
+</section>
+<hr />
+
+<section id="ch01" class="ch-viz">
+  <div class="viz-banner">
+    <h2>Chapter 01 — Development — app from zero</h2>
+    <p>App → 4 tables → SI → BR1–4 → CS → UI → menu → Flow · Track: <strong>DEV</strong> · Detail: <a href="01_DEVELOPMENT.html" style="color:#fff;text-decoration:underline">01_DEVELOPMENT.html</a></p>
+  </div>
+  <div class="stepboard">
+    <div class="s"><b>APP</b><span>Create scope</span></div><div class="s"><b>TBL</b><span>4 × _v2</span></div><div class="s"><b>SI</b><span>Utils</span></div><div class="s"><b>BR</b><span>100→300</span></div><div class="s"><b>UI</b><span>CS+Policy</span></div><div class="s"><b>FLOW</b><span>Approve</span></div>
+  </div>
+  <div class="flow"><div class="n"><b>APP</b>Create scope</div><span class="arrow">→</span><div class="n"><b>TBL</b>4 × _v2</div><span class="arrow">→</span><div class="n"><b>SI</b>Utils</div><span class="arrow">→</span><div class="n"><b>BR</b>100→300</div><span class="arrow">→</span><div class="n"><b>UI</b>CS+Policy</div><span class="arrow">→</span><div class="n"><b>FLOW</b>Approve</div></div>
+  
+<div class="screen">
+  <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+    <span class="ttl">Studio · HR Leave</span><span class="path">$studio.do</span></div>
+  <div class="body">
+    <div class="side"><div class="on">Application</div><div class="">Tables</div><div class="">Script Includes</div><div class="">Business Rules</div><div class="">Client Scripts</div></div>
+    <div class="main"><div class="row"><span>Scope</span><span>x_786686_hr_leave</span></div><div class="row"><span>Tables</span><span>4 × *_v2</span></div><div class="row"><span>SI</span><span>HRLXProLeaveUtilsV2</span></div><div class="row"><span>BR order</span><span>100 · 200 · 250 · 300</span></div><div class="row"><span>Proof</span><span>calculateBusinessDays → 5</span></div></div>
+  </div>
+  <div class="cap"><strong>Screen </strong> — Development spine in Studio.</div>
+</div>
+  <div class="chips"><a class="chip url" href="{BASE}/$studio.do">↗ $studio.do</a><a class="chip url" href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">↗ sys_db_object_list.do</a><a class="chip url" href="{BASE}/x_786686_hr_leave_req_v2_list.do">↗ x_786686_hr_leave_req_v2_list.do</a><a class="chip url" href="{BASE}/sys_script_list.do?sysparm_query=nameSTARTSWITHHRLX">↗ sys_script_list.do</a><a class="chip url" href="{BASE}/now/flow-designer">↗ flow-designer</a></div>
+  <div class="chips"><span class="chip do">✓ u_* columns only</span><span class="chip do">✓ BR1 = before</span><span class="chip do">✓ Commit keys if SDK</span><span class="chip dont">✗ Extend Task</span><span class="chip dont">✗ current.update() in BR</span><span class="chip dont">✗ Legacy duration_days</span></div>
+  <p><a class="chip url" href="01_DEVELOPMENT.html">Open full chapter 01 →</a></p>
+</section>
+<hr />
+
+<section id="ch02" class="ch-viz">
+  <div class="viz-banner">
+    <h2>Chapter 02 — Administration — security</h2>
+    <p>Roles → Groups → Users → ACLs → 9 properties → Update Set · Track: <strong>ADM</strong> · Detail: <a href="02_ADMINISTRATION.html" style="color:#fff;text-decoration:underline">02_ADMINISTRATION.html</a></p>
+  </div>
+  <div class="stepboard">
+    <div class="s"><b>ROLE</b><span>4 roles</span></div><div class="s"><b>GRP</b><span>Groups</span></div><div class="s"><b>USER</b><span>Lab users</span></div><div class="s"><b>ACL</b><span>Read/Write</span></div><div class="s"><b>PROP</b><span>9 keys</span></div>
+  </div>
+  <div class="flow"><div class="n"><b>ROLE</b>4 roles</div><span class="arrow">→</span><div class="n"><b>GRP</b>Groups</div><span class="arrow">→</span><div class="n"><b>USER</b>Lab users</div><span class="arrow">→</span><div class="n"><b>ACL</b>Read/Write</div><span class="arrow">→</span><div class="n"><b>PROP</b>9 keys</div></div>
+  
+<div class="screen">
+  <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+    <span class="ttl">Roles & ACLs</span><span class="path">sys_user_role_list</span></div>
+  <div class="body">
+    <div class="side"><div class="on">Roles</div><div class="">Groups</div><div class="">Users</div><div class="">ACLs</div><div class="">Properties</div></div>
+    <div class="main"><div class="row"><span>Roles</span><span>employee · manager · hr_admin · integration</span></div><div class="row"><span>Grant</span><span>Via groups only</span></div><div class="row"><span>ACL test</span><span>employee1 ✗ employee2 URL</span></div><div class="row"><span>Props</span><span>9 scoped keys</span></div></div>
+  </div>
+  <div class="cap"><strong>Screen </strong> — Administration security board.</div>
+</div>
+  <div class="chips"><a class="chip url" href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">↗ sys_user_role_list.do</a><a class="chip url" href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">↗ sys_security_acl_list.do</a><a class="chip url" href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">↗ sys_properties_list.do</a><a class="chip url" href="{BASE}/sys_user_group_list.do">↗ sys_user_group_list.do</a></div>
+  <div class="chips"><span class="chip do">✓ Roles via groups</span><span class="chip do">✓ Test as non-admin</span><span class="chip do">✓ Explicit delete ACL</span><span class="chip dont">✗ Test only as admin</span><span class="chip dont">✗ Direct user→role</span><span class="chip dont">✗ Properties client-side</span></div>
+  <p><a class="chip url" href="02_ADMINISTRATION.html">Open full chapter 02 →</a></p>
+</section>
+<hr />
+
+<section id="ch03" class="ch-viz">
+  <div class="viz-banner">
+    <h2>Chapter 03 — Service Catalog — intake</h2>
+    <p>Category → Record Producer → variables → publish · Track: <strong>DEV</strong> · Detail: <a href="03_SERVICE_CATALOG.html" style="color:#fff;text-decoration:underline">03_SERVICE_CATALOG.html</a></p>
+  </div>
+  <div class="stepboard">
+    <div class="s"><b>CAT</b><span>Category</span></div><div class="s"><b>RP</b><span>Producer</span></div><div class="s"><b>VAR</b><span>Questions</span></div><div class="s"><b>SCRIPT</b><span>Map fields</span></div><div class="s"><b>PUB</b><span>Employee Center</span></div>
+  </div>
+  <div class="flow"><div class="n"><b>CAT</b>Category</div><span class="arrow">→</span><div class="n"><b>RP</b>Producer</div><span class="arrow">→</span><div class="n"><b>VAR</b>Questions</div><span class="arrow">→</span><div class="n"><b>SCRIPT</b>Map fields</div><span class="arrow">→</span><div class="n"><b>PUB</b>Employee Center</div></div>
+  
+<div class="screen">
+  <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+    <span class="ttl">Record Producer</span><span class="path">esc / catalog</span></div>
+  <div class="body">
+    <div class="side"><div class="on">Category</div><div class="">Item</div><div class="">Variables</div><div class="">Script</div></div>
+    <div class="main"><div class="row"><span>Item</span><span>Submit Leave Request</span></div><div class="row"><span>Table</span><span>req_v2</span></div><div class="row"><span>Identity</span><span>gs.getUserID()</span></div><div class="row"><span>State</span><span>submitted</span></div></div>
+  </div>
+  <div class="cap"><strong>Screen </strong> — Catalog intake (not the native form).</div>
+</div>
+  <div class="chips"><a class="chip url" href="{BASE}/sc_category_list.do">↗ sc_category_list.do</a><a class="chip url" href="{BASE}/sc_cat_item_list.do?sysparm_query=sys_scope.scope=x_786686_hr_leave">↗ sc_cat_item_list.do</a><a class="chip url" href="{BASE}/esc">↗ esc</a></div>
+  <div class="chips"><span class="chip do">✓ gs.getUserID()</span><span class="chip do">✓ Whitelist leave_type</span><span class="chip do">✓ Catalog UI Policy ≠ UI Policy</span><span class="chip dont">✗ Trust variable identity</span><span class="chip dont">✗ Skip employee lookup</span></div>
+  <p><a class="chip url" href="03_SERVICE_CATALOG.html">Open full chapter 03 →</a></p>
+</section>
+<hr />
+
+<section id="ch04" class="ch-viz">
+  <div class="viz-banner">
+    <h2>Chapter 04 — Service Portal — self-service</h2>
+    <p>Widgets hrlx_my_leaves + hrlx_balance → page hrlx_home · Track: <strong>DEV</strong> · Detail: <a href="04_SERVICE_PORTAL.html" style="color:#fff;text-decoration:underline">04_SERVICE_PORTAL.html</a></p>
+  </div>
+  <div class="stepboard">
+    <div class="s"><b>W1</b><span>My leaves</span></div><div class="s"><b>W2</b><span>Balance</span></div><div class="s"><b>PAGE</b><span>hrlx_home</span></div><div class="s"><b>ROLE</b><span>employee</span></div>
+  </div>
+  <div class="flow"><div class="n"><b>W1</b>My leaves</div><span class="arrow">→</span><div class="n"><b>W2</b>Balance</div><span class="arrow">→</span><div class="n"><b>PAGE</b>hrlx_home</div><span class="arrow">→</span><div class="n"><b>ROLE</b>employee</div></div>
+  
+<div class="screen">
+  <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+    <span class="ttl">Portal hrlx_home</span><span class="path">/hrlx?id=hrlx_home</span></div>
+  <div class="body">
+    <div class="side"><div class="on">Balance</div><div class="">My leaves</div><div class="">Cancel</div></div>
+    <div class="main"><div class="row"><span>User</span><span>employee1 only</span></div><div class="row"><span>Query</span><span>GlideRecordSecure</span></div><div class="row"><span>Cancel</span><span>Server-side</span></div><div class="row"><span>Role</span><span>employee on page+widget</span></div></div>
+  </div>
+  <div class="cap"><strong>Screen </strong> — Employee self-service portal.</div>
+</div>
+  <div class="chips"><a class="chip url" href="{BASE}/$sp.do">↗ $sp.do</a><a class="chip url" href="{BASE}/sp_widget_list.do">↗ sp_widget_list.do</a><a class="chip url" href="{BASE}/hrlx?id=hrlx_home">↗ hrlx</a></div>
+  <div class="chips"><span class="chip do">✓ GlideRecordSecure</span><span class="chip do">✓ Cancel on server</span><span class="chip do">✓ Role on widget</span><span class="chip dont">✗ ng-bind-html on reason</span><span class="chip dont">✗ Show team on employee page</span></div>
+  <p><a class="chip url" href="04_SERVICE_PORTAL.html">Open full chapter 04 →</a></p>
+</section>
+<hr />
+
+<section id="ch05" class="ch-viz">
+  <div class="viz-banner">
+    <h2>Chapter 05 — Workspace — fulfiller UI</h2>
+    <p>My Requests · Team Approvals · Admin pages · Track: <strong>DEV</strong> · Detail: <a href="05_WORKSPACE_UIBUILDER.html" style="color:#fff;text-decoration:underline">05_WORKSPACE_UIBUILDER.html</a></p>
+  </div>
+  <div class="stepboard">
+    <div class="s"><b>EXP</b><span>Experience</span></div><div class="s"><b>DR</b><span>Data resources</span></div><div class="s"><b>PAGES</b><span>3 roles</span></div><div class="s"><b>PUB</b><span>Publish</span></div>
+  </div>
+  <div class="flow"><div class="n"><b>EXP</b>Experience</div><span class="arrow">→</span><div class="n"><b>DR</b>Data resources</div><span class="arrow">→</span><div class="n"><b>PAGES</b>3 roles</div><span class="arrow">→</span><div class="n"><b>PUB</b>Publish</div></div>
+  
+<div class="screen">
+  <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+    <span class="ttl">Workspace</span><span class="path">UI Builder</span></div>
+  <div class="body">
+    <div class="side"><div class="on">My Requests</div><div class="">Team Approvals</div><div class="">Admin</div></div>
+    <div class="main"><div class="row"><span>Publish</span><span>Required</span></div><div class="row"><span>Data</span><span>Session user</span></div><div class="row"><span>Manager</span><span>Approver filter</span></div></div>
+  </div>
+  <div class="cap"><strong>Screen </strong> — Fulfiller workspace (not portal).</div>
+</div>
+  <div class="chips"><a class="chip url" href="{BASE}/now/builder/ui">↗ ui</a><a class="chip url" href="{BASE}/x_786686_hr_leave_req_v2_list.do">↗ x_786686_hr_leave_req_v2_list.do</a></div>
+  <div class="chips"><span class="chip do">✓ Run as session user</span><span class="chip do">✓ Page roles = security</span><span class="chip dont">✗ Unpublished = invisible</span><span class="chip dont">✗ Team list on portal</span></div>
+  <p><a class="chip url" href="05_WORKSPACE_UIBUILDER.html">Open full chapter 05 →</a></p>
+</section>
+<hr />
+
+<section id="ch06" class="ch-viz">
+  <div class="viz-banner">
+    <h2>Chapter 06 — Events · mail · jobs</h2>
+    <p>3 events → 3 emails · annual accrual job · Track: <strong>ADM</strong> · Detail: <a href="06_NOTIFICATIONS_EVENTS_JOBS.html" style="color:#fff;text-decoration:underline">06_NOTIFICATIONS_EVENTS_JOBS.html</a></p>
+  </div>
+  <div class="stepboard">
+    <div class="s"><b>REG</b><span>Register</span></div><div class="s"><b>BR</b><span>eventQueue</span></div><div class="s"><b>MAIL</b><span>Template</span></div><div class="s"><b>JOB</b><span>Accrual 1 Jan</span></div>
+  </div>
+  <div class="flow"><div class="n"><b>REG</b>Register</div><span class="arrow">→</span><div class="n"><b>BR</b>eventQueue</div><span class="arrow">→</span><div class="n"><b>MAIL</b>Template</div><span class="arrow">→</span><div class="n"><b>JOB</b>Accrual 1 Jan</div></div>
+  
+<div class="screen">
+  <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+    <span class="ttl">Events & Job</span><span class="path">sysevent_register</span></div>
+  <div class="body">
+    <div class="side"><div class="on">Register</div><div class="">Notify</div><div class="">Job</div></div>
+    <div class="main"><div class="row"><span>Events</span><span>submitted · approved · rejected</span></div><div class="row"><span>Mail</span><span>Real SMTP test</span></div><div class="row"><span>Job</span><span>Skip existing balances</span></div></div>
+  </div>
+  <div class="cap"><strong>Screen </strong> — Async layer.</div>
+</div>
+  <div class="chips"><a class="chip url" href="{BASE}/sysevent_register_list.do">↗ sysevent_register_list.do</a><a class="chip url" href="{BASE}/sysevent_email_action_list.do">↗ sysevent_email_action_list.do</a><a class="chip url" href="{BASE}/sysauto_script_list.do">↗ sysauto_script_list.do</a></div>
+  <div class="chips"><span class="chip do">✓ Register before fire</span><span class="chip do">✓ Idempotent job</span><span class="chip do">✓ Test real SMTP</span><span class="chip dont">✗ Email on every update</span><span class="chip dont">✗ Job without skip-existing</span></div>
+  <p><a class="chip url" href="06_NOTIFICATIONS_EVENTS_JOBS.html">Open full chapter 06 →</a></p>
+</section>
+<hr />
+
+<section id="ch07" class="ch-viz">
+  <div class="viz-banner">
+    <h2>Chapter 07 — Reports & dashboards</h2>
+    <p>Leave by State report → dashboard widget · Track: <strong>ADM</strong> · Detail: <a href="07_REPORTS_DASHBOARDS_PA.html" style="color:#fff;text-decoration:underline">07_REPORTS_DASHBOARDS_PA.html</a></p>
+  </div>
+  <div class="stepboard">
+    <div class="s"><b>RPT</b><span>By state</span></div><div class="s"><b>ACL</b><span>Viewer rows</span></div><div class="s"><b>DASH</b><span>Widget</span></div><div class="s"><b>SHARE</b><span>Roles</span></div>
+  </div>
+  <div class="flow"><div class="n"><b>RPT</b>By state</div><span class="arrow">→</span><div class="n"><b>ACL</b>Viewer rows</div><span class="arrow">→</span><div class="n"><b>DASH</b>Widget</div><span class="arrow">→</span><div class="n"><b>SHARE</b>Roles</div></div>
+  
+<div class="screen">
+  <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+    <span class="ttl">Report wizard</span><span class="path">$report.do</span></div>
+  <div class="body">
+    <div class="side"><div class="on">Report</div><div class="">Dashboard</div><div class="">Share</div></div>
+    <div class="main"><div class="row"><span>Report</span><span>Leave by State</span></div><div class="row"><span>ACL</span><span>Viewer rows only</span></div><div class="row"><span>Leaders</span><span>Counts, no names</span></div></div>
+  </div>
+  <div class="cap"><strong>Screen </strong> — Reporting surface.</div>
+</div>
+  <div class="chips"><a class="chip url" href="{BASE}/$report.do">↗ $report.do</a><a class="chip url" href="{BASE}/$pa_dashboard.do">↗ $pa_dashboard.do</a></div>
+  <div class="chips"><span class="chip do">✓ No names on leadership slides</span><span class="chip do">✓ Report in app scope</span><span class="chip dont">✗ Run-as admin on dashboards</span></div>
+  <p><a class="chip url" href="07_REPORTS_DASHBOARDS_PA.html">Open full chapter 07 →</a></p>
+</section>
+<hr />
+
+<section id="ch08" class="ch-viz">
+  <div class="viz-banner">
+    <h2>Chapter 08 — ATF — proof</h2>
+    <p>Suite HRLX Leave Core · BR1 · ACL · CS2 · Track: <strong>DEV</strong> · Detail: <a href="08_ATF_TESTING.html" style="color:#fff;text-decoration:underline">08_ATF_TESTING.html</a></p>
+  </div>
+  <div class="stepboard">
+    <div class="s"><b>SUITE</b><span>Create</span></div><div class="s"><b>T1</b><span>BR1 days</span></div><div class="s"><b>T2</b><span>ACL isolation</span></div><div class="s"><b>T3</b><span>Form days</span></div><div class="s"><b>RUN</b><span>Green</span></div>
+  </div>
+  <div class="flow"><div class="n"><b>SUITE</b>Create</div><span class="arrow">→</span><div class="n"><b>T1</b>BR1 days</div><span class="arrow">→</span><div class="n"><b>T2</b>ACL isolation</div><span class="arrow">→</span><div class="n"><b>T3</b>Form days</div><span class="arrow">→</span><div class="n"><b>RUN</b>Green</div></div>
+  
+<div class="screen">
+  <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+    <span class="ttl">ATF suite</span><span class="path">sys_atf_test_suite</span></div>
+  <div class="body">
+    <div class="side"><div class="on">Suite</div><div class="">BR1</div><div class="">ACL</div><div class="">CS2</div></div>
+    <div class="main"><div class="row"><span>Impersonate</span><span>Required for ACL</span></div><div class="row"><span>Break BR1</span><span>Exactly 1 fail</span></div><div class="row"><span>Scope</span><span>In update set</span></div></div>
+  </div>
+  <div class="cap"><strong>Screen </strong> — Automated evidence.</div>
+</div>
+  <div class="chips"><a class="chip url" href="{BASE}/sys_atf_test_suite_list.do">↗ sys_atf_test_suite_list.do</a><a class="chip url" href="{BASE}/sys_atf_test_list.do">↗ sys_atf_test_list.do</a></div>
+  <div class="chips"><span class="chip do">✓ Impersonate in ACL test</span><span class="chip do">✓ Break BR1 once to prove</span><span class="chip dont">✗ Pass as admin only</span></div>
+  <p><a class="chip url" href="08_ATF_TESTING.html">Open full chapter 08 →</a></p>
+</section>
+<hr />
+
+<section id="ch09" class="ch-viz">
+  <div class="viz-banner">
+    <h2>Chapter 09 — Modules & Flow</h2>
+    <p>Application menu + Ask For Approval flow · Track: <strong>DEV</strong> · Detail: <a href="09_MODULES_AND_INTEGRATION.html" style="color:#fff;text-decoration:underline">09_MODULES_AND_INTEGRATION.html</a></p>
+  </div>
+  <div class="stepboard">
+    <div class="s"><b>MENU</b><span>HR Leave</span></div><div class="s"><b>MOD</b><span>4 modules</span></div><div class="s"><b>FLOW</b><span>Ask approval</span></div><div class="s"><b>STATE</b><span>approved</span></div>
+  </div>
+  <div class="flow"><div class="n"><b>MENU</b>HR Leave</div><span class="arrow">→</span><div class="n"><b>MOD</b>4 modules</div><span class="arrow">→</span><div class="n"><b>FLOW</b>Ask approval</div><span class="arrow">→</span><div class="n"><b>STATE</b>approved</div></div>
+  
+<div class="screen">
+  <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+    <span class="ttl">Menu + Flow</span><span class="path">flow-designer</span></div>
+  <div class="body">
+    <div class="side"><div class="on">Menu</div><div class="">Modules</div><div class="">Flow</div></div>
+    <div class="main"><div class="row"><span>Modules</span><span>Role-gated</span></div><div class="row"><span>Flow</span><span>Ask For Approval</span></div><div class="row"><span>Exclusive</span><span>One per record</span></div></div>
+  </div>
+  <div class="cap"><strong>Screen </strong> — Navigation and approval.</div>
+</div>
+  <div class="chips"><a class="chip url" href="{BASE}/sys_app_application_list.do">↗ sys_app_application_list.do</a><a class="chip url" href="{BASE}/now/flow-designer">↗ flow-designer</a><a class="chip url" href="{BASE}/sysapproval_approver_list.do">↗ sysapproval_approver_list.do</a></div>
+  <div class="chips"><span class="chip do">✓ Role per module</span><span class="chip do">✓ Flow exclusive</span><span class="chip do">✓ No Send Email in flow</span><span class="chip dont">✗ Empty approver = stuck</span></div>
+  <p><a class="chip url" href="09_MODULES_AND_INTEGRATION.html">Open full chapter 09 →</a></p>
+</section>
+<hr />
+
+<section id="ch10" class="ch-viz">
+  <div class="viz-banner">
+    <h2>Chapter 10 — Implementation — go-live</h2>
+    <p>Seed → E2E → Update Set → UAT matrix · Track: <strong>IMPL</strong> · Detail: <a href="10_IMPLEMENTATION_AND_CONFIG.html" style="color:#fff;text-decoration:underline">10_IMPLEMENTATION_AND_CONFIG.html</a></p>
+  </div>
+  <div class="stepboard">
+    <div class="s"><b>SEED</b><span>Data</span></div><div class="s"><b>E2E</b><span>Demo</span></div><div class="s"><b>EXPORT</b><span>XML</span></div><div class="s"><b>PREVIEW</b><span>Collisions</span></div><div class="s"><b>UAT</b><span>HR signs</span></div>
+  </div>
+  <div class="flow"><div class="n"><b>SEED</b>Data</div><span class="arrow">→</span><div class="n"><b>E2E</b>Demo</div><span class="arrow">→</span><div class="n"><b>EXPORT</b>XML</div><span class="arrow">→</span><div class="n"><b>PREVIEW</b>Collisions</div><span class="arrow">→</span><div class="n"><b>UAT</b>HR signs</div></div>
+  
+<div class="screen">
+  <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+    <span class="ttl">Update Set cutover</span><span class="path">sys_update_set_list</span></div>
+  <div class="body">
+    <div class="side"><div class="on">Complete</div><div class="">Export</div><div class="">Preview</div><div class="">Commit</div><div class="">UAT</div></div>
+    <div class="main"><div class="row"><span>Travels</span><span>Config artefacts</span></div><div class="row"><span>Does not</span><span>Users · groups · data</span></div><div class="row"><span>Sign</span><span>HR operations</span></div></div>
+  </div>
+  <div class="cap"><strong>Screen </strong> — Implementation gate.</div>
+</div>
+  <div class="chips"><a class="chip url" href="{BASE}/sys_update_set_list.do">↗ sys_update_set_list.do</a><a class="chip url" href="{BASE}/sys_remote_update_set_list.do">↗ sys_remote_update_set_list.do</a><a class="chip url" href="{BASE}/x_786686_hr_leave_req_v2_list.do">↗ x_786686_hr_leave_req_v2_list.do</a></div>
+  <div class="chips"><span class="chip do">✓ Groups do NOT travel</span><span class="chip do">✓ Rollback written first</span><span class="chip dont">✗ UAT signed by builder</span><span class="chip dont">✗ Accept all collisions</span></div>
+  <p><a class="chip url" href="10_IMPLEMENTATION_AND_CONFIG.html">Open full chapter 10 →</a></p>
+</section>
+<hr />
+
+<section id="ch11" class="ch-viz">
+  <div class="viz-banner">
+    <h2>Chapter 11 — Studio daily practice</h2>
+    <p>Picker · update set · one artefact family · Track: <strong>DEV</strong> · Detail: <a href="11_SDK_CURSOR_CLAUDE.html" style="color:#fff;text-decoration:underline">11_SDK_CURSOR_CLAUDE.html</a></p>
+  </div>
+  <div class="stepboard">
+    <div class="s"><b>PICK</b><span>HR Leave</span></div><div class="s"><b>SET</b><span>Yours</span></div><div class="s"><b>EDIT</b><span>One family</span></div><div class="s"><b>TEST</b><span>Then next</span></div>
+  </div>
+  <div class="flow"><div class="n"><b>PICK</b>HR Leave</div><span class="arrow">→</span><div class="n"><b>SET</b>Yours</div><span class="arrow">→</span><div class="n"><b>EDIT</b>One family</div><span class="arrow">→</span><div class="n"><b>TEST</b>Then next</div></div>
+  
+<div class="screen">
+  <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+    <span class="ttl">Daily Studio</span><span class="path">$studio.do</span></div>
+  <div class="body">
+    <div class="side"><div class="on">Picker</div><div class="">Set</div><div class="">Edit</div><div class="">Test</div></div>
+    <div class="main"><div class="row"><span>Picker</span><span>HR Leave</span></div><div class="row"><span>Set</span><span>Yours only</span></div><div class="row"><span>Owner</span><span>Studio XOR SDK</span></div></div>
+  </div>
+  <div class="cap"><strong>Screen </strong> — Daily discipline.</div>
+</div>
+  <div class="chips"><a class="chip url" href="{BASE}/$studio.do">↗ $studio.do</a><a class="chip url" href="{BASE}/sys_update_set_list.do">↗ sys_update_set_list.do</a></div>
+  <div class="chips"><span class="chip do">✓ Glance picker every New</span><span class="chip dont">✗ Studio edit if SDK owns it</span></div>
+  <p><a class="chip url" href="11_SDK_CURSOR_CLAUDE.html">Open full chapter 11 →</a></p>
+</section>
+<hr />
+
+<section id="ch12" class="ch-viz">
+  <div class="viz-banner">
+    <h2>Chapter 12 — Integration — REST API</h2>
+    <p>Scripted REST POST /leave · Explorer · Track: <strong>DEV</strong> · Detail: <a href="12_INTEGRATION_FULL_GUIDE.html" style="color:#fff;text-decoration:underline">12_INTEGRATION_FULL_GUIDE.html</a></p>
+  </div>
+  <div class="stepboard">
+    <div class="s"><b>SI</b><span>IntegrationUtils</span></div><div class="s"><b>API</b><span>Scripted REST</span></div><div class="s"><b>ACL</b><span>execute</span></div><div class="s"><b>POST</b><span>201</span></div><div class="s"><b>ROW</b><span>req_v2</span></div>
+  </div>
+  <div class="flow"><div class="n"><b>SI</b>IntegrationUtils</div><span class="arrow">→</span><div class="n"><b>API</b>Scripted REST</div><span class="arrow">→</span><div class="n"><b>ACL</b>execute</div><span class="arrow">→</span><div class="n"><b>POST</b>201</div><span class="arrow">→</span><div class="n"><b>ROW</b>req_v2</div></div>
+  
+<div class="screen">
+  <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+    <span class="ttl">REST Explorer</span><span class="path">$restapi.do</span></div>
+  <div class="body">
+    <div class="side"><div class="on">API</div><div class="">POST /leave</div><div class="">201</div></div>
+    <div class="main"><div class="row"><span>User</span><span>hrlx.integration</span></div><div class="row"><span>Body</span><span>employee_id (not sys_id)</span></div><div class="row"><span>Idempotent</span><span>external_id</span></div></div>
+  </div>
+  <div class="cap"><strong>Screen </strong> — Integration front door.</div>
+</div>
+  <div class="chips"><a class="chip url" href="{BASE}/$restapi.do">↗ $restapi.do</a><a class="chip url" href="{BASE}/sys_ws_definition_list.do">↗ sys_ws_definition_list.do</a></div>
+  <div class="chips"><span class="chip do">✓ Resolve by employee_id</span><span class="chip do">✓ Idempotency key</span><span class="chip dont">✗ Table API for integration</span><span class="chip dont">✗ Password in script</span></div>
+  <p><a class="chip url" href="12_INTEGRATION_FULL_GUIDE.html">Open full chapter 12 →</a></p>
+</section>
+<hr />
+
+<section id="ch13" class="ch-viz">
+  <div class="viz-banner">
+    <h2>Chapter 13 — 2-hour summary</h2>
+    <p>OBJ-01→32 revision with openable proof · Track: <strong>IMPL</strong> · Detail: <a href="13_2HOUR_MASTER_SUMMARY.html" style="color:#fff;text-decoration:underline">13_2HOUR_MASTER_SUMMARY.html</a></p>
+  </div>
+  <div class="stepboard">
+    <div class="s"><b>LIST</b><span>OBJ</span></div><div class="s"><b>OPEN</b><span>Instance</span></div><div class="s"><b>TICK</b><span>Only if proven</span></div>
+  </div>
+  <div class="flow"><div class="n"><b>LIST</b>OBJ</div><span class="arrow">→</span><div class="n"><b>OPEN</b>Instance</div><span class="arrow">→</span><div class="n"><b>TICK</b>Only if proven</div></div>
+  
+<div class="screen">
+  <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+    <span class="ttl">OBJ checklist</span><span class="path">chapter 13</span></div>
+  <div class="body">
+    <div class="side"><div class="on">Open</div><div class="">Prove</div><div class="">Tick</div></div>
+    <div class="main"><div class="row"><span>Rule</span><span>Openable = proven</span></div><div class="row"><span>Not</span><span>Memory tick</span></div></div>
+  </div>
+  <div class="cap"><strong>Screen </strong> — Revision as proof.</div>
+</div>
+  <div class="chips"><a class="chip url" href="16_SDK_FULL_DEV_ADMIN_FROM_SCRATCH.html">↗ 16_SDK_FULL_DEV_ADMIN_FROM_SCRATCH.html</a></div>
+  <div class="chips"><span class="chip do">✓ Open record = proof</span><span class="chip dont">✗ Tick from memory</span></div>
+  <p><a class="chip url" href="13_2HOUR_MASTER_SUMMARY.html">Open full chapter 13 →</a></p>
+</section>
+<hr />
+
+<section id="ch14" class="ch-viz">
+  <div class="viz-banner">
+    <h2>Chapter 14 — AI — after core works</h2>
+    <p>Now Assist / VA / Agent Studio / Control Tower · Track: <strong>DEV</strong> · Detail: <a href="14_AI_SERVICENOW_AGENTS.html" style="color:#fff;text-decoration:underline">14_AI_SERVICENOW_AGENTS.html</a></p>
+  </div>
+  <div class="stepboard">
+    <div class="s"><b>E2E</b><span>Must be green</span></div><div class="s"><b>AGENT</b><span>Tools</span></div><div class="s"><b>ACL</b><span>Invoking user</span></div><div class="s"><b>TOWER</b><span>Register</span></div>
+  </div>
+  <div class="flow"><div class="n"><b>E2E</b>Must be green</div><span class="arrow">→</span><div class="n"><b>AGENT</b>Tools</div><span class="arrow">→</span><div class="n"><b>ACL</b>Invoking user</div><span class="arrow">→</span><div class="n"><b>TOWER</b>Register</div></div>
+  
+<div class="screen">
+  <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+    <span class="ttl">AI Agent Studio</span><span class="path">now/agent-studio</span></div>
+  <div class="body">
+    <div class="side"><div class="on">E2E first</div><div class="">Tools</div><div class="">Tower</div></div>
+    <div class="main"><div class="row"><span>Access</span><span>Invoking user</span></div><div class="row"><span>Write</span><span>No u_state</span></div><div class="row"><span>Tower</span><span>Named owner</span></div></div>
+  </div>
+  <div class="cap"><strong>Screen </strong> — AI only after core green.</div>
+</div>
+  <div class="chips"><a class="chip url" href="{BASE}/now/agent-studio">↗ agent-studio</a><a class="chip url" href="AI_SERVICENOW_FULL_DEMO_MASTER.html">↗ AI_SERVICENOW_FULL_DEMO_MASTER.html</a></div>
+  <div class="chips"><span class="chip do">✓ GlideRecordSecure</span><span class="chip do">✓ Read-mostly tools</span><span class="chip dont">✗ AI before ACLs</span><span class="chip dont">✗ Tool writes u_state</span></div>
+  <p><a class="chip url" href="14_AI_SERVICENOW_AGENTS.html">Open full chapter 14 →</a></p>
+</section>
+<hr />
+
+<section id="ch15" class="ch-viz">
+  <div class="viz-banner">
+    <h2>Chapter 15 — Scripts library</h2>
+    <p>Paste from scripts/ portal into Studio · Track: <strong>DEV</strong> · Detail: <a href="15_CLAUDE_CLI_CODE_SERVICENOW.html" style="color:#fff;text-decoration:underline">15_CLAUDE_CLI_CODE_SERVICENOW.html</a></p>
+  </div>
+  <div class="stepboard">
+    <div class="s"><b>SRC</b><span>scripts/</span></div><div class="s"><b>COPY</b><span>Block</span></div><div class="s"><b>PASTE</b><span>Studio</span></div><div class="s"><b>SAVE</b><span>Test</span></div>
+  </div>
+  <div class="flow"><div class="n"><b>SRC</b>scripts/</div><span class="arrow">→</span><div class="n"><b>COPY</b>Block</div><span class="arrow">→</span><div class="n"><b>PASTE</b>Studio</div><span class="arrow">→</span><div class="n"><b>SAVE</b>Test</div></div>
+  
+<div class="screen">
+  <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+    <span class="ttl">Scripts portal</span><span class="path">scripts/index.html</span></div>
+  <div class="body">
+    <div class="side"><div class="on">Copy</div><div class="">Paste</div><div class="">Save</div></div>
+    <div class="main"><div class="row"><span>Source</span><span>One truth</span></div><div class="row"><span>Name</span><span>Class = record</span></div></div>
+  </div>
+  <div class="cap"><strong>Screen </strong> — Paste library.</div>
+</div>
+  <div class="chips"><a class="chip url" href="scripts/index.html">↗ index.html</a></div>
+  <div class="chips"><span class="chip do">✓ Diff after paste</span><span class="chip dont">✗ Rename class ≠ record name</span></div>
+  <p><a class="chip url" href="15_CLAUDE_CLI_CODE_SERVICENOW.html">Open full chapter 15 →</a></p>
+</section>
+<hr />
+
+<section id="ch16" class="ch-viz">
+  <div class="viz-banner">
+    <h2>Chapter 16 — Master path 01→15</h2>
+    <p>Ordered build · E2E gate · joiner spine · Track: <strong>IMPL</strong> · Detail: <a href="16_SDK_FULL_DEV_ADMIN_FROM_SCRATCH.html" style="color:#fff;text-decoration:underline">16_SDK_FULL_DEV_ADMIN_FROM_SCRATCH.html</a></p>
+  </div>
+  <div class="stepboard">
+    <div class="s"><b>01+02</b><span>Security gate</span></div><div class="s"><b>03+06+09</b><span>Approve path</span></div><div class="s"><b>08+10</b><span>Go-live gate</span></div><div class="s"><b>14</b><span>AI last</span></div>
+  </div>
+  <div class="flow"><div class="n"><b>01+02</b>Security gate</div><span class="arrow">→</span><div class="n"><b>03+06+09</b>Approve path</div><span class="arrow">→</span><div class="n"><b>08+10</b>Go-live gate</div><span class="arrow">→</span><div class="n"><b>14</b>AI last</div></div>
+  
+<div class="screen">
+  <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+    <span class="ttl">Master path</span><span class="path">chapter 16</span></div>
+  <div class="body">
+    <div class="side"><div class="on">01+02</div><div class="">03+06+09</div><div class="">08+10</div><div class="">14</div></div>
+    <div class="main"><div class="row"><span>Gate1</span><span>Security</span></div><div class="row"><span>Gate2</span><span>Approve path</span></div><div class="row"><span>Gate3</span><span>Go-live</span></div></div>
+  </div>
+  <div class="cap"><strong>Screen </strong> — Ordered programme spine.</div>
+</div>
+  <div class="chips"><a class="chip url" href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">↗ STUDIO_CREATE_ALL_OBJECTS_01_16.html</a><a class="chip url" href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">↗ PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html</a></div>
+  <div class="chips"><span class="chip do">✓ Hard gates stop the path</span><span class="chip dont">✗ Portal before ACLs</span></div>
+  <p><a class="chip url" href="16_SDK_FULL_DEV_ADMIN_FROM_SCRATCH.html">Open full chapter 16 →</a></p>
+</section>
+<hr />
+
+      <div class="ok">
+        <p><strong>Done when:</strong> employee1 submits → manager1 approves → balance updates → notification fires → ATF green on target → HR signs UAT. Detail lives in each chapter file; this page is the map.</p>
+      </div>
+    </article>
+    <p class="footer">HR Leave · Visual from scratch 00–16 · replace {BASE} · diagrams first</p>
+  </main>
+  <script src="assets/docs.js"></script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

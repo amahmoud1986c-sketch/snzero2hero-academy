@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MASTER ALL-IN-ONE SUMMARY — اقرأ أولاً</title>
+<style>
+:root {
+  --bg:#eef3f8; --card:#fff; --ink:#142033; --muted:#5b6b7c; --line:#d5dee8;
+  --brand:#0b5cab; --ai:#5b21b6; --ok:#0f766e; --shadow:0 12px 30px rgba(15,30,50,.08);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI","Cairo",Tahoma,sans-serif;color:var(--ink);
+background:radial-gradient(900px 400px at 0% 0%,#d7e7f8,transparent),radial-gradient(800px 360px at 100% 0%,#e4ddf8,transparent),var(--bg)}
+.top{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;
+padding:12px 16px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.brand{font-weight:700;color:var(--brand)}
+.brand small{display:block;color:var(--muted);font-weight:500;font-size:.78rem}
+.base{display:flex;gap:8px;flex-wrap:wrap}
+.base input{min-width:260px;padding:8px 12px;border:1px solid var(--line);border-radius:999px}
+.base button{border:0;background:var(--brand);color:#fff;border-radius:999px;padding:8px 14px;font-weight:600;cursor:pointer}
+.wrap{max-width:920px;margin:0 auto;padding:18px}
+.hero{background:linear-gradient(125deg,var(--brand),var(--ai));color:#fff;border-radius:18px;padding:22px;margin-bottom:14px;box-shadow:var(--shadow)}
+.hero h1{margin:0 0 8px;font-size:1.45rem}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.pills a{text-decoration:none;background:#fff;border:1px solid var(--line);color:var(--ink);padding:7px 11px;border-radius:999px;font-size:.82rem;font-weight:600}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
+.card h2{margin:0 0 8px;font-size:1.15rem}
+.card h3{margin:14px 0 6px;font-size:1rem;color:var(--brand)}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{border-bottom:1px solid var(--line);text-align:left;padding:8px;vertical-align:top}
+th{color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.04em}
+code{background:#f1f5f9;padding:1px 5px;border-radius:4px}
+.shot{margin:10px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#0b1220}
+.shot img{width:100%;display:block;background:#fff}
+.shot figcaption{padding:8px 10px;color:#dbe4f0;font-size:.78rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.btn{display:inline-block;background:var(--brand);color:#fff!important;text-decoration:none;padding:7px 11px;border-radius:999px;font-size:.8rem;font-weight:600}
+.note{background:#f5f3ff;border:1px solid #ddd6fe;color:#4c1d95;padding:10px 12px;border-radius:10px}
+.ok{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;padding:10px 12px;border-radius:10px}
+pre{background:#0f172a;color:#e2e8f0;padding:12px;border-radius:10px;overflow:auto}
+ul{line-height:1.55}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">MASTER ALL-IN-ONE SUMMARY — اقرأ أولاً<small>Australia · x_786686_hr_leave</small></div>
+  <div class="base">
+    <input id="baseInput" type="url" placeholder="https://your-instance.service-now.com"/>
+    <button type="button" id="applyBase">Apply {BASE}</button>
+  </div>
+</header>
+<div class="wrap">
+
+<section class="hero">
+  <h1>ملخص سريع — اقرأ هذا قبل الملف الكبير</h1>
+  <p>10–15 دقيقة لفهم المسار الكامل: Development · Administration · ServiceNow AI · Modules · Deploy. ثم افتح الدليل الشامل أو الملفات الصغيرة.</p>
+</section>
+<div class="pills">
+  <a href="MASTER_ALL_IN_ONE.html">الدليل الشامل الواحد</a>
+  <a href="MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">شاشات New/Open</a>
+  <a href="01_DEVELOPMENT.html">Dev</a>
+  <a href="02_ADMINISTRATION.html">Admin</a>
+  <a href="14_AI_SERVICENOW_AGENTS.html">AI</a>
+  <a href="modules/implementation/INDEX.html">Module Runbooks</a>
+  <a href="index.html">Portal</a>
+</div>
+<section class="card">
+  <h2>خريطة التعلم</h2>
+  <pre>Dev → Admin → Catalog/Portal/Workspace → AI → Modules (ITSM→CMDB→HRSD→…) → Deploy</pre>
+  <p class="ok">ابدأ دائماً من هذا الملخص، ثم MASTER_ALL_IN_ONE، ثم الملفات التفصيلية عند الحاجة للسكربتات الكاملة.</p>
+</section>
+<section class="card">
+  <h2>1) Development</h2>
+  <table>
+    <tr><th>عنصر</th><th>Direct</th></tr>
+    <tr><td>Studio</td><td><a class="btn" href="{BASE}/$studio.do">Open</a></td></tr>
+    <tr><td>Tables</td><td><a class="btn" href="{BASE}/sys_db_object_list.do">Open</a></td></tr>
+    <tr><td>Business Rules</td><td><a class="btn" href="{BASE}/sys_script_list.do">Open</a></td></tr>
+    <tr><td>Script Includes</td><td><a class="btn" href="{BASE}/sys_script_include_list.do">Open</a></td></tr>
+    <tr><td>Flow Designer</td><td><a class="btn" href="{BASE}/now/flow-designer">Open</a></td></tr>
+  </table>
+  <figure class="shot"><img src="assets/practice/dev-business-rule.png" alt="Business Rule — New (When to run options)" loading="lazy"/><figcaption>Business Rule — New (When to run options)</figcaption></figure>
+</section>
+<section class="card">
+  <h2>2) Administration</h2>
+  <table>
+    <tr><th>عنصر</th><th>Direct</th></tr>
+    <tr><td>Groups / Roles</td><td><a class="btn" href="{BASE}/sys_user_group_list.do">Open</a></td></tr>
+    <tr><td>ACL</td><td><a class="btn" href="{BASE}/sys_security_acl_list.do">Open</a></td></tr>
+    <tr><td>Notifications</td><td><a class="btn" href="{BASE}/sysevent_email_action_list.do">Open</a></td></tr>
+    <tr><td>ATF</td><td><a class="btn" href="{BASE}/sys_atf_test_list.do">Open</a></td></tr>
+  </table>
+  <figure class="shot"><img src="assets/practice/admin-acl.png" alt="ACL — New (operation + script)" loading="lazy"/><figcaption>ACL — New (operation + script)</figcaption></figure>
+</section>
+<section class="card">
+  <h2>3) ServiceNow AI (التركيز)</h2>
+  <div class="note">Virtual Agent + NLU أولاً، ثم Predictive Intelligence، ثم Now Assist / AI Search حسب الترخيص.</div>
+  <table>
+    <tr><th>AI</th><th>استخدام HR Leave</th><th>Direct</th></tr>
+    <tr><td>Virtual Agent</td><td>طلب إجازة / رصيد</td><td><a class="btn" href="{BASE}/now/va-designer">VA Designer</a></td></tr>
+    <tr><td>NLU</td><td>Intents EN+AR</td><td><a class="btn" href="{BASE}/sys_nlu_model_list.do">NLU</a></td></tr>
+    <tr><td>Predictive Intelligence</td><td>تصنيف leave_type</td><td><a class="btn" href="{BASE}/ml_solutions.do">PI</a></td></tr>
+    <tr><td>AI Search</td><td>سياسات في ESC</td><td><a class="btn" href="{BASE}/ais_search_config_list.do">AI Search</a></td></tr>
+  </table>
+  <p><strong>Lab سريع:</strong> NLU intents → VA topic 5 خطوات → Preview → ربط Script Include.</p>
+  <p>تفاصيل كاملة: <a href="14_AI_SERVICENOW_AGENTS.html">14_AI_SERVICENOW_AGENTS.html</a></p>
+</section>
+<section class="card">
+  <h2>4) Modules order</h2>
+  <ol>
+    <li><a href="modules/ITSM.html">ITSM</a></li>
+    <li><a href="modules/CMDB.html">CMDB</a></li>
+    <li><a href="modules/HRSD.html">HRSD</a></li>
+    <li><a href="modules/CSM.html">CSM</a> / <a href="modules/FSM.html">FSM</a></li>
+    <li><a href="modules/SPM.html">SPM</a></li>
+    <li><a href="modules/GRC.html">GRC</a></li>
+  </ol>
+  <figure class="shot"><img src="assets/practice/mod-incident-new.png" alt="Module practice — Incident New form" loading="lazy"/><figcaption>Module practice — Incident New form</figcaption></figure>
+</section>
+<section class="card">
+  <h2>5) بعد الملخص</h2>
+  <p><a class="btn" href="MASTER_ALL_IN_ONE.html">افتح الدليل الشامل الواحد الآن</a>
+  <a class="btn" href="MASTER_PRACTICE_GUIDE_ALL_TOPICS.html" style="background:#5b21b6">شاشات التطوير/الإدارة</a></p>
+</section>
+
+</div>
+<script>
+(function(){
+  const KEY='hrl_all_in_one_base';
+  const input=document.getElementById('baseInput');
+  function apply(base){
+    if(!base) return; base=base.replace(/\/$/,'');
+    document.querySelectorAll('a[href]').forEach(a=>{
+      const h=a.getAttribute('href')||'';
+      if(h.includes('{BASE}') || a.dataset.raw){
+        if(!a.dataset.raw) a.dataset.raw=h;
+        a.href=a.dataset.raw.split('{BASE}').join(base);
+      }
+    });
+  }
+  const saved=localStorage.getItem(KEY)||'';
+  if(saved){input.value=saved; apply(saved);}
+  document.getElementById('applyBase').onclick=()=>{const v=input.value.trim(); localStorage.setItem(KEY,v); apply(v);};
+})();
+</script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

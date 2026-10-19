@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ACLs — صلاحيات تطبيق الإجازات | HR Leave Australia</title>
+  <link rel="stylesheet" href="../../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../../index.html">Portal</a>
+      <a href="../../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../../scripts/index.html">Scripts</a>
+      <a href="../../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>ACLs — صلاحيات تطبيق الإجازات</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="acls">ACLs — صلاحيات تطبيق الإجازات</h1>
+<blockquote>
+<p>أنشئ كل ACL من:<br />
+All &gt; System Security &gt; Access Control (ACL) — <a href="{BASE}/sys_security_acl_list.do">Open direct</a><br />
+فعّل High Security أولًا.</p>
+</blockquote>
+<h2 id="_1">القاعدة العامة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<ul>
+<li>الموظف يرى/يعدّل طلبه فقط.</li>
+<li>المدير/المعتمد يرى طلبات فريقه ويعتمدها.</li>
+<li>HR admin يرى ويعدّل كل شيء.</li>
+</ul>
+<p>كل ACL تستدعي Script Include للأمان.</p>
+<hr />
+<h2 id="acl-1-read">ACL 1 — read على طلب الإجازة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<ul>
+<li>Type: record</li>
+<li>Name: x_786686_hr_leave_req_v2</li>
+<li>Operation: read</li>
+<li>Requires role: (اتركها فارغة لأن المنطق في السكربت)</li>
+</ul>
+<p>Script:</p>
+<pre><code class="language-javascript">answer = new x_786686_hr_leave.HRLXProSecurityUtilsV2().canReadLeave(current);
+</code></pre>
+<hr />
+<h2 id="acl-2-write">ACL 2 — write على طلب الإجازة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<ul>
+<li>Type: record</li>
+<li>Name: x_786686_hr_leave_req_v2</li>
+<li>Operation: write</li>
+</ul>
+<p>Script:</p>
+<pre><code class="language-javascript">answer = new x_786686_hr_leave.HRLXProSecurityUtilsV2().canWriteLeave(current);
+</code></pre>
+<hr />
+<h2 id="acl-3-create">ACL 3 — create على طلب الإجازة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<ul>
+<li>Type: record</li>
+<li>Name: x_786686_hr_leave_req_v2</li>
+<li>Operation: create</li>
+<li>Requires role: x_786686_hr_leave.employee</li>
+</ul>
+<p>Script:</p>
+<pre><code class="language-javascript">answer = gs.hasRole('x_786686_hr_leave.employee')
+ || gs.hasRole('x_786686_hr_leave.hr_admin')
+ || gs.hasRole('x_786686_hr_leave.integration');
+</code></pre>
+<p>دور <strong>x_786686_hr_leave.integration</strong> يسمح لمستخدم التكامل hrlx.integration بإنشاء طلب عبر Scripted REST / Table API.</p>
+<p>Setup:<br />
+src/server/rest/SCRIPTED_REST_INBOUND_SETUP.md (Phase 1 + 5)</p>
+<hr />
+<h2 id="acl-3b-scripted-rest-default-acl-execute-on-api">ACL 3b — Scripted REST Default ACL (execute on API)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p>Separate from table ACL — controls who can <strong>call</strong> the REST endpoint. — هذا ACL مختلف — يتحكم في <strong>من يستدعي</strong> الـ API (ليس إدراج الجدول فقط).</p>
+<p>Create from Scripted REST → Security → <strong>Default ACLs</strong> (lock icon):</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>scripted_rest_api</td>
+</tr>
+<tr>
+<td>Operation</td>
+<td>execute</td>
+</tr>
+<tr>
+<td>Active</td>
+<td>true</td>
+</tr>
+<tr>
+<td>Requires role</td>
+<td>x_786686_hr_leave.integration</td>
+</tr>
+<tr>
+<td>Application</td>
+<td>HR Leave</td>
+</tr>
+</tbody>
+</table>
+<p>Lab: add admin role temporarily for Explorer testing as admin.</p>
+<hr />
+<h2 id="acl-4-hr">ACL 4 — حقل المعتمد للقراءة فقط لغير HR</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<ul>
+<li>Type: record</li>
+<li>Name: x_786686_hr_leave_req_v2.u_approver_user</li>
+<li>Operation: write</li>
+</ul>
+<p>Script:</p>
+<pre><code class="language-javascript">answer = gs.hasRole('x_786686_hr_leave.hr_admin');
+</code></pre>
+<hr />
+<h2 id="_2">اختبار</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<p>بعد إنشاء كل ACL اختبرها عبر Impersonate لكل دور.<br />
+Navigate: All &gt; User Administration &gt; Impersonate User — <a href="{BASE}/impersonate_dialog.do">Open direct</a></p>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../../assets/docs.js"></script>
+
+<script src="../../assets/author-brand.js" defer></script>
+</body>
+</html>

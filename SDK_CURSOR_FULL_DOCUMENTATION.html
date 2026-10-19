@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ServiceNow SDK + Cursor — Full Documentation (every command, every flag) | HR Leave</title>
+  <meta name="description" content="Complete ServiceNow SDK (Fluent) documentation verified against the installed CLI 4.12.2: all 12 commands with every flag, the built-in explain system with 256 topics, project anatomy, keys.ts, a full build tutorial from the real HR Leave project, Cursor agent integration, CI/CD with OAuth client credentials, and troubleshooting." />
+  <link rel="stylesheet" href="assets/docs.css" />
+  <style>
+    .part-head {
+      margin-top: 2.6rem; padding: .9rem 1.1rem; border-radius: 14px; color: #fff;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    }
+    .part-head h2 { margin: 0; color: #fff; border: 0; padding: 0; }
+    .part-head p { margin: .3rem 0 0; opacity: .92; font-size: .92rem; }
+    .min-chip {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 1.9rem; height: 1.75rem; border-radius: 999px;
+      background: var(--brand-2); color: #042f2e; font-weight: 800; font-size: .85rem;
+      margin-inline-end: .45rem;
+    }
+    .verified {
+      display: inline-block; background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0;
+      border-radius: 999px; padding: .1rem .6rem; font-size: .76rem; font-weight: 700;
+    }
+    .unverified {
+      display: inline-block; background: #fef2f2; color: #991b1b; border: 1px solid #fecaca;
+      border-radius: 999px; padding: .1rem .6rem; font-size: .76rem; font-weight: 700;
+    }
+    .cmd-card {
+      border: 1px solid var(--line); border-radius: 12px; margin: 1.1rem 0; overflow: hidden;
+    }
+    .cmd-card > header {
+      background: #0b1220; color: #e2e8f0; padding: .6rem .85rem;
+      font-family: var(--mono); font-size: .92rem; display: flex; flex-wrap: wrap;
+      gap: .5rem; align-items: center;
+    }
+    .cmd-card > header b { color: #7dd3fc; font-weight: 700; }
+    .cmd-card > header .alias { color: #fcd34d; font-size: .8rem; }
+    .cmd-card > div { padding: .8rem .9rem; }
+    .cmd-card p:first-child { margin-top: 0; }
+    .flag-table { width: 100%; font-size: .9rem; }
+    .flag-table td:first-child { width: 230px; font-family: var(--mono); font-size: .84rem; white-space: nowrap; }
+    .kv { width: 100%; }
+    .kv td:first-child { width: 240px; font-weight: 600; color: var(--brand); }
+    .fn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: .65rem; margin: 1rem 0; }
+    .fn { border: 1px solid var(--line); border-radius: 12px; padding: .75rem .85rem; background: #fff; }
+    .fn h4 { margin: 0 0 .35rem; color: var(--brand); font-size: .95rem; }
+    .fn p { margin: 0; color: var(--muted); font-size: .88rem; }
+    .toc-master {
+      border: 1px solid var(--line); border-radius: 14px; padding: 1rem 1.15rem;
+      background: linear-gradient(180deg, #f8fafc, #fff); margin: 1.2rem 0 1.6rem;
+    }
+    .toc-master ol { margin: .4rem 0 0; padding-inline-start: 1.3rem; }
+    .toc-master li { margin: .22rem 0; }
+    .topic-group { margin: 1rem 0; }
+    .topic-group h4 { margin: 0 0 .35rem; color: var(--brand); font-size: .95rem; }
+    .topic-list {
+      display: flex; flex-wrap: wrap; gap: .3rem;
+    }
+    .topic-list code {
+      background: #f1f5f9; border: 1px solid var(--line); border-radius: 6px;
+      padding: .1rem .4rem; font-size: .78rem;
+    }
+    .shot { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin: 1rem 0 1.4rem; background: #0b1220; }
+    .shot-frame {
+      padding: 1rem 1.1rem; color: #e2e8f0; font-family: var(--mono); font-size: .83rem; line-height: 1.55;
+      background: linear-gradient(135deg, rgba(14,165,164,.2), transparent 45%), linear-gradient(225deg, rgba(15,76,129,.33), transparent 50%), #0b1220;
+    }
+    .shot-frame .ui-bar { display: flex; gap: .4rem; align-items: center; margin-bottom: .8rem; padding-bottom: .5rem; border-bottom: 1px solid rgba(148,163,184,.25); }
+    .shot-frame .dot { width: .55rem; height: .55rem; border-radius: 50%; background: #64748b; }
+    .shot-frame .dot.g { background: #34d399; } .shot-frame .dot.a { background: #fbbf24; } .shot-frame .dot.r { background: #f87171; }
+    .shot-frame .title { color: #7dd3fc; font-weight: 700; }
+    .shot-frame .crumb { color: #94a3b8; margin-inline-start: auto; font-size: .78rem; }
+    .shot-frame .row { display: flex; gap: .5rem; padding: .25rem .3rem; border-bottom: 1px dashed rgba(148,163,184,.18); }
+    .shot-frame .row b { color: #fcd34d; min-width: 92px; }
+    .shot-cap { background: #fff; color: var(--ink); padding: .7rem .9rem; font-size: .9rem; border-top: 1px solid var(--line); }
+    .shot-cap strong { color: var(--brand); }
+    .role { display: inline-block; border-radius: 999px; padding: .08rem .55rem; font-size: .74rem; font-weight: 700; margin-inline-end: .35rem; }
+    .role.dev { background: #e0f2fe; color: #075985; }
+    .role.ops { background: #fef3c7; color: #92400e; }
+    .note-sm { font-size: .88rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · ServiceNow SDK + Cursor</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="ONE_DAY_ALL_IN_ONE_01_16.html">One Day All-in-One</a>
+      <a href="AI_SERVICENOW_FULL_DEMO_MASTER.html">AI Full Demo</a>
+      <a href="scripts/index.html">Scripts</a>
+      <span class="badge">SDK 4.12.2</span>
+      <span class="badge">Verified against installed CLI</span>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <section class="hero">
+      <h1>ServiceNow SDK + Cursor — Full Documentation</h1>
+      <p>Every command, every flag, the built-in <code style="color:#fff">explain</code> documentation system, the complete project anatomy, a full build tutorial using this repository's real Fluent source, the Cursor agent workflow, and CI/CD that actually works.</p>
+      <div class="meta-grid">
+        <div><strong>SDK version</strong>4.12.2 (installed in <code style="color:#fff">hr-leave-sdk</code>)</div>
+        <div><strong>Node required</strong>20.18+ · verified on v20.20.2</div>
+        <div><strong>Commands</strong>12 top-level, all flags documented</div>
+        <div><strong>Built-in topics</strong>256 via <code style="color:#fff">now-sdk explain</code></div>
+      </div>
+    </section>
+
+      <div class="ok">
+      <p><span class="verified">VERIFIED</span> &nbsp;Every command and flag on this page was captured from <code>now-sdk &lt;command&gt; --help</code> on the SDK <strong>4.12.2</strong> actually installed at <code>HR_Leave_App/servicenow-ai-workspace/hr-leave-sdk/node_modules/@servicenow/sdk</code>. Nothing here is from memory or from a different SDK version. Where this page contradicts an older note in the repository, this page is right — and §10 lists exactly which existing files are wrong and how to fix them.</p>
+      <p><strong>New (Windows full cycle):</strong> prerequisites → install → authentication → PowerShell command sheet → deploy → <em>can / cannot</em> → Vulnerability Response (VR/VRO) object cycle →
+      <a href="SDK_WINDOWS_FULL_CYCLE_CAN_CANNOT.html">SDK_WINDOWS_FULL_CYCLE_CAN_CANNOT.html</a>.</p>
+    </div>
+
+    <article class="content">
+
+      <div class="toc-master">
+        <strong>Contents</strong>
+        <ol>
+          <li><a href="#p0">What SDK documentation already exists in this project (and what was missing)</a></li>
+          <li><a href="#p1">What the SDK is, and when to use it instead of Studio</a></li>
+          <li><a href="#p2">Install and authenticate — every <code>auth</code> flag</a></li>
+          <li><a href="#p3">Complete command reference — all 12 commands</a></li>
+          <li><a href="#p4"><code>explain</code> — the built-in 256-topic documentation system</a></li>
+          <li><a href="#p5">Project anatomy — <code>now.config.json</code>, <code>keys.ts</code>, build outputs</a></li>
+          <li><a href="#p6">Full tutorial — build the HR Leave app from zero in Fluent</a></li>
+          <li><a href="#p7">Cursor integration — rules, skills, agent mode, the explain-first loop</a></li>
+          <li><a href="#p8">Bringing existing applications into the SDK</a></li>
+          <li><a href="#p9">CI/CD — <code>--frozenKeys</code> and OAuth client credentials</a></li>
+          <li><a href="#p10">Corrections: three files in this repo call a command that does not exist</a></li>
+          <li><a href="#p11">Troubleshooting</a></li>
+          <li><a href="#p12">Appendix — all 256 <code>explain</code> topics</a></li>
+          <li><a href="#p13">Quick reference card</a></li>
+        </ol>
+      </div>
+
+      <!-- ===================== PART 0 ===================== -->
+      <div class="part-head" id="p0">
+        <h2><span class="min-chip">0</span>What already exists in this project — and what was missing</h2>
+        <p>Read this first so you know which file to trust</p>
+      </div>
+
+      <p>The short answer to "where is the full SDK documentation": <strong>it did not exist until this page</strong>. What the repository had was five fragments totalling about six kilobytes, plus three real working SDK projects with no prose explaining them. Worse, the file whose name promises SDK documentation does not contain any.</p>
+
+      <table>
+        <thead><tr><th>File</th><th>Size</th><th>What it actually contains</th><th>Verdict</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>html/11_SDK_CURSOR_CLAUDE.html</code></td><td>9.4 KB</td>
+            <td>"Studio Practice Companion" — a Studio-only workflow guide. The SDK content was replaced by <code>tools/convert_docs_01_16_studio_only.py</code>. <strong>Zero mentions of the SDK, npm, or Cursor.</strong></td>
+            <td><span class="unverified">MISLEADING NAME</span></td>
+          </tr>
+          <tr>
+            <td><code>11_SDK_CURSOR_CLAUDE.md</code></td><td>2 KB</td>
+            <td>The original markdown: a status table of what is installed on dev398980, four test steps, and two daily commands. Useful as a project status note.</td>
+            <td>Status note, not documentation</td>
+          </tr>
+          <tr>
+            <td><code>sdk/examples/README.md</code></td><td>0.6 KB</td>
+            <td>Seven-line quick start: <code>npm init</code>, install, <code>auth --add</code>, <code>init</code>, <code>build</code>, <code>deploy</code>.</td>
+            <td>Correct but minimal</td>
+          </tr>
+          <tr>
+            <td><code>servicenow-ai-workspace/README.md</code></td><td>0.9 KB</td>
+            <td>The three-app table and a deploy-all snippet.</td>
+            <td>Orientation only</td>
+          </tr>
+          <tr>
+            <td><code>.cursor/rules/servicenow-sdk-master.mdc</code></td><td>1.4 KB</td>
+            <td>Cursor agent rules: conventions, scopes, deploy commands, model selection.</td>
+            <td>Good, but tells the agent to run a command that does not exist — see §10</td>
+          </tr>
+          <tr>
+            <td><code>html/AI_SERVICENOW_FULL_DEMO_MASTER.html</code> Part 10</td><td>—</td>
+            <td>A 14-row command table written from general knowledge, not from your installed CLI.</td>
+            <td><span class="unverified">HAS ERRORS</span> — corrected in §10</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>What does exist, and is genuinely good: three working SDK projects</h3>
+      <table>
+        <thead><tr><th>Project</th><th>Scope</th><th>State</th></tr></thead>
+        <tbody>
+          <tr><td><code>servicenow-ai-workspace/hr-leave-sdk/</code></td><td><code>x_786686_hr_leave</code></td><td>Fully built. 12 Fluent source files, generated <code>keys.ts</code> with ~1,340 lines of pinned sys_ids, and a successful build artefact at <code>target/hr_leave_sdk_1_0_0.zip</code> (114 KB).</td></tr>
+          <tr><td><code>servicenow-ai-workspace/crm-suite-sdk/</code></td><td><code>x_snc_crm_suite</code></td><td>Scaffolded with a few Fluent files, not built.</td></tr>
+          <tr><td><code>servicenow-ai-workspace/portal-website-sdk/</code></td><td><code>x_snc_sp_website</code></td><td>Scaffolded with Fluent + a <code>src/portal/</code> folder, not built.</td></tr>
+        </tbody>
+      </table>
+      <p class="note-sm">Every code example in §6 of this page is taken from <code>hr-leave-sdk/src/fluent/</code> — real source that has actually compiled and installed, not invented samples.</p>
+
+      <!-- ===================== PART 1 ===================== -->
+      <div class="part-head" id="p1">
+        <h2><span class="min-chip">1</span>What the SDK is, and when to use it instead of Studio</h2>
+        <p><span class="role dev">Developer</span></p>
+      </div>
+
+      <p>The <strong>ServiceNow SDK</strong> is a Node command-line tool that lets you define platform artefacts as TypeScript source on your own machine, compile them into an installable application package, and install that package onto an instance. The TypeScript dialect you write is called <strong>Fluent</strong>: a set of typed factory functions — <code>Table()</code>, <code>BusinessRule()</code>, <code>Acl()</code>, <code>Role()</code>, <code>Flow()</code> — exported from <code>@servicenow/sdk/core</code>.</p>
+
+      <p>The thing most people miss on first contact: this is <strong>not</strong> a wrapper that drives the Studio UI, and it is <strong>not</strong> an update-set generator. It produces the application package itself. Your source files are the definition of the app; the instance is a deployment target.</p>
+
+      <h3>1.1 The honest comparison</h3>
+      <table>
+        <thead><tr><th>Concern</th><th>Studio</th><th>SDK + Fluent</th></tr></thead>
+        <tbody>
+          <tr><td>Where truth lives</td><td>The instance</td><td>Your git repository</td></tr>
+          <tr><td>Code review</td><td>Compare update set XML, painfully</td><td>A normal pull request diff</td></tr>
+          <tr><td>Rollback</td><td>Back out an update set and hope</td><td><code>git revert</code>, rebuild, reinstall</td></tr>
+          <tr><td>Two developers on one app</td><td>Update-set collisions</td><td>Git branches and merges</td></tr>
+          <tr><td>Record identity across instances</td><td>sys_id travels in the update set</td><td>Pinned in committed <code>keys.ts</code> — see §5.3</td></tr>
+          <tr><td>Working offline</td><td>Impossible</td><td>Everything but <code>install</code> and <code>query</code></td></tr>
+          <tr><td>AI coding assistance</td><td>Weak — the model cannot see a browser form</td><td>Strong — it is just TypeScript in your editor</td></tr>
+          <tr><td>Learning curve</td><td>Low</td><td>Real. Expect a slow first week.</td></tr>
+          <tr><td>Coverage</td><td>Everything on the platform</td><td>Wide but not total — check <code>now-sdk explain --list</code> before promising a feature</td></tr>
+          <tr><td>Who is comfortable</td><td>Admins, configurators</td><td>Developers who already use git daily</td></tr>
+        </tbody>
+      </table>
+
+      <div class="warn">
+        <p><strong>Do not mix uncontrolled.</strong> If a table is defined in Fluent and someone also edits it in the instance UI, the next <code>install</code> can overwrite their change — and <code>install --reinstall</code> will definitely destroy any on-instance metadata that is not in your source. Decide per application: either it is SDK-managed, or it is Studio-managed. "Both" is how teams lose work.</p>
+      </div>
+
+      <h3>1.2 When each one is the right answer</h3>
+      <div class="fn-grid">
+        <div class="fn"><h4>Use the SDK when…</h4><p>More than one developer touches the app; you want pull-request review; you need repeatable deploys to several instances; you want an AI assistant to help write platform code.</p></div>
+        <div class="fn"><h4>Stay in Studio when…</h4><p>You are configuring rather than building, the change is a one-off, the team has no git practice, or the artefact type has no Fluent API yet.</p></div>
+        <div class="fn"><h4>Hybrid that works</h4><p>Core logic (tables, script includes, business rules, ACLs) in the SDK. Instance-specific configuration (properties values, scheduled job times, data) set on the instance.</p></div>
+        <div class="fn"><h4>Hybrid that fails</h4><p>Editing Fluent-managed business rules in Studio "just this once". The next build silently reverts it and nobody can explain why.</p></div>
+      </div>
+
+      <!-- ===================== PART 2 ===================== -->
+      <div class="part-head" id="p2">
+        <h2><span class="min-chip">2</span>Install and authenticate</h2>
+        <p><span class="role dev">Developer</span> · 10 minutes</p>
+      </div>
+
+      <h3>2.1 Prerequisites</h3>
+      <table class="kv">
+        <tbody>
+          <tr><td>Node.js</td><td><strong>20.18 or newer.</strong> Verified working here on v20.20.2. Check with <code>node -v</code>.</td></tr>
+          <tr><td>npm</td><td>Ships with Node. The SDK is installed per project, not globally.</td></tr>
+          <tr><td>Instance</td><td>A PDI or sub-production instance where your user has <code>admin</code> and <code>app_creator</code>.</td></tr>
+          <tr><td>OS</td><td>Windows, macOS or Linux. This project is on Windows, so every example below is PowerShell-safe.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>2.2 Install into a project</h3>
+      <pre class="pre-wrap"><code>mkdir my-app
+cd my-app
+npm init -y
+npm install -D @servicenow/sdk@latest
+
+# confirm what you got
+npx @servicenow/sdk --version
+npx @servicenow/sdk --help</code></pre>
+
+      <p>Three binaries are installed into <code>node_modules/.bin/</code>: <code>now-sdk</code>, <code>now-sdk-debug</code>, and <code>@servicenow/sdk</code>. They are the same program. Inside an npm script you can write <code>now-sdk build</code> directly; from your shell use <code>npx @servicenow/sdk build</code> or <code>npx now-sdk build</code>.</p>
+
+      <p>This project pins the version rather than using <code>latest</code>, which is the right call for a team:</p>
+      <pre class="pre-wrap"><code>{
+  "name": "hr-leave-sdk",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "now-sdk build",
+    "clean": "now-sdk clean",
+    "install:dev": "now-sdk install --auth DEV",
+    "deploy:dev": "now-sdk install --auth DEV"
+  },
+  "devDependencies": {
+    "@servicenow/sdk": "4.12.2"
+  }
+}</code></pre>
+
+      <h3>2.3 Authentication — the complete <code>auth</code> surface</h3>
+      <p>Credentials are stored in your OS keychain under an <strong>alias</strong>, never in the project. One alias per instance.</p>
+
+      <div class="cmd-card">
+        <header><b>now-sdk auth</b><span>Configure authentication to instance</span><span class="verified">4.12.2</span></header>
+        <div>
+          <table class="flag-table">
+            <tbody>
+              <tr><td><code>--add &lt;instance&gt;</code></td><td>Instance name or URL to store credentials for. Prompts interactively unless you pipe a password.</td></tr>
+              <tr><td><code>--type &lt;basic|oauth&gt;</code></td><td>Authentication type for the new credential. <strong>Only these two values.</strong></td></tr>
+              <tr><td><code>--alias &lt;name&gt;</code></td><td>The alias to store it under. Pick something short: <code>dev</code>, <code>test</code>.</td></tr>
+              <tr><td><code>--delete &lt;alias&gt;</code></td><td>Delete a stored credential.</td></tr>
+              <tr><td><code>--list</code></td><td>List all stored credentials.</td></tr>
+              <tr><td><code>--use &lt;alias&gt;</code></td><td>Set an alias as the default for subsequent commands.</td></tr>
+              <tr><td><code>--print [alias]</code></td><td>Print a <strong>live auth token</strong> for manual API calls. Omit the alias to use the default.</td></tr>
+              <tr><td><code>--format &lt;headers|bearer|env&gt;</code></td><td>Output shape for <code>--print</code>. Default <code>headers</code>.</td></tr>
+              <tr><td><code>--password-stdin</code></td><td>Read the password from stdin — the only safe way to script <code>--add</code>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <pre class="pre-wrap"><code># interactive, the normal case
+npx @servicenow/sdk auth --add https://dev398980.service-now.com --type basic --alias DEV
+
+# list what you have
+npx @servicenow/sdk auth --list
+
+# make one the default so you can drop --auth from later commands
+npx @servicenow/sdk auth --use DEV
+
+# fully non-interactive (CI, containers) — password never appears in the command line
+echo "$env:SN_PASSWORD" | npx @servicenow/sdk auth --add https://dev398980.service-now.com `
+  --type basic --alias DEV --username admin --password-stdin
+
+# remove it
+npx @servicenow/sdk auth --delete DEV</code></pre>
+
+      <h3>2.4 <code>auth --print</code> — the flag worth knowing about</h3>
+      <p>This is the most useful command almost nobody discovers. It mints a live token from a stored credential so you can hit the REST API by hand without ever typing a password into a terminal:</p>
+      <pre class="pre-wrap"><code># ready-to-paste curl headers
+npx @servicenow/sdk auth --print DEV --format headers
+
+# just the bearer token, for scripting
+npx @servicenow/sdk auth --print DEV --format bearer
+
+# shell-exportable form
+npx @servicenow/sdk auth --print DEV --format env</code></pre>
+      <p>Combine it with <code>now-sdk query</code> (§3.11) and you have a complete read-only investigation toolkit for an instance without leaving your terminal.</p>
+
+      <div class="ok"><p><strong>Validation for §2:</strong> <code>auth --list</code> shows your alias, and <code>auth --print &lt;alias&gt; --format bearer</code> returns a token string. If the second one fails, the stored credential is wrong — delete and re-add it.</p></div>
+
+      <!-- ===================== PART 3 ===================== -->
+      <div class="part-head" id="p3">
+        <h2><span class="min-chip">3</span>Complete command reference — all 12 commands</h2>
+        <p>Captured from <code>now-sdk &lt;command&gt; --help</code> on SDK 4.12.2</p>
+      </div>
+
+      <p>Three global options apply to every command: <code>-d, --debug</code> (print debug output, default false), <code>-h, --help</code>, and <code>-v, --version</code>. Where a command takes a <code>source</code> or <code>--directory</code> argument, the default is the current working directory — so run commands from the project root and you can omit it.</p>
+
+      <h3>3.1 The twelve commands at a glance</h3>
+      <table>
+        <thead><tr><th>Command</th><th>Alias</th><th>One line</th><th>Needs instance?</th></tr></thead>
+        <tbody>
+          <tr><td><code>auth</code></td><td>—</td><td>Configure authentication to an instance</td><td>Yes, to validate</td></tr>
+          <tr><td><code>init</code></td><td><code>create</code></td><td>Create a project, apply a template, or convert a legacy app</td><td>Only with <code>--from &lt;sys_id&gt;</code></td></tr>
+          <tr><td><code>download &lt;directory&gt;</code></td><td>—</td><td>Download application metadata from an instance</td><td>Yes</td></tr>
+          <tr><td><code>build [source]</code></td><td>—</td><td>Compile Fluent sources into app files and an installable package</td><td>No</td></tr>
+          <tr><td><code>install</code></td><td><code>deploy</code></td><td>Install or update the application on an instance</td><td>Yes</td></tr>
+          <tr><td><code>dependencies [sysIds..]</code></td><td>—</td><td>Download declared dependencies and TypeScript type definitions</td><td>Yes</td></tr>
+          <tr><td><code>transform</code></td><td>—</td><td>Convert instance XML records into Fluent source code</td><td>Yes, unless <code>--from</code> a local path</td></tr>
+          <tr><td><code>clean [source]</code></td><td>—</td><td>Clean the output directory</td><td>No</td></tr>
+          <tr><td><code>pack [source]</code></td><td>—</td><td>Zip the built app into an installable artefact</td><td>No</td></tr>
+          <tr><td><code>explain [topic]</code></td><td>—</td><td>Display built-in documentation for a Fluent topic</td><td>No</td></tr>
+          <tr><td><code>query &lt;table&gt;</code></td><td>—</td><td>Query records from a table on the instance</td><td>Yes</td></tr>
+          <tr><td><code>cicd &lt;command&gt;</code></td><td>—</td><td>Run <code>sn_cicd</code> operations: app repo install/publish/rollback, test suites</td><td>Yes</td></tr>
+        </tbody>
+      </table>
+
+      <div class="warn">
+        <p><strong>There is no <code>validate</code> command and no <code>upgrade</code> command.</strong> Running <code>now-sdk validate</code> exits with <code>Unknown command: validate</code>. Three files in this repository call it — see §10. Validation happens inside <code>build</code>; to upgrade the SDK you change the version in <code>package.json</code> and run <code>npm install</code>.</p>
+      </div>
+
+      <h3>3.2 <code>init</code> — create or convert a project</h3>
+      <div class="cmd-card">
+        <header><b>now-sdk init</b><span class="alias">alias: create</span></header>
+        <div>
+          <p>Initialises a new ServiceNow custom application, applies a template to an existing application, or converts a legacy scoped application — from an instance or from a local directory — into a Fluent app.</p>
+          <table class="flag-table">
+            <tbody>
+              <tr><td><code>--from &lt;sys_id|path&gt;</code></td><td>sys_id of a legacy application on the instance, <em>or</em> a filesystem path to a directory containing a legacy scoped app, to convert into Fluent.</td></tr>
+              <tr><td><code>--appName &lt;name&gt;</code></td><td>Display name of the application.</td></tr>
+              <tr><td><code>--packageName &lt;name&gt;</code></td><td>npm package name for the project. Must follow npm naming rules.</td></tr>
+              <tr><td><code>--scopeName &lt;scope&gt;</code></td><td>Scope name. Must start with your vendor prefix if you have one, and <strong>cannot exceed 18 characters</strong>.</td></tr>
+              <tr><td><code>-a, --auth &lt;alias&gt;</code></td><td>Credential alias to authenticate with.</td></tr>
+              <tr><td><code>--template &lt;id&gt;</code></td><td>Project template. Choices: <code>partial.javascript.react</code>, <code>partial.javascript.basic</code>, <code>partial.typescript.react</code>, <code>partial.typescript.vue</code>, <code>partial.typescript.basic</code>, <code>partial.typescript.react-devserver</code>.</td></tr>
+            </tbody>
+          </table>
+          <pre class="pre-wrap"><code># brand new app, fully specified so it never prompts
+npx @servicenow/sdk init --appName "HR Leave" --packageName hr-leave-sdk `
+  --scopeName x_786686_hr_leave --auth DEV
+
+# with a UI template
+npx @servicenow/sdk init --appName "Ops Console" --packageName ops-console `
+  --scopeName x_acme_ops --template partial.typescript.react --auth DEV
+
+# convert an existing scoped app that lives on the instance
+npx @servicenow/sdk init --from c84db0e8839f0b509f02b0d6feaad3c9 --auth DEV</code></pre>
+          <p class="note-sm"><strong>The 18-character scope limit is a hard stop.</strong> <code>x_786686_hr_leave</code> is 17. Plan the name before you create the app, because changing scope later means recreating it.</p>
+        </div>
+      </div>
+
+      <h3>3.3 <code>build</code> — compile Fluent into an installable package</h3>
+      <div class="cmd-card">
+        <header><b>now-sdk build [source]</b><span>the command you run most</span></header>
+        <div>
+          <p>Compiles everything in your <code>fluentDir</code> into app files and generates the installable package. It also regenerates <code>src/fluent/generated/keys.ts</code> — see §5.3, because that side effect matters more than anything else on this page.</p>
+          <table class="flag-table">
+            <tbody>
+              <tr><td><code>source</code></td><td>Positional. Path to the directory containing <code>package.json</code>. Defaults to the current directory.</td></tr>
+              <tr><td><code>--frozenKeys</code></td><td>Fail the build if <code>keys.ts</code> changed during it. <strong>Use this in CI.</strong> Default false. See §9.</td></tr>
+              <tr><td><code>--errorOnConflict</code></td><td>Treat sys_id conflicts between Fluent and XML as errors rather than warnings. Fluent-to-Fluent conflicts are always errors regardless. Default false.</td></tr>
+              <tr><td><code>--skipClean</code></td><td>Do not clean output directories before building. Faster, occasionally stale. Default false.</td></tr>
+              <tr><td><code>--legacyChoices</code></td><td>Generate choice set XML with the <code>sys_choice_set</code> wrapper — the destructive v3 behaviour — instead of <code>sys_choice_v2</code> additive merge. Only for backward compatibility.</td></tr>
+            </tbody>
+          </table>
+          <pre class="pre-wrap"><code>npx @servicenow/sdk build
+npx @servicenow/sdk build --frozenKeys        # CI gate
+npx @servicenow/sdk build --errorOnConflict   # strict mode, recommended once stable</code></pre>
+          <p class="note-sm">There is <strong>no <code>--watch</code> flag</strong>. For a fast loop, use your own watcher, e.g. <code>npx nodemon --watch src/fluent -e ts --exec "npx @servicenow/sdk build"</code>.</p>
+        </div>
+      </div>
+
+      <h3>3.4 <code>install</code> — push the app to an instance</h3>
+      <div class="cmd-card">
+        <header><b>now-sdk install</b><span class="alias">alias: deploy</span></header>
+        <div>
+          <p>Installs or updates the built application on an instance. <code>deploy</code> is an alias, so both spellings work; the canonical name is <code>install</code>.</p>
+          <table class="flag-table">
+            <tbody>
+              <tr><td><code>--source &lt;path&gt;</code></td><td>Project directory. Defaults to the current directory.</td></tr>
+              <tr><td><code>-a, --auth &lt;alias&gt;</code></td><td>Credential alias. Omit to use the default set by <code>auth --use</code>.</td></tr>
+              <tr><td><code>-r, --reinstall</code></td><td><strong>Uninstall and reinstall</strong> so instance metadata exactly matches the package. <span class="unverified">DESTRUCTIVE</span> — metadata created on the instance that is not in your source is lost. Default false.</td></tr>
+              <tr><td><code>-b, --open-browser</code></td><td>Open the <code>sys_app</code> page in your default browser on success. Default false.</td></tr>
+              <tr><td><code>-i, --info</code></td><td>Get information from the instance about the most recent install of this app. Default false.</td></tr>
+              <tr><td><code>--async</code></td><td>Install asynchronously, falling back to synchronous if the instance does not support it. <strong>Default true.</strong></td></tr>
+              <tr><td><code>--demoData</code></td><td>Install demo data. <strong>Default true.</strong> Pass <code>--demoData false</code> to skip it.</td></tr>
+              <tr><td><code>--skip-flow-activation</code></td><td>Do not activate (publish) flows after install. Default false — so flows <em>are</em> activated by default.</td></tr>
+            </tbody>
+          </table>
+          <pre class="pre-wrap"><code>npx @servicenow/sdk install --auth DEV
+npx @servicenow/sdk install --auth DEV --open-browser
+npx @servicenow/sdk install --auth DEV --info          # what is currently installed?
+npx @servicenow/sdk install --auth DEV --reinstall     # nuclear: read the warning first</code></pre>
+          <div class="warn"><p><strong>Two defaults to notice.</strong> <code>--demoData</code> defaults to <em>true</em>, so demo data goes in unless you say otherwise. And flows are <em>activated</em> on install unless you pass <code>--skip-flow-activation</code> — which explains why the HR Leave approval flow in this project is marked "activated by install".</p></div>
+        </div>
+      </div>
+
+      <h3>3.5 <code>download</code> — pull application metadata from an instance</h3>
+      <div class="cmd-card">
+        <header><b>now-sdk download &lt;directory&gt;</b></header>
+        <div>
+          <table class="flag-table">
+            <tbody>
+              <tr><td><code>directory</code></td><td><strong>Required positional.</strong> Path to expand the application into.</td></tr>
+              <tr><td><code>--source &lt;path&gt;</code></td><td>Project directory containing <code>package.json</code>. Defaults to the current directory.</td></tr>
+              <tr><td><code>--incremental</code></td><td>Download only what changed since the last download. Default false.</td></tr>
+            </tbody>
+          </table>
+          <pre class="pre-wrap"><code>npx @servicenow/sdk download ./downloaded
+npx @servicenow/sdk download ./downloaded --incremental</code></pre>
+          <p class="note-sm">Use this to see what the instance actually holds after someone edited the app outside your source. It is the diagnostic half of the drift problem described in §1.1.</p>
+        </div>
+      </div>
+
+      <h3>3.6 <code>transform</code> — turn instance records into Fluent source</h3>
+      <div class="cmd-card">
+        <header><b>now-sdk transform</b><span>the adoption command</span></header>
+        <div>
+          <p>Downloads XML records from an instance, or reads them from a local path, and converts them into Fluent source code. This is how you migrate an existing application into the SDK one artefact type at a time instead of rewriting it.</p>
+          <table class="flag-table">
+            <tbody>
+              <tr><td><code>--table &lt;names&gt;</code></td><td>Comma-separated table names to transform by table hierarchy. Combined with <code>--id</code> it transforms one specific record and its relationships.</td></tr>
+              <tr><td><code>--force</code></td><td>Allow transforming descendant tables without their parent hierarchy. Default false.</td></tr>
+              <tr><td><code>--from &lt;path&gt;</code></td><td>Path to a local XML file or directory to transform — no instance needed.</td></tr>
+              <tr><td><code>--directory &lt;path&gt;</code></td><td>Project directory. Defaults to the current directory.</td></tr>
+              <tr><td><code>-a, --auth &lt;alias&gt;</code></td><td>Credential alias.</td></tr>
+              <tr><td><code>-f, --format</code></td><td>Automatically format new and updated source after transforming. <strong>Default true.</strong></td></tr>
+            </tbody>
+          </table>
+          <pre class="pre-wrap"><code># bring every business rule and ACL of the app into Fluent
+npx @servicenow/sdk transform --table sys_script,sys_security_acl --auth DEV
+
+# convert an update set XML you already exported
+npx @servicenow/sdk transform --from ./exports/update-set.xml</code></pre>
+        </div>
+      </div>
+
+      <h3>3.7 <code>dependencies</code> — types and declared dependencies</h3>
+      <div class="cmd-card">
+        <header><b>now-sdk dependencies [sysIds..]</b></header>
+        <div>
+          <p>Downloads the dependencies declared in <code>now.config.json</code> plus the TypeScript type definitions that make your editor autocomplete ServiceNow APIs. Run it after cloning the repo on a new machine.</p>
+          <table class="flag-table">
+            <tbody>
+              <tr><td><code>sysIds..</code></td><td>Positional array of sys_ids to add when using <code>--add</code>. Default empty.</td></tr>
+              <tr><td><code>--directory &lt;path&gt;</code></td><td>Project directory.</td></tr>
+              <tr><td><code>-a, --auth &lt;alias&gt;</code></td><td>Credential alias.</td></tr>
+              <tr><td><code>--type-defs-only</code></td><td>Download only the script type definitions (<code>glide.*.d.ts</code>).</td></tr>
+              <tr><td><code>--fluent-only</code></td><td>Download only Fluent types for the dependencies in <code>now.config.json</code>.</td></tr>
+              <tr><td><code>--add &lt;table&gt;</code></td><td>Add a new dependency item by table name, e.g. <code>actions</code>, <code>triggers</code>, <code>sys_security_acl</code>.</td></tr>
+              <tr><td><code>--scope &lt;scope&gt;</code></td><td>Scope for the dependency, e.g. <code>global</code> or <code>x_my_app</code>. <strong>Required with <code>--add</code>.</strong></td></tr>
+            </tbody>
+          </table>
+          <pre class="pre-wrap"><code># after git clone
+npm install
+npx @servicenow/sdk dependencies --auth DEV
+
+# just refresh GlideRecord / GlideSystem types for editor autocomplete
+npx @servicenow/sdk dependencies --type-defs-only --auth DEV
+
+# depend on a global flow action so Fluent can reference it
+npx @servicenow/sdk dependencies --add actions --scope global --auth DEV</code></pre>
+          <p class="note-sm"><strong>This is the command that fixes "my editor has no autocomplete for <code>GlideRecord</code>".</strong> It is also the one most often forgotten after a fresh clone.</p>
+        </div>
+      </div>
+
+      <h3>3.8 <code>clean</code> and <code>pack</code></h3>
+      <div class="cmd-card">
+        <header><b>now-sdk clean [source]</b> &nbsp;·&nbsp; <b>now-sdk pack [source]</b></header>
+        <div>
+          <p><code>clean</code> removes the build output directory. Its only options are the global three plus the positional <code>source</code>.</p>
+          <p><code>pack</code> zips the already-built app into an installable artefact — the <code>.zip</code> you can hand to someone or upload. One extra flag:</p>
+          <table class="flag-table">
+            <tbody>
+              <tr><td><code>--skip-package-inventory</code></td><td>Skip generating <code>package_inventory.csv</code> in the output. Default false.</td></tr>
+            </tbody>
+          </table>
+          <pre class="pre-wrap"><code>npx @servicenow/sdk clean
+npx @servicenow/sdk build
+npx @servicenow/sdk pack
+# → target/hr_leave_sdk_1_0_0.zip  (this project's artefact is 114 KB)</code></pre>
+          <p class="note-sm">The <code>package_inventory.csv</code> that <code>pack</code> produces is a plain list of everything in the package. It is the fastest way to answer "did this build actually include the new ACL?" without unzipping anything.</p>
+        </div>
+      </div>
+
+      <h3>3.9 <code>query</code> — read instance data from your terminal</h3>
+      <div class="cmd-card">
+        <header><b>now-sdk query &lt;table&gt;</b><span>underrated</span></header>
+        <div>
+          <p>A full Table API client built into the CLI. Every <code>sysparm_*</code> you know from the REST API has a flag here, and it paginates for you.</p>
+          <table class="flag-table">
+            <tbody>
+              <tr><td><code>table</code></td><td><strong>Required positional.</strong> Table name, e.g. <code>incident</code>, <code>sys_user</code>.</td></tr>
+              <tr><td><code>-q, --query &lt;encoded&gt;</code></td><td><strong>Required.</strong> Encoded query, e.g. <code>"active=true^priority&lt;=2"</code>.</td></tr>
+              <tr><td><code>--limit &lt;n&gt;</code></td><td>Maximum records per page. Default 100.</td></tr>
+              <tr><td><code>--offset &lt;n&gt;</code></td><td>Starting offset. Default 0.</td></tr>
+              <tr><td><code>-f, --fields &lt;list&gt;</code></td><td>Comma-separated fields to return.</td></tr>
+              <tr><td><code>--display-value &lt;v&gt;</code></td><td><code>true</code>, <code>false</code>, or <code>all</code> for both raw and display. Default <code>false</code>.</td></tr>
+              <tr><td><code>--exclude-reference-link</code></td><td>Strip reference link metadata. <strong>Default true.</strong></td></tr>
+              <tr><td><code>--no-count</code></td><td>Skip total count calculation for speed. Default false.</td></tr>
+              <tr><td><code>--timeout &lt;ms&gt;</code></td><td>Per-request timeout; each page fetch is bounded by it. Default 30000.</td></tr>
+              <tr><td><code>--view &lt;name&gt;</code></td><td>UI view that determines which fields come back.</td></tr>
+              <tr><td><code>--query-category &lt;c&gt;</code></td><td>Query category for extended queries.</td></tr>
+              <tr><td><code>--query-no-domain</code></td><td>Ignore domain separation. Default false.</td></tr>
+              <tr><td><code>-a, --auth &lt;alias&gt;</code></td><td>Credential alias.</td></tr>
+              <tr><td><code>-o, --output &lt;json|raw&gt;</code></td><td><code>json</code> for a machine-readable envelope; <code>raw</code> to unquote the <code>--select</code> result.</td></tr>
+              <tr><td><code>-s, --select &lt;path&gt;</code></td><td>Dot/bracket path to extract, e.g. <code>"records[0].sys_id"</code>. Implies machine-readable output.</td></tr>
+            </tbody>
+          </table>
+          <pre class="pre-wrap"><code># what is in my app's table right now?
+npx @servicenow/sdk query x_786686_hr_leave_req_v2 -q "u_state=submitted" `
+  -f u_number,u_state,u_days_count --display-value all --auth DEV
+
+# grab a single sys_id for a script, unquoted
+npx @servicenow/sdk query sys_user -q "user_name=admin" `
+  -s "records[0].sys_id" -o raw --auth DEV
+
+# did my business rule actually fire? check the audit table
+npx @servicenow/sdk query x_786686_hr_leave_audit_v2 -q "ORDERBYDESCsys_created_on" `
+  --limit 5 -f u_old_state,u_new_state,u_event_type --auth DEV</code></pre>
+          <p>The <code>--select</code> plus <code>--output raw</code> pair is designed for shell command substitution, which makes this command genuinely scriptable rather than just a viewer.</p>
+        </div>
+      </div>
+
+      <h3>3.10 <code>cicd</code> — app repository and test suite operations</h3>
+      <div class="cmd-card">
+        <header><b>now-sdk cicd &lt;command&gt;</b><span>wraps the sn_cicd API</span></header>
+        <div>
+          <table class="flag-table">
+            <tbody>
+              <tr><td><code>cicd install</code></td><td>Install an application from the application repository onto the instance.</td></tr>
+              <tr><td><code>cicd publish</code></td><td>Publish an application to the application repository.</td></tr>
+              <tr><td><code>cicd rollback</code></td><td>Roll back an installed application to a previous version.</td></tr>
+              <tr><td><code>cicd testsuite &lt;command&gt;</code></td><td><code>sn_cicd</code> test suite operations — run your ATF suites from the pipeline.</td></tr>
+              <tr><td><code>cicd test &lt;command&gt;</code></td><td><code>sn_cicd</code> individual test operations.</td></tr>
+            </tbody>
+          </table>
+          <pre class="pre-wrap"><code>npx @servicenow/sdk cicd publish --help
+npx @servicenow/sdk cicd testsuite --help</code></pre>
+          <p><strong>This is the correct path to production.</strong> As the SDK's own CI guidance states plainly: do not use <code>install</code> from CI against production. Publish to the app repository and promote through the platform's own mechanism so change management, approvals and rollback behave the way ServiceNow expects. <code>cicd rollback</code> exists precisely because that path supports it and a direct <code>install</code> does not.</p>
+        </div>
+      </div>
+
+      <h3>3.11 <code>explain</code> — covered in its own section</h3>
+      <p><code>explain</code> deserves more than a table. See <a href="#p4">§4</a>.</p>
+
+      <!-- ===================== PART 4 ===================== -->
+      <div class="part-head" id="p4">
+        <h2><span class="min-chip">4</span><code>explain</code> — the built-in documentation nobody uses</h2>
+        <p>256 topics shipped inside the package you already installed</p>
+      </div>
+
+      <p>The SDK ships its own complete reference offline. On your installed 4.12.2 there are <strong>256 topics</strong>: 152 API references (one per Fluent artefact type) and 97 narrative guides, plus <code>faq</code>, <code>keys-file</code>, <code>now-config-reference</code> and the language overviews. No network, no browser, no stale documentation site.</p>
+
+      <div class="cmd-card">
+        <header><b>now-sdk explain [topic]</b></header>
+        <div>
+          <table class="flag-table">
+            <tbody>
+              <tr><td><code>topic</code></td><td>Positional. Topic name or a keyword to search for.</td></tr>
+              <tr><td><code>-l, --list</code></td><td>List topics. Combine with a topic to filter, e.g. <code>--list flow</code>.</td></tr>
+              <tr><td><code>--format &lt;pretty|raw&gt;</code></td><td><code>pretty</code> for the terminal, <code>raw</code> for plain markdown. Default <code>pretty</code>.</td></tr>
+              <tr><td><code>-p, --peek</code></td><td>Show a brief summary instead of the full document.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>4.1 How to actually use it</h3>
+      <pre class="pre-wrap"><code># what topics exist at all?
+npx @servicenow/sdk explain --list
+
+# narrow by keyword — every flow-related topic
+npx @servicenow/sdk explain --list flow
+
+# read the full API reference for a Fluent type
+npx @servicenow/sdk explain businessrule-api
+npx @servicenow/sdk explain acl-api
+npx @servicenow/sdk explain table-api
+
+# read a narrative guide rather than a reference
+npx @servicenow/sdk explain business-rule-guide
+npx @servicenow/sdk explain security-guide
+npx @servicenow/sdk explain keys-file
+
+# quick summary when you only need to remember the shape
+npx @servicenow/sdk explain scriptinclude-api --peek
+
+# pipe clean markdown into a file, or into an AI assistant
+npx @servicenow/sdk explain ci-integration --format raw &gt; ci-notes.md</code></pre>
+
+      <h3>4.2 Searching works on keywords, not just names</h3>
+      <p>Every topic carries a keyword list, so you can search by what you are trying to do rather than by the artefact name. Topics are tagged with ServiceNow table names, UI labels and synonyms — <code>acl-api</code> is findable via <code>access control</code>, <code>security</code>, <code>permission</code> and <code>sys_security_acl</code>. Try the thing you would type into the filter navigator; it usually hits.</p>
+
+      <div class="shot">
+        <div class="shot-frame">
+          <div class="ui-bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span><span class="title">npx @servicenow/sdk explain --list flow</span><span class="crumb">terminal</span></div>
+          <div class="row"><b>flow-api</b><span>Flow, flow designer, sys_hub_flow</span></div>
+          <div class="row"><b>flow-stages-api</b><span>FlowStages, stages, progress</span></div>
+          <div class="row"><b>wfa-flow-guide</b><span>workflow studio, flow authoring</span></div>
+          <div class="row"><b>wfa-flow-actions-guide</b><span>actions, inputs, outputs</span></div>
+          <div class="row"><b>wfa-flow-logic-api</b><span>if, else, for-each, parallel</span></div>
+          <div class="row"><b>wfa-trigger-guide</b><span>record, scheduled, inbound email</span></div>
+          <div class="row"><b>wfa-subflow-guide</b><span>Subflow, reuse</span></div>
+          <div class="row"><b>playbook-triggers-guide</b><span>playbook, lanes, activities</span></div>
+        </div>
+        <div class="shot-cap"><strong>Screen 4.1 — <code>explain --list &lt;keyword&gt;</code> is your index.</strong> Run this before writing any Fluent artefact you have not written before. It is faster than searching the web and it matches the exact SDK version you have installed.</div>
+      </div>
+
+      <h3>4.3 The AI-assistant angle</h3>
+      <p>This is the single most valuable thing in this document for anyone pairing the SDK with Cursor. Fluent's API surface is large and moves between versions, so a model answering from memory will confidently invent property names. <code>explain --format raw</code> emits clean markdown designed to be piped — which means you can ground the assistant in the exact API of your exact version:</p>
+      <pre class="pre-wrap"><code># give the assistant the real API before asking it to write code
+npx @servicenow/sdk explain scheduledscript-api --format raw | clip     # Windows
+npx @servicenow/sdk explain scheduledscript-api --format raw | pbcopy   # macOS</code></pre>
+      <p>Then paste it into the chat with "use this exact API". The repository's own Cursor rule already encodes this instinct — rule 2 in <code>.cursor/rules/servicenow-sdk-master.mdc</code> says to run <code>explain</code> when the API is uncertain. That rule is correct and worth keeping.</p>
+
+      <div class="ok"><p><strong>Validation for §4:</strong> <code>npx @servicenow/sdk explain --list | Measure-Object -Line</code> reports roughly 256 topic lines, and <code>explain keys-file</code> prints a document explaining why <code>keys.ts</code> must be committed — which is exactly what §5.3 covers next.</p></div>
+
+      <!-- ===================== PART 5 ===================== -->
+      <div class="part-head" id="p5">
+        <h2><span class="min-chip">5</span>Project anatomy</h2>
+        <p><span class="role dev">Developer</span> · the five things that matter</p>
+      </div>
+
+      <h3>5.1 Layout of a real project</h3>
+      <p>This is <code>hr-leave-sdk</code> exactly as it exists in this repository:</p>
+      <pre class="pre-wrap"><code>hr-leave-sdk/
+├─ now.config.json          # scope, scopeId, app name, where Fluent lives
+├─ package.json             # pinned SDK version + npm scripts
+├─ package-lock.json        # 481 KB — commit it
+├─ .gitignore
+├─ .now/
+│  └─ bom.json              # bill of materials the build maintains
+├─ src/
+│  └─ fluent/               # ← everything you write lives here
+│     ├─ tables.now.ts
+│     ├─ roles.now.ts
+│     ├─ acls.now.ts
+│     ├─ script-includes.now.ts
+│     ├─ business-rules.now.ts
+│     ├─ client-scripts.now.ts
+│     ├─ events.now.ts
+│     ├─ notifications.now.ts
+│     ├─ catalog.now.ts
+│     ├─ properties.now.ts
+│     ├─ menu.now.ts
+│     ├─ flows/
+│     │  └─ leave-approval.now.ts
+│     └─ generated/
+│        └─ keys.ts         # ← GENERATED, BUT COMMIT IT. See 5.3.
+├─ dist/                    # build output: XML update records  (do not commit)
+└─ target/
+   └─ hr_leave_sdk_1_0_0.zip   # packaged artefact, 114 KB  (do not commit)</code></pre>
+
+      <h3>5.2 <code>now.config.json</code></h3>
+      <pre class="pre-wrap"><code>{
+  "$schema": "https://www.servicenow.com/sdk/now.config.schema.json",
+  "scope": "x_786686_hr_leave",
+  "scopeId": "e5f5bc9493a303507520703efaba104d",
+  "name": "HR Leave",
+  "fluentDir": "src/fluent",
+  "clientDir": ""
+}</code></pre>
+      <table class="kv">
+        <tbody>
+          <tr><td><code>scope</code></td><td>The application scope. Maximum 18 characters, set at <code>init</code> time.</td></tr>
+          <tr><td><code>scopeId</code></td><td>The <code>sys_id</code> of the application record on the instance. This is what ties your local project to a specific installed app.</td></tr>
+          <tr><td><code>name</code></td><td>Display name.</td></tr>
+          <tr><td><code>fluentDir</code></td><td>Where the build looks for <code>*.now.ts</code> files.</td></tr>
+          <tr><td><code>clientDir</code></td><td>Client-side bundle directory, used by the UI templates. Empty here because this app has no React/Vue front end.</td></tr>
+          <tr><td>dependencies</td><td>Not present in this project, but this is the file where <code>now-sdk dependencies --add</code> records them.</td></tr>
+        </tbody>
+      </table>
+      <p class="note-sm">Run <code>npx @servicenow/sdk explain now-config-reference</code> for the full schema of every key this file accepts.</p>
+
+      <h3>5.3 <code>keys.ts</code> — the most important file in the project</h3>
+      <p>Every Fluent record can carry a <code>$id</code>, written as <code>Now.ID['some_identifier']</code>. The build maps each of those identifiers to a concrete ServiceNow <code>sys_id</code> and writes the mapping into <code>src/fluent/generated/keys.ts</code> as a TypeScript declaration:</p>
+      <pre class="pre-wrap"><code>// src/fluent/generated/keys.ts  — generated, ~1,340 lines in this project
+import '@servicenow/sdk/global'
+
+declare global {
+    namespace Now {
+        namespace Internal {
+            interface Keys extends KeysRegistry {
+                explicit: {
+                    hrlx_acl_approver_write: {
+                        table: 'sys_security_acl'
+                        id: 'a6b167fdbf204118a048cc5741627408'
+                    }
+                    hrlx_acl_audit_create: {
+                        table: 'sys_security_acl'
+                        id: 'c0cbf0ef04424544aa0c65b562ea6a2a'
+                    }
+                    // … one entry per identified record
+                }
+            }
+        }
+    }
+}</code></pre>
+
+      <div class="warn">
+        <p><strong>It says "generated", and you must still commit it.</strong> This trips up every team exactly once, and the damage is not obvious for weeks. Here is the failure chain, straight from the SDK's own <code>ci-integration</code> guide:</p>
+        <ol>
+          <li>You add a new business rule with <code>$id: Now.ID['my_rule']</code> and build. A fresh sys_id is generated and written into <code>keys.ts</code>.</li>
+          <li>You commit the business rule but not <code>keys.ts</code>, because "it's generated".</li>
+          <li>A teammate builds. <code>Now.ID['my_rule']</code> resolves to a <em>different</em> freshly-generated sys_id on their machine.</li>
+          <li>ServiceNow identifies records by sys_id. So their install <strong>creates a duplicate record</strong> instead of updating yours. The target instance is now corrupted.</li>
+          <li>Once a stale <code>keys.ts</code> reaches <code>main</code>, every later branch inherits the wrong IDs.</li>
+        </ol>
+        <p>The guard is <code>now-sdk build --frozenKeys</code> in CI: it fails the build if <code>keys.ts</code> changed during it, which means someone forgot to commit. The developer's fix is trivial — run <code>build</code> locally, commit <code>keys.ts</code>, push. See §9.</p>
+      </div>
+
+      <h3>5.4 What to commit and what to ignore</h3>
+      <table>
+        <thead><tr><th>Path</th><th>Commit?</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td><code>src/fluent/**</code></td><td>Yes</td><td>Your source.</td></tr>
+          <tr><td><code>src/fluent/generated/keys.ts</code></td><td><strong>Yes</strong></td><td>Record identity. See 5.3.</td></tr>
+          <tr><td><code>now.config.json</code></td><td>Yes</td><td>Scope binding.</td></tr>
+          <tr><td><code>package.json</code> · <code>package-lock.json</code></td><td>Yes</td><td>Reproducible SDK version.</td></tr>
+          <tr><td><code>.now/bom.json</code></td><td>Yes</td><td>Bill of materials the build tracks.</td></tr>
+          <tr><td><code>dist/</code></td><td>No</td><td>Build output. Regenerated every build.</td></tr>
+          <tr><td><code>target/</code></td><td>No</td><td>Packaged zip. Attach to a release instead.</td></tr>
+          <tr><td><code>node_modules/</code></td><td>No</td><td>Obviously.</td></tr>
+        </tbody>
+      </table>
+
+      <!-- ===================== PART 6 ===================== -->
+      <div class="part-head" id="p6">
+        <h2><span class="min-chip">6</span>Full tutorial — build the HR Leave app in Fluent</h2>
+        <p><span class="role dev">Developer</span> · 60–90 minutes · every snippet is real source from <code>hr-leave-sdk</code></p>
+      </div>
+
+      <p>We build the same application the Studio chapters build, but as code. Follow in order; each file imports the one before it.</p>
+
+      <h3>6.0 Create the project</h3>
+      <pre class="pre-wrap"><code>mkdir hr-leave-sdk; cd hr-leave-sdk
+npm init -y
+npm install -D @servicenow/sdk@4.12.2
+npx @servicenow/sdk auth --add https://dev398980.service-now.com --type basic --alias DEV
+npx @servicenow/sdk init --appName "HR Leave" --packageName hr-leave-sdk `
+  --scopeName x_786686_hr_leave --auth DEV
+npx @servicenow/sdk dependencies --auth DEV      # get the type definitions</code></pre>
+
+      <h3>6.1 Tables — <code>src/fluent/tables.now.ts</code></h3>
+      <p>Four tables. Note the shared <code>leaveTypeChoices</code> object reused across two tables — the kind of deduplication that is impossible in Studio and free in code.</p>
+      <pre class="pre-wrap"><code>import {
+  Table,
+  StringColumn,
+  IntegerColumn,
+  ReferenceColumn,
+  DateColumn,
+  ChoiceColumn,
+} from '@servicenow/sdk/core'
+
+const leaveTypeChoices = {
+  annual: { label: 'Annual', sequence: 1 },
+  sick: { label: 'Sick', sequence: 2 },
+  unpaid: { label: 'Unpaid', sequence: 3 },
+}
+
+export const x_786686_hr_leave_employee_v2 = Table({
+  name: 'x_786686_hr_leave_employee_v2',
+  label: 'HR Employee',
+  schema: {
+    u_user: ReferenceColumn({ label: 'User', referenceTable: 'sys_user' }),
+    u_employee_id: StringColumn({ label: 'Employee ID', maxLength: 40 }),
+    u_department: StringColumn({ label: 'Department', maxLength: 100 }),
+    u_manager: ReferenceColumn({ label: 'Manager', referenceTable: 'sys_user' }),
+    u_join_date: DateColumn({ label: 'Join Date' }),
+    u_grade: StringColumn({ label: 'Grade', maxLength: 20 }),
+  },
+})
+
+export const x_786686_hr_leave_req_v2 = Table({
+  name: 'x_786686_hr_leave_req_v2',
+  label: 'Leave Request',
+  schema: {
+    u_number: StringColumn({ label: 'Number', maxLength: 40 }),
+    u_requested_for_user: ReferenceColumn({ label: 'Requested For', referenceTable: 'sys_user' }),
+    u_employee_ref: ReferenceColumn({
+      label: 'Employee',
+      referenceTable: 'x_786686_hr_leave_employee_v2',
+    }),
+    u_leave_type: ChoiceColumn({ label: 'Leave Type', choices: leaveTypeChoices }),
+    u_start_date: DateColumn({ label: 'Start Date' }),
+    u_end_date: DateColumn({ label: 'End Date' }),
+    u_days_count: IntegerColumn({ label: 'Days' }),
+    u_state: ChoiceColumn({
+      label: 'State',
+      choices: {
+        draft: { label: 'Draft', sequence: 1 },
+        submitted: { label: 'Submitted', sequence: 2 },
+        approved: { label: 'Approved', sequence: 3 },
+        rejected: { label: 'Rejected', sequence: 4 },
+        cancelled: { label: 'Cancelled', sequence: 5 },
+      },
+    }),
+    u_approver_user: ReferenceColumn({ label: 'Approver', referenceTable: 'sys_user' }),
+    u_reason: StringColumn({ label: 'Reason', maxLength: 1000 }),
+  },
+})
+
+export const x_786686_hr_leave_bal_v2 = Table({
+  name: 'x_786686_hr_leave_bal_v2',
+  label: 'Leave Balance',
+  schema: {
+    u_employee_ref: ReferenceColumn({
+      label: 'Employee',
+      referenceTable: 'x_786686_hr_leave_employee_v2',
+    }),
+    u_year: IntegerColumn({ label: 'Year' }),
+    u_leave_type: ChoiceColumn({ label: 'Leave Type', choices: leaveTypeChoices }),
+    u_entitled: IntegerColumn({ label: 'Entitled' }),
+    u_used: IntegerColumn({ label: 'Used' }),
+    u_remaining: IntegerColumn({ label: 'Remaining' }),
+  },
+})
+
+export const x_786686_hr_leave_audit_v2 = Table({
+  name: 'x_786686_hr_leave_audit_v2',
+  label: 'Leave Audit',
+  schema: {
+    u_leave_ref: ReferenceColumn({
+      label: 'Leave',
+      referenceTable: 'x_786686_hr_leave_req_v2',
+    }),
+    u_old_state: StringColumn({ label: 'Old State', maxLength: 40 }),
+    u_new_state: StringColumn({ label: 'New State', maxLength: 40 }),
+    u_event_type: StringColumn({ label: 'Event Type', maxLength: 60 }),
+    u_actor: ReferenceColumn({ label: 'Actor', referenceTable: 'sys_user' }),
+  },
+})</code></pre>
+      <p class="note-sm">Column types available include <code>StringColumn</code>, <code>IntegerColumn</code>, <code>DecimalColumn</code>, <code>FloatColumn</code>, <code>BooleanColumn</code>, <code>DateColumn</code>, <code>DateTimeColumn</code>, <code>DurationColumn</code>, <code>ChoiceColumn</code>, <code>ReferenceColumn</code>, <code>DocumentIdColumn</code>, <code>HtmlColumn</code>, <code>JsonColumn</code>, <code>ScriptColumn</code>, <code>UrlColumn</code>, <code>EmailColumn</code>, <code>Password2Column</code>, <code>ListColumn</code>, <code>GuidColumn</code> and about forty more. Run <code>npx @servicenow/sdk explain --list column</code> for the full set on your version.</p>
+
+      <h3>6.2 Roles — <code>src/fluent/roles.now.ts</code></h3>
+      <pre class="pre-wrap"><code>import { Role } from '@servicenow/sdk/core'
+
+export const roleEmployee = Role({
+  name: 'x_786686_hr_leave.employee',
+  description: 'Submit and view own leave requests',
+  grantable: true,
+})
+
+export const roleManager = Role({
+  name: 'x_786686_hr_leave.manager',
+  description: 'Approve team leave requests',
+  grantable: true,
+})
+
+export const roleHrAdmin = Role({
+  name: 'x_786686_hr_leave.hr_admin',
+  description: 'Full HR Leave administration',
+  grantable: true,
+})
+
+export const roleIntegration = Role({
+  name: 'x_786686_hr_leave.integration',
+  description: 'API / integration leave create access',
+  grantable: true,
+})</code></pre>
+      <p>These are plain TypeScript exports, which is what makes the next file type-safe.</p>
+
+      <h3>6.3 ACLs — <code>src/fluent/acls.now.ts</code></h3>
+      <p>Here is the first real payoff of code over Studio: ACLs <strong>import the role objects</strong> rather than referencing role names as strings. Rename a role and the compiler finds every ACL that used it.</p>
+      <pre class="pre-wrap"><code>import { Acl } from '@servicenow/sdk/core'
+import { roleEmployee, roleHrAdmin, roleIntegration, roleManager } from './roles.now'
+
+Acl({
+  $id: Now.ID['hrlx_acl_req_read'],
+  type: 'record',
+  table: 'x_786686_hr_leave_req_v2',
+  operation: 'read',
+  adminOverrides: true,
+  active: true,
+  description: 'Read leave via security utils',
+  script: `answer = new x_786686_hr_leave.HRLXProSecurityUtilsV2().canReadLeave(current);`,
+})
+
+Acl({
+  $id: Now.ID['hrlx_acl_req_write'],
+  type: 'record',
+  table: 'x_786686_hr_leave_req_v2',
+  operation: 'write',
+  adminOverrides: true,
+  active: true,
+  description: 'Write leave via security utils',
+  script: `answer = new x_786686_hr_leave.HRLXProSecurityUtilsV2().canWriteLeave(current);`,
+})
+
+Acl({
+  $id: Now.ID['hrlx_acl_req_create'],
+  type: 'record',
+  table: 'x_786686_hr_leave_req_v2',
+  operation: 'create',
+  adminOverrides: true,
+  active: true,
+  roles: [roleEmployee, roleHrAdmin, roleIntegration],   // ← typed references
+  description: 'Create leave for employee/hr/integration',
+  script: `answer = gs.hasRole('x_786686_hr_leave.employee')
+ || gs.hasRole('x_786686_hr_leave.hr_admin')
+ || gs.hasRole('x_786686_hr_leave.integration');`,
+})
+
+Acl({
+  $id: Now.ID['hrlx_acl_req_delete'],
+  type: 'record',
+  table: 'x_786686_hr_leave_req_v2',
+  operation: 'delete',
+  adminOverrides: true,
+  active: true,
+  roles: [roleHrAdmin],
+  description: 'Delete leave HR admin only',
+})
+
+// field-level ACL: only HR admin may change the approver
+Acl({
+  $id: Now.ID['hrlx_acl_approver_write'],
+  type: 'record',
+  table: 'x_786686_hr_leave_req_v2',
+  field: 'u_approver_user',
+  operation: 'write',
+  adminOverrides: true,
+  active: true,
+  roles: [roleHrAdmin],
+  description: 'Approver field writeable by HR admin',
+  script: `answer = gs.hasRole('x_786686_hr_leave.hr_admin');`,
+})</code></pre>
+      <p class="note-sm">The real file continues with read/write/create/delete for the employee, balance and audit tables — sixteen ACLs in total, each with a stable <code>$id</code>. Writing sixteen ACLs in Studio is an afternoon of clicking; here it is a file you can review in two minutes and diff forever.</p>
+
+      <h3>6.4 Business rules — <code>src/fluent/business-rules.now.ts</code></h3>
+      <p>The server script is a template literal. Keep it as the same JavaScript you would paste into Studio, so the code is portable in both directions.</p>
+      <pre class="pre-wrap"><code>import { BusinessRule } from '@servicenow/sdk/core'
+
+export const BR1_calculate_days = BusinessRule({
+  $id: Now.ID['hrlx_br1_calculate_days'],
+  name: 'HRLX BR1 Calculate Days',
+  table: 'x_786686_hr_leave_req_v2',
+  when: 'before',
+  action: ['insert', 'update'],
+  order: 100,
+  active: true,
+  script: `(function executeRule(current, previous /*null when inserting*/) {
+
+    var util = new x_786686_hr_leave.HRLXProLeaveUtilsV2();
+
+    if (current.u_start_date.changes() || current.u_end_date.changes() || current.isNewRecord()) {
+        current.u_days_count = util.calculateBusinessDays(
+            current.getValue('u_start_date'),
+            current.getValue('u_end_date')
+        );
+    }
+
+    if (current.u_employee_ref.changes() || current.isNewRecord()) {
+        util.setApproverFromEmployee(current);
+    }
+
+})(current, previous);`,
+})
+
+export const BR2_on_submit_event = BusinessRule({
+  $id: Now.ID['hrlx_br2_on_submit_event'],
+  name: 'HRLX BR2 On Submit Event',
+  table: 'x_786686_hr_leave_req_v2',
+  when: 'after',
+  action: ['insert', 'update'],
+  order: 200,
+  active: true,
+  script: `(function executeRule(current, previous) {
+
+    if (current.u_state.changesTo('submitted')) {
+        gs.eventQueue(
+            'x_786686_hr_leave.leave_v2.submitted',
+            current,
+            current.getValue('u_approver_user'),
+            current.getValue('u_number')
+        );
+    }
+
+})(current, previous);`,
+})
+
+export const BR3_audit_state_change = BusinessRule({
+  $id: Now.ID['hrlx_br3_audit_state_change'],
+  name: 'HRLX BR3 Audit State Change',
+  table: 'x_786686_hr_leave_req_v2',
+  when: 'after',
+  action: ['update'],
+  order: 300,
+  active: true,
+  script: `(function executeRule(current, previous) {
+
+    if (!current.u_state.changes()) return;
+
+    var util = new x_786686_hr_leave.HRLXProLeaveUtilsV2();
+    util.auditStateChange(
+        current.getUniqueValue(),
+        previous ? previous.getValue('u_state') : '',
+        current.getValue('u_state'),
+        'state_change'
+    );
+
+    if (current.u_state.changesTo('approved') && current.u_employee_ref) {
+        var year = new GlideDateTime(current.getValue('u_start_date')).getYearLocalTime();
+        util.recalculateBalance(current.getValue('u_employee_ref'), year);
+    }
+
+})(current, previous);`,
+})</code></pre>
+      <div class="fn-grid">
+        <div class="fn"><h4><code>order</code> is explicit</h4><p>100, 200, 250, 300. In Studio these get set and forgotten; in one file the execution sequence is readable at a glance.</p></div>
+        <div class="fn"><h4>Logic lives in Script Includes</h4><p>The rules call <code>HRLXProLeaveUtilsV2</code> rather than inlining the maths. The rule stays reviewable and the logic stays unit-testable.</p></div>
+        <div class="fn"><h4>Scoped class references</h4><p><code>new x_786686_hr_leave.HRLXProLeaveUtilsV2()</code> — the scope prefix is required from a scoped business rule.</p></div>
+        <div class="fn"><h4><code>$id</code> on every record</h4><p>Without it the record gets a new sys_id on another machine. With it, identity is pinned in <code>keys.ts</code>.</p></div>
+      </div>
+
+      <h3>6.5 Build and install</h3>
+      <pre class="pre-wrap"><code>npx @servicenow/sdk build
+npx @servicenow/sdk install --auth DEV --open-browser</code></pre>
+
+      <div class="shot">
+        <div class="shot-frame">
+          <div class="ui-bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span><span class="title">npx @servicenow/sdk build</span><span class="crumb">hr-leave-sdk</span></div>
+          <div class="row"><b>scope</b><span>x_786686_hr_leave · HR Leave · v1.0.0</span></div>
+          <div class="row"><b>sources</b><span>12 fluent files from src/fluent</span></div>
+          <div class="row"><b>records</b><span>4 tables · 4 roles · 16 ACLs · 4 business rules · 2 script includes · 2 client scripts</span></div>
+          <div class="row"><b>keys</b><span>src/fluent/generated/keys.ts regenerated — commit it</span></div>
+          <div class="row"><b>output</b><span>dist/ XML written · target/hr_leave_sdk_1_0_0.zip 114 KB</span></div>
+          <div class="row"><b>result</b><span>build succeeded</span></div>
+        </div>
+        <div class="shot-cap"><strong>Screen 6.1 — a clean build.</strong> The line that matters is the keys one. If <code>git status</code> shows <code>keys.ts</code> modified after a build, that change is part of your commit, not noise to discard.</div>
+      </div>
+
+      <h3>6.6 Verify on the instance</h3>
+      <p>Do not trust "install succeeded" — check the instance, ideally without leaving the terminal:</p>
+      <pre class="pre-wrap"><code># the app record
+npx @servicenow/sdk query sys_app -q "scope=x_786686_hr_leave" `
+  -f name,scope,version --display-value all --auth DEV
+
+# did all four business rules land, and in the right order?
+npx @servicenow/sdk query sys_script -q "sys_scope.scope=x_786686_hr_leave^ORDERBYorder" `
+  -f name,table,when,order,active --auth DEV
+
+# all sixteen ACLs?
+npx @servicenow/sdk query sys_security_acl -q "sys_scope.scope=x_786686_hr_leave" `
+  -f name,operation,admin_overrides --auth DEV --limit 50</code></pre>
+      <p>Or open the forms directly — replace <code>{BASE}</code> with your instance:</p>
+      <div class="url-box"><strong>Verify in the UI</strong>
+        <a href="{BASE}/nav_to.do?uri=%2Fsys_app_list.do">Applications</a>
+        <a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a>
+        <a href="{BASE}/nav_to.do?uri=%2Fsys_script_list.do%3Fsysparm_query%3Dsys_scope.scope%3Dx_786686_hr_leave">Business Rules</a>
+        <a href="{BASE}/nav_to.do?uri=%2Fsys_security_acl_list.do">ACLs</a>
+        <a href="{BASE}/nav_to.do?uri=%2Fsys_user_role_list.do%3Fsysparm_query%3DnameSTARTSWITHx_786686_hr_leave">Roles</a>
+        <a href="{BASE}/$studio.do">Studio</a>
+      </div>
+
+      <h3>6.7 The daily loop</h3>
+      <pre class="pre-wrap"><code>cd C:\SVCProject\HR_Leave_App\servicenow-ai-workspace\hr-leave-sdk
+
+# 1. edit a .now.ts file
+# 2. build
+npx @servicenow/sdk build
+# 3. install
+npx @servicenow/sdk install --auth DEV
+# 4. verify
+npx @servicenow/sdk query x_786686_hr_leave_req_v2 -q "" --limit 3 --auth DEV
+# 5. commit — INCLUDING keys.ts if it changed
+git add -A; git commit -m "BR5: block overlapping leave requests"</code></pre>
+
+      <div class="ok"><p><strong>Validation for §6:</strong> <code>build</code> and <code>install</code> both exit 0; <code>query sys_app</code> returns your app with the expected version; the four business rules come back in order 100/200/250/300; and <code>git status</code> is clean after you commit <code>keys.ts</code>.</p></div>
+
+      <!-- ===================== PART 7 ===================== -->
+      <div class="part-head" id="p7">
+        <h2><span class="min-chip">7</span>Cursor integration</h2>
+        <p><span class="role dev">Developer</span> · why the SDK and an AI editor belong together</p>
+      </div>
+
+      <h3>7.1 The actual reason this pairing works</h3>
+      <p>An AI assistant cannot help you fill in a Studio form. It can help enormously with a TypeScript file it can read, edit and type-check. Moving platform development into source is what makes AI assistance possible at all — that, not any Cursor feature, is the whole argument.</p>
+      <p>The second-order effect matters just as much: because the SDK ships <code>explain</code>, you can feed the assistant the <em>exact</em> API of your exact version instead of letting it guess from training data. A grounded assistant writing Fluent is genuinely productive; an ungrounded one invents plausible property names that fail at build time.</p>
+
+      <h3>7.2 Open the workspace</h3>
+      <pre class="pre-wrap"><code>cursor C:\SVCProject\HR_Leave_App\servicenow-ai-workspace</code></pre>
+      <p>Open the workspace root, not a single app folder, so the assistant can see all three projects and the shared rules.</p>
+
+      <h3>7.3 The rules file</h3>
+      <p>This project already has <code>.cursor/rules/servicenow-sdk-master.mdc</code>. Rules files use front matter to control when they apply:</p>
+      <pre class="pre-wrap"><code>---
+description: ServiceNow SDK Fluent — Cursor Agent rules (HR + CRM + Portal)
+globs: "**/*.now.ts,**/now.config.json,**/package.json"
+alwaysApply: true
+---
+
+# ServiceNow SDK + Cursor (Auto / Agent mode)
+
+## Before any Fluent code
+1. Read `package.json` for `@servicenow/sdk` version.
+2. Run `npx @servicenow/sdk explain "&lt;ArtifactType&gt;"` when API is uncertain.
+3. After edits: `npx @servicenow/sdk build`.
+
+## Scopes (three apps in this workspace)
+- **HR Leave:** `x_786686_hr_leave` — tables suffix `_v2`, SI prefix `HRLX`
+- **CRM Suite:** `x_snc_crm_suite` — SI prefix `CRM`
+- **Portal Website:** `x_snc_sp_website` — widgets in `portal-website-sdk/src/portal/`
+
+## Conventions
+- Custom fields: `u_` prefix only.
+- Server scripts: `getValue()` / `setValue()`, `gs.nil()`, `setLimit()` on queries.
+- User text: `gs.getMessage()`. Logging: `gs.info('[scope] ...')`.
+- Never hard-code sys_ids. Never commit passwords or API keys.
+- Windows terminal: PowerShell commands only.
+- Always commit `src/fluent/generated/keys.ts` when a build changes it.
+
+## Deploy (ask user before production)
+- Dev PDI: `npx @servicenow/sdk install --auth DEV`
+- All three: `.\scripts\deploy-all.ps1`</code></pre>
+      <div class="warn"><p><strong>Two edits applied above versus the file currently in the repo:</strong> step 3 no longer tells the agent to run <code>npx @servicenow/sdk validate</code> (that command does not exist — §10), and a line about committing <code>keys.ts</code> was added, because an agent that discards "generated" files will cause the duplicate-record failure described in §5.3.</p></div>
+
+      <h3>7.4 The four rules that pay for themselves</h3>
+      <div class="fn-grid">
+        <div class="fn"><h4>Explain before writing</h4><p>Ground the model in the real API for any artefact type it has not written in this session. One command, zero invented properties.</p></div>
+        <div class="fn"><h4>Build after every edit</h4><p>The build is the type check. An agent that edits three files and never builds leaves you to find the errors.</p></div>
+        <div class="fn"><h4>Never hard-code a sys_id</h4><p>Use <code>Now.ID['identifier']</code>. A hard-coded sys_id works on one instance and breaks silently on the next.</p></div>
+        <div class="fn"><h4>Ask before any install</h4><p><code>install</code> mutates a live instance and <code>--reinstall</code> destroys data. Treat it as a human decision, always.</p></div>
+      </div>
+
+      <h3>7.5 A workflow that actually works</h3>
+      <ol>
+        <li><strong>Describe the artefact, not the code.</strong> "Add a business rule on <code>req_v2</code> that blocks submitting a request overlapping an existing approved one for the same employee" beats pasting half an implementation.</li>
+        <li><strong>Point at the pattern.</strong> "Follow the style of <code>BR3_audit_state_change</code> in <code>business-rules.now.ts</code>." The existing file is better context than any prompt you can write.</li>
+        <li><strong>Make it ground itself.</strong> "Run <code>explain businessrule-api</code> first and use that exact API."</li>
+        <li><strong>Require a build.</strong> "Then run the build and fix anything it reports."</li>
+        <li><strong>Review the diff, not the chat.</strong> Judge the <code>.now.ts</code> change in the editor. The explanation in the chat window is not the deliverable.</li>
+        <li><strong>Install yourself.</strong> You run <code>install --auth DEV</code>, after reading the diff.</li>
+      </ol>
+
+      <h3>7.6 Give the assistant live instance access</h3>
+      <p>Two options, in increasing order of power:</p>
+      <table>
+        <thead><tr><th>Approach</th><th>Setup</th><th>What it unlocks</th></tr></thead>
+        <tbody>
+          <tr><td><code>now-sdk query</code> in the terminal</td><td>Nothing — it is already installed</td><td>The agent can run a query and read the result as terminal output. Enough for most debugging.</td></tr>
+          <tr><td>An MCP server over the instance</td><td>See Part 8 of the <a href="AI_SERVICENOW_FULL_DEMO_MASTER.html#p8">AI full-demo guide</a></td><td>Structured, allow-listed tools the assistant calls directly, with ACL enforcement and an audit trail on the instance.</td></tr>
+        </tbody>
+      </table>
+      <p>Start with <code>query</code>. It costs nothing, it is already authenticated through your stored alias, and it covers "what does the instance actually look like right now" — which is 90% of what the assistant needs.</p>
+
+      <h3>7.7 What to keep out of the repository</h3>
+      <div class="warn">
+        <p>Credentials live in the OS keychain via <code>auth --add</code>. They must never appear in <code>.cursor/rules</code>, <code>now.config.json</code>, a chat message, or a committed <code>.env</code>. If you need the assistant to make an authenticated call, have it use <code>--auth DEV</code> — the alias, never the secret behind it.</p>
+      </div>
+
+      <!-- ===================== PART 8 ===================== -->
+      <div class="part-head" id="p8">
+        <h2><span class="min-chip">8</span>Bringing existing applications into the SDK</h2>
+        <p><span class="role dev">Developer</span> · you do not need a greenfield app</p>
+      </div>
+
+      <p>Three commands cover adoption, and they are not interchangeable:</p>
+      <table>
+        <thead><tr><th>Command</th><th>Use it to</th><th>Scale</th></tr></thead>
+        <tbody>
+          <tr><td><code>init --from &lt;sys_id&gt;</code></td><td>Convert a whole legacy scoped application into a new Fluent project in one shot.</td><td>Whole app, once</td></tr>
+          <tr><td><code>transform --table &lt;tables&gt;</code></td><td>Convert specific artefact types into Fluent source inside an existing project.</td><td>Incremental, repeatable</td></tr>
+          <tr><td><code>download &lt;dir&gt;</code></td><td>Pull the instance's current metadata to inspect it. Does not produce Fluent source.</td><td>Diagnostic</td></tr>
+        </tbody>
+      </table>
+
+      <h3>8.1 The low-risk adoption sequence</h3>
+      <ol>
+        <li><span class="role ops">Step 1</span> On a <em>clone</em> of your instance, not the real one, run <code>init --from &lt;app sys_id&gt; --auth DEV</code>.</li>
+        <li><span class="role ops">Step 2</span> Build immediately: <code>npx @servicenow/sdk build</code>. Whatever fails to compile is your conversion gap list.</li>
+        <li><span class="role ops">Step 3</span> Install onto a <em>second</em> clean instance and compare against the original. This is the only honest test that the conversion is faithful.</li>
+        <li><span class="role ops">Step 4</span> Commit everything, including <code>keys.ts</code>, before touching a single line.</li>
+        <li><span class="role ops">Step 5</span> Only now declare the app SDK-managed and tell the team to stop editing it in Studio.</li>
+      </ol>
+
+      <h3>8.2 Incremental adoption with <code>transform</code></h3>
+      <pre class="pre-wrap"><code># week 1: bring the security model under source control
+npx @servicenow/sdk transform --table sys_security_acl,sys_user_role --auth DEV
+
+# week 2: server logic
+npx @servicenow/sdk transform --table sys_script,sys_script_include --auth DEV
+
+# week 3: client side
+npx @servicenow/sdk transform --table sys_script_client,sys_ui_policy --auth DEV
+
+# convert an update set XML you exported earlier — no instance required
+npx @servicenow/sdk transform --from ./exports/HR_Leave_Build.xml</code></pre>
+      <p class="note-sm">Transform one artefact type per pull request. A single commit that converts an entire application is unreviewable, and conversion issues are exactly the kind you want a reviewer to catch.</p>
+
+      <!-- ===================== PART 9 ===================== -->
+      <div class="part-head" id="p9">
+        <h2><span class="min-chip">9</span>CI/CD done correctly</h2>
+        <p><span class="role ops">DevOps</span> · from the SDK's own <code>ci-integration</code> topic</p>
+      </div>
+
+      <h3>9.1 The two things CI must do</h3>
+      <ol>
+        <li><strong>Gate on <code>--frozenKeys</code>.</strong> Catch the uncommitted <code>keys.ts</code> before merge, not after it corrupts an instance.</li>
+        <li><strong>Authenticate without a keychain.</strong> CI has no OS keychain, so the CLI reads credentials from environment variables instead — but only when you explicitly switch it into CI mode.</li>
+      </ol>
+
+      <h3>9.2 CI mode and its environment variables</h3>
+      <p>CI mode is gated by a single variable. Without it the CLI looks for a keychain and fails:</p>
+      <table class="kv">
+        <tbody>
+          <tr><td><code>SN_SDK_NODE_ENV</code></td><td>Must be exactly <code>SN_SDK_CI_INSTALL</code>. This is the switch.</td></tr>
+          <tr><td><code>SN_SDK_AUTH_TYPE</code></td><td><code>oauth</code> (recommended) or <code>basic</code>. Unset defaults to basic. Any other value is rejected before any network call.</td></tr>
+          <tr><td><code>SN_SDK_INSTANCE_URL</code></td><td>Full instance URL.</td></tr>
+          <tr><td><code>SN_SDK_OAUTH_CLIENT_ID</code></td><td>OAuth Application Registry client_id. Required when type is <code>oauth</code>.</td></tr>
+          <tr><td><code>SN_SDK_OAUTH_CLIENT_SECRET</code></td><td>OAuth client_secret. Required when type is <code>oauth</code>.</td></tr>
+          <tr><td><code>SN_SDK_USER</code> · <code>SN_SDK_USER_PWD</code></td><td>Used only when type is <code>basic</code>.</td></tr>
+        </tbody>
+      </table>
+      <p>Prefer OAuth. The client secret authenticates the CI system itself rather than impersonating a person, so a leak can be rotated without touching anyone's account, and there is no live user password sitting in a pipeline variable for a compromised job to exfiltrate.</p>
+
+      <h3>9.3 Instance-side OAuth setup — all three steps are mandatory</h3>
+      <ol>
+        <li><strong>Service user.</strong> Must have the <code>admin</code> role, and must have <strong>Identity Type = Human</strong> on its <code>sys_user</code> record. The SDK's installer processor rejects non-human accounts.</li>
+        <li><strong>Enable the grant type.</strong> The system property <code>glide.oauth.inbound.client.credential.grant_type.enabled</code> must exist and be <code>true</code>. Create it in <code>sys_properties</code> if it is not there.</li>
+        <li><strong>Register the OAuth client</strong> in the Application Registry and map the service user from step 1 as the OAuth application user.</li>
+      </ol>
+      <div class="url-box"><strong>Set it up</strong>
+        <a href="{BASE}/nav_to.do?uri=%2Foauth_entity_list.do">Application Registry (OAuth)</a>
+        <a href="{BASE}/nav_to.do?uri=%2Fsys_properties_list.do">System Properties</a>
+        <a href="{BASE}/nav_to.do?uri=%2Fsys_user_list.do">Users</a>
+      </div>
+      <p class="note-sm">The CLI calls <code>${SN_SDK_INSTANCE_URL}/oauth_token.do</code> once at startup with <code>grant_type=client_credentials</code> and uses the returned token for everything after. There is no refresh token in this grant; each run gets a fresh token.</p>
+
+      <h3>9.4 A corrected GitHub Actions workflow</h3>
+      <p>The workflow currently in this repository will not run — it calls <code>validate</code> and passes <code>auth</code> flags that do not exist. Here is the working version:</p>
+      <pre class="pre-wrap"><code>name: Deploy ServiceNow Apps
+on:
+  push:
+    branches: [main, develop]
+    paths: ['HR_Leave_App/servicenow-ai-workspace/**']
+  workflow_dispatch:
+
+jobs:
+  build-and-install:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [hr-leave-sdk, crm-suite-sdk, portal-website-sdk]
+    defaults:
+      run:
+        working-directory: HR_Leave_App/servicenow-ai-workspace/${{ matrix.app }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # The gate. Fails if someone forgot to commit keys.ts.
+      - name: Build and verify keys.ts is committed
+        run: npx @servicenow/sdk build --frozenKeys
+
+      # Install to the TEST instance on main only. Never to production.
+      - name: Install to test instance
+        if: github.ref == 'refs/heads/main'
+        env:
+          SN_SDK_NODE_ENV: SN_SDK_CI_INSTALL
+          SN_SDK_AUTH_TYPE: oauth
+          SN_SDK_INSTANCE_URL: ${{ secrets.SN_INSTANCE_URL }}
+          SN_SDK_OAUTH_CLIENT_ID: ${{ secrets.SN_OAUTH_CLIENT_ID }}
+          SN_SDK_OAUTH_CLIENT_SECRET: ${{ secrets.SN_OAUTH_CLIENT_SECRET }}
+        run: npx @servicenow/sdk install</code></pre>
+      <div class="fn-grid">
+        <div class="fn"><h4><code>npm ci</code>, not <code>npm install</code></h4><p>Installs exactly the lockfile. <code>npm install</code> can quietly drift the SDK version between runs.</p></div>
+        <div class="fn"><h4>No <code>auth --add</code> step</h4><p>In CI mode credentials come from the environment. Calling <code>auth --add</code> in a pipeline is the wrong model entirely.</p></div>
+        <div class="fn"><h4>No <code>--auth</code> flag on install</h4><p>With <code>SN_SDK_NODE_ENV</code> set, the CLI uses the env credentials. The alias is a keychain concept.</p></div>
+        <div class="fn"><h4>Test, never production</h4><p>Production goes through <code>cicd publish</code> and the App Repository so change management and rollback work properly.</p></div>
+      </div>
+
+      <h3>9.5 A corrected <code>deploy-all.ps1</code></h3>
+      <pre class="pre-wrap"><code># Deploy all three SDK apps to a dev PDI (run from the workspace root)
+param(
+    [string]$AuthAlias = "DEV"
+)
+
+$ErrorActionPreference = "Stop"
+$root = Split-Path $PSScriptRoot -Parent          # scripts/ lives one level below the root
+$apps = @("hr-leave-sdk", "crm-suite-sdk", "portal-website-sdk")
+
+foreach ($app in $apps) {
+    Write-Host "`n========== $app ==========" -ForegroundColor Cyan
+    Push-Location (Join-Path $root $app)
+
+    npm ci
+    if ($LASTEXITCODE -ne 0) { Pop-Location; throw "npm ci failed: $app" }
+
+    npx @servicenow/sdk build
+    if ($LASTEXITCODE -ne 0) { Pop-Location; throw "Build failed: $app" }
+
+    npx @servicenow/sdk install --auth $AuthAlias
+    if ($LASTEXITCODE -ne 0) { Pop-Location; throw "Install failed: $app" }
+
+    Pop-Location
+}
+
+Write-Host "`nAll 3 apps installed on '$AuthAlias'." -ForegroundColor Green</code></pre>
+      <p class="note-sm">Three fixes versus the current script: the <code>validate</code> step is gone, <code>$root</code> now resolves to the workspace root instead of the <code>scripts/</code> folder it was pointing at, and <code>Pop-Location</code> runs before each <code>throw</code> so a failure does not leave your shell in the wrong directory.</p>
+
+      <!-- ===================== PART 10 ===================== -->
+      <div class="part-head" id="p10">
+        <h2><span class="min-chip">10</span>Corrections — four files in this repository are wrong</h2>
+        <p>Found by diffing the repo against the installed CLI</p>
+      </div>
+
+      <p>Verifying this documentation against SDK 4.12.2 surfaced real defects in files that are already in the project. They are not cosmetic: <strong>seven files call a command that does not exist</strong>, and that command sits in the middle of every deploy path this workspace has.</p>
+
+      <h3>10.1 The <code>validate</code> problem — all seven call sites</h3>
+      <p><code>npx @servicenow/sdk validate</code> returns <code>Unknown command: validate</code> and exits non-zero. Every one of these runs it:</p>
+      <table>
+        <thead><tr><th>#</th><th>File</th><th>Line</th><th>Consequence</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>1</td><td><code>scripts/deploy-all.ps1</code></td><td>16–17</td>
+            <td><strong>Hard failure.</strong> Guarded by <code>if ($LASTEXITCODE -ne 0) { throw "Validate failed: $app" }</code>, so the script throws on the first app. It has never reached a deploy.</td>
+          </tr>
+          <tr>
+            <td>2</td><td><code>.github/workflows/deploy-all-apps.yml</code></td><td>34–35</td>
+            <td><strong>Hard failure.</strong> A non-zero step fails the job. The pipeline has never deployed anything.</td>
+          </tr>
+          <tr>
+            <td>3</td><td><code>.cursor/rules/servicenow-sdk-master.mdc</code></td><td>12</td>
+            <td>Tells the Cursor agent to run it after every build. The agent runs a failing command, then tries to debug the failure.</td>
+          </tr>
+          <tr>
+            <td>4</td><td><code>.claude/commands/deploy.md</code></td><td>11</td>
+            <td>Same, as step 4 of the deploy command.</td>
+          </tr>
+          <tr>
+            <td>5</td><td><code>.claude/skills/deploy-to-pdi.md</code></td><td>3, 12</td>
+            <td>Same, plus the skill's own description promises "Build, validate, and deploy".</td>
+          </tr>
+          <tr>
+            <td>6</td><td><code>crm-suite-sdk/package.json</code></td><td>8</td>
+            <td><code>"validate": "now-sdk validate"</code> — <code>npm run validate</code> always fails.</td>
+          </tr>
+          <tr>
+            <td>7</td><td><code>portal-website-sdk/package.json</code></td><td>8</td>
+            <td>Same script. (<code>hr-leave-sdk/package.json</code> is clean — it has no validate script.)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>The fix is the same everywhere: <strong>delete the validate step.</strong> Validation already happens inside <code>build</code>. Where a stricter gate is wanted, that is <code>build --frozenKeys --errorOnConflict</code>, not a separate command.</p>
+
+      <h3>10.2 Three more defects</h3>
+      <table>
+        <thead><tr><th>File</th><th>The problem</th><th>The fix</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>.github/workflows/deploy-all-apps.yml</code> line 44</td>
+            <td><code>auth --add $env:SN_INSTANCE --alias ci --oauth --client-id ... --client-secret ...</code>. None of <code>--oauth</code>, <code>--client-id</code> or <code>--client-secret</code> exist. Beyond the flags, the whole approach is wrong: CI has no OS keychain for <code>auth --add</code> to write to.</td>
+            <td>Drop the auth step entirely and pass the <code>SN_SDK_*</code> environment variables on the install step. Working workflow in §9.4.</td>
+          </tr>
+          <tr>
+            <td><code>scripts/deploy-all.ps1</code> line 7</td>
+            <td><code>$root = $PSScriptRoot</code> resolves to the <code>scripts/</code> folder, so <code>Join-Path $root "hr-leave-sdk"</code> points at <code>scripts/hr-leave-sdk</code>, which does not exist. The apps are one level up. Separately, each <code>throw</code> fires without a <code>Pop-Location</code>, leaving your shell in the wrong directory after any failure.</td>
+            <td><code>$root = Split-Path $PSScriptRoot -Parent</code>, and pop before throwing. Corrected script in §9.5.</td>
+          </tr>
+          <tr>
+            <td><code>html/AI_SERVICENOW_FULL_DEMO_MASTER.html</code> Part 10</td>
+            <td>Command table written from general knowledge rather than the CLI. It lists <code>upgrade</code> and <code>build --watch</code>, which do not exist, and omits <code>download</code>, <code>clean</code>, <code>pack</code>, <code>explain</code>, <code>query</code> and <code>cicd</code>.</td>
+            <td>A pointer to this page has been added there. Treat §3 of this document as the reference.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="note-sm">Worth noticing why this happened at all: <code>validate</code> is a perfectly reasonable thing for a CLI to have, which is exactly why it propagated into seven files unchallenged. Every one of them was written from what the SDK <em>ought</em> to look like. That is the argument for <code>explain</code> and <code>--help</code> over recollection, and it applies to humans as much as to assistants.</p>
+
+      <h3>10.3 The commands that do not exist in 4.12.2</h3>
+      <table>
+        <thead><tr><th>Not a command</th><th>What people mean</th><th>What to run instead</th></tr></thead>
+        <tbody>
+          <tr><td><code>validate</code></td><td>Check the project compiles</td><td><code>build</code> — validation happens inside it. For CI strictness add <code>--frozenKeys</code> and <code>--errorOnConflict</code>.</td></tr>
+          <tr><td><code>upgrade</code></td><td>Move to a newer SDK</td><td>Edit the version in <code>package.json</code>, then <code>npm install</code>. Re-read <code>--help</code> afterwards; flags change.</td></tr>
+          <tr><td><code>build --watch</code></td><td>Rebuild on save</td><td>No such flag. Use <code>nodemon --watch src/fluent -e ts --exec "npx @servicenow/sdk build"</code>.</td></tr>
+          <tr><td><code>auth --oauth</code></td><td>OAuth credential</td><td><code>auth --add &lt;url&gt; --type oauth --alias &lt;name&gt;</code>.</td></tr>
+          <tr><td><code>deploy --reinstall</code></td><td>Force a clean install</td><td>Valid — <code>deploy</code> is an alias of <code>install</code> and <code>-r/--reinstall</code> is real. Just know it is destructive.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="ok"><p><strong>How to keep this page honest.</strong> After any SDK upgrade, re-run <code>npx @servicenow/sdk --help</code> and <code>npx @servicenow/sdk &lt;command&gt; --help</code> for each of the twelve commands, and update §3. That is the whole maintenance procedure, and it takes five minutes.</p></div>
+
+      <!-- ===================== PART 11 ===================== -->
+      <div class="part-head" id="p11">
+        <h2><span class="min-chip">11</span>Troubleshooting</h2>
+        <p>Symptom first — find your error message in the left column</p>
+      </div>
+
+      <table>
+        <thead><tr><th>What you see</th><th>Cause</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>Unknown command: validate</code></td>
+            <td>No such command in 4.12.2.</td>
+            <td>Use <code>build</code>. See §10 — seven files in this repo need this change.</td>
+          </tr>
+          <tr>
+            <td><code>MODULE_NOT_FOUND</code> pointing at <code>bin/now-sdk.js</code></td>
+            <td>Guessed binary path. The real entry point is <code>node_modules/@servicenow/sdk/bin/index.js</code>.</td>
+            <td>Call it as <code>npx @servicenow/sdk</code> or <code>npx now-sdk</code> and let npm resolve the bin map.</td>
+          </tr>
+          <tr>
+            <td><code>now-sdk: command not found</code></td>
+            <td>Installed as a dev dependency, not globally — which is correct.</td>
+            <td>Prefix with <code>npx</code>, or add an npm script. Never install the SDK globally; the version must be pinned per project.</td>
+          </tr>
+          <tr>
+            <td>Build fails with <code>keys.ts</code> in the diff after <code>--frozenKeys</code></td>
+            <td>Someone added or changed a <code>$id</code> and did not commit the regenerated keys file.</td>
+            <td>Run <code>build</code> locally without the flag, <code>git add src/fluent/generated/keys.ts</code>, commit, push. §5.3.</td>
+          </tr>
+          <tr>
+            <td>Install creates <strong>duplicate</strong> records instead of updating</td>
+            <td>Stale or missing <code>keys.ts</code>. Your <code>$id</code> resolved to a different sys_id than the one on the instance.</td>
+            <td>Restore the correct <code>keys.ts</code> from the branch that last installed successfully, rebuild, reinstall. Delete the duplicates on the instance by hand.</td>
+          </tr>
+          <tr>
+            <td>Records vanished after an install</td>
+            <td><code>--reinstall</code>. It uninstalls first, so anything created on the instance but absent from your source is gone.</td>
+            <td>Restore from a backup or update set. Then remove <code>--reinstall</code> from whatever script used it.</td>
+          </tr>
+          <tr>
+            <td>Auth fails in CI but works locally</td>
+            <td>CI has no OS keychain, and <code>SN_SDK_NODE_ENV</code> was not set, so the CLI never looked at the environment variables.</td>
+            <td>Set <code>SN_SDK_NODE_ENV=SN_SDK_CI_INSTALL</code> plus the rest of the <code>SN_SDK_*</code> set. §9.2.</td>
+          </tr>
+          <tr>
+            <td>OAuth token request rejected</td>
+            <td>One of the three mandatory instance-side steps is missing — most often the property, which is not present by default.</td>
+            <td>Confirm <code>glide.oauth.inbound.client.credential.grant_type.enabled = true</code>, the service user has <code>admin</code>, and its <strong>Identity Type is Human</strong>. §9.3.</td>
+          </tr>
+          <tr>
+            <td><code>Scope name too long</code> at <code>init</code></td>
+            <td>Scope limit is 18 characters including the <code>x_</code> prefix and vendor code.</td>
+            <td>Shorten it. <code>x_786686_hr_leave</code> is 17 — that is the budget you are working with.</td>
+          </tr>
+          <tr>
+            <td>A Fluent property is rejected that you are sure exists</td>
+            <td>Property names differ between SDK versions, and model-generated code is a common source of plausible-but-wrong names.</td>
+            <td><code>npx @servicenow/sdk explain &lt;artifact&gt;-api</code>. That output is your version's truth, not the docs site and not a chat window.</td>
+          </tr>
+          <tr>
+            <td>Changes in Studio disappear after the next install</td>
+            <td>Working as designed. Install makes the instance match your source.</td>
+            <td>Pick one owner per artefact type. If something must be edited in Studio, <code>transform</code> it back into source before your next install. §1.</td>
+          </tr>
+          <tr>
+            <td>Install hangs or returns before finishing</td>
+            <td><code>--async</code> defaults to <strong>true</strong>. The command returns while the instance is still working.</td>
+            <td>Pass <code>--async false</code> when a later step depends on the install being complete.</td>
+          </tr>
+          <tr>
+            <td>Unexpected demo data on a clean instance</td>
+            <td><code>--demoData</code> also defaults to <strong>true</strong>.</td>
+            <td><code>install --demoData false</code>.</td>
+          </tr>
+          <tr>
+            <td>Stale artefacts in <code>dist/</code> after renaming a file</td>
+            <td>Output from the deleted source is still on disk.</td>
+            <td><code>npx @servicenow/sdk clean</code>, then rebuild.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>11.1 When nothing above matches</h3>
+      <ol>
+        <li><code>npx @servicenow/sdk &lt;command&gt; --help</code> — confirm the flag you used is real on your version.</li>
+        <li><code>npx @servicenow/sdk explain faq</code> — the SDK's own FAQ, offline.</li>
+        <li><code>npx @servicenow/sdk --debug &lt;command&gt;</code> — verbose logging.</li>
+        <li><code>npx @servicenow/sdk query sys_update_xml -q "sys_created_on&gt;javascript:gs.hoursAgo(1)" --auth DEV</code> — see what the last install actually wrote.</li>
+      </ol>
+
+      <!-- ===================== PART 12 ===================== -->
+      <div class="part-head" id="p12">
+        <h2><span class="min-chip">12</span>Appendix — all 256 <code>explain</code> topics</h2>
+        <p>Every topic available offline on SDK 4.12.2 · <span class="verified">captured from your CLI</span></p>
+      </div>
+
+      <p>Read any of these with <code>npx @servicenow/sdk explain &lt;topic&gt;</code>. Add <code>--format raw</code> to get markdown suitable for piping into an assistant (§4).</p>
+
+      <div class="topic-group">
+        <h4>Where to start</h4>
+        <p class="note-sm">If you read four topics in your whole career with this SDK, read these:</p>
+        <div class="topic-list"><code>fluent-overview</code><code>fluent-language-overview</code><code>keys-file</code><code>ci-integration</code></div>
+      </div>
+
+      <div class="topic-group">
+        <h4>Core &amp; reference <span class="min-chip">7</span></h4>
+        <p class="note-sm">Start here. These seven are the SDK explaining itself.</p>
+        <div class="topic-list"><code>ci-integration</code><code>faq</code><code>fluent-language-overview</code><code>fluent-overview</code><code>keys-file</code><code>now-config-reference</code><code>service-portal-ootb-reference</code></div>
+      </div>
+      <div class="topic-group">
+        <h4>Guides <span class="min-chip">97</span></h4>
+        <p class="note-sm">How and why — patterns, trade-offs, worked examples.</p>
+        <div class="topic-list"><code>alias-guide</code><code>alias-template-guide</code><code>application-menu-guide</code><code>assessment-guide</code><code>assignment-rule-guide</code><code>atf-guide</code><code>atf-ui-test-script-guide</code><code>auth-token-guide</code><code>building-ai-agents-advanced-guide</code><code>building-ai-agents-guide</code><code>building-ai-agents-tools-guide</code><code>business-rule-guide</code><code>choiceset-guide</code><code>client-script-guide</code><code>client-side-api-guide</code><code>creating-workspaces-guide</code><code>cross-scope-privilege-guide</code><code>dashboard-filters-guide</code><code>dashboard-guide</code><code>data-helpers-guide</code><code>data-lookup-guide</code><code>data-policy-guide</code><code>dependencies-guide</code><code>developing-apps-guide</code><code>email-notification-guide</code><code>encoded-query-guide</code><code>external-services-guide</code><code>field-styles-guide</code><code>form-formatters-guide</code><code>form-layout-guide</code><code>graphql-api-guide</code><code>importing-data-guide</code><code>inbound-email-action-guide</code><code>instance-scan-guide</code><code>javascript-compatibility-guide</code><code>knowledge-base-access-guide</code><code>list-control-guide</code><code>list-guide</code><code>module-guide</code><code>now-attach-guide</code><code>now-del-guide</code><code>now-id-guide</code><code>now-include-guide</code><code>now-ref-guide</code><code>nowassist-skills-advanced-guide</code><code>nowassist-skills-guide</code><code>nowassist-skills-tools-guide</code><code>npm-libraries-guide</code><code>override-column-guide</code><code>override-guide</code><code>playbook-activities-guide</code><code>playbook-anti-patterns-guide</code><code>playbook-datapills-guide</code><code>playbook-guide</code><code>playbook-lanes-guide</code><code>playbook-patterns-guide</code><code>playbook-permissions-guide</code><code>playbook-triggers-guide</code><code>playbook-unsupported-features-guide</code><code>property-guide</code><code>query-guide</code><code>registering-events-guide</code><code>relationship-guide</code><code>rest-message-guide</code><code>retry-policy-guide</code><code>risk-assessment-guide</code><code>scheduled-script-guide</code><code>script-include-guide</code><code>scripted-rest-api-guide</code><code>sdlc-guide</code><code>security-guide</code><code>service-catalog-client-script-guide</code><code>service-catalog-guide</code><code>service-catalog-ui-policy-guide</code><code>service-catalog-variables-guide</code><code>service-portal-advanced-guide</code><code>service-portal-components-guide</code><code>service-portal-guide</code><code>state-model-guide</code><code>table-augments-guide</code><code>table-guide</code><code>ui-action-guide</code><code>ui-page-guide</code><code>ui-page-patterns-guide</code><code>ui-page-theming-guide</code><code>ui-policy-guide</code><code>user-criteria-examples-guide</code><code>user-criteria-guide</code><code>view-guide</code><code>view-rule-guide</code><code>wfa-custom-action-guide</code><code>wfa-flow-actions-guide</code><code>wfa-flow-guide</code><code>wfa-flow-logic-guide</code><code>wfa-flow-stages-guide</code><code>wfa-subflow-guide</code><code>wfa-trigger-guide</code></div>
+      </div>
+      <div class="topic-group">
+        <h4>API references <span class="min-chip">152</span></h4>
+        <p class="note-sm">Exact Fluent signatures, every property, every default.</p>
+        <div class="topic-list"><code>acl-api</code><code>action-api</code><code>aiagent-api</code><code>aiagenticworkflow-api</code><code>alias-api</code><code>aliastemplate-api</code><code>applicability-api</code><code>applicationmenu-api</code><code>approvalrulescolumn-api</code><code>assessment-api</code><code>attachmentvariable-api</code><code>basicdatetimecolumn-api</code><code>basicimagecolumn-api</code><code>booleancolumn-api</code><code>breakvariable-api</code><code>businessrule-api</code><code>calendardatetimecolumn-api</code><code>catalogclientscript-api</code><code>catalogitem-api</code><code>catalogitemrecordproducer-api</code><code>cataloguipolicy-api</code><code>checkboxvariable-api</code><code>choicecolumn-api</code><code>choiceset-api</code><code>clientscript-api</code><code>columntypecheck-api</code><code>conditionscolumn-api</code><code>containerendvariable-api</code><code>containersplitvariable-api</code><code>containerstartvariable-api</code><code>crossscopeprivilege-api</code><code>custom-action-api</code><code>customvariable-api</code><code>customwithlabelvariable-api</code><code>dashboard-api</code><code>datalookup-api</code><code>datapolicy-api</code><code>datecolumn-api</code><code>datetimecolumn-api</code><code>datetimevariable-api</code><code>datevariable-api</code><code>dayofweekcolumn-api</code><code>daysofweekcolumn-api</code><code>decimalcolumn-api</code><code>documentidcolumn-api</code><code>domainidcolumn-api</code><code>domainpathcolumn-api</code><code>duedatecolumn-api</code><code>durationcolumn-api</code><code>durationvariable-api</code><code>emailcolumn-api</code><code>emailnotification-api</code><code>emailvariable-api</code><code>fieldlistcolumn-api</code><code>fieldnamecolumn-api</code><code>floatcolumn-api</code><code>flow-api</code><code>flow-stages-api</code><code>form-api</code><code>genericcolumn-api</code><code>graphqlapi-api</code><code>guidcolumn-api</code><code>htmlcolumn-api</code><code>htmlvariable-api</code><code>importset-api</code><code>inboundemailaction-api</code><code>integercolumn-api</code><code>integerdatecolumn-api</code><code>ipaddressvariable-api</code><code>jsoncolumn-api</code><code>labelvariable-api</code><code>lintercheck-api</code><code>list-api</code><code>listcollectorvariable-api</code><code>listcolumn-api</code><code>lookupmultiplechoicevariable-api</code><code>lookupselectboxvariable-api</code><code>maskedvariable-api</code><code>multilinetextcolumn-api</code><code>multilinetextvariable-api</code><code>multiplechoicevariable-api</code><code>namevaluepairscolumn-api</code><code>nowassistskillconfig-api</code><code>numericscalevariable-api</code><code>otherdatecolumn-api</code><code>overridecolumn-api</code><code>password2column-api</code><code>playbook-api</code><code>property-api</code><code>radiocolumn-api</code><code>record-api</code><code>recordscolumn-api</code><code>referencecolumn-api</code><code>referencevariable-api</code><code>requestedforvariable-api</code><code>restapi-api</code><code>restmessage-api</code><code>retrypolicy-api</code><code>richtextlabelvariable-api</code><code>riskassessment-api</code><code>role-api</code><code>scheduledatetimecolumn-api</code><code>scheduledscript-api</code><code>scriptaction-api</code><code>scriptcolumn-api</code><code>scriptinclude-api</code><code>scriptonlycheck-api</code><code>selectboxvariable-api</code><code>serviceportal-api</code><code>singlelinetextvariable-api</code><code>sla-api</code><code>slushbucketcolumn-api</code><code>spangularprovider-api</code><code>spheaderfooter-api</code><code>spmenu-api</code><code>sppage-api</code><code>sppageroutemap-api</code><code>sptheme-api</code><code>spwidget-api</code><code>spwidgetdependency-api</code><code>statemodel-api</code><code>stringcolumn-api</code><code>subflow-api</code><code>systemclassnamecolumn-api</code><code>table-api</code><code>tablecheck-api</code><code>tablenamecolumn-api</code><code>templatevaluecolumn-api</code><code>test-api</code><code>testsuite-api</code><code>timecolumn-api</code><code>translatedfieldcolumn-api</code><code>translatedtextcolumn-api</code><code>trigger-api</code><code>uiaction-api</code><code>uipage-api</code><code>uipagevariable-api</code><code>uipolicy-api</code><code>urlcolumn-api</code><code>urlvariable-api</code><code>usercriteria-api</code><code>userimagecolumn-api</code><code>userpreference-api</code><code>userrolescolumn-api</code><code>uxlistmenuconfig-api</code><code>variableset-api</code><code>versioncolumn-api</code><code>wfa-api</code><code>wfa-flow-logic-api</code><code>widesinglelinetextvariable-api</code><code>workspace-api</code><code>yesnovariable-api</code></div>
+      </div>
+
+      <!-- ===================== PART 13 ===================== -->
+      <div class="part-head" id="p13">
+        <h2><span class="min-chip">13</span>Quick reference card</h2>
+        <p>Print this one page and keep it next to the keyboard</p>
+      </div>
+
+      <h3>13.1 Everything you type daily</h3>
+      <pre class="pre-wrap"><code># --- setup, once per machine ---
+npm install -D @servicenow/sdk@4.12.2
+npx @servicenow/sdk auth --add https://devXXXXXX.service-now.com --type basic --alias DEV
+npx @servicenow/sdk auth --list
+
+# --- new project ---
+npx @servicenow/sdk init --appName "My App" --packageName my-app \
+    --scopeName x_mycode_myapp --auth DEV
+npx @servicenow/sdk dependencies --auth DEV
+
+# --- adopt an existing app ---
+npx @servicenow/sdk init --from &lt;app_sys_id&gt; --auth DEV       # whole app
+npx @servicenow/sdk transform --table sys_script --auth DEV    # one artefact type
+npx @servicenow/sdk transform --from ./update-set.xml          # from XML, offline
+
+# --- the loop ---
+npx @servicenow/sdk build
+npx @servicenow/sdk install --auth DEV
+npx @servicenow/sdk query sys_app -q "scope=x_mycode_myapp" -f name,version --auth DEV
+git add -A ; git commit -m "..."         # keys.ts included
+
+# --- getting unstuck ---
+npx @servicenow/sdk explain --list &lt;keyword&gt;
+npx @servicenow/sdk explain &lt;topic&gt;
+npx @servicenow/sdk &lt;command&gt; --help
+
+# --- CI ---
+npx @servicenow/sdk build --frozenKeys --errorOnConflict
+SN_SDK_NODE_ENV=SN_SDK_CI_INSTALL SN_SDK_AUTH_TYPE=oauth npx @servicenow/sdk install
+
+# --- housekeeping ---
+npx @servicenow/sdk clean
+npx @servicenow/sdk pack</code></pre>
+
+      <h3>13.2 The six things that actually bite</h3>
+      <div class="fn-grid">
+        <div class="fn"><h4>Commit <code>keys.ts</code></h4><p>It says generated. Commit it anyway, or your teammate's install creates duplicate records. §5.3.</p></div>
+        <div class="fn"><h4><code>--reinstall</code> deletes</h4><p>It uninstalls first. Anything on the instance but not in your source is gone.</p></div>
+        <div class="fn"><h4><code>--async</code> and <code>--demoData</code> default to true</h4><p>Both surprise people. Set them explicitly in scripts.</p></div>
+        <div class="fn"><h4>There is no <code>validate</code></h4><p>And no <code>upgrade</code>, and no <code>build --watch</code>. §10.</p></div>
+        <div class="fn"><h4>One owner per artefact</h4><p>SDK or Studio, never both for the same record. Install overwrites.</p></div>
+        <div class="fn"><h4>18-character scope limit</h4><p>Including the prefix. Chosen at <code>init</code> and painful to change later.</p></div>
+      </div>
+
+      <h3>13.3 All twelve commands, one line each</h3>
+      <table class="kv">
+        <tbody>
+          <tr><td><code>auth</code></td><td>Store, list, switch and print instance credentials in the OS keychain.</td></tr>
+          <tr><td><code>init</code> <span class="alias">create</span></td><td>Scaffold a new project, or convert an existing app with <code>--from</code>.</td></tr>
+          <tr><td><code>download</code></td><td>Pull instance metadata to a directory for inspection.</td></tr>
+          <tr><td><code>build</code></td><td>Compile Fluent to update XML. This is also the validator.</td></tr>
+          <tr><td><code>install</code> <span class="alias">deploy</span></td><td>Push the built app to an instance.</td></tr>
+          <tr><td><code>dependencies</code></td><td>Fetch type definitions and manage app dependencies.</td></tr>
+          <tr><td><code>transform</code></td><td>Convert instance records or update-set XML into Fluent source.</td></tr>
+          <tr><td><code>clean</code></td><td>Delete build output.</td></tr>
+          <tr><td><code>pack</code></td><td>Package the app into a distributable zip.</td></tr>
+          <tr><td><code>explain</code></td><td>256 offline topics. Your best debugging tool and the way to ground an AI assistant.</td></tr>
+          <tr><td><code>query</code></td><td>Run a GlideRecord-style query against an instance from the terminal.</td></tr>
+          <tr><td><code>cicd</code></td><td>Publish to the App Repository, install from it, roll back.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="ok">
+        <p><strong>How to keep this document true.</strong> Everything in §2, §3 and §12 was captured from the CLI installed on this machine on 8 October 2026 — SDK 4.12.2, Node v20.20.2. After any SDK upgrade, re-run <code>--help</code> for all twelve commands and <code>explain --list</code>, then update §3 and §12. Five minutes, and it keeps this page from becoming the thing it was written to replace.</p>
+      </div>
+
+      <div class="ok">
+        <p><strong>Windows install → auth → all commands → deploy → CAN/CANNOT → VR/VRO cycle:</strong>
+        use the upgraded companion <a href="SDK_WINDOWS_FULL_CYCLE_CAN_CANNOT.html"><strong>SDK_WINDOWS_FULL_CYCLE_CAN_CANNOT.html</strong></a>
+        (PowerShell-first). Practical labs: <a href="PRACTICAL_SECOPS_VRO_FROM_SCRATCH.html">SecOps/VRO</a> ·
+        <a href="PRACTICAL_FLOW_DESIGNER_FROM_SCRATCH.html">Flow Designer</a> ·
+        <a href="PRACTICAL_AI_SERVICENOW_FROM_SCRATCH.html">AI with ServiceNow</a>.</p>
+      </div>
+
+      <div class="section-links">
+        <strong>Where to go next</strong>
+        <a href="SDK_WINDOWS_FULL_CYCLE_CAN_CANNOT.html">SDK Windows full cycle + Can/Cannot + VR</a>
+        <a href="PRACTICAL_SECOPS_VRO_FROM_SCRATCH.html">Practical SecOps / VRO</a>
+        <a href="PRACTICAL_FLOW_DESIGNER_FROM_SCRATCH.html">Practical Flow Designer</a>
+        <a href="PRACTICAL_AI_SERVICENOW_FROM_SCRATCH.html">Practical AI</a>
+        <a href="AI_SERVICENOW_FULL_DEMO_MASTER.html">ALL ABOUT AI — full demo (2–3 h)</a>
+        <a href="ONE_DAY_ALL_IN_ONE_01_16.html">HR Leave — chapters 01–16 in one day</a>
+        <a href="index.html">All documentation</a>
+      </div>
+    </article>
+
+    <p class="footer">HR Leave mature solution docs · ServiceNow SDK + Cursor full documentation · all commands verified against the installed CLI 4.12.2 · regenerate the command tables with <code>now-sdk &lt;command&gt; --help</code> after any SDK upgrade · page kept LTR so commands stay readable</p>
+  </main>
+  <script src="assets/docs.js"></script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI &amp; Machine Learning Complete Guide — دليل الذكاء الاصطناعي الشامل | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>AI &amp; Machine Learning Complete Guide — دليل الذكاء الاصطناعي الشامل</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="ai-machine-learning-complete-guide">AI &amp; Machine Learning Complete Guide — دليل الذكاء الاصطناعي الشامل</h1>
+<blockquote>
+<p><strong>Platform:</strong> ServiceNow Australia (Sep 2026)<br />
+دليل شامل لـ Virtual Agent و Predictive Intelligence و NLU و Now Assist</p>
+</blockquote>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<ol>
+<li><a href="#1-ai-overview-in-servicenow">AI Overview in ServiceNow</a></li>
+<li><a href="#2-virtual-agent">Virtual Agent</a></li>
+<li><a href="#3-predictive-intelligence">Predictive Intelligence</a></li>
+<li><a href="#4-natural-language-understanding">Natural Language Understanding</a></li>
+<li><a href="#5-now-assist-genai">Now Assist (GenAI)</a></li>
+<li><a href="#6-document-intelligence">Document Intelligence</a></li>
+<li><a href="#7-ai-search">AI Search</a></li>
+<li><a href="#8-hr-leave-ai-integration">HR Leave AI Integration</a></li>
+<li><a href="#9-best-practices">Best Practices</a></li>
+<li><a href="#10-labs">Labs</a></li>
+</ol>
+<hr />
+<h2 id="1-ai-overview-in-servicenow">1. AI Overview in ServiceNow</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="direct-urls">Direct URLs</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Virtual Agent</td>
+<td><a href="{BASE}/now/va-admin">{BASE}/now/va-admin</a></td>
+</tr>
+<tr>
+<td>Predictive Intelligence</td>
+<td><a href="{BASE}/ml_solutions.do">{BASE}/ml_solutions.do</a></td>
+</tr>
+<tr>
+<td>NLU Models</td>
+<td><a href="{BASE}/sys_nlu_model_list.do">{BASE}/sys_nlu_model_list.do</a></td>
+</tr>
+<tr>
+<td>AI Search</td>
+<td><a href="{BASE}/ais_search_config_list.do">{BASE}/ais_search_config_list.do</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="ai-capabilities-matrix">AI Capabilities Matrix</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Virtual Agent</td>
+<td>Conversational self-service</td>
+</tr>
+<tr>
+<td>Predictive Intelligence</td>
+<td>Classification, similarity, clustering</td>
+</tr>
+<tr>
+<td>NLU</td>
+<td>Intent detection, entity extraction</td>
+</tr>
+<tr>
+<td>Now Assist</td>
+<td>GenAI summarization, generation</td>
+</tr>
+<tr>
+<td>Document Intelligence</td>
+<td>Document processing, extraction</td>
+</tr>
+<tr>
+<td>AI Search</td>
+<td>Enhanced search relevance</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-virtual-agent">2. Virtual Agent</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/now/va-admin">{BASE}/now/va-admin</a></p>
+<h3 id="create-topic">Create Topic</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">**HR Leave Request Topic:**
+
+1. Navigate: Virtual Agent &gt; Designer
+2. Create Topic:
+   - Name: Request Leave
+   - Description: Submit a leave request
+   - Category: HR
+3. Configure NLU:
+   - Add utterances:
+     - &quot;I want to request leave&quot;
+     - &quot;I need time off&quot;
+     - &quot;Submit vacation request&quot;
+     - &quot;Book annual leave&quot;
+     - &quot;أريد طلب إجازة&quot;
+     - &quot;طلب إجازة سنوية&quot;
+</code></pre>
+<h3 id="topic-flow">Topic Flow</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<pre><code class="language-yaml">Nodes:
+
+1. Start
+   - Trigger: NLU intent match
+
+2. Greet
+   - Bot: &quot;I can help you request leave. Let me gather some details.&quot;
+
+3. Get Leave Type
+   - Bot: &quot;What type of leave?&quot;
+   - Input: Choice
+   - Options:
+     - Annual Leave
+     - Sick Leave
+     - Emergency Leave
+   - Store: leave_type
+
+4. Get Start Date
+   - Bot: &quot;When does your leave start?&quot;
+   - Input: Date
+   - Validation: Must be today or future
+   - Store: start_date
+
+5. Get End Date
+   - Bot: &quot;When does it end?&quot;
+   - Input: Date
+   - Validation: Must be after start date
+   - Store: end_date
+
+6. Calculate Duration
+   - Script:
+     var start = new GlideDateTime(vaVars.start_date);
+     var end = new GlideDateTime(vaVars.end_date);
+     var dur = GlideDateTime.subtract(start, end).getDayPart() + 1;
+     vaVars.duration = dur;
+   - Bot: &quot;That's {duration} days.&quot;
+
+7. Check Balance
+   - Script:
+     var util = new x_786686_hr_leave.LeaveBalanceUtil();
+     vaVars.balance = util.getBalance(vaSystem.getUser(), vaVars.leave_type);
+   - Condition: balance &lt; duration
+     - Bot: &quot;Sorry, you only have {balance} days available.&quot;
+     - End
+   - Continue
+
+8. Get Reason (Optional)
+   - Bot: &quot;Any reason you'd like to add? (or say 'skip')&quot;
+   - Input: Text
+   - Store: reason
+
+9. Confirm
+   - Bot: &quot;Please confirm:
+     Type: {leave_type}
+     Dates: {start_date} to {end_date}
+     Duration: {duration} days&quot;
+   - Input: Choice
+   - Options: [Confirm, Cancel]
+
+10. Submit
+    - Script:
+      var gr = new GlideRecord('x_786686_hr_leave_request');
+      gr.initialize();
+      gr.employee = vaSystem.getUser();
+      gr.leave_type = vaVars.leave_type;
+      gr.start_date = vaVars.start_date;
+      gr.end_date = vaVars.end_date;
+      gr.reason = vaVars.reason || '';
+      vaVars.request_number = gr.insert() ? gr.number : '';
+
+11. Success
+    - Bot: &quot;Done! Your request {request_number} has been submitted. Your manager will be notified.&quot;
+    - End
+</code></pre>
+<h3 id="custom-server-script">Custom Server Script</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// Virtual Agent Server Script
+(function execute(inputs, outputs) {
+
+    var userId = inputs.user_id;
+    var leaveType = inputs.leave_type;
+    var startDate = inputs.start_date;
+    var endDate = inputs.end_date;
+    var reason = inputs.reason;
+
+    // Validate balance
+    var util = new x_786686_hr_leave.LeaveBalanceUtil();
+    var balance = util.getBalance(userId, leaveType);
+
+    var start = new GlideDateTime(startDate);
+    var end = new GlideDateTime(endDate);
+    var duration = GlideDateTime.subtract(start, end).getDayPart() + 1;
+
+    if (duration &gt; balance) {
+        outputs.success = false;
+        outputs.message = 'Insufficient balance. Available: ' + balance + ' days';
+        return;
+    }
+
+    // Create request
+    var gr = new GlideRecord('x_786686_hr_leave_request');
+    gr.initialize();
+    gr.employee = userId;
+    gr.leave_type = leaveType;
+    gr.start_date = startDate;
+    gr.end_date = endDate;
+    gr.reason = reason;
+    gr.duration_days = duration;
+
+    var sysId = gr.insert();
+
+    if (sysId) {
+        gr.get(sysId);
+        outputs.success = true;
+        outputs.request_number = gr.number.toString();
+        outputs.message = 'Request ' + gr.number + ' submitted successfully';
+    } else {
+        outputs.success = false;
+        outputs.message = 'Failed to create request';
+    }
+
+})(inputs, outputs);
+</code></pre>
+<hr />
+<h2 id="3-predictive-intelligence">3. Predictive Intelligence</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/ml_solutions.do">{BASE}/ml_solutions.do</a></p>
+<h3 id="classification-model">Classification Model</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">**HR Leave Auto-Classification:**
+
+1. Navigate: Predictive Intelligence &gt; Solutions
+2. Create Solution:
+   - Name: Leave Request Classification
+   - Type: Classification
+   - Table: x_786686_hr_leave_request
+
+3. Configure Training:
+   - Input fields: short_description, reason
+   - Target field: leave_type
+   - Training data: Historical requests (1000+ records)
+
+4. Train Model:
+   - Click Train
+   - Wait for completion
+   - Review accuracy metrics
+
+5. Deploy:
+   - Enable auto-classification
+   - Set confidence threshold: 0.8
+</code></pre>
+<h3 id="similarity-model">Similarity Model</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">**Similar Leave Requests:**
+
+1. Create Solution:
+   - Type: Similarity
+   - Table: x_786686_hr_leave_request
+
+2. Configure:
+   - Fields: employee department, leave_type, duration_days
+   - Use case: Find similar past requests for approval reference
+
+3. Deploy and use in workspace
+</code></pre>
+<h3 id="prediction-api">Prediction API</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<pre><code class="language-javascript">// Use prediction in Business Rule
+var predictor = new sn_ml.ClassificationPredictor('leave_classification');
+var prediction = predictor.predict({
+    short_description: current.short_description,
+    reason: current.reason
+});
+
+if (prediction.confidence &gt; 0.8) {
+    current.leave_type = prediction.predicted_value;
+    gs.info('Auto-classified as: ' + prediction.predicted_value);
+}
+</code></pre>
+<hr />
+<h2 id="4-natural-language-understanding">4. Natural Language Understanding</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/sys_nlu_model_list.do">{BASE}/sys_nlu_model_list.do</a></p>
+<h3 id="create-nlu-model">Create NLU Model</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">**HR Leave NLU Model:**
+
+1. Navigate: NLU &gt; Models
+2. Create Model:
+   - Name: HR Leave NLU
+   - Language: English, Arabic
+
+3. Create Intents:
+   - request_leave
+   - check_balance
+   - cancel_request
+   - view_requests
+   - approve_request
+
+4. Add Utterances per Intent
+5. Create Entities
+6. Train and Publish
+</code></pre>
+<h3 id="intent-configuration">Intent Configuration</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-yaml">Intent: request_leave
+Utterances:
+  - I want to request leave
+  - I need to take time off
+  - Submit a vacation request
+  - I want to apply for annual leave
+  - Can I book some days off
+  - أريد طلب إجازة
+  - طلب إجازة سنوية
+  - احتاج اجازة
+
+Entities:
+  - leave_type: [annual, sick, emergency, unpaid]
+  - duration: [number] days
+  - date: [date expression]
+
+---
+
+Intent: check_balance
+Utterances:
+  - What's my leave balance
+  - How many vacation days do I have
+  - Show me my remaining leave
+  - كم رصيد إجازاتي
+  - عرض رصيد الإجازات
+
+---
+
+Intent: cancel_request
+Utterances:
+  - Cancel my leave request
+  - I want to withdraw my leave
+  - Delete my vacation request
+  - إلغاء طلب الإجازة
+</code></pre>
+<h3 id="entity-extraction">Entity Extraction</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// Extract entities from text
+var nlu = new sn_nlu.NLUService();
+var result = nlu.processText('HR Leave NLU', userInput);
+
+if (result.intent === 'request_leave') {
+    var entities = result.entities;
+
+    var leaveType = entities.leave_type || 'annual';
+    var duration = entities.duration;
+    var startDate = entities.date;
+
+    gs.info('Intent: ' + result.intent);
+    gs.info('Leave Type: ' + leaveType);
+    gs.info('Duration: ' + duration);
+}
+</code></pre>
+<hr />
+<h2 id="5-now-assist-genai">5. Now Assist (GenAI)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="summarization">Summarization</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// Summarize leave request for manager
+var nowAssist = new sn_genai.GenerativeAIAPI();
+
+var prompt = 'Summarize this leave request for quick manager review:\n' +
+    'Employee: ' + current.employee.getDisplayValue() + '\n' +
+    'Type: ' + current.leave_type.getDisplayValue() + '\n' +
+    'Dates: ' + current.start_date + ' to ' + current.end_date + '\n' +
+    'Duration: ' + current.duration_days + ' days\n' +
+    'Reason: ' + current.reason;
+
+var summary = nowAssist.generateText(prompt);
+current.work_notes = 'AI Summary: ' + summary;
+</code></pre>
+<h3 id="response-generation">Response Generation</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// Generate rejection response
+var nowAssist = new sn_genai.GenerativeAIAPI();
+
+var prompt = 'Generate a professional and empathetic rejection message for a leave request. ' +
+    'Include: appreciation for the request, clear reason for rejection, and next steps. ' +
+    'Rejection reason: ' + rejectionReason;
+
+var response = nowAssist.generateText(prompt);
+</code></pre>
+<h3 id="code-assistance">Code Assistance</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// Generate script suggestion
+var prompt = 'Generate a ServiceNow Business Rule script that: ' +
+    '1. Triggers before insert on x_786686_hr_leave_request ' +
+    '2. Validates that end_date is after start_date ' +
+    '3. Calculates duration_days ' +
+    '4. Sets the short_description';
+
+var code = nowAssist.generateText(prompt);
+</code></pre>
+<hr />
+<h2 id="6-document-intelligence">6. Document Intelligence</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="document-processing">Document Processing</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">**Use Case: Medical Certificate Processing**
+
+1. Upload medical certificate
+2. Document Intelligence extracts:
+   - Doctor name
+   - Date of issue
+   - Recommended leave duration
+   - Diagnosis (if permitted)
+3. Auto-populate leave request fields
+</code></pre>
+<h3 id="configuration">Configuration</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// Document extraction for leave attachments
+var docIntel = new sn_doc_intel.DocumentIntelligenceAPI();
+
+var attachment = current.getAttachments();
+if (attachment.hasNext()) {
+    var result = docIntel.extractDocument(attachment.next().sys_id);
+
+    if (result.document_type === 'medical_certificate') {
+        current.u_doctor_name = result.fields.doctor_name;
+        current.u_certificate_date = result.fields.issue_date;
+        current.u_recommended_days = result.fields.duration;
+    }
+}
+</code></pre>
+<hr />
+<h2 id="7-ai-search">7. AI Search</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/ais_search_config_list.do">{BASE}/ais_search_config_list.do</a></p>
+<h3 id="configure-ai-search">Configure AI Search</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">**HR Knowledge Search:**
+
+1. Navigate: AI Search &gt; Search Applications
+2. Create Application:
+   - Name: HR Leave Knowledge
+   - Sources:
+     - Knowledge Base: HR Policies
+     - Table: x_786686_hr_leave_request (historical)
+
+3. Configure:
+   - Enable semantic search
+   - Enable query understanding
+   - Configure relevancy tuning
+</code></pre>
+<h3 id="search-integration">Search Integration</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<pre><code class="language-javascript">// Search for relevant policies
+var aiSearch = new sn_ais.AISearchAPI();
+
+var results = aiSearch.search({
+    query: 'annual leave policy maximum days',
+    application: 'hr_leave_knowledge',
+    limit: 5
+});
+
+for (var i = 0; i &lt; results.length; i++) {
+    gs.info('Result: ' + results[i].title + ' (Score: ' + results[i].score + ')');
+}
+</code></pre>
+<hr />
+<h2 id="8-hr-leave-ai-integration">8. HR Leave AI Integration</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<h3 id="complete-ai-powered-flow">Complete AI-Powered Flow</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<pre><code class="language-javascript">// Script Include: LeaveAIAssistant
+var LeaveAIAssistant = Class.create();
+LeaveAIAssistant.prototype = {
+
+    initialize: function() {
+        this.nlu = new sn_nlu.NLUService();
+        this.predictor = new sn_ml.ClassificationPredictor('leave_classification');
+    },
+
+    processUserInput: function(input) {
+        // NLU processing
+        var nluResult = this.nlu.processText('HR Leave NLU', input);
+
+        return {
+            intent: nluResult.intent,
+            confidence: nluResult.confidence,
+            entities: nluResult.entities
+        };
+    },
+
+    classifyRequest: function(description, reason) {
+        var prediction = this.predictor.predict({
+            short_description: description,
+            reason: reason
+        });
+
+        return {
+            leave_type: prediction.predicted_value,
+            confidence: prediction.confidence
+        };
+    },
+
+    getSmartSuggestions: function(employeeId) {
+        // Based on patterns and ML
+        var suggestions = [];
+
+        // Check upcoming holidays
+        var holidays = this._getUpcomingHolidays();
+        if (holidays.length &gt; 0) {
+            suggestions.push({
+                type: 'bridge_day',
+                message: 'Consider taking ' + holidays[0].bridge_date + ' to extend your weekend'
+            });
+        }
+
+        // Check balance expiry
+        var balance = new x_786686_hr_leave.LeaveBalanceUtil().getBalance(employeeId, 'annual');
+        if (balance &gt; 10) {
+            suggestions.push({
+                type: 'use_balance',
+                message: 'You have ' + balance + ' days that may expire. Consider planning time off.'
+            });
+        }
+
+        return suggestions;
+    },
+
+    _getUpcomingHolidays: function() {
+        // Implementation
+        return [];
+    },
+
+    type: 'LeaveAIAssistant'
+};
+</code></pre>
+<h3 id="virtual-agent-with-ai">Virtual Agent with AI</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// VA Server Script with full AI integration
+(function execute(inputs, outputs) {
+
+    var assistant = new x_786686_hr_leave.LeaveAIAssistant();
+    var userId = inputs.user_id;
+
+    // Process natural language input
+    var nluResult = assistant.processUserInput(inputs.user_message);
+
+    outputs.intent = nluResult.intent;
+
+    switch (nluResult.intent) {
+        case 'request_leave':
+            // Extract entities and create request
+            var entities = nluResult.entities;
+            outputs.response = 'I understand you want to request ' + 
+                (entities.leave_type || 'leave') + '. ';
+            outputs.next_action = 'collect_details';
+            break;
+
+        case 'check_balance':
+            var util = new x_786686_hr_leave.LeaveBalanceUtil();
+            var balances = util.getAllBalances(userId);
+            outputs.response = 'Your leave balances:\n' +
+                'Annual: ' + balances.annual + ' days\n' +
+                'Sick: ' + balances.sick + ' days\n' +
+                'Emergency: ' + balances.emergency + ' days';
+            outputs.next_action = 'end';
+            break;
+
+        case 'view_requests':
+            outputs.response = 'Here are your recent leave requests:';
+            outputs.next_action = 'show_list';
+            break;
+
+        default:
+            outputs.response = 'I\'m not sure what you need. Would you like to:\n' +
+                '1. Request leave\n' +
+                '2. Check your balance\n' +
+                '3. View your requests';
+            outputs.next_action = 'clarify';
+    }
+
+    // Add smart suggestions
+    var suggestions = assistant.getSmartSuggestions(userId);
+    if (suggestions.length &gt; 0) {
+        outputs.suggestions = suggestions;
+    }
+
+})(inputs, outputs);
+</code></pre>
+<hr />
+<h2 id="9-best-practices">9. Best Practices</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="ai-model-training">AI Model Training</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">1. **Data Quality**
+   - Clean training data
+   - Balanced classes
+   - Sufficient volume (1000+ per class)
+
+2. **Continuous Improvement**
+   - Monitor accuracy
+   - Retrain periodically
+   - Incorporate feedback
+
+3. **Confidence Thresholds**
+   - Set appropriate thresholds
+   - Handle low-confidence cases
+   - Provide fallback options
+</code></pre>
+<h3 id="virtual-agent-design">Virtual Agent Design</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">1. **Conversation Design**
+   - Keep flows simple
+   - Provide escape options
+   - Handle errors gracefully
+
+2. **Multilingual Support**
+   - Train for each language
+   - Consider cultural differences
+   - Test with native speakers
+</code></pre>
+<hr />
+<h2 id="10-labs">10. Labs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="lab-1-create-va-topic">Lab 1: Create VA Topic</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">**Duration:** 1 hour
+
+1. Open VA Designer
+2. Create &quot;Request Leave&quot; topic
+3. Add NLU training
+4. Build conversation flow
+5. Add server scripts
+6. Test in preview
+7. Publish
+</code></pre>
+<h3 id="lab-2-predictive-model">Lab 2: Predictive Model</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-markdown">**Duration:** 1.5 hours
+
+1. Create classification solution
+2. Configure training data
+3. Train model
+4. Review metrics
+5. Deploy to production
+6. Test auto-classification
+</code></pre>
+<hr />
+<h2 id="direct-urls-reference">Direct URLs Reference</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Virtual Agent Admin</td>
+<td><a href="{BASE}/now/va-admin">{BASE}/now/va-admin</a></td>
+</tr>
+<tr>
+<td>VA Designer</td>
+<td><a href="{BASE}/now/va-designer">{BASE}/now/va-designer</a></td>
+</tr>
+<tr>
+<td>Predictive Intelligence</td>
+<td><a href="{BASE}/ml_solutions.do">{BASE}/ml_solutions.do</a></td>
+</tr>
+<tr>
+<td>NLU Models</td>
+<td><a href="{BASE}/sys_nlu_model_list.do">{BASE}/sys_nlu_model_list.do</a></td>
+</tr>
+<tr>
+<td>NLU Workbench</td>
+<td><a href="{BASE}/now/nlu-workbench">{BASE}/now/nlu-workbench</a></td>
+</tr>
+<tr>
+<td>AI Search</td>
+<td><a href="{BASE}/ais_search_config_list.do">{BASE}/ais_search_config_list.do</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Next:</strong> <a href="DEVELOPMENT_COMPLETE_GUIDE.html">Development Guide</a> | <a href="ADMINISTRATION_COMPLETE_GUIDE.html">Administration Guide</a></p>
+</blockquote>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

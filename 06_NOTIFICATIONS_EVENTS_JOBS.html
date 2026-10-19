@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>06 — Notifications, Events & Jobs (Studio From Scratch) | HR Leave Australia</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+  <style>
+    .field-table th { white-space: nowrap; }
+    .step-num { font-weight: 700; color: var(--brand-2); }
+    .demo-box { border-left: 4px solid var(--brand-2); padding: .35rem 0 .35rem .85rem; margin: .75rem 0; }
+    .chapter-nav { display: flex; justify-content: space-between; gap: 1rem; margin: 2rem 0 1rem; padding: 1rem; background: #f8fafc; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All</a>
+      <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Links</a>
+      <a href="SCHEMA_AND_DATA.html">Schema</a>
+      <a href="scripts/index.html">Scripts</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+      <span class="badge">Chapter 06</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>06 — Notifications, Events & Jobs (Studio From Scratch)</h1>
+      <p>3 events, 3 email notifications, scheduled accrual job with full script</p>
+      <div class="meta-grid">
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.72rem">e5f5bc9493a303507520703efaba104d</code></div>
+        <div><strong>Instance lab</strong><code style="color:#fff;font-size:.72rem">dev398980</code></div>
+        <div><strong>URL token</strong><code style="color:#fff">{BASE}</code></div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Quick open</strong>
+<a href="#viz06">Visual map</a>
+<a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Events</a>
+<a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a>
+<a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a>
+    </div>
+    <article class="content">
+
+<div class="glance" id="viz06">
+  <h3>Visual map — Ch.06 · Events · mail · jobs</h3>
+  <div class="grid3">
+    <div class="box"><strong>See in 10 seconds</strong><p>3 events → 3 emails · annual accrual job</p></div>
+    <div class="box"><strong>You build</strong><p>leave_v2.submitted / approved / rejected</p></div>
+    <div class="box"><strong>Track</strong><p>Administration</p></div>
+  </div>
+  <div class="flow"><div class="n"><b>REG</b>Register</div><span class="arrow">→</span><div class="n"><b>BR</b>eventQueue</div><span class="arrow">→</span><div class="n"><b>MAIL</b>Template</div><span class="arrow">→</span><div class="n"><b>JOB</b>Accrual 1 Jan</div></div>
+  <div class="chips"><a class="chip url" href="{BASE}/sysevent_register_list.do">↗ sysevent_register_list.do</a><a class="chip url" href="{BASE}/sysevent_email_action_list.do">↗ sysevent_email_action_list.do</a><a class="chip url" href="{BASE}/sysauto_script_list.do">↗ sysauto_script_list.do</a></div>
+  <div class="chips"><span class="chip do">✓ Register before fire</span><span class="chip do">✓ Idempotent job</span><span class="chip do">✓ Test real SMTP</span><span class="chip dont">✗ Email on every update</span><span class="chip dont">✗ Job without skip-existing</span></div>
+  <p class="note-sm">Full visual path (all chapters): <a href="VISUAL_FROM_SCRATCH_00_16.html">VISUAL_FROM_SCRATCH_00_16.html</a></p>
+</div>
+<div class="ok">
+<p><strong>Studio-only from scratch:</strong> Events are queued by BR2 and BR4 from 01 Development. Notifications and accrual job complete the async layer.</p>
+<p>Also open: <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Direct Links</a> · <a href="SCHEMA_AND_DATA.html">Schema</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All Objects</a> · Previous: <a href="05_WORKSPACE_UIBUILDER.html">05 Workspace</a></p>
+</div>
+<h2 id="how-objects-relate">How events, notifications, and jobs relate</h2>
+<div class="ok">
+<pre style="white-space:pre-wrap;font-family:var(--mono);font-size:.85rem;background:#0b1220;color:#e2e8f0;padding:1rem;border-radius:12px">
+BR2 submit → Part 1 Event leave_v2.submitted → Part 2 Notification to approver
+BR4 approve/reject → events approved/rejected → Part 2 Notifications to requester
+Part 3 Scheduled Job → creates bal_v2 rows from property annual_days
+</pre>
+</div>
+<hr />
+<h2 id="rule0">Rule 0 — Before any object (Application + Update Set + Studio)</h2>
+<p>Repeat these checks before creating or editing any application file. This section is also <strong>section 00 Update Set</strong> — create the capture set first.</p>
+<ol>
+  <li><span class="step-num">Application picker</span> — top-right globe / application menu → select <strong>HR Leave</strong> (<code>x_786686_hr_leave</code>). Never leave <em>Global</em> selected when creating scoped artifacts.</li>
+  <li><span class="step-num">Update Set</span> — All → <strong>System Update Sets → Local Update Sets</strong> → <strong>New</strong>:
+    <table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+    <tr><td>Name</td><td><code>HR Leave – Build</code></td></tr>
+    <tr><td>Application</td><td>HR Leave</td></tr>
+    <tr><td>State</td><td>In Progress</td></tr>
+    <tr><td>Description</td><td>Captures all HR Leave lab artifacts</td></tr></table>
+    After submit: open the record → click <strong>Make Current</strong>. Direct list: <a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a>
+  </li>
+  <li><span class="step-num">Open Studio</span> — <a href="{BASE}/$studio.do">{BASE}/$studio.do</a> → confirm header shows <strong>HR Leave</strong>.</li>
+</ol>
+<div class="warn"><p>If artifacts land in Global scope, delete them and recreate under HR Leave. ACLs and events created globally will not behave correctly for this app.</p></div>
+<div class="demo-box"><p><strong>Verify Update Set:</strong> Create a test Script Include in Studio → open <strong>HR Leave – Build</strong> → Related List <strong>Customer Updates</strong> shows the new file.</p></div>
+<hr />
+<h2 id="part-1-events">Part 1: Event Registry</h2>
+<h3>Purpose</h3>
+<p>Registers three scoped events queued by BR2/BR4 for notifications and monitoring.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>System Policy → Events → Registry</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">{BASE}/sysevent_register_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="01_DEVELOPMENT.html#part-3-table-req">Part 3: Table</a> req_v2 table.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><thead><tr><th>Event name</th><th>Table</th><th>Active</th></tr></thead>
+<tbody>
+<tr><td><code>x_786686_hr_leave.leave_v2.submitted</code></td><td>x_786686_hr_leave_req_v2</td><td>true</td></tr>
+<tr><td><code>x_786686_hr_leave.leave_v2.approved</code></td><td>x_786686_hr_leave_req_v2</td><td>true</td></tr>
+<tr><td><code>x_786686_hr_leave.leave_v2.rejected</code></td><td>x_786686_hr_leave_req_v2</td><td>true</td></tr>
+</tbody></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Registry → New (three times).</li>
+<li>Event name exactly as table. Table = Leave Request. Application = HR Leave. Active.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Submit req → System Logs → Events shows leave_v2.submitted.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Event parm1 = approver sys_id, parm2 = u_number.</p></div>
+<hr />
+<h2 id="part-2-notifications">Part 2: Notifications</h2>
+<h3>Purpose</h3>
+<p>Three email notifications: submitted (to approver), approved/rejected (to requester).</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>System Notification → Email → Notifications</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">{BASE}/sysevent_email_action_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="06_NOTIFICATIONS_EVENTS_JOBS.html#part-1-events">Part 1: Events</a> events.</li><li><a href="01_DEVELOPMENT.html#part-9-br2">Part 9: Business Rule BR2</a> BR2, <a href="01_DEVELOPMENT.html#part-11-br4">Part 11: Business Rule BR4</a> BR4.</li><li>Users have email addresses.</li></ul>
+<h3>Form fields</h3>
+<h4>Notification 1 — Submitted</h4>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td>HRLX Leave Submitted</td></tr>
+<tr><td>Table</td><td><strong>x_786686_hr_leave_req_v2</strong></td></tr>
+<tr><td>Active</td><td>true</td></tr>
+<tr><td>When to send</td><td>Event is fired</td></tr>
+<tr><td>Event name</td><td>x_786686_hr_leave.leave_v2.submitted</td></tr>
+<tr><td>Users/Groups in fields</td><td>u_approver_user</td></tr>
+<tr><td>Subject</td><td><code>Leave ${u_number} needs your approval</code></td></tr></table>
+<h4>Notification 2 — Approved</h4>
+<table class="field-table"><tr><td>Event</td><td>leave_v2.approved</td></tr>
+<tr><td>Users/Groups in fields</td><td>u_requested_for_user</td></tr>
+<tr><td>Subject</td><td><code>Your leave ${u_number} was approved</code></td></tr></table>
+<h4>Notification 3 — Rejected</h4>
+<table class="field-table"><tr><td>Event</td><td>leave_v2.rejected</td></tr>
+<tr><td>Users/Groups in fields</td><td>u_requested_for_user</td></tr>
+<tr><td>Subject</td><td><code>Your leave ${u_number} was rejected</code></td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Application = HR Leave. Notifications → New for each.</li>
+<li>Tab <strong>When to send</strong>: Event is fired + event name.</li>
+<li>Tab <strong>Who will receive</strong>: Users/Groups in fields → pick u_approver_user or u_requested_for_user.</li>
+<li>Tab <strong>What it will contain</strong>: Subject + Message HTML with ${u_number}, ${u_start_date}, ${URI_REF}.</li>
+<li>Submit each notification. Active = true.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Three active notifications on Leave Request table.</li><li>Email log entry after submit/approve.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Submit as employee1 → manager1 receives email or sys_email row.</p></div>
+<hr />
+<h2 id="part-3-job">Part 3: Scheduled Job — Annual Accrual</h2>
+<h3>Purpose</h3>
+<p>Creates missing bal_v2 rows for current year for every employee using property annual_days.</p>
+<h3>Navigation path</h3>
+<nav class="section-links" aria-label="Navigation for 23"><strong>All &gt;</strong> <strong>System Definition → Scripts (Scheduled Script Execution)</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sysauto_script_list.do">{BASE}/sysauto_script_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="01_DEVELOPMENT.html#part-2-table-employee">Part 2: Table</a> employee_v2, <a href="01_DEVELOPMENT.html#part-4-table-bal">Part 4: Table</a> bal_v2, <a href="02_ADMINISTRATION.html#part-5-properties">Part 5: System Properties</a> property.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td><code>HRLX Annual Accrual</code></td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr>
+<tr><td>Active</td><td>Checked</td></tr>
+<tr><td>Run</td><td>Daily 02:00 or Yearly Jan 1</td></tr>
+<tr><td>Run as</td><td>System (default)</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Scheduled Script Execution → New.</li>
+<li>Fill fields. Paste script below.</li>
+<li>Save. Click <strong>Execute Now</strong> to test.</li>
+</ol>
+<h3>Full script (paste-ready)</h3>
+<pre><code>/**
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ * Scheduled Job: Annual Leave Accrual
+ * Run: yearly (e.g. Jan 1)
+ *
+ * Creates a fresh balance row per employee for the new year if missing.
+ * Default entitlement is read from a property (fallback 21 annual days).
+ */
+(function annualAccrual() {
+
+    var year = new GlideDateTime().getYearLocalTime();
+    var annualEntitlement = parseInt(gs.getProperty('x_786686_hr_leave.config.annual_days', '21'), 10);
+
+    var emp = new GlideRecord('x_786686_hr_leave_employee_v2');
+    emp.query();
+
+    var created = 0;
+    while (emp.next()) {
+        // skip if a balance for this year/type already exists
+        var existing = new GlideRecord('x_786686_hr_leave_bal_v2');
+        existing.addQuery('u_employee_ref', emp.getUniqueValue());
+        existing.addQuery('u_year', year);
+        existing.addQuery('u_leave_type', 'annual');
+        existing.query();
+        if (existing.hasNext()) continue;
+
+        var bal = new GlideRecord('x_786686_hr_leave_bal_v2');
+        bal.initialize();
+        bal.u_employee_ref = emp.getUniqueValue();
+        bal.u_year = year;
+        bal.u_leave_type = 'annual';
+        bal.u_entitled = annualEntitlement;
+        bal.u_used = 0;
+        bal.u_remaining = annualEntitlement;
+        bal.insert();
+        created++;
+    }
+
+    gs.info('[HRLX] Annual accrual ' + year + ' created ' + created + ' balance rows.');
+})();</code></pre>
+<h3>Verify checklist</h3>
+<ul><li>Execute Now creates bal_v2 per employee without duplicate year row.</li><li>System log: [HRLX] Annual accrual message.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>New employee → run job → u_entitled=20, u_remaining=20.</p></div>
+<h2 id="notif-verify">Notifications & Jobs verify checklist</h2>
+<div class="ok"><p>Complete after Parts 1–3.</p></div>
+<ol>
+<li>Three events registered on req_v2.</li>
+<li>Three email notifications active.</li>
+<li>Accrual job creates balance rows without duplicates.</li>
+</ol>
+
+</article>
+    <nav class="chapter-nav"><a href="05_WORKSPACE_UIBUILDER.html">← Chapter 05</a><span>Chapter 06</span><a href="07_REPORTS_DASHBOARDS_PA.html">Chapter 07 →</a></nav>
+    <p class="footer">HR Leave · Studio from scratch · scope x_786686_hr_leave · replace {BASE} with your instance URL</p>
+  </main>
+
+  <script src="assets/docs.js"></script>
+  <script>
+    (function () {
+      var BASE = 'https://dev398980.service-now.com';
+      document.querySelectorAll('a[href*="{BASE}"]').forEach(function (a) {
+        a.href = a.href.split('{BASE}').join(BASE);
+      });
+    })();
+  </script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

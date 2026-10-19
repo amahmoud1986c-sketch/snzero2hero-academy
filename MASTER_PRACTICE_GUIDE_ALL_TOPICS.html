@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Master Practice — All Dev/Admin/Module Options with Screens | HR Leave</title>
+<style>
+:root {
+  --bg:#eef2f6; --panel:#fff; --ink:#142033; --muted:#5c6b7d; --line:#d5dee8;
+  --brand:#0b5cab; --brand2:#0b6e4f; --shadow:0 12px 28px rgba(15,30,50,.08);
+  --font:"Segoe UI","Cairo",Tahoma,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font);color:var(--ink);background:linear-gradient(#dfeaf7,#eef2f6 240px)}
+.top{position:sticky;top:0;z-index:30;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;
+  padding:12px 18px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.brand{font-weight:700;color:var(--brand)}
+.brand small{display:block;font-weight:500;color:var(--muted);font-size:.78rem}
+.base-box{display:flex;gap:8px;flex-wrap:wrap}
+.base-box input{min-width:260px;padding:8px 12px;border:1px solid var(--line);border-radius:999px}
+.base-box button{border:0;background:var(--brand);color:#fff;padding:8px 14px;border-radius:999px;cursor:pointer;font-weight:600}
+.wrap{max-width:1200px;margin:0 auto;padding:18px}
+.hero{background:linear-gradient(120deg,var(--brand),var(--brand2));color:#fff;border-radius:18px;padding:24px;margin-bottom:16px;box-shadow:var(--shadow)}
+.hero h1{margin:0 0 8px;font-size:1.55rem}
+.hero p{margin:0;opacity:.95}
+.navpills{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.navpills a{text-decoration:none;background:#fff;border:1px solid var(--line);color:var(--ink);padding:8px 12px;border-radius:999px;font-size:.85rem;font-weight:600}
+.section{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px;box-shadow:var(--shadow)}
+.section h2{margin:0 0 6px}
+.section .sub{color:var(--muted);margin:0 0 14px}
+.feat{display:grid;grid-template-columns:1.1fr 1fr;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+@media(max-width:900px){.feat{grid-template-columns:1fr}}
+.shot{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#0b1220}
+.shot img,.shot-svg{width:100%;display:block;background:#fff}
+.shot figcaption{padding:8px 10px;color:#dbe4f0;font-size:.78rem}
+.when{color:var(--brand2);font-weight:600}
+.nav code{font-size:.8rem;color:var(--muted)}
+.btn{display:inline-block;margin:8px 0;background:var(--brand);color:#fff!important;text-decoration:none;padding:8px 12px;border-radius:999px;font-size:.82rem;font-weight:600}
+.opts{margin:6px 0 10px;padding-inline-start:18px;columns:1}
+.opts li{margin-bottom:4px;font-size:.9rem}
+.tick{display:flex;gap:8px;align-items:flex-start;background:#f5f9fc;border:1px dashed var(--line);padding:8px 10px;border-radius:10px;font-size:.88rem}
+.progress{font-size:.85rem;color:var(--muted)}
+.bar{height:8px;background:#e5edf5;border-radius:99px;overflow:hidden;margin-top:6px}
+.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand2),var(--brand))}
+.note{background:#fff8e8;border:1px solid #f0d79a;color:#7a5208;padding:10px 12px;border-radius:10px;font-size:.9rem;margin-top:10px}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">Master Practice · Feature Screens<small>Open / New screens for Dev · Admin · Modules · 24 reference images</small></div>
+  <div class="base-box">
+    <input id="baseInput" type="url" placeholder="https://your-instance.service-now.com"/>
+    <button id="applyBase" type="button">Apply {BASE}</button>
+    <button id="resetProg" type="button" style="background:#64748b">Reset</button>
+  </div>
+</header>
+<div class="wrap">
+  <section class="hero">
+    <h1>Screens while developing &amp; opening features — ليس نتائج فقط</h1>
+    <p>Every card shows the screen you get when you click <strong>New</strong> or open a feature (Tables, Business Rules, ACLs, Incidents…), lists all options on that form, and links Direct URL for practice.</p>
+    <div class="progress">Progress: <strong id="progText">0%</strong><div class="bar"><i id="progBar"></i></div></div>
+  </section>
+
+  <div class="navpills">
+    <a href="#dev">A. Development options</a>
+    <a href="#admin">B. Administration options</a>
+    <a href="#modules">C. Modules options</a>
+    <a href="index.html">Portal</a>
+    <a href="01_DEVELOPMENT.html">Dev deep guide</a>
+    <a href="02_ADMINISTRATION.html">Admin deep guide</a>
+    <a href="modules/implementation/INDEX.html">Module runbooks</a>
+  </div>
+
+  <section class="section" id="dev">
+    <h2>A. Development — كل خيارات التطوير عند الفتح/الإنشاء</h2>
+    <p class="sub">Studio, Tables, Dictionary, Choices, Business Rules, Script Includes, Client Scripts, UI Policy, UI Action, Flow, Update Set, Form Layout, Catalog Item, Portal Widget, UI Builder, REST</p>
+    
+<article class="feat" id="dev-1">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/practice-studio.png" alt="Studio — Create Application" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Open Studio → Create Application</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Studio — Create Application</h3>
+    <p class="when">Open Studio → Create Application</p>
+    <p class="nav"><code>All > System Applications > Studio</code></p>
+    <a class="btn" href="{BASE}/$studio.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Name</li><li>Scope (cannot change later)</li><li>Description</li><li>Version</li><li>Logo</li><li>Create Application Menu</li></ul>
+    <label class="tick"><input type="checkbox" data-key="dev-1"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="dev-2">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/dev-table-new.png" alt="Table — New" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Click New on Tables (or Studio → Create Table)</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Table — New</h3>
+    <p class="when">Click New on Tables (or Studio → Create Table)</p>
+    <p class="nav"><code>All > System Definition > Tables</code></p>
+    <a class="btn" href="{BASE}/sys_db_object_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Label</li><li>Name</li><li>Extends table</li><li>Extensible</li><li>Create module</li><li>Create access controls</li><li>Add to update set</li><li>Controls tab</li><li>Application Access</li><li>Columns related list</li></ul>
+    <label class="tick"><input type="checkbox" data-key="dev-2"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="dev-3">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/dev-dictionary-field.png" alt="Dictionary — New Field / Column" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Open table → Columns → New (or Dictionary New)</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Dictionary — New Field / Column</h3>
+    <p class="when">Open table → Columns → New (or Dictionary New)</p>
+    <p class="nav"><code>All > System Definition > Dictionary</code></p>
+    <a class="btn" href="{BASE}/sys_dictionary_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Type (String, Integer, Reference, Choice, Date, Date/Time, Boolean, Decimal, Journal…)</li><li>Column label</li><li>Column name</li><li>Max length</li><li>Mandatory</li><li>Read only</li><li>Display</li><li>Default value</li><li>Reference</li><li>Reference qual</li><li>Choice</li><li>Attributes</li><li>Dependent field</li><li>Calculated value</li></ul>
+    <label class="tick"><input type="checkbox" data-key="dev-3"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="dev-4">
+  <div class="feat-media">
+    <figure class="shot"><svg class="shot-svg" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Choice List — New">
+  <rect width="800" height="380" fill="#e6ebf0"/>
+  <rect x="10" y="10" width="780" height="360" rx="8" fill="#fff" stroke="#b8c2cc"/>
+  <rect x="10" y="10" width="780" height="34" fill="#0b5cab"/>
+  <text x="28" y="32" fill="#fff" font-size="14" font-family="Segoe UI,Arial">New — Choice List — New</text>
+  <text x="620" y="32" fill="#dbeafe" font-size="12">Submit · Update</text>
+  <rect x="24" y="48" width="90" height="26" rx="4" fill="#fff" stroke="#9aa7b5"/><text x="32" y="66" font-size="11" fill="#234">Choice</text>
+  <text x="36" y="90" font-size="11" fill="#5a6a7a">Table</text><rect x="220" y="76" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="90" font-size="11" fill="#1a2332"> leave request</text><text x="36" y="118" font-size="11" fill="#5a6a7a">Element</text><rect x="220" y="104" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="118" font-size="11" fill="#1a2332"> leave_type</text><text x="36" y="146" font-size="11" fill="#5a6a7a">Value</text><rect x="220" y="132" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="146" font-size="11" fill="#1a2332"> annual</text><text x="36" y="174" font-size="11" fill="#5a6a7a">Label</text><rect x="220" y="160" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="174" font-size="11" fill="#1a2332"> Annual Leave</text><text x="36" y="202" font-size="11" fill="#5a6a7a">Sequence</text><rect x="220" y="188" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="202" font-size="11" fill="#1a2332"> 100</text>
+</svg>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Open Choices for a Choice field → New</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Choice List — New</h3>
+    <p class="when">Open Choices for a Choice field → New</p>
+    <p class="nav"><code>All > System Definition > Choice Lists</code></p>
+    <a class="btn" href="{BASE}/sys_choice_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Table</li><li>Element</li><li>Language</li><li>Value</li><li>Label</li><li>Sequence</li><li>Inactive</li><li>Dependent value</li></ul>
+    <label class="tick"><input type="checkbox" data-key="dev-4"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="dev-5">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/dev-business-rule.png" alt="Business Rule — New" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Business Rules → New (developing automation)</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Business Rule — New</h3>
+    <p class="when">Business Rules → New (developing automation)</p>
+    <p class="nav"><code>All > System Definition > Business Rules</code></p>
+    <a class="btn" href="{BASE}/sys_script_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Name</li><li>Table</li><li>Active</li><li>Advanced</li><li>When: before | after | async | display</li><li>Insert / Update / Delete / Query</li><li>Filter Conditions</li><li>Role conditions</li><li>Order</li><li>Abort action</li><li>Set field values (Actions)</li><li>Script (Advanced)</li><li>Add message</li></ul>
+    <label class="tick"><input type="checkbox" data-key="dev-5"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="dev-6">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/dev-script-include.png" alt="Script Include — New" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Script Includes → New (reusable server API)</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Script Include — New</h3>
+    <p class="when">Script Includes → New (reusable server API)</p>
+    <p class="nav"><code>All > System Definition > Script Includes</code></p>
+    <a class="btn" href="{BASE}/sys_script_include_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Name</li><li>API Name</li><li>Client callable</li><li>Active</li><li>Accessible from</li><li>Protection policy</li><li>Sandbox</li><li>Script (Class.create)</li></ul>
+    <label class="tick"><input type="checkbox" data-key="dev-6"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="dev-7">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/dev-client-script.png" alt="Client Script — New" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Client Scripts → New (form UX while developing)</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Client Script — New</h3>
+    <p class="when">Client Scripts → New (form UX while developing)</p>
+    <p class="nav"><code>All > System Definition > Client Scripts</code></p>
+    <a class="btn" href="{BASE}/sys_script_client_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Type: onLoad | onChange | onSubmit | onCellEdit</li><li>Field name (for onChange)</li><li>UI Type: Desktop / Mobile / All</li><li>Global</li><li>Isolate script</li><li>Messages</li><li>Script</li></ul>
+    <label class="tick"><input type="checkbox" data-key="dev-7"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="dev-8">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/dev-ui-policy.png" alt="UI Policy — New" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> UI Policies → New (+ UI Policy Actions)</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>UI Policy — New</h3>
+    <p class="when">UI Policies → New (+ UI Policy Actions)</p>
+    <p class="nav"><code>All > System UI > UI Policies</code></p>
+    <a class="btn" href="{BASE}/sys_ui_policy_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Table</li><li>Conditions</li><li>Reverse if false</li><li>On load</li><li>Global</li><li>Run scripts</li><li>UI Policy Actions: Visible / Mandatory / Read only</li></ul>
+    <label class="tick"><input type="checkbox" data-key="dev-8"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="dev-9">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/dev-ui-action.png" alt="UI Action — New" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> UI Actions → New (buttons / list actions)</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>UI Action — New</h3>
+    <p class="when">UI Actions → New (buttons / list actions)</p>
+    <p class="nav"><code>All > System UI > UI Actions</code></p>
+    <a class="btn" href="{BASE}/sys_ui_action_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Form button</li><li>Form context menu</li><li>Form link</li><li>List banner button</li><li>List choice</li><li>List context menu</li><li>Client</li><li>Server</li><li>Condition</li><li>Order</li><li>Hint</li><li>Show insert/update</li></ul>
+    <label class="tick"><input type="checkbox" data-key="dev-9"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="dev-10">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/dev-flow-designer.png" alt="Flow Designer — New Flow" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Open Flow Designer → New → Flow (building process)</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Flow Designer — New Flow</h3>
+    <p class="when">Open Flow Designer → New → Flow (building process)</p>
+    <p class="nav"><code>All > Process Automation > Flow Designer</code></p>
+    <a class="btn" href="{BASE}/now/flow-designer" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Trigger: Record Create/Update, Scheduled, Application, SLA, Email…</li><li>Actions: Ask for Approval, Update Record, Send Email, Call Script, Subflow</li><li>Flow Logic: If / Else / For Each / Try</li><li>Error handler</li><li>Test</li><li>Activate</li></ul>
+    <label class="tick"><input type="checkbox" data-key="dev-10"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="dev-11">
+  <div class="feat-media">
+    <figure class="shot"><svg class="shot-svg" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Update Set — New / Make Current">
+  <rect width="800" height="380" fill="#e6ebf0"/>
+  <rect x="10" y="10" width="780" height="360" rx="8" fill="#fff" stroke="#b8c2cc"/>
+  <rect x="10" y="10" width="780" height="34" fill="#0b5cab"/>
+  <text x="28" y="32" fill="#fff" font-size="14" font-family="Segoe UI,Arial">New — Update Set — New / Make Current</text>
+  <text x="620" y="32" fill="#dbeafe" font-size="12">Submit · Update</text>
+  <rect x="24" y="48" width="90" height="26" rx="4" fill="#fff" stroke="#9aa7b5"/><text x="32" y="66" font-size="11" fill="#234">Update Set</text><rect x="118" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="126" y="66" font-size="11" fill="#234">Customer Upd</text>
+  <text x="36" y="90" font-size="11" fill="#5a6a7a">Name</text><rect x="220" y="76" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="90" font-size="11" fill="#1a2332"> HRLEAVE-DEV-001</text><text x="36" y="118" font-size="11" fill="#5a6a7a">Application</text><rect x="220" y="104" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="118" font-size="11" fill="#1a2332"> HR Leave</text><text x="36" y="146" font-size="11" fill="#5a6a7a">State</text><rect x="220" y="132" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="146" font-size="11" fill="#1a2332"> In Progress</text>
+</svg>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Local Update Sets → New then Make This My Current Set</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Update Set — New / Make Current</h3>
+    <p class="when">Local Update Sets → New then Make This My Current Set</p>
+    <p class="nav"><code>All > System Update Sets > Local Update Sets</code></p>
+    <a class="btn" href="{BASE}/sys_update_set_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Name</li><li>Application</li><li>State (In Progress/Complete)</li><li>Make current</li><li>Customer updates</li><li>Preview/Commit on remote</li></ul>
+    <label class="tick"><input type="checkbox" data-key="dev-11"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="dev-12">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/practice-leave-form.png" alt="Form Layout / Form Design" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Configure > Form Layout / Form Design on a record</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Form Layout / Form Design</h3>
+    <p class="when">Configure > Form Layout / Form Design on a record</p>
+    <p class="nav"><code>Form context menu > Configure > Form Layout</code></p>
+    <a class="btn" href="{BASE}/sys_ui_section_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Views</li><li>Sections</li><li>Available ↔ Selected fields</li><li>Related lists</li><li>Annotations</li></ul>
+    <label class="tick"><input type="checkbox" data-key="dev-12"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="dev-13">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/dev-catalog-item.png" alt="Catalog Item — New" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Maintain Items → New (developing catalog)</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Catalog Item — New</h3>
+    <p class="when">Maintain Items → New (developing catalog)</p>
+    <p class="nav"><code>All > Service Catalog > Catalog Definitions > Maintain Items</code></p>
+    <a class="btn" href="{BASE}/sc_cat_item_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Name</li><li>Catalogs</li><li>Category</li><li>Short description</li><li>Picture</li><li>Workflow / Flow</li><li>Availability</li><li>Mobile hide price</li><li>Variables</li><li>Variable Sets</li><li>Client Scripts</li><li>UI Policies</li></ul>
+    <label class="tick"><input type="checkbox" data-key="dev-13"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="dev-14">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/dev-portal-widget.png" alt="Portal Widget — New" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Widgets → New (HTML / Client / Server / CSS tabs)</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Portal Widget — New</h3>
+    <p class="when">Widgets → New (HTML / Client / Server / CSS tabs)</p>
+    <p class="nav"><code>All > Service Portal > Widgets</code></p>
+    <a class="btn" href="{BASE}/sp_widget_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>ID</li><li>Name</li><li>HTML Template</li><li>Client Script</li><li>Server Script</li><li>CSS</li><li>Option schema</li><li>Data table</li><li>Public</li></ul>
+    <label class="tick"><input type="checkbox" data-key="dev-14"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="dev-15">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/practice-workspace.png" alt="UI Builder / Workspace Experience" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> UI Builder → Create Experience / Page (developing workspace)</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>UI Builder / Workspace Experience</h3>
+    <p class="when">UI Builder → Create Experience / Page (developing workspace)</p>
+    <p class="nav"><code>All > Now Experience Framework > UI Builder</code></p>
+    <a class="btn" href="{BASE}/now/builder/experience" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Experience</li><li>Pages</li><li>Variants</li><li>Data resources</li><li>Client state</li><li>Events</li><li>Theme</li><li>Audiences</li></ul>
+    <label class="tick"><input type="checkbox" data-key="dev-15"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="dev-16">
+  <div class="feat-media">
+    <figure class="shot"><svg class="shot-svg" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Scripted REST API — New">
+  <rect width="800" height="380" fill="#e6ebf0"/>
+  <rect x="10" y="10" width="780" height="360" rx="8" fill="#fff" stroke="#b8c2cc"/>
+  <rect x="10" y="10" width="780" height="34" fill="#0b5cab"/>
+  <text x="28" y="32" fill="#fff" font-size="14" font-family="Segoe UI,Arial">New — Scripted REST API — New</text>
+  <text x="620" y="32" fill="#dbeafe" font-size="12">Submit · Update</text>
+  <rect x="24" y="48" width="90" height="26" rx="4" fill="#fff" stroke="#9aa7b5"/><text x="32" y="66" font-size="11" fill="#234">API</text><rect x="118" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="126" y="66" font-size="11" fill="#234">Resources</text><rect x="212" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="220" y="66" font-size="11" fill="#234">Security</text>
+  <text x="36" y="90" font-size="11" fill="#5a6a7a">API ID</text><rect x="220" y="76" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="90" font-size="11" fill="#1a2332"> hr_leave</text><text x="36" y="118" font-size="11" fill="#5a6a7a">Namespace</text><rect x="220" y="104" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="118" font-size="11" fill="#1a2332"> x_786686_hr_leave</text><text x="36" y="146" font-size="11" fill="#5a6a7a">Resource</text><rect x="220" y="132" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="146" font-size="11" fill="#1a2332"> /requests GET</text>
+</svg>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Scripted REST APIs → New → Resources</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Scripted REST API — New</h3>
+    <p class="when">Scripted REST APIs → New → Resources</p>
+    <p class="nav"><code>All > System Web Services > Scripted REST APIs</code></p>
+    <a class="btn" href="{BASE}/sys_ws_definition_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>API ID</li><li>Namespace</li><li>Base path</li><li>Resources (GET/POST/PATCH/DELETE)</li><li>Security</li><li>Version</li></ul>
+    <label class="tick"><input type="checkbox" data-key="dev-16"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+    <p class="note">Capture YOUR instance screenshots while New is open — replace reference images in <code>html/assets/practice/</code> with real PNGs using the same filenames for a fully personal professional doc.</p>
+  </section>
+
+  <section class="section" id="admin">
+    <h2>B. Administration — كل خيارات الإدارة عند الفتح/الإنشاء</h2>
+    <p class="sub">Users, Groups, Roles, ACL, Properties, Events, Notifications, Scheduled Jobs, Import/Transform, ATF, Reports</p>
+    
+<article class="feat" id="adm-1">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/practice-admin.png" alt="User — New" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Users → New</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>User — New</h3>
+    <p class="when">Users → New</p>
+    <p class="nav"><code>All > User Administration > Users</code></p>
+    <a class="btn" href="{BASE}/sys_user_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>User ID</li><li>First/Last</li><li>Email</li><li>Active</li><li>Locked out</li><li>Password</li><li>Roles (avoid direct)</li><li>Groups</li><li>Department</li><li>Manager</li><li>Time zone</li><li>Language</li></ul>
+    <label class="tick"><input type="checkbox" data-key="adm-1"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="adm-2">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/admin-group-roles.png" alt="Group — New (+ Roles / Members)" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Groups → New → Roles related list → Members</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Group — New (+ Roles / Members)</h3>
+    <p class="when">Groups → New → Roles related list → Members</p>
+    <p class="nav"><code>All > User Administration > Groups</code></p>
+    <a class="btn" href="{BASE}/sys_user_group_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Name</li><li>Type</li><li>Manager</li><li>Email</li><li>Parent</li><li>Roles</li><li>Group Members</li><li>Exclude manager</li></ul>
+    <label class="tick"><input type="checkbox" data-key="adm-2"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="adm-3">
+  <div class="feat-media">
+    <figure class="shot"><svg class="shot-svg" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Role — New / Contains">
+  <rect width="800" height="380" fill="#e6ebf0"/>
+  <rect x="10" y="10" width="780" height="360" rx="8" fill="#fff" stroke="#b8c2cc"/>
+  <rect x="10" y="10" width="780" height="34" fill="#0b5cab"/>
+  <text x="28" y="32" fill="#fff" font-size="14" font-family="Segoe UI,Arial">New — Role — New / Contains</text>
+  <text x="620" y="32" fill="#dbeafe" font-size="12">Submit · Update</text>
+  <rect x="24" y="48" width="90" height="26" rx="4" fill="#fff" stroke="#9aa7b5"/><text x="32" y="66" font-size="11" fill="#234">Role</text><rect x="118" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="126" y="66" font-size="11" fill="#234">Contains Rol</text>
+  <text x="36" y="90" font-size="11" fill="#5a6a7a">Name</text><rect x="220" y="76" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="90" font-size="11" fill="#1a2332"> x_786686_hr_leave.manager</text><text x="36" y="118" font-size="11" fill="#5a6a7a">Contains</text><rect x="220" y="104" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="118" font-size="11" fill="#1a2332"> x_786686_hr_leave.employee</text>
+</svg>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Roles → New → Contains roles</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Role — New / Contains</h3>
+    <p class="when">Roles → New → Contains roles</p>
+    <p class="nav"><code>All > User Administration > Roles</code></p>
+    <a class="btn" href="{BASE}/sys_user_role_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Name</li><li>Suffix</li><li>Description</li><li>Assignable by</li><li>Contains roles</li><li>Elevated privilege</li></ul>
+    <label class="tick"><input type="checkbox" data-key="adm-3"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="adm-4">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/admin-acl.png" alt="ACL — New" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Access Control → New (table/field security while administering)</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>ACL — New</h3>
+    <p class="when">Access Control → New (table/field security while administering)</p>
+    <p class="nav"><code>All > System Security > Access Control (ACL)</code></p>
+    <a class="btn" href="{BASE}/sys_security_acl_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Type: record / ui_page / client_callable…</li><li>Operation: create read write delete execute</li><li>Name: table or table.field</li><li>Admin overrides</li><li>Requires role</li><li>Condition</li><li>Script (Advanced)</li></ul>
+    <label class="tick"><input type="checkbox" data-key="adm-4"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="adm-5">
+  <div class="feat-media">
+    <figure class="shot"><svg class="shot-svg" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="System Property — New">
+  <rect width="800" height="380" fill="#e6ebf0"/>
+  <rect x="10" y="10" width="780" height="360" rx="8" fill="#fff" stroke="#b8c2cc"/>
+  <rect x="10" y="10" width="780" height="34" fill="#0b5cab"/>
+  <text x="28" y="32" fill="#fff" font-size="14" font-family="Segoe UI,Arial">New — System Property — New</text>
+  <text x="620" y="32" fill="#dbeafe" font-size="12">Submit · Update</text>
+  <rect x="24" y="48" width="90" height="26" rx="4" fill="#fff" stroke="#9aa7b5"/><text x="32" y="66" font-size="11" fill="#234">Property</text>
+  <text x="36" y="90" font-size="11" fill="#5a6a7a">Name</text><rect x="220" y="76" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="90" font-size="11" fill="#1a2332"> x_786686_hr_leave.max_leave_days</text><text x="36" y="118" font-size="11" fill="#5a6a7a">Type</text><rect x="220" y="104" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="118" font-size="11" fill="#1a2332"> integer</text><text x="36" y="146" font-size="11" fill="#5a6a7a">Value</text><rect x="220" y="132" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="146" font-size="11" fill="#1a2332"> 30</text>
+</svg>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Properties → New</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>System Property — New</h3>
+    <p class="when">Properties → New</p>
+    <p class="nav"><code>All > System Properties > All Properties</code></p>
+    <a class="btn" href="{BASE}/sys_properties_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Name</li><li>Type (string, integer, boolean, choicelist…)</li><li>Value</li><li>Choices</li><li>Description</li><li>Ignore cache</li><li>Private</li></ul>
+    <label class="tick"><input type="checkbox" data-key="adm-5"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="adm-6">
+  <div class="feat-media">
+    <figure class="shot"><svg class="shot-svg" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Event Registry — New">
+  <rect width="800" height="380" fill="#e6ebf0"/>
+  <rect x="10" y="10" width="780" height="360" rx="8" fill="#fff" stroke="#b8c2cc"/>
+  <rect x="10" y="10" width="780" height="34" fill="#0b5cab"/>
+  <text x="28" y="32" fill="#fff" font-size="14" font-family="Segoe UI,Arial">New — Event Registry — New</text>
+  <text x="620" y="32" fill="#dbeafe" font-size="12">Submit · Update</text>
+  <rect x="24" y="48" width="90" height="26" rx="4" fill="#fff" stroke="#9aa7b5"/><text x="32" y="66" font-size="11" fill="#234">Event</text>
+  <text x="36" y="90" font-size="11" fill="#5a6a7a">Event</text><rect x="220" y="76" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="90" font-size="11" fill="#1a2332"> x_786686_hr_leave.request.submitted</text><text x="36" y="118" font-size="11" fill="#5a6a7a">Table</text><rect x="220" y="104" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="118" font-size="11" fill="#1a2332"> Leave Request</text>
+</svg>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Events Registry → New</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Event Registry — New</h3>
+    <p class="when">Events Registry → New</p>
+    <p class="nav"><code>All > System Policy > Events > Registry</code></p>
+    <a class="btn" href="{BASE}/sysevent_register_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Event name</li><li>Table</li><li>Fired by</li><li>Description</li><li>Queue</li></ul>
+    <label class="tick"><input type="checkbox" data-key="adm-6"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="adm-7">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/admin-notification.png" alt="Notification — New" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Notifications → New (When / Who / What)</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Notification — New</h3>
+    <p class="when">Notifications → New (When / Who / What)</p>
+    <p class="nav"><code>All > System Notification > Email > Notifications</code></p>
+    <a class="btn" href="{BASE}/sysevent_email_action_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Table</li><li>Category</li><li>Active</li><li>When: inserted/updated/event is fired</li><li>Conditions</li><li>Who: Users/Groups in fields, Event parm, Recipients</li><li>What: Subject, Message HTML, Mail scripts, Attachments</li><li>Weight</li><li>Digest</li></ul>
+    <label class="tick"><input type="checkbox" data-key="adm-7"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="adm-8">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/admin-scheduled-job.png" alt="Scheduled Job — New" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Scheduled Jobs → New → Scheduled Script Execution</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Scheduled Job — New</h3>
+    <p class="when">Scheduled Jobs → New → Scheduled Script Execution</p>
+    <p class="nav"><code>All > System Definition > Scheduled Jobs</code></p>
+    <a class="btn" href="{BASE}/sysauto_script_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Name</li><li>Active</li><li>Run (Daily/Weekly/Periodically…)</li><li>Time</li><li>Run as</li><li>Conditional</li><li>Script</li></ul>
+    <label class="tick"><input type="checkbox" data-key="adm-8"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="adm-9">
+  <div class="feat-media">
+    <figure class="shot"><svg class="shot-svg" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Import Set Table / Transform Map">
+  <rect width="800" height="380" fill="#e6ebf0"/>
+  <rect x="10" y="10" width="780" height="360" rx="8" fill="#fff" stroke="#b8c2cc"/>
+  <rect x="10" y="10" width="780" height="34" fill="#0b5cab"/>
+  <text x="28" y="32" fill="#fff" font-size="14" font-family="Segoe UI,Arial">New — Import Set Table / Transform Map</text>
+  <text x="620" y="32" fill="#dbeafe" font-size="12">Submit · Update</text>
+  <rect x="24" y="48" width="90" height="26" rx="4" fill="#fff" stroke="#9aa7b5"/><text x="32" y="66" font-size="11" fill="#234">Transform</text><rect x="118" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="126" y="66" font-size="11" fill="#234">Field Maps</text><rect x="212" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="220" y="66" font-size="11" fill="#234">Scripts</text>
+  <text x="36" y="90" font-size="11" fill="#5a6a7a">Source</text><rect x="220" y="76" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="90" font-size="11" fill="#1a2332"> u_hr_leave_import</text><text x="36" y="118" font-size="11" fill="#5a6a7a">Target</text><rect x="220" y="104" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="118" font-size="11" fill="#1a2332"> Leave Request</text><text x="36" y="146" font-size="11" fill="#5a6a7a">Coalesce</text><rect x="220" y="132" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="146" font-size="11" fill="#1a2332"> employee_number</text>
+</svg>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Load Data → Create Transform Map → Map fields</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Import Set Table / Transform Map</h3>
+    <p class="when">Load Data → Create Transform Map → Map fields</p>
+    <p class="nav"><code>All > System Import Sets > Load Data</code></p>
+    <a class="btn" href="{BASE}/sys_import_set_table_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Import set table</li><li>Transform Map</li><li>Field Maps</li><li>Coalesce</li><li>onBefore/onAfter scripts</li><li>Run Transform</li></ul>
+    <label class="tick"><input type="checkbox" data-key="adm-9"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="adm-10">
+  <div class="feat-media">
+    <figure class="shot"><svg class="shot-svg" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ATF Test — New">
+  <rect width="800" height="380" fill="#e6ebf0"/>
+  <rect x="10" y="10" width="780" height="360" rx="8" fill="#fff" stroke="#b8c2cc"/>
+  <rect x="10" y="10" width="780" height="34" fill="#0b5cab"/>
+  <text x="28" y="32" fill="#fff" font-size="14" font-family="Segoe UI,Arial">New — ATF Test — New</text>
+  <text x="620" y="32" fill="#dbeafe" font-size="12">Submit · Update</text>
+  <rect x="24" y="48" width="90" height="26" rx="4" fill="#fff" stroke="#9aa7b5"/><text x="32" y="66" font-size="11" fill="#234">Test</text><rect x="118" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="126" y="66" font-size="11" fill="#234">Test Steps</text><rect x="212" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="220" y="66" font-size="11" fill="#234">Results</text>
+  <text x="36" y="90" font-size="11" fill="#5a6a7a">Name</text><rect x="220" y="76" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="90" font-size="11" fill="#1a2332"> HR Leave — Create Request</text><text x="36" y="118" font-size="11" fill="#5a6a7a">Application</text><rect x="220" y="104" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="118" font-size="11" fill="#1a2332"> HR Leave</text>
+</svg>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> ATF Tests → New → Add Test Steps</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>ATF Test — New</h3>
+    <p class="when">ATF Tests → New → Add Test Steps</p>
+    <p class="nav"><code>All > Automated Test Framework > Tests</code></p>
+    <a class="btn" href="{BASE}/sys_atf_test_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Test steps (Open Form, Set Field, Click, Assert, Server script…)</li><li>Input variables</li><li>Timeout</li><li>Suites</li><li>Schedules</li></ul>
+    <label class="tick"><input type="checkbox" data-key="adm-10"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="adm-11">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/practice-reports.png" alt="Report — Create New" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Reports → Create New (admin/analyst)</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Report — Create New</h3>
+    <p class="when">Reports → Create New (admin/analyst)</p>
+    <p class="nav"><code>All > Reports > Create New</code></p>
+    <a class="btn" href="{BASE}/$report.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Data source</li><li>Type (List/Bar/Pie/Time series…)</li><li>Group by</li><li>Aggregation</li><li>Filter</li><li>Sharing</li><li>Schedule</li></ul>
+    <label class="tick"><input type="checkbox" data-key="adm-11"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+  </section>
+
+  <section class="section" id="modules">
+    <h2>C. Modules — شاشات New لكل موديول</h2>
+    <p class="sub">Incident, Problem, Change, CMDB CI, HR Case, CSM Case, FSM Work Order, SPM Demand, GRC Risk, SLA Definition</p>
+    
+<article class="feat" id="mod-1">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/mod-incident-new.png" alt="Incident — New" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Incident → Create New (ITSM developing/using)</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Incident — New</h3>
+    <p class="when">Incident → Create New (ITSM developing/using)</p>
+    <p class="nav"><code>All > Incident > Create New</code></p>
+    <a class="btn" href="{BASE}/incident.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Caller</li><li>Category/Subcategory</li><li>Impact/Urgency → Priority</li><li>Assignment group</li><li>Configuration item</li><li>Short description</li><li>Work notes</li><li>SLA</li><li>Related: Problems, Changes, KB</li></ul>
+    <label class="tick"><input type="checkbox" data-key="mod-1"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="mod-2">
+  <div class="feat-media">
+    <figure class="shot"><svg class="shot-svg" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Problem — New">
+  <rect width="800" height="380" fill="#e6ebf0"/>
+  <rect x="10" y="10" width="780" height="360" rx="8" fill="#fff" stroke="#b8c2cc"/>
+  <rect x="10" y="10" width="780" height="34" fill="#0b5cab"/>
+  <text x="28" y="32" fill="#fff" font-size="14" font-family="Segoe UI,Arial">New — Problem — New</text>
+  <text x="620" y="32" fill="#dbeafe" font-size="12">Submit · Update</text>
+  <rect x="24" y="48" width="90" height="26" rx="4" fill="#fff" stroke="#9aa7b5"/><text x="32" y="66" font-size="11" fill="#234">Problem</text><rect x="118" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="126" y="66" font-size="11" fill="#234">Analysis</text><rect x="212" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="220" y="66" font-size="11" fill="#234">Resolution</text>
+  <text x="36" y="90" font-size="11" fill="#5a6a7a">Short description</text><rect x="220" y="76" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="90" font-size="11" fill="#1a2332"> Recurring login failure</text><text x="36" y="118" font-size="11" fill="#5a6a7a">State</text><rect x="220" y="104" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="118" font-size="11" fill="#1a2332"> New</text>
+</svg>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Problem → Create New</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Problem — New</h3>
+    <p class="when">Problem → Create New</p>
+    <p class="nav"><code>All > Problem > Create New</code></p>
+    <a class="btn" href="{BASE}/problem.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>First reported by</li><li>Category</li><li>Priority</li><li>Assignment</li><li>Workaround</li><li>Root cause</li><li>Known Error</li><li>Fix</li></ul>
+    <label class="tick"><input type="checkbox" data-key="mod-2"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="mod-3">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/mod-change-new.png" alt="Change Request — New" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Change → Create New (Normal/Standard/Emergency)</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>Change Request — New</h3>
+    <p class="when">Change → Create New (Normal/Standard/Emergency)</p>
+    <p class="nav"><code>All > Change > Create New</code></p>
+    <a class="btn" href="{BASE}/change_request.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Type</li><li>Risk</li><li>Impact</li><li>Conflict detection</li><li>CAB</li><li>Implementation plan</li><li>Backout plan</li><li>Schedule</li><li>Approvals</li></ul>
+    <label class="tick"><input type="checkbox" data-key="mod-3"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="mod-4">
+  <div class="feat-media">
+    <figure class="shot"><svg class="shot-svg" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CMDB CI — New">
+  <rect width="800" height="380" fill="#e6ebf0"/>
+  <rect x="10" y="10" width="780" height="360" rx="8" fill="#fff" stroke="#b8c2cc"/>
+  <rect x="10" y="10" width="780" height="34" fill="#0b5cab"/>
+  <text x="28" y="32" fill="#fff" font-size="14" font-family="Segoe UI,Arial">New — CMDB CI — New</text>
+  <text x="620" y="32" fill="#dbeafe" font-size="12">Submit · Update</text>
+  <rect x="24" y="48" width="90" height="26" rx="4" fill="#fff" stroke="#9aa7b5"/><text x="32" y="66" font-size="11" fill="#234">CI</text><rect x="118" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="126" y="66" font-size="11" fill="#234">Related Item</text><rect x="212" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="220" y="66" font-size="11" fill="#234">Relationship</text>
+  <text x="36" y="90" font-size="11" fill="#5a6a7a">Class</text><rect x="220" y="76" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="90" font-size="11" fill="#1a2332"> Server</text><text x="36" y="118" font-size="11" fill="#5a6a7a">Name</text><rect x="220" y="104" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="118" font-size="11" fill="#1a2332"> app-prod-01</text><text x="36" y="146" font-size="11" fill="#5a6a7a">Install status</text><rect x="220" y="132" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="146" font-size="11" fill="#1a2332"> Installed</text>
+</svg>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Configuration → create CI class record</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>CMDB CI — New</h3>
+    <p class="when">Configuration → create CI class record</p>
+    <p class="nav"><code>All > Configuration > Base Items</code></p>
+    <a class="btn" href="{BASE}/cmdb_ci_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Class</li><li>Name</li><li>Asset tag</li><li>Owned by</li><li>Managed by</li><li>Relationships</li><li>Discovery source</li><li>Install status</li></ul>
+    <label class="tick"><input type="checkbox" data-key="mod-4"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="mod-5">
+  <div class="feat-media">
+    <figure class="shot"><img src="assets/practice/practice-portal.png" alt="HR Case — New" loading="lazy"/>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> HR Case Management → New / Employee Center request</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>HR Case — New</h3>
+    <p class="when">HR Case Management → New / Employee Center request</p>
+    <p class="nav"><code>All > HR Case Management > Create New Case</code></p>
+    <a class="btn" href="{BASE}/sn_hr_core_case_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>HR service</li><li>Opened for</li><li>Subject person</li><li>COE</li><li>Skills</li><li>SLA</li><li>Templates</li><li>Checklist</li></ul>
+    <label class="tick"><input type="checkbox" data-key="mod-5"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="mod-6">
+  <div class="feat-media">
+    <figure class="shot"><svg class="shot-svg" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CSM Case — New">
+  <rect width="800" height="380" fill="#e6ebf0"/>
+  <rect x="10" y="10" width="780" height="360" rx="8" fill="#fff" stroke="#b8c2cc"/>
+  <rect x="10" y="10" width="780" height="34" fill="#0b5cab"/>
+  <text x="28" y="32" fill="#fff" font-size="14" font-family="Segoe UI,Arial">New — CSM Case — New</text>
+  <text x="620" y="32" fill="#dbeafe" font-size="12">Submit · Update</text>
+  <rect x="24" y="48" width="90" height="26" rx="4" fill="#fff" stroke="#9aa7b5"/><text x="32" y="66" font-size="11" fill="#234">Case</text><rect x="118" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="126" y="66" font-size="11" fill="#234">Related</text><rect x="212" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="220" y="66" font-size="11" fill="#234">Interaction</text>
+  <text x="36" y="90" font-size="11" fill="#5a6a7a">Account</text><rect x="220" y="76" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="90" font-size="11" fill="#1a2332"> Acme</text><text x="36" y="118" font-size="11" fill="#5a6a7a">Short description</text><rect x="220" y="104" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="118" font-size="11" fill="#1a2332"> Billing question</text>
+</svg>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Customer Service → Cases → New / CSM Workspace</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>CSM Case — New</h3>
+    <p class="when">Customer Service → Cases → New / CSM Workspace</p>
+    <p class="nav"><code>All > Customer Service > Cases</code></p>
+    <a class="btn" href="{BASE}/sn_customerservice_case_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Account</li><li>Contact</li><li>Product</li><li>Priority</li><li>Assignment</li><li>Entitlement/SLA</li><li>Channel</li><li>Agent Assist</li></ul>
+    <label class="tick"><input type="checkbox" data-key="mod-6"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="mod-7">
+  <div class="feat-media">
+    <figure class="shot"><svg class="shot-svg" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FSM Work Order — New">
+  <rect width="800" height="380" fill="#e6ebf0"/>
+  <rect x="10" y="10" width="780" height="360" rx="8" fill="#fff" stroke="#b8c2cc"/>
+  <rect x="10" y="10" width="780" height="34" fill="#0b5cab"/>
+  <text x="28" y="32" fill="#fff" font-size="14" font-family="Segoe UI,Arial">New — FSM Work Order — New</text>
+  <text x="620" y="32" fill="#dbeafe" font-size="12">Submit · Update</text>
+  <rect x="24" y="48" width="90" height="26" rx="4" fill="#fff" stroke="#9aa7b5"/><text x="32" y="66" font-size="11" fill="#234">Work Order</text><rect x="118" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="126" y="66" font-size="11" fill="#234">Tasks</text><rect x="212" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="220" y="66" font-size="11" fill="#234">Parts</text>
+  <text x="36" y="90" font-size="11" fill="#5a6a7a">Short description</text><rect x="220" y="76" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="90" font-size="11" fill="#1a2332"> Onsite printer repair</text><text x="36" y="118" font-size="11" fill="#5a6a7a">Location</text><rect x="220" y="104" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="118" font-size="11" fill="#1a2332"> Building A</text>
+</svg>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Field Service → Work Orders → New</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>FSM Work Order — New</h3>
+    <p class="when">Field Service → Work Orders → New</p>
+    <p class="nav"><code>All > Field Service > Work Orders</code></p>
+    <a class="btn" href="{BASE}/wm_order_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Location</li><li>Skills</li><li>Parts</li><li>Tasks</li><li>Schedule</li><li>Dispatch</li><li>Mobile complete</li></ul>
+    <label class="tick"><input type="checkbox" data-key="mod-7"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="mod-8">
+  <div class="feat-media">
+    <figure class="shot"><svg class="shot-svg" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SPM Demand / Project — New">
+  <rect width="800" height="380" fill="#e6ebf0"/>
+  <rect x="10" y="10" width="780" height="360" rx="8" fill="#fff" stroke="#b8c2cc"/>
+  <rect x="10" y="10" width="780" height="34" fill="#0b5cab"/>
+  <text x="28" y="32" fill="#fff" font-size="14" font-family="Segoe UI,Arial">New — SPM Demand / Project — New</text>
+  <text x="620" y="32" fill="#dbeafe" font-size="12">Submit · Update</text>
+  <rect x="24" y="48" width="90" height="26" rx="4" fill="#fff" stroke="#9aa7b5"/><text x="32" y="66" font-size="11" fill="#234">Demand</text><rect x="118" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="126" y="66" font-size="11" fill="#234">Assessment</text><rect x="212" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="220" y="66" font-size="11" fill="#234">Resource</text>
+  <text x="36" y="90" font-size="11" fill="#5a6a7a">Short description</text><rect x="220" y="76" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="90" font-size="11" fill="#1a2332"> HR Leave Phase 2</text><text x="36" y="118" font-size="11" fill="#5a6a7a">State</text><rect x="220" y="104" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="118" font-size="11" fill="#1a2332"> Draft</text>
+</svg>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Demand → New / Project → New</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>SPM Demand / Project — New</h3>
+    <p class="when">Demand → New / Project → New</p>
+    <p class="nav"><code>All > Demand > Demands</code></p>
+    <a class="btn" href="{BASE}/dmn_demand_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Score</li><li>Strategy</li><li>Resource plan</li><li>Cost plan</li><li>Approve → Project</li><li>Portfolio</li></ul>
+    <label class="tick"><input type="checkbox" data-key="mod-8"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="mod-9">
+  <div class="feat-media">
+    <figure class="shot"><svg class="shot-svg" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GRC Risk / Policy / Control — New">
+  <rect width="800" height="380" fill="#e6ebf0"/>
+  <rect x="10" y="10" width="780" height="360" rx="8" fill="#fff" stroke="#b8c2cc"/>
+  <rect x="10" y="10" width="780" height="34" fill="#0b5cab"/>
+  <text x="28" y="32" fill="#fff" font-size="14" font-family="Segoe UI,Arial">New — GRC Risk / Policy / Control — New</text>
+  <text x="620" y="32" fill="#dbeafe" font-size="12">Submit · Update</text>
+  <rect x="24" y="48" width="90" height="26" rx="4" fill="#fff" stroke="#9aa7b5"/><text x="32" y="66" font-size="11" fill="#234">Risk</text><rect x="118" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="126" y="66" font-size="11" fill="#234">Assessment</text><rect x="212" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="220" y="66" font-size="11" fill="#234">Controls</text>
+  <text x="36" y="90" font-size="11" fill="#5a6a7a">Name</text><rect x="220" y="76" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="90" font-size="11" fill="#1a2332"> Leave data privacy risk</text><text x="36" y="118" font-size="11" fill="#5a6a7a">Owner</text><rect x="220" y="104" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="118" font-size="11" fill="#1a2332"> Compliance</text>
+</svg>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Risk → New / Policy → New / Control → New</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>GRC Risk / Policy / Control — New</h3>
+    <p class="when">Risk → New / Policy → New / Control → New</p>
+    <p class="nav"><code>All > Risk > Risks</code></p>
+    <a class="btn" href="{BASE}/sn_risk_risk_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Entity</li><li>Owner</li><li>Inherent/residual</li><li>Assessment</li><li>Control test</li><li>Evidence</li><li>Issue</li></ul>
+    <label class="tick"><input type="checkbox" data-key="mod-9"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+<article class="feat" id="mod-10">
+  <div class="feat-media">
+    <figure class="shot"><svg class="shot-svg" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SLA Definition — New">
+  <rect width="800" height="380" fill="#e6ebf0"/>
+  <rect x="10" y="10" width="780" height="360" rx="8" fill="#fff" stroke="#b8c2cc"/>
+  <rect x="10" y="10" width="780" height="34" fill="#0b5cab"/>
+  <text x="28" y="32" fill="#fff" font-size="14" font-family="Segoe UI,Arial">New — SLA Definition — New</text>
+  <text x="620" y="32" fill="#dbeafe" font-size="12">Submit · Update</text>
+  <rect x="24" y="48" width="90" height="26" rx="4" fill="#fff" stroke="#9aa7b5"/><text x="32" y="66" font-size="11" fill="#234">Definition</text><rect x="118" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="126" y="66" font-size="11" fill="#234">Condition</text><rect x="212" y="48" width="90" height="26" rx="4" fill="#dce3ea" stroke="#9aa7b5"/><text x="220" y="66" font-size="11" fill="#234">Schedule</text>
+  <text x="36" y="90" font-size="11" fill="#5a6a7a">Name</text><rect x="220" y="76" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="90" font-size="11" fill="#1a2332"> Leave Approval 2BD</text><text x="36" y="118" font-size="11" fill="#5a6a7a">Duration</text><rect x="220" y="104" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="118" font-size="11" fill="#1a2332"> 2 days</text><text x="36" y="146" font-size="11" fill="#5a6a7a">Table</text><rect x="220" y="132" width="540" height="22" rx="3" fill="#f7f9fb" stroke="#c5ced8"/><text x="230" y="146" font-size="11" fill="#1a2332"> Leave Request</text>
+</svg>
+      <figcaption><strong>WHEN DEVELOPING / OPENING:</strong> Service Level Management → SLA Definitions → New</figcaption>
+    </figure>
+  </div>
+  <div class="feat-body">
+    <h3>SLA Definition — New</h3>
+    <p class="when">Service Level Management → SLA Definitions → New</p>
+    <p class="nav"><code>All > Service Level Management > SLA > SLA Definitions</code></p>
+    <a class="btn" href="{BASE}/contract_sla_list.do" target="_blank" rel="noopener">Open / New on instance</a>
+    <h4>Options &amp; features on this screen</h4>
+    <ul class="opts"><li>Type</li><li>Duration</li><li>Schedule</li><li>Start/Pause/Stop conditions</li><li>Workflow/Flow</li><li>Retroactive</li></ul>
+    <label class="tick"><input type="checkbox" data-key="mod-10"/> Opened this screen &amp; captured my real screenshot</label>
+  </div>
+</article>
+
+  </section>
+</div>
+<script>
+(function(){
+  const KEY='hrl_feat_gallery_v1', BASE_KEY='hrl_master_practice_base';
+  const input=document.getElementById('baseInput');
+  const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}}
+  const save=s=>localStorage.setItem(KEY,JSON.stringify(s));
+  function applyBase(base){
+    if(!base) return; base=base.replace(/\/$/,'');
+    document.querySelectorAll('a.btn[href]').forEach(a=>{
+      const href=a.getAttribute('href')||'';
+      if(!a.dataset.raw) a.dataset.raw=href;
+      a.href=a.dataset.raw.split('{BASE}').join(base);
+    });
+  }
+  function refresh(){
+    const boxes=[...document.querySelectorAll('input[data-key]')];
+    const done=boxes.filter(b=>b.checked).length;
+    const pct=boxes.length?Math.round(done*100/boxes.length):0;
+    document.getElementById('progText').textContent=pct+'% ('+done+'/'+boxes.length+')';
+    document.getElementById('progBar').style.width=pct+'%';
+  }
+  const state=load();
+  document.querySelectorAll('input[data-key]').forEach(b=>{
+    b.checked=!!state[b.dataset.key];
+    b.addEventListener('change',()=>{const s=load(); s[b.dataset.key]=b.checked; save(s); refresh();});
+  });
+  const saved=localStorage.getItem(BASE_KEY)||'';
+  if(saved){input.value=saved; applyBase(saved);}
+  document.getElementById('applyBase').onclick=()=>{const v=input.value.trim(); localStorage.setItem(BASE_KEY,v); applyBase(v);};
+  document.getElementById('resetProg').onclick=()=>{localStorage.removeItem(KEY); document.querySelectorAll('input[data-key]').forEach(b=>b.checked=false); refresh();};
+  refresh();
+})();
+</script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

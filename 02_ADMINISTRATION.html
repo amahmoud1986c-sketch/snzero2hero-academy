@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>02 — Administration (Studio From Scratch) | HR Leave Australia</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+  <style>
+    .field-table th { white-space: nowrap; }
+    .step-num { font-weight: 700; color: var(--brand-2); }
+    .demo-box { border-left: 4px solid var(--brand-2); padding: .35rem 0 .35rem .85rem; margin: .75rem 0; }
+    .chapter-nav { display: flex; justify-content: space-between; gap: 1rem; margin: 2rem 0 1rem; padding: 1rem; background: #f8fafc; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All</a>
+      <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Links</a>
+      <a href="SCHEMA_AND_DATA.html">Schema</a>
+      <a href="scripts/index.html">Scripts</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+      <span class="badge">Chapter 02</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>02 — Administration (Studio From Scratch)</h1>
+      <p>Roles, Groups, Users, ACLs, all 9 system properties, Update Set promotion</p>
+      <div class="meta-grid">
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.72rem">e5f5bc9493a303507520703efaba104d</code></div>
+        <div><strong>Instance lab</strong><code style="color:#fff;font-size:.72rem">dev398980</code></div>
+        <div><strong>URL token</strong><code style="color:#fff">{BASE}</code></div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Quick open</strong>
+<a href="#viz02">Visual map</a>
+<a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a>
+<a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a>
+<a href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Properties</a>
+<a href="{BASE}/sys_user_group_list.do">Groups</a>
+    </div>
+    <article class="content">
+
+<div class="glance" id="viz02">
+  <h3>Visual map — Ch.02 · Administration — security</h3>
+  <div class="grid3">
+    <div class="box"><strong>See in 10 seconds</strong><p>Roles → Groups → Users → ACLs → 9 properties → Update Set</p></div>
+    <div class="box"><strong>You build</strong><p>employee · manager · hr_admin · integration</p></div>
+    <div class="box"><strong>Track</strong><p>Administration</p></div>
+  </div>
+  <div class="flow"><div class="n"><b>ROLE</b>4 roles</div><span class="arrow">→</span><div class="n"><b>GRP</b>Groups</div><span class="arrow">→</span><div class="n"><b>USER</b>Lab users</div><span class="arrow">→</span><div class="n"><b>ACL</b>Read/Write</div><span class="arrow">→</span><div class="n"><b>PROP</b>9 keys</div></div>
+  <div class="chips"><a class="chip url" href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">↗ sys_user_role_list.do</a><a class="chip url" href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">↗ sys_security_acl_list.do</a><a class="chip url" href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">↗ sys_properties_list.do</a><a class="chip url" href="{BASE}/sys_user_group_list.do">↗ sys_user_group_list.do</a></div>
+  <div class="chips"><span class="chip do">✓ Roles via groups</span><span class="chip do">✓ Test as non-admin</span><span class="chip do">✓ Explicit delete ACL</span><span class="chip dont">✗ Test only as admin</span><span class="chip dont">✗ Direct user→role</span><span class="chip dont">✗ Properties client-side</span></div>
+  <p class="note-sm">Full visual path (all chapters): <a href="VISUAL_FROM_SCRATCH_00_16.html">VISUAL_FROM_SCRATCH_00_16.html</a></p>
+</div>
+<div class="ok">
+<p><strong>Studio-only from scratch:</strong> Security and configuration in ServiceNow UI. Requires 01 Development tables and Script Includes first.</p>
+<p>Also open: <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Direct Links</a> · <a href="SCHEMA_AND_DATA.html">Schema</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All Objects</a> · Previous: <a href="01_DEVELOPMENT.html">01 Development</a></p>
+</div>
+<h2 id="how-objects-relate">How administration objects relate</h2>
+<div class="ok">
+<pre style="white-space:pre-wrap;font-family:var(--mono);font-size:.85rem;background:#0b1220;color:#e2e8f0;padding:1rem;border-radius:12px">
+01 Development (tables, Script Includes, BR)
+        │
+        ▼
+  Part 1 Roles (4 scoped roles)
+        │
+        ▼
+  Part 2 Groups (grant roles to lab users)
+        │
+        ▼
+  Part 3 Users (employee1, manager1, hradmin, integration)
+        │
+        ├──────────────────┐
+        ▼                  ▼
+  Part 4 ACLs          Part 5 System Properties (9 config keys)
+  (read/write/create   (annual_days, notify, ERP endpoint…)
+   on req_v2 via SI)
+        │
+        ▼
+  Part 6 Update Set promotion (export to target)
+</pre>
+<p><strong>Security flow:</strong> User → Group → Role → ACL script (HRLXProSecurityUtilsV2) → req_v2 access. Properties drive accrual job, notifications, portal page id.</p>
+</div>
+
+<hr />
+
+<h2 id="rule0">Rule 0 — Before any object (Application + Update Set + Studio)</h2>
+<p>Repeat these checks before creating or editing any application file. This section is also <strong>section 00 Update Set</strong> — create the capture set first.</p>
+<ol>
+  <li><span class="step-num">Application picker</span> — top-right globe / application menu → select <strong>HR Leave</strong> (<code>x_786686_hr_leave</code>). Never leave <em>Global</em> selected when creating scoped artifacts.</li>
+  <li><span class="step-num">Update Set</span> — All → <strong>System Update Sets → Local Update Sets</strong> → <strong>New</strong>:
+    <table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+    <tr><td>Name</td><td><code>HR Leave – Build</code></td></tr>
+    <tr><td>Application</td><td>HR Leave</td></tr>
+    <tr><td>State</td><td>In Progress</td></tr>
+    <tr><td>Description</td><td>Captures all HR Leave lab artifacts</td></tr></table>
+    After submit: open the record → click <strong>Make Current</strong>. Direct list: <a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a>
+  </li>
+  <li><span class="step-num">Open Studio</span> — <a href="{BASE}/$studio.do">{BASE}/$studio.do</a> → confirm header shows <strong>HR Leave</strong>.</li>
+</ol>
+<div class="warn"><p>If artifacts land in Global scope, delete them and recreate under HR Leave. ACLs and events created globally will not behave correctly for this app.</p></div>
+<div class="demo-box"><p><strong>Verify Update Set:</strong> Create a test Script Include in Studio → open <strong>HR Leave – Build</strong> → Related List <strong>Customer Updates</strong> shows the new file.</p></div>
+
+<hr />
+
+<h2 id="part-1-roles">Part 1: Roles</h2>
+<h3>Purpose</h3>
+<p>Defines four scoped roles for employee self-service, manager approval, HR admin, and integration REST access.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> Studio → <strong>Create Application File → Role</strong> OR <strong>System Security → Roles</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">{BASE}/sys_user_role_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="01_DEVELOPMENT.html#part-1-application">Part 1: Application Setup</a> (01 Development).</li><li>Rule 0 Update Set current.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><thead><tr><th>Field</th><th>Suggested value</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td><code>x_786686_hr_leave.employee</code></td></tr>
+<tr><td><strong>Description</strong></td><td>Submit and view own leave</td></tr>
+<tr><td>Assignable by</td><td>hr_admin</td></tr>
+</tbody></table>
+<p>Repeat for three more roles:</p>
+<table class="field-table"><thead><tr><th>Name</th><th>Description</th><th>Assignable by</th></tr></thead>
+<tbody>
+<tr><td><code>x_786686_hr_leave.employee</code></td><td>Submit and view own leave</td><td>hr_admin</td></tr>
+<tr><td><code>x_786686_hr_leave.manager</code></td><td>Approve team leave</td><td>hr_admin</td></tr>
+<tr><td><code>x_786686_hr_leave.hr_admin</code></td><td>Full HR Leave admin</td><td>admin</td></tr>
+<tr><td><code>x_786686_hr_leave.integration</code></td><td>REST / integration user</td><td>admin</td></tr>
+</tbody></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>For each row: Studio → Role → New.</li>
+<li><strong>Name</strong> = scoped role name. <strong>Description</strong> as table. Application = HR Leave.</li>
+<li>Submit. Repeat four times.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Four roles filtered by x_786686_hr_leave.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Assign employee role via group in Part 2 → user inherits role after login.</p></div>
+
+<hr />
+<h2 id="part-2-groups">Part 2: Groups</h2>
+<h3>Purpose</h3>
+<p>Assignment groups that grant scoped roles to lab users.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>User Administration → Groups</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_user_group_list.do">{BASE}/sys_user_group_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-1-roles">Part 1: Roles</a> exist.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><thead><tr><th>Field</th><th>Suggested value</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td>HRLX Employees</td></tr>
+<tr><td>Group Roles</td><td>x_786686_hr_leave.employee</td></tr>
+<tr><td>Members</td><td>employee1 (after Part 3)</td></tr>
+</tbody></table>
+<table class="field-table"><thead><tr><th>Group name</th><th>Group Roles</th><th>Members</th></tr></thead>
+<tbody>
+<tr><td>HRLX Employees</td><td>x_786686_hr_leave.employee</td><td>employee1</td></tr>
+<tr><td>HRLX Managers</td><td>x_786686_hr_leave.manager, employee</td><td>manager1</td></tr>
+<tr><td>HRLX HR Admins</td><td>x_786686_hr_leave.hr_admin</td><td>hradmin</td></tr>
+<tr><td>HRLX Integration</td><td>x_786686_hr_leave.integration, rest_service</td><td>hrlx.integration</td></tr>
+</tbody></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Groups → New → <strong>Name</strong> from table.</li>
+<li>Related list <strong>Group Roles</strong> → Edit → add scoped roles.</li>
+<li>Related list <strong>Users</strong> → add members.</li>
+<li>Repeat for all four groups.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>User record → Roles related list shows inherited group roles.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Impersonate employee1 → roles include employee.</p></div>
+
+<hr />
+<h2 id="part-3-users">Part 3: Users (lab matrix)</h2>
+<h3>Purpose</h3>
+<p>Four lab users for E2E testing.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>User Administration → Users</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_user_list.do">{BASE}/sys_user_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-2-groups">Part 2: Groups</a> ready.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><thead><tr><th>Field</th><th>Suggested value</th></tr></thead>
+<tbody>
+<tr><td><strong>User ID</strong></td><td>employee1</td></tr>
+<tr><td><strong>First name / Last name</strong></td><td>Lab Employee</td></tr>
+<tr><td><strong>Email</strong></td><td>employee1@lab.local</td></tr>
+<tr><td>Active</td><td>true</td></tr>
+<tr><td>Group</td><td>HRLX Employees</td></tr>
+</tbody></table>
+<table class="field-table"><thead><tr><th>User ID</th><th>Name</th><th>Email</th><th>Group</th></tr></thead>
+<tbody>
+<tr><td>employee1</td><td>Lab Employee</td><td>employee1@lab.local</td><td>HRLX Employees</td></tr>
+<tr><td>manager1</td><td>Lab Manager</td><td>manager1@lab.local</td><td>HRLX Managers</td></tr>
+<tr><td>hradmin</td><td>Lab HR Admin</td><td>hradmin@lab.local</td><td>HRLX HR Admins</td></tr>
+<tr><td>hrlx.integration</td><td>Integration Bot</td><td>hrlx.integration@lab.local</td><td>HRLX Integration</td></tr>
+</tbody></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Users → New for each row. Set password per instance policy.</li>
+<li>Active = true. Email required for notifications (chapter 06).</li>
+<li>Add to group via Groups related list.</li>
+<li>Seed <a href="01_DEVELOPMENT.html#part-2-table-employee">employee_v2</a>: employee1 user, manager = manager1, Employee ID E-1001.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Impersonate each user successfully.</li><li>employee_v2 links employee1 → manager1.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>employee1 creates req_v2 → u_approver_user = manager1 after save (BR1).</p></div>
+
+<hr />
+<h2 id="part-4-acls">Part 4: ACLs</h2>
+<h3>Purpose</h3>
+<p>Record and field ACLs enforce who can read, write, and create leave requests using HRLXProSecurityUtilsV2.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>System Security → Access Control (ACL)</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">{BASE}/sys_security_acl_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="01_DEVELOPMENT.html#part-7-script-include-security">Part 7: HRLXProSecurityUtilsV2</a> (01).</li><li><a href="#part-1-roles">Part 1: Roles</a>.</li><li>Elevate <strong>security_admin</strong>.</li></ul>
+<h3>Form fields</h3>
+<h4>ACL 1 — read</h4>
+<table class="field-table"><tr><th>Field</th><th>Suggested value</th></tr>
+<tr><td>Type</td><td>record</td></tr><tr><td>Operation</td><td>read</td></tr>
+<tr><td><strong>Name</strong></td><td><code>x_786686_hr_leave_req_v2</code></td></tr>
+<tr><td>Advanced</td><td>Checked</td></tr>
+<tr><td>Active</td><td>true</td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr>
+<tr><td>Script</td><td><code>answer = new x_786686_hr_leave.HRLXProSecurityUtilsV2().canReadLeave(current);</code></td></tr></table>
+<h4>ACL 2 — write</h4>
+<table class="field-table"><tr><th>Field</th><th>Suggested value</th></tr>
+<tr><td>Operation</td><td>write</td></tr>
+<tr><td>Script</td><td><code>answer = new x_786686_hr_leave.HRLXProSecurityUtilsV2().canWriteLeave(current);</code></td></tr></table>
+<h4>ACL 3 — create</h4>
+<table class="field-table"><tr><th>Field</th><th>Suggested value</th></tr>
+<tr><td>Operation</td><td>create</td></tr>
+<tr><td>Requires role</td><td>x_786686_hr_leave.employee</td></tr>
+<tr><td>Script</td><td><code>answer = gs.hasRole('x_786686_hr_leave.employee') || gs.hasRole('x_786686_hr_leave.hr_admin') || gs.hasRole('x_786686_hr_leave.integration');</code></td></tr></table>
+<h4>ACL 4 — field write u_approver_user</h4>
+<table class="field-table"><tr><th>Field</th><th>Suggested value</th></tr>
+<tr><td><strong>Name</strong></td><td><code>x_786686_hr_leave_req_v2.u_approver_user</code></td></tr>
+<tr><td>Operation</td><td>write</td></tr>
+<tr><td>Script</td><td><code>answer = gs.hasRole('x_786686_hr_leave.hr_admin');</code></td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Elevate security_admin. Application = HR Leave.</li>
+<li>ACL → New for each table above. Active = true.</li>
+<li>Paste scripts. Save all four.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul>
+<li>employee1 sees own requests only.</li>
+<li>manager1 sees direct reports.</li>
+<li>hradmin sees all.</li>
+<li>employee1 direct URL to another user's record → denied.</li>
+</ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Impersonate employee1 → open coworker sys_id → Access denied.</p></div>
+
+<hr />
+<h2 id="part-5-properties">Part 5: System Properties</h2>
+<h3>Purpose</h3>
+<p>Scoped configuration — create all 9 properties from the professional catalog.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>System Properties</strong> (Application picker = HR Leave)</nav>
+<h3>Direct URL</h3>
+<div class="url-box">
+  <a href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">All HR Leave properties</a>
+  <a href="{BASE}/sys_properties.do">New property</a>
+  <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html#props">Full property catalog</a>
+</div>
+<h3>Prerequisites</h3>
+<ul><li><a href="01_DEVELOPMENT.html#part-1-application">Part 1: Application Setup</a>.</li></ul>
+<h3>Form fields — create each row</h3>
+<table class="field-table">
+<thead><tr><th>Label</th><th>Name</th><th>Type</th><th>Value</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>Annual Days</td><td><code>x_786686_hr_leave.config.annual_days</code></td><td>integer</td><td><strong>20</strong></td><td>Default annual entitlement</td></tr>
+<tr><td>Sick Days</td><td><code>x_786686_hr_leave.config.sick_days</code></td><td>integer</td><td><strong>10</strong></td><td>Default sick entitlement</td></tr>
+<tr><td>Notify Enabled</td><td><code>x_786686_hr_leave.config.notify_enabled</code></td><td>true|false</td><td><strong>true</strong></td><td>Master email switch</td></tr>
+<tr><td>Min Notice Days</td><td><code>x_786686_hr_leave.config.min_notice_days</code></td><td>integer</td><td><strong>3</strong></td><td>Min days before start</td></tr>
+<tr><td>Max Days Per Request</td><td><code>x_786686_hr_leave.config.max_days_per_request</code></td><td>integer</td><td><strong>30</strong></td><td>Max days per request</td></tr>
+<tr><td>ERP Endpoint</td><td><code>x_786686_hr_leave.config.erp_endpoint</code></td><td>string</td><td><strong>https://webhook.site/…</strong></td><td>Outbound ERP URL</td></tr>
+<tr><td>Integration User</td><td><code>x_786686_hr_leave.config.integration_user</code></td><td>string</td><td><strong>hrlx.integration</strong></td><td>Inbound API user id</td></tr>
+<tr><td>Number Prefix</td><td><code>x_786686_hr_leave.config.number_prefix</code></td><td>string</td><td><strong>HRLX</strong></td><td>u_number prefix</td></tr>
+<tr><td>Portal Page ID</td><td><code>x_786686_hr_leave.config.portal_page_id</code></td><td>string</td><td><strong>hrlx_home</strong></td><td>Service Portal page id</td></tr>
+</tbody>
+</table>
+<p>On every property form: <strong>Application</strong> = HR Leave · <strong>Ignore cache</strong> = false · <strong>Private</strong> = false.</p>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Application picker = HR Leave.</li>
+<li>Open <a href="{BASE}/sys_properties.do">New property</a>.</li>
+<li>Fill Label, Name, Type, Value, Description from one row → Submit.</li>
+<li>Repeat for all 9 rows.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul>
+<li>Background: <code>gs.info(gs.getProperty('x_786686_hr_leave.config.annual_days'));</code> → 20.</li>
+<li>Nine properties visible in scoped list.</li>
+</ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Run accrual job (chapter 06) → new balances use <code>annual_days</code>.</p></div>
+
+<hr />
+<h2 id="part-6-update-set">Part 6: Update Set Promotion</h2>
+<h3>Purpose</h3>
+<p>Complete and export HR Leave – Build for target instance promotion.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> <strong>System Update Sets → Local Update Sets</strong></nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a> · <a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a></div>
+<h3>Prerequisites</h3>
+<ul><li>All Parts 1–5 captured in HR Leave – Build.</li><li><a href="01_DEVELOPMENT.html#rule0">Rule 0</a> Update Set was current during creates.</li></ul>
+<h3>Form fields</h3>
+<table class="field-table"><tr><th>Field</th><th>Suggested value</th></tr>
+<tr><td>Name</td><td>HR Leave – Build</td></tr>
+<tr><td>State</td><td>Complete (when ready to export)</td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li><strong>Complete local set</strong> — HR Leave – Build → State = Complete.</li>
+<li><strong>Export</strong> — Retrieved Update Sets → Import from source OR XML export.</li>
+<li><strong>Target instance</strong> — Import → Preview conflicts → Commit.</li>
+<li><strong>Post-import</strong> — Recreate users/groups if not in set; verify 9 properties; run accrual job once.</li>
+<li><strong>Smoke test</strong> — employee1 submit → manager1 approve → balance updated.</li>
+</ol>
+<div class="warn"><p>Never promote Global artifacts. Confirm Application = HR Leave on every captured file before export.</p></div>
+<h3>Verify checklist</h3>
+<ul><li>Customer Updates lists roles, ACLs, properties.</li><li>No Global-scope rows in set.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Import to second PDI → smoke test E2E leave cycle.</p></div>
+
+<h2 id="admin-verify">Administration verify checklist</h2>
+<div class="ok"><p>Complete after Parts 1–6 (Roles through Update Set promotion).</p></div>
+<ol>
+<li>Four scoped roles exist under HR Leave.</li>
+<li>Four groups with correct role assignments and lab users.</li>
+<li>Four lab users impersonate successfully; employee_v2 seeded.</li>
+<li>Four ACLs active; employee isolation verified.</li>
+<li>Nine system properties readable via gs.getProperty.</li>
+<li>Update Set Complete and ready for export.</li>
+</ol>
+<nav class="chapter-nav"><a href="01_DEVELOPMENT.html">← Chapter 01</a><span>Chapter 02</span><a href="03_SERVICE_CATALOG.html">Chapter 03 →</a></nav>
+</article>
+    <p class="footer">HR Leave · Studio from scratch · scope x_786686_hr_leave · replace {BASE} with your instance URL</p>
+  </main>
+
+  <script src="assets/docs.js"></script>
+  <script>
+    (function () {
+      var BASE = 'https://dev398980.service-now.com';
+      document.querySelectorAll('a[href*="{BASE}"]').forEach(function (a) {
+        a.href = a.href.split('{BASE}').join(BASE);
+      });
+    })();
+  </script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Practical Flow Designer From Scratch | HR Leave + VR</title>
+  <meta name="description" content="Visual-first Flow Designer tutorial: when to use Flow vs BR vs Fluent Flow(), HR Leave approval lab, VR VI remediation flow, triggers, actions, logic, URLs, SDK can/cannot." />
+  <link rel="stylesheet" href="assets/docs.css" />
+  <style>
+    .can { background: #f0fdf4; border-left: 4px solid #047857; border-radius: 10px; padding: .65rem .85rem; margin: .6rem 0; border: 1px solid var(--line); }
+    .cant { background: #fef2f2; border-left: 4px solid #b91c1c; border-radius: 10px; padding: .65rem .85rem; margin: .6rem 0; border: 1px solid var(--line); }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Flow Designer · Practical Lab</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="09_MODULES_AND_INTEGRATION.html">Ch.09</a>
+      <a href="PRACTICAL_SECOPS_VRO_FROM_SCRATCH.html">SecOps / VRO</a>
+      <a href="SDK_WINDOWS_FULL_CYCLE_CAN_CANNOT.html">SDK Windows</a>
+      <span class="badge">WFA</span>
+      <span class="badge">{BASE}</span>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <section class="hero">
+      <h1>Practical Flow Designer — From Scratch</h1>
+      <p>Build automation you can see: pick the right tool (Flow vs BR vs Fluent), run the HR Leave approval lab, then a VR vulnerable-item remediation flow — with direct URLs and SDK boundaries.</p>
+      <div class="meta-grid">
+        <div><strong>Tables</strong><code style="color:#fff">x_786686_hr_leave_req_v2</code> · <code style="color:#fff">sn_vul_vulnerable_item</code></div>
+        <div><strong>UI</strong>Flow Designer / Workflow Studio</div>
+        <div><strong>SDK</strong><code style="color:#fff">Flow()</code> · transform</div>
+        <div><strong>Time</strong>~60–90 min</div>
+      </div>
+    </section>
+
+    <div class="url-box"><strong>Open these first</strong>
+      <a href="{BASE}/now/flow-designer">Flow Designer</a>
+      <a href="{BASE}/sys_hub_flow_list.do">Flows list</a>
+      <a href="{BASE}/sysapproval_approver_list.do">Approvals</a>
+      <a href="{BASE}/now/workflow-studio">Workflow Studio</a>
+      <a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+      <a href="{BASE}/sn_vul_vulnerable_item_list.do">Vulnerable Items</a>
+    </div>
+
+    <article class="content">
+      <div class="viz-banner">
+        <h2>How to use this page</h2>
+        <p>Read the dark <strong>flow</strong> boards left→right · follow <strong>stepboard</strong> labs · click <strong>url-box</strong> links · treat green/red <strong>chips</strong> as go-live gates.</p>
+      </div>
+
+      <div class="flow">
+        <div class="n"><b>1</b>Choose tool</div><span class="arrow">→</span>
+        <div class="n"><b>2</b>Create Flow</div><span class="arrow">→</span>
+        <div class="n"><b>3</b>Trigger</div><span class="arrow">→</span>
+        <div class="n"><b>4</b>Actions</div><span class="arrow">→</span>
+        <div class="n"><b>5</b>Logic</div><span class="arrow">→</span>
+        <div class="n"><b>6</b>Activate</div><span class="arrow">→</span>
+        <div class="n"><b>7</b>Test</div>
+      </div>
+
+      <nav class="toc" aria-label="On this page">
+        <strong>Jump</strong>
+        <ul>
+          <li><a href="#choose">§1 Flow vs BR vs SDK</a></li>
+          <li><a href="#urls">§2 Direct URLs</a></li>
+          <li><a href="#triggers">§3 Triggers</a></li>
+          <li><a href="#actions">§4 Actions</a></li>
+          <li><a href="#logic">§5 Flow logic</a></li>
+          <li><a href="#lab-hr">§6 Lab A — Leave approval</a></li>
+          <li><a href="#lab-vr">§7 Lab B — VR VI remediation</a></li>
+          <li><a href="#screens">§8 Canvas screens</a></li>
+          <li><a href="#best">§9 Do / Don't</a></li>
+          <li><a href="#sdk">§10 SDK can / cannot</a></li>
+          <li><a href="#refs">§11 Related docs</a></li>
+        </ul>
+      </nav>
+
+      <!-- §1 -->
+      <h2 id="choose">§1 — When to use Flow Designer vs Business Rule vs Fluent <code>Flow()</code></h2>
+      <div class="glance">
+        <h3>At a glance — pick one primary tool</h3>
+        <div class="grid3">
+          <div class="box"><strong>Business Rule</strong><p>Same-transaction field defaults, sync validation, thin “set value before insert”. Keep short. No multi-step approvals.</p></div>
+          <div class="box"><strong>Flow Designer (UI)</strong><p>Approvals, multi-step, spokes, notifications, wait conditions, visible to process owners. First choice for new automation.</p></div>
+          <div class="box"><strong>Fluent <code>Flow()</code></strong><p>Same WFA artefact as code for CI/CD. Build in UI first if complex, then <code>transform</code> — or author Fluent when team owns SDK.</p></div>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="lane adm">
+          <h3>Use Business Rule when…</h3>
+          <ul>
+            <li>Must run in the same DB transaction</li>
+            <li>Set <code>u_approver_user</code> before save (HR Leave BR1)</li>
+            <li>Abort invalid insert with <code>current.setAbortAction(true)</code></li>
+          </ul>
+        </div>
+        <div class="lane impl">
+          <h3>Use Flow Designer when…</h3>
+          <ul>
+            <li>Ask for Approval / wait for answer</li>
+            <li>Create Change + notify + update VI</li>
+            <li>IntegrationHub spoke actions</li>
+            <li>Non-developers must read the process</li>
+          </ul>
+        </div>
+        <div class="lane dev">
+          <h3>Use Fluent Flow() when…</h3>
+          <ul>
+            <li>App is already SDK-first</li>
+            <li>You need reproducible install across instances</li>
+            <li>You transform UI flows into source of truth</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="chips">
+        <span class="chip do">✓ BR for sync field math · Flow for process</span>
+        <span class="chip do">✓ One owner per process (avoid BR + Flow both updating state)</span>
+        <span class="chip dont">✗ Long Glide loops inside BR that should be Flow + For Each</span>
+        <span class="chip dont">✗ Duplicate approval logic in Script Include and Flow</span>
+      </div>
+
+      <!-- §2 -->
+      <h2 id="urls">§2 — Direct URLs &amp; Filter Navigator</h2>
+      <table class="field-table">
+        <thead><tr><th>What</th><th>Filter / path</th><th>URL</th></tr></thead>
+        <tbody>
+          <tr><td>Flow Designer</td><td>Process Automation → Flow Designer</td><td><a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a></td></tr>
+          <tr><td>Flows list</td><td>Process Automation → Flows</td><td><a href="{BASE}/sys_hub_flow_list.do">{BASE}/sys_hub_flow_list.do</a></td></tr>
+          <tr><td>Subflows</td><td>Process Automation → Subflows</td><td><a href="{BASE}/sys_hub_flow_list.do?sysparm_query=type=subflow">{BASE}/…type=subflow</a></td></tr>
+          <tr><td>Actions</td><td>Process Automation → Actions</td><td><a href="{BASE}/sys_hub_action_type_definition_list.do">{BASE}/sys_hub_action_type_definition_list.do</a></td></tr>
+          <tr><td>Approvals</td><td>My Approvals</td><td><a href="{BASE}/sysapproval_approver_list.do">{BASE}/sysapproval_approver_list.do</a></td></tr>
+          <tr><td>Workflow Studio</td><td>Workflow Studio (playbooks / modern PA)</td><td><a href="{BASE}/now/workflow-studio">{BASE}/now/workflow-studio</a></td></tr>
+          <tr><td>Flow contexts</td><td>Flow execution history</td><td><a href="{BASE}/sys_flow_context_list.do">{BASE}/sys_flow_context_list.do</a></td></tr>
+          <tr><td>Spokes</td><td>IntegrationHub → Spokes</td><td><a href="{BASE}/sys_hub_spoke_list.do">{BASE}/sys_hub_spoke_list.do</a></td></tr>
+        </tbody>
+      </table>
+
+      <!-- §3 -->
+      <h2 id="triggers">§3 — Triggers (what starts the flow)</h2>
+      <div class="stepboard">
+        <div class="s"><b>Record Created</b><span>New row only · use when process starts at insert</span></div>
+        <div class="s"><b>Record Updated</b><span>Field change · HR Leave: state → submitted</span></div>
+        <div class="s"><b>Record Created or Updated</b><span>Broader · tighten with condition</span></div>
+        <div class="s"><b>Scheduled</b><span>Daily VI SLA chase · accrual jobs prefer Scheduled Script if simple</span></div>
+        <div class="s"><b>Service Catalog</b><span>After catalog submit · variables as inputs</span></div>
+        <div class="s"><b>Inbound Email</b><span>Parse subject/body · create / update ticket</span></div>
+      </div>
+      <div class="ok"><p><strong>HR Leave rule:</strong> requests are often created as <code>draft</code> then updated to <code>submitted</code> — use <strong>Record Updated</strong> with condition <code>u_state = submitted</code> (and previous ≠ submitted if available).</p></div>
+      <div class="warn"><p><strong>VR rule:</strong> VI can be created by import in bulk — prefer Updated when priority/state crosses a threshold, or Created with assignment empty, so you do not double-fire.</p></div>
+
+      <!-- §4 -->
+      <h2 id="actions">§4 — Core actions you will use constantly</h2>
+      <table class="field-table">
+        <thead><tr><th>Action</th><th>Use for</th><th>Lab tip</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Ask for Approval</strong></td><td>Manager / risk owner gate</td><td>Rules: Anyone approves · Approver = field reference</td></tr>
+          <tr><td><strong>Create Record</strong></td><td>Change, task, notification log</td><td>Map VI → CHG short description</td></tr>
+          <tr><td><strong>Update Record</strong></td><td>Set state approved / assigned</td><td>Never fight a BR updating the same field</td></tr>
+          <tr><td><strong>Send Notification</strong></td><td>Email / workplace alert</td><td>Or fire event + Notification record</td></tr>
+          <tr><td><strong>Look Up Records</strong></td><td>Find open VIs / manager / CI</td><td>Feed For Each</td></tr>
+          <tr><td><strong>Log</strong></td><td>Debug without gs.info in BR</td><td>Keep in lab; strip noise for prod</td></tr>
+        </tbody>
+      </table>
+
+      <!-- §5 -->
+      <h2 id="logic">§5 — Flow logic (If / For Each / Error)</h2>
+      <div class="flow">
+        <div class="n"><b>IF</b>Approved?</div><span class="arrow">→</span>
+        <div class="n"><b>THEN</b>Update state</div><span class="arrow">→</span>
+        <div class="n"><b>ELSE</b>Reject path</div>
+      </div>
+      <div class="flow">
+        <div class="n"><b>Look Up</b>open VIs</div><span class="arrow">→</span>
+        <div class="n"><b>For Each</b>VI</div><span class="arrow">→</span>
+        <div class="n"><b>Create</b>task</div>
+      </div>
+      <ul>
+        <li><strong>If / Else</strong> — branch on approval outcome, priority, empty fields.</li>
+        <li><strong>For Each</strong> — iterate Look Up results; cap batch size for import storms.</li>
+        <li><strong>Try / Error handler</strong> (where available) — catch spoke failures; set work note; do not leave VI half-updated silently.</li>
+        <li><strong>Wait for condition</strong> — pause until field changes (rescan verified).</li>
+      </ul>
+
+      <!-- §6 LAB HR -->
+      <h2 id="lab-hr">§6 — Lab A: HR Leave approval (from scratch)</h2>
+      <div class="stepboard">
+        <div class="s"><b>A0</b><span>Prereq: table <code>x_786686_hr_leave_req_v2</code>, fields <code>u_state</code>, <code>u_approver_user</code>, BR1 fills approver</span></div>
+        <div class="s"><b>A1</b><span>Open <a href="{BASE}/now/flow-designer">Flow Designer</a> → Create Flow → Name <code>HRLX Leave Approval</code> · App HR Leave</span></div>
+        <div class="s"><b>A2</b><span>Trigger: Record Updated · Table leave req · Condition <code>u_state</code> is submitted</span></div>
+        <div class="s"><b>A3</b><span>Action: Ask for Approval · Approver = Trigger → Approver field · Anyone approves</span></div>
+        <div class="s"><b>A4</b><span>If Approved → Update Record <code>u_state = approved</code></span></div>
+        <div class="s"><b>A5</b><span>Else → Update Record <code>u_state = rejected</code></span></div>
+        <div class="s"><b>A6</b><span>Save → Activate → test as employee + manager</span></div>
+      </div>
+
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+          <span class="ttl">Flow Designer · HRLX Leave Approval</span><span class="path">sys_hub_flow</span></div>
+        <div class="body">
+          <div class="side">
+            <div class="on">Trigger</div><div>Approval</div><div>If</div><div>Update</div>
+          </div>
+          <div class="main">
+            <div class="row"><span>Trigger</span><span>Updated · req_v2 · u_state=submitted</span></div>
+            <div class="row"><span>Ask Approval</span><span>u_approver_user · Anyone</span></div>
+            <div class="row"><span>If Approved</span><span>u_state → approved</span></div>
+            <div class="row"><span>Else</span><span>u_state → rejected</span></div>
+          </div>
+        </div>
+        <div class="cap"><strong>Screen</strong> — canvas order must match A2→A5. BR3 (audit/balance) reacts after state update.</div>
+      </div>
+
+      <div class="pre-wrap"><pre><code># Proof after activate
+# 1. Impersonate employee → create leave → set submitted
+# 2. Open {BASE}/sysapproval_approver_list.do as manager → Approve
+# 3. Confirm req u_state = approved
+# 4. Flow context: {BASE}/sys_flow_context_list.do (state COMPLETE)</code></pre></div>
+
+      <div class="chips">
+        <span class="chip do">✓ Activate only after Save shows no red errors</span>
+        <span class="chip do">✓ Test with impersonation</span>
+        <span class="chip dont">✗ Trigger on Created only if draft→submit pattern exists</span>
+        <span class="chip dont">✗ Leave flow inactive “for later” in shared PDI</span>
+      </div>
+
+      <!-- §7 LAB VR -->
+      <h2 id="lab-vr">§7 — Lab B: VR Vulnerable Item → remediation Change</h2>
+      <p>Companion to <a href="PRACTICAL_SECOPS_VRO_FROM_SCRATCH.html">Practical SecOps + VRO</a>. Goal: when a high/critical VI is created (or priority rises), notify assignee and optionally create a Change.</p>
+      <div class="flow">
+        <div class="n"><b>VI</b>priority 1–2</div><span class="arrow">→</span>
+        <div class="n"><b>Look Up</b>CI owner</div><span class="arrow">→</span>
+        <div class="n"><b>Update</b>assign</div><span class="arrow">→</span>
+        <div class="n"><b>Notify</b></div><span class="arrow">→</span>
+        <div class="n"><b>Create</b>CHG</div>
+      </div>
+
+      <div class="stepboard">
+        <div class="s"><b>B0</b><span>Plugin VR available · sample VI on <a href="{BASE}/sn_vul_vulnerable_item_list.do">VI list</a></span></div>
+        <div class="s"><b>B1</b><span>Create Flow <code>VR VI High Priority Triage</code> (scoped app or global — prefer scoped wrapper app)</span></div>
+        <div class="s"><b>B2</b><span>Trigger: Record Created or Updated · <code>sn_vul_vulnerable_item</code> · priority IN 1,2 · state open</span></div>
+        <div class="s"><b>B3</b><span>If assigned_to empty → Update Record from CI support group / owner</span></div>
+        <div class="s"><b>B4</b><span>Send Notification or Log + work note</span></div>
+        <div class="s"><b>B5</b><span>(Optional) Create Record <code>change_request</code> linked to VI / CI</span></div>
+        <div class="s"><b>B6</b><span>Activate on sub-prod first · watch <a href="{BASE}/sys_flow_context_list.do">contexts</a> during scanner import</span></div>
+      </div>
+
+      <div class="warn"><p><strong>Import storm:</strong> scanner imports can create thousands of VIs. Add conditions (priority, business service critical) and prefer assignment rules in VR for bulk routing; use Flow for exceptions and Change creation policy.</p></div>
+
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+          <span class="ttl">Flow Designer · VR VI High Priority Triage</span><span class="path">sn_vul_vulnerable_item</span></div>
+        <div class="body">
+          <div class="side">
+            <div class="on">Trigger</div><div>If</div><div>Update</div><div>Notify</div><div>CHG</div>
+          </div>
+          <div class="main">
+            <div class="row"><span>Trigger</span><span>VI · priority 1/2 · open</span></div>
+            <div class="row"><span>If</span><span>assigned_to EMPTY</span></div>
+            <div class="row"><span>Update</span><span>assign from CI owner</span></div>
+            <div class="row"><span>Create</span><span>change_request (optional)</span></div>
+          </div>
+        </div>
+        <div class="cap"><strong>Screen</strong> — keep first release read-notify-assign; add Create Change only after Lab B0 proves data quality.</div>
+      </div>
+
+      <!-- §8 -->
+      <h2 id="screens">§8 — Canvas orientation (what you should see)</h2>
+      <div class="modmap">
+        <a href="{BASE}/now/flow-designer"><h4>Left rail</h4><p>Trigger · Actions · Flow Logic · Data</p><span class="go">Open →</span></a>
+        <a href="{BASE}/now/flow-designer"><h4>Center</h4><p>Ordered steps · drag reorder</p><span class="go">Open →</span></a>
+        <a href="{BASE}/now/flow-designer"><h4>Right / pills</h4><p>Data pills from trigger &amp; prior steps</p><span class="go">Open →</span></a>
+        <a href="{BASE}/sys_flow_context_list.do"><h4>Runtime</h4><p>Contexts · errors · waiting</p><span class="go">Open →</span></a>
+      </div>
+
+      <!-- §9 -->
+      <h2 id="best">§9 — Best practices (Do / Don't)</h2>
+      <div class="chips">
+        <span class="chip do">✓ Name flows with app prefix (HRLX / VR)</span>
+        <span class="chip do">✓ Tight trigger conditions before Activate</span>
+        <span class="chip do">✓ One writer of each state field</span>
+        <span class="chip do">✓ Test with impersonation + flow context</span>
+        <span class="chip do">✓ Prefer Subflow for repeated blocks</span>
+        <span class="chip dont">✗ gs.print debugging left in production actions</span>
+        <span class="chip dont">✗ Flow + BR both flipping the same state</span>
+        <span class="chip dont">✗ Unbounded For Each on full VI table</span>
+        <span class="chip dont">✗ Activate on prod without sub-prod soak</span>
+      </div>
+
+      <!-- §10 SDK -->
+      <h2 id="sdk">§10 — SDK side: what <code>Flow()</code> can and cannot do</h2>
+      <div class="can">
+        <p><strong>CAN:</strong> Define Workflow Automation flows in Fluent (<code>Flow()</code> / WFA APIs); ship with <code>build</code> + <code>install</code>; activate on install unless <code>--skip-flow-activation</code>; pull UI-built flows with <code>npx @servicenow/sdk transform --table sys_hub_flow --auth DEV</code>; author subflows and reusable actions where APIs exist; study offline with <code>npx @servicenow/sdk explain flow-api</code> and <code>explain wfa-flow-guide</code>.</p>
+      </div>
+      <div class="cant">
+        <p><strong>CANNOT:</strong> Replace Flow Designer’s live data-pill picker / design-time UX; debug mid-canvas with live record pills from the CLI; own every playbook / experience-only activity via Fluent; assume <code>install</code> merges gently — it deploys your app package (coordinate so you do not wipe teammates’ unpublished UI-only edits). Runtime VI/user data is not in the Fluent package.</p>
+      </div>
+
+      <div class="pre-wrap"><pre><code># Windows PowerShell — after UI flow is stable
+cd C:\SVCProject\HR_Leave_App\servicenow-ai-workspace\hr-leave-sdk
+npx @servicenow/sdk explain flow-api
+npx @servicenow/sdk explain wfa-flow-guide
+npx @servicenow/sdk transform --table sys_hub_flow --auth DEV
+npx @servicenow/sdk build
+npx @servicenow/sdk install --auth DEV
+# Optional: do not auto-activate flows
+# npx @servicenow/sdk install --auth DEV --skip-flow-activation</code></pre></div>
+
+      <table class="field-table">
+        <thead><tr><th>Topic</th><th>SDK?</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>WFA Flow / Subflow</td><td class="can">YES</td><td><code>Flow()</code> or UI + transform</td></tr>
+          <tr><td>Ask for Approval step</td><td class="can">YES</td><td>Prefer UI first for pill wiring</td></tr>
+          <tr><td>Design-time picker UX</td><td class="cant">NO</td><td>Platform UI only</td></tr>
+          <tr><td>Playbook-only activities</td><td class="cant">LIMITED</td><td>Workflow Studio / playbook topics</td></tr>
+          <tr><td>Spoke credential secrets</td><td class="cant">NO</td><td>Instance Credential store</td></tr>
+        </tbody>
+      </table>
+
+      <div class="ok"><p>Full Windows install → auth → all commands → can/cannot matrix: <a href="SDK_WINDOWS_FULL_CYCLE_CAN_CANNOT.html">SDK_WINDOWS_FULL_CYCLE_CAN_CANNOT.html</a>. Flag bible: <a href="SDK_CURSOR_FULL_DOCUMENTATION.html">SDK_CURSOR_FULL_DOCUMENTATION.html</a>.</p></div>
+
+      <!-- §11 -->
+      <h2 id="refs">§11 — Related docs</h2>
+      <div class="modmap">
+        <a href="09_MODULES_AND_INTEGRATION.html"><h4>Chapter 09</h4><p>Leave approval walkthrough</p><span class="go">Open →</span></a>
+        <a href="src/flow/approval_flow.html"><h4>Approval flow detail</h4><p>Step-by-step Arabic/EN</p><span class="go">Open →</span></a>
+        <a href="PRACTICAL_SECOPS_VRO_FROM_SCRATCH.html"><h4>SecOps + VRO</h4><p>VI lifecycle + Flow hooks</p><span class="go">Open →</span></a>
+        <a href="PRACTICAL_AI_SERVICENOW_FROM_SCRATCH.html"><h4>Practical AI</h4><p>Agents + Control Tower</p><span class="go">Open →</span></a>
+        <a href="SDK_WINDOWS_FULL_CYCLE_CAN_CANNOT.html"><h4>SDK Windows cycle</h4><p>Install · deploy · can/cannot</p><span class="go">Open →</span></a>
+        <a href="SDK_CURSOR_FULL_DOCUMENTATION.html"><h4>SDK flag reference</h4><p>All 12 commands</p><span class="go">Open →</span></a>
+      </div>
+
+      <div class="chips">
+        <span class="chip url">{BASE}/now/flow-designer</span>
+        <span class="chip url">{BASE}/sys_hub_flow_list.do</span>
+        <span class="chip url">{BASE}/sysapproval_approver_list.do</span>
+        <span class="chip url">{BASE}/sys_flow_context_list.do</span>
+      </div>
+
+      <p class="footer">Practical Flow Designer From Scratch · replace {BASE} · <a href="index.html">Portal</a></p>
+    </article>
+  </main>
+  <script src="assets/docs.js"></script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

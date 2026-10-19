@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Workspaces Complete Guide — دليل مساحات العمل الشامل | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Workspaces Complete Guide — دليل مساحات العمل الشامل</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="workspaces-complete-guide">Workspaces Complete Guide — دليل مساحات العمل الشامل</h1>
+<blockquote>
+<p><strong>Platform:</strong> ServiceNow Australia (Sep 2026)<br />
+دليل شامل لـ Agent Workspace و Configurable Workspace و UI Builder</p>
+</blockquote>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<ol>
+<li><a href="#1-workspace-overview">Workspace Overview</a></li>
+<li><a href="#2-agent-workspace-for-itsm">Agent Workspace for ITSM</a></li>
+<li><a href="#3-csm-configurable-workspace">CSM Configurable Workspace</a></li>
+<li><a href="#4-hr-service-delivery-workspace">HR Service Delivery Workspace</a></li>
+<li><a href="#5-ui-builder">UI Builder</a></li>
+<li><a href="#6-custom-workspace-development">Custom Workspace Development</a></li>
+<li><a href="#7-workspace-components">Workspace Components</a></li>
+<li><a href="#8-hr-leave-workspace">HR Leave Workspace</a></li>
+<li><a href="#9-best-practices">Best Practices</a></li>
+<li><a href="#10-labs">Labs</a></li>
+</ol>
+<hr />
+<h2 id="1-workspace-overview">1. Workspace Overview</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<h3 id="direct-urls">Direct URLs</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Workspace</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agent Workspace</td>
+<td><a href="{BASE}/now/workspace/agent/home">{BASE}/now/workspace/agent/home</a></td>
+</tr>
+<tr>
+<td>CSM Workspace</td>
+<td><a href="{BASE}/now/csm/home">{BASE}/now/csm/home</a></td>
+</tr>
+<tr>
+<td>HR Workspace</td>
+<td><a href="{BASE}/now/hr-agent-workspace/home">{BASE}/now/hr-agent-workspace/home</a></td>
+</tr>
+<tr>
+<td>UI Builder</td>
+<td><a href="{BASE}/now/builder/experience">{BASE}/now/builder/experience</a></td>
+</tr>
+<tr>
+<td>Workspace Admin</td>
+<td><a href="{BASE}/sys_aw_master_config_list.do">{BASE}/sys_aw_master_config_list.do</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="workspace-types">Workspace Types</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agent Workspace</td>
+<td>ITSM agents (incidents, problems, changes)</td>
+</tr>
+<tr>
+<td>CSM Workspace</td>
+<td>Customer service agents (cases, accounts)</td>
+</tr>
+<tr>
+<td>HR Workspace</td>
+<td>HR agents (HR cases, lifecycle events)</td>
+</tr>
+<tr>
+<td>Configurable Workspace</td>
+<td>Custom workspaces via UI Builder</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-agent-workspace-for-itsm">2. Agent Workspace for ITSM</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/now/workspace/agent/home">{BASE}/now/workspace/agent/home</a></p>
+<h3 id="configuration">Configuration</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<pre><code class="language-markdown">**Enable Agent Workspace:**
+1. Navigate: All &gt; Workspace &gt; Agent Workspace &gt; Administration
+2. Activate workspace for tables:
+   - Incident
+   - Problem  
+   - Change Request
+   - Request Item
+
+**Configure Lists:**
+1. Navigate: Agent Workspace &gt; Lists
+2. Create personalized lists:
+   - My Open Incidents
+   - High Priority
+   - Unassigned
+</code></pre>
+<h3 id="declarative-actions">Declarative Actions</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<pre><code class="language-javascript">// Create custom action button
+// Table: sys_declarative_action_assignment
+// Action: Escalate to L2
+
+{
+  &quot;sys_name&quot;: &quot;Escalate to L2&quot;,
+  &quot;table&quot;: &quot;incident&quot;,
+  &quot;action_type&quot;: &quot;server&quot;,
+  &quot;condition&quot;: &quot;state!=6^assignment_group!=L2_Support&quot;,
+  &quot;server_script&quot;: {
+    &quot;script&quot;: &quot;current.assignment_group.setDisplayValue('L2 Support'); current.work_notes = 'Escalated to L2'; current.update();&quot;
+  },
+  &quot;icon&quot;: &quot;arrow-up&quot;,
+  &quot;hint&quot;: &quot;Escalate this incident to L2 Support&quot;
+}
+</code></pre>
+<hr />
+<h2 id="3-csm-configurable-workspace">3. CSM Configurable Workspace</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/now/csm/home">{BASE}/now/csm/home</a></p>
+<h3 id="components">Components</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<pre><code class="language-markdown">**Landing Page:**
+- My Cases list
+- SLA status
+- Quick actions
+- Knowledge search
+
+**Case Form:**
+- Customer info panel
+- Communication timeline
+- Related items
+- Actions bar
+
+**Agent Assist:**
+- Recommended knowledge
+- Similar cases
+- Playbook suggestions
+</code></pre>
+<hr />
+<h2 id="4-hr-service-delivery-workspace">4. HR Service Delivery Workspace</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/now/hr-agent-workspace/home">{BASE}/now/hr-agent-workspace/home</a></p>
+<h3 id="hr-case-configuration">HR Case Configuration</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<pre><code class="language-markdown">**Topics:**
+1. Navigate: HR &gt; Administration &gt; Topics
+2. Create:
+   - Leave Management
+   - Benefits
+   - Payroll
+   - Onboarding
+
+**COE (Centers of Excellence):**
+1. Navigate: HR &gt; Administration &gt; COEs
+2. Create:
+   - Leave &amp; Absence COE
+   - Compensation COE
+</code></pre>
+<hr />
+<h2 id="5-ui-builder">5. UI Builder</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/now/builder/experience">{BASE}/now/builder/experience</a></p>
+<h3 id="create-custom-page">Create Custom Page</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<pre><code class="language-markdown">**Steps:**
+1. Open UI Builder
+2. Create Experience:
+   - Name: HR Leave Experience
+   - App scope: x_786686_hr_leave
+3. Create Page:
+   - Name: Leave Request List
+   - URL path: leave-list
+4. Add Components:
+   - Data resource (GlideRecord)
+   - Repeater
+   - Card components
+</code></pre>
+<h3 id="data-resources">Data Resources</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<pre><code class="language-javascript">// Data Resource: Get Leave Requests
+// Type: GlideRecord
+
+{
+  &quot;table&quot;: &quot;x_786686_hr_leave_request&quot;,
+  &quot;query&quot;: &quot;employee={@context.user.sys_id}&quot;,
+  &quot;fields&quot;: [&quot;number&quot;, &quot;leave_type&quot;, &quot;start_date&quot;, &quot;end_date&quot;, &quot;state&quot;],
+  &quot;orderBy&quot;: &quot;sys_created_on&quot;,
+  &quot;orderDirection&quot;: &quot;desc&quot;,
+  &quot;limit&quot;: 50
+}
+</code></pre>
+<h3 id="client-state-parameters">Client State Parameters</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<pre><code class="language-javascript">// Page Parameters
+{
+  &quot;sys_id&quot;: {
+    &quot;type&quot;: &quot;string&quot;,
+    &quot;required&quot;: false
+  },
+  &quot;view&quot;: {
+    &quot;type&quot;: &quot;string&quot;,
+    &quot;default&quot;: &quot;list&quot;
+  }
+}
+
+// Client State
+{
+  &quot;selectedRequest&quot;: null,
+  &quot;filterState&quot;: &quot;all&quot;,
+  &quot;showModal&quot;: false
+}
+</code></pre>
+<hr />
+<h2 id="6-custom-workspace-development">6. Custom Workspace Development</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<h3 id="create-workspace-experience">Create Workspace Experience</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<pre><code class="language-markdown">**Step 1: Create Experience**
+1. UI Builder &gt; Experiences &gt; Create
+2. Name: HR Leave Workspace
+3. Template: Configurable Workspace
+
+**Step 2: Configure Chrome**
+1. Add header with logo
+2. Add navigation menu
+3. Configure context panel
+
+**Step 3: Create Pages**
+1. Home/Dashboard
+2. Request List
+3. Request Form
+4. Calendar View
+5. Reports
+
+**Step 4: Configure Routing**
+1. Set default page
+2. Configure URL routes
+3. Add breadcrumbs
+</code></pre>
+<h3 id="workspace-chrome">Workspace Chrome</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<pre><code class="language-javascript">// Navigation Configuration
+{
+  &quot;items&quot;: [
+    {
+      &quot;label&quot;: &quot;Home&quot;,
+      &quot;icon&quot;: &quot;home&quot;,
+      &quot;route&quot;: &quot;/home&quot;
+    },
+    {
+      &quot;label&quot;: &quot;My Requests&quot;,
+      &quot;icon&quot;: &quot;document&quot;,
+      &quot;route&quot;: &quot;/requests&quot;
+    },
+    {
+      &quot;label&quot;: &quot;Team Calendar&quot;,
+      &quot;icon&quot;: &quot;calendar&quot;,
+      &quot;route&quot;: &quot;/calendar&quot;
+    },
+    {
+      &quot;label&quot;: &quot;Reports&quot;,
+      &quot;icon&quot;: &quot;chart-bar&quot;,
+      &quot;route&quot;: &quot;/reports&quot;
+    }
+  ]
+}
+</code></pre>
+<hr />
+<h2 id="7-workspace-components">7. Workspace Components</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<h3 id="list-component">List Component</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<pre><code class="language-javascript">// Configuration
+{
+  &quot;table&quot;: &quot;x_786686_hr_leave_request&quot;,
+  &quot;columns&quot;: [
+    { &quot;field&quot;: &quot;number&quot;, &quot;label&quot;: &quot;Number&quot; },
+    { &quot;field&quot;: &quot;employee&quot;, &quot;label&quot;: &quot;Employee&quot; },
+    { &quot;field&quot;: &quot;leave_type&quot;, &quot;label&quot;: &quot;Type&quot; },
+    { &quot;field&quot;: &quot;start_date&quot;, &quot;label&quot;: &quot;Start&quot; },
+    { &quot;field&quot;: &quot;end_date&quot;, &quot;label&quot;: &quot;End&quot; },
+    { &quot;field&quot;: &quot;duration_days&quot;, &quot;label&quot;: &quot;Days&quot; },
+    { &quot;field&quot;: &quot;state&quot;, &quot;label&quot;: &quot;State&quot; }
+  ],
+  &quot;actions&quot;: [&quot;view&quot;, &quot;edit&quot;, &quot;approve&quot;, &quot;reject&quot;],
+  &quot;filters&quot;: [
+    { &quot;field&quot;: &quot;state&quot;, &quot;operator&quot;: &quot;=&quot;, &quot;value&quot;: &quot;@param.state&quot; }
+  ]
+}
+</code></pre>
+<h3 id="form-component">Form Component</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<pre><code class="language-javascript">// Form Layout
+{
+  &quot;sections&quot;: [
+    {
+      &quot;label&quot;: &quot;Request Details&quot;,
+      &quot;fields&quot;: [
+        [&quot;employee&quot;, &quot;manager&quot;],
+        [&quot;leave_type&quot;, &quot;duration_days&quot;],
+        [&quot;start_date&quot;, &quot;end_date&quot;],
+        [&quot;reason&quot;]
+      ]
+    },
+    {
+      &quot;label&quot;: &quot;Approval&quot;,
+      &quot;fields&quot;: [
+        [&quot;approval_status&quot;],
+        [&quot;work_notes&quot;]
+      ],
+      &quot;condition&quot;: &quot;state!=1&quot;
+    }
+  ]
+}
+</code></pre>
+<h3 id="dashboard-cards">Dashboard Cards</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<pre><code class="language-javascript">// KPI Card Configuration
+{
+  &quot;title&quot;: &quot;Pending Approvals&quot;,
+  &quot;icon&quot;: &quot;clock&quot;,
+  &quot;color&quot;: &quot;warning&quot;,
+  &quot;value&quot;: &quot;{@data.pendingCount}&quot;,
+  &quot;trend&quot;: {
+    &quot;direction&quot;: &quot;up&quot;,
+    &quot;value&quot;: &quot;12%&quot;,
+    &quot;label&quot;: &quot;vs last week&quot;
+  },
+  &quot;action&quot;: {
+    &quot;label&quot;: &quot;View All&quot;,
+    &quot;route&quot;: &quot;/requests?state=pending&quot;
+  }
+}
+</code></pre>
+<hr />
+<h2 id="8-hr-leave-workspace">8. HR Leave Workspace</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<h3 id="complete-workspace-configuration">Complete Workspace Configuration</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<pre><code class="language-markdown">**Pages:**
+
+1. **Home Dashboard**
+   - My balance cards
+   - Pending requests
+   - Team calendar preview
+   - Quick actions
+
+2. **My Requests**
+   - List with filters
+   - Status badges
+   - Actions (cancel, view)
+
+3. **New Request**
+   - Smart form
+   - Balance check
+   - Date picker
+   - Manager auto-fill
+
+4. **Team Calendar**
+   - Monthly view
+   - Team member filter
+   - Color-coded by type
+
+5. **Approvals** (Manager view)
+   - Pending list
+   - Approve/Reject actions
+   - Bulk actions
+</code></pre>
+<h3 id="dashboard-page">Dashboard Page</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<pre><code class="language-html">&lt;!-- UI Builder Layout --&gt;
+&lt;now-page&gt;
+  &lt;now-row&gt;
+    &lt;now-col size=&quot;12&quot;&gt;
+      &lt;now-heading level=&quot;1&quot;&gt;Leave Management - إدارة الإجازات&lt;/now-heading&gt;
+    &lt;/now-col&gt;
+  &lt;/now-row&gt;
+
+  &lt;now-row&gt;
+    &lt;now-col size=&quot;3&quot;&gt;
+      &lt;now-card&gt;
+        &lt;now-card-header&gt;Annual Leave&lt;/now-card-header&gt;
+        &lt;now-card-content&gt;
+          &lt;now-highlighted-value value=&quot;{{balance.annual}}&quot;&gt;&lt;/now-highlighted-value&gt;
+          &lt;span&gt;days available&lt;/span&gt;
+        &lt;/now-card-content&gt;
+      &lt;/now-card&gt;
+    &lt;/now-col&gt;
+    &lt;!-- Repeat for other leave types --&gt;
+  &lt;/now-row&gt;
+
+  &lt;now-row&gt;
+    &lt;now-col size=&quot;8&quot;&gt;
+      &lt;now-card&gt;
+        &lt;now-card-header&gt;My Recent Requests&lt;/now-card-header&gt;
+        &lt;now-card-content&gt;
+          &lt;now-record-list 
+            table=&quot;x_786686_hr_leave_request&quot;
+            query=&quot;employee={{user.sys_id}}&quot;
+            limit=&quot;5&quot;&gt;
+          &lt;/now-record-list&gt;
+        &lt;/now-card-content&gt;
+      &lt;/now-card&gt;
+    &lt;/now-col&gt;
+    &lt;now-col size=&quot;4&quot;&gt;
+      &lt;now-card&gt;
+        &lt;now-card-header&gt;Quick Actions&lt;/now-card-header&gt;
+        &lt;now-card-content&gt;
+          &lt;now-button label=&quot;New Request&quot; variant=&quot;primary&quot; route=&quot;/new&quot;&gt;&lt;/now-button&gt;
+          &lt;now-button label=&quot;View Calendar&quot; variant=&quot;secondary&quot; route=&quot;/calendar&quot;&gt;&lt;/now-button&gt;
+        &lt;/now-card-content&gt;
+      &lt;/now-card&gt;
+    &lt;/now-col&gt;
+  &lt;/now-row&gt;
+&lt;/now-page&gt;
+</code></pre>
+<hr />
+<h2 id="9-best-practices">9. Best Practices</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<h3 id="performance">Performance</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<pre><code class="language-markdown">1. **Limit Data Fetching**
+   - Use pagination (limit: 50-100)
+   - Fetch only needed fields
+   - Use aggregates for counts
+
+2. **Lazy Loading**
+   - Load details on demand
+   - Defer non-critical components
+
+3. **Caching**
+   - Cache static reference data
+   - Use client state for filters
+</code></pre>
+<h3 id="security">Security</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<pre><code class="language-markdown">1. **Data Resources**
+   - Always filter by user context
+   - Use ACLs on tables
+   - Validate input parameters
+
+2. **Actions**
+   - Check permissions before action
+   - Log sensitive operations
+</code></pre>
+<hr />
+<h2 id="10-labs">10. Labs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<h3 id="lab-1-create-hr-leave-workspace">Lab 1: Create HR Leave Workspace</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<pre><code class="language-markdown">**Duration:** 2 hours
+
+1. Open UI Builder: {BASE}/now/builder/experience
+2. Create Experience: &quot;HR Leave Workspace&quot;
+3. Create pages:
+   - Dashboard (home)
+   - Request List
+   - Request Form
+4. Configure navigation
+5. Add data resources
+6. Test with different users
+</code></pre>
+<h3 id="lab-2-custom-dashboard">Lab 2: Custom Dashboard</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<pre><code class="language-markdown">**Duration:** 1 hour
+
+1. Create dashboard page
+2. Add KPI cards:
+   - Balance by type
+   - Pending count
+   - Upcoming leaves
+3. Add list component
+4. Add calendar widget
+5. Configure permissions
+</code></pre>
+<hr />
+<h2 id="direct-urls-reference">Direct URLs Reference</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agent Workspace</td>
+<td><a href="{BASE}/now/workspace/agent/home">{BASE}/now/workspace/agent/home</a></td>
+</tr>
+<tr>
+<td>CSM Workspace</td>
+<td><a href="{BASE}/now/csm/home">{BASE}/now/csm/home</a></td>
+</tr>
+<tr>
+<td>HR Workspace</td>
+<td><a href="{BASE}/now/hr-agent-workspace/home">{BASE}/now/hr-agent-workspace/home</a></td>
+</tr>
+<tr>
+<td>UI Builder</td>
+<td><a href="{BASE}/now/builder/experience">{BASE}/now/builder/experience</a></td>
+</tr>
+<tr>
+<td>Workspace Config</td>
+<td><a href="{BASE}/sys_aw_master_config_list.do">{BASE}/sys_aw_master_config_list.do</a></td>
+</tr>
+<tr>
+<td>Page Registry</td>
+<td><a href="{BASE}/sys_ux_page_registry_list.do">{BASE}/sys_ux_page_registry_list.do</a></td>
+</tr>
+<tr>
+<td>Data Resources</td>
+<td><a href="{BASE}/sys_ux_data_broker_list.do">{BASE}/sys_ux_data_broker_list.do</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Next:</strong> <a href="AI_ML_COMPLETE_GUIDE.html">AI Guide</a> | <a href="DEVELOPMENT_COMPLETE_GUIDE.html">Development Guide</a></p>
+</blockquote>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

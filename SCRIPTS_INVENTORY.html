@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HR Leave — All Scripts Inventory (كل السكربتات) | HR Leave Australia</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="scripts/index.html">Scripts</a>
+      <a href="modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>HR Leave — All Scripts Inventory (كل السكربتات)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">e5f5bc9493a303507520703efaba104d</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/$studio.do">Studio</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/sys_script_client_list.do">Client Scripts</a>
+<a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a>
+</div>
+    <article class="content"><div class="ok"><p><strong>Schema + sample data:</strong> <a href="SCHEMA_AND_DATA.html">SCHEMA_AND_DATA.html</a> · App sys_id <code>e5f5bc9493a303507520703efaba104d</code></p></div>
+<h1 id="hr-leave-all-scripts-inventory">HR Leave — All Scripts Inventory (كل السكربتات)</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً (ملخص سريع):</strong> <a href="MASTER_ALL_IN_ONE_SUMMARY.html">MASTER_ALL_IN_ONE_SUMMARY.md</a> · HTML: <a href="html/MASTER_ALL_IN_ONE_SUMMARY.html">html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل الواحد:</strong> <a href="MASTER_ALL_IN_ONE.html">MASTER_ALL_IN_ONE.md</a> · HTML: <a href="html/MASTER_ALL_IN_ONE.html">html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات (New/Open):</strong> <a href="MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">MASTER_PRACTICE_GUIDE_ALL_TOPICS.md</a> · <a href="html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Platform: ServiceNow <strong>Australia</strong> · Scope <code>x_786686_hr_leave</code> · sys_id <code>e5f5bc9493a303507520703efaba104d</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (current family, Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>App:</strong> Custom · Scope x_786686_hr_leave · sys_id e5f5bc9493a303507520703efaba104d<br />
+<strong>URLs:</strong> <a href="root/SERVICENOW_DIRECT_URLS_CATALOG.html">../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a></p>
+<p><strong>App type:</strong> Custom<br />
+<strong>Scope:</strong> <code>x_786686_hr_leave</code><br />
+<strong>sys_id:</strong> <code>e5f5bc9493a303507520703efaba104d</code><br />
+<strong>Date created:</strong> 2026-09-09 20:20:55<br />
+الهوية: <a href="APPLICATION.html">APPLICATION.md</a></p>
+</blockquote>
+<p>الصق السكربتات داخل التطبيق <code>x_786686_hr_leave</code> فقط (Application picker = HR Leave).</p>
+<hr />
+<h2 id="1-business-rules-srcserverbusiness_rules">1) Business Rules — <code>src/server/business_rules/</code></h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a><a href="scripts/index.html">Scripts portal</a></nav>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Table</th>
+<th>When</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BR1_calculate_days.js</code></td>
+<td><code>x_786686_hr_leave_req_v2</code></td>
+<td>before insert/update</td>
+<td>يحسب الأيام + يضبط Approver عبر <code>x_786686_hr_leave.HRLXProLeaveUtilsV2</code></td>
+</tr>
+<tr>
+<td><code>BR2_on_submit_event.js</code></td>
+<td><code>x_786686_hr_leave_req_v2</code></td>
+<td>after</td>
+<td>Event: <code>x_786686_hr_leave.leave_v2.submitted</code></td>
+</tr>
+<tr>
+<td><code>BR3_audit_state_change.js</code></td>
+<td><code>x_786686_hr_leave_req_v2</code></td>
+<td>after update</td>
+<td>Audit + recalculate balance عند الاعتماد</td>
+</tr>
+<tr>
+<td><code>BR4_on_approve_reject_event.js</code></td>
+<td><code>x_786686_hr_leave_req_v2</code></td>
+<td>after update</td>
+<td>Events: <code>.approved</code> / <code>.rejected</code></td>
+</tr>
+</tbody>
+</table>
+<p>Fluent mirror: <code>sdk/examples/business-rules.now.ts</code> · <code>servicenow-ai-workspace/hr-leave-sdk/src/fluent/business-rules.now.ts</code></p>
+<hr />
+<h2 id="2-client-scripts-srcclientclient_scripts">2) Client Scripts — <code>src/client/client_scripts/</code></h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_client_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">Client Scripts</a><a href="scripts/index.html">Scripts portal</a></nav>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Table</th>
+<th>Type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CS1_validate_dates.js</code></td>
+<td><code>x_786686_hr_leave_req_v2</code></td>
+<td>onChange <code>u_end_date</code></td>
+<td>يمنع End قبل Start</td>
+</tr>
+<tr>
+<td><code>CS2_calc_days_glideajax.js</code></td>
+<td><code>x_786686_hr_leave_req_v2</code></td>
+<td>onChange <code>u_end_date</code></td>
+<td><code>GlideAjax('x_786686_hr_leave.HRLXProLeaveUtilsV2')</code> → <code>u_days_count</code></td>
+</tr>
+</tbody>
+</table>
+<p>UI Policy (doc): <code>src/client/ui_policies/UIP1_sick_requires_reason.md</code></p>
+<hr />
+<h2 id="3-script-includes-srcserverscript_includes">3) Script Includes — <code>src/server/script_includes/</code></h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a><a href="{BASE}/$studio.do">Studio</a></nav>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>API name</th>
+<th>Client callable</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HRLXProLeaveUtilsV2.js</code></td>
+<td><code>x_786686_hr_leave.HRLXProLeaveUtilsV2</code></td>
+<td>Yes</td>
+<td>أيام عمل، Approver، رصيد، Audit</td>
+</tr>
+<tr>
+<td><code>HRLXProSecurityUtilsV2.js</code></td>
+<td><code>x_786686_hr_leave.HRLXProSecurityUtilsV2</code></td>
+<td>—</td>
+<td>ACL helpers</td>
+</tr>
+<tr>
+<td><code>HRLXProIntegrationUtilsV2.js</code></td>
+<td><code>x_786686_hr_leave.HRLXProIntegrationUtilsV2</code></td>
+<td>—</td>
+<td>REST in/out</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-catalog-record-producer-srccatalog">4) Catalog / Record Producer — <code>src/catalog/</code></h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a></nav>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Target table</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RP_submit_leave.js</code></td>
+<td><code>x_786686_hr_leave_req_v2</code></td>
+<td>يملأ الطلب من Variables عند Submit</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-rest-srcserverrest">5) REST — <code>src/server/rest/</code></h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>inbound_scripted_rest_leave.js</code></td>
+<td>Scripted REST وارد — إنشاء إجازة</td>
+</tr>
+<tr>
+<td><code>outbound_rest_message.js</code></td>
+<td>Outbound REST Message / push قرار</td>
+</tr>
+</tbody>
+</table>
+<p>Docs: <code>SCRIPTED_REST_INBOUND_SETUP.md</code> · <code>OUTBOUND_REST_MESSAGE_SETUP.md</code> · <code>rest_api_explorer.md</code></p>
+<hr />
+<h2 id="6-scheduled-jobs-srcserverscheduled_jobs">6) Scheduled Jobs — <code>src/server/scheduled_jobs/</code></h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>annual_accrual.js</code></td>
+<td>ترحيل رصيد سنوي على جداول <code>x_786686_hr_leave_*</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-portal-widgets-srcportalwidgets">7) Portal Widgets — <code>src/portal/widgets/</code></h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<table>
+<thead>
+<tr>
+<th>Widget</th>
+<th>Files</th>
+<th>Tables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hrlx_my_leaves</code></td>
+<td><code>server.js</code> + <code>client.js</code></td>
+<td><code>x_786686_hr_leave_req_v2</code></td>
+</tr>
+<tr>
+<td><code>hrlx_balance</code></td>
+<td><code>server.js</code> + <code>client.js</code></td>
+<td><code>x_786686_hr_leave_employee_v2</code> · <code>_bal_v2</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8">8) قواعد الاستدعاء (مهم)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>من أين</th>
+<th>الشكل الصحيح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Client Script / GlideAjax</td>
+<td><code>new GlideAjax('x_786686_hr_leave.HRLXProLeaveUtilsV2')</code></td>
+</tr>
+<tr>
+<td>Business Rule / REST داخل التطبيق</td>
+<td><code>new x_786686_hr_leave.HRLXProLeaveUtilsV2()</code></td>
+</tr>
+<tr>
+<td>Events</td>
+<td><code>x_786686_hr_leave.leave_v2.submitted</code> / <code>.approved</code> / <code>.rejected</code></td>
+</tr>
+<tr>
+<td>Tables</td>
+<td><code>x_786686_hr_leave_req_v2</code> …</td>
+</tr>
+</tbody>
+</table>
+<p><strong>استخدم فقط</strong> النطاق <code>x_786686_hr_leave</code> — لا تستخدم النطاقات القديمة (<code>x_2065034_hr_leave</code> / <code>x_demo_hr_leave</code> / <code>x_pro_hrlx</code>).</p>
+<hr />
+<h2 id="9-checklist">9) Checklist على المثيل</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ol>
+<li>Application picker → <strong>HR Leave</strong> (<code>x_786686_hr_leave</code>)</li>
+<li>افتح <code>sys_app</code> → sys_id = <code>e5f5bc9493a303507520703efaba104d</code></li>
+<li>أنشئ/حدّث كل ملف أعلاه داخل نفس الـ Scope</li>
+<li>Script Include: <strong>Client callable</strong> = true لـ <code>HRLXProLeaveUtilsV2</code></li>
+<li>اختبر CS2: تغيير End date يملأ <code>u_days_count</code> عبر GlideAjax</li>
+</ol>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="assets/docs.js"></script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

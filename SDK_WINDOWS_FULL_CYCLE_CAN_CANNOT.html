@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ServiceNow SDK on Windows — Install → Auth → All Commands → Deploy → Can / Cannot · VR/VRO</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+  <style>
+    .part-head { margin-top: 2.4rem; padding: .85rem 1.05rem; border-radius: 14px; color: #fff;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2)); }
+    .part-head h2 { margin: 0; color: #fff; border: 0; }
+    .part-head p { margin: .3rem 0 0; opacity: .92; font-size: .9rem; }
+    .can { background: #f0fdf4; border-left: 4px solid #047857; }
+    .cant { background: #fef2f2; border-left: 4px solid #b91c1c; }
+    .can, .cant { border-radius: 10px; padding: .65rem .85rem; margin: .6rem 0; border: 1px solid var(--line); }
+    .cmd-card { border: 1px solid var(--line); border-radius: 12px; margin: 1rem 0; overflow: hidden; }
+    .cmd-card > header { background: #0b1220; color: #e2e8f0; padding: .55rem .8rem; font-family: var(--mono); font-size: .9rem; }
+    .cmd-card > header b { color: #7dd3fc; }
+    .cmd-card > div { padding: .75rem .85rem; }
+    .flag-table td:first-child { font-family: var(--mono); font-size: .84rem; width: 240px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · SDK Windows Full Cycle</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="SDK_CURSOR_FULL_DOCUMENTATION.html">SDK Flag Reference</a>
+      <a href="PRACTICAL_SECOPS_VRO_FROM_SCRATCH.html">SecOps / VRO</a>
+      <a href="PRACTICAL_FLOW_DESIGNER_FROM_SCRATCH.html">Flow Designer</a>
+      <span class="badge">SDK 4.12.2</span>
+      <span class="badge">Windows PowerShell</span>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <section class="hero">
+      <h1>ServiceNow SDK on Windows — Full Cycle</h1>
+      <p>Prerequisites · install · authentication · all 12 commands (PowerShell) · build/deploy · what Fluent <strong>can</strong> and <strong>cannot</strong> do · Vulnerability Response (VR / VRO) object cycle</p>
+      <div class="meta-grid">
+        <div><strong>OS</strong>Windows 10/11 · PowerShell 5+</div>
+        <div><strong>Node</strong>20.18+ (verified 20.20.2)</div>
+        <div><strong>Package</strong><code style="color:#fff">@servicenow/sdk@4.12.2</code></div>
+        <div><strong>Companion</strong><a href="SDK_CURSOR_FULL_DOCUMENTATION.html" style="color:#fff">Every flag</a></div>
+      </div>
+    </section>
+
+    <div class="url-box"><strong>Open while you work</strong>
+      <a href="{BASE}/$studio.do">Studio</a>
+      <a href="{BASE}/sys_app_list.do">Applications</a>
+      <a href="{BASE}/now/flow-designer">Flow Designer</a>
+      <a href="{BASE}/sn_vul_vulnerable_item_list.do">Vulnerable Items</a>
+      <a href="{BASE}/sys_update_set_list.do">Update Sets</a>
+    </div>
+
+    <article class="content">
+      <div class="viz-banner">
+        <h2>Read this board first</h2>
+        <p>Install → Auth → Init → Dependencies → Edit Fluent → Build → Install (deploy) → Query proof. Everything else is detail.</p>
+      </div>
+
+      <div class="flow">
+        <div class="n"><b>0</b>Node 20+</div><span class="arrow">→</span>
+        <div class="n"><b>1</b>npm i SDK</div><span class="arrow">→</span>
+        <div class="n"><b>2</b>auth --add</div><span class="arrow">→</span>
+        <div class="n"><b>3</b>init</div><span class="arrow">→</span>
+        <div class="n"><b>4</b>deps</div><span class="arrow">→</span>
+        <div class="n"><b>5</b>*.now.ts</div><span class="arrow">→</span>
+        <div class="n"><b>6</b>build</div><span class="arrow">→</span>
+        <div class="n"><b>7</b>install</div><span class="arrow">→</span>
+        <div class="n"><b>8</b>query</div>
+      </div>
+
+      <div class="toc-master" style="border:1px solid var(--line);border-radius:14px;padding:1rem 1.15rem;background:#f8fafc;margin:1.2rem 0">
+        <strong>Contents</strong>
+        <ol>
+          <li><a href="#p1">Prerequisites (Windows)</a></li>
+          <li><a href="#p2">Install SDK</a></li>
+          <li><a href="#p3">Authentication cycle</a></li>
+          <li><a href="#p4">All 12 commands (PowerShell)</a></li>
+          <li><a href="#p5">Build → deploy cycle</a></li>
+          <li><a href="#p6">CI / OAuth on Windows</a></li>
+          <li><a href="#p7">CAN vs CANNOT (full matrix)</a></li>
+          <li><a href="#p8">VR / VRO module — objects, tables, flows, SDK role</a></li>
+          <li><a href="#p9">Lab checklist</a></li>
+        </ol>
+      </div>
+
+      <!-- ========== P1 ========== -->
+      <div class="part-head" id="p1">
+        <h2>1 · Prerequisites (Windows)</h2>
+        <p>Do these once per machine before any <code>now-sdk</code> command</p>
+      </div>
+      <div class="stepboard">
+        <div class="s"><b>Node.js</b><span>LTS 20.18+ from nodejs.org · verify <code>node -v</code></span></div>
+        <div class="s"><b>npm</b><span>Bundled · verify <code>npm -v</code></span></div>
+        <div class="s"><b>Git</b><span>Optional but required for teams · commit <code>keys.ts</code></span></div>
+        <div class="s"><b>Instance</b><span>PDI or sub-prod URL · admin or app creator</span></div>
+        <div class="s"><b>PowerShell</b><span>Use <code>`</code> for line continue · not <code>\</code></span></div>
+        <div class="s"><b>Execution</b><span>If scripts blocked: <code>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</code></span></div>
+      </div>
+      <div class="pre-wrap"><pre><code># PowerShell — verify toolchain
+node -v          # expect v20.x
+npm -v
+where.exe node
+where.exe npm</code></pre></div>
+      <div class="warn"><p><strong>Do not install the SDK globally.</strong> Pin version per project with <code>package.json</code>. Global <code>now-sdk</code> drifts and breaks CI.</p></div>
+
+      <!-- ========== P2 ========== -->
+      <div class="part-head" id="p2">
+        <h2>2 · Install SDK (Windows)</h2>
+        <p>Three ways — pick one</p>
+      </div>
+      <h3>2.1 New empty folder</h3>
+      <div class="pre-wrap"><pre><code>mkdir C:\SNApps\my-sdk-app
+cd C:\SNApps\my-sdk-app
+npm init -y
+npm install -D @servicenow/sdk@4.12.2
+npx @servicenow/sdk --version
+npx @servicenow/sdk --help</code></pre></div>
+      <h3>2.2 This repository (already installed)</h3>
+      <div class="pre-wrap"><pre><code>cd C:\SVCProject\HR_Leave_App\servicenow-ai-workspace\hr-leave-sdk
+npm ci
+npx @servicenow/sdk --version
+# binaries: now-sdk · now-sdk-debug · @servicenow/sdk  →  bin/index.js</code></pre></div>
+      <h3>2.3 Before <code>init</code> — pick a free scope (mandatory)</h3>
+      <div class="pre-wrap"><pre><code># After auth exists (§3), query vendor code + scope collision
+npx @servicenow/sdk query sys_properties -q "name=glide.appcreator.company.code" -f name,value --auth DEV
+npx @servicenow/sdk query sys_scope -q "scope=x_YOURCODE_myapp" -f scope,name --auth DEV
+# Scope max 18 chars, pattern (x|sn)_[a-z0-9_]+</code></pre></div>
+
+      <!-- ========== P3 ========== -->
+      <div class="part-head" id="p3">
+        <h2>3 · Authentication cycle</h2>
+        <p>Keychain locally · env vars in CI · never commit passwords</p>
+      </div>
+      <div class="flow">
+        <div class="n adm"><b>LOCAL</b>auth --add</div><span class="arrow">→</span>
+        <div class="n adm"><b>LIST</b>auth --list</div><span class="arrow">→</span>
+        <div class="n adm"><b>USE</b>auth --use</div><span class="arrow">→</span>
+        <div class="n"><b>CMD</b>--auth DEV</div><span class="arrow">→</span>
+        <div class="n impl"><b>CI</b>SN_SDK_*</div>
+      </div>
+      <div class="cmd-card">
+        <header><b>now-sdk auth</b></header>
+        <div>
+          <table class="flag-table"><tbody>
+            <tr><td><code>--add &lt;url&gt;</code></td><td>Store credentials for an instance</td></tr>
+            <tr><td><code>--type basic|oauth</code></td><td>Auth type for --add</td></tr>
+            <tr><td><code>--alias NAME</code></td><td>Short name (e.g. DEV)</td></tr>
+            <tr><td><code>--list</code></td><td>Show stored aliases</td></tr>
+            <tr><td><code>--use NAME</code></td><td>Default alias</td></tr>
+            <tr><td><code>--delete NAME</code></td><td>Remove alias</td></tr>
+            <tr><td><code>--print</code></td><td>Emit live token for curl</td></tr>
+            <tr><td><code>--format headers|bearer|env</code></td><td>Print format</td></tr>
+            <tr><td><code>--password-stdin</code></td><td>Pipe password (non-interactive)</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+      <div class="pre-wrap"><pre><code># Basic (PDI lab)
+npx @servicenow/sdk auth --add https://devXXXXXX.service-now.com --type basic --alias DEV
+
+# Non-interactive (password from env — do not echo)
+$env:SN_PASSWORD | npx @servicenow/sdk auth --add https://devXXXXXX.service-now.com `
+  --type basic --alias DEV --username admin --password-stdin
+
+# OAuth (interactive / registry client)
+npx @servicenow/sdk auth --add https://devXXXXXX.service-now.com --type oauth --alias DEV_OAUTH
+
+npx @servicenow/sdk auth --list
+npx @servicenow/sdk auth --use DEV
+npx @servicenow/sdk auth --print --format bearer --auth DEV</code></pre></div>
+      <div class="chips">
+        <span class="chip do">✓ Prefer alias + --auth DEV on every command</span>
+        <span class="chip do">✓ OAuth for CI</span>
+        <span class="chip dont">✗ --oauth --client-id (flags do not exist)</span>
+        <span class="chip dont">✗ Commit .env with passwords</span>
+      </div>
+
+      <!-- ========== P4 ========== -->
+      <div class="part-head" id="p4">
+        <h2>4 · All 12 commands (PowerShell cheat sheet)</h2>
+        <p>Verified against installed CLI 4.12.2 — full flag tables in <a href="SDK_CURSOR_FULL_DOCUMENTATION.html#p3">SDK_CURSOR_FULL_DOCUMENTATION §3</a></p>
+      </div>
+      <div class="pre-wrap"><pre><code># 1 auth     — credentials
+npx @servicenow/sdk auth --list
+
+# 2 init / create — scaffold or convert
+npx @servicenow/sdk init --appName "HR Leave" --packageName hr-leave-sdk `
+  --scopeName x_786686_hr_leave --auth DEV
+# convert legacy:  npx @servicenow/sdk init --from &lt;sys_app_sys_id&gt; --auth DEV
+
+# 3 download — pull metadata for inspection (not Fluent)
+npx @servicenow/sdk download .\download-out --auth DEV
+
+# 4 build — compile Fluent → XML (this IS validation)
+npx @servicenow/sdk build
+npx @servicenow/sdk build --frozenKeys --errorOnConflict   # CI gate
+
+# 5 install / deploy — push to instance
+npx @servicenow/sdk install --auth DEV
+npx @servicenow/sdk install --auth DEV --async false --demoData false
+# DESTRUCTIVE:  npx @servicenow/sdk install -r --auth DEV
+
+# 6 dependencies — types + app deps
+npx @servicenow/sdk dependencies --auth DEV
+
+# 7 transform — instance/XML → Fluent
+npx @servicenow/sdk transform --table sys_script,sys_script_include --auth DEV
+npx @servicenow/sdk transform --from .\exports\update_set.xml
+
+# 8 clean — wipe dist/
+npx @servicenow/sdk clean
+
+# 9 pack — zip artefact
+npx @servicenow/sdk pack
+
+# 10 explain — 256 offline topics
+npx @servicenow/sdk explain --list flow
+npx @servicenow/sdk explain flow-api
+npx @servicenow/sdk explain building-ai-agents-guide --format raw | clip
+
+# 11 query — Glide-style from terminal
+npx @servicenow/sdk query sys_app -q "scope=x_786686_hr_leave" -f name,scope,version --auth DEV
+npx @servicenow/sdk query sn_vul_vulnerable_item -q "state=open" --limit 5 --auth DEV
+
+# 12 cicd — App Repository publish / install / rollback
+npx @servicenow/sdk cicd --help</code></pre></div>
+      <div class="warn">
+        <p><strong>Not commands:</strong> <code>validate</code>, <code>upgrade</code>, <code>build --watch</code>, <code>auth --oauth</code> (use <code>--type oauth</code>). See corrections in SDK flag doc §10.</p>
+      </div>
+
+      <!-- ========== P5 ========== -->
+      <div class="part-head" id="p5">
+        <h2>5 · Build → deploy description cycle</h2>
+        <p>The loop you run every day on Windows</p>
+      </div>
+      <div class="screen">
+        <div class="bar"><span class="dot r"></span><span class="dot a"></span><span class="dot g"></span>
+          <span class="ttl">PowerShell · hr-leave-sdk</span><span class="path">daily loop</span></div>
+        <div class="body">
+          <div class="side">
+            <div class="on">1 Edit</div><div>2 Build</div><div>3 Install</div><div>4 Query</div><div>5 Commit</div>
+          </div>
+          <div class="main">
+            <div class="row"><span>Edit</span><span>src\fluent\*.now.ts</span></div>
+            <div class="row"><span>Build</span><span>npx @servicenow/sdk build → dist\ + keys.ts</span></div>
+            <div class="row"><span>Install</span><span>npx @servicenow/sdk install --auth DEV</span></div>
+            <div class="row"><span>Proof</span><span>query sys_script / your tables</span></div>
+            <div class="row"><span>Git</span><span>add keys.ts if changed · commit</span></div>
+          </div>
+        </div>
+        <div class="cap"><strong>Screen — daily cycle.</strong> If <code>git status</code> shows <code>keys.ts</code> dirty after build, that change is part of the commit.</div>
+      </div>
+      <div class="pre-wrap"><pre><code>cd C:\SVCProject\HR_Leave_App\servicenow-ai-workspace\hr-leave-sdk
+
+# edit Fluent files...
+npx @servicenow/sdk build
+if ($LASTEXITCODE -ne 0) { throw "build failed" }
+
+npx @servicenow/sdk install --auth DEV --async false
+if ($LASTEXITCODE -ne 0) { throw "install failed" }
+
+npx @servicenow/sdk query sys_app -q "scope=x_786686_hr_leave" -f name,version --auth DEV
+
+git add -A
+git status
+git commit -m "feat: update leave BR order"</code></pre></div>
+
+      <!-- ========== P6 ========== -->
+      <div class="part-head" id="p6">
+        <h2>6 · CI authentication (Windows / GitHub Actions)</h2>
+        <p>No OS keychain in CI — use SN_SDK_* env vars</p>
+      </div>
+      <table class="field-table">
+        <thead><tr><th>Variable</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td><code>SN_SDK_NODE_ENV</code></td><td><code>SN_SDK_CI_INSTALL</code> (required switch)</td></tr>
+          <tr><td><code>SN_SDK_AUTH_TYPE</code></td><td><code>oauth</code> (preferred) or <code>basic</code></td></tr>
+          <tr><td><code>SN_SDK_INSTANCE_URL</code></td><td>https://….service-now.com</td></tr>
+          <tr><td><code>SN_SDK_OAUTH_CLIENT_ID</code> / <code>_SECRET</code></td><td>Application Registry (oauth)</td></tr>
+          <tr><td><code>SN_SDK_USER</code> / <code>SN_SDK_USER_PWD</code></td><td>basic only</td></tr>
+        </tbody>
+      </table>
+      <div class="pre-wrap"><pre><code># Local simulation of CI mode (PowerShell)
+$env:SN_SDK_NODE_ENV = "SN_SDK_CI_INSTALL"
+$env:SN_SDK_AUTH_TYPE = "oauth"
+$env:SN_SDK_INSTANCE_URL = "https://devXXXXXX.service-now.com"
+$env:SN_SDK_OAUTH_CLIENT_ID = "...."
+$env:SN_SDK_OAUTH_CLIENT_SECRET = "...."
+npx @servicenow/sdk build --frozenKeys
+npx @servicenow/sdk install</code></pre></div>
+      <div class="chips">
+        <span class="chip do">✓ Instance property glide.oauth.inbound.client.credential.grant_type.enabled = true</span>
+        <span class="chip do">✓ OAuth service user Identity Type = Human + admin</span>
+        <span class="chip dont">✗ auth --add inside GitHub Actions</span>
+      </div>
+
+      <!-- ========== P7 ========== -->
+      <div class="part-head" id="p7">
+        <h2>7 · What the SDK CAN and CANNOT do</h2>
+        <p>From Fluent FAQ + WFA + AI guides on SDK 4.12.2</p>
+      </div>
+
+      <h3>7.1 CAN — first-class Fluent APIs</h3>
+      <div class="can">
+        <p><strong>Application metadata as code:</strong> Tables, columns, choices, roles, ACLs, Business Rules, Client Scripts, Script Includes, UI Policies/Actions, Catalog items / Record Producers, Notifications, Properties, Application Menus/Modules, ATF tests, REST Message / Scripted REST (via dedicated APIs or <code>Record()</code>), <strong>Workflow Automation Flows</strong> (<code>Flow()</code>, triggers, actions, subflows), <strong>AI Agents / Agentic Workflows</strong> (SDK ≥ 4.4 — <code>explain building-ai-agents-guide</code>).</p>
+      </div>
+      <div class="can">
+        <p><strong>Lifecycle:</strong> <code>init</code> / <code>init --from</code>, <code>transform</code> (pull UI changes into Fluent), <code>build</code>, <code>install</code>/<code>deploy</code>, <code>pack</code>, <code>cicd</code>, <code>query</code>, <code>explain</code>, <code>dependencies</code>, hybrid apps (partial Fluent + XML).</p>
+      </div>
+      <div class="can">
+        <p><strong>Cross-scope / store apps:</strong> Depend on plugins, call typed APIs where published; wrap SecOps tables with your own scoped logic (Script Includes, Flows that <em>use</em> <code>sn_vul_*</code> records).</p>
+      </div>
+
+      <h3>7.2 CANNOT — do these in the platform UI (or not at all via Fluent)</h3>
+      <div class="cant">
+        <p><strong>Design-time UI behaviour:</strong> Fluent does not run form UX, UI Policy preview, or Flow Designer’s live data-pill picker. Those stay in Studio / Flow Designer; sync with <code>transform</code> when needed. (SDK FAQ: no parity with dynamic editing surfaces.)</p>
+      </div>
+      <div class="cant">
+        <p><strong>Redefine OOB plugin ownership:</strong> You cannot “Fluent-replace” ServiceNow’s Vulnerability Response plugin tables as if they were your scoped app. Do not ship competing dictionary on <code>sn_vul_vulnerable_item</code> from a custom scope expecting to own VR.</p>
+      </div>
+      <div class="cant">
+        <p><strong>Scanner / spoke wizard UIs:</strong> Qualys/Tenable connector setup, Credential stores’ secrets UI, IntegrationHub spoke activation clicks — instance configuration, not Fluent source.</p>
+      </div>
+      <div class="cant">
+        <p><strong>Some Process Automation / Playbook features:</strong> Public playbooks, certain experience-only activity types, legacy schema playbooks — configure in Workflow Studio; check <code>explain playbook-*</code> topics for current limits.</p>
+      </div>
+      <div class="cant">
+        <p><strong>CLI myths:</strong> No <code>validate</code>, no <code>upgrade</code>, no <code>build --watch</code>. Validation = <code>build</code>. Upgrade SDK = change <code>package.json</code> + <code>npm install</code>.</p>
+      </div>
+      <div class="cant">
+        <p><strong>Runtime data:</strong> Users, group membership, VI records, attachments, email history do not travel in Fluent install the way metadata does. Seed/migrate separately.</p>
+      </div>
+
+      <table class="field-table">
+        <thead><tr><th>Artefact</th><th>SDK?</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Custom table in your scope</td><td class="can">YES</td><td><code>Table({...})</code></td></tr>
+          <tr><td>Business Rule / ACL / Role</td><td class="can">YES</td><td>Dedicated factories</td></tr>
+          <tr><td>Flow (WFA)</td><td class="can">YES</td><td><code>Flow()</code> / wfa APIs · or UI + transform</td></tr>
+          <tr><td>AI Agent</td><td class="can">YES</td><td>SDK 4.4+ · AiAgent APIs</td></tr>
+          <tr><td>Any table via Record()</td><td class="can">PARTIAL</td><td>Metadata records without dedicated API</td></tr>
+          <tr><td>OOB VR dictionary ownership</td><td class="cant">NO</td><td>Use plugin; automate around it</td></tr>
+          <tr><td>Portal widget Angular UX polish</td><td class="cant">LIMITED</td><td>Often Studio / portal tools</td></tr>
+          <tr><td>UI Builder experience pixels</td><td class="cant">LIMITED</td><td>Prefer UI Builder; transform carefully</td></tr>
+          <tr><td>Live SMTP / scanner credentials</td><td class="cant">NO</td><td>Credential aliases on instance</td></tr>
+        </tbody>
+      </table>
+
+      <!-- ========== P8 ========== -->
+      <div class="part-head" id="p8">
+        <h2>8 · VR / VRO module — description cycle + SDK role</h2>
+        <p>Vulnerability Response (also called VR / VRO in ops slang) inside SecOps</p>
+      </div>
+
+      <h3>8.1 Lifecycle (description cycle)</h3>
+      <div class="flow">
+        <div class="n"><b>1</b>Scanner</div><span class="arrow">→</span>
+        <div class="n"><b>2</b>Import</div><span class="arrow">→</span>
+        <div class="n"><b>3</b>CVE master</div><span class="arrow">→</span>
+        <div class="n"><b>4</b>VI</div><span class="arrow">→</span>
+        <div class="n"><b>5</b>Assign</div><span class="arrow">→</span>
+        <div class="n"><b>6</b>Remediate</div><span class="arrow">→</span>
+        <div class="n"><b>7</b>Verify</div><span class="arrow">→</span>
+        <div class="n"><b>8</b>Close</div>
+      </div>
+      <p class="note-sm">Scanner (Qualys/Tenable/…) → Import Set / Integration → <code>sn_vul_vulnerability</code> (CVE master) → <code>sn_vul_vulnerable_item</code> (CI × CVE) → assignment rules → owner → Change / task → rescan → closed.</p>
+
+      <h3>8.2 Related objects (tables &amp; friends)</h3>
+      <table class="field-table">
+        <thead><tr><th>Object</th><th>Table / path</th><th>Purpose</th><th>Direct URL</th></tr></thead>
+        <tbody>
+          <tr><td>Vulnerability</td><td><code>sn_vul_vulnerability</code></td><td>CVE / advisory master</td><td><a href="{BASE}/sn_vul_vulnerability_list.do">list</a></td></tr>
+          <tr><td>Vulnerable Item (VI)</td><td><code>sn_vul_vulnerable_item</code></td><td>Asset × vuln instance</td><td><a href="{BASE}/sn_vul_vulnerable_item_list.do">list</a></td></tr>
+          <tr><td>Third-party entry</td><td><code>sn_vul_third_party_entry</code></td><td>Scanner native ID map</td><td><a href="{BASE}/sn_vul_third_party_entry_list.do">list</a></td></tr>
+          <tr><td>Software</td><td><code>sn_vul_software</code></td><td>Affected packages</td><td><a href="{BASE}/sn_vul_software_list.do">list</a></td></tr>
+          <tr><td>Solution</td><td><code>sn_vul_solution</code></td><td>Remediation guidance</td><td><a href="{BASE}/sn_vul_solution_list.do">list</a></td></tr>
+          <tr><td>Assignment rule</td><td><code>sn_vul_assignment_rule</code></td><td>Auto-route VIs</td><td><a href="{BASE}/sn_vul_assignment_rule_list.do">list</a></td></tr>
+          <tr><td>Remediation task</td><td>task / change links</td><td>Work to fix</td><td><a href="{BASE}/change_request_list.do">changes</a></td></tr>
+          <tr><td>CI</td><td><code>cmdb_ci</code></td><td>Asset linkage</td><td><a href="{BASE}/cmdb_ci_list.do">CI</a></td></tr>
+          <tr><td>SIR</td><td><code>sn_si_incident</code></td><td>Security incident (related SecOps)</td><td><a href="{BASE}/sn_si_incident_list.do">SIR</a></td></tr>
+          <tr><td>TI Indicator</td><td><code>sn_ti_indicator</code></td><td>Threat intel</td><td><a href="{BASE}/sn_ti_indicator_list.do">TI</a></td></tr>
+          <tr><td>Flows</td><td><code>sys_hub_flow</code></td><td>Auto-assign / notify / create change</td><td><a href="{BASE}/now/flow-designer">Flow Designer</a></td></tr>
+          <tr><td>CTD tests</td><td><code>sn_vul_ctd_test</code></td><td>Config compliance</td><td><a href="{BASE}/sn_vul_ctd_test_list.do">CTD</a></td></tr>
+        </tbody>
+      </table>
+
+      <h3>8.3 What SDK should do for VR/VRO</h3>
+      <div class="can">
+        <p><strong>DO with SDK:</strong> Custom scoped app that <em>orchestrates</em> VR — Script Includes that query VIs, Flows that trigger on VI state change, notifications, integration Scripted REST into your app, ATF tests for your automation, AI agents that <em>read</em> VI summaries under invoking-user ACLs.</p>
+      </div>
+      <div class="cant">
+        <p><strong>DON'T with SDK:</strong> Attempt to recreate the whole VR product in Fluent; overwrite OOB business rules on <code>sn_vul_*</code> without a clear upgrade plan; store scanner passwords in Fluent source.</p>
+      </div>
+      <div class="pre-wrap"><pre><code>// Example direction: Flow in Fluent OR Flow Designer that watches VIs
+// Prefer UI Flow Designer for first VR automation, then:
+//   npx @servicenow/sdk transform --table sys_hub_flow --auth DEV
+// Full practical lab:
+//   PRACTICAL_SECOPS_VRO_FROM_SCRATCH.html
+//   PRACTICAL_FLOW_DESIGNER_FROM_SCRATCH.html</code></pre></div>
+
+      <div class="modmap">
+        <a href="PRACTICAL_SECOPS_VRO_FROM_SCRATCH.html"><h4>SecOps + VRO lab</h4><p>Full practical cycle</p><span class="go">Open →</span></a>
+        <a href="PRACTICAL_FLOW_DESIGNER_FROM_SCRATCH.html"><h4>Flow Designer lab</h4><p>Build remediation flows</p><span class="go">Open →</span></a>
+        <a href="PRACTICAL_AI_SERVICENOW_FROM_SCRATCH.html"><h4>AI practical</h4><p>Agents on SecOps/HR data</p><span class="go">Open →</span></a>
+        <a href="SDK_CURSOR_FULL_DOCUMENTATION.html"><h4>SDK flag bible</h4><p>Every flag · keys.ts · CI</p><span class="go">Open →</span></a>
+        <a href="modules/SECOPS.html"><h4>SecOps deep module</h4><p>CIS labs · architecture</p><span class="go">Open →</span></a>
+      </div>
+
+      <!-- ========== P9 ========== -->
+      <div class="part-head" id="p9">
+        <h2>9 · Lab checklist — prove the SDK cycle</h2>
+        <p>Stop when every box is true on Windows</p>
+      </div>
+      <ol class="runbook" style="list-style:none;padding:0;counter-reset:rb">
+        <li style="counter-increment:rb;position:relative;padding:.55rem .75rem .55rem 2.6rem;margin:.45rem 0;background:#f8fafc;border:1px solid var(--line);border-radius:10px"><code>node -v</code> ≥ 20.18</li>
+        <li style="padding:.55rem .75rem;margin:.45rem 0;background:#f8fafc;border:1px solid var(--line);border-radius:10px"><code>npx @servicenow/sdk --version</code> prints 4.12.x</li>
+        <li style="padding:.55rem .75rem;margin:.45rem 0;background:#f8fafc;border:1px solid var(--line);border-radius:10px"><code>auth --list</code> shows DEV</li>
+        <li style="padding:.55rem .75rem;margin:.45rem 0;background:#f8fafc;border:1px solid var(--line);border-radius:10px"><code>build</code> exit 0</li>
+        <li style="padding:.55rem .75rem;margin:.45rem 0;background:#fffbeb;border:1px solid #fde68a;border-radius:10px"><code>install --auth DEV</code> exit 0</li>
+        <li style="padding:.55rem .75rem;margin:.45rem 0;background:#f8fafc;border:1px solid var(--line);border-radius:10px"><code>query sys_app</code> returns your scope</li>
+        <li style="padding:.55rem .75rem;margin:.45rem 0;background:#f8fafc;border:1px solid var(--line);border-radius:10px">You can state three CAN and three CANNOT from §7 without looking</li>
+        <li style="padding:.55rem .75rem;margin:.45rem 0;background:#f8fafc;border:1px solid var(--line);border-radius:10px">You can draw the VR cycle Scanner→VI→Close from §8</li>
+      </ol>
+
+      <div class="ok">
+        <p><strong>Authoritative command flags:</strong> <a href="SDK_CURSOR_FULL_DOCUMENTATION.html#p3">SDK_CURSOR_FULL_DOCUMENTATION.html</a>. This page is the Windows + lifecycle + can/cannot + VR companion.</p>
+      </div>
+    </article>
+    <p class="footer">ServiceNow SDK Windows full cycle · 4.12.2 · replace {BASE}</p>
+  </main>
+  <script src="assets/docs.js"></script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

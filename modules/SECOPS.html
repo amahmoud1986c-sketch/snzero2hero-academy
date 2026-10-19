@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SecOps Module — Security Operations | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>SecOps Module — Security Operations</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="secops-module-security-operations">SecOps Module — Security Operations</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً:</strong> <a href="../MASTER_ALL_IN_ONE_SUMMARY.html">../MASTER_ALL_IN_ONE_SUMMARY.md</a> · <a href="../html/MASTER_ALL_IN_ONE_SUMMARY.html">../html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل:</strong> <a href="../MASTER_ALL_IN_ONE.html">../MASTER_ALL_IN_ONE.md</a> · <a href="../html/MASTER_ALL_IN_ONE.html">../html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات:</strong> <a href="../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Australia · Scope <code>x_786686_hr_leave</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<h2 id="australia-instance">Australia Instance — نسخة أستراليا</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Region / Datacenter</strong></td>
+<td>ServiceNow <strong>Australia</strong></td>
+</tr>
+<tr>
+<td><strong>Release train</strong></td>
+<td>Zurich (Sep 2026 EA) · next EA: <strong>Brazil</strong></td>
+</tr>
+<tr>
+<td><strong>URL base</strong></td>
+<td><code>{BASE}</code></td>
+</tr>
+<tr>
+<td><strong>Scope note</strong></td>
+<td>HR Leave app: <code>x_786686_hr_leave</code></td>
+</tr>
+<tr>
+<td><strong>Guided Setup</strong></td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="direct-navigation-urls">Direct Navigation URLs — روابط التنقل المباشرة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page / Tool</th>
+<th>Navigation Path</th>
+<th>Direct URL</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SIR Workspace</strong></td>
+<td>Now Experience &gt; Security Incident Response</td>
+<td><a href="{BASE}/now/sir/workspace">{BASE}/now/sir/workspace</a></td>
+<td>Security incidents</td>
+</tr>
+<tr>
+<td><strong>Security Incidents</strong></td>
+<td>All &gt; Security Operations &gt; Incidents</td>
+<td><a href="{BASE}/sn_si_incident_list.do">{BASE}/sn_si_incident_list.do</a></td>
+<td>SIR records</td>
+</tr>
+<tr>
+<td><strong>Vulnerabilities</strong></td>
+<td>All &gt; Vulnerability Response &gt; Vulnerabilities</td>
+<td><a href="{BASE}/sn_vul_vulnerability_list.do">{BASE}/sn_vul_vulnerability_list.do</a></td>
+<td>CVE master</td>
+</tr>
+<tr>
+<td><strong>Vulnerable Items</strong></td>
+<td>All &gt; Vulnerability Response &gt; Vulnerable Items</td>
+<td><a href="{BASE}/sn_vul_vulnerable_item_list.do">{BASE}/sn_vul_vulnerable_item_list.do</a></td>
+<td>Asset × vuln</td>
+</tr>
+<tr>
+<td><strong>Threat Intelligence</strong></td>
+<td>All &gt; Threat Intelligence &gt; Indicators</td>
+<td><a href="{BASE}/sn_ti_indicator_list.do">{BASE}/sn_ti_indicator_list.do</a></td>
+<td>IoC management</td>
+</tr>
+<tr>
+<td><strong>Playbooks</strong></td>
+<td>All &gt; Process Automation &gt; Playbooks</td>
+<td><a href="{BASE}/now/workflow-studio/home">{BASE}/now/workflow-studio/home</a></td>
+<td>SIR playbooks</td>
+</tr>
+<tr>
+<td><strong>Config Compliance</strong></td>
+<td>All &gt; Configuration Compliance</td>
+<td><a href="{BASE}/sn_vul_ctd_test_list.do">{BASE}/sn_vul_ctd_test_list.do</a></td>
+<td>CIS/SCAP scans</td>
+</tr>
+<tr>
+<td><strong>SecOps Dashboard</strong></td>
+<td>All &gt; Performance Analytics &gt; SecOps</td>
+<td><a href="{BASE}/$pa_dashboard.do">{BASE}/$pa_dashboard.do</a></td>
+<td>SOC metrics</td>
+</tr>
+<tr>
+<td><strong>IntegrationHub Spokes</strong></td>
+<td>All &gt; IntegrationHub &gt; Spokes</td>
+<td><a href="{BASE}/sys_hub_spoke_list.do">{BASE}/sys_hub_spoke_list.do</a></td>
+<td>SIEM/EDR connectors</td>
+</tr>
+<tr>
+<td><strong>Guided Setup SecOps</strong></td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+<td>Initial configuration</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>URLs:</strong> <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">../../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a><br />
+<strong>HR Leave:</strong> Scope x_786686_hr_leave</p>
+</blockquote>
+<h2 id="secops">وحدة SecOps — عمليات الأمن</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<blockquote>
+<p>Comprehensive guide for ServiceNow Security Operations (SIR + VR + TI + CTD)</p>
+<p>دليل شامل لـ ServiceNow Security Operations: الاستجابة للحوادث الأمنية + إدارة الثغرات + ذكاء التهديدات + كشف الإختراق</p>
+</blockquote>
+<hr />
+<h2 id="1-module-overview">§1 — Module Overview / نظرة عامة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>ServiceNow Security Operations consists of four primary applications:</p>
+<ul>
+<li><strong>SIR — Security Incident Response</strong>: incident lifecycle, MITRE ATT&amp;CK, playbooks</li>
+<li><strong>VR — Vulnerability Response</strong>: NVD/CVE scanning, prioritization, remediation</li>
+<li><strong>TI — Threat Intelligence</strong>: IoC management, threat feeds, STIX/TAXII</li>
+<li><strong>CTD — Configuration Compliance</strong>: CIS benchmarks, SCAP scanning — يتكوّن SecOps من 4 تطبيقات: استجابة الحوادث الأمنية (SIR)، إدارة الثغرات (VR)، ذكاء التهديدات (TI)، الالتزام بالإعدادات (CTD).</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>Plugin</th>
+<th>Key tables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SIR</td>
+<td>com.snc.security_incident</td>
+<td>sn_si_incident, sn_si_task</td>
+</tr>
+<tr>
+<td>VR</td>
+<td>com.snc.vulnerability</td>
+<td>sn_vul_vulnerable_item, sn_vul_vulnerability</td>
+</tr>
+<tr>
+<td>TI</td>
+<td>com.snc.threat.intel</td>
+<td>sn_ti_observable, sn_ti_indicator</td>
+</tr>
+<tr>
+<td>CTD</td>
+<td>com.snc.sn_vul_config_test</td>
+<td>sn_vul_ctd_test, sn_vul_ctd_result</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-architecture-overview">§2 — Architecture Overview / المعمارية</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>┌────────────────┐ CVE ┌────────────────┐ Asset ┌──────────────┐<br />
+│ Qualys/Tenable│──────▶│ VR (sn_vul_<em>) │────────▶│ CMDB (CI) │<br />
+└────────────────┘ └────────────────┘ └──────────────┘<br />
+ │ │ │<br />
+ ▼ ▼ ▼<br />
+┌────────────────┐ IoC ┌────────────────┐ Affected ┌──────────────┐<br />
+│ Splunk/QRadar │──────▶│ SIR (sn_si_</em>) │──────────▶│ Service Maps │<br />
+└────────────────┘ └────────────────┘ └──────────────┘<br />
+ │ ▲<br />
+ ▼ │<br />
+┌────────────────┐ Hunt ┌────────────────┐<br />
+│ Threat Feeds │────────▶│ TI (sn_ti_*) │<br />
+└────────────────┘ └────────────────┘</p>
+<hr />
+<h2 id="3-sir-security-incident-response">§3 — SIR: Security Incident Response</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<h3 id="31-lifecycle">3.1 Lifecycle</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Draft → Analysis → Contain → Eradicate → Recover → Review → Closed</p>
+<h3 id="32-sources-incident-creation">3.2 Sources (incident creation)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SIEM (Splunk)</td>
+<td>Webhook → Scripted REST /api/x_sn_si/v1/incident</td>
+</tr>
+<tr>
+<td>EDR (CrowdStrike)</td>
+<td>Outbound from EDR → Event API</td>
+</tr>
+<tr>
+<td>Email phishing report</td>
+<td>Inbound Email Action</td>
+</tr>
+<tr>
+<td>Manual reporter</td>
+<td>Service Portal page</td>
+</tr>
+<tr>
+<td>SOC analyst</td>
+<td>Workspace direct entry</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-mitre-attck-alignment">3.3 MITRE ATT&amp;CK alignment</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Each incident is tagged with:<br />
+- Tactic (e.g., Initial Access)<br />
+- Technique (e.g., T1566 Phishing)<br />
+- Sub-technique (e.g., T1566.001 Spearphishing Attachment)</p>
+<pre><code class="language-javascript">var SIRMitreTagger = Class.create();
+SIRMitreTagger.prototype = {
+ initialize: function {},
+</code></pre>
+<p>tagIncident: function (incidentSysId, techniqueId) {<br />
+ var t = new GlideRecord(&lsquo;sn_si_mitre_technique&rsquo;);<br />
+ if (!t.get(&lsquo;technique_id&rsquo;, techniqueId)) return false;</p>
+<p>var link = new GlideRecord(&lsquo;sn_si_incident_mitre&rsquo;);<br />
+ link.initialize();<br />
+ link.setValue(&lsquo;incident&rsquo;, incidentSysId);<br />
+ link.setValue(&lsquo;technique&rsquo;, t.getUniqueValue());<br />
+ link.setValue(&lsquo;tactic&rsquo;, t.getValue(&lsquo;tactic&rsquo;));<br />
+ link.insert();<br />
+ return true;<br />
+ },</p>
+<p>type: &lsquo;SIRMitreTagger&rsquo;<br />
+};</p>
+<h3 id="34-playbooks-process-automation-designer">3.4 Playbooks (Process Automation Designer)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Pre-built playbooks ship with SIR:<br />
+- Malware investigation<br />
+- Phishing response<br />
+- Data leak / Insider threat<br />
+- Ransomware containment<br />
+- Unauthorized access<br />
+- Brute force</p>
+<p>Each playbook has steps mapped to NIST 800-61r2:</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>NIST phase</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Triage</td>
+<td>Detection</td>
+<td>Validate, assign severity, MITRE tagging</td>
+</tr>
+<tr>
+<td>Investigate</td>
+<td>Analysis</td>
+<td>Enrich IoCs, query SIEM, scope</td>
+</tr>
+<tr>
+<td>Contain</td>
+<td>Containment</td>
+<td>Isolate host (EDR), block IP (FW), disable user</td>
+</tr>
+<tr>
+<td>Eradicate</td>
+<td>Eradication</td>
+<td>Remove malware, patch, rebuild</td>
+</tr>
+<tr>
+<td>Recover</td>
+<td>Recovery</td>
+<td>Restore services, monitor</td>
+</tr>
+<tr>
+<td>Lessons Learned</td>
+<td>Post-incident</td>
+<td>KB, RCA, playbook refinement</td>
+</tr>
+</tbody>
+</table>
+<h3 id="35-automated-containment-script">3.5 Automated containment script</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// Triggered when severity &gt;= high → call EDR to isolate
+(function (current, previous) {
+ if (current.severity.changes() &amp;&amp;
+ parseInt(current.getValue('severity'), 10) &lt;= 2) {
+ var affected = new GlideRecord('sn_si_m2m_ci_incident');
+ affected.addQuery('incident', current.getUniqueValue());
+ affected.query();
+ while (affected.next()) {
+ var ci = affected.getValue('configuration_item');
+ new SIRContainer().isolateHost(ci);
+ }
+ }
+})(current, previous);
+</code></pre>
+<pre><code class="language-javascript">var SIRContainer = Class.create();
+SIRContainer.prototype = {
+ initialize: function {},
+</code></pre>
+<p>isolateHost: function (ciSysId) {<br />
+ var ci = new GlideRecord(&lsquo;cmdb_ci&rsquo;);<br />
+ if (!ci.get(ciSysId)) return false;<br />
+ var hostName = ci.getValue(&lsquo;name&rsquo;);</p>
+<p>var rm = new sn_ws.RESTMessageV2(&lsquo;CrowdStrikeEDR&rsquo;, &lsquo;isolateHost&rsquo;);<br />
+ rm.setStringParameter(&lsquo;hostname&rsquo;, hostName);<br />
+ rm.setHttpTimeout(30000);<br />
+ try {<br />
+ var resp = rm.execute();<br />
+ var status = resp.getStatusCode();<br />
+ if (status &gt;= 200 &amp;&amp; status &lt; 300) {<br />
+ gs.eventQueue(&lsquo;x_sn_si.host.isolated&rsquo;, ci, hostName);<br />
+ return true;<br />
+ }<br />
+ gs.error(&lsquo;[SIR] Isolate failed for &rsquo; + hostName + &rsquo; status=&rsquo; + status);<br />
+ } catch (e) {<br />
+ gs.error(&lsquo;[SIR] Isolate exception: &rsquo; + e.message);<br />
+ }<br />
+ return false;<br />
+ },</p>
+<p>type: &lsquo;SIRContainer&rsquo;<br />
+};</p>
+<h3 id="36-sir-analyst-workspace">3.6 SIR Analyst Workspace</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a></nav>
+<p>/now/sir/agent — provides:<br />
+- Incident inbox with priority filter<br />
+- MITRE ATT&amp;CK heatmap<br />
+- IoC enrichment panel<br />
+- Playbook execution status<br />
+- Affected CIs map<br />
+- Timeline (forensic view)<br />
+- Tasks board</p>
+<hr />
+<h2 id="4-vr-vulnerability-response">§4 — VR: Vulnerability Response</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="41-data-flow">4.1 Data flow</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<p>Scanner (Qualys) → Import Set → Transform → sn_vul_vulnerability + sn_vul_vulnerable_item → CMDB CI link</p>
+<h3 id="42-vulnerability-prioritization">4.2 Vulnerability prioritization</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Default formula: <strong>CVSS × Asset Criticality × Exploit Availability × Business Impact</strong></p>
+<pre><code class="language-javascript">var VRPrioritizer = Class.create();
+VRPrioritizer.prototype = {
+ initialize: function {},
+</code></pre>
+<p>/*<em> Computes priority 1 (Critical) to 5 (Info) </em>/<br />
+ prioritize: function (viSysId) {<br />
+ var vi = new GlideRecord(&lsquo;sn_vul_vulnerable_item&rsquo;);<br />
+ if (!vi.get(viSysId)) return 5;<br />
+ var cvss = parseFloat(vi.getValue(&lsquo;vulnerability.base_score&rsquo;)) || 0;<br />
+ var ciCrit = this._ciCriticality(vi.getValue(&lsquo;cmdb_ci&rsquo;));<br />
+ var exploit = this._exploitAvailable(vi.getValue(&lsquo;vulnerability.cve_id&rsquo;));<br />
+ var biz = this._businessImpact(vi.getValue(&lsquo;cmdb_ci&rsquo;));</p>
+<p>var score = (cvss * 0.4) + (ciCrit * 0.25) + (exploit * 0.2) + (biz * 0.15);<br />
+ var prio = score &gt;= 8 ? 1 : (score &gt;= 6 ? 2 : (score &gt;= 4 ? 3 :<br />
+ (score &gt;= 2 ? 4 : 5)));</p>
+<p>vi.setValue(&lsquo;risk_score&rsquo;, score.toFixed(1));<br />
+ vi.setValue(&lsquo;priority&rsquo;, prio);<br />
+ vi.update();<br />
+ return prio;<br />
+ },</p>
+<p>_ciCriticality: function (ciId) {<br />
+ var c = new GlideRecord(&lsquo;cmdb_ci&rsquo;);<br />
+ if (!c.get(ciId)) return 5;<br />
+ var bizCrit = c.getValue(&lsquo;business_criticality&rsquo;);<br />
+ var map = { &lsquo;1 - most critical&rsquo;: 10, &lsquo;2 - somewhat critical&rsquo;: 7,<br />
+ &lsquo;3 - less critical&rsquo;: 4, &lsquo;4 - not critical&rsquo;: 2 };<br />
+ return map[bizCrit] || 5;<br />
+ },</p>
+<p>_exploitAvailable: function (cve) {<br />
+ var fb = new GlideRecord(&lsquo;sn_vul_third_party_entry&rsquo;);<br />
+ fb.addQuery(&lsquo;cve_id&rsquo;, cve);<br />
+ fb.addQuery(&lsquo;exploit_status&rsquo;, &lsquo;available&rsquo;);<br />
+ fb.setLimit(1);<br />
+ fb.query();<br />
+ return fb.hasNext() ? 10 : 0;<br />
+ },</p>
+<p>_businessImpact: function (ciId) {<br />
+ var s = new GlideAggregate(&lsquo;cmdb_ci_service_auto&rsquo;);<br />
+ s.addQuery(&lsquo;cmdb_ci_dependents&rsquo;, ciId);<br />
+ s.addAggregate(&lsquo;COUNT&rsquo;);<br />
+ s.query();<br />
+ if (s.next()) {<br />
+ var n = parseInt(s.getAggregate(&lsquo;COUNT&rsquo;), 10);<br />
+ return Math.min(10, n);<br />
+ }<br />
+ return 0;<br />
+ },</p>
+<p>type: &lsquo;VRPrioritizer&rsquo;<br />
+};</p>
+<h3 id="43-auto-remediation-workflows">4.3 Auto-remediation workflows</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Vulnerability type</th>
+<th>Auto-action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Missing patch</td>
+<td>Create Change Request, link to SCCM/BigFix</td>
+</tr>
+<tr>
+<td>Misconfiguration</td>
+<td>Run Ansible playbook</td>
+</tr>
+<tr>
+<td>Outdated library</td>
+<td>Open dev ticket with fix version</td>
+</tr>
+<tr>
+<td>Default credentials</td>
+<td>Force password reset, raise SIR</td>
+</tr>
+<tr>
+<td>Public S3 bucket</td>
+<td>Run lambda to set ACL → Block public</td>
+</tr>
+</tbody>
+</table>
+<h3 id="44-sla-on-remediation-by-priority">4.4 SLA on remediation by priority</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>SLA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 (Critical)</td>
+<td>7 days</td>
+</tr>
+<tr>
+<td>2 (High)</td>
+<td>30 days</td>
+</tr>
+<tr>
+<td>3 (Medium)</td>
+<td>90 days</td>
+</tr>
+<tr>
+<td>4 (Low)</td>
+<td>180 days</td>
+</tr>
+<tr>
+<td>5 (Info)</td>
+<td>Best effort</td>
+</tr>
+</tbody>
+</table>
+<h3 id="45-patch-group-orchestration">4.5 Patch group orchestration</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<pre><code class="language-javascript">// Group VIs by patch ID → bulk Change
+(function bulkChange() {
+ var agg = new GlideAggregate('sn_vul_vulnerable_item');
+ agg.addQuery('state', 'open');
+ agg.addQuery('priority', 'IN', '1,2');
+ agg.addAggregate('COUNT');
+ agg.groupBy('vulnerability.patch_id');
+ agg.query();
+</code></pre>
+<p>while (agg.next()) {<br />
+ var patchId = agg.getValue(&lsquo;vulnerability.patch_id&rsquo;);<br />
+ if (!patchId) continue;<br />
+ var count = parseInt(agg.getAggregate(&lsquo;COUNT&rsquo;), 10);<br />
+ if (count &gt;= 5) {<br />
+ var chg = new GlideRecord(&lsquo;change_request&rsquo;);<br />
+ chg.initialize();<br />
+ chg.setValue(&lsquo;short_description&rsquo;, &lsquo;Apply patch &rsquo; + patchId +<br />
+ &rsquo; to &rsquo; + count + &rsquo; affected systems&rsquo;);<br />
+ chg.setValue(&lsquo;category&rsquo;, &lsquo;security&rsquo;);<br />
+ chg.setValue(&lsquo;priority&rsquo;, 2);<br />
+ chg.setValue(&lsquo;risk&rsquo;, &lsquo;moderate&rsquo;);<br />
+ chg.insert();<br />
+ }<br />
+ }<br />
+})();</p>
+<hr />
+<h2 id="5-ti-threat-intelligence">§5 — TI: Threat Intelligence</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="51-sources-taxii-feeds">5.1 Sources (TAXII feeds)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AlienVault OTX</td>
+<td>Open community</td>
+</tr>
+<tr>
+<td>MISP</td>
+<td>Custom org feed</td>
+</tr>
+<tr>
+<td>Recorded Future</td>
+<td>Premium</td>
+</tr>
+<tr>
+<td>Mandiant</td>
+<td>Premium APT</td>
+</tr>
+<tr>
+<td>FBI InfraGard</td>
+<td>Sector-specific</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-observable-types">5.2 Observable types</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li>IP, Domain, URL, Hash (MD5/SHA1/SHA256), Email, File path, Registry key, Mutex, User agent</li>
+</ul>
+<h3 id="53-ioc-enrichment">5.3 IoC enrichment</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">var TIEnricher = Class.create();
+TIEnricher.prototype = {
+ initialize: function {},
+</code></pre>
+<p>enrich: function (observableValue, type) {<br />
+ var results = {};<br />
+ if (type === &lsquo;ip&rsquo;) {<br />
+ results.geoip = this._geo(observableValue);<br />
+ results.virustotal = this._vt(observableValue, &lsquo;ip&rsquo;);<br />
+ results.greynoise = this._gn(observableValue);<br />
+ } else if (type === &lsquo;hash&rsquo;) {<br />
+ results.virustotal = this._vt(observableValue, &lsquo;file&rsquo;);<br />
+ } else if (type === &lsquo;url&rsquo;) {<br />
+ results.urlhaus = this._urlhaus(observableValue);<br />
+ }<br />
+ return results;<br />
+ },</p>
+<p>_vt: function (val, kind) {<br />
+ var rm = new sn_ws.RESTMessageV2(&lsquo;VirusTotal&rsquo;, kind === &lsquo;ip&rsquo; ?<br />
+ &lsquo;lookupIP&rsquo; : &lsquo;lookupHash&rsquo;);<br />
+ rm.setStringParameter(&lsquo;ioc&rsquo;, val);<br />
+ var resp = rm.execute();<br />
+ return JSON.parse(resp.getBody() || &lsquo;{}&rsquo;);<br />
+ },</p>
+<p>_geo: function (ip) { /<em> maxmind </em>/ return {}; },<br />
+ _gn: function (ip) { /<em> greynoise </em>/ return {}; },<br />
+ _urlhaus: function (u) { /<em> urlhaus </em>/ return {}; },</p>
+<p>type: &lsquo;TIEnricher&rsquo;<br />
+};</p>
+<h3 id="54-threat-hunt-ioc-sweep-across-the-estate">5.4 Threat hunt: IoC sweep across the estate</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">function huntIoC(observableValue, observableType) {
+ var findings = [];
+</code></pre>
+<p>if (observableType === &lsquo;ip&rsquo;) {<br />
+ // Search active sessions / firewall logs / SIEM<br />
+ var siem = new sn_ws.RESTMessageV2(&lsquo;Splunk&rsquo;, &lsquo;searchIoC&rsquo;);<br />
+ siem.setStringParameter(&lsquo;ioc&rsquo;, observableValue);<br />
+ siem.setHttpTimeout(60000);<br />
+ var resp = JSON.parse(siem.execute().getBody() || &lsquo;{}&rsquo;);<br />
+ if (resp.results &amp;&amp; resp.results.length &gt; 0) {<br />
+ resp.results.forEach(function (hit) {<br />
+ findings.push({ source: &lsquo;siem&rsquo;, host: hit.host, time: hit.time });<br />
+ });<br />
+ }<br />
+ } else if (observableType === &lsquo;hash&rsquo;) {<br />
+ // Check EDR for file presence<br />
+ var edr = new sn_ws.RESTMessageV2(&lsquo;CrowdStrikeEDR&rsquo;, &lsquo;searchHash&rsquo;);<br />
+ edr.setStringParameter(&lsquo;hash&rsquo;, observableValue);<br />
+ var edrResp = JSON.parse(edr.execute().getBody() || &lsquo;{}&rsquo;);<br />
+ (edrResp.devices || []).forEach(function (d) {<br />
+ findings.push({ source: &lsquo;edr&rsquo;, host: d.hostname, time: d.last_seen });<br />
+ });<br />
+ }</p>
+<p>return findings;<br />
+}</p>
+<hr />
+<h2 id="6-ctd-configuration-compliance">§6 — CTD: Configuration Compliance</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_risk_risk_list.do">Risks</a><a href="{BASE}/sn_compliance_control_list.do">Controls</a><a href="{BASE}/sn_grc_issue_list.do">Issues</a><a href="{BASE}/sn_audit_engagement_list.do">Audit Engagements</a></nav>
+<h3 id="61-scap-cis-benchmarks">6.1 SCAP / CIS benchmarks</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>CTD imports SCAP results (OpenSCAP, Tenable Compliance Scan, Qualys PC):</p>
+<p>Test → Result (pass|fail) → Vulnerability (per failing CI) → Remediation</p>
+<h3 id="62-auto-remediation-via-orchestration">6.2 Auto-remediation via Orchestration</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Failing CIS test → run Ansible playbook (or Chef/Puppet) → re-test.</p>
+<hr />
+<h2 id="7-integration-quick-reference">§7 — Integration Quick Reference</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<table>
+<thead>
+<tr>
+<th>External</th>
+<th>Method</th>
+<th>ServiceNow target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Splunk SIEM</td>
+<td>Webhook</td>
+<td>Scripted REST → SIR incident</td>
+</tr>
+<tr>
+<td>QRadar</td>
+<td>TAXII/Custom Action</td>
+<td>SIR + IoC ingest</td>
+</tr>
+<tr>
+<td>Qualys VM</td>
+<td>IH Spoke</td>
+<td>VR import</td>
+</tr>
+<tr>
+<td>Tenable.io</td>
+<td>IH Spoke</td>
+<td>VR import</td>
+</tr>
+<tr>
+<td>Rapid7</td>
+<td>IH Spoke</td>
+<td>VR import</td>
+</tr>
+<tr>
+<td>CrowdStrike Falcon</td>
+<td>REST</td>
+<td>SIR enrichment + isolation</td>
+</tr>
+<tr>
+<td>Carbon Black</td>
+<td>REST</td>
+<td>SIR enrichment</td>
+</tr>
+<tr>
+<td>Cisco SecureX</td>
+<td>REST</td>
+<td>SIR enrichment</td>
+</tr>
+<tr>
+<td>MS Defender</td>
+<td>Graph API</td>
+<td>SIR + VR</td>
+</tr>
+<tr>
+<td>Palo Alto Firewall</td>
+<td>REST</td>
+<td>Block IP</td>
+</tr>
+<tr>
+<td>Active Directory</td>
+<td>LDAP / Graph</td>
+<td>Disable user</td>
+</tr>
+<tr>
+<td>MISP / OTX</td>
+<td>TAXII</td>
+<td>TI feeds</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-reports-dashboards">§8 — Reports &amp; Dashboards</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<table>
+<thead>
+<tr>
+<th>Dashboard</th>
+<th>Audience</th>
+<th>Key KPIs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SOC Manager</td>
+<td>Daily ops</td>
+<td>Mean Time to Detect (MTTD), MTTR, open by priority</td>
+</tr>
+<tr>
+<td>CISO Executive</td>
+<td>Monthly</td>
+<td>Risk posture, top assets at risk, trend</td>
+</tr>
+<tr>
+<td>Vulnerability Owner</td>
+<td>Weekly</td>
+<td>Open VIs by team, SLA breaches</td>
+</tr>
+<tr>
+<td>Threat Intel</td>
+<td>Weekly</td>
+<td>Top IoCs hit, feeds health</td>
+</tr>
+<tr>
+<td>Compliance</td>
+<td>Quarterly</td>
+<td>Benchmark pass %, controls aligned</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="17-power-user-playbook-secops">§17 — Power User Playbook (SecOps)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<h3 id="171-personas">17.1 Personas</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Primary actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SOC Analyst T1</td>
+<td>Triage, alert validation, basic playbooks</td>
+</tr>
+<tr>
+<td>SOC Analyst T2</td>
+<td>Investigation, scoping, containment</td>
+</tr>
+<tr>
+<td>Incident Commander</td>
+<td>Major incident coordination, comms</td>
+</tr>
+<tr>
+<td>Vulnerability Owner</td>
+<td>Triage VIs, drive remediation, SLA</td>
+</tr>
+<tr>
+<td>Threat Hunter</td>
+<td>Proactive hunts, hypothesis-driven</td>
+</tr>
+<tr>
+<td>CISO</td>
+<td>Risk posture, board reporting</td>
+</tr>
+<tr>
+<td>IT Operator</td>
+<td>Execute approved containment</td>
+</tr>
+</tbody>
+</table>
+<h3 id="172-day-in-life-soc-analyst-t1">17.2 Day-in-Life — SOC Analyst T1</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ol>
+<li>Open /now/sir/agent → My queue (severity sorted).</li>
+<li>Pick highest-sev incident. Run &ldquo;Enrich Observables&rdquo; playbook.</li>
+<li>Validate true/false positive (FP rate target &lt; 30%).</li>
+<li>If TP → escalate to T2 with notes, MITRE tag, affected CIs.</li>
+<li>Track SLA (typically 15 min triage).</li>
+</ol>
+<h3 id="173-top-15-secops-scripts">17.3 Top 15 SecOps Scripts</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>1. SIEM alert → SIR incident</strong></p>
+<pre><code class="language-javascript">// Scripted REST /api/x_sn_si/v1/incident
+(function process(request, response) {
+ var alert = request.body.data;
+ var inc = new GlideRecord('sn_si_incident');
+ inc.initialize();
+ inc.setValue('short_description', alert.title);
+ inc.setValue('description', alert.description);
+ inc.setValue('severity', _mapSeverity(alert.severity));
+ inc.setValue('source', alert.source || 'siem');
+ inc.setValue('correlation_id', alert.alert_id);
+ var sysId = inc.insert();
+</code></pre>
+<p>// Affected CIs<br />
+ (alert.affected_hosts || []).forEach(function (host) {<br />
+ var ci = new GlideRecord(&lsquo;cmdb_ci&rsquo;);<br />
+ ci.addQuery(&lsquo;name&rsquo;, host);<br />
+ ci.setLimit(1); ci.query();<br />
+ if (ci.next()) {<br />
+ var m = new GlideRecord(&lsquo;sn_si_m2m_ci_incident&rsquo;);<br />
+ m.initialize();<br />
+ m.setValue(&lsquo;incident&rsquo;, sysId);<br />
+ m.setValue(&lsquo;configuration_item&rsquo;, ci.getUniqueValue());<br />
+ m.insert();<br />
+ }<br />
+ });</p>
+<p>// IoCs<br />
+ (alert.iocs || []).forEach(function (ioc) {<br />
+ var ob = new GlideRecord(&lsquo;sn_ti_observable&rsquo;);<br />
+ ob.initialize();<br />
+ ob.setValue(&lsquo;value&rsquo;, ioc.value);<br />
+ ob.setValue(&lsquo;finding&rsquo;, ioc.type);<br />
+ ob.setValue(&lsquo;source&rsquo;, &lsquo;incident_&rsquo; + inc.getValue(&lsquo;number&rsquo;));<br />
+ ob.insert();<br />
+ });</p>
+<p>response.setStatus(201);<br />
+ return { incident_id: inc.getValue(&lsquo;number&rsquo;) };</p>
+<p>function _mapSeverity(sev) {<br />
+ var m = { critical: 1, high: 2, medium: 3, low: 4, info: 5 };<br />
+ return m[String(sev).toLowerCase()] || 3;<br />
+ }<br />
+})(request, response);</p>
+<p><strong>2. Disable AD user containment</strong></p>
+<pre><code class="language-javascript">var SIRADIsolator = Class.create();
+SIRADIsolator.prototype = {
+ initialize: function {},
+</code></pre>
+<p>disable: function (userSysId, reason) {<br />
+ var u = new GlideRecord(&lsquo;sys_user&rsquo;);<br />
+ if (!u.get(userSysId)) return false;</p>
+<p>var rm = new sn_ws.RESTMessageV2(&lsquo;AzureAD&rsquo;, &lsquo;disableUser&rsquo;);<br />
+ rm.setStringParameter(&lsquo;userPrincipalName&rsquo;, u.getValue(&lsquo;email&rsquo;));<br />
+ rm.setHttpTimeout(30000);<br />
+ var resp = rm.execute();<br />
+ if (resp.getStatusCode() &gt;= 200 &amp;&amp; resp.getStatusCode() &lt; 300) {<br />
+ u.setValue(&lsquo;active&rsquo;, false);<br />
+ u.setValue(&lsquo;locked_out&rsquo;, true);<br />
+ u.update();</p>
+<p>// Audit<br />
+ var a = new GlideRecord(&lsquo;sn_si_action_log&rsquo;);<br />
+ a.initialize();<br />
+ a.setValue(&lsquo;action&rsquo;, &lsquo;disable_user&rsquo;);<br />
+ a.setValue(&lsquo;target&rsquo;, u.getValue(&lsquo;email&rsquo;));<br />
+ a.setValue(&lsquo;reason&rsquo;, reason);<br />
+ a.insert();<br />
+ return true;<br />
+ }<br />
+ return false;<br />
+ },</p>
+<p>type: &lsquo;SIRADIsolator&rsquo;<br />
+};</p>
+<p><strong>3. Block IP at firewall</strong></p>
+<pre><code class="language-javascript">function blockIP(ip, reason, ticketId) {
+ var rm = new sn_ws.RESTMessageV2('PaloAltoFirewall', 'addBlocklist');
+ rm.setStringParameter('ip', ip);
+ rm.setStringParameter('note', 'SIR-' + ticketId + ': ' + reason);
+ rm.setHttpTimeout(20000);
+ try {
+ var r = rm.execute();
+ if (r.getStatusCode() &gt;= 200 &amp;&amp; r.getStatusCode() &lt; 300) {
+ gs.eventQueue('x_sn_si.ip.blocked', null, ip, ticketId);
+ return true;
+ }
+ gs.error('[SIR] FW block failed: ' + r.getBody());
+ } catch (e) {
+ gs.error('[SIR] FW exception: ' + e.message);
+ }
+ return false;
+}
+</code></pre>
+<p><strong>4. Bulk-VI to bulk-Change</strong> — covered in §4.5 above.</p>
+<p><strong>5. Phishing email auto-triage</strong> — Inbound Email → parse URLs/attachments → enrich → create SIR if malicious.</p>
+<p><strong>6. Asset → Vulnerability count rollup</strong> — GlideAggregate on sn_vul_vulnerable_item grouped by cmdb_ci.</p>
+<p><strong>7. CVE exploitation watcher</strong> — daily check NVD + ExploitDB; update exploit_status on sn_vul_vulnerability.</p>
+<p><strong>8. Threat actor profile linker</strong> — incidents tagged with same actor → group view.</p>
+<p><strong>9. SLA breach forecaster</strong> — predict which VIs will breach SLA based on remediation pace.</p>
+<p><strong>10. Forensics evidence collector</strong> — capture EDR + SIEM logs into encrypted attachment.</p>
+<p><strong>11-15. Quick recipes</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11</td>
+<td>Honeypot IP auto-blocker (any IP touching honeypot → block)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>MFA bypass detector (login from new geo + new device)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Data exfiltration alert (high outbound to unknown domain)</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Brute force lockout sweep (failed logons threshold)</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Insider threat scoring (UEBA-light)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="18-from-scratch-implementation-day-0-day-30">§18 — From-Scratch Implementation (Day 0 → Day 30)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Days</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Setup + CMDB</td>
+<td>0–5</td>
+<td>Plugins, CMDB readiness, integration accounts</td>
+</tr>
+<tr>
+<td>SIR</td>
+<td>6–12</td>
+<td>Playbooks, MITRE, workspace</td>
+</tr>
+<tr>
+<td>VR</td>
+<td>13–18</td>
+<td>Scanner integration, prioritization, SLA</td>
+</tr>
+<tr>
+<td>TI + CTD</td>
+<td>19–24</td>
+<td>Feeds, IoC mgmt, benchmarks</td>
+</tr>
+<tr>
+<td>Hardening + Launch</td>
+<td>25–30</td>
+<td>Training, UAT, go-live</td>
+</tr>
+</tbody>
+</table>
+<h3 id="181-day-by-day">18.1 Day-by-day</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>Day 0</strong> — Strategy<br />
+- Threat model<br />
+- SOC operating model (24/7 vs follow-the-sun)<br />
+- Roles (T1/T2/T3, Hunter, IR Manager)<br />
+- Tools inventory (SIEM, EDR, FW, Scanner, AD)<br />
+- Runbook drafts (Phishing, Ransomware, Lost Laptop, Data Leak, Insider)</p>
+<p><strong>Day 1</strong> — Plugins</p>
+<pre><code class="language-text">- com.snc.threat (SecOps Foundation)
+- com.snc.security_incident
+- com.snc.vulnerability
+- com.snc.vul_qualys / .tenable_io / .rapid7_insightvm
+- com.snc.threat.intel
+- com.snc.sn_vul_config_test
+- com.sn_sec_cmn (Common Security)
+</code></pre>
+<p><strong>Day 2-3</strong> — CMDB readiness<br />
+- Hosts have IP, FQDN, OS, business criticality<br />
+- Service Maps for top 20 critical services<br />
+- Asset criticality tier (1-4)</p>
+<p><strong>Day 4-5</strong> — Integration accounts<br />
+- SIEM API user<br />
+- EDR API key<br />
+- Scanner API<br />
+- AD service account<br />
+- Cloud accounts (AWS/Azure/GCP)<br />
+- IH spoke connections tested</p>
+<p><strong>Day 6</strong> — SIR fundamentals<br />
+- Severity matrix (1=Critical → 5=Info)<br />
+- States + transitions<br />
+- Assignment groups (SOC-T1, SOC-T2, IR-Manager, Forensics)</p>
+<p><strong>Day 7-9</strong> — Playbooks (PAD)<br />
+- Build/customize 6 core: Phishing, Malware, DLP, Ransomware, Brute Force, Privilege Misuse<br />
+- Each with steps mapped to NIST 800-61r2</p>
+<p><strong>Day 10</strong> — MITRE ATT&amp;CK tagging<br />
+- Import latest MITRE bundle<br />
+- Configure auto-tagging from alert type</p>
+<p><strong>Day 11</strong> — SIR Workspace customization</p>
+<p><strong>Day 12</strong> — Containment actions<br />
+- Isolate host (script #2 in §17.3)<br />
+- Block IP (script #3)<br />
+- Disable user (script #2 modified)</p>
+<p><strong>Day 13</strong> — VR scanner integration<br />
+- Qualys/Tenable IH Spoke<br />
+- Import schedule (every 6h)<br />
+- Asset matching algorithm tuning</p>
+<p><strong>Day 14</strong> — Vulnerability deduplication (IRE rules)</p>
+<p><strong>Day 15</strong> — Prioritization formula (script in §4.2)</p>
+<p><strong>Day 16</strong> — SLA on VIs</p>
+<p><strong>Day 17</strong> — Remediation workflows (auto-Change, dev tickets)</p>
+<p><strong>Day 18</strong> — Patch group orchestration (§4.5)</p>
+<p><strong>Day 19</strong> — TI feeds onboarding<br />
+- TAXII connection to OTX (free start)<br />
+- MISP server (if available)<br />
+- Recorded Future (paid)<br />
+- IoC ingestion + dedup</p>
+<p><strong>Day 20-21</strong> — IoC enrichment (script in §5.3)</p>
+<p><strong>Day 22</strong> — Threat hunt baseline (script in §5.4)</p>
+<p><strong>Day 23</strong> — CTD benchmark import<br />
+- CIS Level 1 Linux<br />
+- CIS Level 1 Windows Server<br />
+- CIS K8s</p>
+<p><strong>Day 24</strong> — Compliance dashboards</p>
+<p><strong>Day 25</strong> — Dashboards (SOC Manager + CISO)</p>
+<p><strong>Day 26</strong> — Reports &amp; PA<br />
+- MTTD / MTTR / Containment time<br />
+- Vulnerability remediation velocity<br />
+- IoC hit rate</p>
+<p><strong>Day 27</strong> — ATF — 12 scenarios</p>
+<p><strong>Day 28</strong> — Training<br />
+- T1 analysts (2 days)<br />
+- T2 analysts (3 days)<br />
+- IR manager (1 day)<br />
+- VR owners (½ day)</p>
+<p><strong>Day 29</strong> — Tabletop exercise</p>
+<p><strong>Day 30</strong> — Go-live + 24/7 SOC operational</p>
+<h3 id="182-kpis-month-1">18.2 KPIs Month 1</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mean Time to Detect (MTTD)</td>
+<td>≤ 30 min</td>
+</tr>
+<tr>
+<td>Mean Time to Triage</td>
+<td>≤ 15 min</td>
+</tr>
+<tr>
+<td>Mean Time to Contain</td>
+<td>≤ 60 min (Sev 1-2)</td>
+</tr>
+<tr>
+<td>False positive rate</td>
+<td>≤ 25%</td>
+</tr>
+<tr>
+<td>Critical VI remediation within SLA</td>
+<td>≥ 95%</td>
+</tr>
+<tr>
+<td>IoC enrichment success rate</td>
+<td>≥ 90%</td>
+</tr>
+<tr>
+<td>SOC analyst engagement (cases/shift)</td>
+<td>15-25</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="19-sign-off-checklist">§19 — Sign-off Checklist</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ul>
+<li>[ ] CMDB readiness verified (criticality + service maps)</li>
+<li>[ ] All scanner integrations tested end-to-end</li>
+<li>[ ] SIR playbooks reviewed by IR manager</li>
+<li>[ ] MITRE ATT&amp;CK current version imported</li>
+<li>[ ] Containment actions tested in pre-prod</li>
+<li>[ ] SLA matrix signed by CISO</li>
+<li>[ ] On-call rotation defined</li>
+<li>[ ] War-room runbook printed</li>
+<li>[ ] Disaster scenarios drilled (tabletop)</li>
+<li>[ ] Forensics evidence chain documented</li>
+</ul>
+<hr />
+<h2 id="19-cis-vr-cis-sir-exam-z-to-hero-feature-labs-30-inline-q">§19 — CIS-VR / CIS-SIR Exam &amp; Z-to-Hero Feature Labs (30 inline Q)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="191-z-to-hero-feature-labs-12-labs">19.1 Z-to-Hero Feature Labs (12 labs)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Lab</th>
+<th>Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>Configure SIEM webhook → SIR incident</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>MITRE ATT&amp;CK tagging on incident</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>IoC enrichment via TI Spoke</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>Playbook (Workflow Studio) for &ldquo;Phishing&rdquo;</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>Threat Hunt query (proactive)</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>VR prioritization formula (CVSS + asset + exploit)</td>
+</tr>
+<tr>
+<td>L7</td>
+<td>Bulk VI → Change automation</td>
+</tr>
+<tr>
+<td>L8</td>
+<td>Vulnerability deferral workflow with risk owner approval</td>
+</tr>
+<tr>
+<td>L9</td>
+<td>Host containment via EDR (Crowdstrike mock)</td>
+</tr>
+<tr>
+<td>L10</td>
+<td>CIS benchmark scan + remediation</td>
+</tr>
+<tr>
+<td>L11</td>
+<td>Configuration compliance dashboard</td>
+</tr>
+<tr>
+<td>L12</td>
+<td>Forensics evidence chain workflow</td>
+</tr>
+</tbody>
+</table>
+<h3 id="192-30-secops-practice-questions">19.2 30 SecOps Practice Questions</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p><strong>SIR (Q1-Q15)</strong></p>
+<ol>
+<li>SIR table: A. sn_si_incident | B. incident | C. sec_incident | D. None — <strong>Answer: A</strong></li>
+<li>Playbook engine: A. Workflow Studio (Process Automation) | B. Legacy WF | C. Flow Designer only | D. None — <strong>Answer: A</strong></li>
+<li>MITRE ATT&amp;CK reference: A. sn_si_attack_technique table | B. Just notes | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>SIR Priority calc: A. Impact × Urgency + business risk | B. Random | C. Cost | D. None — <strong>Answer: A</strong></li>
+<li>Containment action examples: A. Isolate host, block IP, reset password, revoke session | B. Just notify | C. None | D. Random — <strong>Answer: A</strong></li>
+<li>SIR ↔ Incident relationship: A. SIR can spawn ITIL Incident for IT impact | B. Same record | C. Independent | D. Random — <strong>Answer: A</strong></li>
+<li>Major Incident from SIR: A. Promote to Major Incident on impact threshold | B. Manual only | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>SIR Workspace URL: A. /now/sir/workspace | B. /sir.do | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Phishing email submission: A. Outlook plugin → Inbound Email Action → SIR | B. Manual | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Threat Intel sources: A. STIX/TAXII feeds + Vendor APIs (Mandiant, Recorded Future) | B. Just news | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>IoC types: A. IP, Domain, URL, Hash, Email | B. Just IP | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Threat Hunt: A. Proactive search using TI + endpoint data | B. Reactive only | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Tabletop exercise scope: A. Simulate breach end-to-end with stakeholders | B. Just docs | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>SOAR integration: A. ServiceNow as SOAR with SIEM as detector | B. Same | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Evidence preservation: A. Forensic copy + chain of custody record | B. Just screenshot | C. Random | D. None — <strong>Answer: A</strong></li>
+</ol>
+<p><strong>VR (Q16-Q30)</strong></p>
+<ol start="16">
+<li>VR table: A. sn_vul_vulnerable_item (per asset per vuln) | B. sn_vul_vulnerability (master) | C. Both | D. None — <strong>Answer: C</strong></li>
+<li>Prioritization inputs: A. CVSS + asset criticality + exploit availability + business context | B. CVSS only | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>CVSS v3.1 ranges: A. 0-3.9 Low / 4-6.9 Med / 7-8.9 High / 9-10 Critical | B. Different | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Vulnerability Group: A. Bundle VIs by host/app/business for collective remediation | B. Just sort | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Auto-CR creation: A. VG → Change Request workflow on threshold | B. Manual | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Patch deferral: A. Risk Owner approval + justification + re-eval date | B. Free pass | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>VR sources: A. Qualys, Tenable, Rapid7, Crowdstrike, MS Defender | B. Just one | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Asset enrichment for VR: A. Owner, criticality, exposure (internet-facing) | B. Just name | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>KEV catalog (CISA): A. Known Exploited Vulnerabilities — fast-track | B. Random | C. None | D. Just list — <strong>Answer: A</strong></li>
+<li>Threat-aware VR: A. Boost priority if active exploit in wild | B. Ignore | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>Vulnerability lifecycle: A. Detected → Triaged → Assigned → Remediated → Verified → Closed | B. Just close | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>SLA on vulnerabilities: A. Per severity (Critical=7d, High=30d, Med=90d typical) | B. Random | C. None | D. Always 30d — <strong>Answer: A</strong></li>
+<li>False positive workflow: A. Submit → review → confirm → close as FP + suppress | B. Just close | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>VR + CMDB: A. VI links to CI via IRE | B. Manual only | C. Random | D. None — <strong>Answer: A</strong></li>
+<li>CTD (Configuration Compliance) scanners: A. Tenable.io CC, Qualys PC, custom | B. None | C. Random | D. Just one — <strong>Answer: A</strong></li>
+</ol>
+<h3 id="193-what-hero-looks-like-for-secops">19.3 What &ldquo;Hero&rdquo; looks like for SecOps</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>Operates a security operation: SIR + VR + TI + CTD integrated. Playbooks automate top 10 incident types. VR prioritization is risk-aware (CVSS + asset + exploit). Auto-CR for VG &gt; threshold. Containment via EDR. Tabletop exercises quarterly. SOC dashboards live.</p>
+<hr />
+<h2 id="hands-on-labs">Hands-on Labs — مختبرات عملية</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<blockquote>
+<p>Step-by-step labs for PDI / Australia instance. Replace <code>{BASE}</code> with your instance URL.<br />
+مختبرات خطوة بخطوة — استبدل <code>{BASE}</code> برابط نسختك.</p>
+</blockquote>
+<ol>
+<li>
+<p><strong>Lab 1</strong> — <strong>SIR incident / حادث أمني</strong> — Create at <a href="{BASE}/sn_si_incident.do?sys_id=-1">{BASE}/sn_si_incident.do?sys_id=-1</a>; tag MITRE technique.</p>
+</li>
+<li>
+<p><strong>Lab 2</strong> — <strong>Playbook / مسار عمل</strong> — Run phishing playbook from <a href="{BASE}/now/workflow-studio/home">{BASE}/now/workflow-studio/home</a>.</p>
+</li>
+<li>
+<p><strong>Lab 3</strong> — <strong>IoC enrichment / IoC</strong> — Add indicator at <a href="{BASE}/sn_ti_indicator_list.do">{BASE}/sn_ti_indicator_list.do</a>; enrich incident.</p>
+</li>
+<li>
+<p><strong>Lab 4</strong> — <strong>VR prioritization / أولوية ثغرة</strong> — Import sample CVE; score with asset criticality.</p>
+</li>
+<li>
+<p><strong>Lab 5</strong> — <strong>Vulnerable Item / VI</strong> — Review VI list; assign remediation owner.</p>
+</li>
+<li>
+<p><strong>Lab 6</strong> — <strong>Bulk remediation / إصلاح جماعي</strong> — Create Change from Vulnerability Group.</p>
+</li>
+<li>
+<p><strong>Lab 7</strong> — <strong>Config compliance / امتثال إعداد</strong> — Run CIS benchmark scan; review failures.</p>
+</li>
+<li>
+<p><strong>Lab 8</strong> — <strong>SIR Workspace / مساحة SIR</strong> — Triage queue at <a href="{BASE}/now/sir/workspace">{BASE}/now/sir/workspace</a>.</p>
+</li>
+</ol>
+<hr />
+<h2 id="best-practices">Best Practices — أفضل الممارسات</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Best practice (EN)</th>
+<th>أفضل ممارسة (AR)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SIR</td>
+<td>Integrate SIEM for detection; ServiceNow for orchestration</td>
+<td>SIEM للكشف؛ ServiceNow للتنسيق</td>
+</tr>
+<tr>
+<td>VR</td>
+<td>Risk-based prioritization beats CVSS-only</td>
+<td>الأولوية حسب المخاطr لا CVSS فقط</td>
+</tr>
+<tr>
+<td>TI</td>
+<td>STIX/TAXII feeds with expiry on IoCs</td>
+<td>Feeds مع انتهاء IoC</td>
+</tr>
+<tr>
+<td>Playbooks</td>
+<td>Top 10 incident types automated first</td>
+<td>أتمتة أهم 10 أنواع حوادث</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="deployment-checklist">Deployment Checklist — قائمة النشر</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task (EN)</th>
+<th>المهمة (AR)</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Install SIR, VR, TI, CTD plugins</td>
+<td>تثبيت SecOps</td>
+<td>Licensed</td>
+</tr>
+<tr>
+<td>2</td>
+<td>SIEM/EDR integration</td>
+<td>تكامل SIEM</td>
+<td>Events create SIR</td>
+</tr>
+<tr>
+<td>3</td>
+<td>VR scanner connector</td>
+<td>موصل الماسح</td>
+<td>VIs populate</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Prioritization formula</td>
+<td>صيغة الأولوية</td>
+<td>Critical ranked</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Playbooks for top scenarios</td>
+<td>Playbooks</td>
+<td>Automation runs</td>
+</tr>
+<tr>
+<td>6</td>
+<td>TI feeds configured</td>
+<td>TI feeds</td>
+<td>IoCs enrich</td>
+</tr>
+<tr>
+<td>7</td>
+<td>SOC dashboards</td>
+<td>لوحات SOC</td>
+<td>Metrics visible</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Tabletop exercise</td>
+<td>تمرين Tabletop</td>
+<td>Runbook validated</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="direct-urls-quick-reference">Direct URLs Quick Reference</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigation</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SIR Workspace</td>
+<td>Now &gt; SIR</td>
+<td><a href="{BASE}/now/sir/workspace">{BASE}/now/sir/workspace</a></td>
+</tr>
+<tr>
+<td>Security Incidents</td>
+<td>All &gt; SecOps &gt; Incidents</td>
+<td><a href="{BASE}/sn_si_incident_list.do">{BASE}/sn_si_incident_list.do</a></td>
+</tr>
+<tr>
+<td>Vulnerabilities</td>
+<td>All &gt; VR</td>
+<td><a href="{BASE}/sn_vul_vulnerability_list.do">{BASE}/sn_vul_vulnerability_list.do</a></td>
+</tr>
+<tr>
+<td>Vulnerable Items</td>
+<td>All &gt; VR</td>
+<td><a href="{BASE}/sn_vul_vulnerable_item_list.do">{BASE}/sn_vul_vulnerable_item_list.do</a></td>
+</tr>
+<tr>
+<td>Threat Indicators</td>
+<td>All &gt; TI</td>
+<td><a href="{BASE}/sn_ti_indicator_list.do">{BASE}/sn_ti_indicator_list.do</a></td>
+</tr>
+<tr>
+<td>Playbooks</td>
+<td>All &gt; Workflow Studio</td>
+<td><a href="{BASE}/now/workflow-studio/home">{BASE}/now/workflow-studio/home</a></td>
+</tr>
+<tr>
+<td>Config Compliance</td>
+<td>All &gt; CTD</td>
+<td><a href="{BASE}/sn_vul_ctd_test_list.do">{BASE}/sn_vul_ctd_test_list.do</a></td>
+</tr>
+<tr>
+<td>IntegrationHub Spokes</td>
+<td>All &gt; IntegrationHub</td>
+<td><a href="{BASE}/sys_hub_spoke_list.do">{BASE}/sys_hub_spoke_list.do</a></td>
+</tr>
+<tr>
+<td>Guided Setup</td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,3302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HRSD — HR Service Delivery (Zero → Pro) | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>HRSD — HR Service Delivery (Zero → Pro)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="hrsd-hr-service-delivery-zero-pro">HRSD — HR Service Delivery (Zero → Pro)</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً:</strong> <a href="../MASTER_ALL_IN_ONE_SUMMARY.html">../MASTER_ALL_IN_ONE_SUMMARY.md</a> · <a href="../html/MASTER_ALL_IN_ONE_SUMMARY.html">../html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل:</strong> <a href="../MASTER_ALL_IN_ONE.html">../MASTER_ALL_IN_ONE.md</a> · <a href="../html/MASTER_ALL_IN_ONE.html">../html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات:</strong> <a href="../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Australia · Scope <code>x_786686_hr_leave</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<h2 id="australia-instance">Australia Instance — نسخة أستراليا</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Region / Datacenter</strong></td>
+<td>ServiceNow <strong>Australia</strong></td>
+</tr>
+<tr>
+<td><strong>Release train</strong></td>
+<td>Zurich (Sep 2026 EA) · next EA: <strong>Brazil</strong></td>
+</tr>
+<tr>
+<td><strong>URL base</strong></td>
+<td><code>{BASE}</code></td>
+</tr>
+<tr>
+<td><strong>Scope note</strong></td>
+<td>HR Leave app: <code>x_786686_hr_leave</code></td>
+</tr>
+<tr>
+<td><strong>Guided Setup</strong></td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="direct-navigation-urls">Direct Navigation URLs — روابط التنقل المباشرة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page / Tool</th>
+<th>Navigation Path</th>
+<th>Direct URL</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HR Cases</strong></td>
+<td>All &gt; HR &gt; Cases</td>
+<td><a href="{BASE}/sn_hr_core_case_list.do">{BASE}/sn_hr_core_case_list.do</a></td>
+<td>HR case queue</td>
+</tr>
+<tr>
+<td><strong>HR Services</strong></td>
+<td>All &gt; HR &gt; Services</td>
+<td><a href="{BASE}/sn_hr_core_service_list.do">{BASE}/sn_hr_core_service_list.do</a></td>
+<td>Service catalog (HR)</td>
+</tr>
+<tr>
+<td><strong>Employee Center</strong></td>
+<td>Employee Center</td>
+<td><a href="{BASE}/esc">{BASE}/esc</a></td>
+<td>Employee self-service</td>
+</tr>
+<tr>
+<td><strong>Lifecycle Events</strong></td>
+<td>All &gt; HR &gt; Lifecycle Events</td>
+<td><a href="{BASE}/sn_hr_le_case_list.do">{BASE}/sn_hr_le_case_list.do</a></td>
+<td>On/offboarding</td>
+</tr>
+<tr>
+<td><strong>HR Criteria</strong></td>
+<td>All &gt; HR &gt; Administration &gt; HR Criteria</td>
+<td><a href="{BASE}/sn_hr_core_criteria_list.do">{BASE}/sn_hr_core_criteria_list.do</a></td>
+<td>Data segregation</td>
+</tr>
+<tr>
+<td><strong>COE Configuration</strong></td>
+<td>All &gt; HR &gt; Administration</td>
+<td><a href="{BASE}/sn_hr_core_case_list.do">{BASE}/sn_hr_core_case_list.do</a></td>
+<td>Centers of Excellence</td>
+</tr>
+<tr>
+<td><strong>HR Knowledge</strong></td>
+<td>All &gt; Knowledge (HR)</td>
+<td><a href="{BASE}/kb_knowledge_list.do">{BASE}/kb_knowledge_list.do</a></td>
+<td>HR articles</td>
+</tr>
+<tr>
+<td><strong>HR Workspace</strong></td>
+<td>Now Experience &gt; HR</td>
+<td><a href="{BASE}/now/hr/home">{BASE}/now/hr/home</a></td>
+<td>HR agent workspace</td>
+</tr>
+<tr>
+<td><strong>Flow Designer</strong></td>
+<td>All &gt; Process Automation &gt; Flow Designer</td>
+<td><a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a></td>
+<td>HR workflows</td>
+</tr>
+<tr>
+<td><strong>Guided Setup HRSD</strong></td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+<td>Initial configuration</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>URLs:</strong> <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">../../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a><br />
+<strong>HR Leave:</strong> Scope x_786686_hr_leave</p>
+<p>CIS-HR Professional Implementer Guide<br />
+الأسلوب: عربية + إنجليزية تكمّلان بعضهما — بدون ترجمة حرفية لأسماء الشاشات.<br />
+ملاحظة:<br />
+تطبيقنا (HR Leave App) هو امتداد عملي لهذا الموديول.</p>
+</blockquote>
+<hr />
+<h2 id="arabic-summary">ملخص ووصف بالعربية (Arabic Summary)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>البند</th>
+<th>الشرح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ما هو HRSD؟</strong></td>
+<td>تسليم خدمات الموارد البشرية — قضايا HR، Employee Center، دورة حياة الموظف</td>
+</tr>
+<tr>
+<td><strong>لماذا مهم؟</strong></td>
+<td>قضايا HR حساسة تحتاج سرية (HR Criteria) وبوابة موظف آمنة</td>
+</tr>
+<tr>
+<td><strong>من يستخدمه؟</strong></td>
+<td>موظف، وكيل HR، مدير (حسب الصلاحية)، COE (Payroll، Benefits…)</td>
+</tr>
+<tr>
+<td><strong>ماذا يغطي الملف؟</strong></td>
+<td>Cases، /esc، Lifecycle، scoped apps (Leave) · §16</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ملخص في سطر:</strong> بوابة موظف + Case HR + onboarding/offboarding — مرتبط بتطبيق الإجازات في المشروع.</p>
+<p><strong>وصف مختصر:</strong> يشرح HR Services، HR Criteria للسرية، Employee Center، Activity Sets، وربط x_786686_hr_leave. ليس ITSM.</p>
+<hr />
+<h2 id="1-overview-business-value">1) Overview &amp; Business Value</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>HRSD delivers HR services to employees across the lifecycle. — من التوظيف (Onboarding) حتى المغادرة (Offboarding) وكل ما بينهما.</p>
+<p>Core value:<br />
+- HR Case management (with sensitive data separation).<br />
+- Employee self-service (Employee Center).<br />
+- Lifecycle Events (onboarding/offboarding/transfer).<br />
+- Knowledge tailored to HR.<br />
+- Integration with payroll/HRIS (Workday/SAP).</p>
+<hr />
+<h2 id="2-architecture-data-model">2) Architecture &amp; Data Model</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>Key tables:</p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>الغرض</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sn_hr_core_case</td>
+<td>حالة HR الأساسية</td>
+</tr>
+<tr>
+<td>sn_hr_core_case_* (COE)</td>
+<td>حالات حسب مجال (payroll, benefits&hellip;)</td>
+</tr>
+<tr>
+<td>sn_hr_core_profile</td>
+<td>ملف الموظف في HR</td>
+</tr>
+<tr>
+<td>sn_hr_le_case (Lifecycle Event)</td>
+<td>أحداث دورة حياة الموظف</td>
+</tr>
+<tr>
+<td>sn_hr_core_task</td>
+<td>مهام HR</td>
+</tr>
+<tr>
+<td>sn_hr_core_service</td>
+<td>خدمات HR</td>
+</tr>
+<tr>
+<td>sn_hr_core_subject_person</td>
+<td>الشخص موضوع الحالة</td>
+</tr>
+</tbody>
+</table>
+<p>Centers of Excellence (COE): — HRSD يفصل الحالات حسب مجال (COE) لحماية البيانات الحساسة.</p>
+<pre><code class="language-text">HR Case (base sn_hr_core_case)
+ ├─ Total Rewards COE
+ ├─ Payroll COE
+ ├─ Benefits COE
+ ├─ Employee Relations COE (حسّاس جدًا)
+ └─ ...
+Each COE = scoped data + roles + criteria
+</code></pre>
+<hr />
+<h2 id="3-plugins-activation">3) Plugins &amp; Activation</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>App / Plugin</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR Service Delivery (core)</td>
+<td>com.sn_hr_core</td>
+</tr>
+<tr>
+<td>HR: Case and Knowledge Management</td>
+<td>com.sn_hr_case_management</td>
+</tr>
+<tr>
+<td>HR: Employee Relations</td>
+<td>com.sn_hr_em_rel</td>
+</tr>
+<tr>
+<td>HR: Lifecycle Events (Enterprise)</td>
+<td>com.sn_hr_lifecycle_ent</td>
+</tr>
+<tr>
+<td>Employee Center / Pro</td>
+<td>from Store</td>
+</tr>
+<tr>
+<td>HR Integrations (Workday/SAP spokes)</td>
+<td>IntegrationHub</td>
+</tr>
+<tr>
+<td>Now Assist for HRSD</td>
+<td>subscription</td>
+</tr>
+</tbody>
+</table>
+<p>How to activate:</p>
+<ol>
+<li>Navigate: All &gt; System Applications &gt; All Available Applications &gt; All. — <a href="{BASE}/v_plugin_list.do">Open direct</a></li>
+<li>Activate HR Core, then Case &amp; Knowledge, then optional COEs.</li>
+<li>Guided Setup:<br />
+ Navigate: All &gt; Guided Setup &gt; HR Service Delivery. — <a href="{BASE}/now/guided-setup">Open direct</a></li>
+</ol>
+<hr />
+<h2 id="4-guided-setup-all-options">4) Guided Setup &amp; All Options</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>Sections:<br />
+- Foundation — HR profiles, departments, locations.<br />
+- COE configuration — which centers of excellence are active.<br />
+- HR Services &amp; Catalog — خدمات HR.<br />
+- Case Management — types, states, assignment, criteria.<br />
+- Knowledge — HR knowledge base + criteria.<br />
+- Lifecycle Events — onboarding/offboarding journeys.<br />
+- Employee Center — the unified portal.<br />
+- Security — HR Criteria, roles, data separation.</p>
+<p>Important options:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR Profiles</td>
+<td>All &gt; HR Administration &gt; Profiles · <a href="{BASE}/sn_hr_core_profile_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>COEs / Services</td>
+<td>All &gt; HR Administration &gt; Services · <a href="{BASE}/sn_hr_core_service_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>HR Criteria (security)</td>
+<td>All &gt; HR Administration &gt; HR Criteria · <a href="{BASE}/sn_hr_core_criteria_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Lifecycle Events</td>
+<td>All &gt; HR Lifecycle Events · <a href="{BASE}/sn_hr_le_case_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Employee Center</td>
+<td>All &gt; Employee Center config · <a href="{BASE}/esc">Open direct</a></td>
+</tr>
+<tr>
+<td>Assignment rules</td>
+<td>All &gt; HR Administration &gt; Assignment · <a href="{BASE}/sysrule_assignment_list.do?sysparm_query=tableSTARTSWITHsn_hr">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-end-to-end-process-cycle">5) End-to-End Process Cycle</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>HR Case lifecycle:</p>
+<pre><code class="language-text">New → In Progress → Awaiting Info → Resolved → Closed Complete
+</code></pre>
+<p>Full service flow:</p>
+<pre><code class="language-text">Employee (Employee Center)
+ → Submit HR request / Record Producer
+ → HR Case created in correct COE
+ → HR Criteria controls who can see it
+ → Assigned to HR agent (skills/COE)
+ → Tasks / approvals (Flow Designer)
+ → Resolve → employee confirms → Close
+</code></pre>
+<p>Lifecycle Event (Onboarding) flow:</p>
+<pre><code class="language-text">Trigger (new hire) → Lifecycle Event case
+ → Activity set (IT account, equipment, badge, training)
+ → Tasks fan out to multiple teams
+ → Track completion → onboarding complete
+</code></pre>
+<hr />
+<h2 id="6-development">6) Development</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3Dc84db0e8839f0b509f02b0d6feaad3c9">Application Files</a><a href="../scripts/index.html">Scripts portal</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<h3 id="business-rule-route-sensitive-cases-to-employee-relations">Business Rule — route sensitive cases to Employee Relations</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a><a href="../scripts/index.html">Scripts portal</a><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<pre><code class="language-javascript">(function executeRule(current, previous) {
+ if (current.hr_service.getDisplayValue().indexOf('Relations') &gt; -1) {
+ current.assignment_group.setDisplayValue('Employee Relations');
+ }
+})(current, previous);
+</code></pre>
+<h3 id="our-hr-leave-app-tie-in">Our HR Leave App tie-in</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>في تطبيقنا نربط x_786686_hr_leave_employee_v2.u_user بـ sn_hr_core_profile.user.</p>
+<pre><code class="language-javascript">var prof = new GlideRecord('sn_hr_core_profile');
+prof.addQuery('user', current.u_requested_for_user);
+prof.query();
+if (prof.next()) {
+ current.u_department = prof.getValue('department');
+}
+</code></pre>
+<p>Development topics:<br />
+- HR Services &amp; Service Activities.<br />
+- Lifecycle Events &amp; Activity Sets.<br />
+- HR Criteria (the security engine).<br />
+- Employee Center widgets &amp; topics.<br />
+- Flow Designer for approvals/tasks.<br />
+- Integration spokes (Workday/SAP).</p>
+<hr />
+<h2 id="7-administration">7) Administration</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Roles</td>
+<td>sn_hr_core.* (basic, case_writer, admin, manager)</td>
+</tr>
+<tr>
+<td>HR Profiles</td>
+<td>All &gt; HR Administration &gt; Profiles · <a href="{BASE}/sn_hr_core_profile_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>HR Criteria</td>
+<td>All &gt; HR Administration &gt; HR Criteria · <a href="{BASE}/sn_hr_core_criteria_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>COE configuration</td>
+<td>All &gt; HR Administration · <a href="{BASE}/sn_hr_core_case_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Employee Center</td>
+<td>All &gt; Employee Center · <a href="{BASE}/esc">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<p>Key roles:<br />
+- sn_hr_core.basic — موظف عادي.<br />
+- sn_hr_core.case_writer — وكيل HR.<br />
+- sn_hr_core.manager — مدير HR.<br />
+- sn_hr_core.admin — مسؤول HR.<br />
+- COE-specific roles (e.g. sn_hr_em_rel.*). — HR Criteria هو ما يمنع موظفًا من رؤية حالة موظف آخر — أهم نقطة أمان.</p>
+<hr />
+<h2 id="8-hands-on-labs">8) Hands-on Labs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>Lab 1 — Foundation:<br />
+1. Create/verify HR Profiles for test users.<br />
+2. Confirm COEs are active.</p>
+<p>Lab 2 — HR Case end-to-end:<br />
+1. Navigate: All &gt; HR Case Management &gt; Create New. — <a href="{BASE}/sn_customerservice_case_list.do">Open direct</a><br />
+2. Choose an HR Service; assign and resolve.</p>
+<p>Lab 3 — HR Criteria:<br />
+1. Create an HR Criteria restricting a sensitive service.<br />
+2. Impersonate a regular employee; confirm they can&rsquo;t see it.</p>
+<p>Lab 4 — Lifecycle Event (Onboarding):<br />
+1. Trigger an onboarding lifecycle event.<br />
+2. Watch activity sets fan out tasks to teams.</p>
+<p>Lab 5 — Employee Center + our app:<br />
+1. Add the HR Leave Record Producer as connected content.<br />
+2. Submit a leave request from Employee Center.</p>
+<hr />
+<h2 id="9-best-practices-common-mistakes">9) Best Practices &amp; Common Mistakes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>Best practices:<br />
+- Configure HR Criteria carefully — data privacy is critical.<br />
+- Use COEs to separate sensitive data (Employee Relations).<br />
+- Use Lifecycle Events for multi-team journeys (onboarding).<br />
+- Surface everything through Employee Center.</p>
+<p>Common mistakes:<br />
+- تجاهل HR Criteria → تسريب بيانات حساسة.<br />
+- استخدام ITSM incident بدل HR Case للطلبات الموظفية.<br />
+- خلط HR Profile بـ sys_user دون ربط صحيح.</p>
+<hr />
+<h2 id="10-cis-hr-exam-focus">10) CIS-HR Exam Focus</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>High-yield:<br />
+- HR Case table &amp; COE structure (sensitive data separation).<br />
+- HR Criteria (the security model) — most tested.<br />
+- HR Profile vs sys_user relationship.<br />
+- HR Services &amp; Service Activities.<br />
+- Lifecycle Events &amp; Activity Sets (onboarding/offboarding).<br />
+- Employee Center (unified portal) &amp; topics.<br />
+- HR roles (basic/case_writer/manager/admin) + COE roles.<br />
+- Knowledge with HR Criteria.</p>
+<p>Exam tip: — أتقن HR Criteria و COE و Lifecycle Events — هذه عماد امتحان CIS-HR.</p>
+<hr />
+<h2 id="11-portals-workspaces-role-hierarchy-feature-catalog">11) Portals, Workspaces, Role Hierarchy &amp; Feature Catalog</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a></nav>
+<blockquote>
+<p>ملاحظة عن الروابط:<br />
+URLs الـ Workspaces قد تختلف حسب الإصدار والـ App Config.</p>
+</blockquote>
+<h3 id="111-service-portals-employees">11.1 Service Portals (employees)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Portal</th>
+<th>URL</th>
+<th>لمن</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Employee Center</td>
+<td>/esc</td>
+<td>كل الموظفين (البوابة الموحّدة)</td>
+</tr>
+<tr>
+<td>Employee Center Pro</td>
+<td>/esc (Pro)</td>
+<td>الموظفون</td>
+</tr>
+<tr>
+<td>HR Service Portal (legacy)</td>
+<td>/hr</td>
+<td>الموظفون</td>
+</tr>
+<tr>
+<td>Knowledge (HR)</td>
+<td>/kb</td>
+<td>الموظفون (بحسب HR Criteria)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="112-workspaces-hr-agentsmanagers">11.2 Workspaces (HR agents/managers)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/ui-builder">UI Builder</a><a href="{BASE}/sys_ux_page_registry_list.do">Experiences</a><a href="{BASE}/sys_ux_app_config_list.do">App Configs</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Workspace</th>
+<th>URL</th>
+<th>لمن</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR Agent Workspace</td>
+<td>/now/hr/agent or /now/cwf/agent</td>
+<td>وكلاء HR</td>
+</tr>
+<tr>
+<td>HR Case Workspace (configurable)</td>
+<td>/now/cwf (HR view)</td>
+<td>الوكلاء</td>
+</tr>
+<tr>
+<td>Manager Hub / Manager self-service</td>
+<td>/esc?id=mgr&hellip;</td>
+<td>المديرون</td>
+</tr>
+<tr>
+<td>Admin (classic)</td>
+<td>/nav_to.do</td>
+<td>admins</td>
+</tr>
+</tbody>
+</table>
+<p>وكلاء HR يعملون في HR Agent Workspace؛ والموظف يتعامل عبر Employee Center فقط.</p>
+<h3 id="113-role-hierarchy">11.3 Role Hierarchy</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<pre><code class="language-text">admin
+└─ sn_hr_core.admin
+ └─ sn_hr_core.manager
+ └─ sn_hr_core.case_writer (HR agent — يكتب الحالات)
+ └─ sn_hr_core.basic (موظف عادي self-service)
+COE-specific (sensitive):
+</code></pre>
+<p>sn_hr_em_rel.<em> (Employee Relations) — منفصلة لحماية الخصوصية<br />
+sn_hr_integrations.</em> (التكامل مع Workday/SAP)</p>
+<p>الوصول للبيانات الحساسة لا يُمنح بالدور وحده، بل عبر HR Criteria أيضًا.</p>
+<h3 id="114-full-business-cycle">11.4 Full Business Cycle</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<pre><code class="language-text">Employee (/esc)
+ → HR request / Record Producer / Lifecycle trigger
+ → HR Case created in correct COE (sn_hr_core_case + COE table)
+ → HR Criteria controls visibility (privacy)
+ → AWA/assignment → HR agent (HR Agent Workspace)
+ → Tasks + approvals (Flow Designer)
+ ↳ onboarding/offboarding → Lifecycle Event + Activity Sets
+ ↳ tasks fan out to IT (ITSM), Facilities, Payroll
+ → Resolve → employee confirmation → Close → eSign/Knowledge
+</code></pre>
+<h3 id="115-feature-catalog">11.5 Feature Catalog</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>Process features:<br />
+- HR Case &amp; Knowledge Management.<br />
+- Centers of Excellence (COE) with data separation.<br />
+- HR Criteria (the privacy/security engine).<br />
+- Lifecycle Events (Onboarding/Offboarding/Transfer) + Activity Sets.<br />
+- Employee Relations (sensitive case handling).<br />
+- Employee Document Management (eSign, document templates).<br />
+- To-do lists &amp; Journeys (Employee Journey Management).<br />
+- Manager Hub / Manager self-service.<br />
+- Listening posts / surveys.</p>
+<p>Platform features used:<br />
+- Employee Center (unified portal) + topics + taxonomy.<br />
+- Configurable HR Agent Workspace + Playbooks.<br />
+- Flow Designer (HR approvals/tasks).<br />
+- Advanced Work Assignment.<br />
+- IntegrationHub spokes (Workday, SAP SuccessFactors).<br />
+- Now Assist for HRSD (case summarization, Q&amp;A).<br />
+- Virtual Agent (HR deflection).<br />
+- Performance Analytics (HR KPIs, case volumes).</p>
+<h3 id="116-link-to-our-hr-leave-app">11.6 Link to our HR Leave App</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>تطبيقنا x_786686_hr_leave يُنشر داخل Employee Center كـ Record Producer.<br />
+ويستفيد من HR Profile و HR Criteria لتأمين بيانات الإجازات.</p>
+<p>See:<br />
+../09_MODULES_AND_INTEGRATION.md<br />
+../03_SERVICE_CATALOG.md</p>
+<hr />
+<h2 id="12-end-to-end-implementation-post-activation">12) End-to-End Implementation (Post-Activation)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<blockquote>
+<p>اقرأ هذا بعد تفعيل HR Core + Case &amp; Knowledge + COEs.</p>
+</blockquote>
+<h3 id="121-application-menus-map">12.1 Application Menus map</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<pre><code class="language-text">All &gt; HR Administration
+ ├─ Profiles / Employee Files
+ ├─ Services / Service Activities
+ ├─ COE (Centers of Excellence)
+ ├─ HR Criteria (security)
+ ├─ Assignment Rules
+ └─ Properties
+All &gt; HR Case Management
+ ├─ Cases (Create New / Open / My / All)
+ ├─ HR Tasks
+ └─ Knowledge (HR)
+All &gt; HR Lifecycle Events
+ ├─ Lifecycle Events / Activity Sets / Activities
+ └─ Onboarding / Offboarding / Transfer
+All &gt; Employee Center (Topics / Taxonomy / Content / Quick Links)
+All &gt; Employee Relations (sensitive cases)
+</code></pre>
+<h3 id="122-core-tables-to-know">12.2 Core tables to know</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>List</th>
+<th>Table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sn_hr_core_case.list</td>
+<td>HR cases (base)</td>
+</tr>
+<tr>
+<td>sn_hr_core_profile.list</td>
+<td>HR profiles</td>
+</tr>
+<tr>
+<td>sn_hr_core_task.list</td>
+<td>HR tasks</td>
+</tr>
+<tr>
+<td>sn_hr_core_service.list</td>
+<td>HR services</td>
+</tr>
+<tr>
+<td>sn_hr_le_case.list</td>
+<td>lifecycle event cases</td>
+</tr>
+<tr>
+<td>sn_hr_core_subject_person.list</td>
+<td>subject persons</td>
+</tr>
+<tr>
+<td>COE tables sn_hr_core_case_*</td>
+<td>per-COE cases</td>
+</tr>
+</tbody>
+</table>
+<h3 id="123-end-to-end-build-order">12.3 End-to-end build order</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<ol>
+<li>Foundation:<br />
+ - HR Profiles for users; departments/locations.<br />
+ - Decide active COEs.</li>
+<li>Security (critical first):<br />
+ - HR Criteria to enforce data privacy.<br />
+ All &gt; HR Administration &gt; HR Criteria. — <a href="{BASE}/sn_hr_core_criteria_list.do">Open direct</a></li>
+<li>Services:<br />
+ - HR Services + Service Activities per COE.</li>
+<li>Case configuration:<br />
+ - Case types, states, assignment rules, templates.</li>
+<li>Knowledge:<br />
+ - HR knowledge bases with HR Criteria.</li>
+<li>Lifecycle Events:<br />
+ - Onboarding/Offboarding journeys + Activity Sets (fan-out tasks).</li>
+<li>Flows:<br />
+ - Approvals/tasks via Flow Designer.</li>
+<li>Employee Center:<br />
+ - Topics, taxonomy, connected content, quick links, branding.<br />
+ Portal: /esc.</li>
+<li>Workspace:<br />
+ - HR Agent Workspace /now/hr/agent + Playbooks.</li>
+<li>Integrations:<br />
+ - Workday/SAP spokes (IntegrationHub), AD for users.</li>
+<li>Our app:<br />
+ - Publish HR Leave Record Producer to Employee Center.</li>
+<li>Test + Deploy (verify HR Criteria with impersonation).</li>
+</ol>
+<h3 id="124-all-configuration-pages">12.4 All configuration pages</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Config</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR properties</td>
+<td>All &gt; HR Administration &gt; Properties · <a href="{BASE}/sn_hr_core_case_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>HR Criteria</td>
+<td>All &gt; HR Administration &gt; HR Criteria · <a href="{BASE}/sn_hr_core_criteria_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>COE config</td>
+<td>All &gt; HR Administration &gt; COE · <a href="{BASE}/sn_hr_core_case_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Services</td>
+<td>All &gt; HR Administration &gt; Services · <a href="{BASE}/sn_hr_core_service_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Employee Center config</td>
+<td>All &gt; Employee Center &gt; &hellip; · <a href="{BASE}/esc">Open direct</a></td>
+</tr>
+<tr>
+<td>Workspace (UI Builder)</td>
+<td>All &gt; Now Experience Framework &gt; UI Builder · <a href="{BASE}/now/ui-builder">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<p>Study path note: — للدراسة من الصفر اتبع: STUDY_ROADMAP.md</p>
+<hr />
+<h2 id="13-options-instance-notes">13) Options &amp; Instance Notes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Instance gaps</td>
+<td>MODULE_OPTIONS_AND_INSTANCE_NOTES.md → <strong>HRSD</strong></td>
+</tr>
+<tr>
+<td><strong>Full implementation</strong></td>
+<td>MODULE_IMPLEMENTATION_PLAYBOOK.md → <strong>HRSD</strong></td>
+</tr>
+<tr>
+<td>HR Leave app</td>
+<td>../09_MODULES_AND_INTEGRATION.md</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="14-implementation-scenarios-options-best-practices-customizations">14) Implementation Scenarios, Options, Best Practices &amp; Customizations</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<blockquote>
+<p>Playbook: MODULE_IMPLEMENTATION_PLAYBOOK.md → <strong>HRSD</strong></p>
+</blockquote>
+<h3 id="141-scenarios">14.1 Scenarios</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Scenario</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1</strong></td>
+<td>HR Cases + Employee Center</td>
+<td>Profiles + COEs + services</td>
+</tr>
+<tr>
+<td><strong>S2</strong></td>
+<td>+ Lifecycle Events</td>
+<td>Onboarding/offboarding journeys</td>
+</tr>
+<tr>
+<td><strong>S3</strong></td>
+<td>+ HRIS integration</td>
+<td>Workday/SAP spokes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="142-options-matrix">14.2 Options matrix</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>A (required)</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Security</td>
+<td><strong>HR Criteria</strong></td>
+<td>ACL only (insufficient)</td>
+</tr>
+<tr>
+<td>Portal</td>
+<td>Employee Center /esc</td>
+<td>Legacy portal</td>
+</tr>
+<tr>
+<td>Cases</td>
+<td>COE-specific tables</td>
+<td>Single case type</td>
+</tr>
+<tr>
+<td>Custom apps</td>
+<td>Scoped (e.g. Leave)</td>
+<td>Global tables (avoid)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="143-plugins">14.3 Plugins</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>com.sn_hr_core, com.sn_hr_case_management, Lifecycle Events, COE packs, Employee Center Pro — Guided Setup: <strong>HRSD</strong></p>
+<h3 id="144-roles">14.4 Roles</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>sn_hr_core.basic, case_writer, manager, admin, COE roles — assign via groups.</p>
+<h3 id="145-common-developments">14.5 Common developments</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>HR Profiles, <strong>HR Criteria</strong> (build first), Lifecycle Activity Sets, EC Topics, scoped leave/benefits apps, Workday integration, document generation, HR knowledge bases.</p>
+<h3 id="146-best-practices">14.6 Best practices</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>Never use ITSM incident for employee HR issues; test Criteria with Impersonate for every persona; COE separation (Payroll vs Benefits).</p>
+<h3 id="147-go-live">14.7 Go-live</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<ul>
+<li>[ ] HR Criteria matrix signed off</li>
+<li>[ ] EC topics + connected content</li>
+<li>[ ] Lifecycle smoke test (onboarding)</li>
+<li>[ ] Scoped app published to EC</li>
+</ul>
+<hr />
+<h2 id="15-zero-to-hero-end-to-end-implementation-scratch-go-live">15) Zero-to-Hero End-to-End Implementation (Scratch → Go-Live)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<blockquote>
+<p>Framework: MODULE_ZERO_TO_HERO_CONSULTING.md · HR Leave: ../09_MODULES_AND_INTEGRATION.md</p>
+</blockquote>
+<p>من <strong>HR Profiles + HR Criteria</strong> حتى <strong>Employee Center + Cases + Lifecycle</strong>.</p>
+<h3 id="151-business-goals">15.1 Business goals</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>العربي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Employee self-service</td>
+<td>الموظف يخدم نفسه بأمان</td>
+</tr>
+<tr>
+<td>HR case management</td>
+<td>قضايا HR منفصلة عن ITSM</td>
+</tr>
+<tr>
+<td>Privacy / segregation</td>
+<td>HR Criteria — من يرى ماذا</td>
+</tr>
+<tr>
+<td>Onboarding journeys</td>
+<td>رحلات انضمام/مغادرة منسّقة</td>
+</tr>
+</tbody>
+</table>
+<h3 id="152-phase-0-discover">15.2 Phase 0 — Discover</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>COEs (Payroll, Benefits, Leave), case types, EC vs legacy portal, Workday integration?</p>
+<h3 id="153-phase-1-activate">15.3 Phase 1 — Activate</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>HR Core, Case Management, Lifecycle Events, Employee Center — Guided Setup HRSD.</p>
+<h3 id="154-phase-2-security-first-week-24">15.4 Phase 2 — Security first (Week 2–4)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p><strong>HR Profiles → HR Criteria (mandatory before cases)</strong> — Impersonate every persona.</p>
+<h3 id="155-phase-3-services-coes-week-46">15.5 Phase 3 — Services &amp; COEs (Week 4–6)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>HR Services, categories, knowledge, agent workspace /now/hr/agent.</p>
+<h3 id="156-phase-4-employee-center-week-68">15.6 Phase 4 — Employee Center (Week 6–8)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a></nav>
+<p>Topics, taxonomy, connected content, scoped apps (Leave app).</p>
+<h3 id="157-phase-5-lifecycle-week-810">15.7 Phase 5 — Lifecycle (Week 8–10)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>Onboarding Activity Sets, cross-team tasks, offboarding asset/ access hooks.</p>
+<h3 id="158-phase-6-uat-go-live">15.8 Phase 6 — UAT &amp; go-live</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>Case confidentiality test, manager view, lifecycle smoke test.</p>
+<h3 id="159-phase-7-operate">15.9 Phase 7 — Operate</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>Case SLA, KB deflection, lifecycle metrics.</p>
+<h3 id="1510-master-checklist">15.10 Master checklist</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<ul>
+<li>[ ] HR Criteria signed · [ ] EC live · [ ] Lifecycle pilot · [ ] Scoped apps</li>
+</ul>
+<hr />
+<h2 id="16-full-e2e-practice-pages-requirements-options-ar-en">16) Full E2E Practice · Pages · Requirements · Options (AR + EN)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<blockquote>
+<p>Employee Center + HR cases · Example scoped app: HR Leave (x_786686_hr_leave).</p>
+</blockquote>
+<hr />
+<h3 id="161-business-goals">16.1 Business goals</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Goal (EN)</th>
+<th>الهدف (AR)</th>
+<th>KPI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Employee self-service HR</td>
+<td>خدمة ذاتية HR</td>
+<td>EC adoption %</td>
+</tr>
+<tr>
+<td>Confidential case handling</td>
+<td>سرية القضايا</td>
+<td>ACL breach = 0</td>
+</tr>
+<tr>
+<td>Lifecycle automation</td>
+<td>أتمتة دورة الموظف</td>
+<td>Onboarding days</td>
+</tr>
+<tr>
+<td>COE efficiency</td>
+<td>كفاءة مراكز HR</td>
+<td>Case SLA</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why buy HRSD:</strong> English: HR requests are sensitive — need portal, cases, and lifecycle in one platform. — HRSD يعطي موظفًا بوابة آمنة ويعطي HR Case مع SLA وKnowledge — ليس email.</p>
+<hr />
+<h3 id="162-requirements">16.2 Requirements</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>EN</th>
+<th>AR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR-R01</td>
+<td>HR Services taxonomy</td>
+<td>تصنيف خدمات HR</td>
+</tr>
+<tr>
+<td>HR-R02</td>
+<td>Case types with HR Criteria ACL</td>
+<td>أنواع قضايا + سرية</td>
+</tr>
+<tr>
+<td>HR-R03</td>
+<td>Employee Center topics</td>
+<td>مواضيع EC</td>
+</tr>
+<tr>
+<td>HR-R04</td>
+<td>Agent workspace /now/hr/agent</td>
+<td>workspace وكلاء</td>
+</tr>
+<tr>
+<td>HR-R05</td>
+<td>Lifecycle Events (on/off boarding)</td>
+<td>أحداث دورة الحياة</td>
+</tr>
+<tr>
+<td>HR-R06</td>
+<td>Scoped apps (Leave, etc.)</td>
+<td>تطبيقات scoped</td>
+</tr>
+<tr>
+<td>HR-R07</td>
+<td>Manager visibility where allowed</td>
+<td>رؤية المدير</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="163-consultation-cycle">16.3 Consultation cycle</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>EN</th>
+<th>AR</th>
+<th>Deliverable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>HR COE structure</td>
+<td>هيكل HR</td>
+<td>Stakeholder map</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Sensitive data rules</td>
+<td>بيانات حساسة</td>
+<td>HR Criteria doc</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Service catalog (HR)</td>
+<td>كatalog HR</td>
+<td>Service list</td>
+</tr>
+<tr>
+<td>3</td>
+<td>EC content strategy</td>
+<td>محتوى EC</td>
+<td>Topic map</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Lifecycle pilot (onboarding)</td>
+<td>onboarding</td>
+<td>Activity Sets</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Scoped app integration</td>
+<td>تطبيقات</td>
+<td>Leave demo</td>
+</tr>
+<tr>
+<td>6</td>
+<td>UAT confidentiality</td>
+<td>UAT سرية</td>
+<td>Sign-off</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Questions:</strong> Which cases can managers see? Which need HR-only?<br />
+أي قضايا يراها المدير؟ أيها HR فقط؟</p>
+<hr />
+<h3 id="164-options-a-b-c">16.4 Options (A / B / C)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Portal</td>
+<td>Employee Center /esc</td>
+<td>HR Service Portal</td>
+<td>Classic /sp</td>
+</tr>
+<tr>
+<td>Case creation</td>
+<td>Topic → case</td>
+<td>Catalog only</td>
+<td>Email</td>
+</tr>
+<tr>
+<td>Confidentiality</td>
+<td>HR Criteria profiles</td>
+<td>Manual ACL</td>
+<td>All open (bad)</td>
+</tr>
+<tr>
+<td>Lifecycle</td>
+<td>Lifecycle Events app</td>
+<td>Manual tasks</td>
+<td>External HRIS only</td>
+</tr>
+<tr>
+<td>Leave/absence</td>
+<td>Scoped app + Flow</td>
+<td>Case type only</td>
+<td>HRIS integration</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="165-all-pages-navigate">16.5 All pages (Navigate)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR Administration</td>
+<td>All &gt; HR &gt; Administration · <a href="{BASE}/sn_hr_core_case_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>HR Services</td>
+<td>All &gt; HR &gt; HR Services · <a href="{BASE}/sn_hr_core_service_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>HR Cases</td>
+<td>All &gt; HR &gt; Cases · <a href="{BASE}/sn_customerservice_case_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>HR Criteria</td>
+<td>All &gt; HR &gt; HR Criteria · <a href="{BASE}/sn_hr_core_criteria_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>HR Profiles</td>
+<td>All &gt; HR &gt; HR Profiles · <a href="{BASE}/sn_hr_core_profile_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Lifecycle Events</td>
+<td>All &gt; HR &gt; Lifecycle Events · <a href="{BASE}/sn_hr_le_case_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Activity Sets</td>
+<td>All &gt; HR &gt; Activity Sets · <a href="{BASE}/sn_hr_le_activity_set_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Employee Center config</td>
+<td>All &gt; Employee Center &gt; Configuration · <a href="{BASE}/esc">Open direct</a></td>
+</tr>
+<tr>
+<td>HR Agent Workspace</td>
+<td>/now/hr/agent</td>
+</tr>
+<tr>
+<td>Employee Center</td>
+<td>/esc</td>
+</tr>
+<tr>
+<td>Scoped apps</td>
+<td>All &gt; Studio or sys_scope.list · <a href="{BASE}/sys_scope_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>Knowledge (HR)</td>
+<td>All &gt; Knowledge (HR bases) · <a href="{BASE}/kb_knowledge_list.do">Open direct</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="166-full-pdi-lab-18-steps">16.6 Full PDI lab (18 steps)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>EN</th>
+<th>AR</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Activate HRSD plugins + Guided Setup</td>
+<td>تفعيل</td>
+<td>Apps on</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Create HR Service General HR</td>
+<td>خدمة</td>
+<td>Service record</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Configure HR Criteria — restrict case fields</td>
+<td>معايير HR</td>
+<td>Profile works</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Create case type e.g. Payroll Inquiry</td>
+<td>نوع قضية</td>
+<td>Type saved</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Configure EC topic linking to service</td>
+<td>موضوع EC</td>
+<td>Topic visible</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Impersonate employee — submit case via /esc</td>
+<td>قضية</td>
+<td>Case created</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Agent opens /now/hr/agent — work case</td>
+<td>وكيل</td>
+<td>SLA starts</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Test manager cannot see confidential case</td>
+<td>سرية</td>
+<td>Access denied</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Publish HR KB article — deflect in EC</td>
+<td>معرفة</td>
+<td>Article found</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Create Activity Set for onboarding (3 tasks)</td>
+<td>onboarding</td>
+<td>Tasks spawn</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Open scoped Leave app (if installed)</td>
+<td>إجازات</td>
+<td>Leave request</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Flow approval on leave (link approval_flow.md)</td>
+<td>موافقة</td>
+<td>Approved</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Link lifecycle task to IT catalog (optional)</td>
+<td>تكامل IT</td>
+<td>Cross-dept task</td>
+</tr>
+<tr>
+<td>14</td>
+<td>CSAT on case close</td>
+<td>رضا</td>
+<td>Survey sent</td>
+</tr>
+<tr>
+<td>15</td>
+<td>PA report: cases by category</td>
+<td>تقرير</td>
+<td>Dashboard</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Options A/B/C documented</td>
+<td>خيارات</td>
+<td>Doc</td>
+</tr>
+<tr>
+<td>17</td>
+<td>UAT scripts HR-R01–R07</td>
+<td>UAT</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Update Set HRSD Lab 16</td>
+<td>Export</td>
+<td>Done</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="167-sign-off">16.7 Sign-off</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<ul>
+<li>[ ] HR Criteria signed by Legal/HR · [ ] EC topics AR+EN · [ ] Confidentiality UAT passed · [ ] Lifecycle owner trained</li>
+</ul>
+<hr />
+<h2 id="17-power-user-playbook-hrsd">§17 — Power User Playbook (HRSD)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<h3 id="171-personas">17.1 Personas</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Primary actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Employee</td>
+<td>Open /esc, search policies, submit case, request leave (HR Leave app), view paystub</td>
+</tr>
+<tr>
+<td>HR Tier-1 Agent</td>
+<td>Triage HR cases, route to COE, link KB, resolve simple cases</td>
+</tr>
+<tr>
+<td>COE Specialist (Payroll/Benefits/Employee Relations)</td>
+<td>Handle sensitive cases under HR Criteria, deep expertise, escalate</td>
+</tr>
+<tr>
+<td>HR Manager</td>
+<td>Approve sensitive actions, dashboards, escalations</td>
+</tr>
+<tr>
+<td>HR Business Partner</td>
+<td>Liaison for business unit, strategic HR support</td>
+</tr>
+<tr>
+<td>Knowledge Author</td>
+<td>Draft, review, publish, retire HR KB articles</td>
+</tr>
+<tr>
+<td>Lifecycle Coordinator</td>
+<td>Trigger and monitor Onboarding / Offboarding / Transfer activity sets</td>
+</tr>
+</tbody>
+</table>
+<p>كل دور يستخدم بوابة مختلفة وله صلاحيات مختلفة على نفس الجدول sn_hr_core_case.</p>
+<h3 id="172-day-in-life-employee">17.2 Day-in-Life — Employee</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<ol>
+<li>Open /esc — Employee Center.</li>
+<li>Search &ldquo;annual leave policy&rdquo; — find KB article (deflection).</li>
+<li>Click &ldquo;Request Time Off&rdquo; topic → opens HR Leave Catalog Item (links to x_786686_hr_leave).</li>
+<li>Submit; case HRC0001234 is created in sn_hr_core_case.</li>
+<li>Track status in /esc?id=my_requests.</li>
+<li>Reply to email &ldquo;approved&rdquo; — Inbound Email Action updates case state.</li>
+</ol>
+<pre><code class="language-javascript">// Inline status macro for /esc widget
+(function {
+ var u = gs.getUserID();
+ var arr = [];
+ var gr = new GlideRecord('sn_hr_core_case');
+ gr.addQuery('opened_for', u);
+ gr.addQuery('active', true);
+ gr.orderByDesc('sys_created_on');
+ gr.setLimit(20);
+ gr.query();
+ while (gr.next()) {
+ arr.push({
+ number: gr.getValue('number'),
+ short: gr.getValue('short_description'),
+ state: gr.getDisplayValue('state'),
+ opened: gr.getDisplayValue('sys_created_on')
+ });
+ }
+ data.cases = arr;
+})();
+</code></pre>
+<h3 id="173-day-in-life-hr-agent-tier-1">17.3 Day-in-Life — HR Agent (Tier-1)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<ol>
+<li>Open /now/hr/agent workspace.</li>
+<li>View My Cases queue; pick HRC0001234.</li>
+<li>Identify subject (Annual Leave) → route to Time-Off COE (auto-assignment script below).</li>
+<li>Link KB article.</li>
+<li>If simple → resolve. Otherwise transfer.</li>
+</ol>
+<h3 id="174-top-20-hrsd-scripts-full-code">17.4 Top 20 HRSD Scripts (full code)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p><strong>1. Auto-assign HR case to COE by subject</strong></p>
+<pre><code class="language-javascript">// Business Rule on sn_hr_core_case (before, insert)
+(function executeRule(current, previous) {
+ if (current.assignment_group.nil() &amp;&amp; !current.subject.nil()) {
+ var routing = {
+ 'time_off': 'HR Time Off COE',
+ 'payroll': 'HR Payroll COE',
+ 'benefits': 'HR Benefits COE',
+ 'employee_relations': 'HR Employee Relations'
+ };
+ var groupName = routing[current.getValue('subject')];
+ if (groupName) {
+ var grp = new GlideRecord('sys_user_group');
+ if (grp.get('name', groupName)) {
+ current.setValue('assignment_group', grp.getUniqueValue());
+ }
+ }
+ }
+})(current, previous);
+</code></pre>
+<p><strong>2. PII redaction in journal</strong></p>
+<pre><code class="language-javascript">// Script Include HRPIIRedactor — call before saving comments
+var HRPIIRedactor = Class.create();
+HRPIIRedactor.prototype = {
+ initialize: function {},
+ redact: function (text) {
+ if (gs.nil(text)) return '';
+ return text
+ .replace(/\b\d{3}-\d{2}-\d{4}\b/g, '[SSN-REDACTED]') // US SSN
+ .replace(/\b\d{16}\b/g, '[CC-REDACTED]') // credit cards
+ .replace(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi, '[EMAIL]')
+ .replace(/\b\d{10,15}\b/g, '[PHONE]');
+ },
+ type: 'HRPIIRedactor'
+};
+</code></pre>
+<p><strong>3. Onboarding task generator from start_date</strong></p>
+<pre><code class="language-javascript">// Script Action subscribed to event x_hrsd.lifecycle.onboarding.start
+(function (event, current) {
+ var employeeId = event.parm1;
+ var startDate = event.parm2;
+</code></pre>
+<p>// Define standard 20-task onboarding set<br />
+ var tasks = [<br />
+ { name: &lsquo;IT Account Setup&rsquo;, due: 0, assign: &lsquo;IT Service Desk&rsquo; },<br />
+ { name: &lsquo;Email + Calendar&rsquo;, due: 0, assign: &lsquo;IT Service Desk&rsquo; },<br />
+ { name: &lsquo;Laptop assignment&rsquo;, due: -3, assign: &lsquo;IT Asset Mgmt&rsquo; },<br />
+ { name: &lsquo;Badge + Access&rsquo;, due: 0, assign: &lsquo;Security&rsquo; },<br />
+ { name: &lsquo;Org chart welcome&rsquo;, due: 0, assign: &lsquo;HR Operations&rsquo; },<br />
+ { name: &lsquo;Benefits enrollment&rsquo;, due: 7, assign: &lsquo;HR Benefits&rsquo; },<br />
+ { name: &lsquo;Payroll setup&rsquo;, due: 3, assign: &lsquo;HR Payroll&rsquo; },<br />
+ { name: &lsquo;Compliance training&rsquo;, due: 7, assign: &lsquo;L&amp;D&rsquo; },<br />
+ { name: &lsquo;Manager 1-on-1&rsquo;, due: 1, assign: &lsquo;Manager&rsquo; },<br />
+ { name: &lsquo;Team intro meeting&rsquo;, due: 1, assign: &lsquo;Manager&rsquo; }<br />
+ // &hellip;10 more<br />
+ ];</p>
+<p>tasks.forEach(function (t) {<br />
+ var task = new GlideRecord(&lsquo;sn_hr_core_task&rsquo;);<br />
+ task.initialize();<br />
+ task.setValue(&lsquo;short_description&rsquo;, t.name);<br />
+ task.setValue(&lsquo;opened_for&rsquo;, employeeId);<br />
+ var grp = new GlideRecord(&lsquo;sys_user_group&rsquo;);<br />
+ if (grp.get(&lsquo;name&rsquo;, t.assign)) {<br />
+ task.setValue(&lsquo;assignment_group&rsquo;, grp.getUniqueValue());<br />
+ }<br />
+ var due = new GlideDateTime(startDate);<br />
+ due.addDaysLocalTime(t.due);<br />
+ task.setValue(&lsquo;due_date&rsquo;, due);<br />
+ task.insert();<br />
+ });<br />
+})(event, current);</p>
+<p><strong>4. Offboarding cross-module revoker</strong></p>
+<pre><code class="language-javascript">// Triggered by event x_hrsd.lifecycle.offboarding.start
+(function (event) {
+ var employeeId = event.parm1;
+ var lastDay = event.parm2;
+</code></pre>
+<p>// 1. Disable AD/SSO via Microsoft Graph spoke<br />
+ var ms = new sn_ms_graph.Microsoft365Spoke();<br />
+ ms.disableUser(employeeId);</p>
+<p>// 2. Reclaim assets (laptop, phone, badge) — create ITAM tasks<br />
+ var asset = new GlideRecord(&lsquo;alm_asset&rsquo;);<br />
+ asset.addQuery(&lsquo;assigned_to&rsquo;, employeeId);<br />
+ asset.addActiveQuery();<br />
+ asset.setLimit(50);<br />
+ asset.query();<br />
+ while (asset.next()) {<br />
+ gs.eventQueue(&lsquo;x_hrsd.asset.reclaim_required&rsquo;,<br />
+ asset, asset.getValue(&lsquo;asset_tag&rsquo;), lastDay);<br />
+ }</p>
+<p>// 3. Revoke catalog entitlements<br />
+ var ent = new GlideRecord(&lsquo;sc_user_criteria_member&rsquo;);<br />
+ ent.addQuery(&lsquo;user&rsquo;, employeeId);<br />
+ ent.deleteMultiple();</p>
+<p>// 4. Cancel pending HR Leave requests in x_786686_hr_leave<br />
+ var leave = new GlideRecord(&lsquo;x_786686_hr_leave_req_v2&rsquo;);<br />
+ leave.addQuery(&lsquo;u_requested_for_user&rsquo;, employeeId);<br />
+ leave.addQuery(&lsquo;u_state&rsquo;, &lsquo;IN&rsquo;, &lsquo;submitted,approved&rsquo;);<br />
+ leave.query();<br />
+ while (leave.next()) {<br />
+ leave.setValue(&lsquo;u_state&rsquo;, &lsquo;cancelled&rsquo;);<br />
+ leave.setValue(&lsquo;u_approver_comments&rsquo;, &lsquo;Auto-cancelled — offboarding.&rsquo;);<br />
+ leave.update();<br />
+ }<br />
+})(event);</p>
+<p><strong>5. Anniversary recognition</strong></p>
+<pre><code class="language-javascript">// Scheduled Job HRLX Service Anniversary — daily 09:00
+(function {
+ var today = new GlideDate();
+ var p = new GlideRecord('sn_hr_core_profile');
+ p.addQuery('start_date', today); // anniversary if month-day matches (advanced — use addEncodedQuery)
+ p.query();
+ while (p.next()) {
+ var years = _calcYears(p.getValue('start_date'));
+ if ([1, 3, 5, 10, 15, 20, 25].indexOf(years) &gt; -1) {
+ gs.eventQueue('x_hrsd.recognition.anniversary',
+ p, p.getValue('user'), years);
+ }
+ }
+ function _calcYears(start) {
+ return new GlideDateTime().getYearLocalTime() -
+ new GlideDateTime(start).getYearLocalTime();
+ }
+})();
+</code></pre>
+<p><strong>6. HR Profile sync from Workday</strong></p>
+<pre><code class="language-javascript">// Scheduled Job — runs every 4 hours
+(function syncWorkday() {
+ var r = new sn_ws.RESTMessageV2('Workday_HR', 'getWorkers');
+ r.setStringParameter('since', _lastSync());
+ var resp = r.execute();
+ if (resp.getStatusCode() !== 200) {
+ gs.error('Workday sync failed: ' + resp.getStatusCode());
+ return;
+ }
+ var workers = JSON.parse(resp.getBody()).workers;
+ workers.forEach(function (w) {
+ var p = new GlideRecord('sn_hr_core_profile');
+ if (p.get('employee_number', w.employee_id)) {
+ p.setValue('department', _mapDept(w.dept));
+ p.setValue('manager', _mapUser(w.manager_id));
+ p.setValue('location', _mapLoc(w.location));
+ p.update();
+ } else {
+ p.initialize();
+ p.setValue('employee_number', w.employee_id);
+ p.setValue('user', _createOrFindUser(w));
+ p.insert();
+ }
+ });
+ gs.setProperty('x_hrsd.workday.last_sync', new GlideDateTime().getValue());
+})();
+</code></pre>
+<p><strong>7. HR Case SLA pause when waiting employee</strong></p>
+<pre><code class="language-javascript">// Triggered when state transitions to &quot;awaiting_info&quot;
+(function (current, previous) {
+ if (current.state.changes() &amp;&amp; current.getValue('state') === 'awaiting_info') {
+ var slas = new GlideRecord('task_sla');
+ slas.addQuery('task', current.getUniqueValue());
+ slas.addQuery('active', true);
+ slas.query();
+ while (slas.next()) {
+ slas.setValue('stage', 'paused');
+ slas.update();
+ }
+ }
+})(current, previous);
+</code></pre>
+<p><strong>8. KB article suggestion based on case topic</strong></p>
+<pre><code class="language-javascript">// AJAX Script Include — called from HR Workspace
+var HRKBSuggester = Class.create();
+HRKBSuggester.prototype = Object.extendsObject(AbstractAjaxProcessor, {
+ ajaxSuggest: function {
+ var subject = this.getParameter('sysparm_subject');
+ var topic = this.getParameter('sysparm_topic');
+ var arr = [];
+</code></pre>
+<p>// AI Search first<br />
+ try {<br />
+ var aiResults = new sn_ais.SearchService()<br />
+ .search(&lsquo;hr_kb&rsquo;, subject, { limit: 5 });<br />
+ aiResults.results.forEach(function (r) {<br />
+ arr.push({ id: r.id, title: r.title, score: r.score });<br />
+ });<br />
+ } catch (e) {<br />
+ gs.warn(&lsquo;AI Search failed; falling back to keyword&rsquo;);<br />
+ }</p>
+<p>// Fallback keyword<br />
+ if (arr.length === 0) {<br />
+ var kb = new GlideRecord(&lsquo;kb_knowledge&rsquo;);<br />
+ kb.addQuery(&lsquo;kb_category.label&rsquo;, &lsquo;CONTAINS&rsquo;, topic);<br />
+ kb.addQuery(&lsquo;workflow_state&rsquo;, &lsquo;published&rsquo;);<br />
+ kb.orderByDesc(&lsquo;sys_view_count&rsquo;);<br />
+ kb.setLimit(5);<br />
+ kb.query();<br />
+ while (kb.next()) {<br />
+ arr.push({<br />
+ id: kb.getUniqueValue(),<br />
+ title: kb.getValue(&lsquo;short_description&rsquo;),<br />
+ score: 0.5<br />
+ });<br />
+ }<br />
+ }<br />
+ return JSON.stringify(arr);<br />
+ },<br />
+ type: &lsquo;HRKBSuggester&rsquo;<br />
+});</p>
+<p><strong>9. Compliance training reminder</strong></p>
+<pre><code class="language-javascript">// Scheduled Job — monthly
+(function {
+ var due = new GlideDateTime();
+ due.addDaysLocalTime(14);
+</code></pre>
+<p>var tr = new GlideRecord(&lsquo;sn_compliance_training_assignment&rsquo;);<br />
+ tr.addQuery(&lsquo;due_date&rsquo;, &lsquo;&lt;=&rsquo;, due);<br />
+ tr.addQuery(&lsquo;state&rsquo;, &lsquo;pending&rsquo;);<br />
+ tr.query();<br />
+ while (tr.next()) {<br />
+ gs.eventQueue(&lsquo;x_hrsd.compliance.reminder&rsquo;,<br />
+ tr, tr.getValue(&lsquo;assignee&rsquo;), tr.getValue(&lsquo;course_name&rsquo;));<br />
+ }<br />
+})();</p>
+<p><strong>10. Org chart traversal — approval routing</strong></p>
+<pre><code class="language-javascript">var OrgChartUtil = Class.create();
+OrgChartUtil.prototype = {
+ initialize: function {},
+</code></pre>
+<p>/*<em><br />
+ * Climb up the org chart up to N levels.<br />
+ * @param {string} startUserSysId<br />
+ * @param {number} levelsUp<br />
+ * @returns {string|null} approver sys_id<br />
+</em>/<br />
+ getApprover: function (startUserSysId, levelsUp) {<br />
+ levelsUp = parseInt(levelsUp, 10) || 1;<br />
+ var current = startUserSysId;<br />
+ for (var i = 0; i &lt; levelsUp; i++) {<br />
+ var u = new GlideRecord(&lsquo;sys_user&rsquo;);<br />
+ if (!u.get(current)) return null;<br />
+ var mgr = u.getValue(&lsquo;manager&rsquo;);<br />
+ if (!mgr) return null;<br />
+ current = mgr;<br />
+ }<br />
+ return current;<br />
+ },</p>
+<p>/*<em> find approver with role </em>/<br />
+ getApproverWithRole: function (startUserSysId, role, maxLevels) {<br />
+ var current = startUserSysId;<br />
+ for (var i = 0; i &lt; (maxLevels || 10); i++) {<br />
+ var u = new GlideRecord(&lsquo;sys_user&rsquo;);<br />
+ if (!u.get(current)) return null;<br />
+ if (gs.hasRoleForUser(role, current)) return current;<br />
+ current = u.getValue(&lsquo;manager&rsquo;);<br />
+ if (!current) return null;<br />
+ }<br />
+ return null;<br />
+ },</p>
+<p>type: &lsquo;OrgChartUtil&rsquo;<br />
+};</p>
+<p><strong>11–20. Quick recipes</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Pattern</th>
+<th>Key call</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11</td>
+<td>Multi-language case auto-translation</td>
+<td>new sn_one_extend.SkillRunner(&lsquo;translate&rsquo;, text, &lsquo;ar&rsquo;)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>HR Case → HR Leave linker</td>
+<td>new GlideRecord(&lsquo;x_786686_hr_leave_req_v2&rsquo;); &hellip;insert(); update case.parent</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Org chart updater</td>
+<td>bulk update sys_user.manager from Workday webhook</td>
+</tr>
+<tr>
+<td>14</td>
+<td>HR Manager dashboard refresher</td>
+<td>scheduled job rebuilds pa_scores for HRSD indicators</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Concierge case template</td>
+<td>clone master case via gr.update(current.getUniqueValue())</td>
+</tr>
+<tr>
+<td>16</td>
+<td>HR Case auto-merge dedupe</td>
+<td>use sys_text_index similarity over short_description</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Sensitive case auditor</td>
+<td>every update on Employee Relations type → sys_audit capture + manager notification</td>
+</tr>
+<tr>
+<td>18</td>
+<td>HR Survey trigger</td>
+<td>OnAfter close → create asmt_assessment_instance</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Employee directory deep link</td>
+<td>URL /esc?id=org_chart&amp;user=${sys_id}</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Employee Center widget refresher</td>
+<td>spUtil.recordWatch($scope, &lsquo;sn_hr_core_case&rsquo;, &lsquo;opened_for=&rsquo; + uid)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="175-employee-center-configuration">17.5 Employee Center configuration</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a></nav>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Topics</td>
+<td>sn_publications_topic — group HR services by domain</td>
+</tr>
+<tr>
+<td>Connected Content</td>
+<td>sn_publications_connected_content — link KB/catalog/quick-link to topic</td>
+</tr>
+<tr>
+<td>Featured Items</td>
+<td>sn_employee_center_featured_item — hero spots</td>
+</tr>
+<tr>
+<td>Content blocks</td>
+<td>Drag in Employee Center Studio</td>
+</tr>
+</tbody>
+</table>
+<p>لربط HR Leave items بالـ EC:<br />
+1. أنشئ topic &ldquo;Time Off&rdquo;.<br />
+2. أضف Connected Content → اختر catalog item &ldquo;Submit Leave Request&rdquo;.<br />
+3. الموظف يجد الرابط مباشرة في EC.</p>
+<hr />
+<h2 id="18-from-scratch-implementation-day-0-day-30">§18 — From-Scratch Implementation (Day 0 → Day 30)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<h3 id="181-roadmap-overview">18.1 Roadmap overview</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Days</th>
+<th>Goal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phase 1 — Foundation</td>
+<td>0–7</td>
+<td>HR Profiles, COE, EC ready</td>
+</tr>
+<tr>
+<td>Phase 2 — Service Delivery</td>
+<td>8–15</td>
+<td>Case types, KB, Lifecycle</td>
+</tr>
+<tr>
+<td>Phase 3 — Automation &amp; Analytics</td>
+<td>16–22</td>
+<td>Notifications, surveys, reports</td>
+</tr>
+<tr>
+<td>Phase 4 — Integration &amp; AI</td>
+<td>23–27</td>
+<td>Workday/SAP, Now Assist</td>
+</tr>
+<tr>
+<td>Phase 5 — Go-Live</td>
+<td>28–30</td>
+<td>UAT, Training, Hypercare</td>
+</tr>
+</tbody>
+</table>
+<h3 id="182-day-by-day">18.2 Day-by-day</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p><strong>Day 0 — Preparation</strong><br />
+- Stakeholder map (HR Director, COE leads, IT, Legal/Privacy)<br />
+- COE strategy: which COEs to launch first (recommend Time Off + Benefits)<br />
+- Persona map (Employee, Manager, Agent, COE, HRBP)<br />
+- Maturity assessment (current case mgmt: spreadsheet? ticketing? legacy ServiceNow?)</p>
+<p><strong>Day 1 — Plugin activation</strong></p>
+<pre><code class="language-text">Navigate: All &gt; System Applications &gt; All Available Applications &gt; All
+Activate:
+- com.sn_hr_core
+- com.sn_hr_case_management
+- com.sn_hr_lifecycle_ent
+- (optional) com.sn_hr_em_rel — Employee Relations
+- (optional) com.sn_hr_payroll
+Then: All &gt; Guided Setup &gt; HR Service Delivery
+</code></pre>
+<p><strong>Day 2 — Bulk import HR Profiles + photos</strong></p>
+<pre><code class="language-javascript">// Import Set + Transform Map from CSV
+// CSV columns: employee_number,user_id,department,manager_employee_number,location,start_date,job_title
+</code></pre>
+<p>// In Transform Map onBefore:<br />
+(function transformRow(source, target) {<br />
+ target.user = _findUser(source.u_employee_number);<br />
+ target.manager = _findManagerByEmp(source.u_manager_employee_number);<br />
+ target.start_date = source.u_start_date;<br />
+ target.department = _findDept(source.u_department);<br />
+})(source, target);</p>
+<p><strong>Day 3-4 — Foundation tables</strong><br />
+- cmn_department — full hierarchy (3 levels)<br />
+- cmn_location — countries + cities + buildings<br />
+- cmn_cost_center — finance dimension<br />
+- Bulk import via Excel → Import Set</p>
+<p><strong>Day 5-6 — HR Services Catalog</strong><br />
+- HR Service: General HR, Payroll, Benefits, Onboarding, Offboarding, Leave (link to x_786686_hr_leave)<br />
+- HR Catalog Items: 15-20 starter items</p>
+<p><strong>Day 7 — Case types + COE routing</strong></p>
+<table>
+<thead>
+<tr>
+<th>Subject category</th>
+<th>COE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Time Off / Leave</td>
+<td>Time Off COE</td>
+</tr>
+<tr>
+<td>Pay &amp; Comp</td>
+<td>Payroll COE</td>
+</tr>
+<tr>
+<td>Health &amp; Wellness</td>
+<td>Benefits COE</td>
+</tr>
+<tr>
+<td>Conduct / Workplace</td>
+<td>Employee Relations</td>
+</tr>
+<tr>
+<td>Career &amp; Performance</td>
+<td>Talent COE</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>General HR</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Day 8 — HR Criteria (visibility)</strong></p>
+<pre><code class="language-javascript">// Script in HR Criteria (sn_hr_core_criteria)
+(function {
+ // Only employees in same department OR HR group can see case
+ var caseDept = current.getValue('subject_department');
+ if (gs.hasRole('hr_admin') || gs.hasRole('hr_em_rel_agent')) {
+ return true;
+ }
+ var userDept = new GlideRecord('sys_user');
+ userDept.get(gs.getUserID());
+ return (userDept.getValue('department') === caseDept);
+})();
+</code></pre>
+<p><strong>Day 9-10 — Employee Center pages, branding, navigation</strong><br />
+- Theme: brand colors, logo, fonts<br />
+- Navigation: 4 main topics (Time Off, Benefits, Payroll, Career)<br />
+- Search prominent (AI Search enabled)<br />
+- Mobile-first responsive</p>
+<p><strong>Day 11 — Topics + Connected Content</strong><br />
+- Topic taxonomy → 3 levels<br />
+- Connected Content rules per topic<br />
+- Link HR Leave items to &ldquo;Time Off&rdquo; topic</p>
+<p><strong>Day 12-13 — Knowledge bases</strong><br />
+- KB: HR Policies (public)<br />
+- KB: Benefits (employee-only)<br />
+- KB: Payroll (employee-only)<br />
+- KB: Internal HR (HR-only)<br />
+- Article templates + workflow + criteria</p>
+<p><strong>Day 14-15 — Onboarding Lifecycle Event</strong></p>
+<p>Steps:<br />
+1. Create Lifecycle Event: Onboarding — Standard<br />
+2. Trigger: employee record insert (state = pre_hire)<br />
+3. Activity Set with 20 tasks (use script #3 above)<br />
+4. Stakeholders: New Hire, Manager, HR, IT, Facilities<br />
+5. Dashboards: open tasks, days-to-complete</p>
+<p><strong>Day 16 — Offboarding Lifecycle Event</strong><br />
+- Similar pattern, but with cross-module integrations (script #4 above)</p>
+<p><strong>Day 17 — Notifications + branded mail layouts</strong><br />
+- All standard case events: assigned, updated, resolved, reopened, closed<br />
+- Branded layout with logo, footer</p>
+<p><strong>Day 18 — Surveys</strong><br />
+- Post-case CSAT<br />
+- Quarterly eNPS via Survey Designer</p>
+<p><strong>Day 19 — Reports + Dashboard</strong></p>
+<p>4-tile HR Dashboard:<br />
+| Tile | Type | Query |<br />
+|&mdash;|&mdash;|&mdash;|<br />
+| Open by COE | Stacked Bar | active=true, group by assignment_group |<br />
+| Avg Resolution Time | Single Score | resolved cases this month, avg(resolved_at − opened_at) |<br />
+| eNPS This Quarter | Single Score | from survey responses |<br />
+| Top 5 Topics | Pie | group by subject |</p>
+<p><strong>Day 20 — PA Indicators</strong><br />
+- Avg time to resolve by COE<br />
+- Reopen rate<br />
+- Self-service deflection rate<br />
+- Lifecycle event completion %</p>
+<p><strong>Day 21 — Service Portal vs EC migration</strong><br />
+- If on legacy /hr Service Portal, plan migration to /esc<br />
+- Use Connected Content for backward compatibility</p>
+<p><strong>Day 22-23 — ATF (15 tests)</strong><br />
+- Confidential case visibility (employee can&rsquo;t see EM Rel)<br />
+- Case auto-assignment<br />
+- KB article visibility per role<br />
+- Onboarding tasks spawn correctly<br />
+- Notification fires on state change<br />
+- HR Leave integration works<br />
+- Catalog → case creation<br />
+- SLA pause/resume<br />
+- Inbound email update<br />
+- PA Indicator collects correctly</p>
+<p><strong>Day 24 — Workday/SAP HRIS integration</strong></p>
+<p>Mapping table:</p>
+<table>
+<thead>
+<tr>
+<th>Workday field</th>
+<th>ServiceNow field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Employee_ID</td>
+<td>sn_hr_core_profile.employee_number</td>
+</tr>
+<tr>
+<td>Worker_ID</td>
+<td>sys_user.employee_number</td>
+</tr>
+<tr>
+<td>Job_Title</td>
+<td>sys_user.title</td>
+</tr>
+<tr>
+<td>Manager</td>
+<td>sys_user.manager (via lookup)</td>
+</tr>
+<tr>
+<td>Hire_Date</td>
+<td>sn_hr_core_profile.start_date</td>
+</tr>
+<tr>
+<td>Department</td>
+<td>sys_user.department (via lookup)</td>
+</tr>
+<tr>
+<td>Location</td>
+<td>sys_user.location (via lookup)</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>sys_user.email</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>sys_user.phone</td>
+</tr>
+<tr>
+<td>Cost_Center</td>
+<td>sys_user.cost_center</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>sys_user.active</td>
+</tr>
+</tbody>
+</table>
+<p>Frequency: 4-hour batch (full sync nightly + incremental every 4 hours)</p>
+<p><strong>Day 25 — Now Assist for HRSD</strong><br />
+- Summarize HR case (skill)<br />
+- Draft empathetic reply<br />
+- Suggest similar cases<br />
+- Classify intake by subject<br />
+- Translation (English ↔ Arabic for ME deployments)</p>
+<p><strong>Day 26 — Mobile App</strong><br />
+- HR Mobile branding<br />
+- Push notifications enabled<br />
+- Offline case viewing<br />
+- Photo attach for medical certs</p>
+<p><strong>Day 27 — Training</strong></p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Duration</th>
+<th>Topics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR Admin</td>
+<td>1 day</td>
+<td>configuration, criteria, KB</td>
+</tr>
+<tr>
+<td>HR Agent</td>
+<td>½ day</td>
+<td>workspace, scripts, transfer rules</td>
+</tr>
+<tr>
+<td>COE Specialist</td>
+<td>½ day</td>
+<td>their COE workflows + criteria</td>
+</tr>
+<tr>
+<td>End User</td>
+<td>30 min</td>
+<td>EC tour, self-service</td>
+</tr>
+<tr>
+<td>Manager</td>
+<td>30 min</td>
+<td>approvals, dashboard</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Day 28 — UAT (30 scenarios)</strong><br />
+- 5 employee self-service flows<br />
+- 5 agent triage flows<br />
+- 5 COE specialist scenarios<br />
+- 5 lifecycle event scenarios<br />
+- 5 integration scenarios<br />
+- 5 negative tests (no access, denied, etc.)</p>
+<p><strong>Day 29 — Cutover readiness</strong><br />
+- Final data load (HR profiles, KB)<br />
+- Cutover plan with hourly checkpoints<br />
+- Comms to employees (T-7, T-1, Day 1)<br />
+- Helpdesk briefed for Day 1 surge</p>
+<p><strong>Day 30 — Go-Live + Hypercare</strong><br />
+- 24/7 war-room for first 48h<br />
+- Daily ticket review<br />
+- Hotfix protocol<br />
+- Daily KPI report to CHRO</p>
+<h3 id="183-cross-link-to-hr-leave-x_786686_hr_leave">18.3 Cross-link to HR Leave (x_786686_hr_leave)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Integration point</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EC topic &ldquo;Time Off&rdquo; → Leave catalog item</td>
+<td>Connected Content rule</td>
+</tr>
+<tr>
+<td>HR Case &ldquo;Leave Question&rdquo; → relates to Leave Request</td>
+<td>parent field, task_rel_task</td>
+</tr>
+<tr>
+<td>Onboarding task &ldquo;Activate Leave Balance&rdquo;</td>
+<td>Lifecycle task triggers x_786686_hr_leave.bal.initialize event</td>
+</tr>
+<tr>
+<td>Offboarding &ldquo;Cancel pending leave&rdquo;</td>
+<td>Script #4 above</td>
+</tr>
+<tr>
+<td>Manager dashboard</td>
+<td>tile pulling from both sn_hr_core_case AND x_786686_hr_leave_req_v2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="184-common-pitfalls-fixes">18.4 Common pitfalls + fixes</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cases visible to wrong managers</td>
+<td>Tighten HR Criteria script</td>
+</tr>
+<tr>
+<td>EC topic doesn&rsquo;t show items</td>
+<td>Check user criteria + topic content rule</td>
+</tr>
+<tr>
+<td>Lifecycle tasks duplicate</td>
+<td>Add idempotency check on activity-set spawn</td>
+</tr>
+<tr>
+<td>Slow case list</td>
+<td>Index opened_for, assignment_group, state</td>
+</tr>
+<tr>
+<td>Workday sync conflicts</td>
+<td>Use last_sync watermark + ETag</td>
+</tr>
+</tbody>
+</table>
+<h3 id="185-kpis-to-track-month-1">18.5 KPIs to track month 1</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>% cases resolved within SLA</td>
+<td>≥ 90%</td>
+</tr>
+<tr>
+<td>Avg resolution time</td>
+<td>&lt; 24h (Tier 1), &lt; 5d (COE)</td>
+</tr>
+<tr>
+<td>Self-service deflection rate</td>
+<td>≥ 30% (cases avoided via KB)</td>
+</tr>
+<tr>
+<td>eNPS (HRSD experience)</td>
+<td>&gt; 40</td>
+</tr>
+<tr>
+<td>Onboarding task completion on time</td>
+<td>≥ 95%</td>
+</tr>
+<tr>
+<td>Confidentiality breach incidents</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="19-cis-hr-exam-z-to-hero-feature-labs">§19 — CIS-HR Exam &amp; Z-to-Hero Feature Labs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<h3 id="191-exam-bank">19.1 Exam bank</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p><strong>Primary</strong>: C:\SVCProject\EXAM_BANK_HRSD_360.md (~120 Q, 95 KB).</p>
+<h3 id="192-z-to-hero-feature-labs-12-labs">19.2 Z-to-Hero Feature Labs (12 labs)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Lab</th>
+<th>Feature</th>
+<th>Bank topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>HR Profile bulk import (CSV)</td>
+<td>Profile mgmt</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>HR Service definition + COE routing rules</td>
+<td>HR Services + COE</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>HR Criteria — restrict salary fields to HR + employee</td>
+<td>HR Security (exam priority)</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>Employee Center /esc config + brand + Topic creation</td>
+<td>EC</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>Connected Content (KB article → Topic)</td>
+<td>EC content</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>Featured Items in EC + topic ordering</td>
+<td>EC UX</td>
+</tr>
+<tr>
+<td>L7</td>
+<td>Onboarding Lifecycle Event with 10 task templates</td>
+<td>LCE</td>
+</tr>
+<tr>
+<td>L8</td>
+<td>Offboarding LCE with cross-module deprovisioning</td>
+<td>LCE</td>
+</tr>
+<tr>
+<td>L9</td>
+<td>HR Case auto-categorization (Now Assist)</td>
+<td>AI HR</td>
+</tr>
+<tr>
+<td>L10</td>
+<td>Cross-link x_786686_hr_leave to HR Case</td>
+<td>Cross-app</td>
+</tr>
+<tr>
+<td>L11</td>
+<td>Workday-style HRIS sync (Spoke or mock REST)</td>
+<td>HRIS integration</td>
+</tr>
+<tr>
+<td>L12</td>
+<td>Manager Hub portal page (delegation, team view)</td>
+<td>Manager experience</td>
+</tr>
+</tbody>
+</table>
+<h3 id="193-top-15-hrsd-must-know-concepts">19.3 Top 15 HRSD must-know concepts</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<ol>
+<li>HR Profile vs HR Case (linked but distinct)</li>
+<li>HR Criteria: condition + restricted fields (THE exam topic)</li>
+<li>COE (Center of Excellence) routing</li>
+<li>Employee Center vs legacy /hr portal</li>
+<li>Topics: Featured, Topic Detail, Connected Content</li>
+<li>Lifecycle Events (LCE): Activity Sets + Tasks</li>
+<li>HR Services Catalog (different from regular Service Catalog)</li>
+<li>HR Case states + assignment + escalation</li>
+<li>Manager Hub for delegations</li>
+<li>PII handling + redaction</li>
+<li>HRIS integration patterns (Workday, SAP SuccessFactors, Oracle HCM)</li>
+<li>Surveys (post-onboarding, post-case)</li>
+<li>Mobile EC for employees</li>
+<li>Now Assist for HR (summarize, draft reply, KB suggest)</li>
+<li>HR Reports + PA (case volume, satisfaction)</li>
+</ol>
+<h3 id="194-5-sample-cis-hr-questions">19.4 5 sample CIS-HR questions</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<blockquote>
+<p><strong>Q1.</strong> HR Criteria is used to:<br />
+A. Limit which catalog items appear<br />
+B. Restrict fields and tabs based on conditions and audience<br />
+C. Define HR Services<br />
+D. Approve cases</p>
+<p><strong>Answer</strong>: B</p>
+<p><strong>Q2.</strong> Where do you configure Topics for Employee Center?<br />
+A. Service Portal designer<br />
+B. Employee Center &gt; Configuration &gt; Topics<br />
+C. UI Builder<br />
+D. HR Profile</p>
+<p><strong>Answer</strong>: B</p>
+<p><strong>Q3.</strong> A Lifecycle Event triggers when:<br />
+A. Manually launched<br />
+B. Activity Set trigger condition is met (e.g., new hire start date)<br />
+C. Both<br />
+D. Only via Flow Designer</p>
+<p><strong>Answer</strong>: C</p>
+<p><strong>Q4.</strong> Which integration is recommended for Workday HRIS to ServiceNow HR Profile sync?<br />
+A. Direct GlideRecord script<br />
+B. Workday IH Spoke + Identification rule on employee_number<br />
+C. Manual CSV import daily<br />
+D. Email-to-record</p>
+<p><strong>Answer</strong>: B</p>
+<p><strong>Q5.</strong> When an employee opens a case via /esc, what restricts visibility of the case?<br />
+A. ACL on HR Case table<br />
+B. HR Criteria<br />
+C. Both A and B<br />
+D. None — all visible</p>
+<p><strong>Answer</strong>: C</p>
+</blockquote>
+<p>Use EXAM_BANK_HRSD_360.md for remaining 115+ questions.</p>
+<h3 id="195-what-hero-looks-like-for-hrsd">19.5 What &ldquo;Hero&rdquo; looks like for HRSD</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<p>Builds full HR shared services platform: HR Profile mastering, Criteria-based security, EC topics with connected KB, Onboarding/Offboarding LCEs with cross-module hooks, HRIS bi-directional sync, Now Assist for HR. Passes CIS-HR with ≥85%.</p>
+<hr />
+<h2 id="hands-on-labs">Hands-on Labs — مختبرات عملية</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<blockquote>
+<p>Step-by-step labs for PDI / Australia instance. Replace <code>{BASE}</code> with your instance URL.<br />
+مختبرات خطوة بخطوة — استبدل <code>{BASE}</code> برابط نسختك.</p>
+</blockquote>
+<ol>
+<li>
+<p><strong>Lab 1</strong> — <strong>HR Case / قضية HR</strong> — Create at <a href="{BASE}/sn_hr_core_case.do?sys_id=-1">{BASE}/sn_hr_core_case.do?sys_id=-1</a>; select COE (e.g. Payroll).</p>
+</li>
+<li>
+<p><strong>Lab 2</strong> — <strong>HR Criteria / معايير السرية</strong> — Configure at <a href="{BASE}/sn_hr_core_criteria_list.do">{BASE}/sn_hr_core_criteria_list.do</a>; verify case visibility.</p>
+</li>
+<li>
+<p><strong>Lab 3</strong> — <strong>Employee Center request / طلب من EC</strong> — Submit HR service via <a href="{BASE}/esc">{BASE}/esc</a>.</p>
+</li>
+<li>
+<p><strong>Lab 4</strong> — <strong>Lifecycle Event / حدث دورة حياة</strong> — Trigger onboarding at <a href="{BASE}/sn_hr_le_case_list.do">{BASE}/sn_hr_le_case_list.do</a>.</p>
+</li>
+<li>
+<p><strong>Lab 5</strong> — <strong>HR Knowledge / معرفة HR</strong> — Publish article restricted to HR COE.</p>
+</li>
+<li>
+<p><strong>Lab 6</strong> — <strong>Scoped app (Leave) / تطبيق الإجازات</strong> — Test x_786686_hr_leave catalog item end-to-end.</p>
+</li>
+<li>
+<p><strong>Lab 7</strong> — <strong>HR Workspace / مساحة HR</strong> — Work cases at <a href="{BASE}/now/hr/home">{BASE}/now/hr/home</a>.</p>
+</li>
+</ol>
+<hr />
+<h2 id="best-practices">Best Practices — أفضل الممارسات</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Best practice (EN)</th>
+<th>أفضل ممارسة (AR)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Privacy</td>
+<td>HR Criteria on every sensitive COE — mandatory</td>
+<td>HR Criteria على كل COE حساس</td>
+</tr>
+<tr>
+<td>COE</td>
+<td>Separate Payroll, Benefits, ER — never one generic queue</td>
+<td>فصل COEs — لا قائمة واحدة</td>
+</tr>
+<tr>
+<td>Portal</td>
+<td>Employee Center over classic SP for HR</td>
+<td>Employee Center للموظف</td>
+</tr>
+<tr>
+<td>Integration</td>
+<td>HRIS spoke for employee data sync</td>
+<td>Spoke HRIS لمزامنة البيانات</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="deployment-checklist">Deployment Checklist — قائمة النشر</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task (EN)</th>
+<th>المهمة (AR)</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Install HRSD plugins</td>
+<td>تثبيت HRSD</td>
+<td>Active</td>
+</tr>
+<tr>
+<td>2</td>
+<td>COE structure &amp; services</td>
+<td>هيكل COE</td>
+<td>Services listed</td>
+</tr>
+<tr>
+<td>3</td>
+<td>HR Criteria per COE</td>
+<td>HR Criteria</td>
+<td>Access restricted</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Employee Center config</td>
+<td>Employee Center</td>
+<td>Employee submits</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Lifecycle templates</td>
+<td>قوالب Lifecycle</td>
+<td>Onboarding runs</td>
+</tr>
+<tr>
+<td>6</td>
+<td>HR Workspace</td>
+<td>مساحة HR</td>
+<td>Agent works queue</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Scoped apps (Leave etc.)</td>
+<td>تطبيقات scoped</td>
+<td>Leave E2E works</td>
+</tr>
+<tr>
+<td>8</td>
+<td>UAT with HR COE</td>
+<td>UAT مع HR</td>
+<td>Sign-off</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="direct-urls-quick-reference">Direct URLs Quick Reference</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Navigation</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR Cases</td>
+<td>All &gt; HR &gt; Cases</td>
+<td><a href="{BASE}/sn_hr_core_case_list.do">{BASE}/sn_hr_core_case_list.do</a></td>
+</tr>
+<tr>
+<td>HR Services</td>
+<td>All &gt; HR &gt; Services</td>
+<td><a href="{BASE}/sn_hr_core_service_list.do">{BASE}/sn_hr_core_service_list.do</a></td>
+</tr>
+<tr>
+<td>Employee Center</td>
+<td>Employee Center</td>
+<td><a href="{BASE}/esc">{BASE}/esc</a></td>
+</tr>
+<tr>
+<td>Lifecycle Events</td>
+<td>All &gt; HR &gt; Lifecycle</td>
+<td><a href="{BASE}/sn_hr_le_case_list.do">{BASE}/sn_hr_le_case_list.do</a></td>
+</tr>
+<tr>
+<td>HR Criteria</td>
+<td>All &gt; HR &gt; Administration</td>
+<td><a href="{BASE}/sn_hr_core_criteria_list.do">{BASE}/sn_hr_core_criteria_list.do</a></td>
+</tr>
+<tr>
+<td>HR Workspace</td>
+<td>Now &gt; HR</td>
+<td><a href="{BASE}/now/hr/home">{BASE}/now/hr/home</a></td>
+</tr>
+<tr>
+<td>Flow Designer</td>
+<td>All &gt; Flow Designer</td>
+<td><a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a></td>
+</tr>
+<tr>
+<td>Guided Setup</td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="20-deep-implementation-labs-scripts-deploy-runbook">§20 — Deep Implementation Labs, Scripts &amp; Deploy Runbook</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<blockquote>
+<p><strong>Appendix:</strong> Professional create → configure → deploy sequence for HRSD on Australia instances.<br />
+<strong>Token:</strong> Replace <code>{BASE}</code> with <code>https://YOUR_INSTANCE.service-now.com</code>.<br />
+<strong>Scoped app tie-in:</strong> <code>x_786686_hr_leave</code> publishes to Employee Center.<br />
+<strong>Related:</strong> <a href="implementation/HRSD_IMPLEMENTATION_FROM_SCRATCH_TO_PRO.html">implementation/HRSD_IMPLEMENTATION_FROM_SCRATCH_TO_PRO.md</a></p>
+</blockquote>
+<h3 id="201-three-phase-implementation-model">20.1 Three-Phase Implementation Model</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Days</th>
+<th>Goal</th>
+<th>Exit criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CREATE</strong></td>
+<td>0–3</td>
+<td>HR Core plugins, COEs, Update Set, HR Profiles</td>
+<td>HR menus + Guided Setup complete</td>
+</tr>
+<tr>
+<td><strong>CONFIGURE</strong></td>
+<td>4–20</td>
+<td>HR Criteria, Services, EC topics, Lifecycle, Leave app</td>
+<td>Confidential case + EC self-service E2E</td>
+</tr>
+<tr>
+<td><strong>DEPLOY</strong></td>
+<td>21–30</td>
+<td>ATF, Criteria UAT, transport, hypercare</td>
+<td>Legal sign-off on Criteria matrix</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="202-create-phase-install-foundation">20.2 CREATE Phase — Install &amp; Foundation</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<h4 id="step-c1-verify-instance-activate-hrsd">Step C1 — Verify instance &amp; activate HRSD</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Confirm build</td>
+<td>All &gt; <strong>System Diagnostics</strong> &gt; <strong>Stats</strong></td>
+<td><a href="{BASE}/stats.do">{BASE}/stats.do</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Plugins</td>
+<td>Filter Navigator: <strong>Plugins</strong></td>
+<td><a href="{BASE}/v_plugin_list.do">{BASE}/v_plugin_list.do</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>HR Core</td>
+<td>Filter <code>nameCONTAINShr_core</code> → Activate</td>
+<td><a href="{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINShr_core">{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINShr_core</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Case Management</td>
+<td>Activate <code>com.sn_hr_case_management</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Lifecycle Events</td>
+<td>Activate <code>com.sn_hr_lifecycle_ent</code> (if licensed)</td>
+<td><a href="{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINSlifecycle">{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINSlifecycle</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Employee Center Pro</td>
+<td>Activate from Store if entitled</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-c2-guided-setup-hrsd">Step C2 — Guided Setup HRSD</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Guided Setup</td>
+<td>All &gt; <strong>Guided Setup</strong></td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>HR Service Delivery</strong> tile</td>
+<td><strong>Get Started</strong></td>
+<td><a href="{BASE}/now/guided-setup/hrsd">{BASE}/now/guided-setup/hrsd</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Foundation</td>
+<td>HR Profiles, Departments → <strong>Mark Complete</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>COE selection</td>
+<td>Enable Payroll, Benefits, Time Off COEs</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Employee Center</td>
+<td>Enable <code>/esc</code> portal</td>
+<td><a href="{BASE}/esc">{BASE}/esc</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-c3-roles-groups-update-set">Step C3 — Roles, groups, Update Set</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Update Set</td>
+<td>All &gt; <strong>Local Update Sets</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/sys_update_set.do?sys_id=-1">{BASE}/sys_update_set.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Name <code>HRSD_AU_Implement_2026</code></td>
+<td>State <strong>In progress</strong></td>
+<td><a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>HR agent group</td>
+<td>All &gt; <strong>Groups</strong> &gt; <strong>New</strong>: <code>HR Tier-1 Agents</code></td>
+<td><a href="{BASE}/sys_user_group.do?sys_id=-1">{BASE}/sys_user_group.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Roles</td>
+<td><code>sn_hr_core.case_writer</code>, <code>sn_hr_core.basic</code></td>
+<td><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHsn_hr">{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHsn_hr</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Test users</td>
+<td><code>hr.agent1</code>, <code>employee.test1</code>, <code>manager.test1</code></td>
+<td><a href="{BASE}/sys_user_list.do">{BASE}/sys_user_list.do</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>HR Profiles</td>
+<td>All &gt; <strong>HR Administration</strong> &gt; <strong>Profiles</strong></td>
+<td><a href="{BASE}/sn_hr_core_profile_list.do">{BASE}/sn_hr_core_profile_list.do</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="203-configure-phase-hr-service-delivery-build">20.3 CONFIGURE Phase — HR Service Delivery Build</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<h4 id="step-f1-hr-profiles-coe-structure-security-first">Step F1 — HR Profiles &amp; COE structure (security first)</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>HR Profile for employee</td>
+<td><strong>Profiles</strong> &gt; <strong>New</strong> or auto-gen</td>
+<td><a href="{BASE}/sn_hr_core_profile.do?sys_id=-1">{BASE}/sn_hr_core_profile.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Link <code>employee.test1</code> sys_user</td>
+<td>Department, Manager populated</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>COE config</td>
+<td>All &gt; <strong>HR Administration</strong> &gt; <strong>COE</strong></td>
+<td><a href="{BASE}/sn_hr_core_case_list.do">{BASE}/sn_hr_core_case_list.do</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Enable COEs: General HR, Payroll, Benefits, Time Off, Employee Relations</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>HR Criteria</strong> (critical)</td>
+<td>All &gt; <strong>HR Administration</strong> &gt; <strong>HR Criteria</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/sn_hr_core_criteria.do?sys_id=-1">{BASE}/sn_hr_core_criteria.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Criteria: Employee Relations cases visible only to ER group + subject person</td>
+<td>Script tab — see §17.4</td>
+<td><a href="{BASE}/sn_hr_core_criteria_list.do">{BASE}/sn_hr_core_criteria_list.do</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-f2-hr-services-case-configuration">Step F2 — HR Services &amp; case configuration</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>HR Service</td>
+<td>All &gt; <strong>HR Administration</strong> &gt; <strong>Services</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/sn_hr_core_service.do?sys_id=-1">{BASE}/sn_hr_core_service.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Name <code>General HR Inquiry</code>, COE=General HR</td>
+<td>Active=true</td>
+<td><a href="{BASE}/sn_hr_core_service_list.do">{BASE}/sn_hr_core_service_list.do</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Service <code>Payroll Inquiry</code></td>
+<td>COE=Payroll, apply HR Criteria</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Case types</td>
+<td>Configure per COE table extensions</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Assignment rules</td>
+<td>All &gt; <strong>HR Administration</strong> &gt; <strong>Assignment</strong></td>
+<td><a href="{BASE}/sysrule_assignment_list.do?sysparm_query=tableSTARTSWITHsn_hr">{BASE}/sysrule_assignment_list.do?sysparm_query=tableSTARTSWITHsn_hr</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Test case</td>
+<td><a href="{BASE}/sn_hr_core_case.do?sys_id=-1">{BASE}/sn_hr_core_case.do?sys_id=-1</a></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-f3-employee-center-topics-leave-app">Step F3 — Employee Center topics &amp; Leave app</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>EC config</td>
+<td>All &gt; <strong>Employee Center</strong> &gt; <strong>Configuration</strong></td>
+<td><a href="{BASE}/esc">{BASE}/esc</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Topics</td>
+<td><strong>Topics</strong> &gt; <strong>New</strong>: <code>Time Off</code></td>
+<td>Employee Center admin UI</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Connected Content</td>
+<td>Link catalog item <strong>Submit Leave Request</strong> (<code>x_786686_hr_leave</code>)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Scoped app verify</td>
+<td>All &gt; <strong>Studio</strong> → app <code>HR Leave</code></td>
+<td><a href="{BASE}/sys_scope_list.do?sysparm_query=scope%3Dx_786686_hr_leave">{BASE}/sys_scope_list.do?sysparm_query=scope%3Dx_786686_hr_leave</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Catalog item</td>
+<td>Module <strong>Leave Request</strong> published to EC</td>
+<td><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">{BASE}/x_786686_hr_leave_req_v2_list.do</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Preview EC</td>
+<td><a href="{BASE}/esc?id=time_off_topic">{BASE}/esc?id=time_off_topic</a> (topic id varies)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-f4-lifecycle-events-onboarding">Step F4 — Lifecycle Events (onboarding)</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Lifecycle Events</td>
+<td>All &gt; <strong>HR Lifecycle Events</strong></td>
+<td><a href="{BASE}/sn_hr_le_case_list.do">{BASE}/sn_hr_le_case_list.do</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Activity Sets</td>
+<td>All &gt; <strong>HR</strong> &gt; <strong>Activity Sets</strong> &gt; <strong>New</strong></td>
+<td><a href="{BASE}/sn_hr_le_activity_set.do?sys_id=-1">{BASE}/sn_hr_le_activity_set.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Name <code>LAB Standard Onboarding</code></td>
+<td>5+ activities (IT, HR, Manager)</td>
+<td><a href="{BASE}/sn_hr_le_activity_set_list.do">{BASE}/sn_hr_le_activity_set_list.do</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Lifecycle Event case</td>
+<td><strong>New</strong> onboarding for pre-hire</td>
+<td><a href="{BASE}/sn_hr_le_case.do?sys_id=-1">{BASE}/sn_hr_le_case.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Trigger</td>
+<td>New hire start date T-7</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Task fan-out</td>
+<td>Related <strong>HR Tasks</strong> spawn cross-team</td>
+<td><a href="{BASE}/sn_hr_core_task_list.do">{BASE}/sn_hr_core_task_list.do</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-f5-hr-agent-workspace-knowledge">Step F5 — HR Agent Workspace &amp; Knowledge</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>HR Workspace</td>
+<td>Now Experience &gt; <strong>HR</strong></td>
+<td><a href="{BASE}/now/hr/home">{BASE}/now/hr/home</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Agent view</td>
+<td><a href="{BASE}/now/hr/agent">{BASE}/now/hr/agent</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>KB article</td>
+<td>All &gt; <strong>Knowledge</strong> &gt; <strong>Create New</strong></td>
+<td><a href="{BASE}/kb_knowledge.do?sys_id=-1">{BASE}/kb_knowledge.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>HR Criteria on KB</td>
+<td>Restrict Benefits articles to employees</td>
+<td><a href="{BASE}/kb_knowledge_base_list.do">{BASE}/kb_knowledge_base_list.do</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Flow approval</td>
+<td>Leave approval Flow at <a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="204-deploy-phase-test-transport-go-live">20.4 DEPLOY Phase — Test, Transport, Go-Live</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<h4 id="step-d1-confidentiality-uat-mandatory">Step D1 — Confidentiality UAT (mandatory)</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Impersonate <code>employee.test1</code></td>
+<td>avatar &gt; <strong>Impersonate</strong></td>
+<td><a href="{BASE}/impersonate_user.do">{BASE}/impersonate_user.do</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Attempt open ER case URL directly</td>
+<td>Should <strong>403/blank</strong> per HR Criteria</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Impersonate <code>hr.agent1</code></td>
+<td>Can see assigned COE cases</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Access Debugger</td>
+<td>All &gt; <strong>Access Control Debugger</strong></td>
+<td><a href="{BASE}/$access_control_debugger.do">{BASE}/$access_control_debugger.do</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Document matrix</td>
+<td>Legal/HR sign-off on Criteria doc</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-d2-atf-update-set">Step D2 — ATF &amp; Update Set</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Exact navigation / clicks</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>ATF</td>
+<td><a href="{BASE}/sys_atf_test_list.do">{BASE}/sys_atf_test_list.do</a></td>
+<td>EC submit + Criteria deny tests</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Complete Update Set</td>
+<td><a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Import target</td>
+<td><a href="{BASE}/sys_remote_update_set_list.do">{BASE}/sys_remote_update_set_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Smoke EC</td>
+<td><a href="{BASE}/esc">{BASE}/esc</a> + Leave request E2E</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-d3-hypercare-first-72h">Step D3 — Hypercare (first 72h)</h4>
+<table>
+<thead>
+<tr>
+<th>Hour</th>
+<th>Check</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>EC <code>/esc</code> loads</td>
+<td><a href="{BASE}/esc">{BASE}/esc</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Open HR cases by COE</td>
+<td><a href="{BASE}/sn_hr_core_case_list.do?sysparm_query=active%3Dtrue">{BASE}/sn_hr_core_case_list.do?sysparm_query=active%3Dtrue</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Criteria breach attempts</td>
+<td><a href="{BASE}/syslog_list.do?sysparm_query=messageLIKEaccess">{BASE}/syslog_list.do?sysparm_query=messageLIKEaccess</a></td>
+</tr>
+<tr>
+<td>24</td>
+<td>Leave requests submitted</td>
+<td><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">{BASE}/x_786686_hr_leave_req_v2_list.do</a></td>
+</tr>
+<tr>
+<td>72</td>
+<td>Onboarding tasks completion</td>
+<td><a href="{BASE}/sn_hr_core_task_list.do?sysparm_query=short_descriptionLIKEonboard">{BASE}/sn_hr_core_task_list.do?sysparm_query=short_descriptionLIKEonboard</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="205-full-component-url-catalog-hrsd">20.5 Full Component URL Catalog (HRSD)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Filter Navigator path</th>
+<th>Direct URL</th>
+<th>Create URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plugins</td>
+<td>All &gt; System Definition &gt; Plugins</td>
+<td><a href="{BASE}/v_plugin_list.do">{BASE}/v_plugin_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Update Sets</td>
+<td>All &gt; System Update Sets &gt; Local</td>
+<td><a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a></td>
+<td><a href="{BASE}/sys_update_set.do?sys_id=-1">{BASE}/sys_update_set.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>HR Profiles</td>
+<td>All &gt; HR Administration &gt; Profiles</td>
+<td><a href="{BASE}/sn_hr_core_profile_list.do">{BASE}/sn_hr_core_profile_list.do</a></td>
+<td><a href="{BASE}/sn_hr_core_profile.do?sys_id=-1">{BASE}/sn_hr_core_profile.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>HR Services</td>
+<td>All &gt; HR Administration &gt; Services</td>
+<td><a href="{BASE}/sn_hr_core_service_list.do">{BASE}/sn_hr_core_service_list.do</a></td>
+<td><a href="{BASE}/sn_hr_core_service.do?sys_id=-1">{BASE}/sn_hr_core_service.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>HR Cases</td>
+<td>All &gt; HR Case Management &gt; Cases</td>
+<td><a href="{BASE}/sn_hr_core_case_list.do">{BASE}/sn_hr_core_case_list.do</a></td>
+<td><a href="{BASE}/sn_hr_core_case.do?sys_id=-1">{BASE}/sn_hr_core_case.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>HR Criteria</td>
+<td>All &gt; HR Administration &gt; HR Criteria</td>
+<td><a href="{BASE}/sn_hr_core_criteria_list.do">{BASE}/sn_hr_core_criteria_list.do</a></td>
+<td><a href="{BASE}/sn_hr_core_criteria.do?sys_id=-1">{BASE}/sn_hr_core_criteria.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>HR Tasks</td>
+<td>All &gt; HR Case Management &gt; Tasks</td>
+<td><a href="{BASE}/sn_hr_core_task_list.do">{BASE}/sn_hr_core_task_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Lifecycle Events</td>
+<td>All &gt; HR Lifecycle Events</td>
+<td><a href="{BASE}/sn_hr_le_case_list.do">{BASE}/sn_hr_le_case_list.do</a></td>
+<td><a href="{BASE}/sn_hr_le_case.do?sys_id=-1">{BASE}/sn_hr_le_case.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Activity Sets</td>
+<td>All &gt; HR &gt; Activity Sets</td>
+<td><a href="{BASE}/sn_hr_le_activity_set_list.do">{BASE}/sn_hr_le_activity_set_list.do</a></td>
+<td><a href="{BASE}/sn_hr_le_activity_set.do?sys_id=-1">{BASE}/sn_hr_le_activity_set.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Employee Center</td>
+<td>Employee Center</td>
+<td><a href="{BASE}/esc">{BASE}/esc</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>EC Topics</td>
+<td>Employee Center &gt; Configuration &gt; Topics</td>
+<td>Admin UI from <a href="{BASE}/esc">{BASE}/esc</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>HR Workspace</td>
+<td>Now Experience &gt; HR</td>
+<td><a href="{BASE}/now/hr/home">{BASE}/now/hr/home</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>HR Agent Workspace</td>
+<td>Now Experience &gt; HR Agent</td>
+<td><a href="{BASE}/now/hr/agent">{BASE}/now/hr/agent</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Assignment Rules</td>
+<td>All &gt; HR Administration &gt; Assignment</td>
+<td><a href="{BASE}/sysrule_assignment_list.do?sysparm_query=tableSTARTSWITHsn_hr">{BASE}/sysrule_assignment_list.do?sysparm_query=tableSTARTSWITHsn_hr</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Knowledge (HR)</td>
+<td>All &gt; Knowledge &gt; Articles</td>
+<td><a href="{BASE}/kb_knowledge_list.do">{BASE}/kb_knowledge_list.do</a></td>
+<td><a href="{BASE}/kb_knowledge.do?sys_id=-1">{BASE}/kb_knowledge.do?sys_id=-1</a></td>
+</tr>
+<tr>
+<td>Flow Designer</td>
+<td>All &gt; Process Automation &gt; Flow Designer</td>
+<td><a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Scoped Apps</td>
+<td>All &gt; Studio / Applications</td>
+<td><a href="{BASE}/sys_scope_list.do">{BASE}/sys_scope_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>HR Leave Requests</td>
+<td>Module (scoped app)</td>
+<td><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">{BASE}/x_786686_hr_leave_req_v2_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>HR Leave Balances</td>
+<td>Module (scoped app)</td>
+<td><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">{BASE}/x_786686_hr_leave_bal_v2_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>HR Leave Employees</td>
+<td>Module (scoped app)</td>
+<td><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">{BASE}/x_786686_hr_leave_employee_v2_list.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>REST API (HR Case)</td>
+<td>Table API</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/sn_hr_core_case"><code>{BASE}/api/now/table/sn_hr_core_case</code></a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Impersonation</td>
+<td>avatar &gt; Impersonate</td>
+<td><a href="{BASE}/impersonate_user.do">{BASE}/impersonate_user.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Access Debugger</td>
+<td>All &gt; System Security &gt; Access Control Debugger</td>
+<td><a href="{BASE}/$access_control_debugger.do">{BASE}/$access_control_debugger.do</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Guided Setup</td>
+<td>All &gt; Guided Setup</td>
+<td><a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="206-deep-hands-on-labs-8-labs-exact-clicks">20.6 Deep Hands-On Labs (8 labs — exact clicks)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<blockquote>
+<p>Prefix pilot records with <code>LAB-HR-</code>.</p>
+</blockquote>
+<h4 id="lab-1-hrsd-plugin-activation-hr-profiles-create">Lab 1 — HRSD plugin activation &amp; HR Profiles (CREATE)</h4>
+<p><strong>Goal:</strong> HR menus visible; every test user has HR Profile.</p>
+<ol>
+<li><a href="{BASE}/stats.do">{BASE}/stats.do</a> → note build.</li>
+<li>Update Set <code>HRSD_LAB01_CREATE</code> at <a href="{BASE}/sys_update_set.do?sys_id=-1">{BASE}/sys_update_set.do?sys_id=-1</a>.</li>
+<li>Activate HR Core <a href="{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINShr_core">{BASE}/v_plugin_list.do?sysparm_query=nameCONTAINShr_core</a>.</li>
+<li>Guided Setup <a href="{BASE}/now/guided-setup">{BASE}/now/guided-setup</a> → <strong>HR Service Delivery</strong> → complete Foundation.</li>
+<li>For each test user → <a href="{BASE}/sn_hr_core_profile.do?sys_id=-1">{BASE}/sn_hr_core_profile.do?sys_id=-1</a> → link sys_user, department, manager.</li>
+<li><strong>Verify:</strong> <a href="{BASE}/sn_hr_core_profile_list.do">{BASE}/sn_hr_core_profile_list.do</a> ≥ 3 profiles.</li>
+</ol>
+<h4 id="lab-2-hr-criteria-confidentiality-configure-exam-priority">Lab 2 — HR Criteria confidentiality (CONFIGURE) — EXAM PRIORITY</h4>
+<p><strong>Goal:</strong> Employee Relations case invisible to peer employees.</p>
+<ol>
+<li>Create HR Service <code>LAB Employee Relations</code> COE=Employee Relations at <a href="{BASE}/sn_hr_core_service.do?sys_id=-1">{BASE}/sn_hr_core_service.do?sys_id=-1</a>.</li>
+<li><a href="{BASE}/sn_hr_core_criteria.do?sys_id=-1">{BASE}/sn_hr_core_criteria.do?sys_id=-1</a>: Name=<code>LAB-ER-Confidential</code>, Table=<code>sn_hr_core_case</code>, apply to ER COE.</li>
+<li>Script: allow if <code>gs.hasRole('sn_hr_em_rel.case_writer')</code> OR user is <strong>opened_for</strong> OR <strong>subject person</strong>; else deny field/tab visibility.</li>
+<li>Create case <a href="{BASE}/sn_hr_core_case.do?sys_id=-1">{BASE}/sn_hr_core_case.do?sys_id=-1</a>: Service=<code>LAB Employee Relations</code>, opened_for=<code>employee.test1</code>, short description=<code>LAB-HR-ER-001</code>.</li>
+<li>Copy case sys_id from URL.</li>
+<li>Impersonate different employee (not subject) → paste <a class="direct-url" href="{BASE}/sn_hr_core_case.do?sys_id=CASE_SYS_ID"><code>{BASE}/sn_hr_core_case.do?sys_id=CASE_SYS_ID</code></a> → expect <strong>Security constraint</strong> or empty form.</li>
+<li>Impersonate HR ER agent → case fully visible.</li>
+<li><strong>Verify:</strong> <a href="{BASE}/$access_control_debugger.do">{BASE}/$access_control_debugger.do</a> explains deny reason.</li>
+</ol>
+<h4 id="lab-3-employee-center-case-submission-configure">Lab 3 — Employee Center case submission (CONFIGURE)</h4>
+<p><strong>Goal:</strong> Employee submits General HR case via <code>/esc</code>.</p>
+<ol>
+<li>Configure topic <code>General HR</code> in Employee Center admin (linked to HR Service General HR).</li>
+<li>Impersonate <code>employee.test1</code> <a href="{BASE}/impersonate_user.do">{BASE}/impersonate_user.do</a>.</li>
+<li>Browse <a href="{BASE}/esc">{BASE}/esc</a> → <strong>General HR</strong> topic → <strong>Contact HR</strong> / <strong>Open Case</strong>.</li>
+<li>Subject=<code>LAB-HR-EC-001</code>, Description=<code>Question about payslip</code> → <strong>Submit</strong>.</li>
+<li>Note case number → <a href="{BASE}/esc?id=my_requests">{BASE}/esc?id=my_requests</a>.</li>
+<li>End impersonation → <code>hr.agent1</code> opens <a href="{BASE}/now/hr/agent">{BASE}/now/hr/agent</a> → case in queue.</li>
+<li>Resolve case → employee sees <strong>Resolved</strong> in EC.</li>
+<li><strong>Verify:</strong> <a href="{BASE}/sn_hr_core_case_list.do?sysparm_query=short_descriptionLIKElab-hr-ec">{BASE}/sn_hr_core_case_list.do?sysparm_query=short_descriptionLIKElab-hr-ec</a>.</li>
+</ol>
+<h4 id="lab-4-hr-leave-app-via-employee-center-configure">Lab 4 — HR Leave app via Employee Center (CONFIGURE)</h4>
+<p><strong>Goal:</strong> End-to-end leave request from scoped app <code>x_786686_hr_leave</code>.</p>
+<ol>
+<li>Confirm app scope active <a href="{BASE}/sys_scope_list.do?sysparm_query=scope%3Dx_786686_hr_leave">{BASE}/sys_scope_list.do?sysparm_query=scope%3Dx_786686_hr_leave</a>.</li>
+<li>EC Topic <strong>Time Off</strong> → Connected Content → catalog item <strong>Submit Leave Request</strong>.</li>
+<li>Impersonate <code>employee.test1</code> → <a href="{BASE}/esc">{BASE}/esc</a> → <strong>Time Off</strong> → <strong>Submit Leave Request</strong>.</li>
+<li>Fill dates (3 days annual leave), reason → <strong>Submit</strong>.</li>
+<li>Track in <a href="{BASE}/x_786686_hr_leave_req_v2_list.do">{BASE}/x_786686_hr_leave_req_v2_list.do</a> → state <strong>Submitted</strong>.</li>
+<li>Impersonate <code>manager.test1</code> → approve via approval inbox or catalog task.</li>
+<li><strong>Verify:</strong> Request state <strong>Approved</strong>; balance updated <a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">{BASE}/x_786686_hr_leave_bal_v2_list.do</a>.</li>
+</ol>
+<h4 id="lab-5-onboarding-lifecycle-event-configure">Lab 5 — Onboarding Lifecycle Event (CONFIGURE)</h4>
+<p><strong>Goal:</strong> Activity Set spawns cross-team tasks on onboarding trigger.</p>
+<ol>
+<li><a href="{BASE}/sn_hr_le_activity_set.do?sys_id=-1">{BASE}/sn_hr_le_activity_set.do?sys_id=-1</a>: Name=<code>LAB Onboarding Set</code>.</li>
+<li>Add activities: <code>IT Account</code>, <code>Badge</code>, <code>Benefits Enroll</code>, <code>Manager Welcome</code> (assign groups).</li>
+<li>Create Lifecycle Event <a href="{BASE}/sn_hr_le_case.do?sys_id=-1">{BASE}/sn_hr_le_case.do?sys_id=-1</a>: Type=Onboarding, Employee=new hire user, Start=T+7.</li>
+<li><strong>Submit</strong> → watch Related <strong>Tasks</strong> / Activity execution.</li>
+<li>Open <a href="{BASE}/sn_hr_core_task_list.do?sysparm_query=short_descriptionLIKElab">{BASE}/sn_hr_core_task_list.do?sysparm_query=short_descriptionLIKElab</a> → ≥4 tasks.</li>
+<li>Complete each task as respective team.</li>
+<li><strong>Verify:</strong> Lifecycle case state <strong>Complete</strong> when all activities done.</li>
+</ol>
+<h4 id="lab-6-hr-knowledge-deflection-in-ec-configure">Lab 6 — HR Knowledge deflection in EC (CONFIGURE)</h4>
+<p><strong>Goal:</strong> Employee finds KB article before opening case.</p>
+<ol>
+<li><a href="{BASE}/kb_knowledge.do?sys_id=-1">{BASE}/kb_knowledge.do?sys_id=-1</a>: Title=<code>LAB Annual Leave Policy</code>, KB=HR Policies, HR Criteria=employees.</li>
+<li>Submit → Publish workflow → <strong>Published</strong>.</li>
+<li>Link article to EC Topic <strong>Time Off</strong> Connected Content.</li>
+<li>Impersonate employee → <a href="{BASE}/esc">{BASE}/esc</a> → search <code>annual leave</code> → article appears.</li>
+<li>Click article → confirm read → optional <strong>Was this helpful?</strong></li>
+<li><strong>Verify:</strong> Deflection metric — no duplicate case if employee satisfied.</li>
+</ol>
+<h4 id="lab-7-coe-routing-manager-visibility-configure">Lab 7 — COE routing &amp; manager visibility (CONFIGURE)</h4>
+<p><strong>Goal:</strong> Payroll case routes to Payroll COE; manager cannot see salary fields.</p>
+<ol>
+<li>HR Service <code>LAB Payroll Inquiry</code> COE=Payroll → <a href="{BASE}/sn_hr_core_service_list.do">{BASE}/sn_hr_core_service_list.do</a>.</li>
+<li>Assignment rule: Payroll cases → group <code>HR Payroll COE</code> <a href="{BASE}/sysrule_assignment_list.do">{BASE}/sysrule_assignment_list.do</a>.</li>
+<li>HR Criteria on salary fields: visible to Payroll COE + employee only (not manager unless delegated).</li>
+<li>Employee submits payroll case via EC.</li>
+<li>Impersonate <code>manager.test1</code> → open team view / Manager Hub → confirm <strong>no</strong> salary detail fields.</li>
+<li><strong>Verify:</strong> Case assigned to Payroll group; manager sees only permitted fields.</li>
+</ol>
+<h4 id="lab-8-deploy-update-set-confidentiality-sign-off-deploy">Lab 8 — Deploy Update Set + confidentiality sign-off (DEPLOY)</h4>
+<p><strong>Goal:</strong> Transport HRSD config with Legal-approved Criteria matrix.</p>
+<ol>
+<li>Complete <code>HRSD_AU_Implement_2026</code> Update Set.</li>
+<li>Export/import <a href="{BASE}/sys_remote_update_set_list.do">{BASE}/sys_remote_update_set_list.do</a> → Commit.</li>
+<li>Run ATF: EC case submit, ER case deny, Leave E2E.</li>
+<li>Execute confidentiality test pack (10 personas × 5 sensitive cases).</li>
+<li>Legal + CHRO sign Criteria matrix PDF.</li>
+<li>Go-live: communicate <a href="{BASE}/esc">{BASE}/esc</a> to all staff.</li>
+<li><strong>Verify:</strong> Hypercare §20.4 checklist; zero ACL breach incidents in week 1.</li>
+</ol>
+<hr />
+<h3 id="207-implementation-scripts-rest-urls">20.7 Implementation Scripts &amp; REST URLs</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<h4 id="script-a-auto-route-case-to-coe-by-subject">Script A — Auto-route case to COE by subject</h4>
+<pre><code class="language-javascript">// Business Rule sn_hr_core_case (before insert) — see §17.4 script #1
+// Maps subject time_off → HR Time Off COE group
+// Test: POST {BASE}/api/now/table/sn_hr_core_case
+</code></pre>
+<h4 id="script-b-hr-profile-sync-hook-for-leave-app">Script B — HR Profile sync hook for Leave app</h4>
+<pre><code class="language-javascript">// Business Rule on x_786686_hr_leave_req_v2 (before insert)
+var prof = new GlideRecord('sn_hr_core_profile');
+prof.addQuery('user', current.u_requested_for_user);
+prof.query();
+if (prof.next()) {
+  current.u_department = prof.getValue('department');
+}
+// Verify: {BASE}/x_786686_hr_leave_req_v2_list.do
+</code></pre>
+<h4 id="script-c-offboarding-cancel-pending-leave">Script C — Offboarding cancel pending leave</h4>
+<pre><code class="language-javascript">// Event x_hrsd.lifecycle.offboarding.start — see §17.4 script #4
+// Sets x_786686_hr_leave_req_v2.u_state = cancelled
+// Monitor: {BASE}/x_786686_hr_leave_req_v2_list.do?sysparm_query=u_state%3Dcancelled
+</code></pre>
+<h4 id="script-d-pii-redaction-in-case-comments">Script D — PII redaction in case comments</h4>
+<pre><code class="language-javascript">// Before insert sys_journal_field on sn_hr_core_case
+var redactor = new HRPIIRedactor();
+current.value = redactor.redact(current.value);
+// Configure Script Include: {BASE}/sys_script_include_list.do
+</code></pre>
+<h4 id="rest-endpoint-quick-reference">REST endpoint quick reference</h4>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Method</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List HR cases</td>
+<td>GET</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/sn_hr_core_case"><code>{BASE}/api/now/table/sn_hr_core_case</code></a></td>
+</tr>
+<tr>
+<td>Create HR case</td>
+<td>POST</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/sn_hr_core_case"><code>{BASE}/api/now/table/sn_hr_core_case</code></a></td>
+</tr>
+<tr>
+<td>HR Profiles</td>
+<td>GET</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/sn_hr_core_profile"><code>{BASE}/api/now/table/sn_hr_core_profile</code></a></td>
+</tr>
+<tr>
+<td>Leave requests</td>
+<td>GET</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/x_786686_hr_leave_req_v2"><code>{BASE}/api/now/table/x_786686_hr_leave_req_v2</code></a></td>
+</tr>
+<tr>
+<td>Lifecycle cases</td>
+<td>GET</td>
+<td><a class="direct-url" href="{BASE}/api/now/table/sn_hr_le_case"><code>{BASE}/api/now/table/sn_hr_le_case</code></a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="208-configuration-decision-log-template">20.8 Configuration Decision Log (template)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>OOTB default</th>
+<th>Approved value</th>
+<th>Owner</th>
+<th>Test case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Confidentiality engine</td>
+<td>HR Criteria</td>
+<td>HR Criteria (mandatory)</td>
+<td>Legal/HR</td>
+<td>Lab 2</td>
+</tr>
+<tr>
+<td>Employee portal</td>
+<td>/esc</td>
+<td>/esc Employee Center Pro</td>
+<td>HR Ops</td>
+<td>Lab 3</td>
+</tr>
+<tr>
+<td>Leave intake</td>
+<td>Scoped app catalog</td>
+<td>x_786686_hr_leave RP</td>
+<td>App Owner</td>
+<td>Lab 4</td>
+</tr>
+<tr>
+<td>Onboarding tasks</td>
+<td>10 default</td>
+<td>20 tasks Activity Set</td>
+<td>LCE Coord</td>
+<td>Lab 5</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="209-sign-off-checklist-create-configure-deploy">20.9 Sign-off checklist (CREATE → CONFIGURE → DEPLOY)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<ul>
+<li>[ ] <strong>CREATE:</strong> HR Core + Case Mgmt active · HR Profiles for all employees · Update Set started</li>
+<li>[ ] <strong>CONFIGURE:</strong> HR Criteria signed · EC topics live · Leave app in EC · Lifecycle pilot · KB published</li>
+<li>[ ] <strong>DEPLOY:</strong> Confidentiality UAT 100% · Update Set committed · CHRO go-live comms · Hypercare roster</li>
+<li>[ ] <strong>HR Leave integration:</strong> <a href="{BASE}/x_786686_hr_leave_req_v2_list.do">{BASE}/x_786686_hr_leave_req_v2_list.do</a> E2E in prod</li>
+</ul>
+<blockquote>
+<p><strong>Project docs:</strong> ../09_MODULES_AND_INTEGRATION.md · ../03_SERVICE_CATALOG.md · ../01_DEVELOPMENT.md</p>
+</blockquote>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Script — inbound_scripted_rest_leave.js | HR Leave Australia</title>
+  <link rel="stylesheet" href="../../../../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../../../../index.html">Portal</a>
+      <a href="../../../../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../../../../scripts/index.html">Scripts</a>
+      <a href="../../../../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../../../../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Script — inbound_scripted_rest_leave.js</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/$studio.do">Studio</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/sys_script_client_list.do">Client Scripts</a>
+<a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a>
+</div>
+    <article class="content">
+
+<p class="side-note">Copy this script into ServiceNow under application <code>x_786686_hr_leave</code> (Australia). Table/API names already use the current scope.</p>
+<div class="url-box">
+  <strong>Open on instance</strong>
+  <a href="{BASE}/$studio.do">Studio</a>
+  <a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+  <a href="{BASE}/sys_script_client_list.do">Client Scripts</a>
+  <a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a>
+</div>
+<p><strong>Source:</strong> <code>src/server/rest/inbound_scripted_rest_leave.js</code></p>
+<pre><code class="language-javascript">/**
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: c84db0e8839f0b509f02b0d6feaad3c9
+ * Scripted REST API Resource: Create Leave (Inbound)
+ * API ID:        hrlx_api_v2
+ * Resource:      POST /leave
+ * Full path:     /api/x_786686_hr_leave/hrlx_api_v2/leave
+ *
+ * TEST FIRST (no Postman until this works):
+ *   All &gt; System Web Services &gt; REST API Explorer  ($restapi.do)
+ *   Namespace: x_786686_hr_leave | API: hrlx_api_v2 | Resource: leave | POST
+ *   Request body: { &quot;employee_id&quot;:&quot;EMP001&quot;, &quot;leave_type&quot;:&quot;annual&quot;, ... }
+ *   Click Send → expect 201 → Copy as cURL
+ *
+ * Simpler alternative (Table API, no script):
+ *   Explorer → namespace now → Table API → x_786686_hr_leave_req_v2 → POST
+ *   See: src/server/rest/rest_api_explorer.md
+ *
+ * Create API record:
+ *   All &gt; System Web Services &gt; Scripted REST APIs &gt; New + Resource POST /leave
+ */
+(function process(request, response) {
+
+    var data = request.body &amp;&amp; request.body.data ? request.body.data : {};
+
+    // Validate
+    if (!data.employee_id) {
+        response.setStatus(400);
+        return response.setBody({ error: &#x27;employee_id is required&#x27; });
+    }
+    if (!data.start_date || !data.end_date) {
+        response.setStatus(400);
+        return response.setBody({ error: &#x27;start_date and end_date are required&#x27; });
+    }
+
+    // Create via integration utility
+    var sysId = new x_786686_hr_leave.HRLXProIntegrationUtilsV2().inboundCreateLeave(JSON.stringify(data));
+
+    if (!sysId) {
+        response.setStatus(422);
+        return response.setBody({ error: &#x27;Could not create leave request (employee not found?)&#x27; });
+    }
+
+    response.setStatus(201);
+    response.setBody({ sys_id: sysId, message: &#x27;Leave request created&#x27; });
+
+})(request, response);
+</code></pre>
+
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../../../../assets/docs.js"></script>
+
+<script src="../../../../assets/author-brand.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ServiceNow Australia — Direct Instance URLs (Study / Deploy) | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>ServiceNow Australia — Direct Instance URLs (Study / Deploy)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a>
+<a href="{BASE}/sc_cat_item_list.do">Catalog Items</a>
+</div>
+    <article class="content">
+<h1 id="servicenow-australia-direct-instance-urls-study-deploy">ServiceNow Australia — Direct Instance URLs (Study / Deploy)</h1>
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (current family, Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>URLs catalog:</strong> <a href="SERVICENOW_DIRECT_URLS_CATALOG.html">SERVICENOW_DIRECT_URLS_CATALOG.md</a><br />
+<strong>1-week study + deploy:</strong> <a href="SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a><br />
+<strong>HR Leave app:</strong> Scope <code>x_786686_hr_leave</code> · <a href="../APPLICATION.html">HR_Leave_App/APPLICATION.md</a></p>
+</blockquote>
+<p><strong>Placeholder:</strong> <code>{BASE}</code> = <code>https://YOUR_INSTANCE.service-now.com</code><br />
+Replace <code>{BASE}</code> with your PDI / company instance URL.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Classic list</td>
+<td><a class="direct-url" href="{BASE}/incident_list.do"><code>{BASE}/incident_list.do</code></a></td>
+</tr>
+<tr>
+<td>Filter Navigator</td>
+<td>type <code>incident.list</code> or module name</td>
+</tr>
+<tr>
+<td>Next Experience frame</td>
+<td><a class="direct-url" href="{BASE}/now/nav/ui/classic/params/target/incident_list.do"><code>{BASE}/now/nav/ui/classic/params/target/incident_list.do</code></a></td>
+</tr>
+<tr>
+<td>Background Scripts</td>
+<td><a class="direct-url" href="{BASE}/sys.scripts.do"><code>{BASE}/sys.scripts.do</code></a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="a-platform-administration">A) Platform Administration</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Filter search</th>
+<th>Direct URL</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Users</td>
+<td><code>users</code> · <code>sys_user</code></td>
+<td><a class="direct-url" href="{BASE}/sys_user_list.do"><code>{BASE}/sys_user_list.do</code></a></td>
+<td>حسابات المستخدمين</td>
+</tr>
+<tr>
+<td>Groups</td>
+<td><code>groups</code></td>
+<td><a class="direct-url" href="{BASE}/sys_user_group_list.do"><code>{BASE}/sys_user_group_list.do</code></a></td>
+<td>مجموعات الأدوار</td>
+</tr>
+<tr>
+<td>Roles</td>
+<td><code>roles</code></td>
+<td><a class="direct-url" href="{BASE}/sys_user_role_list.do"><code>{BASE}/sys_user_role_list.do</code></a></td>
+<td>أدوار المنصة/التطبيق</td>
+</tr>
+<tr>
+<td>ACL</td>
+<td><code>access control</code></td>
+<td><a class="direct-url" href="{BASE}/sys_security_acl_list.do"><code>{BASE}/sys_security_acl_list.do</code></a></td>
+<td>أمان الجداول والحقول</td>
+</tr>
+<tr>
+<td>Dictionary</td>
+<td><code>dictionary</code></td>
+<td><a class="direct-url" href="{BASE}/sys_dictionary_list.do"><code>{BASE}/sys_dictionary_list.do</code></a></td>
+<td>تعريف الحقول</td>
+</tr>
+<tr>
+<td>Tables</td>
+<td><code>tables</code></td>
+<td><a class="direct-url" href="{BASE}/sys_db_object_list.do"><code>{BASE}/sys_db_object_list.do</code></a></td>
+<td>سجل الجداول</td>
+</tr>
+<tr>
+<td>System Properties</td>
+<td><code>system properties</code></td>
+<td><a class="direct-url" href="{BASE}/sys_properties_list.do"><code>{BASE}/sys_properties_list.do</code></a></td>
+<td>إعدادات المنصة</td>
+</tr>
+<tr>
+<td>Update Sets</td>
+<td><code>local update sets</code></td>
+<td><a class="direct-url" href="{BASE}/sys_update_set_list.do"><code>{BASE}/sys_update_set_list.do</code></a></td>
+<td>نقل التكوين</td>
+</tr>
+<tr>
+<td>Plugins</td>
+<td><code>plugins</code></td>
+<td><a class="direct-url" href="{BASE}/v_plugin_list.do"><code>{BASE}/v_plugin_list.do</code></a></td>
+<td>تفعيل المنتجات</td>
+</tr>
+<tr>
+<td>Scheduled Jobs</td>
+<td><code>scheduled jobs</code></td>
+<td><a class="direct-url" href="{BASE}/sysauto_script_list.do"><code>{BASE}/sysauto_script_list.do</code></a></td>
+<td>مهام مجدولة</td>
+</tr>
+<tr>
+<td>Event Registry</td>
+<td><code>event registry</code></td>
+<td><a class="direct-url" href="{BASE}/sysevent_register_list.do"><code>{BASE}/sysevent_register_list.do</code></a></td>
+<td>تسجيل أحداث</td>
+</tr>
+<tr>
+<td>Event Log</td>
+<td><code>event log</code></td>
+<td><a class="direct-url" href="{BASE}/sysevent_list.do"><code>{BASE}/sysevent_list.do</code></a></td>
+<td>طابور الأحداث</td>
+</tr>
+<tr>
+<td>Notifications</td>
+<td><code>notifications</code></td>
+<td><a class="direct-url" href="{BASE}/sysevent_email_action_list.do"><code>{BASE}/sysevent_email_action_list.do</code></a></td>
+<td>إشعارات البريد</td>
+</tr>
+<tr>
+<td>Email log</td>
+<td><code>email</code></td>
+<td><a class="direct-url" href="{BASE}/sys_email_list.do"><code>{BASE}/sys_email_list.do</code></a></td>
+<td>سجل البريد</td>
+</tr>
+<tr>
+<td>Import Sets</td>
+<td><code>data sources</code></td>
+<td><a class="direct-url" href="{BASE}/sys_data_source_list.do"><code>{BASE}/sys_data_source_list.do</code></a></td>
+<td>استيراد بيانات</td>
+</tr>
+<tr>
+<td>Transform Maps</td>
+<td><code>transform maps</code></td>
+<td><a class="direct-url" href="{BASE}/sys_transform_map_list.do"><code>{BASE}/sys_transform_map_list.do</code></a></td>
+<td>تحويل الاستيراد</td>
+</tr>
+<tr>
+<td>MID Server</td>
+<td><code>mid server</code></td>
+<td><a class="direct-url" href="{BASE}/ecc_agent_list.do"><code>{BASE}/ecc_agent_list.do</code></a></td>
+<td>وكيل الشبكة</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="b-development">B) Development</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Filter search</th>
+<th>Direct URL</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Studio</td>
+<td><code>studio</code></td>
+<td><a class="direct-url" href="{BASE}/$studio.do"><code>{BASE}/$studio.do</code></a> · <a class="direct-url" href="{BASE}/now/studio"><code>{BASE}/now/studio</code></a></td>
+<td>IDE للتطبيقات المحددة النطاق</td>
+</tr>
+<tr>
+<td>App Engine Studio</td>
+<td><code>app engine studio</code></td>
+<td><a class="direct-url" href="{BASE}/now/app-engine-studio"><code>{BASE}/now/app-engine-studio</code></a></td>
+<td>Low-code</td>
+</tr>
+<tr>
+<td>Business Rules</td>
+<td><code>business rules</code></td>
+<td><a class="direct-url" href="{BASE}/sys_script_list.do"><code>{BASE}/sys_script_list.do</code></a></td>
+<td>منطق خادم</td>
+</tr>
+<tr>
+<td>Client Scripts</td>
+<td><code>client scripts</code></td>
+<td><a class="direct-url" href="{BASE}/sys_script_client_list.do"><code>{BASE}/sys_script_client_list.do</code></a></td>
+<td>منطق نموذج المتصفح</td>
+</tr>
+<tr>
+<td>UI Policies</td>
+<td><code>ui policies</code></td>
+<td><a class="direct-url" href="{BASE}/sys_ui_policy_list.do"><code>{BASE}/sys_ui_policy_list.do</code></a></td>
+<td>قواعد واجهة بدون سكربت</td>
+</tr>
+<tr>
+<td>UI Actions</td>
+<td><code>ui actions</code></td>
+<td><a class="direct-url" href="{BASE}/sys_ui_action_list.do"><code>{BASE}/sys_ui_action_list.do</code></a></td>
+<td>أزرار النموذج</td>
+</tr>
+<tr>
+<td>Script Includes</td>
+<td><code>script includes</code></td>
+<td><a class="direct-url" href="{BASE}/sys_script_include_list.do"><code>{BASE}/sys_script_include_list.do</code></a></td>
+<td>مكتبات قابلة لإعادة الاستخدام</td>
+</tr>
+<tr>
+<td>Flow Designer</td>
+<td><code>flow designer</code></td>
+<td><a class="direct-url" href="{BASE}/now/flow-designer"><code>{BASE}/now/flow-designer</code></a> · <a class="direct-url" href="{BASE}/sys_hub_flow_list.do"><code>{BASE}/sys_hub_flow_list.do</code></a></td>
+<td>أتمتة حديثة</td>
+</tr>
+<tr>
+<td>Workflow (legacy)</td>
+<td><code>workflow</code></td>
+<td><a class="direct-url" href="{BASE}/wf_workflow_list.do"><code>{BASE}/wf_workflow_list.do</code></a></td>
+<td>إرث — فضّل Flow</td>
+</tr>
+<tr>
+<td>ATF</td>
+<td><code>automated test framework</code></td>
+<td><a class="direct-url" href="{BASE}/sys_atf_test_list.do"><code>{BASE}/sys_atf_test_list.do</code></a></td>
+<td>اختبار آلي</td>
+</tr>
+<tr>
+<td>Scripted REST</td>
+<td><code>scripted rest</code></td>
+<td><a class="direct-url" href="{BASE}/sys_ws_definition_list.do"><code>{BASE}/sys_ws_definition_list.do</code></a></td>
+<td>REST وارد</td>
+</tr>
+<tr>
+<td>REST Message</td>
+<td><code>rest message</code></td>
+<td><a class="direct-url" href="{BASE}/sys_rest_message_list.do"><code>{BASE}/sys_rest_message_list.do</code></a></td>
+<td>REST صادر</td>
+</tr>
+<tr>
+<td>Background Scripts</td>
+<td><code>scripts - background</code></td>
+<td><a class="direct-url" href="{BASE}/sys.scripts.do"><code>{BASE}/sys.scripts.do</code></a></td>
+<td>تشخيص سريع</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="c-service-catalog-portal-employee-center">C) Service Catalog / Portal / Employee Center</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a><a href="{BASE}/esc">Employee Center</a><a href="{BASE}/sp">Service Portal</a><a href="{BASE}/sp_widget_list.do">Widgets</a><a href="{BASE}/sp_portal_list.do">Portals</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Filter search</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Catalog Items</td>
+<td><code>catalog items</code></td>
+<td><a class="direct-url" href="{BASE}/sc_cat_item_list.do"><code>{BASE}/sc_cat_item_list.do</code></a></td>
+</tr>
+<tr>
+<td>Record Producers</td>
+<td><code>record producers</code></td>
+<td><a class="direct-url" href="{BASE}/sc_cat_item_producer_list.do"><code>{BASE}/sc_cat_item_producer_list.do</code></a></td>
+</tr>
+<tr>
+<td>Order Guides</td>
+<td><code>order guides</code></td>
+<td><a class="direct-url" href="{BASE}/sc_cat_item_guide_list.do"><code>{BASE}/sc_cat_item_guide_list.do</code></a></td>
+</tr>
+<tr>
+<td>Variables</td>
+<td><code>catalog variables</code></td>
+<td><a class="direct-url" href="{BASE}/item_option_new_list.do"><code>{BASE}/item_option_new_list.do</code></a></td>
+</tr>
+<tr>
+<td>User Criteria</td>
+<td><code>user criteria</code></td>
+<td><a class="direct-url" href="{BASE}/user_criteria_list.do"><code>{BASE}/user_criteria_list.do</code></a></td>
+</tr>
+<tr>
+<td>Service Portal</td>
+<td><code>service portal</code></td>
+<td><a class="direct-url" href="{BASE}/sp_portal_list.do"><code>{BASE}/sp_portal_list.do</code></a> · <a class="direct-url" href="{BASE}/sp"><code>{BASE}/sp</code></a></td>
+</tr>
+<tr>
+<td>Widgets</td>
+<td><code>sp_widget</code></td>
+<td><a class="direct-url" href="{BASE}/sp_widget_list.do"><code>{BASE}/sp_widget_list.do</code></a></td>
+</tr>
+<tr>
+<td>Employee Center</td>
+<td><code>employee center</code> · <code>esc</code></td>
+<td><a class="direct-url" href="{BASE}/esc"><code>{BASE}/esc</code></a></td>
+</tr>
+<tr>
+<td>Requests / RITM</td>
+<td><code>sc_request</code> · <code>ritm</code></td>
+<td><a class="direct-url" href="{BASE}/sc_request_list.do"><code>{BASE}/sc_request_list.do</code></a> · <a class="direct-url" href="{BASE}/sc_req_item_list.do"><code>{BASE}/sc_req_item_list.do</code></a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="d-reports-dashboards-performance-analytics">D) Reports · Dashboards · Performance Analytics</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Filter search</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Create / Report Designer</td>
+<td><code>reports</code> · <code>create new</code></td>
+<td><a class="direct-url" href="{BASE}/$report.do"><code>{BASE}/$report.do</code></a> · <a class="direct-url" href="{BASE}/report_home.do"><code>{BASE}/report_home.do</code></a></td>
+</tr>
+<tr>
+<td>All Reports</td>
+<td><code>sys_report</code></td>
+<td><a class="direct-url" href="{BASE}/sys_report_list.do"><code>{BASE}/sys_report_list.do</code></a></td>
+</tr>
+<tr>
+<td>Dashboards</td>
+<td><code>dashboards</code></td>
+<td><a class="direct-url" href="{BASE}/pa_dashboards_list.do"><code>{BASE}/pa_dashboards_list.do</code></a> · <a class="direct-url" href="{BASE}/$pa_dashboard.do"><code>{BASE}/$pa_dashboard.do</code></a></td>
+</tr>
+<tr>
+<td>PA Indicators</td>
+<td><code>indicators</code></td>
+<td><a class="direct-url" href="{BASE}/pa_indicators_list.do"><code>{BASE}/pa_indicators_list.do</code></a></td>
+</tr>
+<tr>
+<td>PA Breakdowns</td>
+<td><code>breakdowns</code></td>
+<td><a class="direct-url" href="{BASE}/pa_dimensions_list.do"><code>{BASE}/pa_dimensions_list.do</code></a></td>
+</tr>
+<tr>
+<td>PA Widgets</td>
+<td><code>pa widgets</code></td>
+<td><a class="direct-url" href="{BASE}/pa_widgets_list.do"><code>{BASE}/pa_widgets_list.do</code></a></td>
+</tr>
+<tr>
+<td>Data Collectors</td>
+<td><code>data collectors</code></td>
+<td><a class="direct-url" href="{BASE}/pa_collectors_list.do"><code>{BASE}/pa_collectors_list.do</code></a></td>
+</tr>
+<tr>
+<td>Scorecards</td>
+<td><code>scorecards</code></td>
+<td><a class="direct-url" href="{BASE}/pa_scorecards_list.do"><code>{BASE}/pa_scorecards_list.do</code></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Full lab guide:</strong> <a href="../07_REPORTS_DASHBOARDS_PA.html">HR_Leave_App/07_REPORTS_DASHBOARDS_PA.md</a> · <a href="SERVICENOW_REPORTS_DASHBOARDS_PA_COMPLETE_GUIDE.html">SERVICENOW_REPORTS_DASHBOARDS_PA_COMPLETE_GUIDE.md</a></p>
+<hr />
+<h2 id="e-itsm">E) ITSM</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Filter search</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Incident</td>
+<td><code>incident</code></td>
+<td><a class="direct-url" href="{BASE}/incident_list.do"><code>{BASE}/incident_list.do</code></a></td>
+</tr>
+<tr>
+<td>Problem</td>
+<td><code>problem</code></td>
+<td><a class="direct-url" href="{BASE}/problem_list.do"><code>{BASE}/problem_list.do</code></a></td>
+</tr>
+<tr>
+<td>Change</td>
+<td><code>change request</code></td>
+<td><a class="direct-url" href="{BASE}/change_request_list.do"><code>{BASE}/change_request_list.do</code></a></td>
+</tr>
+<tr>
+<td>Knowledge</td>
+<td><code>knowledge</code></td>
+<td><a class="direct-url" href="{BASE}/kb_knowledge_list.do"><code>{BASE}/kb_knowledge_list.do</code></a></td>
+</tr>
+<tr>
+<td>SLA Definitions</td>
+<td><code>sla</code></td>
+<td><a class="direct-url" href="{BASE}/contract_sla_list.do"><code>{BASE}/contract_sla_list.do</code></a></td>
+</tr>
+<tr>
+<td>Task SLA</td>
+<td><code>task sla</code></td>
+<td><a class="direct-url" href="{BASE}/task_sla_list.do"><code>{BASE}/task_sla_list.do</code></a></td>
+</tr>
+<tr>
+<td>Assignment Rules</td>
+<td><code>assignment rules</code></td>
+<td><a class="direct-url" href="{BASE}/sysrule_assignment_list.do"><code>{BASE}/sysrule_assignment_list.do</code></a></td>
+</tr>
+<tr>
+<td>Service Operations Workspace</td>
+<td><code>sow</code></td>
+<td><a class="direct-url" href="{BASE}/now/sow/home"><code>{BASE}/now/sow/home</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Docs: <a href="ITSM_MODULE_COMPLETE_GUIDE.html">ITSM_MODULE_COMPLETE_GUIDE.md</a> · <a href="../modules/ITSM.html">HR_Leave_App/modules/ITSM.md</a></p>
+<hr />
+<h2 id="f-csm">F) CSM</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/customer_account_list.do">Accounts</a><a href="{BASE}/customer_contact_list.do">Contacts</a><a href="{BASE}/sn_customerservice_case_list.do">Cases</a><a href="{BASE}/now/cwf/agent">CSM Workspace</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Filter search</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Account</td>
+<td><code>customer_account</code></td>
+<td><a class="direct-url" href="{BASE}/customer_account_list.do"><code>{BASE}/customer_account_list.do</code></a></td>
+</tr>
+<tr>
+<td>Contact</td>
+<td><code>customer_contact</code></td>
+<td><a class="direct-url" href="{BASE}/customer_contact_list.do"><code>{BASE}/customer_contact_list.do</code></a></td>
+</tr>
+<tr>
+<td>Case</td>
+<td><code>sn_customerservice_case</code></td>
+<td><a class="direct-url" href="{BASE}/sn_customerservice_case_list.do"><code>{BASE}/sn_customerservice_case_list.do</code></a></td>
+</tr>
+<tr>
+<td>Consumer</td>
+<td><code>consumer</code></td>
+<td><a class="direct-url" href="{BASE}/sn_customerservice_consumer_list.do"><code>{BASE}/sn_customerservice_consumer_list.do</code></a></td>
+</tr>
+<tr>
+<td>CSM Workspace</td>
+<td><code>csm workspace</code></td>
+<td><a class="direct-url" href="{BASE}/now/cwf/agent"><code>{BASE}/now/cwf/agent</code></a></td>
+</tr>
+<tr>
+<td>Entitlements</td>
+<td><code>entitlements</code></td>
+<td><a class="direct-url" href="{BASE}/service_entitlement_list.do"><code>{BASE}/service_entitlement_list.do</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Docs: <a href="CSM_MODULE_COMPLETE_GUIDE.html">CSM_MODULE_COMPLETE_GUIDE.md</a> · <a href="../modules/CSM.html">HR_Leave_App/modules/CSM.md</a></p>
+<hr />
+<h2 id="g-fsm">G) FSM</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/wm_order_list.do">Work Orders</a><a href="{BASE}/wm_task_list.do">Work Order Tasks</a><a href="{BASE}/now/fsm/dispatcher">Dispatcher</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Filter search</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Work Order</td>
+<td><code>wm_order</code></td>
+<td><a class="direct-url" href="{BASE}/wm_order_list.do"><code>{BASE}/wm_order_list.do</code></a></td>
+</tr>
+<tr>
+<td>Work Order Task</td>
+<td><code>wm_task</code></td>
+<td><a class="direct-url" href="{BASE}/wm_task_list.do"><code>{BASE}/wm_task_list.do</code></a></td>
+</tr>
+<tr>
+<td>Dispatch Group</td>
+<td><code>dispatch group</code></td>
+<td><a class="direct-url" href="{BASE}/dispatch_group_list.do"><code>{BASE}/dispatch_group_list.do</code></a></td>
+</tr>
+<tr>
+<td>Territory</td>
+<td><code>territory</code></td>
+<td><a class="direct-url" href="{BASE}/sm_territory_list.do"><code>{BASE}/sm_territory_list.do</code></a></td>
+</tr>
+<tr>
+<td>Dispatcher Workspace</td>
+<td><code>dispatcher workspace</code></td>
+<td><a class="direct-url" href="{BASE}/now/fsm/dispatcher"><code>{BASE}/now/fsm/dispatcher</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Docs: <a href="FSM_MODULE_COMPLETE_GUIDE.html">FSM_MODULE_COMPLETE_GUIDE.md</a> · <a href="../modules/FSM.html">HR_Leave_App/modules/FSM.md</a></p>
+<hr />
+<h2 id="h-spm">H) SPM</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Filter search</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Demand</td>
+<td><code>dmn_demand</code></td>
+<td><a class="direct-url" href="{BASE}/dmn_demand_list.do"><code>{BASE}/dmn_demand_list.do</code></a></td>
+</tr>
+<tr>
+<td>Idea</td>
+<td><code>idea</code></td>
+<td><a class="direct-url" href="{BASE}/idea_list.do"><code>{BASE}/idea_list.do</code></a></td>
+</tr>
+<tr>
+<td>Project</td>
+<td><code>pm_project</code></td>
+<td><a class="direct-url" href="{BASE}/pm_project_list.do"><code>{BASE}/pm_project_list.do</code></a></td>
+</tr>
+<tr>
+<td>Portfolio</td>
+<td><code>pm_portfolio</code></td>
+<td><a class="direct-url" href="{BASE}/pm_portfolio_list.do"><code>{BASE}/pm_portfolio_list.do</code></a></td>
+</tr>
+<tr>
+<td>Program</td>
+<td><code>pm_program</code></td>
+<td><a class="direct-url" href="{BASE}/pm_program_list.do"><code>{BASE}/pm_program_list.do</code></a></td>
+</tr>
+<tr>
+<td>Resource Plan</td>
+<td><code>resource_plan</code></td>
+<td><a class="direct-url" href="{BASE}/resource_plan_list.do"><code>{BASE}/resource_plan_list.do</code></a></td>
+</tr>
+<tr>
+<td>Time Card</td>
+<td><code>time_card</code></td>
+<td><a class="direct-url" href="{BASE}/time_card_list.do"><code>{BASE}/time_card_list.do</code></a></td>
+</tr>
+<tr>
+<td>PPM UX</td>
+<td><code>ppm</code></td>
+<td><a class="direct-url" href="{BASE}/now/ppm"><code>{BASE}/now/ppm</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Docs: <a href="SPM_MODULE_COMPLETE_GUIDE.html">SPM_MODULE_COMPLETE_GUIDE.md</a> · <a href="../modules/SPM.html">HR_Leave_App/modules/SPM.md</a></p>
+<hr />
+<h2 id="i-hr-leave-app-x_786686_hr_leave">I) HR Leave app (<code>x_786686_hr_leave</code>)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application</td>
+<td><a class="direct-url" href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9"><code>{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9</code></a></td>
+</tr>
+<tr>
+<td>Leave requests</td>
+<td><a class="direct-url" href="{BASE}/x_786686_hr_leave_req_v2_list.do"><code>{BASE}/x_786686_hr_leave_req_v2_list.do</code></a></td>
+</tr>
+<tr>
+<td>Employees</td>
+<td><a class="direct-url" href="{BASE}/x_786686_hr_leave_employee_v2_list.do"><code>{BASE}/x_786686_hr_leave_employee_v2_list.do</code></a></td>
+</tr>
+<tr>
+<td>Balances</td>
+<td><a class="direct-url" href="{BASE}/x_786686_hr_leave_bal_v2_list.do"><code>{BASE}/x_786686_hr_leave_bal_v2_list.do</code></a></td>
+</tr>
+<tr>
+<td>Audit</td>
+<td><a class="direct-url" href="{BASE}/x_786686_hr_leave_audit_v2_list.do"><code>{BASE}/x_786686_hr_leave_audit_v2_list.do</code></a></td>
+</tr>
+<tr>
+<td>Scoped roles</td>
+<td><a class="direct-url" href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave"><code>{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+<tr>
+<td>Scoped ACLs</td>
+<td><a class="direct-url" href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave"><code>{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+<tr>
+<td>Business Rules</td>
+<td><a class="direct-url" href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave"><code>{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+<tr>
+<td>Script Includes</td>
+<td><a class="direct-url" href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave"><code>{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+<tr>
+<td>Events</td>
+<td><a class="direct-url" href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave"><code>{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+<tr>
+<td>Properties</td>
+<td><a class="direct-url" href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave"><code>{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+<tr>
+<td>Notifications</td>
+<td><a class="direct-url" href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave"><code>{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Scripts index: <a href="../SCRIPTS_INVENTORY.html">HR_Leave_App/SCRIPTS_INVENTORY.md</a></p>
+<hr />
+<h2 id="j-related-cmdb-hrsd">J) Related — CMDB · HRSD</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a><a href="{BASE}/sn_hr_core_case_list.do">HR Cases</a><a href="{BASE}/sn_hr_core_profile_list.do">HR Profiles</a><a href="{BASE}/sn_hr_core_service_list.do">HR Services</a><a href="{BASE}/esc">Employee Center</a></nav>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CI list</td>
+<td><a class="direct-url" href="{BASE}/cmdb_ci_list.do"><code>{BASE}/cmdb_ci_list.do</code></a></td>
+</tr>
+<tr>
+<td>CI Class Manager</td>
+<td><a class="direct-url" href="{BASE}/now/cmdb/ci-class-manager"><code>{BASE}/now/cmdb/ci-class-manager</code></a></td>
+</tr>
+<tr>
+<td>CMDB Workspace</td>
+<td><a class="direct-url" href="{BASE}/now/cmdb"><code>{BASE}/now/cmdb</code></a></td>
+</tr>
+<tr>
+<td>Application Service</td>
+<td><a class="direct-url" href="{BASE}/cmdb_ci_service_auto_list.do"><code>{BASE}/cmdb_ci_service_auto_list.do</code></a></td>
+</tr>
+<tr>
+<td>HR Case</td>
+<td><a class="direct-url" href="{BASE}/sn_hr_core_case_list.do"><code>{BASE}/sn_hr_core_case_list.do</code></a></td>
+</tr>
+<tr>
+<td>HR Profile</td>
+<td><a class="direct-url" href="{BASE}/sn_hr_core_profile_list.do"><code>{BASE}/sn_hr_core_profile_list.do</code></a></td>
+</tr>
+<tr>
+<td>HR Agent Workspace</td>
+<td><a class="direct-url" href="{BASE}/now/hr/agent"><code>{BASE}/now/hr/agent</code></a></td>
+</tr>
+<tr>
+<td>Employee Center</td>
+<td><a class="direct-url" href="{BASE}/esc"><code>{BASE}/esc</code></a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="quick-open-checklist">Quick open checklist</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sc_cat_item_list.do">Catalog Items</a><a href="{BASE}/sc_cat_item_producer_list.do">Record Producers</a><a href="{BASE}/item_option_new_list.do">Variables</a><a href="{BASE}/user_criteria_list.do">User Criteria</a></nav>
+<ol>
+<li><a class="direct-url" href="{BASE}/stats.do"><code>{BASE}/stats.do</code></a> — تأكد من إصدار المثيل  </li>
+<li><a class="direct-url" href="{BASE}/sys_update_set_list.do"><code>{BASE}/sys_update_set_list.do</code></a> — Update Set يومي  </li>
+<li><a class="direct-url" href="{BASE}/$studio.do"><code>{BASE}/$studio.do</code></a> — تطبيق HR Leave  </li>
+<li><a class="direct-url" href="{BASE}/now/flow-designer"><code>{BASE}/now/flow-designer</code></a> — Flows  </li>
+<li><a class="direct-url" href="{BASE}/now/sow/home"><code>{BASE}/now/sow/home</code></a> — ITSM ops  </li>
+<li><a class="direct-url" href="{BASE}/x_786686_hr_leave_req_v2_list.do"><code>{BASE}/x_786686_hr_leave_req_v2_list.do</code></a> — طلبات الإجازة  </li>
+<li><a class="direct-url" href="{BASE}/$report.do"><code>{BASE}/$report.do</code></a> — تقارير  </li>
+<li><a class="direct-url" href="{BASE}/esc"><code>{BASE}/esc</code></a> — Employee Center  </li>
+</ol>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Professional HR Leave — All Properties, Values &amp; Direct Links | Studio Create</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+  <style>
+    .toc-grid { display:flex; flex-wrap:wrap; gap:.35rem; margin:1rem 0; }
+    .toc-grid a { display:inline-block; padding:.28rem .6rem; background:#fff; border:1px solid var(--line); border-radius:999px; font-size:.82rem; text-decoration:none; }
+    table.field-table th { white-space:nowrap; background:#f8fafc; }
+    .sug { color:#047857; font-weight:600; }
+    .req { color:#b45309; font-weight:600; }
+    .linkrow a { display:inline-block; margin:.15rem .35rem .15rem 0; font-size:.82rem; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Professional create catalog</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All Objects</a>
+      <a href="SCHEMA_AND_DATA.html">Schema</a>
+      <a href="scripts/index.html">Scripts</a>
+      <span class="badge">x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Professional HR Leave — every property, suggested value &amp; direct link</h1>
+      <p>Use with Application picker = <strong>HR Leave</strong>. Replace <code>{BASE}</code> with your instance (lab: <code>https://dev398980.service-now.com</code>). Create order: Rule 0 → OBJ-01…32 in <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html" style="color:#fff;text-decoration:underline">Studio Create All Objects</a>.</p>
+      <div class="meta-grid">
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.7rem">e5f5bc9493a303507520703efaba104d</code></div>
+        <div><strong>Legend</strong><code style="color:#fff">sug = suggested · req = required</code></div>
+      </div>
+    </section>
+
+    <div class="url-box"><strong>Always open first</strong>
+      <a href="{BASE}/$studio.do">Studio</a>
+      <a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Application</a>
+      <a href="{BASE}/sys_update_set_list.do">Update Sets</a>
+      <a href="{BASE}/sys_update_set_list.do?sysparm_query=nameLIKEhR Leave">HR Leave Update Sets</a>
+      <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html#rule0">Rule 0 steps</a>
+    </div>
+
+    <div class="toc-grid">
+      <a href="#master-links">Master direct links</a>
+      <a href="#app">Application</a>
+      <a href="#tables">Tables &amp; columns</a>
+      <a href="#si">Script Includes</a>
+      <a href="#br">Business Rules</a>
+      <a href="#cs">Client Scripts</a>
+      <a href="#ui">UI Policy / Action</a>
+      <a href="#sec">Roles · Groups · Users · ACLs</a>
+      <a href="#props">System properties (all)</a>
+      <a href="#evt">Events · Notifications · Job</a>
+      <a href="#nav">Menu · Modules</a>
+      <a href="#cat">Catalog RP</a>
+      <a href="#flow">Flow</a>
+      <a href="#portal">Portal · Workspace</a>
+      <a href="#ops">Report · ATF · REST</a>
+      <a href="#seed">Professional seed values</a>
+    </div>
+
+    <article class="content">
+
+<h2 id="master-links">A) Master direct links (open / create)</h2>
+<p>Every professional HR Leave screen. Click → create with the property tables below.</p>
+<table class="field-table">
+<thead><tr><th>Object</th><th>List (open existing)</th><th>Create New</th></tr></thead>
+<tbody>
+<tr><td>Studio</td><td colspan="2" class="linkrow"><a href="{BASE}/$studio.do">{BASE}/$studio.do</a></td></tr>
+<tr><td>Application</td><td><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Open HR Leave</a></td><td><a href="{BASE}/sys_app_list.do">sys_app list</a> → New</td></tr>
+<tr><td>Update Sets</td><td><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a></td><td><a href="{BASE}/sys_update_set.do">New Update Set</a></td></tr>
+<tr><td>Tables</td><td><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">App tables</a></td><td>Studio → Create Application File → Table · or <a href="{BASE}/sys_db_object.do">New table</a></td></tr>
+<tr><td>Dictionary</td><td><a href="{BASE}/sys_dictionary_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Columns</a></td><td>From table → Columns → New</td></tr>
+<tr><td>Choices</td><td><a href="{BASE}/sys_choice_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Choices</a></td><td>From field → Choices → New</td></tr>
+<tr><td>Script Includes</td><td><a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">SI list</a></td><td><a href="{BASE}/sys_script_include.do">New SI</a></td></tr>
+<tr><td>Business Rules</td><td><a href="{BASE}/sys_script_list.do?sysparm_query=nameSTARTSWITHHRLX">BR list</a></td><td><a href="{BASE}/sys_script.do">New BR</a></td></tr>
+<tr><td>Client Scripts</td><td><a href="{BASE}/sys_script_client_list.do?sysparm_query=table=x_786686_hr_leave_req_v2">CS list</a></td><td><a href="{BASE}/sys_script_client.do">New CS</a></td></tr>
+<tr><td>UI Policies</td><td><a href="{BASE}/sys_ui_policy_list.do?sysparm_query=table=x_786686_hr_leave_req_v2">UI Policy</a></td><td><a href="{BASE}/sys_ui_policy.do">New UI Policy</a></td></tr>
+<tr><td>UI Actions</td><td><a href="{BASE}/sys_ui_action_list.do?sysparm_query=table=x_786686_hr_leave_req_v2">UI Action</a></td><td><a href="{BASE}/sys_ui_action.do">New UI Action</a></td></tr>
+<tr><td>Roles</td><td><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a></td><td><a href="{BASE}/sys_user_role.do">New Role</a></td></tr>
+<tr><td>Groups</td><td><a href="{BASE}/sys_user_group_list.do?sysparm_query=nameSTARTSWITHHRLX">Groups</a></td><td><a href="{BASE}/sys_user_group.do">New Group</a></td></tr>
+<tr><td>Users</td><td><a href="{BASE}/sys_user_list.do">Users</a></td><td><a href="{BASE}/sys_user.do">New User</a></td></tr>
+<tr><td>ACLs</td><td><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a></td><td><a href="{BASE}/sys_security_acl.do">New ACL</a> (elevate security_admin)</td></tr>
+<tr><td>Properties</td><td><a href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Properties</a></td><td><a href="{BASE}/sys_properties.do">New Property</a></td></tr>
+<tr><td>Events</td><td><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameCONTAINSleave_v2">Event Registry</a></td><td><a href="{BASE}/sysevent_register.do">New Event</a></td></tr>
+<tr><td>Notifications</td><td><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=nameSTARTSWITHHRLX">Notifications</a></td><td><a href="{BASE}/sysevent_email_action.do">New Notification</a></td></tr>
+<tr><td>Scheduled Jobs</td><td><a href="{BASE}/sysauto_script_list.do?sysparm_query=nameSTARTSWITHHRLX">Jobs</a></td><td><a href="{BASE}/sysauto_script.do">New Job</a></td></tr>
+<tr><td>App Menus</td><td><a href="{BASE}/sys_app_application_list.do?sysparm_query=title=HR Leave">Menus</a></td><td><a href="{BASE}/sys_app_application.do">New Menu</a></td></tr>
+<tr><td>Modules</td><td><a href="{BASE}/sys_app_module_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Modules</a></td><td><a href="{BASE}/sys_app_module.do">New Module</a></td></tr>
+<tr><td>Record Producers</td><td><a href="{BASE}/sc_cat_item_producer_list.do?sysparm_query=nameLIKESubmit Leave">Producers</a></td><td><a href="{BASE}/sc_cat_item_producer.do">New Producer</a></td></tr>
+<tr><td>Catalog Categories</td><td><a href="{BASE}/sc_category_list.do">Categories</a></td><td><a href="{BASE}/sc_category.do">New Category</a></td></tr>
+<tr><td>Flow Designer</td><td colspan="2"><a href="{BASE}/$flow-designer.do">{BASE}/$flow-designer.do</a> · <a href="{BASE}/sys_hub_flow_list.do?sysparm_query=nameSTARTSWITHHRLX">Flows list</a></td></tr>
+<tr><td>Approvals</td><td colspan="2"><a href="{BASE}/sysapproval_approver_list.do">My Approvals</a></td></tr>
+<tr><td>Service Portal</td><td><a href="{BASE}/$sp.do">Portal</a> · <a href="{BASE}/sp_widget_list.do">Widgets</a></td><td><a href="{BASE}/sp_widget.do">New Widget</a> · <a href="{BASE}/sp_page.do">New Page</a></td></tr>
+<tr><td>UI Builder</td><td colspan="2"><a href="{BASE}/now/build/ui">{BASE}/now/build/ui</a></td></tr>
+<tr><td>Reports</td><td><a href="{BASE}/sys_report_list.do">Reports</a></td><td><a href="{BASE}/$report.do">{BASE}/$report.do</a></td></tr>
+<tr><td>ATF</td><td><a href="{BASE}/sys_atf_test_list.do">Tests</a> · <a href="{BASE}/sys_atf_test_suite_list.do">Suites</a></td><td><a href="{BASE}/sys_atf_test.do">New Test</a></td></tr>
+<tr><td>Scripted REST</td><td><a href="{BASE}/sys_ws_definition_list.do">APIs</a></td><td><a href="{BASE}/sys_ws_definition.do">New API</a> · <a href="{BASE}/$restapi.do">REST Explorer</a></td></tr>
+<tr><td>Employees list</td><td colspan="2"><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">employee_v2</a> · <a href="{BASE}/x_786686_hr_leave_employee_v2.do">New</a></td></tr>
+<tr><td>Requests list</td><td colspan="2"><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">req_v2</a> · <a href="{BASE}/x_786686_hr_leave_req_v2.do">New</a></td></tr>
+<tr><td>Balances list</td><td colspan="2"><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">bal_v2</a> · <a href="{BASE}/x_786686_hr_leave_bal_v2.do">New</a></td></tr>
+<tr><td>Audit list</td><td colspan="2"><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">audit_v2</a> · <a href="{BASE}/x_786686_hr_leave_audit_v2.do">New</a></td></tr>
+<tr><td>Scripts – Background</td><td colspan="2"><a href="{BASE}/sys.scripts.do">{BASE}/sys.scripts.do</a></td></tr>
+<tr><td>Event Log</td><td colspan="2"><a href="{BASE}/sysevent_list.do">{BASE}/sysevent_list.do</a></td></tr>
+<tr><td>Email Log</td><td colspan="2"><a href="{BASE}/sys_email_list.do">{BASE}/sys_email_list.do</a></td></tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="app">B) Application — all properties + suggested values</h2>
+<div class="url-box"><a href="{BASE}/sys_app.do?sys_id=e5f5bc9493a303507520703efaba104d">Open app</a> · <a href="{BASE}/$studio.do">Studio</a></div>
+<table class="field-table">
+<thead><tr><th>Property</th><th>Suggested professional value</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Name</td><td class="sug">HR Leave</td><td class="req">Required</td></tr>
+<tr><td>Scope</td><td class="sug">x_786686_hr_leave</td><td class="req">Cannot change later</td></tr>
+<tr><td>Version</td><td class="sug">1.0.0</td><td>Bump on each promote</td></tr>
+<tr><td>Description</td><td class="sug">Enterprise leave requests, balances, approvals, audit for HR</td><td></td></tr>
+<tr><td>Vendor</td><td class="sug">Your company name</td><td></td></tr>
+<tr><td>Create application menu</td><td class="sug">true</td><td>Creates HR Leave navigator</td></tr>
+<tr><td>Active</td><td class="sug">true</td><td></td></tr>
+</tbody>
+</table>
+<table class="field-table">
+<thead><tr><th>Update Set property</th><th>Suggested value</th></tr></thead>
+<tbody>
+<tr><td>Name</td><td class="sug">HR Leave – Build v1.0</td></tr>
+<tr><td>Application</td><td class="sug">HR Leave</td></tr>
+<tr><td>State</td><td class="sug">In Progress</td></tr>
+<tr><td>Description</td><td class="sug">Professional HR Leave core + security + process</td></tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="tables">C) Tables — create properties + every column (professional)</h2>
+<p><strong>How to create each table (detail):</strong></p>
+<ol>
+  <li>Application picker = HR Leave · Update Set current.</li>
+  <li>Open <a href="{BASE}/$studio.do">Studio</a> → select <strong>HR Leave</strong>.</li>
+  <li>Click <strong>Create Application File</strong> → search <strong>Table</strong> → Create.</li>
+  <li>Fill Label + Name from table below → Extends = <em>(empty — do not extend Task)</em> → Create.</li>
+  <li>Open table → related list <strong>Columns</strong> → New for each row → Save.</li>
+  <li>For Choice columns: open column → related list <strong>Choices</strong> → New for each value.</li>
+  <li>Configure Form Layout / List Layout as listed.</li>
+</ol>
+
+<h3 id="t-emp">C1) HR Employee — <code>x_786686_hr_leave_employee_v2</code></h3>
+<div class="url-box"><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">List</a> · <a href="{BASE}/x_786686_hr_leave_employee_v2.do">New record</a> · <a href="{BASE}/sys_dictionary_list.do?sysparm_query=name=x_786686_hr_leave_employee_v2">Dictionary</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html#obj-02">OBJ-02 steps</a></div>
+<table class="field-table">
+<thead><tr><th>Table property</th><th>Suggested value</th></tr></thead>
+<tbody>
+<tr><td>Label</td><td class="sug">HR Employee</td></tr>
+<tr><td>Name</td><td class="sug">x_786686_hr_leave_employee_v2</td></tr>
+<tr><td>Extends</td><td class="sug">(none)</td></tr>
+<tr><td>Create module</td><td class="sug">true (or add in OBJ-25)</td></tr>
+<tr><td>Create access controls</td><td class="sug">true (refine in OBJ-19)</td></tr>
+<tr><td>Is searchable / Live feed</td><td class="sug">false / false</td></tr>
+</tbody>
+</table>
+<table class="field-table">
+<thead><tr><th>Column</th><th>Label</th><th>Type</th><th>Max / Ref</th><th>Mandatory</th><th>Display</th><th>Suggested default / notes</th></tr></thead>
+<tbody>
+<tr><td><code>u_user</code></td><td>User</td><td>Reference</td><td>sys_user</td><td class="req">Yes</td><td></td><td>Platform login of employee</td></tr>
+<tr><td><code>u_employee_id</code></td><td>Employee ID</td><td>String</td><td>40</td><td class="req">Yes</td><td class="sug">Yes</td><td>e.g. E-1001 · unique</td></tr>
+<tr><td><code>u_department</code></td><td>Department</td><td>String</td><td>100</td><td></td><td></td><td>People Ops / Engineering / …</td></tr>
+<tr><td><code>u_manager</code></td><td>Manager</td><td>Reference</td><td>sys_user</td><td class="req">Yes</td><td></td><td>Approver source for BR1</td></tr>
+<tr><td><code>u_join_date</code></td><td>Join Date</td><td>Date</td><td></td><td></td><td></td><td>YYYY-MM-DD</td></tr>
+<tr><td><code>u_grade</code></td><td>Grade</td><td>String</td><td>20</td><td></td><td></td><td>G1–G10 or band code</td></tr>
+</tbody>
+</table>
+<p><strong>Form layout order (suggested):</strong> Employee ID | User | Department | Manager | Join Date | Grade<br />
+<strong>List layout:</strong> Employee ID, User, Department, Manager, Grade</p>
+
+<h3 id="t-req">C2) Leave Request — <code>x_786686_hr_leave_req_v2</code> (hub table)</h3>
+<div class="url-box"><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">List</a> · <a href="{BASE}/x_786686_hr_leave_req_v2.do">New</a> · <a href="{BASE}/sys_dictionary_list.do?sysparm_query=name=x_786686_hr_leave_req_v2">Dictionary</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html#obj-03">OBJ-03</a></div>
+<table class="field-table">
+<thead><tr><th>Table property</th><th>Suggested value</th></tr></thead>
+<tbody>
+<tr><td>Label</td><td class="sug">Leave Request</td></tr>
+<tr><td>Name</td><td class="sug">x_786686_hr_leave_req_v2</td></tr>
+<tr><td>Extends</td><td class="sug">(none)</td></tr>
+<tr><td>Auto-number (optional)</td><td class="sug">Prefix HRLX · start 1000 · or fill u_number in BR</td></tr>
+</tbody>
+</table>
+<table class="field-table">
+<thead><tr><th>Column</th><th>Label</th><th>Type</th><th>Max / Ref</th><th>Mandatory</th><th>Read-only</th><th>Suggested</th></tr></thead>
+<tbody>
+<tr><td><code>u_number</code></td><td>Number</td><td>String</td><td>40</td><td></td><td class="sug">Yes after insert</td><td>Display · HRLX0001</td></tr>
+<tr><td><code>u_requested_for_user</code></td><td>Requested For</td><td>Reference</td><td>sys_user</td><td class="req">Yes</td><td></td><td>Default = current user (RP)</td></tr>
+<tr><td><code>u_employee_ref</code></td><td>Employee</td><td>Reference</td><td>employee_v2</td><td class="req">Yes</td><td></td><td>HR profile link</td></tr>
+<tr><td><code>u_leave_type</code></td><td>Leave Type</td><td>Choice</td><td>—</td><td class="req">Yes</td><td></td><td>See choices below</td></tr>
+<tr><td><code>u_start_date</code></td><td>Start Date</td><td>Date</td><td></td><td class="req">Yes</td><td></td><td></td></tr>
+<tr><td><code>u_end_date</code></td><td>End Date</td><td>Date</td><td></td><td class="req">Yes</td><td></td><td>≥ start</td></tr>
+<tr><td><code>u_days_count</code></td><td>Days</td><td>Integer</td><td></td><td></td><td class="sug">Yes</td><td>Set by BR1 / CS2</td></tr>
+<tr><td><code>u_state</code></td><td>State</td><td>Choice</td><td>—</td><td class="req">Yes</td><td></td><td>Default draft</td></tr>
+<tr><td><code>u_approver_user</code></td><td>Approver</td><td>Reference</td><td>sys_user</td><td></td><td class="sug">Yes for employees</td><td>From manager via BR1</td></tr>
+<tr><td><code>u_reason</code></td><td>Reason</td><td>String</td><td>1000</td><td>If sick (UI Policy)</td><td></td><td></td></tr>
+</tbody>
+</table>
+<p><strong>Choices — u_leave_type</strong></p>
+<table class="field-table"><thead><tr><th>Value</th><th>Label</th><th>Sequence</th><th>Suggested use</th></tr></thead>
+<tbody>
+<tr><td class="sug">annual</td><td>Annual</td><td>1</td><td>Default paid leave</td></tr>
+<tr><td class="sug">sick</td><td>Sick</td><td>2</td><td>Requires reason (UI Policy)</td></tr>
+<tr><td class="sug">unpaid</td><td>Unpaid</td><td>3</td><td>No balance debit (optional policy)</td></tr>
+</tbody></table>
+<p><strong>Choices — u_state</strong></p>
+<table class="field-table"><thead><tr><th>Value</th><th>Label</th><th>Sequence</th><th>Who sets</th></tr></thead>
+<tbody>
+<tr><td class="sug">draft</td><td>Draft</td><td>1</td><td>Default on new</td></tr>
+<tr><td class="sug">submitted</td><td>Submitted</td><td>2</td><td>UI Action / Catalog / user</td></tr>
+<tr><td class="sug">approved</td><td>Approved</td><td>3</td><td>Flow / manager</td></tr>
+<tr><td class="sug">rejected</td><td>Rejected</td><td>4</td><td>Flow / manager</td></tr>
+<tr><td class="sug">cancelled</td><td>Cancelled</td><td>5</td><td>Employee / portal</td></tr>
+</tbody></table>
+<p><strong>Form layout:</strong> Number | State | Requested For | Employee | Leave Type | Start | End | Days | Approver | Reason<br />
+<strong>List layout:</strong> Number, Requested For, Leave Type, Start, End, Days, State, Approver</p>
+
+<h3 id="t-bal">C3) Leave Balance — <code>x_786686_hr_leave_bal_v2</code></h3>
+<div class="url-box"><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">List</a> · <a href="{BASE}/x_786686_hr_leave_bal_v2.do">New</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html#obj-04">OBJ-04</a></div>
+<table class="field-table">
+<thead><tr><th>Column</th><th>Label</th><th>Type</th><th>Suggested</th></tr></thead>
+<tbody>
+<tr><td><code>u_employee_ref</code></td><td>Employee</td><td>Reference → employee_v2</td><td class="req">Mandatory</td></tr>
+<tr><td><code>u_year</code></td><td>Year</td><td>Integer</td><td class="sug">2026 (current year)</td></tr>
+<tr><td><code>u_leave_type</code></td><td>Leave Type</td><td>Choice</td><td class="sug">Same as req (annual/sick/unpaid)</td></tr>
+<tr><td><code>u_entitled</code></td><td>Entitled</td><td>Integer</td><td class="sug">20 or property annual_days</td></tr>
+<tr><td><code>u_used</code></td><td>Used</td><td>Integer</td><td class="sug">0 at year start · BR3 updates</td></tr>
+<tr><td><code>u_remaining</code></td><td>Remaining</td><td>Integer</td><td class="sug">= entitled − used</td></tr>
+</tbody>
+</table>
+
+<h3 id="t-audit">C4) Leave Audit — <code>x_786686_hr_leave_audit_v2</code></h3>
+<div class="url-box"><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">List</a> · <a href="{BASE}/x_786686_hr_leave_audit_v2.do">New</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html#obj-05">OBJ-05</a></div>
+<table class="field-table">
+<thead><tr><th>Column</th><th>Label</th><th>Type</th><th>Suggested</th></tr></thead>
+<tbody>
+<tr><td><code>u_leave_ref</code></td><td>Leave</td><td>Reference → req_v2</td><td class="req">Mandatory</td></tr>
+<tr><td><code>u_old_state</code></td><td>Old State</td><td>String(40)</td><td>e.g. submitted</td></tr>
+<tr><td><code>u_new_state</code></td><td>New State</td><td>String(40)</td><td>e.g. approved</td></tr>
+<tr><td><code>u_event_type</code></td><td>Event Type</td><td>String(60)</td><td class="sug">state_change</td></tr>
+<tr><td><code>u_actor</code></td><td>Actor</td><td>Reference → sys_user</td><td>Who changed state</td></tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="si">D) Script Includes — form properties</h2>
+<div class="url-box"><a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">SI list</a> · <a href="{BASE}/sys_script_include.do">New</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html#obj-06">OBJ-06</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html#obj-07">OBJ-07</a></div>
+<table class="field-table">
+<thead><tr><th>Property</th><th>HRLXProLeaveUtilsV2</th><th>HRLXProSecurityUtilsV2</th><th>HRLXProIntegrationUtilsV2 (REST)</th></tr></thead>
+<tbody>
+<tr><td>Name</td><td class="sug">HRLXProLeaveUtilsV2</td><td class="sug">HRLXProSecurityUtilsV2</td><td class="sug">HRLXProIntegrationUtilsV2</td></tr>
+<tr><td>API Name</td><td class="sug">x_786686_hr_leave.HRLXProLeaveUtilsV2</td><td class="sug">…SecurityUtilsV2</td><td class="sug">…IntegrationUtilsV2</td></tr>
+<tr><td>Client callable</td><td class="sug req">true</td><td class="sug">false</td><td class="sug">false</td></tr>
+<tr><td>Active</td><td class="sug">true</td><td class="sug">true</td><td class="sug">true</td></tr>
+<tr><td>Accessible from</td><td class="sug">All application scopes</td><td>Same</td><td>Same</td></tr>
+<tr><td>Description</td><td class="sug">Business days, approver, balance, audit, GlideAjax</td><td class="sug">ACL helpers canRead/canWrite</td><td class="sug">Inbound leave create for REST</td></tr>
+<tr><td>Script</td><td colspan="3">Paste full from Studio Create guide OBJ section / Scripts portal</td></tr>
+</tbody>
+</table>
+<p><strong>Create steps:</strong> Studio → Create Application File → Script Include → fill table → paste script → Update → test in <a href="{BASE}/sys.scripts.do">Scripts – Background</a>.</p>
+
+<hr />
+
+<h2 id="br">E) Business Rules — all properties (BR1–BR4)</h2>
+<div class="url-box"><a href="{BASE}/sys_script_list.do?sysparm_query=nameSTARTSWITHHRLX">BR list</a> · <a href="{BASE}/sys_script.do">New BR</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html#obj-08">OBJ-08…11</a></div>
+<p><strong>Create steps (every BR):</strong> Application = HR Leave → New Business Rule → set Table = <code>x_786686_hr_leave_req_v2</code> → Advanced = true → paste script → Active = true → Update.</p>
+<table class="field-table">
+<thead><tr><th>Property</th><th>BR1 Calculate Days</th><th>BR2 On Submit Event</th><th>BR3 Audit State</th><th>BR4 Approve/Reject Event</th></tr></thead>
+<tbody>
+<tr><td>Name</td><td class="sug">HRLX BR1 Calculate Days</td><td class="sug">HRLX BR2 On Submit Event</td><td class="sug">HRLX BR3 Audit State Change</td><td class="sug">HRLX BR4 Approve Reject Event</td></tr>
+<tr><td>Table</td><td colspan="4" class="sug">x_786686_hr_leave_req_v2</td></tr>
+<tr><td>Active</td><td colspan="4" class="sug">true</td></tr>
+<tr><td>Advanced</td><td colspan="4" class="sug">true</td></tr>
+<tr><td>When</td><td class="sug">before</td><td class="sug">after</td><td class="sug">after</td><td class="sug">after</td></tr>
+<tr><td>Insert</td><td class="sug">true</td><td class="sug">true</td><td class="sug">false</td><td class="sug">false</td></tr>
+<tr><td>Update</td><td class="sug">true</td><td class="sug">true</td><td class="sug">true</td><td class="sug">true</td></tr>
+<tr><td>Delete</td><td colspan="4" class="sug">false</td></tr>
+<tr><td>Order</td><td class="sug">100</td><td class="sug">200</td><td class="sug">300</td><td class="sug">250</td></tr>
+<tr><td>Filter Conditions</td><td class="sug">(none)</td><td class="sug">(none) — script uses changesTo</td><td class="sug">(none)</td><td class="sug">(none)</td></tr>
+<tr><td>Role conditions</td><td colspan="4" class="sug">(empty)</td></tr>
+<tr><td>Duty</td><td>Set u_days_count + approver</td><td>Fire submitted event</td><td>Audit + balance on approve</td><td>Fire approved/rejected events</td></tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="cs">F) Client Scripts — all properties</h2>
+<div class="url-box"><a href="{BASE}/sys_script_client_list.do?sysparm_query=table=x_786686_hr_leave_req_v2">CS list</a> · <a href="{BASE}/sys_script_client.do">New</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html#obj-12">OBJ-12…13</a></div>
+<table class="field-table">
+<thead><tr><th>Property</th><th>CS1 Validate Dates</th><th>CS2 Calc Days GlideAjax</th></tr></thead>
+<tbody>
+<tr><td>Name</td><td class="sug">HRLX CS1 Validate Dates</td><td class="sug">HRLX CS2 Calc Days GlideAjax</td></tr>
+<tr><td>Table</td><td colspan="2" class="sug">x_786686_hr_leave_req_v2</td></tr>
+<tr><td>UI Type</td><td colspan="2" class="sug">All</td></tr>
+<tr><td>Type</td><td colspan="2" class="sug">onChange</td></tr>
+<tr><td>Field name</td><td class="sug">u_end_date</td><td class="sug">u_end_date</td></tr>
+<tr><td>Active</td><td colspan="2" class="sug">true</td></tr>
+<tr><td>Inherited</td><td colspan="2" class="sug">false</td></tr>
+<tr><td>Global</td><td colspan="2" class="sug">false (scoped)</td></tr>
+<tr><td>Description</td><td class="sug">End ≥ start</td><td class="sug">Preview business days via SI</td></tr>
+</tbody>
+</table>
+<p class="warn"><strong>Also create (professional):</strong> duplicate CS1/CS2 as onChange on <code>u_start_date</code> with same scripts so changing start recalculates too — Name suffix “Start” · Field = u_start_date · Order 100/110.</p>
+
+<hr />
+
+<h2 id="ui">G) UI Policy + UI Action — properties</h2>
+<div class="url-box"><a href="{BASE}/sys_ui_policy.do">New UI Policy</a> · <a href="{BASE}/sys_ui_action.do">New UI Action</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html#obj-14">OBJ-14</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html#obj-15">OBJ-15</a></div>
+<table class="field-table">
+<thead><tr><th>UI Policy property</th><th>Suggested value</th></tr></thead>
+<tbody>
+<tr><td>Table</td><td class="sug">x_786686_hr_leave_req_v2</td></tr>
+<tr><td>Short description</td><td class="sug">HRLX Sick leave requires reason</td></tr>
+<tr><td>Active</td><td class="sug">true</td></tr>
+<tr><td>Order</td><td class="sug">100</td></tr>
+<tr><td>Condition</td><td class="sug">[u_leave_type] [is] [sick]</td></tr>
+<tr><td>On load</td><td class="sug">true</td></tr>
+<tr><td>Reverse if false</td><td class="sug">true</td></tr>
+<tr><td>Global / Isolate script</td><td class="sug">false / true</td></tr>
+<tr><td>UI Policy Action → Field</td><td class="sug">u_reason · Mandatory=true · Visible=true · Read only=false</td></tr>
+</tbody>
+</table>
+<table class="field-table">
+<thead><tr><th>UI Action property</th><th>Suggested value</th></tr></thead>
+<tbody>
+<tr><td>Name</td><td class="sug">Submit</td></tr>
+<tr><td>Table</td><td class="sug">x_786686_hr_leave_req_v2</td></tr>
+<tr><td>Action name</td><td class="sug">hrlx_submit_leave</td></tr>
+<tr><td>Form button</td><td class="sug">true</td></tr>
+<tr><td>Form context menu</td><td class="sug">false</td></tr>
+<tr><td>List banner / List choice</td><td class="sug">false</td></tr>
+<tr><td>Client</td><td class="sug">false (server)</td></tr>
+<tr><td>Active</td><td class="sug">true</td></tr>
+<tr><td>Show insert / update</td><td class="sug">false / true</td></tr>
+<tr><td>Condition</td><td class="sug">current.u_state == 'draft'</td></tr>
+<tr><td>Order</td><td class="sug">100</td></tr>
+<tr><td>Script</td><td class="sug">set state submitted; update; redirect</td></tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="sec">H) Roles · Groups · Users · ACLs — professional matrix</h2>
+<div class="url-box"><a href="{BASE}/sys_user_role.do">New Role</a> · <a href="{BASE}/sys_user_group.do">New Group</a> · <a href="{BASE}/sys_user.do">New User</a> · <a href="{BASE}/sys_security_acl.do">New ACL</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html#obj-16">OBJ-16…19</a></div>
+
+<h3>Roles (create each)</h3>
+<table class="field-table">
+<thead><tr><th>Name</th><th>Description (suggested)</th><th>Assignable by</th><th>Elevated privilege</th></tr></thead>
+<tbody>
+<tr><td class="sug">x_786686_hr_leave.employee</td><td>Submit and view own leave</td><td>hr_admin</td><td>false</td></tr>
+<tr><td class="sug">x_786686_hr_leave.manager</td><td>Approve team leave</td><td>hr_admin</td><td>false</td></tr>
+<tr><td class="sug">x_786686_hr_leave.hr_admin</td><td>Full HR Leave administration</td><td>admin</td><td>false</td></tr>
+<tr><td class="sug">x_786686_hr_leave.integration</td><td>Scripted REST / Table API create</td><td>admin</td><td>false</td></tr>
+</tbody>
+</table>
+
+<h3>Groups</h3>
+<table class="field-table">
+<thead><tr><th>Name</th><th>Type</th><th>Roles</th><th>Active</th></tr></thead>
+<tbody>
+<tr><td class="sug">HRLX Employees</td><td>security</td><td>employee</td><td>true</td></tr>
+<tr><td class="sug">HRLX Managers</td><td>security</td><td>manager (+ employee)</td><td>true</td></tr>
+<tr><td class="sug">HRLX HR Admins</td><td>security</td><td>hr_admin</td><td>true</td></tr>
+<tr><td class="sug">HRLX Integration</td><td>security</td><td>integration</td><td>true</td></tr>
+</tbody>
+</table>
+
+<h3>Lab users (professional UAT)</h3>
+<table class="field-table">
+<thead><tr><th>User ID</th><th>First / Last</th><th>Email (suggested)</th><th>Group</th><th>Active</th><th>Password</th></tr></thead>
+<tbody>
+<tr><td class="sug">employee1</td><td>Lab / Employee</td><td>employee1@example.com</td><td>HRLX Employees</td><td>true</td><td>Per PDI policy</td></tr>
+<tr><td class="sug">manager1</td><td>Lab / Manager</td><td>manager1@example.com</td><td>HRLX Managers</td><td>true</td><td></td></tr>
+<tr><td class="sug">hradmin</td><td>Lab / HRAdmin</td><td>hradmin@example.com</td><td>HRLX HR Admins</td><td>true</td><td></td></tr>
+<tr><td class="sug">hrlx.integration</td><td>HRLX / Integration</td><td>integration@example.com</td><td>HRLX Integration</td><td>true</td><td>Web service access</td></tr>
+</tbody>
+</table>
+
+<h3>ACL properties (each ACL)</h3>
+<table class="field-table">
+<thead><tr><th>ACL</th><th>Type</th><th>Operation</th><th>Name</th><th>Admin overrides</th><th>Active</th><th>Advanced</th><th>Requires role / Script</th></tr></thead>
+<tbody>
+<tr><td>Read req</td><td>record</td><td>read</td><td class="sug">x_786686_hr_leave_req_v2</td><td class="sug">true</td><td>true</td><td>true</td><td>Script: canReadLeave</td></tr>
+<tr><td>Write req</td><td>record</td><td>write</td><td class="sug">x_786686_hr_leave_req_v2</td><td class="sug">true</td><td>true</td><td>true</td><td>Script: canWriteLeave</td></tr>
+<tr><td>Create req</td><td>record</td><td>create</td><td class="sug">x_786686_hr_leave_req_v2</td><td class="sug">true</td><td>true</td><td>true</td><td>Roles employee|hr_admin|integration + script</td></tr>
+<tr><td>Write approver field</td><td>record</td><td>write</td><td class="sug">x_786686_hr_leave_req_v2.u_approver_user</td><td>true</td><td>true</td><td>true</td><td>hr_admin only</td></tr>
+</tbody>
+</table>
+<p><strong>Create ACL detail:</strong> Elevate <strong>security_admin</strong> → <a href="{BASE}/sys_security_acl.do">New ACL</a> → Application = HR Leave → fill row → Script tab → Update. Repeat for employee_v2 / bal_v2 / audit_v2 read for hr_admin (professional: hr_admin full CRUD; employee read own via script).</p>
+
+<hr />
+
+<h2 id="props">I) System properties — ALL professional properties + values</h2>
+<div class="url-box"><a href="{BASE}/sys_properties_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Properties list</a> · <a href="{BASE}/sys_properties.do">New property</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html#obj-20">OBJ-20</a></div>
+<p><strong>Create each:</strong> Application = HR Leave → New → fill Name/Type/Value → Update. Ignore Global.</p>
+<table class="field-table">
+<thead><tr><th>Name</th><th>Type</th><th>Suggested value</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td class="sug">x_786686_hr_leave.config.annual_days</td><td>integer</td><td class="sug">20</td><td>Default annual entitlement (AU often 20; set 21 if policy requires)</td></tr>
+<tr><td class="sug">x_786686_hr_leave.config.sick_days</td><td>integer</td><td class="sug">10</td><td>Default sick entitlement for accrual job (optional)</td></tr>
+<tr><td class="sug">x_786686_hr_leave.config.notify_enabled</td><td>true|false</td><td class="sug">true</td><td>Master switch for leave emails</td></tr>
+<tr><td class="sug">x_786686_hr_leave.config.min_notice_days</td><td>integer</td><td class="sug">3</td><td>Optional BR: reject submit if start &lt; today+3</td></tr>
+<tr><td class="sug">x_786686_hr_leave.config.max_days_per_request</td><td>integer</td><td class="sug">30</td><td>Optional BR: block oversized requests</td></tr>
+<tr><td class="sug">x_786686_hr_leave.config.erp_endpoint</td><td>string</td><td class="sug">https://webhook.site/your-lab-id</td><td>Outbound ERP URL (no secrets)</td></tr>
+<tr><td class="sug">x_786686_hr_leave.config.integration_user</td><td>string</td><td class="sug">hrlx.integration</td><td>User ID for inbound API</td></tr>
+<tr><td class="sug">x_786686_hr_leave.config.number_prefix</td><td>string</td><td class="sug">HRLX</td><td>Prefix for u_number if scripted</td></tr>
+<tr><td class="sug">x_786686_hr_leave.config.portal_page_id</td><td>string</td><td class="sug">hrlx_home</td><td>SP page id for widgets</td></tr>
+</tbody>
+</table>
+<table class="field-table">
+<thead><tr><th>Property form field</th><th>Suggested for all above</th></tr></thead>
+<tbody>
+<tr><td>Application</td><td class="sug">HR Leave</td></tr>
+<tr><td>Ignore cache</td><td class="sug">false</td></tr>
+<tr><td>Private</td><td class="sug">false (true only for sensitive — prefer aliases for secrets)</td></tr>
+<tr><td>Read roles</td><td class="sug">(empty) or hr_admin</td></tr>
+<tr><td>Write roles</td><td class="sug">hr_admin / admin</td></tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="evt">J) Events · Notifications · Scheduled Job</h2>
+<div class="url-box"><a href="{BASE}/sysevent_register.do">New Event</a> · <a href="{BASE}/sysevent_email_action.do">New Notification</a> · <a href="{BASE}/sysauto_script.do">New Job</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html#obj-21">OBJ-21…23</a></div>
+
+<h3>Event Registry (×3)</h3>
+<table class="field-table">
+<thead><tr><th>Event name</th><th>Table</th><th>Fired by</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td class="sug">x_786686_hr_leave.leave_v2.submitted</td><td>req_v2</td><td>BR2</td><td>Leave submitted for approval</td></tr>
+<tr><td class="sug">x_786686_hr_leave.leave_v2.approved</td><td>req_v2</td><td>BR4</td><td>Leave approved</td></tr>
+<tr><td class="sug">x_786686_hr_leave.leave_v2.rejected</td><td>req_v2</td><td>BR4</td><td>Leave rejected</td></tr>
+</tbody>
+</table>
+<p>Event form: Application = HR Leave · Suffix = leave_v2.submitted (platform may prefix scope) · Queue = (default) · Active = true.</p>
+
+<h3>Notifications (×3) — all important properties</h3>
+<table class="field-table">
+<thead><tr><th>Property</th><th>Submitted</th><th>Approved</th><th>Rejected</th></tr></thead>
+<tbody>
+<tr><td>Name</td><td class="sug">HRLX Leave Submitted</td><td class="sug">HRLX Leave Approved</td><td class="sug">HRLX Leave Rejected</td></tr>
+<tr><td>Table</td><td colspan="3" class="sug">x_786686_hr_leave_req_v2</td></tr>
+<tr><td>Type</td><td colspan="3" class="sug">Email</td></tr>
+<tr><td>Active</td><td colspan="3" class="sug">true</td></tr>
+<tr><td>Category</td><td colspan="3" class="sug">Uncategorized / HR</td></tr>
+<tr><td>Send when</td><td colspan="3" class="sug">Event is fired</td></tr>
+<tr><td>Event name</td><td class="sug">…leave_v2.submitted</td><td class="sug">…approved</td><td class="sug">…rejected</td></tr>
+<tr><td>Weight</td><td colspan="3" class="sug">0</td></tr>
+<tr><td>Who will receive</td><td class="sug">Event parm1 (approver)</td><td class="sug">Event parm1 (requester)</td><td class="sug">Event parm1 (requester)</td></tr>
+<tr><td>Subject</td><td class="sug">Leave ${u_number} submitted for approval</td><td class="sug">Leave ${u_number} approved</td><td class="sug">Leave ${u_number} rejected</td></tr>
+<tr><td>Message HTML</td><td colspan="3" class="sug">Include ${u_requested_for_user}, ${u_leave_type}, ${u_start_date}, ${u_end_date}, ${u_days_count}, ${URI_REF}</td></tr>
+<tr><td>Omit watermark / Include attachments</td><td colspan="3" class="sug">false / false</td></tr>
+</tbody>
+</table>
+
+<h3>Scheduled Job</h3>
+<table class="field-table">
+<thead><tr><th>Property</th><th>Suggested value</th></tr></thead>
+<tbody>
+<tr><td>Name</td><td class="sug">HRLX Annual Accrual</td></tr>
+<tr><td>Active</td><td class="sug">true</td></tr>
+<tr><td>Run</td><td class="sug">Periodically · Yearly · Jan 1 01:00 (or Daily for lab)</td></tr>
+<tr><td>Run as</td><td class="sug">System Administrator / hr_admin</td></tr>
+<tr><td>Application</td><td class="sug">HR Leave</td></tr>
+<tr><td>Conditional</td><td class="sug">false</td></tr>
+<tr><td>Script</td><td class="sug">Paste annual_accrual.js from Studio guide OBJ-23</td></tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="nav">K) Application Menu + Modules — all properties</h2>
+<div class="url-box"><a href="{BASE}/sys_app_application.do">New Menu</a> · <a href="{BASE}/sys_app_module.do">New Module</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html#obj-24">OBJ-24…25</a></div>
+<table class="field-table">
+<thead><tr><th>Menu property</th><th>Suggested</th></tr></thead>
+<tbody>
+<tr><td>Title</td><td class="sug">HR Leave</td></tr>
+<tr><td>Name</td><td class="sug">hr_leave</td></tr>
+<tr><td>Application</td><td class="sug">HR Leave</td></tr>
+<tr><td>Order</td><td class="sug">100</td></tr>
+<tr><td>Active</td><td class="sug">true</td></tr>
+<tr><td>Roles</td><td class="sug">x_786686_hr_leave.employee (minimum)</td></tr>
+<tr><td>Hint / Description</td><td class="sug">Leave requests, employees, balances, audit</td></tr>
+</tbody>
+</table>
+<table class="field-table">
+<thead><tr><th>Module Title</th><th>Link type</th><th>Table (Name)</th><th>Order</th><th>Roles (suggested)</th><th>Filter</th></tr></thead>
+<tbody>
+<tr><td class="sug">Leave Requests</td><td>List of Records</td><td class="sug">x_786686_hr_leave_req_v2</td><td>100</td><td>employee, manager, hr_admin</td><td>(empty or active)</td></tr>
+<tr><td class="sug">My Requests</td><td>List of Records</td><td class="sug">x_786686_hr_leave_req_v2</td><td>110</td><td>employee</td><td class="sug">u_requested_for_user=javascript:gs.getUserID()</td></tr>
+<tr><td class="sug">Employees</td><td>List of Records</td><td class="sug">x_786686_hr_leave_employee_v2</td><td>200</td><td>hr_admin, manager</td><td></td></tr>
+<tr><td class="sug">Leave Balances</td><td>List of Records</td><td class="sug">x_786686_hr_leave_bal_v2</td><td>300</td><td>hr_admin, manager, employee</td><td></td></tr>
+<tr><td class="sug">Leave Audit</td><td>List of Records</td><td class="sug">x_786686_hr_leave_audit_v2</td><td>400</td><td>hr_admin</td><td></td></tr>
+<tr><td class="sug">Overview</td><td>Separator</td><td>—</td><td>50</td><td></td><td></td></tr>
+</tbody>
+</table>
+<p>Module form also set: Application = HR Leave · Application menu = HR Leave · Active = true · Override application menu roles = as needed.</p>
+
+<hr />
+
+<h2 id="cat">L) Catalog Record Producer — all properties + variables</h2>
+<div class="url-box"><a href="{BASE}/sc_cat_item_producer.do">New Producer</a> · <a href="{BASE}/sc_category.do">New Category</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html#obj-26">OBJ-26</a></div>
+<table class="field-table">
+<thead><tr><th>Category property</th><th>Suggested</th></tr></thead>
+<tbody>
+<tr><td>Title</td><td class="sug">HR Leave</td></tr>
+<tr><td>Catalog</td><td class="sug">Service Catalog</td></tr>
+<tr><td>Active</td><td class="sug">true</td></tr>
+</tbody>
+</table>
+<table class="field-table">
+<thead><tr><th>Producer property</th><th>Suggested value</th></tr></thead>
+<tbody>
+<tr><td>Name</td><td class="sug">Submit Leave Request</td></tr>
+<tr><td>Table name</td><td class="sug">x_786686_hr_leave_req_v2</td></tr>
+<tr><td>Category</td><td class="sug">HR Leave</td></tr>
+<tr><td>Active</td><td class="sug">true</td></tr>
+<tr><td>Short description</td><td class="sug">Request annual, sick, or unpaid leave</td></tr>
+<tr><td>Availability</td><td class="sug">Desktop + Mobile</td></tr>
+<tr><td>Roles</td><td class="sug">x_786686_hr_leave.employee</td></tr>
+<tr><td>Omit view / Hide on SC home</td><td class="sug">false / false</td></tr>
+<tr><td>Script</td><td class="sug">Paste RP_submit_leave.js (maps producer.* → u_*)</td></tr>
+</tbody>
+</table>
+<table class="field-table">
+<thead><tr><th>Variable Name</th><th>Type</th><th>Question</th><th>Mandatory</th><th>Order</th><th>Choices / notes</th></tr></thead>
+<tbody>
+<tr><td class="sug">leave_type</td><td>Select Box</td><td>Leave Type</td><td class="req">Yes</td><td>100</td><td>annual, sick, unpaid</td></tr>
+<tr><td class="sug">start_date</td><td>Date</td><td>Start Date</td><td class="req">Yes</td><td>200</td><td></td></tr>
+<tr><td class="sug">end_date</td><td>Date</td><td>End Date</td><td class="req">Yes</td><td>300</td><td></td></tr>
+<tr><td class="sug">reason</td><td>Multi-line Text</td><td>Reason</td><td>No*</td><td>400</td><td>*Mandatory when sick via Catalog UI Policy if needed</td></tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="flow">M) Flow Designer — properties &amp; actions</h2>
+<div class="url-box"><a href="{BASE}/$flow-designer.do">Flow Designer</a> · <a href="{BASE}/sys_hub_flow_list.do?sysparm_query=nameSTARTSWITHHRLX">Flows</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html#obj-27">OBJ-27</a></div>
+<table class="field-table">
+<thead><tr><th>Flow property</th><th>Suggested value</th></tr></thead>
+<tbody>
+<tr><td>Name</td><td class="sug">HRLX Leave Approval</td></tr>
+<tr><td>Application</td><td class="sug">HR Leave</td></tr>
+<tr><td>Description</td><td class="sug">Ask for approval when leave is submitted</td></tr>
+<tr><td>Run as</td><td class="sug">System User</td></tr>
+<tr><td>Status</td><td class="sug">Published (Active)</td></tr>
+</tbody>
+</table>
+<table class="field-table">
+<thead><tr><th>Trigger</th><th>Suggested</th></tr></thead>
+<tbody>
+<tr><td>Trigger type</td><td class="sug">Record · Updated</td></tr>
+<tr><td>Table</td><td class="sug">x_786686_hr_leave_req_v2</td></tr>
+<tr><td>Condition</td><td class="sug">u_state changes AND u_state is submitted</td></tr>
+<tr><td>Run on</td><td class="sug">Update (not Insert-only if submit via update)</td></tr>
+</tbody>
+</table>
+<table class="field-table">
+<thead><tr><th>Action</th><th>Key fields</th></tr></thead>
+<tbody>
+<tr><td>Ask For Approval</td><td>Approver = <span class="sug">Trigger → Approver (u_approver_user)</span> · Rules = Anyone approves · Due = 3 business days</td></tr>
+<tr><td>If Approved → Update Record</td><td>Table req_v2 · Record = Trigger · Field u_state = <span class="sug">approved</span></td></tr>
+<tr><td>If Rejected → Update Record</td><td>u_state = <span class="sug">rejected</span></td></tr>
+</tbody>
+</table>
+<p><strong>Create detail:</strong> Flow Designer → Create → New flow → set Application HR Leave → add Trigger → add Ask For Approval → add If flow logic → Test with sample sys_id → <strong>Publish</strong>.</p>
+
+<hr />
+
+<h2 id="portal">N) Portal + UI Builder — key properties</h2>
+<div class="url-box"><a href="{BASE}/sp_widget.do">New Widget</a> · <a href="{BASE}/sp_page.do">New Page</a> · <a href="{BASE}/now/build/ui">UI Builder</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html#obj-28">OBJ-28</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html#obj-29">OBJ-29</a></div>
+<table class="field-table">
+<thead><tr><th>Widget property</th><th>hrlx_my_leaves</th><th>hrlx_balance</th></tr></thead>
+<tbody>
+<tr><td>Name / ID</td><td class="sug">HRLX My Leaves / hrlx_my_leaves</td><td class="sug">HRLX Balance / hrlx_balance</td></tr>
+<tr><td>Application</td><td colspan="2" class="sug">HR Leave</td></tr>
+<tr><td>Public</td><td colspan="2" class="sug">false</td></tr>
+<tr><td>Roles</td><td colspan="2" class="sug">x_786686_hr_leave.employee</td></tr>
+<tr><td>HTML / Client / Server / CSS</td><td colspan="2">Paste from Studio Create OBJ-28</td></tr>
+</tbody>
+</table>
+<table class="field-table">
+<thead><tr><th>SP Page property</th><th>Suggested</th></tr></thead>
+<tbody>
+<tr><td>Page ID / Title</td><td class="sug">hrlx_home / My Leave</td></tr>
+<tr><td>Application</td><td class="sug">HR Leave</td></tr>
+<tr><td>Roles</td><td class="sug">employee</td></tr>
+<tr><td>Open URL</td><td class="sug">{BASE}/sp?id=hrlx_home</td></tr>
+</tbody>
+</table>
+<table class="field-table">
+<thead><tr><th>UI Builder</th><th>Suggested</th></tr></thead>
+<tbody>
+<tr><td>Experience name</td><td class="sug">HR Leave Workspace</td></tr>
+<tr><td>Application</td><td class="sug">HR Leave</td></tr>
+<tr><td>Pages</td><td class="sug">My Requests · Approvals · Admin</td></tr>
+<tr><td>Data resource</td><td class="sug">Table x_786686_hr_leave_req_v2</td></tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="ops">O) Report · ATF · Scripted REST — properties</h2>
+<div class="url-box"><a href="{BASE}/$report.do">Create Report</a> · <a href="{BASE}/sys_atf_test.do">New ATF</a> · <a href="{BASE}/sys_ws_definition.do">New REST API</a> · <a href="{BASE}/$restapi.do">Explorer</a></div>
+<table class="field-table">
+<thead><tr><th>Report property</th><th>Suggested</th></tr></thead>
+<tbody>
+<tr><td>Title</td><td class="sug">Leave Requests by State</td></tr>
+<tr><td>Source type / Table</td><td class="sug">Table · x_786686_hr_leave_req_v2</td></tr>
+<tr><td>Type</td><td class="sug">Pie (or Bar)</td></tr>
+<tr><td>Group by</td><td class="sug">u_state</td></tr>
+<tr><td>Aggregation</td><td class="sug">Count</td></tr>
+<tr><td>Sharing</td><td class="sug">Roles: hr_admin, manager</td></tr>
+</tbody>
+</table>
+<table class="field-table">
+<thead><tr><th>ATF property</th><th>Suggested</th></tr></thead>
+<tbody>
+<tr><td>Suite name</td><td class="sug">HRLX Leave Core</td></tr>
+<tr><td>Test 1</td><td class="sug">Server: insert req → assert days &gt; 0</td></tr>
+<tr><td>Test 2</td><td class="sug">Form: set dates → assert CS days</td></tr>
+<tr><td>Test 3</td><td class="sug">Impersonate employee ACL</td></tr>
+<tr><td>Application</td><td class="sug">HR Leave</td></tr>
+</tbody>
+</table>
+<table class="field-table">
+<thead><tr><th>Scripted REST property</th><th>Suggested</th></tr></thead>
+<tbody>
+<tr><td>Name / API ID</td><td class="sug">HRLX Leave API / hrlx_api_v2</td></tr>
+<tr><td>Application</td><td class="sug">HR Leave</td></tr>
+<tr><td>Requires authentication</td><td class="sug">true</td></tr>
+<tr><td>Default ACL role</td><td class="sug">x_786686_hr_leave.integration</td></tr>
+<tr><td>Resource</td><td class="sug">POST /leave · Active true</td></tr>
+<tr><td>Full path</td><td class="sug">/api/x_786686_hr_leave/hrlx_api_v2/leave</td></tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="seed">P) Professional seed data (suggested lab values)</h2>
+<div class="url-box"><a href="{BASE}/x_786686_hr_leave_employee_v2.do">New Employee</a> · <a href="{BASE}/x_786686_hr_leave_bal_v2.do">New Balance</a> · <a href="{BASE}/x_786686_hr_leave_req_v2.do">New Request</a></div>
+<table class="field-table">
+<thead><tr><th>Record</th><th>Field</th><th>Suggested value</th></tr></thead>
+<tbody>
+<tr><td>Employee</td><td>User / Employee ID / Dept / Manager / Join / Grade</td><td class="sug">employee1 / E-1001 / People Ops / manager1 / 2024-01-15 / G5</td></tr>
+<tr><td>Balance</td><td>Employee / Year / Type / Entitled / Used / Remaining</td><td class="sug">(E-1001) / 2026 / annual / 20 / 0 / 20</td></tr>
+<tr><td>Request</td><td>Requested For / Employee / Type / Start / End / State / Reason</td><td class="sug">employee1 / (ref) / annual / next Mon / next Fri / draft → Submit / Team offsite</td></tr>
+</tbody>
+</table>
+
+<div class="ok">
+<p><strong>Next:</strong> For full paste-ready scripts and click-by-click create, open
+<a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">STUDIO_CREATE_ALL_OBJECTS_01_16.html</a>
+and work OBJ-01 → OBJ-32 using the property values on this page.</p>
+</div>
+
+    </article>
+  </main>
+  <script>
+    (function () {
+      var BASE = 'https://dev398980.service-now.com';
+      document.querySelectorAll('a[href*="{BASE}"]').forEach(function (a) {
+        a.href = a.href.split('{BASE}').join(BASE);
+        if (a.textContent.indexOf('{BASE}') !== -1) a.textContent = a.textContent.split('{BASE}').join(BASE);
+      });
+    })();
+  </script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

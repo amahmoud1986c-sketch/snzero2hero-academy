@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>15 — Scripts: Copy Into Studio Only | HR Leave Australia</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+  <style>
+    .field-table th { white-space: nowrap; }
+    .step-num { font-weight: 700; color: var(--brand-2); }
+    .demo-box { border-left: 4px solid var(--brand-2); padding: .35rem 0 .35rem .85rem; margin: .75rem 0; }
+    .chapter-nav { display: flex; justify-content: space-between; gap: 1rem; margin: 2rem 0 1rem; padding: 1rem; background: #f8fafc; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All</a>
+      <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Links</a>
+      <a href="SCHEMA_AND_DATA.html">Schema</a>
+      <a href="scripts/index.html">Scripts</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+      <span class="badge">Chapter 15</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>15 — Scripts: Copy Into Studio Only</h1>
+      <p>Paste-ready script mapping — link to chapter Parts, do not duplicate huge scripts here</p>
+      <div class="meta-grid">
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.72rem">e5f5bc9493a303507520703efaba104d</code></div>
+        <div><strong>Instance lab</strong><code style="color:#fff;font-size:.72rem">dev398980</code></div>
+        <div><strong>URL token</strong><code style="color:#fff">{BASE}</code></div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Quick open</strong>
+<a href="#viz15">Visual map</a>
+<a href="scripts/index.html">Scripts portal</a>
+<a href="{BASE}/$studio.do">Studio</a>
+    </div>
+    <article class="content">
+
+<div class="glance" id="viz15">
+  <h3>Visual map — Ch.15 · Scripts library</h3>
+  <div class="grid3">
+    <div class="box"><strong>See in 10 seconds</strong><p>Paste from scripts/ portal into Studio</p></div>
+    <div class="box"><strong>You build</strong><p>One source of truth</p></div>
+    <div class="box"><strong>Track</strong><p>Development</p></div>
+  </div>
+  <div class="flow"><div class="n"><b>SRC</b>scripts/</div><span class="arrow">→</span><div class="n"><b>COPY</b>Block</div><span class="arrow">→</span><div class="n"><b>PASTE</b>Studio</div><span class="arrow">→</span><div class="n"><b>SAVE</b>Test</div></div>
+  <div class="chips"><a class="chip url" href="scripts/index.html">↗ index.html</a></div>
+  <div class="chips"><span class="chip do">✓ Diff after paste</span><span class="chip dont">✗ Rename class ≠ record name</span></div>
+  <p class="note-sm">Full visual path (all chapters): <a href="VISUAL_FROM_SCRATCH_00_16.html">VISUAL_FROM_SCRATCH_00_16.html</a></p>
+</div>
+<div class="ok">
+<p><strong>Studio-only from scratch:</strong> Use AI assistants or local editors to draft code, then paste into matching ServiceNow Studio forms while Application = HR Leave.</p>
+<p>Also open: <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Direct Links</a> · <a href="SCHEMA_AND_DATA.html">Schema</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All Objects</a> · Previous: <a href="14_AI_SERVICENOW_AGENTS.html">14 AI Agents</a></p>
+</div>
+<h2 id="how-objects-relate">How script files map to chapters</h2>
+<div class="ok"><p>Part 1 paste workflow → Part 2 mapping table (file → chapter Part). Full scripts live in linked Parts — not duplicated here.</p></div>
+<hr />
+<h2 id="rule0">Rule 0 — Before any object (Application + Update Set + Studio)</h2>
+<p>Repeat these checks before creating or editing any application file. This section is also <strong>section 00 Update Set</strong> — create the capture set first.</p>
+<ol>
+  <li><span class="step-num">Application picker</span> — top-right globe / application menu → select <strong>HR Leave</strong> (<code>x_786686_hr_leave</code>). Never leave <em>Global</em> selected when creating scoped artifacts.</li>
+  <li><span class="step-num">Update Set</span> — All → <strong>System Update Sets → Local Update Sets</strong> → <strong>New</strong>:
+    <table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+    <tr><td>Name</td><td><code>HR Leave – Build</code></td></tr>
+    <tr><td>Application</td><td>HR Leave</td></tr>
+    <tr><td>State</td><td>In Progress</td></tr>
+    <tr><td>Description</td><td>Captures all HR Leave lab artifacts</td></tr></table>
+    After submit: open the record → click <strong>Make Current</strong>. Direct list: <a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a>
+  </li>
+  <li><span class="step-num">Open Studio</span> — <a href="{BASE}/$studio.do">{BASE}/$studio.do</a> → confirm header shows <strong>HR Leave</strong>.</li>
+</ol>
+<div class="warn"><p>If artifacts land in Global scope, delete them and recreate under HR Leave. ACLs and events created globally will not behave correctly for this app.</p></div>
+<div class="demo-box"><p><strong>Verify Update Set:</strong> Create a test Script Include in Studio → open <strong>HR Leave – Build</strong> → Related List <strong>Customer Updates</strong> shows the new file.</p></div>
+<hr />
+<h2 id="part-1-paste-studio">Part 1: Paste Into Studio Instructions</h2>
+<h3>Purpose</h3>
+<p>Standard workflow for copying scripts from disk or Scripts portal into Studio forms.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> Studio → HR Leave → open target object → Script field</nav>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Application picker = <strong>HR Leave</strong> (<code>x_786686_hr_leave</code>).</li>
+<li>Update Set <strong>HR Leave – Build</strong> = current.</li>
+<li>Open the chapter Part for the object (form fields + navigation path).</li>
+<li>Open matching file under <code>HR_Leave_App/src/</code> OR <a href="scripts/index.html">Scripts portal</a>.</li>
+<li>Copy entire script — include header comment block.</li>
+<li>Paste into Studio Script field (Business Rule, Script Include, Record Producer, Widget server, etc.).</li>
+<li>Save → run that Part Verify + Demo checklist.</li>
+</ol>
+<div class="warn"><p>Do not paste into Global-scoped records. Confirm Application = HR Leave on the form before save.</p></div>
+<h3>Verify checklist</h3>
+<ul><li>No syntax errors on save.</li><li>Customer Updates captures the script change.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>One script at a time: paste → save → verify behavior before next file.</p></div>
+<hr />
+<h2 id="part-2-mapping-table">Part 2: Script File → Chapter Part Mapping</h2>
+<h3>Purpose</h3>
+<p>Quick index: which source file maps to which chapter Part (links — not full script bodies).</p>
+<table class="field-table"><thead><tr><th>Source file (src/)</th><th>Object</th><th>Chapter · Part (Full script)</th></tr></thead><tbody>
+<tr><td><code>server/script_includes/HRLXProLeaveUtilsV2.js</code></td><td>Script Include</td><td><a href="01_DEVELOPMENT.html#part-6-script-include-leave">01 Part 6</a></td></tr>
+<tr><td><code>server/script_includes/HRLXProSecurityUtilsV2.js</code></td><td>Script Include</td><td><a href="01_DEVELOPMENT.html#part-7-script-include-security">01 Part 7</a></td></tr>
+<tr><td><code>server/business_rules/BR1_calculate_days.js</code></td><td>Business Rule</td><td><a href="01_DEVELOPMENT.html#part-8-br1">01 Part 8</a></td></tr>
+<tr><td><code>server/business_rules/BR2_on_submit_event.js</code></td><td>Business Rule</td><td><a href="01_DEVELOPMENT.html#part-9-br2">01 Part 9</a></td></tr>
+<tr><td><code>server/business_rules/BR3_audit_state_change.js</code></td><td>Business Rule</td><td><a href="01_DEVELOPMENT.html#part-10-br3">01 Part 10</a></td></tr>
+<tr><td><code>server/business_rules/BR4_on_approve_reject_event.js</code></td><td>Business Rule</td><td><a href="01_DEVELOPMENT.html#part-11-br4">01 Part 11</a></td></tr>
+<tr><td><code>client/client_scripts/CS1_validate_dates.js</code></td><td>Client Script</td><td><a href="01_DEVELOPMENT.html#part-12-cs1">01 Part 12</a></td></tr>
+<tr><td><code>client/client_scripts/CS2_calc_days_glideajax.js</code></td><td>Client Script</td><td><a href="01_DEVELOPMENT.html#part-13-cs2">01 Part 13</a></td></tr>
+<tr><td><code>catalog/RP_submit_leave.js</code></td><td>Record Producer</td><td><a href="03_SERVICE_CATALOG.html#part-4-producer-script">03 Part 4</a></td></tr>
+<tr><td><code>server/scheduled_jobs/annual_accrual.js</code></td><td>Scheduled Job</td><td><a href="06_NOTIFICATIONS_EVENTS_JOBS.html#part-3-job">06 Part 3</a></td></tr>
+<tr><td><code>portal/widgets/hrlx_my_leaves/*.js</code></td><td>Widget client/server</td><td><a href="04_SERVICE_PORTAL.html#part-1-widget-my-leaves">04 Part 1</a></td></tr>
+<tr><td><code>portal/widgets/hrlx_balance/*.js</code></td><td>Widget client/server</td><td><a href="04_SERVICE_PORTAL.html#part-2-widget-balance">04 Part 2</a></td></tr>
+<tr><td><code>server/script_includes/HRLXProIntegrationUtilsV2.js</code></td><td>Script Include</td><td><a href="12_INTEGRATION_FULL_GUIDE.html#part-1-integration-si">12 Part 1</a></td></tr>
+<tr><td><code>server/rest/inbound_scripted_rest_leave.js</code></td><td>REST resource</td><td><a href="12_INTEGRATION_FULL_GUIDE.html#part-3-post-leave">12 Part 3</a></td></tr>
+</tbody></table>
+<p>Browse all: <a href="scripts/index.html">Scripts portal</a> · Inventory: <a href="SCRIPTS_INVENTORY.html">SCRIPTS_INVENTORY.html</a></p>
+<h3>Verify checklist</h3>
+<ul><li>Every row opens a Part with Full script block.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Pick one row → paste → run linked Part demo.</p></div>
+<h2 id="scripts-verify">Scripts chapter verify checklist</h2>
+<ol><li>Paste workflow followed.</li><li>Mapping table covers BR, SI, catalog, job, portal, REST.</li></ol>
+
+</article>
+    <nav class="chapter-nav"><a href="14_AI_SERVICENOW_AGENTS.html">← Chapter 14</a><span>Chapter 15</span><a href="16_SDK_FULL_DEV_ADMIN_FROM_SCRATCH.html">Chapter 16 →</a></nav>
+    <p class="footer">HR Leave · Studio from scratch · scope x_786686_hr_leave · replace {BASE} with your instance URL</p>
+  </main>
+
+  <script src="assets/docs.js"></script>
+  <script>
+    (function () {
+      var BASE = 'https://dev398980.service-now.com';
+      document.querySelectorAll('a[href*="{BASE}"]').forEach(function (a) {
+        a.href = a.href.split('{BASE}').join(BASE);
+      });
+    })();
+  </script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

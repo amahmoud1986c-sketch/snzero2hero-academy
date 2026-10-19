@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11 — Studio Practice Companion | HR Leave Australia</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+  <style>
+    .field-table th { white-space: nowrap; }
+    .step-num { font-weight: 700; color: var(--brand-2); }
+    .demo-box { border-left: 4px solid var(--brand-2); padding: .35rem 0 .35rem .85rem; margin: .75rem 0; }
+    .chapter-nav { display: flex; justify-content: space-between; gap: 1rem; margin: 2rem 0 1rem; padding: 1rem; background: #f8fafc; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All</a>
+      <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Links</a>
+      <a href="SCHEMA_AND_DATA.html">Schema</a>
+      <a href="scripts/index.html">Scripts</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+      <span class="badge">Chapter 11</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>11 — Studio Practice Companion</h1>
+      <p>Day-to-day Studio workflow — points to chapters 01–12. No external CLI.</p>
+      <div class="meta-grid">
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.72rem">e5f5bc9493a303507520703efaba104d</code></div>
+        <div><strong>Instance lab</strong><code style="color:#fff;font-size:.72rem">dev398980</code></div>
+        <div><strong>URL token</strong><code style="color:#fff">{BASE}</code></div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Quick open</strong>
+<a href="#viz11">Visual map</a>
+<a href="{BASE}/$studio.do">Studio</a>
+<a href="scripts/index.html">Scripts portal</a>
+    </div>
+    <article class="content">
+
+<div class="glance" id="viz11">
+  <h3>Visual map — Ch.11 · Studio daily practice</h3>
+  <div class="grid3">
+    <div class="box"><strong>See in 10 seconds</strong><p>Picker · update set · one artefact family</p></div>
+    <div class="box"><strong>You build</strong><p>Habit loop</p></div>
+    <div class="box"><strong>Track</strong><p>Development</p></div>
+  </div>
+  <div class="flow"><div class="n"><b>PICK</b>HR Leave</div><span class="arrow">→</span><div class="n"><b>SET</b>Yours</div><span class="arrow">→</span><div class="n"><b>EDIT</b>One family</div><span class="arrow">→</span><div class="n"><b>TEST</b>Then next</div></div>
+  <div class="chips"><a class="chip url" href="{BASE}/$studio.do">↗ $studio.do</a><a class="chip url" href="{BASE}/sys_update_set_list.do">↗ sys_update_set_list.do</a></div>
+  <div class="chips"><span class="chip do">✓ Glance picker every New</span><span class="chip dont">✗ Studio edit if SDK owns it</span></div>
+  <p class="note-sm">Full visual path (all chapters): <a href="VISUAL_FROM_SCRATCH_00_16.html">VISUAL_FROM_SCRATCH_00_16.html</a></p>
+</div>
+<div class="ok">
+<p><strong>Studio-only from scratch:</strong> Studio practice companion only. Build the core app via 01 Development and Studio Create All first.</p>
+<p>Also open: <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Direct Links</a> · <a href="SCHEMA_AND_DATA.html">Schema</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All Objects</a> · Previous: <a href="10_IMPLEMENTATION_AND_CONFIG.html">10 Implementation</a></p>
+</div>
+<h2 id="how-objects-relate">How chapters map to Studio work</h2>
+<div class="ok"><p>Part 1 daily workflow → Part 2 object-type table (chapters 01–12) → Part 3 scripts portal for paste-ready code.</p></div>
+<hr />
+<h2 id="rule0">Rule 0 — Before any object (Application + Update Set + Studio)</h2>
+<p>Repeat these checks before creating or editing any application file. This section is also <strong>section 00 Update Set</strong> — create the capture set first.</p>
+<ol>
+  <li><span class="step-num">Application picker</span> — top-right globe / application menu → select <strong>HR Leave</strong> (<code>x_786686_hr_leave</code>). Never leave <em>Global</em> selected when creating scoped artifacts.</li>
+  <li><span class="step-num">Update Set</span> — All → <strong>System Update Sets → Local Update Sets</strong> → <strong>New</strong>:
+    <table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+    <tr><td>Name</td><td><code>HR Leave – Build</code></td></tr>
+    <tr><td>Application</td><td>HR Leave</td></tr>
+    <tr><td>State</td><td>In Progress</td></tr>
+    <tr><td>Description</td><td>Captures all HR Leave lab artifacts</td></tr></table>
+    After submit: open the record → click <strong>Make Current</strong>. Direct list: <a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a>
+  </li>
+  <li><span class="step-num">Open Studio</span> — <a href="{BASE}/$studio.do">{BASE}/$studio.do</a> → confirm header shows <strong>HR Leave</strong>.</li>
+</ol>
+<div class="warn"><p>If artifacts land in Global scope, delete them and recreate under HR Leave. ACLs and events created globally will not behave correctly for this app.</p></div>
+<div class="demo-box"><p><strong>Verify Update Set:</strong> Create a test Script Include in Studio → open <strong>HR Leave – Build</strong> → Related List <strong>Customer Updates</strong> shows the new file.</p></div>
+<hr />
+<h2 id="part-1-daily-workflow">Part 1: Daily Workflow in Studio</h2>
+<h3>Purpose</h3>
+<p>Repeatable steps every time you create or edit HR Leave artifacts.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> Studio → HR Leave application</nav>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Set Application picker to <strong>HR Leave</strong> (<code>x_786686_hr_leave</code>).</li>
+<li>Set Local Update Set current (HR Leave – Build).</li>
+<li>Open <a href="{BASE}/$studio.do">Studio</a> → select HR Leave.</li>
+<li>Create Application File → choose type (Table, Business Rule, Client Script, Script Include, …).</li>
+<li>Fill every form field from the matching chapter Part section.</li>
+<li>Paste script from embedded <code>&lt;pre&gt;</code> blocks or <a href="scripts/index.html">Scripts portal</a>.</li>
+<li>Save → open list/form URL → run Verify + Demo for that Part.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Customer Updates shows new artifact in HR Leave – Build.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>One object per session: create → verify → demo before moving on.</p></div>
+<hr />
+<h2 id="part-2-object-type-table">Part 2: Object Type → Chapter Map (01–12)</h2>
+<h3>Purpose</h3>
+<p>Quick lookup: which chapter documents each ServiceNow object type.</p>
+<table class="field-table"><thead><tr><th>Object</th><th>Studio / Navigation</th><th>Chapter · Part</th></tr></thead><tbody>
+<tr><td>Application / Tables / SI / BR / CS / UI</td><td>Studio → Create Application File</td><td><a href="01_DEVELOPMENT.html">01</a> Parts 1–15</td></tr>
+<tr><td>Roles / Groups / Users / ACLs / Properties</td><td>Security / User Administration</td><td><a href="02_ADMINISTRATION.html">02</a> Parts 1–6</td></tr>
+<tr><td>Record Producer / Category</td><td>Service Catalog</td><td><a href="03_SERVICE_CATALOG.html">03</a> Parts 1–5</td></tr>
+<tr><td>Portal widgets / Page</td><td>Service Portal</td><td><a href="04_SERVICE_PORTAL.html">04</a> Parts 1–3</td></tr>
+<tr><td>UI Builder workspace</td><td>Now Experience → UI Builder</td><td><a href="05_WORKSPACE_UIBUILDER.html">05</a> Parts 1–4</td></tr>
+<tr><td>Events / Notifications / Jobs</td><td>System Policy / System Definition</td><td><a href="06_NOTIFICATIONS_EVENTS_JOBS.html">06</a> Parts 1–3</td></tr>
+<tr><td>Reports / Dashboard</td><td>Reports / Dashboards</td><td><a href="07_REPORTS_DASHBOARDS_PA.html">07</a> Parts 1–2</td></tr>
+<tr><td>ATF</td><td>Automated Test Framework</td><td><a href="08_ATF_TESTING.html">08</a> Parts 1–4</td></tr>
+<tr><td>Menu / Modules / Flow</td><td>Application Menus / Flow Designer</td><td><a href="09_MODULES_AND_INTEGRATION.html">09</a> Parts 1–3</td></tr>
+<tr><td>Seed / UAT / Update Set</td><td>Background scripts / Update Sets</td><td><a href="10_IMPLEMENTATION_AND_CONFIG.html">10</a> Parts 1–4</td></tr>
+<tr><td>Scripted REST</td><td>System Web Services</td><td><a href="12_INTEGRATION_FULL_GUIDE.html">12</a> Parts 1–4</td></tr>
+</tbody></table>
+<h3>Verify checklist</h3>
+<ul><li>Every row links to a chapter with Part anchors (not OBJ).</li></ul>
+<hr />
+<h2 id="part-3-scripts-portal">Part 3: Scripts Portal</h2>
+<h3>Purpose</h3>
+<p>Browse paste-ready scripts mirrored from <code>HR_Leave_App/src/</code> on disk.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>Local</strong> <a href="scripts/index.html">Scripts portal</a> · <strong>Studio paste</strong> matching chapter Part Full script blocks</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="scripts/index.html">scripts/index.html</a> · <a href="15_CLAUDE_CLI_CODE_SERVICENOW.html">15 Scripts mapping</a></div>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Open Scripts portal → find script by name (e.g. RP_submit_leave.js, annual_accrual.js).</li>
+<li>Copy from HTML pre block OR open chapter Part Full script section.</li>
+<li>Paste into Studio form Script field while Application = HR Leave.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>Script saves without syntax errors in Studio.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p><a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All Objects</a> · <a href="16_SDK_FULL_DEV_ADMIN_FROM_SCRATCH.html">16 Master Path</a></p></div>
+<h2 id="practice-verify">Practice companion verify checklist</h2>
+<ol><li>Workflow habit: picker + Update Set before every create.</li><li>Object table bookmarked.</li><li>Scripts portal used for paste source.</li></ol>
+
+</article>
+    <nav class="chapter-nav"><a href="10_IMPLEMENTATION_AND_CONFIG.html">← Chapter 10</a><span>Chapter 11</span><a href="12_INTEGRATION_FULL_GUIDE.html">Chapter 12 →</a></nav>
+    <p class="footer">HR Leave · Studio from scratch · scope x_786686_hr_leave · replace {BASE} with your instance URL</p>
+  </main>
+
+  <script src="assets/docs.js"></script>
+  <script>
+    (function () {
+      var BASE = 'https://dev398980.service-now.com';
+      document.querySelectorAll('a[href*="{BASE}"]').forEach(function (a) {
+        a.href = a.href.split('{BASE}').join(BASE);
+      });
+    })();
+  </script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

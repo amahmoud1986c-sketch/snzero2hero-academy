@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ServiceNow Reports · Dashboards · Performance Analytics — Complete Guide | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>ServiceNow Reports · Dashboards · Performance Analytics — Complete Guide</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/$report.do">Create Report</a>
+<a href="{BASE}/pa_dashboards_list.do">Dashboards</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave list</a>
+</div>
+    <article class="content">
+<h1 id="servicenow-reports-dashboards-performance-analytics-complete-guide">ServiceNow Reports · Dashboards · Performance Analytics — Complete Guide</h1>
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (current family, Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>URLs catalog:</strong> <a href="SERVICENOW_DIRECT_URLS_CATALOG.html">SERVICENOW_DIRECT_URLS_CATALOG.md</a><br />
+<strong>1-week study + deploy:</strong> <a href="SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a><br />
+<strong>HR Leave app:</strong> Scope <code>x_786686_hr_leave</code> · <a href="../APPLICATION.html">HR_Leave_App/APPLICATION.md</a><br />
+<strong>Deep HR Leave labs:</strong> <a href="../07_REPORTS_DASHBOARDS_PA.html">HR_Leave_App/07_REPORTS_DASHBOARDS_PA.md</a></p>
+</blockquote>
+<p><strong>الغرض:</strong> دليل ناضج للتقارير واللوحات و PA — مع روابط مباشرة لكل مكوّن + تطبيق عملي على HR Leave و ITSM.</p>
+<p><code>{BASE}</code> = <code>https://YOUR_INSTANCE.service-now.com</code></p>
+<hr />
+<h2 id="1">1) روابط مباشرة (افتحها أولًا)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Filter Navigator</th>
+<th>Direct URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Report Designer / Create New</td>
+<td><code>reports</code> · <code>create new</code></td>
+<td><a class="direct-url" href="{BASE}/$report.do"><code>{BASE}/$report.do</code></a></td>
+</tr>
+<tr>
+<td>Report homepage</td>
+<td><code>report_home</code></td>
+<td><a class="direct-url" href="{BASE}/report_home.do"><code>{BASE}/report_home.do</code></a></td>
+</tr>
+<tr>
+<td>All reports</td>
+<td><code>sys_report</code></td>
+<td><a class="direct-url" href="{BASE}/sys_report_list.do"><code>{BASE}/sys_report_list.do</code></a></td>
+</tr>
+<tr>
+<td>Dashboards list</td>
+<td><code>dashboards</code></td>
+<td><a class="direct-url" href="{BASE}/pa_dashboards_list.do"><code>{BASE}/pa_dashboards_list.do</code></a></td>
+</tr>
+<tr>
+<td>Open dashboard designer</td>
+<td><code>pa_dashboard</code></td>
+<td><a class="direct-url" href="{BASE}/$pa_dashboard.do"><code>{BASE}/$pa_dashboard.do</code></a></td>
+</tr>
+<tr>
+<td>PA Indicators</td>
+<td><code>indicators</code></td>
+<td><a class="direct-url" href="{BASE}/pa_indicators_list.do"><code>{BASE}/pa_indicators_list.do</code></a></td>
+</tr>
+<tr>
+<td>PA Breakdowns / Dimensions</td>
+<td><code>breakdowns</code></td>
+<td><a class="direct-url" href="{BASE}/pa_dimensions_list.do"><code>{BASE}/pa_dimensions_list.do</code></a></td>
+</tr>
+<tr>
+<td>PA Widgets</td>
+<td><code>pa widgets</code></td>
+<td><a class="direct-url" href="{BASE}/pa_widgets_list.do"><code>{BASE}/pa_widgets_list.do</code></a></td>
+</tr>
+<tr>
+<td>Data Collectors</td>
+<td><code>data collectors</code></td>
+<td><a class="direct-url" href="{BASE}/pa_collectors_list.do"><code>{BASE}/pa_collectors_list.do</code></a></td>
+</tr>
+<tr>
+<td>Scorecards</td>
+<td><code>scorecards</code></td>
+<td><a class="direct-url" href="{BASE}/pa_scorecards_list.do"><code>{BASE}/pa_scorecards_list.do</code></a></td>
+</tr>
+<tr>
+<td>Scheduled reports</td>
+<td><code>scheduled reports</code></td>
+<td><a class="direct-url" href="{BASE}/sysauto_report_list.do"><code>{BASE}/sysauto_report_list.do</code></a></td>
+</tr>
+<tr>
+<td>Database Views</td>
+<td><code>database views</code></td>
+<td><a class="direct-url" href="{BASE}/sys_db_view_list.do"><code>{BASE}/sys_db_view_list.do</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Next Experience frame example:<br />
+<a class="direct-url" href="{BASE}/now/nav/ui/classic/params/target/sys_report_list.do"><code>{BASE}/now/nav/ui/classic/params/target/sys_report_list.do</code></a></p>
+<hr />
+<h2 id="2-reports-vs-dashboards-vs-pa">2) Reports vs Dashboards vs PA</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<table>
+<thead>
+<tr>
+<th>أداة</th>
+<th>متى تستخدمها</th>
+<th>بيانات</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Report</strong></td>
+<td>سؤال لحظي على جدول</td>
+<td>Live query</td>
+</tr>
+<tr>
+<td><strong>Dashboard</strong></td>
+<td>عدة تقارير/PA في شاشة واحدة للعمليات</td>
+<td>Live + PA widgets</td>
+</tr>
+<tr>
+<td><strong>Performance Analytics</strong></td>
+<td>اتجاهات، أهداف، مقارنة يومية/أسبوعية</td>
+<td>Snapshots عبر Data Collector</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-lab-a-hr-leave-day-4">3) Lab A — أربعة تقارير HR Leave (Day 4)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<p><strong>Source table:</strong> <code>x_786686_hr_leave_req_v2</code><br />
+<strong>Open data:</strong> <a class="direct-url" href="{BASE}/x_786686_hr_leave_req_v2_list.do"><code>{BASE}/x_786686_hr_leave_req_v2_list.do</code></a><br />
+<strong>Create:</strong> <a class="direct-url" href="{BASE}/$report.do"><code>{BASE}/$report.do</code></a></p>
+<table>
+<thead>
+<tr>
+<th>Report name</th>
+<th>Type</th>
+<th>Group / Filter</th>
+<th>Share roles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HRLX Leaves by Type</td>
+<td>Bar</td>
+<td>Group: <code>u_leave_type</code></td>
+<td><code>x_786686_hr_leave.hr_admin</code></td>
+</tr>
+<tr>
+<td>HRLX Leaves by State</td>
+<td>Pie</td>
+<td>Group: <code>u_state</code></td>
+<td>hr_admin · manager</td>
+</tr>
+<tr>
+<td>HRLX Pending Approvals</td>
+<td>List</td>
+<td>Filter: <code>u_state=submitted</code></td>
+<td>manager · hr_admin</td>
+</tr>
+<tr>
+<td>HRLX Days by Month</td>
+<td>Trend / Time series</td>
+<td>Trend field: <code>u_start_date</code> · Aggregate: Sum <code>u_days_count</code></td>
+<td>hr_admin</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_1">خطوات الإنشاء (كل تقرير)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<ol>
+<li>افتح <a class="direct-url" href="{BASE}/$report.do"><code>{BASE}/$report.do</code></a>  </li>
+<li>Data source = Table → <code>x_786686_hr_leave_req_v2</code>  </li>
+<li>اختر Type  </li>
+<li>Configure Group by / Filter / Aggregation  </li>
+<li>Save → Sharing → Roles  </li>
+<li>Add to Dashboard (الخطوة التالية)</li>
+</ol>
+<h3 id="itsm">تقرير ITSM سريع (نفس اليوم)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<table>
+<thead>
+<tr>
+<th>Report</th>
+<th>Table</th>
+<th>URL to browse data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open Incidents by Priority</td>
+<td><code>incident</code></td>
+<td><a class="direct-url" href="{BASE}/incident_list.do"><code>{BASE}/incident_list.do</code></a></td>
+</tr>
+<tr>
+<td>Changes this week</td>
+<td><code>change_request</code></td>
+<td><a class="direct-url" href="{BASE}/change_request_list.do"><code>{BASE}/change_request_list.do</code></a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-lab-b-dashboard-hr-leave-ops">4) Lab B — Dashboard «HR Leave Ops»</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<ol>
+<li><a class="direct-url" href="{BASE}/pa_dashboards_list.do"><code>{BASE}/pa_dashboards_list.do</code></a> → New  </li>
+<li>Name: <strong>HR Leave Ops</strong>  </li>
+<li>Add the 4 HRLX reports as widgets (2×2)  </li>
+<li>Optional Interactive Filter on <code>u_leave_type</code>  </li>
+<li>Share with Group: HR Managers / HR Admins  </li>
+</ol>
+<p><strong>Also add (maturity):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Widget</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open Incidents (list or bar)</td>
+<td>ITSM report</td>
+</tr>
+<tr>
+<td>Open CSM Cases</td>
+<td><code>sn_customerservice_case</code></td>
+</tr>
+</tbody>
+</table>
+<p>CSM list: <a class="direct-url" href="{BASE}/sn_customerservice_case_list.do"><code>{BASE}/sn_customerservice_case_list.do</code></a></p>
+<hr />
+<h2 id="5-lab-c-performance-analytics">5) Lab C — Performance Analytics (إن وُجد الترخيص)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<blockquote>
+<p>على بعض PDI قد يكون PA محدودًا — إن فشل التفعيل، أكمل بالتقارير فقط.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Indicators</td>
+<td><a class="direct-url" href="{BASE}/pa_indicators_list.do"><code>{BASE}/pa_indicators_list.do</code></a></td>
+</tr>
+<tr>
+<td>Collectors</td>
+<td><a class="direct-url" href="{BASE}/pa_collectors_list.do"><code>{BASE}/pa_collectors_list.do</code></a></td>
+</tr>
+<tr>
+<td>Widgets</td>
+<td><a class="direct-url" href="{BASE}/pa_widgets_list.do"><code>{BASE}/pa_widgets_list.do</code></a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="hr-leave">مؤشرات مقترحة لـ HR Leave</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Formula idea</th>
+<th>Breakdown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Submitted Leaves / day</td>
+<td>Count where <code>u_state=submitted</code></td>
+<td><code>u_leave_type</code></td>
+</tr>
+<tr>
+<td>Approval rate</td>
+<td>Approved / (Approved+Rejected)</td>
+<td>Department</td>
+</tr>
+<tr>
+<td>Avg days requested</td>
+<td>Avg <code>u_days_count</code></td>
+<td><code>u_leave_type</code></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>New Indicator → Frequency Daily  </li>
+<li>Link Data Collector job  </li>
+<li>Run collector once (or wait for schedule)  </li>
+<li>Create PA Widget → pin on <strong>HR Leave Ops</strong></li>
+</ol>
+<hr />
+<h2 id="6-sharing-roles-security">6) Sharing · Roles · Security</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<table>
+<thead>
+<tr>
+<th>Practice</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Share reports by <strong>role</strong> not everyone</td>
+<td>Least privilege</td>
+</tr>
+<tr>
+<td>Dashboard for managers ≠ admin dictionary reports</td>
+<td>Separation of duties</td>
+</tr>
+<tr>
+<td>ACL on table still applies</td>
+<td>Report لا يتجاوز ACL</td>
+</tr>
+<tr>
+<td>Use groups</td>
+<td><code>sys_user_group_list.do</code></td>
+</tr>
+</tbody>
+</table>
+<p>HR scoped roles filter:<br />
+<a class="direct-url" href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave"><code>{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave</code></a></p>
+<hr />
+<h2 id="7-scheduled-delivery">7) Scheduled delivery</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email report weekly to HR</td>
+<td><a class="direct-url" href="{BASE}/sysauto_report_list.do"><code>{BASE}/sysauto_report_list.do</code></a></td>
+</tr>
+<tr>
+<td>PDF/Excel export from report</td>
+<td>Report → Share / Schedule</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-module-cross-reports">8) Module cross-reports (أسبوع النشر)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Useful report</th>
+<th>Data URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ITSM</strong></td>
+<td>Incidents by Assignment Group</td>
+<td><a class="direct-url" href="{BASE}/incident_list.do"><code>{BASE}/incident_list.do</code></a></td>
+</tr>
+<tr>
+<td><strong>CSM</strong></td>
+<td>Cases by Account</td>
+<td><a class="direct-url" href="{BASE}/sn_customerservice_case_list.do"><code>{BASE}/sn_customerservice_case_list.do</code></a></td>
+</tr>
+<tr>
+<td><strong>FSM</strong></td>
+<td>Open Work Order Tasks</td>
+<td><a class="direct-url" href="{BASE}/wm_task_list.do"><code>{BASE}/wm_task_list.do</code></a></td>
+</tr>
+<tr>
+<td><strong>SPM</strong></td>
+<td>Active Projects by Portfolio</td>
+<td><a class="direct-url" href="{BASE}/pm_project_list.do"><code>{BASE}/pm_project_list.do</code></a></td>
+</tr>
+<tr>
+<td><strong>HR Leave</strong></td>
+<td>Pending approvals</td>
+<td><a class="direct-url" href="{BASE}/x_786686_hr_leave_req_v2_list.do"><code>{BASE}/x_786686_hr_leave_req_v2_list.do</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>ضع واحدًا من كل موديول في لوحة <strong>Ops Command</strong> يوم 7 للديمو.</p>
+<hr />
+<h2 id="9-checklist">9) Checklist</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<ul>
+<li>[ ] 4 تقارير HRLX محفوظة في <a class="direct-url" href="{BASE}/sys_report_list.do"><code>{BASE}/sys_report_list.do</code></a>  </li>
+<li>[ ] Dashboard <strong>HR Leave Ops</strong> منشور لأدوار HR  </li>
+<li>[ ] تقرير Incident واحد على الأقل  </li>
+<li>[ ] (اختياري) PA Indicator + Collector يعمل  </li>
+<li>[ ] مشاركة بالأدوار لا بـ public  </li>
+</ul>
+<hr />
+<h2 id="10-troubleshoot">10) Troubleshoot</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$report.do">Create Report</a><a href="{BASE}/sys_report_list.do">Reports</a><a href="{BASE}/pa_dashboards_list.do">Dashboards</a><a href="{BASE}/pa_indicators_list.do">PA Indicators</a></nav>
+<table>
+<thead>
+<tr>
+<th>مشكلة</th>
+<th>حل سريع</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Report فارغ</td>
+<td>تحقق من البيانات في list URL + Filter</td>
+</tr>
+<tr>
+<td>لا يظهر PA</td>
+<td>Plugin/license · Data Collector لم يعمل</td>
+</tr>
+<tr>
+<td>مستخدم لا يرى التقرير</td>
+<td>Sharing roles + ACL على الجدول</td>
+</tr>
+<tr>
+<td>Wrong scope fields</td>
+<td>Application picker = HR Leave عند بناء التقارير المخصّصة</td>
+</tr>
+</tbody>
+</table>
+<p>تفاصيل متقدمة (Calendar, Scripted filters, Database Views):<br />
+<a href="../07_REPORTS_DASHBOARDS_PA.html">HR_Leave_App/07_REPORTS_DASHBOARDS_PA.md</a></p>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

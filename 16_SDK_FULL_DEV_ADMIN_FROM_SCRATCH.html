@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>16 — Studio From Scratch Master Path | HR Leave Australia</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+  <style>
+    .field-table th { white-space: nowrap; }
+    .step-num { font-weight: 700; color: var(--brand-2); }
+    .demo-box { border-left: 4px solid var(--brand-2); padding: .35rem 0 .35rem .85rem; margin: .75rem 0; }
+    .chapter-nav { display: flex; justify-content: space-between; gap: 1rem; margin: 2rem 0 1rem; padding: 1rem; background: #f8fafc; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All</a>
+      <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Links</a>
+      <a href="SCHEMA_AND_DATA.html">Schema</a>
+      <a href="scripts/index.html">Scripts</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+      <span class="badge">Chapter 16</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>16 — Studio From Scratch Master Path</h1>
+      <p>Ordered create path 01→15 with Part anchors, master links, E2E gate</p>
+      <div class="meta-grid">
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.72rem">e5f5bc9493a303507520703efaba104d</code></div>
+        <div><strong>Instance lab</strong><code style="color:#fff;font-size:.72rem">dev398980</code></div>
+        <div><strong>URL token</strong><code style="color:#fff">{BASE}</code></div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Quick open</strong>
+<a href="#viz16">Visual map</a>
+<a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All Objects</a>
+<a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Links</a>
+    </div>
+    <article class="content">
+
+<div class="glance" id="viz16">
+  <h3>Visual map — Ch.16 · Master path 01→15</h3>
+  <div class="grid3">
+    <div class="box"><strong>See in 10 seconds</strong><p>Ordered build · E2E gate · joiner spine</p></div>
+    <div class="box"><strong>You build</strong><p>Follow table order only</p></div>
+    <div class="box"><strong>Track</strong><p>Implementation</p></div>
+  </div>
+  <div class="flow"><div class="n"><b>01+02</b>Security gate</div><span class="arrow">→</span><div class="n"><b>03+06+09</b>Approve path</div><span class="arrow">→</span><div class="n"><b>08+10</b>Go-live gate</div><span class="arrow">→</span><div class="n"><b>14</b>AI last</div></div>
+  <div class="chips"><a class="chip url" href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">↗ STUDIO_CREATE_ALL_OBJECTS_01_16.html</a><a class="chip url" href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">↗ PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html</a></div>
+  <div class="chips"><span class="chip do">✓ Hard gates stop the path</span><span class="chip dont">✗ Portal before ACLs</span></div>
+  <p class="note-sm">Full visual path (all chapters): <a href="VISUAL_FROM_SCRATCH_00_16.html">VISUAL_FROM_SCRATCH_00_16.html</a></p>
+</div>
+<div class="ok">
+<p><strong>Studio-only from scratch:</strong> Ordered master path linking chapters 01–15. Each chapter is self-contained; this page is the index.</p>
+<p>Also open: <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Direct Links</a> · <a href="SCHEMA_AND_DATA.html">Schema</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All Objects</a> · Previous: <a href="15_CLAUDE_CLI_CODE_SERVICENOW.html">15 Scripts</a></p>
+</div>
+<h2 id="how-objects-relate">Master path overview</h2>
+<div class="ok">
+<p>Complete walkthrough with every script embedded: <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All Objects</a></p>
+<p>Every form property + suggested values: <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Links</a></p>
+</div>
+<hr />
+<h2 id="rule0">Rule 0 — Before any object (Application + Update Set + Studio)</h2>
+<p>Repeat these checks before creating or editing any application file. This section is also <strong>section 00 Update Set</strong> — create the capture set first.</p>
+<ol>
+  <li><span class="step-num">Application picker</span> — top-right globe / application menu → select <strong>HR Leave</strong> (<code>x_786686_hr_leave</code>). Never leave <em>Global</em> selected when creating scoped artifacts.</li>
+  <li><span class="step-num">Update Set</span> — All → <strong>System Update Sets → Local Update Sets</strong> → <strong>New</strong>:
+    <table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+    <tr><td>Name</td><td><code>HR Leave – Build</code></td></tr>
+    <tr><td>Application</td><td>HR Leave</td></tr>
+    <tr><td>State</td><td>In Progress</td></tr>
+    <tr><td>Description</td><td>Captures all HR Leave lab artifacts</td></tr></table>
+    After submit: open the record → click <strong>Make Current</strong>. Direct list: <a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a>
+  </li>
+  <li><span class="step-num">Open Studio</span> — <a href="{BASE}/$studio.do">{BASE}/$studio.do</a> → confirm header shows <strong>HR Leave</strong>.</li>
+</ol>
+<div class="warn"><p>If artifacts land in Global scope, delete them and recreate under HR Leave. ACLs and events created globally will not behave correctly for this app.</p></div>
+<div class="demo-box"><p><strong>Verify Update Set:</strong> Create a test Script Include in Studio → open <strong>HR Leave – Build</strong> → Related List <strong>Customer Updates</strong> shows the new file.</p></div>
+<hr />
+<h2 id="part-1-ordered-path">Part 1: Ordered Path Table (01→15)</h2>
+<h3>Purpose</h3>
+<p>Recommended build order with Part anchors — follow sequentially on a fresh PDI.</p>
+<h3>Verify checklist</h3>
+
+<table class="field-table"><thead><tr><th>Order</th><th>Chapter</th><th>Parts</th><th>Start anchor</th></tr></thead><tbody>
+<tr><td>1</td><td><a href="01_DEVELOPMENT.html">01 Development</a></td><td>15+</td><td><a href="01_DEVELOPMENT.html#part-1-application">Part 1 Application</a></td></tr>
+<tr><td>2</td><td><a href="02_ADMINISTRATION.html">02 Administration</a></td><td>6</td><td><a href="02_ADMINISTRATION.html#part-1-roles">Part 1 Roles</a></td></tr>
+<tr><td>3</td><td><a href="03_SERVICE_CATALOG.html">03 Service Catalog</a></td><td>5</td><td><a href="03_SERVICE_CATALOG.html#part-1-category">Part 1 Category</a></td></tr>
+<tr><td>4</td><td><a href="06_NOTIFICATIONS_EVENTS_JOBS.html">06 Notifications</a></td><td>3</td><td><a href="06_NOTIFICATIONS_EVENTS_JOBS.html#part-1-events">Part 1 Events</a></td></tr>
+<tr><td>5</td><td><a href="09_MODULES_AND_INTEGRATION.html">09 Modules</a></td><td>4</td><td><a href="09_MODULES_AND_INTEGRATION.html#part-1-menu">Part 1 Menu</a></td></tr>
+<tr><td>6</td><td><a href="04_SERVICE_PORTAL.html">04 Portal</a></td><td>3</td><td><a href="04_SERVICE_PORTAL.html#part-1-widget-my-leaves">Part 1 Widget</a></td></tr>
+<tr><td>7</td><td><a href="05_WORKSPACE_UIBUILDER.html">05 Workspace</a></td><td>4</td><td><a href="05_WORKSPACE_UIBUILDER.html#part-1-workspace">Part 1 Experience</a></td></tr>
+<tr><td>8</td><td><a href="07_REPORTS_DASHBOARDS_PA.html">07 Reports</a></td><td>2</td><td><a href="07_REPORTS_DASHBOARDS_PA.html#part-1-report">Part 1 Report</a></td></tr>
+<tr><td>9</td><td><a href="08_ATF_TESTING.html">08 ATF</a></td><td>4</td><td><a href="08_ATF_TESTING.html#part-1-suite">Part 1 Suite</a></td></tr>
+<tr><td>10</td><td><a href="12_INTEGRATION_FULL_GUIDE.html">12 Integration</a></td><td>4</td><td><a href="12_INTEGRATION_FULL_GUIDE.html#part-1-integration-si">Part 1 SI</a></td></tr>
+<tr><td>11</td><td><a href="10_IMPLEMENTATION_AND_CONFIG.html">10 Implementation</a></td><td>4</td><td><a href="10_IMPLEMENTATION_AND_CONFIG.html#part-1-seed-data">Part 1 Seed</a></td></tr>
+<tr><td>12</td><td><a href="13_2HOUR_MASTER_SUMMARY.html">13 Summary</a></td><td>3</td><td><a href="13_2HOUR_MASTER_SUMMARY.html#part-1-quick-checklist">Part 1 Checklist</a></td></tr>
+<tr><td>13</td><td><a href="11_SDK_CURSOR_CLAUDE.html">11 Practice</a></td><td>3</td><td><a href="11_SDK_CURSOR_CLAUDE.html#part-1-daily-workflow">Part 1 Workflow</a></td></tr>
+<tr><td>14</td><td><a href="15_CLAUDE_CLI_CODE_SERVICENOW.html">15 Scripts</a></td><td>2</td><td><a href="15_CLAUDE_CLI_CODE_SERVICENOW.html#part-1-paste-studio">Part 1 Paste</a></td></tr>
+<tr><td>15</td><td><a href="14_AI_SERVICENOW_AGENTS.html">14 AI</a> (optional)</td><td>—</td><td>After core E2E gate</td></tr>
+</tbody></table>
+<hr />
+<h2 id="part-2-master-links">Part 2: Master Links</h2>
+<h3>Purpose</h3>
+<p>One-click entry points for the three master reference pages.</p>
+<ul>
+<li><a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All Objects 01–16</a> — every Part with Full script</li>
+<li><a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Professional Properties + Direct Links</a> — all 9 properties + URLs</li>
+<li><a href="SCHEMA_AND_DATA.html">Schema and Data</a> — u_* columns and seed values</li>
+<li><a href="scripts/index.html">Scripts portal</a> — mirror of src/ on disk</li>
+<li><a href="index.html">Portal index</a> — all chapters 01–16</li>
+</ul>
+<h3>Verify checklist</h3>
+<ul><li>All five links open from this page.</li></ul>
+<hr />
+<h2 id="part-3-e2e-gate">Part 3: E2E Gate</h2>
+<h3>Purpose</h3>
+<p>Do not proceed to optional chapters (14 AI, advanced gaps) until this gate passes.</p>
+<h3>Prerequisites</h3>
+<ul><li>Ordered path rows 1–11 complete (through 10 Implementation seed + export).</li></ul>
+<h3>Verify checklist</h3>
+<div class="ok"><p>Run <a href="10_IMPLEMENTATION_AND_CONFIG.html#part-2-e2e-checklist">10 Part 2 E2E Checklist</a> — all items green.</p></div>
+
+<ol>
+<li><strong>Update Set current</strong> — HR Leave – Build (<a href="01_DEVELOPMENT.html#rule0">Rule 0</a>).</li>
+<li><strong>Seed employee</strong> — <a href="01_DEVELOPMENT.html#part-2-table-employee">Part 2: employee_v2</a>, <a href="02_ADMINISTRATION.html#part-3-users">Part 3: Users</a>.</li>
+<li><strong>Seed balance</strong> — <a href="01_DEVELOPMENT.html#part-4-table-bal">Part 4: bal_v2</a>.</li>
+<li><strong>Create request</strong> — <a href="01_DEVELOPMENT.html#part-3-table-req">Part 3: req_v2</a> OR <a href="03_SERVICE_CATALOG.html#part-2-record-producer">Part 2: Record Producer</a>.</li>
+<li><strong>Submit</strong> — <a href="01_DEVELOPMENT.html#part-15-ui-action">Part 15: UI Action</a>, <a href="01_DEVELOPMENT.html#part-9-br2">Part 9: BR2</a>.</li>
+<li><strong>Flow approval</strong> — <a href="09_MODULES_AND_INTEGRATION.html#part-3-flow">Part 3: Flow</a>.</li>
+<li><strong>Audit</strong> — <a href="01_DEVELOPMENT.html#part-10-br3">Part 10: BR3</a>.</li>
+<li><strong>Balance</strong> — BR3 updates bal_v2.</li>
+<li><strong>Notification</strong> — <a href="06_NOTIFICATIONS_EVENTS_JOBS.html#part-2-notifications">Part 2: Notifications</a>.</li>
+<li><strong>Security</strong> — <a href="02_ADMINISTRATION.html#part-4-acls">Part 4: ACLs</a>.</li>
+<li><strong>Portal</strong> — <a href="04_SERVICE_PORTAL.html#part-3-page-home">Part 3: hrlx_home</a>.</li>
+<li><strong>REST</strong> — <a href="12_INTEGRATION_FULL_GUIDE.html#part-4-rest-explorer">Part 4: REST Explorer</a>.</li>
+</ol>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>employee1 submit → manager1 approve → balance + audit + notification → portal home → optional REST 201.</p></div>
+<h2 id="master-verify">Master path verify checklist</h2>
+<ol>
+<li>Followed ordered path table through Implementation.</li>
+<li>Master links bookmarked.</li>
+<li>E2E gate passed.</li>
+</ol>
+
+</article>
+    <nav class="chapter-nav"><a href="15_CLAUDE_CLI_CODE_SERVICENOW.html">← Chapter 15</a><span>Chapter 16</span></nav>
+    <p class="footer">HR Leave · Studio from scratch · scope x_786686_hr_leave · replace {BASE} with your instance URL</p>
+  </main>
+
+  <script src="assets/docs.js"></script>
+  <script>
+    (function () {
+      var BASE = 'https://dev398980.service-now.com';
+      document.querySelectorAll('a[href*="{BASE}"]').forEach(function (a) {
+        a.href = a.href.split('{BASE}').join(BASE);
+      });
+    })();
+  </script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

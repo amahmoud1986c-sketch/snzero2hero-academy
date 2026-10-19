@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>12 — Integration Full Guide (Studio From Scratch) | HR Leave Australia</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+  <style>
+    .field-table th { white-space: nowrap; }
+    .step-num { font-weight: 700; color: var(--brand-2); }
+    .demo-box { border-left: 4px solid var(--brand-2); padding: .35rem 0 .35rem .85rem; margin: .75rem 0; }
+    .chapter-nav { display: flex; justify-content: space-between; gap: 1rem; margin: 2rem 0 1rem; padding: 1rem; background: #f8fafc; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All</a>
+      <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Links</a>
+      <a href="SCHEMA_AND_DATA.html">Schema</a>
+      <a href="scripts/index.html">Scripts</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+      <span class="badge">Chapter 12</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>12 — Integration Full Guide (Studio From Scratch)</h1>
+      <p>Scripted REST + Integration Script Include — REST Explorer test</p>
+      <div class="meta-grid">
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.72rem">e5f5bc9493a303507520703efaba104d</code></div>
+        <div><strong>Instance lab</strong><code style="color:#fff;font-size:.72rem">dev398980</code></div>
+        <div><strong>URL token</strong><code style="color:#fff">{BASE}</code></div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Quick open</strong>
+<a href="#viz12">Visual map</a>
+<a href="{BASE}/$restapi.do">REST API Explorer</a>
+<a href="{BASE}/sys_ws_definition_list.do">Scripted REST APIs</a>
+    </div>
+    <article class="content">
+
+<div class="glance" id="viz12">
+  <h3>Visual map — Ch.12 · Integration — REST API</h3>
+  <div class="grid3">
+    <div class="box"><strong>See in 10 seconds</strong><p>Scripted REST POST /leave · Explorer</p></div>
+    <div class="box"><strong>You build</strong><p>hrlx_api_v2 · integration user</p></div>
+    <div class="box"><strong>Track</strong><p>Development</p></div>
+  </div>
+  <div class="flow"><div class="n"><b>SI</b>IntegrationUtils</div><span class="arrow">→</span><div class="n"><b>API</b>Scripted REST</div><span class="arrow">→</span><div class="n"><b>ACL</b>execute</div><span class="arrow">→</span><div class="n"><b>POST</b>201</div><span class="arrow">→</span><div class="n"><b>ROW</b>req_v2</div></div>
+  <div class="chips"><a class="chip url" href="{BASE}/$restapi.do">↗ $restapi.do</a><a class="chip url" href="{BASE}/sys_ws_definition_list.do">↗ sys_ws_definition_list.do</a></div>
+  <div class="chips"><span class="chip do">✓ Resolve by employee_id</span><span class="chip do">✓ Idempotency key</span><span class="chip dont">✗ Table API for integration</span><span class="chip dont">✗ Password in script</span></div>
+  <p class="note-sm">Full visual path (all chapters): <a href="VISUAL_FROM_SCRATCH_00_16.html">VISUAL_FROM_SCRATCH_00_16.html</a></p>
+</div>
+<div class="ok">
+<p><strong>Studio-only from scratch:</strong> Scripted REST + Integration Script Include — create in ServiceNow UI only. Test with REST API Explorer.</p>
+<p>Also open: <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Direct Links</a> · <a href="SCHEMA_AND_DATA.html">Schema</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All Objects</a> · Previous: <a href="11_SDK_CURSOR_CLAUDE.html">11 Studio Practice</a></p>
+</div>
+<h2 id="how-objects-relate">How integration objects relate</h2>
+<div class="ok">
+<pre style="white-space:pre-wrap;font-family:var(--mono);font-size:.85rem;background:#0b1220;color:#e2e8f0;padding:1rem;border-radius:12px">
+Part 1 HRLXProIntegrationUtilsV2 (SI)
+  └── Part 2 REST API definition (hrlx_api_v2)
+        └── Part 3 POST /leave resource script
+              └── Part 4 REST Explorer test (201 + sys_id)
+</pre>
+</div>
+<hr />
+<h2 id="rule0">Rule 0 — Before any object (Application + Update Set + Studio)</h2>
+<p>Repeat these checks before creating or editing any application file. This section is also <strong>section 00 Update Set</strong> — create the capture set first.</p>
+<ol>
+  <li><span class="step-num">Application picker</span> — top-right globe / application menu → select <strong>HR Leave</strong> (<code>x_786686_hr_leave</code>). Never leave <em>Global</em> selected when creating scoped artifacts.</li>
+  <li><span class="step-num">Update Set</span> — All → <strong>System Update Sets → Local Update Sets</strong> → <strong>New</strong>:
+    <table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+    <tr><td>Name</td><td><code>HR Leave – Build</code></td></tr>
+    <tr><td>Application</td><td>HR Leave</td></tr>
+    <tr><td>State</td><td>In Progress</td></tr>
+    <tr><td>Description</td><td>Captures all HR Leave lab artifacts</td></tr></table>
+    After submit: open the record → click <strong>Make Current</strong>. Direct list: <a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a>
+  </li>
+  <li><span class="step-num">Open Studio</span> — <a href="{BASE}/$studio.do">{BASE}/$studio.do</a> → confirm header shows <strong>HR Leave</strong>.</li>
+</ol>
+<div class="warn"><p>If artifacts land in Global scope, delete them and recreate under HR Leave. ACLs and events created globally will not behave correctly for this app.</p></div>
+<div class="demo-box"><p><strong>Verify Update Set:</strong> Create a test Script Include in Studio → open <strong>HR Leave – Build</strong> → Related List <strong>Customer Updates</strong> shows the new file.</p></div>
+<hr />
+<h2 id="part-1-integration-si">Part 1: Script Include — HRLXProIntegrationUtilsV2</h2>
+<h3>Purpose</h3>
+<p>Inbound create + outbound ERP push helpers for REST integration.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> Studio → Script Include</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_script_include_list.do?sysparm_query=name=HRLXProIntegrationUtilsV2">{BASE}/sys_script_include_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul>
+<li><a href="02_ADMINISTRATION.html#part-1-roles">Part 1: Roles</a> integration role.</li>
+<li><a href="01_DEVELOPMENT.html#part-3-table-req">Part 3: req_v2</a>.</li>
+</ul>
+<h3>Form fields</h3>
+<table class="field-table"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody>
+<tr><td><strong>Name</strong></td><td>HRLXProIntegrationUtilsV2</td></tr>
+<tr><td>Client callable</td><td>false</td></tr>
+<tr><td>Active</td><td>true</td></tr>
+<tr><td>Application</td><td>HR Leave</td></tr>
+</tbody></table>
+<h3>Step-by-step create</h3>
+<ol><li>Studio → Script Include → New → fill fields → paste script → Save.</li></ol>
+<h3>Full script — HRLXProIntegrationUtilsV2</h3>
+<pre><code>/**
+ * Script Include: HRLXProIntegrationUtilsV2
+ * Scope: x_786686_hr_leave
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ * Client callable: false
+ * Purpose: Inbound create + Outbound push for leave integration.
+ */
+var HRLXProIntegrationUtilsV2 = Class.create();
+HRLXProIntegrationUtilsV2.prototype = {
+
+    initialize: function () {},
+
+    /**
+     * Inbound: create a leave request from a JSON payload (string).
+     * @return {string} sys_id of created record
+     */
+    inboundCreateLeave: function (jsonString) {
+        var data = {};
+        try { data = JSON.parse(jsonString); } catch (e) { return ''; }
+
+        var gr = new GlideRecord('x_786686_hr_leave_req_v2');
+        gr.initialize();
+        gr.u_employee_ref = this._findEmployeeByExternalId(data.employee_id);
+        gr.u_requested_for_user = this._findUserByEmployee(data.employee_id);
+        gr.u_leave_type = data.leave_type || 'annual';
+        gr.u_start_date = data.start_date || '';
+        gr.u_end_date = data.end_date || '';
+        gr.u_reason = data.reason || '';
+        gr.u_state = 'submitted';
+        return gr.insert();
+    },
+
+    /**
+     * Outbound: push an approved leave decision to ERP/Payroll.
+     * Endpoint + auth come from system properties (no secrets in code).
+     */
+    outboundPushDecision: function (leaveSysId) {
+        var gr = new GlideRecord('x_786686_hr_leave_req_v2');
+        if (!gr.get(leaveSysId)) return false;
+
+        var endpoint = gs.getProperty('x_786686_hr_leave.config.erp_endpoint');
+        if (!endpoint) {
+            gs.error('[HRLX] Missing property x_786686_hr_leave.config.erp_endpoint');
+            return false;
+        }
+
+        try {
+            var r = new sn_ws.RESTMessageV2();
+            r.setEndpoint(endpoint);
+            r.setHttpMethod('POST');
+            r.setRequestHeader('Content-Type', 'application/json');
+            r.setRequestBody(JSON.stringify({
+                number: gr.getValue('u_number'),
+                employee: gr.getDisplayValue('u_employee_ref'),
+                type: gr.getValue('u_leave_type'),
+                days: gr.getValue('u_days_count'),
+                state: gr.getValue('u_state')
+            }));
+            var resp = r.execute();
+            var code = resp.getStatusCode();
+            gs.info('[HRLX] Outbound status ' + code);
+            return (code >= 200 &amp;&amp; code &lt; 300);
+        } catch (ex) {
+            gs.error('[HRLX] Outbound error: ' + ex.message);
+            return false;
+        }
+    },
+
+    _findEmployeeByExternalId: function (employeeId) {
+        var e = new GlideRecord('x_786686_hr_leave_employee_v2');
+        e.addQuery('u_employee_id', employeeId);
+        e.query();
+        return e.next() ? e.getUniqueValue() : '';
+    },
+
+    _findUserByEmployee: function (employeeId) {
+        var e = new GlideRecord('x_786686_hr_leave_employee_v2');
+        e.addQuery('u_employee_id', employeeId);
+        e.query();
+        return e.next() ? e.getValue('u_user') : '';
+    },
+
+    type: 'HRLXProIntegrationUtilsV2'
+};</code></pre>
+<h3>Verify checklist</h3>
+<ul><li>Script Include active under HR Leave.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Background: <code>new x_786686_hr_leave.HRLXProIntegrationUtilsV2()</code> instantiates.</p></div>
+<hr />
+<h2 id="part-2-rest-api">Part 2: Scripted REST API Definition</h2>
+<h3>Purpose</h3>
+<p>Defines scoped API hrlx_api_v2 with authentication and default ACLs.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> System Web Services → Scripted REST APIs</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/sys_ws_definition_list.do">{BASE}/sys_ws_definition_list.do</a></div>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-1-integration-si">Part 1: Integration SI</a>.</li></ul>
+<h3>Form fields — Scripted REST API (sys_ws_definition)</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td>HRLX Leave API</td></tr>
+<tr><td>API ID</td><td>hrlx_api_v2</td></tr>
+<tr><td>Application</td><td>HR Leave (NOT Global)</td></tr>
+<tr><td>API namespace</td><td>x_786686_hr_leave (read-only)</td></tr>
+<tr><td>Requires authentication</td><td>true</td></tr>
+<tr><td>Default ACLs</td><td>ACL execute requiring x_786686_hr_leave.integration</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol>
+<li>Scripted REST APIs → New → fill API fields.</li>
+<li>Security → Default ACLs → execute requires integration role.</li>
+<li>Submit API record before adding resource in Part 3.</li>
+</ol>
+<h3>Verify checklist</h3>
+<ul><li>API ID hrlx_api_v2 under HR Leave (not Global).</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>API appears in REST Explorer namespace list.</p></div>
+<hr />
+<h2 id="part-3-post-leave">Part 3: Resource Script — POST /leave</h2>
+<h3>Purpose</h3>
+<p>POST /api/x_786686_hr_leave/hrlx_api_v2/leave creates submitted req_v2 from JSON.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> Scripted REST API → Resources → New</nav>
+<h3>Prerequisites</h3>
+<ul><li><a href="#part-2-rest-api">Part 2: REST API Definition</a>.</li><li>employee_v2 with u_employee_id = EMP001.</li></ul>
+<h3>Form fields — Resource POST /leave</h3>
+<table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+<tr><td>Name</td><td>Create Leave</td></tr>
+<tr><td>HTTP method</td><td>POST</td></tr>
+<tr><td>Relative path</td><td>/leave</td></tr>
+<tr><td>Active</td><td>true</td></tr></table>
+<h3>Step-by-step create</h3>
+<ol><li>Related Resources → New → POST /leave → paste resource script → Submit.</li></ol>
+<h3>Full script — Resource (POST /leave)</h3>
+<pre><code>/**
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: 83d5298c932b8f107520703efaba1072
+ * Scripted REST API Resource: Create Leave (Inbound)
+ * API ID:        hrlx_api_v2
+ * Resource:      POST /leave
+ * Full path:     /api/x_786686_hr_leave/hrlx_api_v2/leave
+ *
+ * TEST FIRST (no Postman until this works):
+ *   All > System Web Services > REST API Explorer  ($restapi.do)
+ *   Namespace: x_786686_hr_leave | API: hrlx_api_v2 | Resource: leave | POST
+ *   Request body: { "employee_id":"EMP001", "leave_type":"annual", ... }
+ *   Click Send → expect 201 → Copy as cURL
+ *
+ * Simpler alternative (Table API, no script):
+ *   Explorer → namespace now → Table API → x_786686_hr_leave_req_v2 → POST
+ *   See: src/server/rest/rest_api_explorer.md
+ *
+ * Create API record:
+ *   All > System Web Services > Scripted REST APIs > New + Resource POST /leave
+ */
+(function process(request, response) {
+
+    var data = request.body &amp;&amp; request.body.data ? request.body.data : {};
+
+    // Validate
+    if (!data.employee_id) {
+        response.setStatus(400);
+        return response.setBody({ error: 'employee_id is required' });
+    }
+    if (!data.start_date || !data.end_date) {
+        response.setStatus(400);
+        return response.setBody({ error: 'start_date and end_date are required' });
+    }
+
+    // Create via integration utility
+    var sysId = new x_786686_hr_leave.HRLXProIntegrationUtilsV2().inboundCreateLeave(JSON.stringify(data));
+
+    if (!sysId) {
+        response.setStatus(422);
+        return response.setBody({ error: 'Could not create leave request (employee not found?)' });
+    }
+
+    response.setStatus(201);
+    response.setBody({ sys_id: sysId, message: 'Leave request created' });
+
+})(request, response);</code></pre>
+<h3>Verify checklist</h3>
+<ul><li>Resource active; path /leave relative to API.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Test in Part 4 REST Explorer.</p></div>
+<hr />
+<h2 id="part-4-rest-explorer">Part 4: REST Explorer Test</h2>
+<h3>Purpose</h3>
+<p>Validate inbound POST returns 201 and creates req_v2 as integration user.</p>
+<h3>Navigation path</h3>
+<nav class="section-links"><strong>All &gt;</strong> System Web Services → REST API Explorer</nav>
+<h3>Direct URL</h3>
+<div class="url-box"><a href="{BASE}/$restapi.do">{BASE}/$restapi.do</a> · Endpoint: <code>/api/x_786686_hr_leave/hrlx_api_v2/leave</code></div>
+<h3>Prerequisites</h3>
+<ul><li>Parts 1–3 complete.</li><li>User hrlx.integration with integration + rest_service roles.</li></ul>
+<h3>Step-by-step create</h3>
+
+<ol>
+<li>Application = HR Leave.</li>
+<li>Studio → Script Include → HRLXProIntegrationUtilsV2 → paste script → Save.</li>
+<li>System Security → ACL → New: Type scripted_rest_api, Operation execute, Requires role integration → Save.</li>
+<li>Scripted REST APIs → New → fill API fields → Security tab → Default ACLs → add ACL → Submit.</li>
+<li>Related Resources → New → POST /leave → paste resource script → Submit.</li>
+<li>REST API Explorer → Namespace x_786686_hr_leave → API hrlx_api_v2 → Resource leave → POST.</li>
+<li>Body: {"employee_id":"EMP001","leave_type":"annual","start_date":"2026-06-01","end_date":"2026-06-05","reason":"Vacation"}</li>
+<li>Run as hrlx.integration (Impersonate) → Send → expect 201 + sys_id.</li>
+</ol>
+<h3>Verify checklist</h3>
+
+<ul>
+<li>201 response with sys_id.</li>
+<li>req_v2 row exists in submitted state.</li>
+<li>403 without integration role; 422 if EMP001 missing.</li>
+</ul>
+<h3>Demo / test</h3>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Explorer Send → copy cURL → verify record in req_v2 list.</p></div>
+<h2 id="integration-verify">Integration verify checklist</h2>
+<ol><li>SI + API + resource scoped to HR Leave.</li><li>POST returns 201.</li><li>req_v2 row in submitted state.</li><li>403 without integration role.</li></ol>
+
+</article>
+    <nav class="chapter-nav"><a href="11_SDK_CURSOR_CLAUDE.html">← Chapter 11</a><span>Chapter 12</span><a href="13_2HOUR_MASTER_SUMMARY.html">Chapter 13 →</a></nav>
+    <p class="footer">HR Leave · Studio from scratch · scope x_786686_hr_leave · replace {BASE} with your instance URL</p>
+  </main>
+
+  <script src="assets/docs.js"></script>
+  <script>
+    (function () {
+      var BASE = 'https://dev398980.service-now.com';
+      document.querySelectorAll('a[href*="{BASE}"]').forEach(function (a) {
+        a.href = a.href.split('{BASE}').join(BASE);
+      });
+    })();
+  </script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

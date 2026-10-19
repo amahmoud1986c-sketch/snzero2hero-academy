@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>13 — 2-Hour Master Summary (Studio Revision) | HR Leave Australia</title>
+  <link rel="stylesheet" href="assets/docs.css" />
+  <style>
+    .field-table th { white-space: nowrap; }
+    .step-num { font-weight: 700; color: var(--brand-2); }
+    .demo-box { border-left: 4px solid var(--brand-2); padding: .35rem 0 .35rem .85rem; margin: .75rem 0; }
+    .chapter-nav { display: flex; justify-content: space-between; gap: 1rem; margin: 2rem 0 1rem; padding: 1rem; background: #f8fafc; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="index.html">Portal</a>
+      <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All</a>
+      <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Links</a>
+      <a href="SCHEMA_AND_DATA.html">Schema</a>
+      <a href="scripts/index.html">Scripts</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+      <span class="badge">Chapter 13</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>13 — 2-Hour Master Summary (Studio Revision)</h1>
+      <p>Revision checklist linking chapter Parts — Studio only</p>
+      <div class="meta-grid">
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.72rem">e5f5bc9493a303507520703efaba104d</code></div>
+        <div><strong>Instance lab</strong><code style="color:#fff;font-size:.72rem">dev398980</code></div>
+        <div><strong>URL token</strong><code style="color:#fff">{BASE}</code></div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Quick open</strong>
+<a href="#viz13">Visual map</a>
+<a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All</a>
+<a href="16_SDK_FULL_DEV_ADMIN_FROM_SCRATCH.html">16 Master Path</a>
+    </div>
+    <article class="content">
+
+<div class="glance" id="viz13">
+  <h3>Visual map — Ch.13 · 2-hour summary</h3>
+  <div class="grid3">
+    <div class="box"><strong>See in 10 seconds</strong><p>OBJ-01→32 revision with openable proof</p></div>
+    <div class="box"><strong>You build</strong><p>Reviewer checklist</p></div>
+    <div class="box"><strong>Track</strong><p>Implementation</p></div>
+  </div>
+  <div class="flow"><div class="n"><b>LIST</b>OBJ</div><span class="arrow">→</span><div class="n"><b>OPEN</b>Instance</div><span class="arrow">→</span><div class="n"><b>TICK</b>Only if proven</div></div>
+  <div class="chips"><a class="chip url" href="16_SDK_FULL_DEV_ADMIN_FROM_SCRATCH.html">↗ 16_SDK_FULL_DEV_ADMIN_FROM_SCRATCH.html</a></div>
+  <div class="chips"><span class="chip do">✓ Open record = proof</span><span class="chip dont">✗ Tick from memory</span></div>
+  <p class="note-sm">Full visual path (all chapters): <a href="VISUAL_FROM_SCRATCH_00_16.html">VISUAL_FROM_SCRATCH_00_16.html</a></p>
+</div>
+<div class="ok">
+<p><strong>Studio-only from scratch:</strong> 2-hour revision checklist — confirm every Part exists before demo or interview.</p>
+<p>Also open: <a href="PROFESSIONAL_HR_CREATE_PROPERTIES_AND_LINKS.html">Properties + Direct Links</a> · <a href="SCHEMA_AND_DATA.html">Schema</a> · <a href="STUDIO_CREATE_ALL_OBJECTS_01_16.html">Studio Create All Objects</a> · Previous: <a href="12_INTEGRATION_FULL_GUIDE.html">12 Integration</a></p>
+</div>
+<h2 id="how-objects-relate">Revision map</h2>
+<div class="ok"><p>Part 1 quick checklist → Part 2 E2E demo → Part 3 optional gaps.</p></div>
+<hr />
+<h2 id="rule0">Rule 0 — Before any object (Application + Update Set + Studio)</h2>
+<p>Repeat these checks before creating or editing any application file. This section is also <strong>section 00 Update Set</strong> — create the capture set first.</p>
+<ol>
+  <li><span class="step-num">Application picker</span> — top-right globe / application menu → select <strong>HR Leave</strong> (<code>x_786686_hr_leave</code>). Never leave <em>Global</em> selected when creating scoped artifacts.</li>
+  <li><span class="step-num">Update Set</span> — All → <strong>System Update Sets → Local Update Sets</strong> → <strong>New</strong>:
+    <table class="field-table"><tr><th>Field</th><th>Value</th></tr>
+    <tr><td>Name</td><td><code>HR Leave – Build</code></td></tr>
+    <tr><td>Application</td><td>HR Leave</td></tr>
+    <tr><td>State</td><td>In Progress</td></tr>
+    <tr><td>Description</td><td>Captures all HR Leave lab artifacts</td></tr></table>
+    After submit: open the record → click <strong>Make Current</strong>. Direct list: <a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a>
+  </li>
+  <li><span class="step-num">Open Studio</span> — <a href="{BASE}/$studio.do">{BASE}/$studio.do</a> → confirm header shows <strong>HR Leave</strong>.</li>
+</ol>
+<div class="warn"><p>If artifacts land in Global scope, delete them and recreate under HR Leave. ACLs and events created globally will not behave correctly for this app.</p></div>
+<div class="demo-box"><p><strong>Verify Update Set:</strong> Create a test Script Include in Studio → open <strong>HR Leave – Build</strong> → Related List <strong>Customer Updates</strong> shows the new file.</p></div>
+<hr />
+<h2 id="part-1-quick-checklist">Part 1: Quick Checklist (Chapter Parts)</h2>
+<h3>Purpose</h3>
+<p>Fast pass/fail review of all create objects linked by chapter Part anchors.</p>
+<h3>Verify checklist</h3>
+
+<table class="field-table"><thead><tr><th>Area</th><th>Object</th><th>Chapter · Part</th></tr></thead><tbody>
+<tr><td>00</td><td>Update Set HR Leave – Build</td><td><a href="01_DEVELOPMENT.html#rule0">01 Rule 0</a></td></tr>
+<tr><td>01</td><td>Application HR Leave</td><td><a href="01_DEVELOPMENT.html#part-1-application">01 Part 1</a></td></tr>
+<tr><td>02–05</td><td>Tables employee/req/bal/audit _v2</td><td><a href="01_DEVELOPMENT.html#part-2-table-employee">01 Parts 2–5</a></td></tr>
+<tr><td>06–07</td><td>Script Includes</td><td><a href="01_DEVELOPMENT.html#part-6-script-include-leave">01 Parts 6–7</a></td></tr>
+<tr><td>08–11</td><td>BR1–BR4</td><td><a href="01_DEVELOPMENT.html#part-8-br1">01 Parts 8–11</a></td></tr>
+<tr><td>12–15</td><td>CS, UI Policy, UI Action, Menu, Flow</td><td><a href="01_DEVELOPMENT.html#part-12-cs1">01 Parts 12–15+</a></td></tr>
+<tr><td>16–20</td><td>Roles, Groups, Users, ACLs, Properties</td><td><a href="02_ADMINISTRATION.html#part-1-roles">02 Parts 1–5</a></td></tr>
+<tr><td>21–23</td><td>Events, Notifications, Job</td><td><a href="06_NOTIFICATIONS_EVENTS_JOBS.html#part-1-events">06 Parts 1–3</a></td></tr>
+<tr><td>24–27</td><td>Menu, Modules, Flow</td><td><a href="09_MODULES_AND_INTEGRATION.html#part-1-menu">09 Parts 1–3</a></td></tr>
+<tr><td>26</td><td>Record Producer</td><td><a href="03_SERVICE_CATALOG.html#part-2-record-producer">03 Part 2</a></td></tr>
+<tr><td>28</td><td>Portal widgets + page</td><td><a href="04_SERVICE_PORTAL.html#part-1-widget-my-leaves">04 Parts 1–3</a></td></tr>
+<tr><td>29</td><td>UI Builder workspace</td><td><a href="05_WORKSPACE_UIBUILDER.html#part-1-workspace">05 Parts 1–4</a></td></tr>
+<tr><td>30</td><td>Report + Dashboard</td><td><a href="07_REPORTS_DASHBOARDS_PA.html#part-1-report">07 Parts 1–2</a></td></tr>
+<tr><td>31</td><td>ATF suite</td><td><a href="08_ATF_TESTING.html#part-1-suite">08 Parts 1–4</a></td></tr>
+<tr><td>32</td><td>Scripted REST</td><td><a href="12_INTEGRATION_FULL_GUIDE.html#part-2-rest-api">12 Parts 1–4</a></td></tr>
+</tbody></table>
+<hr />
+<h2 id="part-2-e2e-demo">Part 2: E2E Demo</h2>
+<h3>Purpose</h3>
+<p>Single scripted walkthrough proving leave lifecycle.</p>
+<div class="ok"><p>Complete after core Parts through Flow (extended: Portal, REST).</p></div>
+
+<ol>
+<li><strong>Update Set current</strong> — HR Leave – Build (<a href="01_DEVELOPMENT.html#rule0">Rule 0</a>).</li>
+<li><strong>Seed employee</strong> — <a href="01_DEVELOPMENT.html#part-2-table-employee">Part 2: employee_v2</a>, <a href="02_ADMINISTRATION.html#part-3-users">Part 3: Users</a>.</li>
+<li><strong>Seed balance</strong> — <a href="01_DEVELOPMENT.html#part-4-table-bal">Part 4: bal_v2</a>.</li>
+<li><strong>Create request</strong> — <a href="01_DEVELOPMENT.html#part-3-table-req">Part 3: req_v2</a> OR <a href="03_SERVICE_CATALOG.html#part-2-record-producer">Part 2: Record Producer</a>.</li>
+<li><strong>Submit</strong> — <a href="01_DEVELOPMENT.html#part-15-ui-action">Part 15: UI Action</a>, <a href="01_DEVELOPMENT.html#part-9-br2">Part 9: BR2</a>.</li>
+<li><strong>Flow approval</strong> — <a href="09_MODULES_AND_INTEGRATION.html#part-3-flow">Part 3: Flow</a>.</li>
+<li><strong>Audit</strong> — <a href="01_DEVELOPMENT.html#part-10-br3">Part 10: BR3</a>.</li>
+<li><strong>Balance</strong> — BR3 updates bal_v2.</li>
+<li><strong>Notification</strong> — <a href="06_NOTIFICATIONS_EVENTS_JOBS.html#part-2-notifications">Part 2: Notifications</a>.</li>
+<li><strong>Security</strong> — <a href="02_ADMINISTRATION.html#part-4-acls">Part 4: ACLs</a>.</li>
+<li><strong>Portal</strong> — <a href="04_SERVICE_PORTAL.html#part-3-page-home">Part 3: hrlx_home</a>.</li>
+<li><strong>REST</strong> — <a href="12_INTEGRATION_FULL_GUIDE.html#part-4-rest-explorer">Part 4: REST Explorer</a>.</li>
+</ol>
+<h3>Demo / test</h3>
+<div class="demo-box"><p>Timebox: 30 minutes for full E2E as three personas.</p></div>
+<hr />
+<h2 id="part-3-gaps-optional">Part 3: Gaps (Optional)</h2>
+<h3>Purpose</h3>
+<p>Items often skipped in a 2-hour sprint — schedule if time allows.</p>
+<ul>
+<li><a href="05_WORKSPACE_UIBUILDER.html">05 Workspace</a> — Now Experience lists</li>
+<li><a href="07_REPORTS_DASHBOARDS_PA.html">07 Reports</a> — dashboard for managers</li>
+<li><a href="08_ATF_TESTING.html">08 ATF</a> — regression suite</li>
+<li><a href="12_INTEGRATION_FULL_GUIDE.html">12 REST</a> — inbound POST /leave</li>
+<li><a href="14_AI_SERVICENOW_AGENTS.html">14 AI Agents</a> — platform AI (post core app)</li>
+</ul>
+<h3>Verify checklist</h3>
+<ul><li>Core path (01, 02, 03, 06, 09, 10) complete before optional gaps.</li></ul>
+<h3>Demo / test</h3>
+<div class="demo-box"><p><a href="16_SDK_FULL_DEV_ADMIN_FROM_SCRATCH.html#part-3-e2e-gate">16 Part 3 E2E gate</a></p></div>
+<h2 id="summary-verify">Summary verify checklist</h2>
+<ol><li>All Part links resolve.</li><li>E2E demo passes.</li><li>Gaps documented if deferred.</li></ol>
+
+</article>
+    <nav class="chapter-nav"><a href="12_INTEGRATION_FULL_GUIDE.html">← Chapter 12</a><span>Chapter 13</span><a href="14_AI_SERVICENOW_AGENTS.html">Chapter 14 →</a></nav>
+    <p class="footer">HR Leave · Studio from scratch · scope x_786686_hr_leave · replace {BASE} with your instance URL</p>
+  </main>
+
+  <script src="assets/docs.js"></script>
+  <script>
+    (function () {
+      var BASE = 'https://dev398980.service-now.com';
+      document.querySelectorAll('a[href*="{BASE}"]').forEach(function (a) {
+        a.href = a.href.split('{BASE}').join(BASE);
+      });
+    })();
+  </script>
+
+<script src="assets/author-brand.js" defer></script>
+</body>
+</html>

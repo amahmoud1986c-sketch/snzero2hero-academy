@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ServiceNow Development Complete Guide — من الصفر إلى الاحتراف | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>ServiceNow Development Complete Guide — من الصفر إلى الاحتراف</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/$studio.do">Studio</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/sys_script_client_list.do">Client Scripts</a>
+<a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a>
+</div>
+    <article class="content">
+<h1 id="servicenow-development-complete-guide">ServiceNow Development Complete Guide — من الصفر إلى الاحتراف</h1>
+<blockquote>
+<p><strong>Platform:</strong> ServiceNow Australia (Sep 2026) · <strong>Scope:</strong> <code>x_786686_hr_leave</code><br />
+دليل شامل للتطوير يغطي كل أنواع السكربتات والـ APIs والأدوات</p>
+</blockquote>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<ol>
+<li><a href="#1-development-environment-setup">Development Environment Setup</a></li>
+<li><a href="#2-server-side-scripting">Server-Side Scripting</a></li>
+<li><a href="#3-business-rules">Business Rules</a></li>
+<li><a href="#4-script-includes">Script Includes</a></li>
+<li><a href="#5-client-side-scripting">Client-Side Scripting</a></li>
+<li><a href="#6-glideajax">GlideAjax</a></li>
+<li><a href="#7-rest-apis">REST APIs</a></li>
+<li><a href="#8-flow-designer">Flow Designer</a></li>
+<li><a href="#9-ui-components">UI Components</a></li>
+<li><a href="#10-debugging">Debugging</a></li>
+</ol>
+<hr />
+<h2 id="1-development-environment-setup">1. Development Environment Setup</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$studio.do">Studio</a><a href="{BASE}/sys_metadata_list.do?sysparm_query=sys_scope%3Dc84db0e8839f0b509f02b0d6feaad3c9">Application Files</a><a href="../scripts/index.html">Scripts portal</a></nav>
+<h3 id="direct-urls">Direct URLs</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Studio</td>
+<td><a href="{BASE}/$studio.do">{BASE}/$studio.do</a></td>
+</tr>
+<tr>
+<td>Tables</td>
+<td><a href="{BASE}/sys_db_object_list.do">{BASE}/sys_db_object_list.do</a></td>
+</tr>
+<tr>
+<td>Scripts</td>
+<td><a href="{BASE}/sys_script_list.do">{BASE}/sys_script_list.do</a></td>
+</tr>
+<tr>
+<td>Update Sets</td>
+<td><a href="{BASE}/sys_update_set_list.do">{BASE}/sys_update_set_list.do</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="lab-1-create-application">Lab 1: Create Application</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// Step 1: Open Studio
+// All &gt; System Applications &gt; Studio
+
+// Step 2: Create New Application
+// Name: HR Leave Demo
+// Scope: x_786686_hr_leave
+
+// Step 3: Create Table
+var gr = new GlideRecord('sys_db_object');
+gr.initialize();
+gr.name = 'x_786686_hr_leave_request';
+gr.label = 'Leave Request';
+gr.super_class = 'task';
+gr.insert();
+</code></pre>
+<hr />
+<h2 id="2-server-side-scripting">2. Server-Side Scripting</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a><a href="../scripts/index.html">Scripts portal</a></nav>
+<h3 id="gliderecord-complete-reference">GlideRecord - Complete Reference</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// === QUERY ===
+var gr = new GlideRecord('incident');
+gr.addQuery('state', 1);
+gr.addQuery('priority', '&lt;=', 2);
+gr.addEncodedQuery('active=true^category=software');
+gr.orderByDesc('sys_created_on');
+gr.setLimit(100);
+gr.query();
+
+while (gr.next()) {
+    gs.info(gr.number + ': ' + gr.short_description);
+}
+
+// === INSERT ===
+var newRec = new GlideRecord('incident');
+newRec.initialize();
+newRec.short_description = 'Test incident';
+newRec.caller_id = gs.getUserID();
+var sys_id = newRec.insert();
+
+// === UPDATE ===
+var upd = new GlideRecord('incident');
+if (upd.get('number', 'INC0010001')) {
+    upd.state = 2;
+    upd.update();
+}
+
+// === DELETE ===
+var del = new GlideRecord('incident');
+del.addQuery('state', 7);
+del.deleteMultiple(); // Careful!
+</code></pre>
+<h3 id="glideaggregate">GlideAggregate</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">var ga = new GlideAggregate('incident');
+ga.addAggregate('COUNT');
+ga.addAggregate('AVG', 'reassignment_count');
+ga.groupBy('priority');
+ga.query();
+
+while (ga.next()) {
+    gs.info('Priority ' + ga.priority + ': ' + ga.getAggregate('COUNT'));
+}
+</code></pre>
+<h3 id="glidedatetime">GlideDateTime</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">var now = new GlideDateTime();
+var future = new GlideDateTime();
+future.addDays(30);
+
+var duration = GlideDateTime.subtract(now, future);
+gs.info('Days: ' + duration.getDayPart());
+
+// Business days
+var schedule = new GlideSchedule('08fcd0830a0a0b2600079f56b1adb9ae');
+var bizDays = schedule.duration(now, future);
+</code></pre>
+<hr />
+<h2 id="3-business-rules">3. Business Rules</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a><a href="../scripts/index.html">Scripts portal</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/sys_script_list.do">{BASE}/sys_script_list.do</a></p>
+<h3 id="types">Types</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>When</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>before</td>
+<td>Before save</td>
+<td>Validation, auto-populate</td>
+</tr>
+<tr>
+<td>after</td>
+<td>After save</td>
+<td>Notifications, related records</td>
+</tr>
+<tr>
+<td>async</td>
+<td>Background</td>
+<td>Heavy processing, integrations</td>
+</tr>
+<tr>
+<td>display</td>
+<td>Form load</td>
+<td>Scratchpad data</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-before-insert">Example: Before Insert</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// Name: HR Leave - Auto Populate
+// Table: x_786686_hr_leave_request
+// When: before insert
+
+(function executeRule(current, previous) {
+
+    // Get employee's manager
+    var emp = current.employee.getRefRecord();
+    if (emp.isValidRecord()) {
+        current.manager = emp.manager;
+        current.short_description = current.leave_type.getDisplayValue() + 
+            ' - ' + emp.name;
+    }
+
+    // Calculate duration
+    if (current.start_date &amp;&amp; current.end_date) {
+        var start = new GlideDateTime(current.start_date);
+        var end = new GlideDateTime(current.end_date);
+        var dur = GlideDateTime.subtract(start, end);
+        current.duration_days = dur.getDayPart() + 1;
+    }
+
+})(current, previous);
+</code></pre>
+<h3 id="example-validation">Example: Validation</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// Name: HR Leave - Validate Dates
+// When: before insert, update
+
+(function executeRule(current, previous) {
+
+    var start = new GlideDateTime(current.start_date);
+    var end = new GlideDateTime(current.end_date);
+    var today = new GlideDateTime();
+
+    if (start.before(today)) {
+        current.setAbortAction(true);
+        gs.addErrorMessage('Start date cannot be in the past');
+        return;
+    }
+
+    if (end.before(start)) {
+        current.setAbortAction(true);
+        gs.addErrorMessage('End date must be after start date');
+        return;
+    }
+
+    var days = GlideDateTime.subtract(start, end).getDayPart() + 1;
+    if (days &gt; 30) {
+        current.setAbortAction(true);
+        gs.addErrorMessage('Leave cannot exceed 30 days');
+    }
+
+})(current, previous);
+</code></pre>
+<h3 id="example-after-insert-approval">Example: After Insert - Approval</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<pre><code class="language-javascript">// Name: HR Leave - Create Approval
+// When: after insert
+
+(function executeRule(current, previous) {
+
+    var approval = new GlideRecord('sysapproval_approver');
+    approval.initialize();
+    approval.sysapproval = current.sys_id;
+    approval.source_table = 'x_786686_hr_leave_request';
+    approval.approver = current.manager;
+    approval.state = 'requested';
+    approval.insert();
+
+    gs.eventQueue('x_786686_hr_leave.request.submitted', current,
+        current.employee.email, current.manager.email);
+
+})(current, previous);
+</code></pre>
+<hr />
+<h2 id="4-script-includes">4. Script Includes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a><a href="{BASE}/$studio.do">Studio</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/sys_script_include_list.do">{BASE}/sys_script_include_list.do</a></p>
+<h3 id="basic-script-include">Basic Script Include</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a><a href="{BASE}/$studio.do">Studio</a></nav>
+<pre><code class="language-javascript">// Name: LeaveRequestUtil
+// API Name: x_786686_hr_leave.LeaveRequestUtil
+// Client Callable: false
+
+var LeaveRequestUtil = Class.create();
+LeaveRequestUtil.prototype = {
+
+    initialize: function() {
+        this.log = new GSLog('x_786686_hr_leave.log', 'LeaveRequestUtil');
+    },
+
+    createRequest: function(params) {
+        var gr = new GlideRecord('x_786686_hr_leave_request');
+        gr.initialize();
+        gr.employee = params.employee;
+        gr.leave_type = params.leaveType;
+        gr.start_date = params.startDate;
+        gr.end_date = params.endDate;
+        gr.reason = params.reason || '';
+        return gr.insert();
+    },
+
+    approveRequest: function(requestId, approverId) {
+        var gr = new GlideRecord('x_786686_hr_leave_request');
+        if (!gr.get(requestId)) return false;
+
+        gr.state = 3;
+        gr.approval_status = 'approved';
+        gr.work_notes = 'Approved by ' + this._getUserName(approverId);
+        gr.update();
+
+        // Deduct balance
+        new x_786686_hr_leave.LeaveBalanceUtil().deductBalance(
+            gr.employee.toString(),
+            gr.leave_type.toString(),
+            parseFloat(gr.duration_days)
+        );
+
+        return true;
+    },
+
+    getEmployeeRequests: function(employeeId, filters) {
+        var results = [];
+        filters = filters || {};
+
+        var gr = new GlideRecord('x_786686_hr_leave_request');
+        gr.addQuery('employee', employeeId);
+        if (filters.state) gr.addQuery('state', filters.state);
+        gr.orderByDesc('sys_created_on');
+        gr.query();
+
+        while (gr.next()) {
+            results.push({
+                sys_id: gr.getUniqueValue(),
+                number: gr.number.toString(),
+                leave_type: gr.leave_type.getDisplayValue(),
+                start_date: gr.start_date.getDisplayValue(),
+                duration: parseFloat(gr.duration_days) || 0,
+                state: gr.state.getDisplayValue()
+            });
+        }
+        return results;
+    },
+
+    _getUserName: function(userId) {
+        var user = new GlideRecord('sys_user');
+        return user.get(userId) ? user.name.toString() : 'Unknown';
+    },
+
+    type: 'LeaveRequestUtil'
+};
+</code></pre>
+<h3 id="leave-balance-utility">Leave Balance Utility</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// Name: LeaveBalanceUtil
+// API Name: x_786686_hr_leave.LeaveBalanceUtil
+
+var LeaveBalanceUtil = Class.create();
+LeaveBalanceUtil.prototype = {
+
+    initialize: function() {},
+
+    getBalance: function(employeeId, leaveType) {
+        leaveType = leaveType || 'annual';
+        var year = new GlideDateTime().getYearLocalTime();
+
+        var alloc = new GlideRecord('x_786686_hr_leave_allocation');
+        alloc.addQuery('employee', employeeId);
+        alloc.addQuery('leave_type', leaveType);
+        alloc.addQuery('year', year);
+        alloc.query();
+
+        if (alloc.next()) {
+            var allocated = parseInt(alloc.days_allocated) || 0;
+            var used = parseInt(alloc.days_used) || 0;
+            return allocated - used;
+        }
+        return 0;
+    },
+
+    getAllBalances: function(employeeId) {
+        var balances = {};
+        var types = ['annual', 'sick', 'emergency', 'unpaid'];
+
+        for (var i = 0; i &lt; types.length; i++) {
+            balances[types[i]] = this.getBalance(employeeId, types[i]);
+        }
+        return balances;
+    },
+
+    deductBalance: function(employeeId, leaveType, days) {
+        var year = new GlideDateTime().getYearLocalTime();
+
+        var alloc = new GlideRecord('x_786686_hr_leave_allocation');
+        alloc.addQuery('employee', employeeId);
+        alloc.addQuery('leave_type', leaveType);
+        alloc.addQuery('year', year);
+        alloc.query();
+
+        if (alloc.next()) {
+            alloc.days_used = (parseInt(alloc.days_used) || 0) + days;
+            alloc.update();
+            return true;
+        }
+        return false;
+    },
+
+    type: 'LeaveBalanceUtil'
+};
+</code></pre>
+<hr />
+<h2 id="5-client-side-scripting">5. Client-Side Scripting</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_client_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">Client Scripts</a><a href="../scripts/index.html">Scripts portal</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/sys_script_client_list.do">{BASE}/sys_script_client_list.do</a></p>
+<h3 id="g_form-api-reference">g_form API Reference</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<pre><code class="language-javascript">// Get/Set values
+var value = g_form.getValue('field_name');
+var display = g_form.getDisplayValue('reference_field');
+g_form.setValue('field_name', 'new_value');
+
+// Visibility
+g_form.setVisible('field_name', true);
+g_form.setDisplay('field_name', false);
+
+// Mandatory
+g_form.setMandatory('field_name', true);
+
+// Read-only
+g_form.setReadOnly('field_name', true);
+
+// Messages
+g_form.addInfoMessage('Success!');
+g_form.addErrorMessage('Error!');
+g_form.showFieldMsg('field', 'Invalid', 'error');
+g_form.hideFieldMsg('field');
+
+// Options
+g_form.addOption('choice_field', 'value', 'Label');
+g_form.removeOption('choice_field', 'value');
+g_form.clearOptions('choice_field');
+
+// Reference
+g_form.getReference('caller_id', function(ref) {
+    alert('Name: ' + ref.name);
+});
+</code></pre>
+<h3 id="onload-script">OnLoad Script</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// Name: Initialize Leave Form
+// Type: onLoad
+
+function onLoad() {
+    if (g_form.isNewRecord()) {
+        g_form.setValue('employee', g_user.userID);
+
+        if (g_scratchpad.leave_balances) {
+            var balances = JSON.parse(g_scratchpad.leave_balances);
+            g_form.addInfoMessage('Annual: ' + balances.annual + 
+                ' | Sick: ' + balances.sick + ' days');
+        }
+    }
+}
+</code></pre>
+<h3 id="onchange-script">OnChange Script</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<pre><code class="language-javascript">// Name: Calculate Duration
+// Type: onChange
+// Field: start_date, end_date
+
+function onChange(control, oldValue, newValue, isLoading) {
+    if (isLoading) return;
+
+    var start = g_form.getValue('start_date');
+    var end = g_form.getValue('end_date');
+
+    if (!start || !end) return;
+
+    var startDate = new Date(start);
+    var endDate = new Date(end);
+
+    if (endDate &lt; startDate) {
+        g_form.showFieldMsg('end_date', 'End must be after start', 'error');
+        return;
+    }
+
+    var days = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
+    g_form.setValue('duration_days', days);
+    g_form.hideFieldMsg('end_date');
+
+    checkBalance(days);
+}
+
+function checkBalance(days) {
+    var ga = new GlideAjax('x_786686_hr_leave.LeaveAjaxProcessor');
+    ga.addParam('sysparm_name', 'getBalance');
+    ga.addParam('sysparm_employee_id', g_form.getValue('employee'));
+    ga.addParam('sysparm_leave_type', g_form.getValue('leave_type'));
+
+    ga.getXMLAnswer(function(answer) {
+        var result = JSON.parse(answer);
+        if (days &gt; result.balance) {
+            g_form.showFieldMsg('duration_days', 
+                'Exceeds balance (' + result.balance + ')', 'error');
+        }
+    });
+}
+</code></pre>
+<h3 id="onsubmit-script">OnSubmit Script</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// Name: Validate Before Submit
+// Type: onSubmit
+
+function onSubmit() {
+    var duration = parseFloat(g_form.getValue('duration_days')) || 0;
+
+    if (duration &lt;= 0) {
+        g_form.addErrorMessage('Invalid duration');
+        return false;
+    }
+
+    if (duration &gt; 30) {
+        g_form.addErrorMessage('Cannot exceed 30 days');
+        return false;
+    }
+
+    return confirm('Submit this leave request?');
+}
+</code></pre>
+<hr />
+<h2 id="6-glideajax">6. GlideAjax</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="client-script">Client Script</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_client_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">Client Scripts</a><a href="../scripts/index.html">Scripts portal</a></nav>
+<pre><code class="language-javascript">function getEmployeeData(employeeId) {
+    var ga = new GlideAjax('x_786686_hr_leave.LeaveAjaxProcessor');
+    ga.addParam('sysparm_name', 'getEmployeeData');
+    ga.addParam('sysparm_employee_id', employeeId);
+
+    ga.getXMLAnswer(function(answer) {
+        try {
+            var result = JSON.parse(answer);
+            if (result.success) {
+                g_form.setValue('manager', result.manager_id);
+                g_form.addInfoMessage('Balance: ' + result.balance);
+            } else {
+                g_form.addErrorMessage(result.error);
+            }
+        } catch (e) {
+            g_form.addErrorMessage('Error: ' + e.message);
+        }
+    });
+}
+</code></pre>
+<h3 id="server-script-include">Server Script Include</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_include_list.do?sysparm_query=api_nameSTARTSWITHx_786686_hr_leave">Script Includes</a><a href="{BASE}/$studio.do">Studio</a></nav>
+<pre><code class="language-javascript">// Name: LeaveAjaxProcessor
+// Client Callable: true
+
+var LeaveAjaxProcessor = Class.create();
+LeaveAjaxProcessor.prototype = Object.extendsObject(AbstractAjaxProcessor, {
+
+    getBalance: function() {
+        var employeeId = this.getParameter('sysparm_employee_id');
+        var leaveType = this.getParameter('sysparm_leave_type') || 'annual';
+
+        var util = new x_786686_hr_leave.LeaveBalanceUtil();
+        var balance = util.getBalance(employeeId, leaveType);
+
+        return JSON.stringify({
+            success: true,
+            balance: balance
+        });
+    },
+
+    getEmployeeData: function() {
+        var employeeId = this.getParameter('sysparm_employee_id');
+
+        var emp = new GlideRecord('sys_user');
+        if (!emp.get(employeeId)) {
+            return JSON.stringify({ error: 'Employee not found' });
+        }
+
+        var util = new x_786686_hr_leave.LeaveBalanceUtil();
+
+        return JSON.stringify({
+            success: true,
+            name: emp.name.toString(),
+            email: emp.email.toString(),
+            manager_id: emp.manager.toString(),
+            manager_name: emp.manager.getDisplayValue(),
+            balance: util.getBalance(employeeId, 'annual')
+        });
+    },
+
+    checkAvailability: function() {
+        var employeeId = this.getParameter('sysparm_employee_id');
+        var startDate = this.getParameter('sysparm_start_date');
+        var endDate = this.getParameter('sysparm_end_date');
+
+        var gr = new GlideRecord('x_786686_hr_leave_request');
+        gr.addQuery('employee', employeeId);
+        gr.addQuery('state', 'NOT IN', '6,7');
+        var qc = gr.addQuery('start_date', '&lt;=', endDate);
+        qc.addCondition('end_date', '&gt;=', startDate);
+        gr.query();
+
+        var conflicts = [];
+        while (gr.next()) {
+            conflicts.push({
+                number: gr.number.toString(),
+                dates: gr.start_date.getDisplayValue() + ' - ' + 
+                       gr.end_date.getDisplayValue()
+            });
+        }
+
+        return JSON.stringify({
+            available: conflicts.length === 0,
+            conflicts: conflicts
+        });
+    },
+
+    type: 'LeaveAjaxProcessor'
+});
+</code></pre>
+<hr />
+<h2 id="7-rest-apis">7. REST APIs</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/sys_ws_definition_list.do">{BASE}/sys_ws_definition_list.do</a></p>
+<h3 id="scripted-rest-api">Scripted REST API</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<pre><code class="language-javascript">// API: HR Leave API
+// Path: /api/x_786686_hr_leave/hr_leave
+
+// === GET /requests ===
+(function process(request, response) {
+
+    var employeeId = request.queryParams.employee_id;
+    var state = request.queryParams.state;
+
+    var gr = new GlideRecord('x_786686_hr_leave_request');
+    if (employeeId) gr.addQuery('employee', employeeId);
+    if (state) gr.addQuery('state', state);
+    gr.orderByDesc('sys_created_on');
+    gr.setLimit(100);
+    gr.query();
+
+    var results = [];
+    while (gr.next()) {
+        results.push({
+            sys_id: gr.getUniqueValue(),
+            number: gr.number.toString(),
+            employee: gr.employee.getDisplayValue(),
+            leave_type: gr.leave_type.getDisplayValue(),
+            start_date: gr.start_date.getValue(),
+            end_date: gr.end_date.getValue(),
+            duration: parseFloat(gr.duration_days),
+            state: gr.state.getDisplayValue()
+        });
+    }
+
+    return { count: results.length, requests: results };
+
+})(request, response);
+
+// === POST /requests ===
+(function process(request, response) {
+
+    var body = request.body.data;
+
+    // Validate
+    if (!body.employee_id || !body.leave_type || 
+        !body.start_date || !body.end_date) {
+        response.setStatus(400);
+        return { error: 'Missing required fields' };
+    }
+
+    var gr = new GlideRecord('x_786686_hr_leave_request');
+    gr.initialize();
+    gr.employee = body.employee_id;
+    gr.leave_type = body.leave_type;
+    gr.start_date = body.start_date;
+    gr.end_date = body.end_date;
+    gr.reason = body.reason || '';
+
+    var sys_id = gr.insert();
+
+    if (sys_id) {
+        response.setStatus(201);
+        gr.get(sys_id);
+        return {
+            success: true,
+            sys_id: sys_id,
+            number: gr.number.toString()
+        };
+    }
+
+    response.setStatus(500);
+    return { error: 'Failed to create' };
+
+})(request, response);
+</code></pre>
+<h3 id="outbound-rest">Outbound REST</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/$restapi.do">REST API Explorer</a><a href="{BASE}/sys_ws_definition_list.do">Scripted REST</a><a href="{BASE}/sys_rest_message_list.do">REST Messages</a><a href="{BASE}/sys_alias_list.do">Connections</a></nav>
+<pre><code class="language-javascript">var ExternalHRIntegration = Class.create();
+ExternalHRIntegration.prototype = {
+
+    initialize: function() {
+        this.endpoint = gs.getProperty('x_786686_hr_leave.external_endpoint');
+        this.apiKey = gs.getProperty('x_786686_hr_leave.api_key');
+    },
+
+    syncRequest: function(requestSysId) {
+        var gr = new GlideRecord('x_786686_hr_leave_request');
+        if (!gr.get(requestSysId)) return null;
+
+        try {
+            var rest = new sn_ws.RESTMessageV2();
+            rest.setEndpoint(this.endpoint + '/leave-requests');
+            rest.setHttpMethod('POST');
+            rest.setRequestHeader('Authorization', 'Bearer ' + this.apiKey);
+            rest.setRequestHeader('Content-Type', 'application/json');
+
+            rest.setRequestBody(JSON.stringify({
+                external_id: gr.number.toString(),
+                employee: gr.employee.employee_number.toString(),
+                type: gr.leave_type.toString(),
+                start: gr.start_date.getValue(),
+                end: gr.end_date.getValue(),
+                days: parseFloat(gr.duration_days)
+            }));
+
+            var resp = rest.execute();
+            if (resp.getStatusCode() == 201) {
+                return JSON.parse(resp.getBody());
+            }
+        } catch (e) {
+            gs.error('Sync error: ' + e.message);
+        }
+        return null;
+    },
+
+    type: 'ExternalHRIntegration'
+};
+</code></pre>
+<hr />
+<h2 id="8-flow-designer">8. Flow Designer</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<p><strong>Direct URL:</strong> <a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a></p>
+<h3 id="leave-approval-flow">Leave Approval Flow</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<pre><code class="language-yaml">Name: HR Leave Request Approval
+Trigger: Record Updated
+Table: x_786686_hr_leave_request
+Condition: State changes to Submitted
+
+Steps:
+1. Look Up Record
+   - Table: sys_user
+   - ID: Trigger → Employee
+
+2. If duration &gt; 5 days
+   - Ask Approval: Manager (2 days)
+   - If Approved: Ask Approval: HR Admin
+
+3. If All Approved:
+   - Update Record: State = Approved
+   - Send Email: Employee
+   - Run Script: Deduct balance
+
+4. If Rejected:
+   - Update Record: State = Rejected
+   - Send Email: Employee with reason
+</code></pre>
+<h3 id="custom-action">Custom Action</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// Action: Calculate Business Days
+
+(function execute(inputs, outputs) {
+
+    var start = new GlideDateTime(inputs.start_date);
+    var end = new GlideDateTime(inputs.end_date);
+
+    var schedule = new GlideSchedule(inputs.schedule_id || 
+        '08fcd0830a0a0b2600079f56b1adb9ae');
+
+    var duration = schedule.duration(start, end);
+    outputs.business_days = Math.ceil(
+        duration.getNumericValue() / (8 * 60 * 60 * 1000)
+    );
+
+})(inputs, outputs);
+</code></pre>
+<hr />
+<h2 id="9-ui-components">9. UI Components</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="ui-action-form-button">UI Action - Form Button</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// Name: Submit for Approval
+// Table: x_786686_hr_leave_request
+// Form button: true
+// Condition: current.state == 1
+
+// Client Script
+function submitForApproval() {
+    if (!g_form.getValue('employee')) {
+        alert('Select employee');
+        return false;
+    }
+    if (confirm('Submit for approval?')) {
+        g_form.setValue('state', '2');
+        gsftSubmit(null, g_form.getFormElement(), 'submit');
+    }
+}
+
+// Server Script
+if (typeof window == 'undefined') {
+    current.state = 2;
+    current.update();
+    gs.eventQueue('x_786686_hr_leave.submitted', current);
+    action.setRedirectURL(current);
+}
+</code></pre>
+<h3 id="ui-policy">UI Policy</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_ui_policy_list.do?sysparm_query=tableSTARTSWITHx_786686_hr_leave">UI Policies</a><a href="{BASE}/sys_ui_policy_action_list.do">UI Policy Actions</a><a href="{BASE}/sys_data_policy2_list.do?sysparm_query=model_tableSTARTSWITHx_786686_hr_leave">Data Policies</a></nav>
+<pre><code class="language-yaml">Name: Lock Fields After Submit
+Table: x_786686_hr_leave_request
+Condition: state != 1
+Reverse: true
+
+Actions:
+  - employee: Read only
+  - leave_type: Read only
+  - start_date: Read only
+  - end_date: Read only
+</code></pre>
+<hr />
+<h2 id="10-debugging">10. Debugging</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<h3 id="logging">Logging</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// GSLog (recommended)
+var log = new GSLog('x_786686_hr_leave.log', 'MyScript');
+log.debug('Debug info');
+log.info('Info message');
+log.warn('Warning');
+log.error('Error');
+
+// Simple logging
+gs.info('Info message');
+gs.error('Error message');
+
+// Session debug
+gs.setSessionDebug(true);
+// ... operations ...
+gs.setSessionDebug(false);
+</code></pre>
+<h3 id="performance">Performance</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<pre><code class="language-javascript">// Timer
+var timer = new GlideStopWatch();
+// ... operation ...
+gs.info('Took: ' + timer.getTime() + 'ms');
+
+// Query optimization
+gr.setFields('sys_id,number,short_description');
+gr.setLimit(100);
+</code></pre>
+<hr />
+<h2 id="direct-urls-quick-reference">Direct URLs Quick Reference</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Studio</td>
+<td><a href="{BASE}/$studio.do">{BASE}/$studio.do</a></td>
+</tr>
+<tr>
+<td>Business Rules</td>
+<td><a href="{BASE}/sys_script_list.do">{BASE}/sys_script_list.do</a></td>
+</tr>
+<tr>
+<td>Client Scripts</td>
+<td><a href="{BASE}/sys_script_client_list.do">{BASE}/sys_script_client_list.do</a></td>
+</tr>
+<tr>
+<td>Script Includes</td>
+<td><a href="{BASE}/sys_script_include_list.do">{BASE}/sys_script_include_list.do</a></td>
+</tr>
+<tr>
+<td>UI Actions</td>
+<td><a href="{BASE}/sys_ui_action_list.do">{BASE}/sys_ui_action_list.do</a></td>
+</tr>
+<tr>
+<td>UI Policies</td>
+<td><a href="{BASE}/sys_ui_policy_list.do">{BASE}/sys_ui_policy_list.do</a></td>
+</tr>
+<tr>
+<td>Flow Designer</td>
+<td><a href="{BASE}/now/flow-designer">{BASE}/now/flow-designer</a></td>
+</tr>
+<tr>
+<td>REST API Explorer</td>
+<td><a href="{BASE}/$restapi.do">{BASE}/$restapi.do</a></td>
+</tr>
+<tr>
+<td>Background Scripts</td>
+<td><a href="{BASE}/sys.scripts.do">{BASE}/sys.scripts.do</a></td>
+</tr>
+<tr>
+<td>System Logs</td>
+<td><a href="{BASE}/syslog_list.do">{BASE}/syslog_list.do</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>Next:</strong> <a href="ADMINISTRATION_COMPLETE_GUIDE.html">Administration Guide</a> | <a href="SERVICE_PORTALS_COMPLETE_GUIDE.html">Portals Guide</a></p>
+</blockquote>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SDK — business-rules.now.ts | HR Leave Australia</title>
+  <link rel="stylesheet" href="../../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../../index.html">Portal</a>
+      <a href="../../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../../scripts/index.html">Scripts</a>
+      <a href="../../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>SDK — business-rules.now.ts</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<p>Fluent/SDK example (Australia scope).</p><pre><code>/**
+ * HR Leave — Business Rules (Fluent example)
+ * Application: Custom · Scope: x_786686_hr_leave · sys_id: c84db0e8839f0b509f02b0d6feaad3c9
+ * Mirrors: src/server/business_rules/BR1_calculate_days.js
+ */
+import { BusinessRule } from &#x27;@servicenow/sdk/core&#x27;;
+
+export const BR1_calculate_days = BusinessRule({
+    name: &#x27;HRLX BR1 Calculate Days&#x27;,
+    table: &#x27;x_786686_hr_leave_req_v2&#x27;,
+    when: &#x27;before&#x27;,
+    insert: true,
+    update: true,
+    order: 100,
+    active: true,
+    script: `
+(function executeRule(current, previous) {
+    var util = new x_786686_hr_leave.HRLXProLeaveUtilsV2();
+    if (current.u_start_date &amp;&amp; current.u_end_date) {
+        current.u_days_count = util.calculateBusinessDays(
+            current.u_start_date,
+            current.u_end_date
+        );
+    }
+    if (current.u_employee_ref &amp;&amp; !current.u_approver_user) {
+        var emp = current.u_employee_ref.getRefRecord();
+        if (emp.isValidRecord() &amp;&amp; emp.u_manager)
+            current.u_approver_user = emp.u_manager;
+    }
+})(current, previous);
+`
+});
+</code></pre>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../../assets/docs.js"></script>
+
+<script src="../../assets/author-brand.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>STUDY ROADMAP — من الصفر إلى الاحتراف (Scratch → Pro) | HR Leave Australia</title>
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../index.html">Portal</a>
+      <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../scripts/index.html">Scripts</a>
+      <a href="../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>STUDY ROADMAP — من الصفر إلى الاحتراف (Scratch → Pro)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="study-roadmap-scratch-pro">STUDY ROADMAP — من الصفر إلى الاحتراف (Scratch → Pro)</h1>
+<!-- MASTER_POINTER:start -->
+<blockquote>
+<p><strong>اقرأ أولاً:</strong> <a href="../MASTER_ALL_IN_ONE_SUMMARY.html">../MASTER_ALL_IN_ONE_SUMMARY.md</a> · <a href="../html/MASTER_ALL_IN_ONE_SUMMARY.html">../html/MASTER_ALL_IN_ONE_SUMMARY.html</a><br />
+<strong>الدليل الشامل:</strong> <a href="../MASTER_ALL_IN_ONE.html">../MASTER_ALL_IN_ONE.md</a> · <a href="../html/MASTER_ALL_IN_ONE.html">../html/MASTER_ALL_IN_ONE.html</a><br />
+<strong>ممارسة الشاشات:</strong> <a href="../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html">../html/MASTER_PRACTICE_GUIDE_ALL_TOPICS.html</a><br />
+Australia · Scope <code>x_786686_hr_leave</code></p>
+</blockquote>
+<!-- MASTER_POINTER:end -->
+
+<blockquote>
+<p><strong>Platform target:</strong> ServiceNow <strong>Australia</strong> (Sep 2026) · next EA: <strong>Brazil</strong><br />
+<strong>URLs:</strong> <a href="../root/SERVICENOW_DIRECT_URLS_CATALOG.html">../../SERVICENOW_DIRECT_URLS_CATALOG.md</a> · <strong>1-week:</strong> <a href="../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">../../SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.md</a><br />
+<strong>HR Leave:</strong> Scope x_786686_hr_leave</p>
+<p>خطة دراسة متكاملة تجمع التطبيق العملي (HR Leave App) بكل الموديولات.<br />
+الأسلوب: عربية + إنجليزية تكمّلان بعضهما — بدون ترجمة حرفية لأسماء الشاشات.<br />
+الهدف:<br />
+أن تصبح ServiceNow Implementer/Admin/Developer محترفًا وتجتاز امتحانات CIS.</p>
+</blockquote>
+<hr />
+<h2 id="arabic-summary">ملخص ووصف بالعربية (Arabic Summary)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>البند</th>
+<th>الشرح</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ما هو هذا الملف؟</strong></td>
+<td>خطة دراسة أسبوعية — تربط مشروع HR Leave App بكل موديولات modules/</td>
+</tr>
+<tr>
+<td><strong>لماذا مهم؟</strong></td>
+<td>ترتيب التعلم من CMDB حتى Integration — لا تقفز عشوائيًا</td>
+</tr>
+<tr>
+<td><strong>من يستخدمه؟</strong></td>
+<td>مبتدئ ServiceNow، مرشح CIS، من يبني Portfolio</td>
+</tr>
+<tr>
+<td><strong>ماذا يغطي؟</strong></td>
+<td>مراحل 0–10، تطبيق عملي، بنوك امتحان، §15/§16 لكل موديول</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ملخص في سطر:</strong> ابدأ هنا — أسبوع 1–2 CMDB، 4–5 ITSM، 7 GRC، 8 SPM، 9 REST.</p>
+<p><strong>وصف مختصر:</strong> جدول زمني + روابط لكل .md + تذكير بمختبرات PDI وUpdate Sets للمقابلة.</p>
+<hr />
+<h2 id="0-setup">المرحلة 0 — التجهيز (Setup)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>لا تدرس نظريًا فقط؛ احصل على مثيل وطبّق.</p>
+<ol>
+<li>أنشئ Personal Developer Instance (PDI) مجاني:<br />
+ URL: https://developer.servicenow.com</li>
+<li>تعرّف على الواجهة:<br />
+ - Next Experience UI.<br />
+ - All menu / Favorites / History.<br />
+ - Classic UI: /nav_to.do.</li>
+<li>افهم الفرق:<br />
+ - Platform (admin/dev) مقابل Workspaces مقابل Service Portal.</li>
+</ol>
+<p>المخرجات:<br />
+مثيل يعمل + قدرة على التنقّل.</p>
+<hr />
+<h2 id="1-platform-fundamentals">المرحلة 1 — أساسيات المنصّة (Platform Fundamentals)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>ادرس بالترتيب:</p>
+<ol>
+<li>Tables &amp; Fields (sys_db_object, sys_dictionary).</li>
+<li>Records, Lists, Forms, Filters.</li>
+<li>Application scope (Global vs Scoped x_).</li>
+<li>Users, Groups, Roles, ACLs.</li>
+<li>UI Policies vs Data Policies vs Client Scripts.</li>
+<li>Business Rules + GlideRecord.</li>
+<li>Flow Designer basics.</li>
+<li>Update Sets + Import Sets.</li>
+</ol>
+<p>التطبيق العملي:<br />
+نفّذ تطبيق الإجازة كاملًا من الفولدر الرئيسي.<br />
+Files: ../01_DEVELOPMENT.md &hellip; ../10_IMPLEMENTATION_AND_CONFIG.md</p>
+<p>شهادة هذه المرحلة:<br />
+CSA — Certified System Administrator.</p>
+<hr />
+<h2 id="2-cmdb">المرحلة 2 — الأساس المشترك (CMDB أولًا)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/cmdb_ci_list.do">CIs</a><a href="{BASE}/now/cmdb">CMDB Workspace</a><a href="{BASE}/now/cmdb/ci-class-manager">CI Class Manager</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>كل الموديولات تعتمد على CMDB، فابدأ به.</p>
+<p>اقرأ ونفّذ:<br />
+File: CMDB.md</p>
+<p>ركّز على:<br />
+- CI Class hierarchy.<br />
+- IRE (Identification &amp; Reconciliation).<br />
+- CSDM (4 domains).<br />
+- Relationships + Dependency Views.<br />
+- CMDB Health.</p>
+<p>شهادة:<br />
+CIS-Discovery (مع ITOM لاحقًا).</p>
+<hr />
+<h2 id="2b-itom">المرحلة 2b — ITOM (اكتشاف ومراقبة — اختياري مبكرًا)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/discovery">Discovery</a><a href="{BASE}/ecc_agent_list.do">MID Servers</a><a href="{BASE}/em_alert_list.do">Alerts</a><a href="{BASE}/cmdb_ci_service_auto_list.do">Application Services</a></nav>
+<p>اقرأ ونفّذ:<br />
+File: ITOM.md</p>
+<p>ركّز على:<br />
+- MID Server + Discovery schedules.<br />
+- Discovery vs Service Mapping vs Event Management.<br />
+- كيف يغذّي CMDB.</p>
+<hr />
+<h2 id="2c-itam">المرحلة 2c — ITAM (أصول عتاد وبرمجيات)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/alm_asset_list.do">Assets</a><a href="{BASE}/alm_hardware_list.do">Hardware</a><a href="{BASE}/alm_stockroom_list.do">Stockrooms</a><a href="{BASE}/proc_po_list.do">Purchase Orders</a></nav>
+<p>اقرأ ونفّذ:<br />
+File: ITAM.md</p>
+<p>ركّز على:<br />
+- HAM vs SAM vs CMDB.<br />
+- alm_hardware, stockroom, lifecycle.<br />
+- Catalog → PO → Receive → Deploy.<br />
+- Labs §8 (كاملة على PDI).</p>
+<p>شهادة:<br />
+SAM Professional (إن ركّزت على SAM) + مواضيع implementer في المقابلات.</p>
+<hr />
+<h2 id="3-itsm">المرحلة 3 — العمليات الأساسية (ITSM)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/incident_list.do">Incidents</a><a href="{BASE}/problem_list.do">Problems</a><a href="{BASE}/change_request_list.do">Changes</a><a href="{BASE}/now/sow/home">SOW</a></nav>
+<p>اقرأ ونفّذ:<br />
+File: ITSM.md</p>
+<p>ركّز على:<br />
+- task hierarchy (incident/problem/change/request).<br />
+- Priority = Impact × Urgency.<br />
+- SLA (start/stop/pause).<br />
+- Service Catalog (REQ → RITM → sc_task).<br />
+- Knowledge (KCS).<br />
+- Change types + CAB.</p>
+<p>شهادة:<br />
+CIS-ITSM.</p>
+<hr />
+<h2 id="4">المرحلة 4 — تطبيقات الخدمة (اختر مسارك)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>اختر حسب وظيفتك المستهدفة، أو ادرسها كلها للاحتراف الكامل.</p>
+<table>
+<thead>
+<tr>
+<th>المسار</th>
+<th>الملف</th>
+<th>الشهادة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>الموارد البشرية</td>
+<td>HRSD.md</td>
+<td>CIS-HR</td>
+</tr>
+<tr>
+<td>خدمة العملاء</td>
+<td>CSM.md</td>
+<td>CIS-CSM</td>
+</tr>
+<tr>
+<td>الخدمة الميدانية</td>
+<td>FSM.md</td>
+<td>CIS-FSM</td>
+</tr>
+</tbody>
+</table>
+<p>ركّز في كلٍّ على:<br />
+- الجداول الأساسية.<br />
+- الأدوار وتسلسلها.<br />
+- الأمان (HR Criteria في HRSD / Entitlements في CSM).<br />
+- الـ Workspace والـ Portal.</p>
+<hr />
+<h2 id="5">المرحلة 5 — الإدارة الاستراتيجية والحوكمة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a></nav>
+<p>اقرأ ونفّذ:<br />
+File: SPM.md<br />
+File: GRC.md</p>
+<p>ركّز:<br />
+- SPM: Idea → Demand → Project، Resource Mgmt، Agile.<br />
+- GRC: محرك Authority → Control → Indicator → Issue، Profiles، Risk.</p>
+<p>شهادات:<br />
+CIS-SPM / CIS-PPM، CIS-RC.</p>
+<hr />
+<h2 id="6-developer">المرحلة 6 — التطوير المتقدم (Developer)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>ادرس:<br />
+1. Script Includes (client-callable, GlideAjax).<br />
+2. Scripted REST APIs (inbound) + RESTMessageV2 (outbound).<br />
+3. IntegrationHub + Spokes + MID Server.<br />
+4. Service Portal widgets (server/client/HTML/SCSS).<br />
+5. UI Builder + Workspaces + Data Resources.<br />
+6. ATF (Automated Test Framework).<br />
+7. ServiceNow SDK (Fluent) + Cursor + Claude.<br />
+ File: ../11_SDK_CURSOR_CLAUDE.md</p>
+<p>التطبيق العملي:<br />
+ادرس ملفات التطبيق:<br />
+Files: ../04_SERVICE_PORTAL.md, ../05_WORKSPACE_UIBUILDER.md, ../06_NOTIFICATIONS_EVENTS_JOBS.md, ../08_ATF_TESTING.md</p>
+<p>شهادة:<br />
+CAD — Certified Application Developer.</p>
+<hr />
+<h2 id="7">المرحلة 7 — الذكاء الاصطناعي والمنصّة الحديثة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>ادرس:<br />
+- Now Assist (GenAI).<br />
+- AI Agents / AI Agent Studio.<br />
+- Virtual Agent.<br />
+- Predictive Intelligence.<br />
+- Performance Analytics. — هذه مواضيع إصدار Australia الحديثة، مهمة للسوق.</p>
+<hr />
+<h2 id="suggested-timelines">جدول زمني مقترح (Suggested Timelines)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_db_object_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Tables</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a><a href="{BASE}/x_786686_hr_leave_employee_v2_list.do">Employees</a><a href="{BASE}/x_786686_hr_leave_bal_v2_list.do">Balances</a><a href="{BASE}/x_786686_hr_leave_audit_v2_list.do">Audit</a></nav>
+<table>
+<thead>
+<tr>
+<th>الالتزام</th>
+<th>المدة التقريبية</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>متفرّغ (full-time)</td>
+<td>8–10 أسابيع لكل المراحل</td>
+</tr>
+<tr>
+<td>ساعتان يوميًا</td>
+<td>4–5 أشهر</td>
+</tr>
+<tr>
+<td>عطلات نهاية الأسبوع</td>
+<td>6–7 أشهر</td>
+</tr>
+</tbody>
+</table>
+<p>خطة 12 أسبوعًا (مكثّفة):<br />
+- أسبوع 1–2: المرحلة 0–1 (Platform + CSA).<br />
+- أسبوع 3–4: CMDB + ITOM (مختصر).<br />
+- أسبوع 5: ITAM (HAM labs + SAM overview).<br />
+- أسبوع 6–7: ITSM.<br />
+- أسبوع 7–8: HRSD/CSM/FSM (مسارك).<br />
+- أسبوع 9: SPM.<br />
+- أسبوع 10: GRC.<br />
+- أسبوع 11: Developer (CAD).<br />
+- أسبوع 12: AI + مراجعة + امتحانات.</p>
+<hr />
+<h2 id="how-to-study">طريقة الدراسة الفعّالة (How to study)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<ol>
+<li>اقرأ القسم (1–10) في ملف الموديول.</li>
+<li>طبّق القسم 11 (Portals/Workspaces/Roles).</li>
+<li>نفّذ القسم 12 (End-to-End) على الـ PDI.</li>
+<li>إذا قائمة/بلجن ناقص → MODULE_OPTIONS_AND_INSTANCE_NOTES.md §13.</li>
+<li>حلّ أسئلة الامتحان في بنوك الأسئلة بالمستودع.</li>
+<li>أعد بناء سيناريو من الصفر بلا نظر للدليل.</li>
+</ol>
+<p>تطبيق HR Leave — خيارات التطوير:<br />
+01_DEVELOPMENT_OPTIONS.md · 00_TUTORIAL_OPTIONS_REFERENCE.md</p>
+<p><strong>Modules — full implementation (scratch → end):</strong><br />
+1. اقرأ <strong>§15</strong> في ملف الموديول (Zero-to-Hero phases).<br />
+2. اقرأ <strong>§16</strong> (متطلبات + كل الصفحات + خيارات A/B/C + مختبر PDI كامل).<br />
+3. Framework: MODULE_ZERO_TO_HERO_CONSULTING.md · Master labs: MODULE_FULL_E2E_PRACTICE.md.<br />
+4. GRC/IRM: GRC.md §15–§16 includes <strong>IRM + BCM + TPRM</strong> tracks (25-step lab).<br />
+5. نفّذ §16.6 Lab + §8 Labs + §12 menus على PDI — بدون تخطي خطوات.</p>
+<p>بنوك أسئلة CIS في المستودع:<br />
+Files: ../../EXAM_BANK_ITSM_360.md, ../../EXAM_BANK_CSM_360.md, ../../EXAM_BANK_FSM_360.md, ../../EXAM_BANK_HRSD_360.md, ../../EXAM_BANK_GRC_360.md</p>
+<hr />
+<h2 id="_1">نصيحة أخيرة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>الاحتراف = تطبيق متكرر على مثيل حقيقي، وليس قراءة فقط.<br />
+ابنِ، اكسر، أصلح، كرّر.</p>
+<hr />
+<h2 id="a-updated-14-week-roadmap-with-new-modules">§A — Updated 14-week roadmap (with new modules)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>Week</th>
+<th>Focus</th>
+<th>Files</th>
+<th>Cert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–2</td>
+<td>Platform Fundamentals + Application</td>
+<td>../01_DEVELOPMENT.md, ../02_ADMINISTRATION.md, ../13_2HOUR_MASTER_SUMMARY.md</td>
+<td>CSA</td>
+</tr>
+<tr>
+<td>3</td>
+<td>CMDB</td>
+<td>CMDB.md §1-§18</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ITOM</td>
+<td>ITOM.md §1-§18</td>
+<td>CIS-Discovery</td>
+</tr>
+<tr>
+<td>5</td>
+<td>ITAM</td>
+<td>ITAM.md §1-§18</td>
+<td>SAM (optional)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ITSM</td>
+<td>ITSM.md §1-§18</td>
+<td>CIS-ITSM</td>
+</tr>
+<tr>
+<td>7</td>
+<td>HRSD</td>
+<td>HRSD.md §1-§18</td>
+<td>CIS-HR</td>
+</tr>
+<tr>
+<td>8</td>
+<td>CSM</td>
+<td>CSM.md §1-§18</td>
+<td>CIS-CSM</td>
+</tr>
+<tr>
+<td>9</td>
+<td>FSM</td>
+<td>FSM.md §1-§18</td>
+<td>CIS-FSM</td>
+</tr>
+<tr>
+<td>10</td>
+<td>SPM</td>
+<td>SPM.md §1-§18</td>
+<td>CIS-PPM</td>
+</tr>
+<tr>
+<td>11</td>
+<td>GRC</td>
+<td>GRC.md §1-§18</td>
+<td>CIS-RC</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>SecOps (NEW)</strong></td>
+<td>SECOPS.md §1-§18</td>
+<td>CIS-VR / CIS-SIR</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>DevOps (NEW) + App Engine (NEW)</strong></td>
+<td>DEVOPS.md, APP_ENGINE.md</td>
+<td>CAD</td>
+</tr>
+<tr>
+<td>14</td>
+<td>AI + Cross-module integration</td>
+<td>../14_AI_SERVICENOW_AGENTS.md, ../15_CLAUDE_CLI_CODE_SERVICENOW.md</td>
+<td>AI Implementation</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="b-persona-based-study-modes">§B — Persona-based study modes</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<table>
+<thead>
+<tr>
+<th>If you are a&hellip;</th>
+<th>Read first</th>
+<th>Then</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CSA candidate</strong></td>
+<td>../01_DEVELOPMENT.md, ../02_ADMINISTRATION.md, ../13_2HOUR_MASTER_SUMMARY.md</td>
+<td>All modules §1-§5</td>
+</tr>
+<tr>
+<td><strong>CIS-ITSM</strong></td>
+<td>ITSM.md end-to-end</td>
+<td>MODULE_ZERO_TO_HERO_CONSULTING.md + §17/§18 in ITSM</td>
+</tr>
+<tr>
+<td><strong>CIS-HR</strong></td>
+<td>HRSD.md end-to-end</td>
+<td>../09_MODULES_AND_INTEGRATION.md HR section</td>
+</tr>
+<tr>
+<td><strong>CIS-CSM</strong></td>
+<td>CSM.md end-to-end</td>
+<td>MODULE_ZERO_TO_HERO_CONSULTING.md</td>
+</tr>
+<tr>
+<td><strong>CIS-VR / SIR (new)</strong></td>
+<td>SECOPS.md end-to-end</td>
+<td>Integrations sections</td>
+</tr>
+<tr>
+<td><strong>CIS-DevOps (new)</strong></td>
+<td>DEVOPS.md end-to-end</td>
+<td>../15_CLAUDE_CLI_CODE_SERVICENOW.md</td>
+</tr>
+<tr>
+<td><strong>CAD</strong></td>
+<td>../01_DEVELOPMENT.md, ../04_SERVICE_PORTAL.md, ../05_WORKSPACE_UIBUILDER.md, ../08_ATF_TESTING.md, APP_ENGINE.md</td>
+<td>Build personal app + ATF</td>
+</tr>
+<tr>
+<td><strong>AI Implementation Specialist</strong></td>
+<td>../14_AI_SERVICENOW_AGENTS.md</td>
+<td>APP_ENGINE.md §8 Now Assist</td>
+</tr>
+<tr>
+<td><strong>Solution Consultant</strong></td>
+<td>MODULE_ZERO_TO_HERO_CONSULTING.md, MODULE_IMPLEMENTATION_PLAYBOOK.md</td>
+<td>Every module §15-§16</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="c-daily-90-min-study-template">§C — Daily 90-min study template</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave Requests</a></nav>
+<p>0:00 — 0:15 Recap yesterday (verbal review)<br />
+0:15 — 0:45 Read 1 section of today&rsquo;s module<br />
+0:45 — 1:15 PDI hands-on (specific steps)<br />
+1:15 — 1:30 Notes + flash-cards + push Update Set</p>
+<p>Streak target: 30 consecutive days = transformation.</p>
+<hr />
+<h2 id="d-hands-on-portfolio-checklist-for-interviews">§D — Hands-on portfolio checklist (for interviews)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/dmn_demand_list.do">Demands</a><a href="{BASE}/pm_project_list.do">Projects</a><a href="{BASE}/pm_portfolio_list.do">Portfolios</a><a href="{BASE}/resource_plan_list.do">Resource Plans</a></nav>
+<p>Build these in your PDI and keep Update Sets + screenshots:</p>
+<ul>
+<li>[ ] HR Leave app (this repo) — fully built</li>
+<li>[ ] One incident workflow with SLA</li>
+<li>[ ] One Service Catalog item with Flow Designer</li>
+<li>[ ] One Service Portal widget (custom)</li>
+<li>[ ] One Workspace via UI Builder</li>
+<li>[ ] One ATF test suite (5+ tests)</li>
+<li>[ ] One Scripted REST API (inbound)</li>
+<li>[ ] One Outbound REST integration</li>
+<li>[ ] One PA Indicator with breakdown</li>
+<li>[ ] One AI Agent with at least 2 Tools</li>
+<li>[ ] One App Engine app (citizen-built style)</li>
+<li>[ ] One Update Set export per module studied</li>
+<li>[ ] One end-to-end demo video (5-7 min &ldquo;Mega Story&rdquo;)</li>
+</ul>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../assets/docs.js"></script>
+
+<script src="../assets/author-brand.js" defer></script>
+</body>
+</html>

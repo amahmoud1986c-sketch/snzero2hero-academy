@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flow — موافقة الإجازة (Leave Approval) — دليل كامل خطوة بخطوة | HR Leave Australia</title>
+  <link rel="stylesheet" href="../../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../../index.html">Portal</a>
+      <a href="../../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../../scripts/index.html">Scripts</a>
+      <a href="../../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Flow — موافقة الإجازة (Leave Approval) — دليل كامل خطوة بخطوة</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="flow-leave-approval">Flow — موافقة الإجازة (Leave Approval) — دليل كامل خطوة بخطوة</h1>
+<blockquote>
+<p>التطبيق:<br />
+HR Leave<br />
+Scope: x_786686_hr_leave<br />
+الجدول:<br />
+x_786686_hr_leave_req_v2</p>
+<p>افتح Flow Designer:<br />
+URL: /$flow-designer.do<br />
+أو من Studio:<br />
+Create Application File → Flow</p>
+</blockquote>
+<hr />
+<h2 id="0-prerequisites">0) قبل أن تبدأ (Prerequisites)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<p>يجب أن يكون جاهزًا قبل الـ Flow:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>العنصر</th>
+<th>السبب</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>جدول x_786686_hr_leave_req_v2 مع حقل u_state</td>
+<td>حالات draft / submitted / approved / rejected</td>
+</tr>
+<tr>
+<td>2</td>
+<td>حقل u_approver_user (Approver)</td>
+<td>من يوافق</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Business Rule BR1</td>
+<td>يملأ u_approver_user من مدير الموظف قبل الحفظ</td>
+</tr>
+<tr>
+<td>4</td>
+<td>مستخدم اختبار + مدير له دور موافق</td>
+<td>للتجربة</td>
+</tr>
+</tbody>
+</table>
+<p>بدون u_approver_user مملوء، خطوة Ask For Approval لن تجد معتمدًا.</p>
+<p>ملف BR1:<br />
+src/server/business_rules/BR1_calculate_days.js</p>
+<hr />
+<h2 id="1-flow">1) الفكرة (ماذا يفعل الـ Flow)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<p><code>text
+الموظف يغيّر الحالة إلى submitted
+ ↓
+Flow يبدأ (Trigger: Record Updated + شرط submitted)
+ ↓
+Ask For Approval → يرسل للمعتمد في u_approver_user
+ ↓
+إذا وافق → u_state = approved
+إذا رفض → u_state = rejected
+ ↓</code><br />
+BR3 يسجّل التدقيق ويحدّث الرصيد (بعد تغيير الحالة)</p>
+<p><strong>مهم:</strong><br />
+لا تستخدم Trigger Record Created فقط إذا الطلب يُنشأ أولًا كـ draft ثم يُرسل لاحقًا.<br />
+استخدم <strong>Record Updated</strong> عندما تصبح الحالة submitted.</p>
+<hr />
+<h2 id="2-flow">2) إنشاء Flow جديد</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<h3 id="_1">الخطوات</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<ol>
+<li>افتح Flow Designer.<br />
+ URL: /$flow-designer.do</li>
+<li>اضغط <strong>Create Flow</strong> (أو New).</li>
+<li>املأ:<br />
+ - <strong>Name:</strong> HRLX Leave Approval<br />
+ - <strong>Application:</strong> HR Leave (scope x_786686_hr_leave)</li>
+<li>احفظ.</li>
+</ol>
+<hr />
+<h2 id="3-1-trigger">3) الخطوة 1 — Trigger (مشغّل التدفق)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<h3 id="_2">الإعدادات الصحيحة</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<table>
+<thead>
+<tr>
+<th>الحقل</th>
+<th>القيمة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trigger type</td>
+<td><strong>Record Updated</strong></td>
+</tr>
+<tr>
+<td>Table</td>
+<td>Leave Request / x_786686_hr_leave_req_v2</td>
+</tr>
+<tr>
+<td>Condition</td>
+<td>u_state <strong>is</strong> submitted</td>
+</tr>
+<tr>
+<td>Run flow</td>
+<td>Once (عادة)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">الخطوات في الواجهة</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<ol>
+<li>في بداية الـ Flow اضغط <strong>Add a trigger</strong>.</li>
+<li>اختر <strong>Record Updated</strong>.</li>
+<li>Table: ابحث عن x_786686_hr_leave_req_v2 أو Leave Request.</li>
+<li>في <strong>Condition</strong> (أو Trigger conditions):<br />
+ - Field: State / u_state<br />
+ - Operator: is<br />
+ - Value: submitted</li>
+<li><strong>Done</strong> أو احفظ الـ Trigger.</li>
+</ol>
+<h3 id="_4">خطأ شائع</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<table>
+<thead>
+<tr>
+<th>خطأ</th>
+<th>الصواب</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trigger = Record Created فقط</td>
+<td>Record Updated + u_state = submitted</td>
+</tr>
+<tr>
+<td>بدون شرط على u_state</td>
+<td>Flow يعمل على كل تعديل</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-2-action-ask-for-approval">4) الخطوة 2 — Action: Ask For Approval</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<p>هذه الخطوة تظهر في صورتك كـ <strong>Action 1 — Ask For Approval</strong>.</p>
+<h3 id="_5">الخطوات</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<ol>
+<li>بعد الـ Trigger اضغط <strong>+</strong> → <strong>Ask for Approval</strong>.</li>
+<li>املأ <strong>Action inputs</strong> كالتالي:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>الحقل</th>
+<th>ماذا تضع</th>
+<th>ملاحظة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Record</strong></td>
+<td>Data pill: Trigger - Record Updated → Leave Request Record</td>
+<td>سجل الطلب الذي تغيّرت حالته</td>
+</tr>
+<tr>
+<td><strong>Table</strong></td>
+<td>Leave Request [x_786686_hr_leave_req_v2]</td>
+<td>يُملأ تلقائيًا غالبًا</td>
+</tr>
+<tr>
+<td><strong>Approval field</strong></td>
+<td>Approver / u_approver_user</td>
+<td>المعتمد</td>
+</tr>
+<tr>
+<td><strong>Approval reason</strong></td>
+<td>نص ثابت أو حقل</td>
+<td>مثال: Leave approval required</td>
+</tr>
+<tr>
+<td><strong>Journal field</strong></td>
+<td>Reason / u_reason أو اتركه فارغًا</td>
+<td>اختياري — للتعليق في السجل</td>
+</tr>
+<tr>
+<td><strong>Due date</strong></td>
+<td>None أو تاريخ</td>
+<td>اختياري</td>
+</tr>
+</tbody>
+</table>
+<ol start="3">
+<li><strong>Rules (الأهم — يصلح الخطأ الأحمر):</strong></li>
+</ol>
+<p>الخطأ في الشاشة:<br />
+Rules on action number 1 are missing</p>
+<p>الحل:</p>
+<ol>
+<li>في قسم <strong>Rules</strong> عند <strong>Approve</strong>:</li>
+<li>اضغط القائمة <strong>Choose approval rule</strong> (لا تتركها فارغة).</li>
+<li>اختر أحد الخيارات:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>متى تستخدمه</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Anyone approves</strong></td>
+<td>معتمد واحد في u_approver_user — <strong>الأنسب لنا</strong></td>
+</tr>
+<tr>
+<td>All users approve</td>
+<td>أكثر من معتمد يجب أن يوافقوا جميعًا</td>
+</tr>
+<tr>
+<td>First response from all users</td>
+<td>حسب سياسة الشركة</td>
+</tr>
+</tbody>
+</table>
+<ol start="4">
+<li>للتطبيق البسيط: اختر <strong>Anyone approves</strong>.</li>
+<li>
+<p>(اختياري) أضف قاعدة <strong>Reject</strong> إن طلبت الواجهة ذلك — نفس المستوى.</p>
+</li>
+<li>
+<p>اضغط <strong>Done</strong> على الـ Action.</p>
+</li>
+</ol>
+<h3 id="_6">تحقق قبل المتابعة</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<ul>
+<li>لا يظهر خط أحمر على Action 1.</li>
+<li>في الشريط السفلي لا يبقى Error: Rules on action 1 are missing.</li>
+</ul>
+<hr />
+<h2 id="5-3-if-if-approval-was-approved">5) الخطوة 3 — If: If approval was Approved</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<h3 id="_7">الخطوات</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<ol>
+<li>بعد Ask For Approval اضغط <strong>+</strong> → <strong>Flow Logic</strong> → <strong>If</strong>.</li>
+<li>الشرط الجاهز غالبًا:<br />
+ - <strong>If approval was Approved</strong><br />
+ - أو: 1 - Ask For Approval → Approval state <strong>is</strong> approved</li>
+<li>لا تغيّر الشرط إلا إذا تعرف ما تفعل.</li>
+</ol>
+<hr />
+<h2 id="6-4-update-record">6) الخطوة 4 — Update Record (موافقة)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<p>داخل فرع <strong>If (Approved)</strong>:</p>
+<ol>
+<li>اضغط <strong>+</strong> → <strong>Update Record</strong>.</li>
+<li><strong>Record:</strong> pill من Trigger → Leave Request Record.</li>
+<li><strong>Table:</strong> x_786686_hr_leave_req_v2.</li>
+<li><strong>Set field values:</strong><br />
+ - Field: State / u_state<br />
+ - Value: approved</li>
+<li><strong>Done</strong>.</li>
+</ol>
+<hr />
+<h2 id="7-5-else">7) الخطوة 5 — Else (رفض)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<h3 id="_8">الخطوات</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<ol>
+<li>من فرع <strong>Else</strong> (بجانب If):</li>
+<li><strong>+</strong> → <strong>Update Record</strong>.</li>
+<li>نفس السجل (Trigger record).</li>
+<li>Set:<br />
+ - u_state = rejected</li>
+<li><strong>Done</strong>.</li>
+</ol>
+<hr />
+<h2 id="8-flow">8) مخطط الـ Flow النهائي</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<pre><code class="language-text">[Trigger] Record Updated
+ Table: x_786686_hr_leave_req_v2
+ Condition: u_state is submitted
+ │
+ ▼
+[1] Ask For Approval
+ Record: Trigger → Leave Request Record
+ Approval field: u_approver_user
+ Rule (Approve): Anyone approves
+ │
+ ▼
+[2] If ── approval was Approved?
+ │
+ ├─ Yes ─► [3] Update Record → u_state = approved
+ │
+ └─ Else ─► [5] Update Record → u_state = rejected
+</code></pre>
+<hr />
+<h2 id="9-publish">9) الحفظ والنشر (Publish)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_update_set_list.do">Local Update Sets</a><a href="{BASE}/sys_remote_update_set_list.do">Retrieved Update Sets</a><a href="{BASE}/sys_upgrade_history_list.do">Upgrade History</a></nav>
+<table>
+<thead>
+<tr>
+<th>الخطوة</th>
+<th>ماذا تفعل</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>اضغط <strong>Save</strong> (أعلى اليمين)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>تأكد Status ليس Error</td>
+</tr>
+<tr>
+<td>3</td>
+<td>اضغط <strong>Publish</strong> (أو Activate حسب الإصدار)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>اختر <strong>Publish a new version</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>انتظر Published</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Modified</strong> بدون Publish = الـ Flow غير فعّال للمستخدمين.</p>
+<hr />
+<h2 id="10-practice-lab">10) اختبار عملي (Practice Lab)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<h3 id="_9">تجهيز مستخدمين</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<table>
+<thead>
+<tr>
+<th>المستخدم</th>
+<th>الدور</th>
+<th>الغرض</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>employee@test.com</td>
+<td>x_786686_hr_leave.employee</td>
+<td>يقدّم الطلب</td>
+</tr>
+<tr>
+<td>manager@test.com</td>
+<td>manager + في u_manager للموظف</td>
+<td>يوافق</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">سيناريو الاختبار</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<ol>
+<li>سجّل دخول كموظف.</li>
+<li>افتح x_786686_hr_leave_req_v2 → New.</li>
+<li>املأ التواريخ والنوع.</li>
+<li>تأكد BR1 ملأ u_approver_user = المدير.</li>
+<li>غيّر <strong>State</strong> إلى submitted → Save.</li>
+<li>سجّل خروج → سجّل دخول كـ <strong>manager</strong>.</li>
+<li>افتح:<br />
+ Navigate: All &gt; My Approvals أو Inbox / Approvals في الـ Next Experience — <a href="{BASE}/sysapproval_approver_list.do">Open direct</a></li>
+<li>افتح طلب الإجازة → <strong>Approve</strong>.</li>
+<li>ارجع للسجل: u_state يجب أن تصبح approved.</li>
+<li>تحقق من جدول التدقيق x_786686_hr_leave_audit_v2.</li>
+</ol>
+<h3 id="_11">سيناريو الرفض</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<p>كرر الخطوات 1–6 ثم اختر <strong>Reject</strong> → تحقق u_state = rejected.</p>
+<hr />
+<h2 id="11-troubleshooting">11) استكشاف الأخطاء (Troubleshooting)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<table>
+<thead>
+<tr>
+<th>المشكلة</th>
+<th>السبب</th>
+<th>الحل</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rules on action 1 are missing</td>
+<td>لم تختر approval rule</td>
+<td>Anyone approves في Rules</td>
+</tr>
+<tr>
+<td>Flow لا يبدأ</td>
+<td>Trigger خاطئ</td>
+<td>Record Updated + u_state=submitted</td>
+</tr>
+<tr>
+<td>لا يظهر موافقة للمدير</td>
+<td>u_approver_user فارغ</td>
+<td>BR1 + employee.u_manager</td>
+</tr>
+<tr>
+<td>يعمل مرتين</td>
+<td>Trigger بدون Once</td>
+<td>فعّل Run once أو شرط أدق</td>
+</tr>
+<tr>
+<td>Error بعد Publish</td>
+<td>حقول أو صلاحيات</td>
+<td>تحقق approver له user صالح</td>
+</tr>
+<tr>
+<td>الحالة لا تتغير بعد الموافقة</td>
+<td>Update Record غير مربوط</td>
+<td>Record pill من Trigger</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12">12) ربط مع باقي التطبيق</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/$studio.do">Studio</a></nav>
+<table>
+<thead>
+<tr>
+<th>مكوّن</th>
+<th>الدور</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BR1</td>
+<td>أيام + معتمد <strong>قبل</strong> Flow</td>
+</tr>
+<tr>
+<td>BR2</td>
+<td>Event عند submitted (إشعار بريد)</td>
+</tr>
+<tr>
+<td>BR4</td>
+<td>Event عند approved/rejected (إشعار بريد)</td>
+</tr>
+<tr>
+<td>BR3</td>
+<td>تدقيق + رصيد <strong>بعد</strong> approved/rejected</td>
+</tr>
+<tr>
+<td>Notifications</td>
+<td>src/server/notifications/notifications.md</td>
+</tr>
+<tr>
+<td>Events</td>
+<td>src/server/events/events.md</td>
+</tr>
+</tbody>
+</table>
+<p>ملف التطوير الكامل:<br />
+../../01_DEVELOPMENT.md §7</p>
+<hr />
+<h2 id="13">13) قائمة تحقق سريعة</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<ul>
+<li>[ ] Trigger = Record Updated</li>
+<li>[ ] Condition = u_state is submitted</li>
+<li>[ ] Ask For Approval → Record = trigger record</li>
+<li>[ ] Approval field = u_approver_user</li>
+<li>[ ] <strong>Rules → Anyone approves</strong> (لا تترك Choose approval rule فارغًا)</li>
+<li>[ ] If Approved → Update u_state = approved</li>
+<li>[ ] Else → Update u_state = rejected</li>
+<li>[ ] Publish flow</li>
+<li>[ ] اختبار Approve و Reject</li>
+</ul>
+<hr />
+<h2 id="14">14) ملاحظة للصورة التي أرسلتها</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<p>في الشاشة كان:<br />
+- Trigger يظهر كـ <strong>Record Created</strong> — غيّره إلى <strong>Record Updated</strong> + شرط submitted إن كان الطلب يمرّ بـ draft أولًا.<br />
+- <strong>Rules</strong> فارغة (Choose approval rule) — هذا سبب الخطأ الأحمر؛ اختر <strong>Anyone approves</strong> ثم Done ثم Publish.</p>
+<hr />
+<h2 id="15-options-alternatives-flow">15) Options &amp; alternatives (Flow)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/now/flow-designer">Flow Designer</a><a href="{BASE}/sys_hub_flow_list.do">Flows</a><a href="{BASE}/sysapproval_approver_list.do">Approvals</a></nav>
+<blockquote>
+<p>Hub: ../../00_TUTORIAL_OPTIONS_REFERENCE.md</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Flow Designer</strong> (this guide)</td>
+<td>New approvals — recommended</td>
+</tr>
+<tr>
+<td>Legacy Workflow</td>
+<td>Old instances only — migrate</td>
+</tr>
+<tr>
+<td>Approval Policy</td>
+<td>Enterprise multi-step — optional</td>
+</tr>
+<tr>
+<td>BR + manual approve</td>
+<td>Avoid — no audit trail</td>
+</tr>
+<tr>
+<td>Catalog + Flow</td>
+<td>Record Producer triggers submitted state</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Trigger alternatives:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Use when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Record <strong>Updated</strong> + submitted</td>
+<td>Draft then submit (our app)</td>
+</tr>
+<tr>
+<td>Record <strong>Created</strong></td>
+<td>Always submitted on insert</td>
+</tr>
+<tr>
+<td>Service Catalog</td>
+<td>RITM fulfillment flow (ITSM pattern)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ask For Approval — Rules options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Use when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Anyone approves</strong></td>
+<td>Single approver in u_approver_user</td>
+</tr>
+<tr>
+<td>All users approve</td>
+<td>Multiple approvers all must approve</td>
+</tr>
+<tr>
+<td>First response</td>
+<td>First approver wins</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Instance note:</strong> Flow UI labels vary by release; <strong>Publish</strong> required — Save alone is not enough.</p>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../../assets/docs.js"></script>
+
+<script src="../../assets/author-brand.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notifications — Complete Setup (Email · Events · All Fields) | HR Leave Australia</title>
+  <link rel="stylesheet" href="../../../assets/docs.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HR Leave · Australia</div>
+    <nav>
+      <a href="../../../index.html">Portal</a>
+      <a href="../../../root/SERVICENOW_DIRECT_URLS_CATALOG.html">Instance URLs</a>
+      <a href="../../../scripts/index.html">Scripts</a>
+      <a href="../../../modules/implementation/INDEX.html">Module Runbooks</a>
+      <a href="../../../root/SERVICENOW_ONE_WEEK_STUDY_DEPLOY_AUSTRALIA.html">1-Week Plan</a>
+      <span class="badge">Scope x_786686_hr_leave</span>
+    </nav>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <h1>Notifications — Complete Setup (Email · Events · All Fields)</h1>
+      <p>ServiceNow <strong>Australia</strong> · Custom app · Arabic + English readable · scripts copy/paste ready</p>
+      <div class="meta-grid">
+        <div><strong>App type</strong>Custom</div>
+        <div><strong>Scope</strong><code style="color:#fff">x_786686_hr_leave</code></div>
+        <div><strong>sys_id</strong><code style="color:#fff;font-size:.75rem">c84db0e8839f0b509f02b0d6feaad3c9</code></div>
+        <div><strong>Replace</strong><code style="color:#fff">{BASE}</code> = your instance</div>
+      </div>
+    </section>
+    <div class="url-box"><strong>Instance URLs</strong>
+<a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a>
+<a href="{BASE}/x_786686_hr_leave_req_v2_list.do">Leave requests</a>
+<a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a>
+<a href="{BASE}/$studio.do">Studio</a>
+</div>
+    <article class="content">
+<h1 id="notifications-complete-setup-email-events-all-fields">Notifications — Complete Setup (Email · Events · All Fields)</h1>
+<blockquote>
+<p>Table: sysevent_email_action (Notification)<br />
+Scope: <strong>HR Leave</strong> (x_786686_hr_leave)</p>
+<p>Fixes common mistakes:<br />
+- <strong>Table = HR Employee</strong> on notification form → <strong>wrong</strong> — must be <strong>Leave Request</strong> (x_786686_hr_leave_req_v2)<br />
+- Event not registered → notification never sends<br />
+- BR2/BR4 not active → event never queued<br />
+- PDI email not configured → notification runs but no mail<br />
+- <strong>Users/Groups in fields</strong> empty → no recipient</p>
+<p>الأسلوب: عربية + إنجليزية تكمّلان بعضهما — بدون ترجمة حرفية لأسماء الشاشات.</p>
+</blockquote>
+<hr />
+<h2 id="architecture-how-it-works">Architecture (how it works)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<pre><code class="language-text">Leave Request state change
+ │
+ ├─ submitted → BR2 → gs.eventQueue('...submitted') → Notification 1 → u_approver_user
+ ├─ approved → BR4 → gs.eventQueue('...approved') → Notification 2 → u_requested_for_user
+ └─ rejected → BR4 → gs.eventQueue('...rejected') → Notification 3 → u_requested_for_user
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Component</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Event Registry (3 events)</td>
+<td>../events/events.md</td>
+</tr>
+<tr>
+<td>2</td>
+<td>BR2 fires submitted</td>
+<td>../business_rules/BR2_on_submit_event.js</td>
+</tr>
+<tr>
+<td>3</td>
+<td>BR4 fires approved / rejected</td>
+<td>../business_rules/BR4_on_approve_reject_event.js</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Notifications (this doc)</td>
+<td>3 records on sysevent_email_action</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Flow sets state after approval</td>
+<td>../../flow/approval_flow.md</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="phase-0-application-scope-do-this-first">Phase 0 — Application scope (DO THIS FIRST)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_app.do?sys_id=c84db0e8839f0b509f02b0d6feaad3c9">Application</a><a href="{BASE}/$studio.do">Studio</a></nav>
+<p>Create notifications while <strong>HR Leave</strong> application is selected — not Global. — اختر تطبيق <strong>HR Leave</strong> من قائمة التطبيقات قبل <strong>New</strong> على الإشعار.</p>
+<ol>
+<li>Top-right <strong>Application</strong> picker → <strong>HR Leave</strong>.</li>
+<li>Verify notification <strong>Application</strong> field = <strong>HR Leave</strong> after save.</li>
+</ol>
+<hr />
+<h2 id="phase-1-prerequisites-before-notification-new">Phase 1 — Prerequisites (before Notification New)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<h3 id="11-register-events-mandatory">1.1 Register events (mandatory)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<p>Navigate: All &gt; System Policy &gt; Events &gt; Registry → New (×3) — <a href="{BASE}/sysevent_register_list.do">Open direct</a></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Notification 1</th>
+<th>Notification 2</th>
+<th>Notification 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Name</strong></td>
+<td>x_786686_hr_leave.leave_v2.submitted</td>
+<td>x_786686_hr_leave.leave_v2.approved</td>
+<td>x_786686_hr_leave.leave_v2.rejected</td>
+</tr>
+<tr>
+<td><strong>Table</strong></td>
+<td>Leave Request / x_786686_hr_leave_req_v2</td>
+<td>same</td>
+<td>same</td>
+</tr>
+<tr>
+<td><strong>Active</strong></td>
+<td>true</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Fired when leave submitted</td>
+<td>Fired when approved</td>
+<td>Fired when rejected</td>
+</tr>
+</tbody>
+</table>
+<p>بدون تسجيل الحدث في Registry، حقل <strong>Event name</strong> في الإشعار لن يجد الحدث أو لن يرسل.</p>
+<p>Direct list: sysevent.list → filter Name contains leave_v2</p>
+<h3 id="12-business-rules-that-queue-events">1.2 Business rules that queue events</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_script_list.do?sysparm_query=collectionSTARTSWITHx_786686_hr_leave">Business Rules</a><a href="../../../scripts/index.html">Scripts portal</a><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Table</th>
+<th>When</th>
+<th>Order</th>
+<th>Script file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BR2</td>
+<td>x_786686_hr_leave_req_v2</td>
+<td>after, insert+update</td>
+<td>200</td>
+<td>BR2_on_submit_event.js</td>
+</tr>
+<tr>
+<td>BR4</td>
+<td>x_786686_hr_leave_req_v2</td>
+<td>after, update only</td>
+<td>250</td>
+<td>BR4_on_approve_reject_event.js</td>
+</tr>
+</tbody>
+</table>
+<p>Navigate: All &gt; System Definition &gt; Business Rules → verify <strong>Active</strong> = true. — <a href="{BASE}/sys_script_list.do">Open direct</a></p>
+<p>BR2 condition (in script): current.u_state.changesTo(&lsquo;submitted&rsquo;)</p>
+<p>BR4 condition (in script): changesTo(&lsquo;approved&rsquo;) or changesTo(&lsquo;rejected&rsquo;)</p>
+<h3 id="13-users-must-have-email">1.3 Users must have email</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_security_acl_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">ACLs</a><a href="{BASE}/sys_user_role_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Roles</a><a href="{BASE}/sys_user_group_list.do">Groups</a><a href="{BASE}/sys_user_list.do">Users</a><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<p>Navigate: All &gt; User Administration &gt; Users — <a href="{BASE}/sys_user_list.do">Open direct</a></p>
+<table>
+<thead>
+<tr>
+<th>User</th>
+<th>Email required</th>
+<th>Role in test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>employee1</td>
+<td>yes</td>
+<td>requester (u_requested_for_user)</td>
+</tr>
+<tr>
+<td>manager1</td>
+<td>yes</td>
+<td>approver (u_approver_user)</td>
+</tr>
+</tbody>
+</table>
+<p>BR1 must set u_approver_user from employee manager before submit — see approval_flow.md.</p>
+<h3 id="14-pdi-instance-email-or-notifications-succeed-with-no-inbox">1.4 PDI / instance email (or notifications “succeed” with no inbox)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<p>Navigate: All &gt; System Properties &gt; Email Properties — <a href="{BASE}/sys_properties_list.do">Open direct</a></p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email sending enabled</td>
+<td>Configure SMTP or use <strong>System Mailboxes</strong> for dev</td>
+</tr>
+<tr>
+<td>Outgoing email</td>
+<td>Test from System Definition &gt; Email &gt; Email Client</td>
+</tr>
+</tbody>
+</table>
+<p>على PDI قد تحتاج <strong>Email Diagnostics</strong> أو صندوق وارد داخلي — راجع System Mailboxes.</p>
+<hr />
+<h2 id="phase-2-open-notification-form">Phase 2 — Open Notification form</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<p>Navigate: All &gt; System Notification &gt; Email &gt; Notifications → <strong>New</strong> — <a href="{BASE}/sysevent_email_action_list.do">Open direct</a></p>
+<p>Direct: sysevent_email_action.do?sys_id=-1</p>
+<p>Alternative paths (same table):</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Navigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>All &gt; System Notification &gt; Email &gt; Notifications · <a href="{BASE}/sysevent_email_action_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>B</td>
+<td>Filter sysevent_email_action.list → Application = HR Leave</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Studio → HR Leave → Create → <strong>Notification</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="phase-3-header-fields-top-of-form-all-3-notifications">Phase 3 — Header fields (top of form — all 3 notifications)</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<p>Fill <strong>before</strong> tabs. These apply to every notification record.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Notification 1</th>
+<th>Notification 2</th>
+<th>Notification 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Name</strong></td>
+<td>HRLX Leave Submitted</td>
+<td>HRLX Leave Approved</td>
+<td>HRLX Leave Rejected</td>
+</tr>
+<tr>
+<td><strong>Table</strong></td>
+<td><strong>Leave Request [x_786686_hr_leave_req_v2]</strong></td>
+<td><strong>same</strong></td>
+<td><strong>same</strong></td>
+</tr>
+<tr>
+<td><strong>Active</strong></td>
+<td>✓ checked</td>
+<td>✓ checked</td>
+<td>✓ checked</td>
+</tr>
+<tr>
+<td><strong>Category</strong></td>
+<td>Uncategorized or create HR Leave</td>
+<td>same</td>
+<td>same</td>
+</tr>
+<tr>
+<td><strong>Application</strong></td>
+<td><strong>HR Leave</strong></td>
+<td><strong>HR Leave</strong></td>
+<td><strong>HR Leave</strong></td>
+</tr>
+<tr>
+<td><strong>Allow Digest</strong></td>
+<td>☐ unchecked (lab)</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Critical fix from your screenshot</strong><br />
+Your form showed <strong>Table = HR Employee</strong> — change to <strong>Leave Request</strong> (x_786686_hr_leave_req_v2).<br />
+Events and fields (u_number, u_approver_user) are on the <strong>leave request</strong> table, not employee.</p>
+</blockquote>
+<p>جدول الإشعار = جدول <strong>طلب الإجازة</strong> وليس جدول الموظف.</p>
+<h3 id="advanced-view-optional-click-advanced-view-at-bottom">Advanced view (optional — click <strong>Advanced view</strong> at bottom)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Recommended value</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Weight</strong></td>
+<td>0 (default) or 10</td>
+<td>Higher weight wins if multiple notifications match same event</td>
+</tr>
+<tr>
+<td><strong>Order</strong></td>
+<td>100</td>
+<td>Processing order among notifications</td>
+</tr>
+<tr>
+<td><strong>Omit if already sent</strong></td>
+<td>false (lab) / true (prod optional)</td>
+<td>Dedup same event+record</td>
+</tr>
+<tr>
+<td><strong>Send self</strong></td>
+<td>false</td>
+<td>Don’t email the user who triggered</td>
+</tr>
+<tr>
+<td><strong>Include attachment</strong></td>
+<td>false</td>
+<td>No attachments for leave</td>
+</tr>
+<tr>
+<td><strong>Importance</strong></td>
+<td>Normal</td>
+<td>Email priority header</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="phase-4-tab-when-to-send">Phase 4 — Tab: <strong>When to send</strong></h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<p>This matches your screenshot (Event is fired + event name).</p>
+<h3 id="41-notification-1-leave-submitted">4.1 Notification 1 — Leave Submitted</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value to enter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Send when</strong></td>
+<td>Event is fired</td>
+</tr>
+<tr>
+<td><strong>Event name</strong></td>
+<td>x_786686_hr_leave.leave_v2.submitted</td>
+</tr>
+<tr>
+<td><strong>Condition</strong></td>
+<td>(leave empty for lab)</td>
+</tr>
+</tbody>
+</table>
+<p>Optional condition (only notify when approver exists):</p>
+<pre><code class="language-javascript">current.u_approver_user != ''
+</code></pre>
+<p>Or condition builder: <strong>Approver</strong> is not empty</p>
+<h3 id="42-notification-2-leave-approved">4.2 Notification 2 — Leave Approved</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Send when</strong></td>
+<td>Event is fired</td>
+</tr>
+<tr>
+<td><strong>Event name</strong></td>
+<td>x_786686_hr_leave.leave_v2.approved</td>
+</tr>
+<tr>
+<td><strong>Condition</strong></td>
+<td>(empty)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-notification-3-leave-rejected">4.3 Notification 3 — Leave Rejected</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Send when</strong></td>
+<td>Event is fired</td>
+</tr>
+<tr>
+<td><strong>Event name</strong></td>
+<td>x_786686_hr_leave.leave_v2.rejected</td>
+</tr>
+<tr>
+<td><strong>Condition</strong></td>
+<td>(empty)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-when-other-options-not-used-in-this-app">Send when — other options (not used in this app)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Send when</th>
+<th>Use when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Event is fired</strong></td>
+<td><strong>Our pattern</strong> — BR2/BR4 call gs.eventQueue</td>
+</tr>
+<tr>
+<td>Record inserted</td>
+<td>Direct insert trigger (no event)</td>
+</tr>
+<tr>
+<td>Record updated</td>
+<td>State change without event</td>
+</tr>
+<tr>
+<td>Run script</td>
+<td>Custom if in Advanced</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="phase-5-tab-who-will-receive">Phase 5 — Tab: <strong>Who will receive</strong></h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<p>This matches your screenshot (Users / Groups / Users-Groups in fields).</p>
+<h3 id="51-notification-1-to-approver">5.1 Notification 1 — to approver</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Users</strong></td>
+<td>(leave empty — use field instead)</td>
+</tr>
+<tr>
+<td><strong>Groups</strong></td>
+<td>(leave empty)</td>
+</tr>
+<tr>
+<td><strong>Users/Groups in fields</strong></td>
+<td><strong>Approver → u_approver_user</strong></td>
+</tr>
+<tr>
+<td><strong>Select target record</strong></td>
+<td>(empty — event passes record automatically)</td>
+</tr>
+<tr>
+<td><strong>Enter email address</strong></td>
+<td>(empty)</td>
+</tr>
+<tr>
+<td><strong>Subscribable</strong></td>
+<td>☐ unchecked</td>
+</tr>
+</tbody>
+</table>
+<p>Steps in UI:</p>
+<ol>
+<li>In <strong>Users/Groups in fields</strong>, click the <strong>magnifier</strong> (reference).</li>
+<li>Table is already Leave Request — pick field <strong>u_approver_user</strong> (label may show <strong>Approver</strong>).</li>
+<li>Do <strong>not</strong> pick u_requested_for_user here — that is the employee, not the manager. — المستلم = حقل <strong>u_approver_user</strong> (المدير المعتمد).</li>
+</ol>
+<h3 id="52-notification-2-3-to-requester">5.2 Notification 2 &amp; 3 — to requester</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Users/Groups in fields</strong></td>
+<td><strong>Requested For → u_requested_for_user</strong></td>
+</tr>
+<tr>
+<td>All other recipient fields</td>
+<td>empty</td>
+</tr>
+</tbody>
+</table>
+<h3 id="recipient-options-a-b-c">Recipient options (A / B / C)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>When</th>
+<th>Config</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A — Field on record</strong></td>
+<td><strong>Recommended</strong></td>
+<td>Users/Groups in fields = u_approver_user or u_requested_for_user</td>
+</tr>
+<tr>
+<td>B — Fixed user</td>
+<td>Lab only</td>
+<td><strong>Users</strong> = pick manager1</td>
+</tr>
+<tr>
+<td>C — Script (Advanced)</td>
+<td>Dynamic logic</td>
+<td><strong>Advanced view</strong> → recipient script</td>
+</tr>
+</tbody>
+</table>
+<p>Option C example (notify approver + HR admin):</p>
+<pre><code class="language-javascript">// Recipients script (Advanced) — optional
+var recipients = [];
+if (current.u_approver_user)
+ recipients.push(current.u_approver_user.toString());
+// add hr admin group member if needed
+return recipients;
+</code></pre>
+<hr />
+<h2 id="phase-6-tab-what-it-will-contain">Phase 6 — Tab: <strong>What it will contain</strong></h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<p>This matches your screenshot (Email template, Subject, Message HTML, Select variables).</p>
+<h3 id="61-email-template-field">6.1 Email template field</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A — No template (recommended for lab)</strong></td>
+<td>Leave <strong>Email template</strong> empty — use Subject + Message HTML below</td>
+</tr>
+<tr>
+<td>B — Use template</td>
+<td>Pick template — then Subject/HTML here <strong>override</strong> template unless left blank</td>
+</tr>
+</tbody>
+</table>
+<p>Blue info banner on form:<br />
+<em>When using an Email Template, Subject and Message are picked from template unless specified here.</em></p>
+<h3 id="62-notification-1-submitted-full-content">6.2 Notification 1 — Submitted (full content)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Subject</strong></td>
+<td>Leave ${u_number} needs your approval</td>
+</tr>
+<tr>
+<td><strong>Message HTML</strong></td>
+<td>see below</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Message HTML</strong> (paste in editor, or use <strong>Select variables</strong> → Fields):</p>
+<pre><code class="language-html">&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;A leave request &lt;strong&gt;${u_number}&lt;/strong&gt; was submitted and needs your approval.&lt;/p&gt;
+&lt;ul&gt;
+ &lt;li&gt;&lt;strong&gt;Requested for:&lt;/strong&gt; ${u_requested_for_user}&lt;/li&gt;
+ &lt;li&gt;&lt;strong&gt;Type:&lt;/strong&gt; ${u_leave_type}&lt;/li&gt;
+ &lt;li&gt;&lt;strong&gt;Dates:&lt;/strong&gt; ${u_start_date} to ${u_end_date}&lt;/li&gt;
+ &lt;li&gt;&lt;strong&gt;Days:&lt;/strong&gt; ${u_days_count}&lt;/li&gt;
+ &lt;li&gt;&lt;strong&gt;Reason:&lt;/strong&gt; ${u_reason}&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;${URI_REF}&quot;&gt;Open leave request&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+<p><strong>Select variables sidebar (insert these):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Field on x_786686_hr_leave_req_v2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>${u_number}</td>
+<td>Number</td>
+</tr>
+<tr>
+<td>${u_requested_for_user}</td>
+<td>Requested For</td>
+</tr>
+<tr>
+<td>${u_leave_type}</td>
+<td>Leave Type</td>
+</tr>
+<tr>
+<td>${u_start_date}</td>
+<td>Start Date</td>
+</tr>
+<tr>
+<td>${u_end_date}</td>
+<td>End Date</td>
+</tr>
+<tr>
+<td>${u_days_count}</td>
+<td>Days</td>
+</tr>
+<tr>
+<td>${u_reason}</td>
+<td>Reason</td>
+</tr>
+<tr>
+<td>${URI_REF}</td>
+<td>System variable — link to record</td>
+</tr>
+<tr>
+<td>${mail_script:&hellip;}</td>
+<td>Advanced — only if using mail script</td>
+</tr>
+</tbody>
+</table>
+<h3 id="63-notification-2-approved">6.3 Notification 2 — Approved</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Subject</strong></td>
+<td>Your leave ${u_number} was approved</td>
+</tr>
+<tr>
+<td><strong>Message HTML</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-html">&lt;p&gt;Hi ${u_requested_for_user},&lt;/p&gt;
+&lt;p&gt;Your leave request &lt;strong&gt;${u_number}&lt;/strong&gt; has been &lt;strong&gt;approved&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Type:&lt;/strong&gt; ${u_leave_type}&lt;br/&gt;
+&lt;strong&gt;From:&lt;/strong&gt; ${u_start_date} &lt;strong&gt;To:&lt;/strong&gt; ${u_end_date}&lt;br/&gt;
+&lt;strong&gt;Days:&lt;/strong&gt; ${u_days_count}&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;${URI_REF}&quot;&gt;View request&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+<h3 id="64-notification-3-rejected">6.4 Notification 3 — Rejected</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Subject</strong></td>
+<td>Your leave ${u_number} was rejected</td>
+</tr>
+<tr>
+<td><strong>Message HTML</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-html">&lt;p&gt;Hi ${u_requested_for_user},&lt;/p&gt;
+&lt;p&gt;Your leave request &lt;strong&gt;${u_number}&lt;/strong&gt; was &lt;strong&gt;rejected&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Please contact your manager or HR if you have questions.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;${URI_REF}&quot;&gt;View request&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+<h3 id="message-type-options">Message type options</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Field</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTML</td>
+<td><strong>Message HTML</strong></td>
+<td><strong>Default</strong> — rich email</td>
+</tr>
+<tr>
+<td>Plain text</td>
+<td><strong>Message plain text</strong> (Advanced view)</td>
+<td>Plain-mail clients</td>
+</tr>
+<tr>
+<td>SMS</td>
+<td><strong>SMS message</strong></td>
+<td>Mobile — not used here</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="phase-7-submit-and-verify">Phase 7 — Submit and verify</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<ol>
+<li>Click <strong>Submit</strong> (top-right or bottom).</li>
+<li>Repeat Phases 3–6 for all <strong>3</strong> notifications.</li>
+<li>Open list: sysevent_email_action.list → filter <strong>Application</strong> = HR Leave → expect 3 active rows.</li>
+</ol>
+<hr />
+<h2 id="phase-8-end-to-end-test">Phase 8 — End-to-end test</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<h3 id="81-test-submitted-approver-email">8.1 Test submitted → approver email</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Login as employee1</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>New x_786686_hr_leave_req_v2 — fill dates, type</td>
+<td>u_approver_user = manager</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Set <strong>State</strong> = submitted → Save</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Check events</td>
+<td>All &gt; System Logs &gt; Events filter leave_v2.submitted · <a href="{BASE}/sysevent_list.do">Open direct</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Check email</td>
+<td>Approver inbox / sys_email list</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Check notification log</td>
+<td>sysevent_email_action.list → open record → <strong>Email Logs</strong> related list</td>
+</tr>
+</tbody>
+</table>
+<h3 id="82-test-approved-requester-email">8.2 Test approved → requester email</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Login as manager1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Approve via Flow / My Approvals</td>
+</tr>
+<tr>
+<td>3</td>
+<td>State → approved</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Event leave_v2.approved in log</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Email to employee1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="83-test-rejected">8.3 Test rejected</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sys_atf_test_list.do">ATF Tests</a><a href="{BASE}/sys_atf_test_suite_list.do">ATF Suites</a></nav>
+<p>Same as 8.2 but <strong>Reject</strong> → event leave_v2.rejected → email to requester.</p>
+<h3 id="84-script-to-confirm-events-background-scripts">8.4 Script to confirm events (Background Scripts)</h3><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<pre><code class="language-javascript">var e = new GlideRecord('sysevent');
+e.addQuery('name', 'x_786686_hr_leave.leave_v2.submitted');
+e.orderByDesc('sys_created_on');
+e.setLimit(5);
+e.query();
+while (e.next())
+ gs.info(e.name + ' parm1=' + e.parm1 + ' parm2=' + e.parm2 + ' created=' + e.sys_created_on);
+</code></pre>
+<hr />
+<h2 id="phase-9-troubleshooting">Phase 9 — Troubleshooting</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No <strong>Event name</strong> in dropdown</td>
+<td>Event not in Registry</td>
+<td>Phase 1.1</td>
+</tr>
+<tr>
+<td>Event in log, no email</td>
+<td>SMTP / PDI email off</td>
+<td>Phase 1.4</td>
+</tr>
+<tr>
+<td>Event never in log</td>
+<td>BR2/BR4 inactive or wrong table</td>
+<td>Phase 1.2</td>
+</tr>
+<tr>
+<td>Wrong recipient</td>
+<td>Wrong field in <strong>Users/Groups in fields</strong></td>
+<td>Phase 5</td>
+</tr>
+<tr>
+<td>Empty approver email</td>
+<td>u_approver_user blank</td>
+<td>BR1 + employee u_manager</td>
+</tr>
+<tr>
+<td>Notification on wrong table</td>
+<td>Table = Employee</td>
+<td><strong>Table = Leave Request</strong></td>
+</tr>
+<tr>
+<td>Duplicate emails</td>
+<td>Multiple notifications same event</td>
+<td>Set <strong>Weight</strong> / dedup</td>
+</tr>
+<tr>
+<td>Approved but no mail</td>
+<td>BR4 missing</td>
+<td>Add BR4_on_approve_reject_event.js</td>
+</tr>
+<tr>
+<td>${field} shows blank</td>
+<td>Wrong table on notification</td>
+<td>Fix Table field</td>
+</tr>
+<tr>
+<td>Link broken in email</td>
+<td>Use ${URI_REF} not hard-coded URL</td>
+<td>Phase 6</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="options-alternatives">Options &amp; alternatives</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Option A (this guide)</th>
+<th>Option B</th>
+<th>Option C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trigger</td>
+<td>Event + BR2/BR4</td>
+<td>Record updated notification</td>
+<td>Flow <strong>Send Email</strong> action</td>
+</tr>
+<tr>
+<td>Recipients</td>
+<td>Field on record</td>
+<td>Fixed user/group</td>
+<td>Script</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>Subject + Message HTML</td>
+<td>Email Template</td>
+<td>Notification Script</td>
+</tr>
+<tr>
+<td>Approval path</td>
+<td>Flow → state → BR4</td>
+<td>BR only</td>
+<td>Manual state change (lab)</td>
+</tr>
+</tbody>
+</table>
+<p>Flow alternative (skip BR4 for approved/rejected):</p>
+<p>After <strong>Update Record</strong> in Flow, add <strong>Run Script</strong>:</p>
+<pre><code class="language-javascript">gs.eventQueue('x_786686_hr_leave.leave_v2.approved', fd_data.trigger_record,
+ fd_data.trigger_record.u_requested_for_user, fd_data.trigger_record.u_number);
+</code></pre>
+<hr />
+<h2 id="checklist-copy-before-go-live">Checklist — copy before go-live</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<ul>
+<li>[ ] Application = <strong>HR Leave</strong> (not Global)</li>
+<li>[ ] 3 events in Event Registry on table <strong>x_786686_hr_leave_req_v2</strong></li>
+<li>[ ] BR2 active (submitted)</li>
+<li>[ ] BR4 active (approved / rejected)</li>
+<li>[ ] 3 notifications — <strong>Table = Leave Request</strong> (not Employee)</li>
+<li>[ ] <strong>When to send</strong> = Event is fired + correct event name each</li>
+<li>[ ] <strong>Who will receive</strong> = u_approver_user / u_requested_for_user</li>
+<li>[ ] Subject + Message HTML filled (or template)</li>
+<li>[ ] Requester + approver users have <strong>email</strong></li>
+<li>[ ] Flow approval updates u_state to approved/rejected</li>
+<li>[ ] E2E test: submit → approve → reject</li>
+<li>[ ] Update Set captures notification records</li>
+</ul>
+<hr />
+<h2 id="related-files">Related files</h2><nav class="section-links" aria-label="Direct ServiceNow component links"><strong>Open component:</strong><a href="{BASE}/sysevent_register_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Event Registry</a><a href="{BASE}/sysevent_list.do?sysparm_query=nameSTARTSWITHx_786686_hr_leave">Event Log</a><a href="{BASE}/sysevent_email_action_list.do?sysparm_query=event_nameSTARTSWITHx_786686_hr_leave">Notifications</a><a href="{BASE}/sys_email_list.do">Email Log</a><a href="{BASE}/sysauto_script_list.do">Scheduled Jobs</a></nav>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>../events/events.md</td>
+<td>Event registry + gs.eventQueue</td>
+</tr>
+<tr>
+<td>../business_rules/BR2_on_submit_event.js</td>
+<td>Submitted event</td>
+</tr>
+<tr>
+<td>../business_rules/BR4_on_approve_reject_event.js</td>
+<td>Approved / rejected events</td>
+</tr>
+<tr>
+<td>../../flow/approval_flow.md</td>
+<td>Flow sets state after approval</td>
+</tr>
+<tr>
+<td>../../../06_NOTIFICATIONS_EVENTS_JOBS.md</td>
+<td>Summary chapter</td>
+</tr>
+<tr>
+<td>../../../02_ADMINISTRATION.md § Users</td>
+<td>Test users + email</td>
+</tr>
+</tbody>
+</table>
+    </article>
+    <p class="footer">HR Leave mature solution docs · generated for study &amp; deploy on Australia · do not force page RTL (keeps English scripts readable)</p>
+  </main>
+  <script src="../../../assets/docs.js"></script>
+
+<script src="../../../assets/author-brand.js" defer></script>
+</body>
+</html>
