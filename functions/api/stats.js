@@ -1,78 +1,69 @@
 /**
- * Public aggregate stats (no personal data).
+ * Public read-only visit aggregates (no personal data).
  */
-
-const CORS = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "GET, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
-  "Content-Type": "application/json; charset=utf-8",
-  "Cache-Control": "public, max-age=30",
-};
-
-function json(data, status = 200) {
-  return new Response(JSON.stringify(data), { status, headers: CORS });
-}
-
-export async function onRequestOptions() {
-  return new Response(null, { status: 204, headers: CORS });
-}
+const KEY = "aggregates_v1";
 
 export async function onRequestGet(context) {
-  try {
-    const kv = context.env.VISITS;
-    if (!kv) return json({ ok: false, error: "VISITS KV not bound" }, 500);
-
-    const total = parseInt((await kv.get("total")) || "0", 10) || 0;
-
-    const countries = {};
-    let cursor;
-    do {
-      const page = await kv.list({ prefix: "country:", cursor, limit: 1000 });
-      for (const key of page.keys) {
-        const code = key.name.replace(/^country:/, "");
-        const n = parseInt((await kv.get(key.name)) || "0", 10) || 0;
-        if (n > 0) countries[code] = n;
-      }
-      cursor = page.list_complete ? undefined : page.cursor;
-    } while (cursor);
-
-    const days = {};
-    cursor = undefined;
-    do {
-      const page = await kv.list({ prefix: "day:", cursor, limit: 1000 });
-      for (const key of page.keys) {
-        const d = key.name.replace(/^day:/, "");
-        const n = parseInt((await kv.get(key.name)) || "0", 10) || 0;
-        if (n > 0) days[d] = n;
-      }
-      cursor = page.list_complete ? undefined : page.cursor;
-    } while (cursor);
-
-    const topCountries = Object.entries(countries)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 25)
-      .map(([code, visits]) => ({ code, visits }));
-
-    const last7 = Object.entries(days)
-      .sort((a, b) => (a[0] < b[0] ? 1 : -1))
-      .slice(0, 7)
-      .map(([day, visits]) => ({ day, visits }));
-
-    return json({
-      ok: true,
-      site: "Zero²Hero Academy",
-      privacy:
-        "Anonymous aggregates only. Country code from Cloudflare edge. No names, emails, IPs, or cookies stored.",
-      totalVisits: total,
-      uniqueCountries: Object.keys(countries).length,
-      topCountries,
-      last7Days: last7,
-      updatedAt: new Date().toISOString(),
-      publicPage: "https://snzero2hero.com/stats",
-      github: "https://github.com/amahmoud1986c-sketch/snzero2hero-academy",
-    });
-  } catch (e) {
-    return json({ ok: false, error: String(e && e.message ? e.message : e) }, 500);
+  const { env } = context;
+  if (!env.VISITS) {
+    return json({ ok: false, error: "storage_unavailable" }, 503);
   }
+
+  let data = {
+    updatedAt: null,
+    totalVisits: 0,
+    totalSessions: 0,
+    byCountry: {},
+    byPath: {},
+    byReferrer: {},
+    byDay: {},
+    bySource: { linkedin: 0, github: 0, direct: 0, other: 0 },
+  };
+
+  try {
+    const raw = await env.VISITS.get(KEY);
+    if (raw) data = { ...data, ...JSON.parse(raw) };
+  } catch {
+    /* keep empty */
+  }
+
+  // Sort helpers for UI
+  const countries = Object.entries(data.byCountry || {})
+    .sort((a, b) => b[1] - a[1])
+    .map(([code, visits]) => ({ code, visits }));
+  const paths = Object.entries(data.byPath || {})
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 25)
+    .map(([path, visits]) => ({ path, visits }));
+  const days = Object.entries(data.byDay || {})
+    .sort((a, b) => a[0].localeCompare(b[0]))
+    .map(([day, visits]) => ({ day, visits }));
+
+  return json(
+    {
+      ok: true,
+      privacy:
+        "Anonymous aggregates only. No names, emails, or IP addresses are stored.",
+      totalVisits: data.totalVisits || 0,
+      totalSessions: data.totalSessions || 0,
+      updatedAt: data.updatedAt,
+      bySource: data.bySource || {},
+      countries,
+      paths,
+      days,
+      github: null, // filled client-side from /data/github-traffic.json if present
+    },
+    200,
+    {
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "public, max-age=30",
+    }
+  );
+}
+
+function json(obj, status = 200, extra = {}) {
+  return new Response(JSON.stringify(obj), {
+    status,
+    headers: { "Content-Type": "application/json; charset=utf-8", ...extra },
+  });
 }

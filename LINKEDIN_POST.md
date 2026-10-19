@@ -17,11 +17,10 @@
 ✅ مسارات CIS + تحضير مقابلات Dev/Admin
 
 ### الروابط
-🌐 الموقع الرسمي: https://snzero2hero.com  
-📊 إحصائيات الزيارات (بلدان بدون تسجيل): https://snzero2hero.com/stats  
-📘 بوابة الأكاديمية: https://snzero2hero.pages.dev/  
-💻 GitHub (Public — مفتوح للجميع): https://github.com/amahmoud1986c-sketch/snzero2hero-academy  
-🔗 LinkedIn: https://www.linkedin.com/in/ahmed-abdelmaksoud-44917a89/
+🌐 الموقع الرسمي: https://snzero2hero.com/?utm_source=linkedin&utm_medium=social&utm_campaign=launch  
+📊 إحصائيات الزيارات (دول/صفحات — بدون تسجيل وبلا بيانات شخصية): https://snzero2hero.com/stats.html  
+💻 GitHub (Public): https://github.com/amahmoud1986c-sketch/snzero2hero-academy  
+🔗 بروفايلي: https://www.linkedin.com/in/ahmed-abdelmaksoud-44917a89/
 
 لو بتبدأ من الصفر أو عايز توصل لمستوى **Implementer** — ابدأ من الفصل 00 وكمّل المسار Zero → Hero.
 

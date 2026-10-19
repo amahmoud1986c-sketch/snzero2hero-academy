@@ -1,6 +1,7 @@
 /**
- * Zero²Hero Academy — Author branding injector
+ * Zero²Hero Academy — Author branding + privacy-friendly visit ping
  * Ahmed Mahmoud Abdelmaksoud · LinkedIn
+ * Stores no names/emails/IPs — only anonymous aggregates via /api/visit
  */
 (function () {
   if (window.__z2hAuthorBrand) return;
@@ -37,6 +38,15 @@
     return node;
   }
 
+  function statsHref() {
+    try {
+      var u = new URL("stats.html", window.location.href);
+      return u.pathname.replace(/\/[^/]*$/, "/stats.html").replace(/\/stats\.html$/, "/stats.html");
+    } catch (e) {
+      return "/stats.html";
+    }
+  }
+
   function buildBar() {
     var bar = el("div", {
       className: "z2h-author-bar",
@@ -50,21 +60,11 @@
       '<div class="z2h-role">' + ROLE + '</div></div></div>' +
       '<div class="z2h-author-right">' +
       '<a class="z2h-li" href="' + LI + '" target="_blank" rel="noopener noreferrer" title="LinkedIn — Ahmed Abdelmaksoud">in LinkedIn</a>' +
+      '<a href="/stats.html" title="Public visit stats">Stats</a>' +
       '<a href="https://snzero2hero.com" target="_blank" rel="noopener">snzero2hero.com</a>' +
       "</div>";
     return bar;
   }
-
-  var STATS_APIS = [
-    "https://snzero2hero.com/api/stats",
-    "https://snzero2hero.pages.dev/api/stats",
-    "/api/stats"
-  ];
-  var VISIT_APIS = [
-    "https://snzero2hero.com/api/visit",
-    "https://snzero2hero.pages.dev/api/visit",
-    "/api/visit"
-  ];
 
   function buildFooter() {
     var foot = el("footer", { className: "z2h-site-footer", role: "contentinfo" });
@@ -74,51 +74,69 @@
       "<div>" +
       "<div><strong>" + NAME_EN + "</strong> · " + NAME_AR + "</div>" +
       "<div>Built &amp; authored this academy · " +
-      '<a href="' + LI + '" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a> · ' +
+      '<a href="' + LI + '" target="_blank" rel="noopener noreferrer">LinkedIn</a> · ' +
       '<a href="https://snzero2hero.com" target="_blank" rel="noopener">snzero2hero.com</a> · ' +
-      '<a href="https://snzero2hero.com/stats" target="_blank" rel="noopener">Stats · الإحصائيات</a></div>' +
-      '<div class="z2h-disc">Visitors: <span class="z2h-visit-count">…</span> · Country-only analytics (no signup, no personal data). Independent educational resource. Not affiliated with ServiceNow, Inc.</div>' +
+      '<a href="/stats.html">Stats · الإحصائيات</a></div>' +
+      '<div class="z2h-disc">Visitors: <span class="z2h-visit-count">…</span> · Country-only analytics (no signup, no personal data). Not affiliated with ServiceNow, Inc.</div>' +
       "</div></div>";
     return foot;
   }
 
-  function recordVisitOnce() {
+  function utmSource() {
     try {
-      if (sessionStorage.getItem("z2h_visit_sent") === "1") return;
-      sessionStorage.setItem("z2h_visit_sent", "1");
-    } catch (e) {}
-    VISIT_APIS.forEach(function (url) {
-      try {
-        fetch(url, { method: "POST", mode: "cors", keepalive: true }).catch(function () {});
-      } catch (e) {}
+      return new URLSearchParams(window.location.search).get("utm_source") || "";
+    } catch (e) {
+      return "";
+    }
+  }
+
+  function recordVisit() {
+    var newSession = false;
+    try {
+      if (!sessionStorage.getItem("z2h_session")) {
+        sessionStorage.setItem("z2h_session", "1");
+        newSession = true;
+      }
+      var pathKey = "z2h_path:" + location.pathname;
+      if (sessionStorage.getItem(pathKey) === "1") return;
+      sessionStorage.setItem(pathKey, "1");
+    } catch (e) {
+      newSession = true;
+    }
+
+    var payload = JSON.stringify({
+      path: location.pathname + location.search,
+      referrer: document.referrer || "",
+      utm_source: utmSource(),
+      newSession: newSession
     });
+
+    try {
+      fetch("/api/visit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: payload,
+        keepalive: true,
+        mode: "cors",
+        credentials: "omit"
+      }).catch(function () {});
+    } catch (e) {}
   }
 
   function loadVisitCount() {
     var nodes = document.querySelectorAll(".z2h-visit-count");
     if (!nodes.length) return;
-    function apply(n) {
-      nodes.forEach(function (el) {
-        el.textContent = Number(n || 0).toLocaleString();
-      });
-    }
-    (function tryNext(i) {
-      if (i >= STATS_APIS.length) {
-        apply(0);
-        return;
-      }
-      fetch(STATS_APIS[i], { cache: "no-store", mode: "cors" })
-        .then(function (r) {
-          return r.ok ? r.json() : Promise.reject();
-        })
-        .then(function (d) {
-          if (d && d.ok) apply(d.totalVisits);
-          else tryNext(i + 1);
-        })
-        .catch(function () {
-          tryNext(i + 1);
+    fetch("/api/stats", { cache: "no-store", credentials: "omit" })
+      .then(function (r) {
+        return r.ok ? r.json() : null;
+      })
+      .then(function (d) {
+        if (!d || !d.ok) return;
+        nodes.forEach(function (n) {
+          n.textContent = Number(d.totalVisits || 0).toLocaleString();
         });
-    })(0);
+      })
+      .catch(function () {});
   }
 
   function inject() {
@@ -132,16 +150,15 @@
 
     if (!document.querySelector(".z2h-author-bar")) {
       var bar = buildBar();
-      var body = document.body;
-      if (body.firstChild) body.insertBefore(bar, body.firstChild);
-      else body.appendChild(bar);
+      if (document.body.firstChild) document.body.insertBefore(bar, document.body.firstChild);
+      else document.body.appendChild(bar);
     }
 
     if (!document.querySelector(".z2h-site-footer")) {
       document.body.appendChild(buildFooter());
     }
 
-    recordVisitOnce();
+    recordVisit();
     loadVisitCount();
   }
 

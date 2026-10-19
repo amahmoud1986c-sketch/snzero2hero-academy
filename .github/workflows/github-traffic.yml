@@ -1,0 +1,49 @@
+name: Sync GitHub traffic stats
+on:
+  schedule:
+    - cron: "0 */12 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch repo traffic into data/github-traffic.json
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          gh api "repos/$REPO/traffic/views" > /tmp/views.json
+          gh api "repos/$REPO/traffic/clones" > /tmp/clones.json
+          mkdir -p data
+          node -e '
+            const fs = require("fs");
+            const views = JSON.parse(fs.readFileSync("/tmp/views.json","utf8"));
+            const clones = JSON.parse(fs.readFileSync("/tmp/clones.json","utf8"));
+            const out = {
+              fetched_at: new Date().toISOString(),
+              repo: process.env.REPO,
+              views_count: views.count || 0,
+              views_uniques: views.uniques || 0,
+              clones_count: clones.count || 0,
+              clones_uniques: clones.uniques || 0,
+              views_daily: (views.views || []).slice(-14),
+              clones_daily: (clones.clones || []).slice(-14)
+            };
+            fs.writeFileSync("data/github-traffic.json", JSON.stringify(out, null, 2) + "\n");
+            console.log(out);
+          '
+      - name: Commit stats file
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/github-traffic.json
+          if git diff --staged --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git commit -m "chore: update GitHub traffic snapshot"
+          git push

@@ -3,7 +3,8 @@ name = "snzero2hero"
 compatibility_date = "2026-10-19"
 pages_build_output_dir = "."
 
-# Anonymous visit counters (country code only — no PII)
+# Anonymous visit aggregates (country / path / referrer only — no PII)
 [[kv_namespaces]]
 binding = "VISITS"
-id = "2ef2eed02c8e4da4b27d439ea6487e6d"
+id = "279704c30f0f47e38ef69fa807b8b510"
+preview_id = "bec2b0c4bf6b4d5487ab39045023f1e5"
