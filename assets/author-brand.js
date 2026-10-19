@@ -60,7 +60,7 @@
       '<div class="z2h-role">' + ROLE + '</div></div></div>' +
       '<div class="z2h-author-right">' +
       '<a class="z2h-li" href="' + LI + '" target="_blank" rel="noopener noreferrer" title="LinkedIn — Ahmed Abdelmaksoud">in LinkedIn</a>' +
-      '<a href="/stats.html" title="Public visit stats">Stats</a>' +
+      '<a href="/stats" title="Public visit stats">Stats</a>' +
       '<a href="https://snzero2hero.com" target="_blank" rel="noopener">snzero2hero.com</a>' +
       "</div>";
     return bar;
